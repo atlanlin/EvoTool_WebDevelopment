@@ -207,7 +207,13 @@ function init2() {
   //canvas.ondblclick = myDblClick;
   canvas.onmousemove = myMove;
   
-  $(canvas).bind( "swipe", myMove );
+  //$.mobile.loading( "hide" );
+  $.mobile.loading().hide();
+  
+  $(canvas).bind( "vmousemove", myMove );
+  $(canvas).bind( "vmousedown", myDown );
+  $(canvas).bind( "vmouseup", myUp );
+  $(canvas).bind( "vmouseover", myMove );
   
   // set up the selection handle boxes
   for (var i = 0; i < 8; i ++) {
@@ -402,6 +408,7 @@ function mainDraw() {
 
 // Happens when the mouse is moving inside the canvas
 function myMove(e){
+	e.preventDefault();
   if (isDrag) {
     getMouse(e);
     
@@ -485,8 +492,8 @@ function myMove(e){
       // we dont need to use the ghost context because
       // selection handles will always be rectangles
 	  //changes made by yelling
-      if (mx >= cur.x && mx <= cur.x + mySelBoxSize*3/2 &&
-          my >= cur.y && my <= cur.y + mySelBoxSize*3/2) {
+      if (mx >= cur.x && mx <= cur.x + mySelBoxSize*3 &&
+          my >= cur.y && my <= cur.y + mySelBoxSize*3) {
         // we found one!
         expectResize = i;
         invalidate();
@@ -531,6 +538,7 @@ function myMove(e){
 
 // Happens when the mouse is clicked in the canvas
 function myDown(e){
+	e.preventDefault();
   getMouse(e);
   
   //we are over a selection box
