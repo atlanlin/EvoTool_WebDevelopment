@@ -64,6 +64,7 @@ function init(){
 	});
 	
     $("#btnStart").click(function(){
+		//ajaxGet("info.htm?cmd=%23021%3BEVO BarCode%3B1%3BPosX%3B316.94%23");
 		ajaxGet("info.htm?cmd=%23002%23");
 		intervalUpdateStart();
 		}

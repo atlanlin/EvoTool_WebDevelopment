@@ -16,7 +16,13 @@ function initCircle() {
     element.addEventListener('mouseup', stopDragging, false);
     element.addEventListener('mouseout', stopDragging, false);
 	
-	
+	$("#set").click(function(){
+		//var outerRadius = parseFloat();
+		
+		updateCircleEvo();
+		
+		}
+	);
 	
 }
 
@@ -274,6 +280,8 @@ function drawCircle(circle, innerCircle) {
 	document.querySelector('#circlevolume').value = Math.round(circle.radius);
 	document.querySelector('#innercirclevolume').value = Math.round(innerCircle.radius);
 	
+	
+	updateCircleEvo();
     //ctx.fill();
 }
 
@@ -328,6 +336,25 @@ function outputInnerUpdate(size){
 	
 			//alert(circle.point.x);
 	drawCircle(circle, innerCircle);
+
+}
+
+function updateCircleEvo()
+{
+		var centerX = $("#xvalue").val();
+		var centerY = $("#yvalue").val();
+		var innerRadius = $("#innervalue").val();
+		var outerRadius = $("#outervalue").val();
+		var startvalue = $("#startvalue").val();
+		var anglevalue = $("#anglevalue").val()
+		//alert($("#outervalue").val());
+		ajaxGet("info.htm?cmd=%23021%3BEVO Circle%3B1%3BCirclePos.Center.X%3B"+ centerX +"%23");
+		ajaxGet("info.htm?cmd=%23021%3BEVO Circle%3B1%3BCirclePos.Center.Y%3B"+ centerY +"%23");
+		
+		ajaxGet("info.htm?cmd=%23021%3BEVO Circle%3B1%3BCirclePos.InnerRadius%3B"+ innerRadius +"%23");
+		ajaxGet("info.htm?cmd=%23021%3BEVO Circle%3B1%3BCirclePos.OuterRadius%3B"+ outerRadius +"%23");
+		ajaxGet("info.htm?cmd=%23021%3BEVO Circle%3B1%3BCirclePos.StartAngle%3B"+ startvalue +"%23");
+		ajaxGet("info.htm?cmd=%23021%3BEVO Circle%3B1%3BCirclePos.LengthAngle%3B"+ anglevalue +"%23");
 
 }
 
