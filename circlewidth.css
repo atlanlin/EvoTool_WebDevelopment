@@ -2,10 +2,6 @@ body{
     position:relative;
 }
 
-#canvas{
-background:url('barcode.jpg');
-
-}
 
 #logo{
     position:relative;

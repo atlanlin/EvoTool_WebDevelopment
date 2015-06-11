@@ -339,5 +339,4 @@ border-color: #FF4040 #A60000 #A60000 #FF4040;
   background-color:#E6E6DC; 
 }
 
-canvas{ display:block; margin:1em auto; border:1px solid black; }
-canvas { background:url(barcode.jpg) }
+canvas{ display:block; border:0px solid black; }
