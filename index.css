@@ -1,0 +1,60 @@
+//css file for index page
+body{
+    position:relative;
+    margin: 0 auto;
+}
+
+
+#logo{
+    position: relative;
+    width: 350px;
+    height: 150px;
+    margin-top: 2cm;
+    margin: 0 auto;
+    margin-right:auto;
+    margin-left:auto;
+    display: block;
+    background-color:#E6E6DC;
+    
+}
+
+table{
+    width:600px;
+    height:500px;
+    background-color:#81A594;
+    text-align:center;
+    margin-top: 50px;
+    margin: 0 auto;
+    border-radius:10px 10px;
+}
+
+footer{
+    background-color:#E6E6DC;
+    margin: 0 auto;
+    text-align:center;
+    width:600px;
+    border-radius:10px 10px;
+    color:#00628D;
+    font-size:12px;
+    font-weight:bold;
+}
+
+
+.functionButton{
+    font-size: 12px;
+    height: 26px;
+    width: 120px;
+    text-align: center;
+    border-radius: 12px 12px;
+    font-weight:bold;
+    color:#00628D;
+    background-color:#E6E6DC;
+}
+
+.functionLogo{
+    width:140px;
+    height:140px;
+    border-radius: 12px 12px;
+    box-shadow: 5px 5px 5px #00628D;
+    
+}

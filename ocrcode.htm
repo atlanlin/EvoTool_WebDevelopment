@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>OCR Reader</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="jqueryui.css">
+    <script src="jquery.js"></script> 
+    <script src="evt.js"></script>
+    <script src="camset.js"></script>
+    <script src="jqueryui.js"></script>
+	<script src="rect.js"></script>
+</head>
+<body onload="init2()">
+    <img id="logo" src="vclogo.png" alt="vclogo"> 
+    <div class="functionPanel"> 
+	
+        <div id="rightRegion">
+            <div>
+                <input id="btnStart" type="button" value="Monitor" class="button">
+                <input id="btnStop" type="button" value="Stop" class="button">
+                <input id="mainPage" onClick="location.href='index.htm'" type="button" value="Main Page" class="button">
+            </div>
+            <hr>
+            
+        </div>
+		
+        <div id="imageArea">
+            <div id="mainTitle">OCR</div>
+<!--             <div id="selectionArea"></div>
+            <img id="imgSnapshot"></img> -->
+<!-- 			<canvas id="canvas" width="750" height="478">
+				This text is displayed if your browser does not support HTML5 Canvas.
+			</canvas> -->
+			<!--<canvas id="canvas1" style="z-index: 1; position:absolute;" width="750" height="478">
+				This text is displayed if your browser does not support HTML5 Canvas.
+			</canvas>-->
+			<img id="imgSnapshot"></img>
+			<canvas id="canvas2" style="z-index: 1; position:absolute; left:0px; top:27px;" width="750" height="480">
+			<!--<canvas id="layer2" style="z-index: 2; position:absolute; left:0px; top:0px;" height="300px" width="400">-->
+				This text is displayed if your browser does not support HTML5 Canvas.
+			</canvas>
+			
+        </div> 
+		
+        <div id="leftmenu">
+			
+			<div id="fontSelection" class="functionTab">
+				<label>Font Type</label><br> 
+                <select name="fontType">
+                    <option value="industrial"><label>Industrial</label><br>
+                    <option value="industrial09"><label>Industrial 0-9</label>
+					<option value="industrial09AZ"><label>Industrial 0-9 A-Z</label><br>
+                    <option value="industrial09P"><label>Industrial 0-9 +</label><br>
+                    <option value="industrialAZP"><label>Industrial A-Z +</label><br>
+                    <option value="dotPrint"><label>DotPrint</label><br>
+                    <option value="dotPrint09"><label>DotPrint 0-9</label>
+					<option value="dotPrint09AZ"><label>DotPrint 0-9 A-Z</label><br>
+                    <option value="dotPrint09P"><label>DotPrint 0-9 +</label><br>
+                    <option value="dotPrintAZP"><label>DotPrint A-Z +</label><br>
+					<option value="document"><label>Document</label><br>
+                    <option value="document09"><label>Document 0-9</label>
+					<option value="document09AZ"><label>Document 0-9 A-Z</label><br>
+                    <option value="documentAZP"><label>Document A-Z +</label><br>
+					<option value="enhancedOCRA"><label>Enhanced OCR A</label><br>
+                    <option value="enhancedOCRB"><label>Enhanced OCR B</label>
+					<option value="pharma"><label>Pharma</label><br>
+                    <option value="pharma09"><label>Pharma 0-9</label>
+					<option value="pharma09AZ"><label>Pharma 0-9 A-Z</label><br>
+                    <option value="pharma09P"><label>Pharma 0-9 +</label><br>
+					<option value="micr"><label>MICR</label><br>
+					<option value="semi"><label>SEMI</label><br>
+                </select>
+            </div>
+			
+            <div id="polaritySelection" class="functionTab">  
+                <label>Polarity</label><br> 
+                <input type="radio" value="darkOnLight" name="polarityType" checked><label>Dark on Light</label><br>
+                <input type="radio" value="lightOnDark" name="polarityType"><label>Light on Dark</label><br> 
+            </div>
+			
+            <input type="button" id="polaritySet" value="Set" class="button leftButton">
+			<hr>
+			
+			<div id="characterSelection" class="functionTab">  
+                <label>Character Option</label><br>
+                <input type="checkbox" id="dotted" value="dotted" name="characterType"><label>Dotted</label><br>
+                <input type="checkbox" id="rotationCorrection" value="rotationCorrection" name="characterType"><label>Rotation Correction</label><br>
+				<input type="checkbox" id="characterSize" value="characterSize" name="characterType" onclick="javascript:showCharWindowConfig()"><label>Character Size</label><br>
+				
+				<div id="characterBoundary">
+                <form>
+                    <label>X:</label> <input type="text" id="charXValue" class="textBox" name="charXValue">
+                    <label>Y:</label> <input type="text" id="charYValue" class="textBox" name="charYValue"></br>
+                    <label>W:</label> <input type="text" id="charWValue" class="textBox" name="charWValue">
+                    <label>H:</label> <input type="text" id="charHValue" class="textBox" name="charHValue">
+                </form> 
+				</div>
+            </div>
+			
+            <input type="button" id="characterSet" value="Set" class="button leftButton">
+			<hr>
+			
+			<div id="regionOfInterest">
+                <label>ROI</label><br> 
+				
+				<div id="roiSelection">
+					<input type="radio" id="wholeWindow" value="full" name="searchType" onclick="javascript:showWindowConfig()" checked><label>Whole Window</label><br>
+					<input type="radio" id="defineWindow" value="set" name="searchType" onclick="javascript:showWindowConfig()"><label>Define Window</label><br>
+				</div>
+				
+				<div id="windowBoundary">
+                <form>
+                    <label>X:</label> <input type="text" id="xValue" class="textBox" name="xValue">
+                    <label>Y:</label> <input type="text" id="yValue" class="textBox" name="yValue"></br>
+                    <label>W:</label> <input type="text" id="wValue" class="textBox" name="wValue">
+                    <label>H:</label> <input type="text" id="hValue" class="textBox" name="hValue">
+                </form> 
+				</div>
+            </div>
+
+			<input type="button" id="roiSet" value="Set" class="button leftButton">
+			<hr>
+			<!-- can be remove if doesn't require -->
+             <div id="result">
+                <p id="title">Result</p>
+                <textarea id="textArea">
+                </textarea>
+            </div>
+			<!-- till here -->
+        </div>
+	</div>
+</body>
+</html>

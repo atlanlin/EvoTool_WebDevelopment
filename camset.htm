@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Camera Setting</title>
+    <link rel="stylesheet" type="text/css" href="barcode.css">
+    <link rel="stylesheet" type="text/css" href="camset.css">
+    <script src="jquery.js"></script>
+    <script src="evt.js"></script>
+    <script src="dragdeal.js"></script>
+    <script src="camset.js"></script>
+</head>
+<body>
+    <img id="logo" src="logo.jpg" alt="company logo"></img>
+    <div class="functionPanel">
+        <div id="imageArea">
+            <img id="imgSnapshot">
+            </img>
+        </div>
+        <div id="leftmenu">
+            <form id="actionRegion">
+                <input id="btnStart" type="button" value="Start" class="button">
+                <input id="btnStop" type="button" value="Stop" class="button">
+                <input id="back" onClick="location.href='barcode.htm'" type="button" value="Back" class="button">
+
+            </form>
+            <label>Gain</label><br> 
+            <div id="gain-slider" class="dragdealer">
+                <div id="divSlideBarGain" class="bar handle norm">
+                </div>
+            </div>
+            <div id="makespace"></div>
+            <label>Shutter</label>
+            <div id="shutter-slider" class="dragdealer">
+                <div id="divSlideBarShutter" class="bar handle norm">
+                </div>
+            </div>  
+            <div id="makespace"></div>
+        
+        </div>
+    </div>
+</body>
+</html>

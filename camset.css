@@ -1,0 +1,56 @@
+.dragdealer {
+    text-align:center;
+	position: relative;
+    margin-left:15px;
+	height: 18px;
+	width: 164px;
+	background:#E6E6DC;
+	border-style:solid;
+	border-width:2px;
+	border-color: #909090 #E8E8E8 #E8E8E8 #909090;
+	border-radius: 10px;
+}
+.dragdealer .handle {
+	position: absolute;
+	cursor: pointer;
+
+}
+.dragdealer .bar {
+	width: 50px;
+	height: 17px;
+	color:#E6E6DC; 
+	line-height: 18px;
+	padding-left:2px;
+	font-size: 14px;
+	text-align: center;
+	border-style:solid;
+	border-width:1px;
+	border-radius: 9px;
+}
+
+.dragdealer .good{
+background-color: #00bb00; /*green*/
+border-color:#00FF00 #006600 #006600 #00FF00;
+}
+.dragdealer .norm{
+background-color: #00628D;
+border-color:#FFDC73 #A67C00 #A67C00 #FFDC73;
+}
+.dragdealer .bad{
+background-color: #FF0000; /*red*/
+border-color: #FF4040 #A60000 #A60000 #FF4040;
+}
+
+.dragdealer .disabled {
+	background: #898989;
+}
+
+#makespace{
+    height:50px;
+}
+
+#leftmenu label{
+    color:#00628B;
+    font-weight:bold;
+    font-size:14px;
+}

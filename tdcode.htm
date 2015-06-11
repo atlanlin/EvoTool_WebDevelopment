@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>2D Code Reader</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="jqueryui.css">
+    <script src="jquery.js"></script> 
+    <script src="evt.js"></script>
+    <script src="camset.js"></script>
+	<script src="jqueryui.js"></script>
+</head>
+<body>
+    <img id="logo" src="vclogo.png" alt="vclogo"> 
+    <div class="functionPanel"> 
+	
+        <div id="rightRegion">
+            <div>
+                <input id="btnStart" type="button" value="Monitor" class="button">
+                <input id="btnStop" type="button" value="Stop" class="button">
+                <input id="mainPage" onClick="location.href='index.htm'" type="button" value="Main Page" class="button">
+            </div>   
+            <hr>
+        </div>
+		
+        <div id="imageArea">
+            <div id="mainTitle">2D Code</div>
+            <div id="selectionArea"></div>
+            <img id="imgSnapshot"></img>
+        </div> 
+		
+        <div id="leftmenu">
+		
+            <div id="codeSelection">  
+                <label>Scan Type</label><br> 
+                <input type="radio" value="dmc" name="datacode" onclick="javascript:showCodeType()" checked><label>DMC Code</label><br>
+                <input type="radio" value="qr" name="datacode" onclick="javascript:showCodeType()"><label>QR Code</label><br>
+				<input type="radio" value="microqr" name="datacode" onclick="javascript:showCodeType()"><label>Micro QR Code</label><br> 
+            </div>
+          
+			<input type="button" value="Set" class="button leftButton">
+			<hr>
+			
+			<div id="regionOfInterest">
+                <label>ROI</label><br> 
+				
+				<div id="roiSelection">
+					<input type="radio" id="wholeWindow" value="full" name="searchType" onclick="javascript:showWindowConfig()" checked><label>Whole Window</label><br>
+					<input type="radio" id="defineWindow" value="set" name="searchType" onclick="javascript:showWindowConfig()"><label>Define Window</label><br>
+				</div>
+				
+				<div id="windowBoundary">
+                <form>
+                    <label>X:</label> <input id="xvalue" class="textBox" type="text" name="xvalue">
+                    <label>Y:</label> <input id="yvalue" class="textBox" type="text" name="yvalue"></br>
+                    <label>W:</label> <input id="wvalue" class="textBox" type="text" name="wvalue">
+                    <label>H:</label> <input id="hvalue" class="textBox" type="text" name="hvalue">
+                </form> 
+				</div>
+            </div>
+			
+			<input type="button" value="Set" class="button leftButton">
+			<hr>
+			<!-- can be remove if doesn't require -->
+             <div id="result">
+                <p id="title">Result</p>
+                <textarea id="textArea">
+                </textarea>
+            </div>
+			<!-- till here -->
+            
+        </div>
+	</div>
+</body>
+</html>

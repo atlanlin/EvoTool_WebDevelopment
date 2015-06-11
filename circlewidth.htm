@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Circle Measurement</title>
+    <link rel="stylesheet" type="text/css" href="circlewidth.css">
+    <link rel="stylesheet" type="text/css" href="jqueryui.css">
+	<link rel="stylesheet" type="text/css" href="style.css">
+    <script src="jquery.js"></script> 
+    <script src="evt.js"></script>
+    <script src="camset.js"></script>
+    <script src="jqueryui.js"></script>
+	<script src="circlewidth.js"></script>
+    
+</head>
+<body>
+    <img id="logo" src="vclogo.png" alt="vclogo"> 
+    <div class="functionPanel"> 
+        <div id="rightRegion">
+            <div>
+                <input id="btnStart" type="button" value="Monitor" class="button">
+                <input id="btnStop" type="button" value="Stop" class="button">
+                <input id="mainPage" onClick="location.href='index.htm'" type="button" value="Main Page" class="button">
+            </div>  
+			
+            <hr>
+			
+			<div id="objectMeasureTools" class="functionTab">
+				<p class="fHeading1">Object Measurement Tools</p>
+				
+				<img id="circleImgBtn" class="imageButton" src="tools_images/circleImgBtn.jpg" 
+					onclick="clickedImgBtn(this.id)"></img>
+				<img id="widthImgBtn" class="imageButton" src="tools_images/widthImgBtn.jpg" 
+					onclick="clickedImgBtn(this.id)"></img>
+				
+			</div>
+			
+			<div id="distanceMeasureTools" class="functionTab">
+				<p class="fHeading1">Distance Measurement Tools</p>
+				
+				<img id="ptpImgBtn" class="imageButton" src="tools_images/ptpImgBtn.jpg" 
+					onclick="clickedImgBtn(this.id)"></img>
+				<img id="ptlImgBtn" class="imageButton" src="tools_images/ptlImgBtn.jpg" 
+					onclick="clickedImgBtn(this.id)"></img>
+				<img id="ptcImgBtn" class="imageButton" src="tools_images/ptcImgBtn.jpg" 
+					onclick="clickedImgBtn(this.id)"></img>
+				<img id="ctlImgBtn" class="imageButton" src="tools_images/ctlImgBtn.jpg" 
+					onclick="clickedImgBtn(this.id)"></img>
+				<img id="ctcImgBtn" class="imageButton" src="tools_images/ctcImgBtn.jpg" 
+					onclick="clickedImgBtn(this.id)"></img>
+				
+			</div>
+			
+        </div>
+       <div id="imageArea">
+	   <!-- can be remove -->
+            <div id="mainTitle">Circle Width Measurement</div>
+			<!-- till here -->
+            <div id="selectionArea"></div>
+			
+			<canvas id="canvas" width="752" height="480">
+			
+			<!-- <img id="imgSnapshot" src="barcode.jpg"></img>  -->
+			</canvas>
+			
+			
+			
+            <!-- <img id="imgSnapshot"></img> -->
+       </div>
+        <div id="leftmenu"> 
+			<p id="title" class="fHeading1">ROI</p>
+			<div id="regionOfInterest" class="functionTab">
+                
+
+					
+                    <!-- <label>X:</label> <input id="xvalue" class="textBox" type="text" name="xvalue">
+                    <label>Y:</label> <input id="yvalue" class="textBox" type="text" name="yvalue"></br>
+                    <label>W:</label> <input id="wvalue" class="textBox" type="text" name="wvalue">
+                    <label>H:</label> <input id="hvalue" class="textBox" type="text" name="hvalue">
+					
+                    <input id="searchWindow" type="button" value="Search Window" class="button leftButton">
+                    <input id="set" type="button" value="Set" class="button leftButton" > -->
+                    <!--<input id="completeWindow" type="button" value="Complete Window" class="button" id="completeWindow"> -->
+					
+					<table>
+					<tr>
+						<td><label>Center X:</label> </td> 
+						<td><input id="xvalue" class="textBox" type="text" name="xvalue" readonly></td>
+						<td><label>Center Y:</label> </td>
+						<td><input id="yvalue" class="textBox" type="text" name="yvalue" readonly></td>
+					</tr>
+					<tr>
+                    <td><label>Start angle:</label> </td>
+					<td><input id="startvalue" class="textBox" type="text" name="startvalue" readonly></td>
+					
+                    <td><label>Angle Length:</label> </td>
+					<td><input id="anglevalue" class="textBox" type="text" name="anglevalue" readonly></td>
+					</tr>
+					<tr>
+					<td><label>Outer radius:</label> </td>
+					<td><input id="outervalue" class="textBox" type="text" name="outervalue" readonly></td>
+					
+					<td><label>Inner radius:</label></td> 
+					<td><input id="innervalue" class="textBox" type="text" name="innervalue" readonly></td>
+                    
+					</tr>
+					
+					
+					</table>
+					<input id="set" type="button" value="Measure" class="button leftButton" >	
+
+				
+				<hr>
+				
+				
+				
+            </div>
+			<div id="roiSelection" class="functionTab">
+					<label for=fader> <b>Circle Size </b></label>
+					<br>
+					<input id="rangeValue" type=range min=20 max=200 value=50 id=fader step=1 oninput="outputUpdate(value)">
+
+					<output for=fader id=circlevolume>50</output>
+					<br>
+					
+					<label for=fader> <b>Inner Circle Size </b></label>
+					<br>
+					<input id="rangeValue" type=range min=10 max=190 value=25 id=fader step=1 oninput="outputInnerUpdate(value)">
+
+					<output for=fader id=innercirclevolume>25</output>
+					<br>
+					
+					<input type="radio" id="lightToDark" value="lightToDark" name="barcode" checked><label>Light To Dark</label><br>
+					<input type="radio" id="darkToLight" value="darkToLight" name="barcode"><label>Dark To Light</label><br> 
+				</div>
+			<hr>
+			<input type="checkbox" id="cbTolSetting" onClick="javascript:clickCheckedBoxes(this)"
+			>Tolerance</input>
+			<div id="tolDetail" class="functionTab" style="display:none">
+			
+			<table class="toleranceTable">
+					<tr> 
+					<td><label>Nominal Value</label></td>
+					<td><input type="number" id="nv" value="0" name="tolerance" ></td> </tr>
+					<tr> 
+					<td>+</td>
+					<td><input type="number" id="plus" value="10000" name="tolerance" min="0"> </td> </tr>
+					<tr> 
+					<td>-</td>
+					<td><input type="number" id="minus" value="0" name="tolerance" min="0"> </td> </tr>
+					</table>
+			</div>
+			
+			<hr>
+			
+			<!-- can be remove if doesn't require -->
+			<input type="checkbox" id="cbResultSetting" onClick="javascript:clickCheckedBoxes(this)"
+			checked>Result</input>
+             <div id="resultDetail">
+                <textarea id="textArea">
+                </textarea>
+               
+            </div>
+			
+			
+			
+        </div>
+		
+				
+</body>
+
+
+
+<script>
+
+
+</script>
+
+</html>
