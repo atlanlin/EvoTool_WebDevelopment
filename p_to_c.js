@@ -350,6 +350,8 @@ function drawCircle(circle, innerCircle) {
 	document.querySelector('#circlevolume').value = Math.round(circle.radius);
 	document.querySelector('#innercirclevolume').value = Math.round(innerCircle.radius);
 	
+	updateCircleEvo();
+	updateRectEvo();
     //ctx.fill();
 }
 
@@ -405,6 +407,64 @@ function outputInnerUpdate(size){
 			//alert(circle.point.x);
 	drawCircle(circle, innerCircle);
 
+}
+
+function updateCircleEvo()
+{
+
+		var centerX = $("#xvalue").val();
+		var centerY = $("#yvalue").val();
+		var innerRadius = $("#innervalue").val();
+		var outerRadius = $("#outervalue").val();
+		var startvalue = $("#startvalue").val();
+		var anglevalue = $("#anglevalue").val();
+		
+		var nominalValue = $("#nv").val();
+		var positive = $("#plus").val();
+		var negative = $("#minus").val();
+		
+		
+		ajaxGet("info.htm?cmd=%23021%3BEVO Distance%3B1%3BCirclePos.Center.X%3B"+ centerX +"%23");
+		ajaxGet("info.htm?cmd=%23021%3BEVO Distance%3B1%3BCirclePos.Center.Y%3B"+ centerY +"%23");
+		
+		ajaxGet("info.htm?cmd=%23021%3BEVO Distance%3B1%3BCirclePos.InnerRadius%3B"+ innerRadius +"%23");
+		ajaxGet("info.htm?cmd=%23021%3BEVO Distance%3B1%3BCirclePos.OuterRadius%3B"+ outerRadius +"%23");
+		ajaxGet("info.htm?cmd=%23021%3BEVO Distance%3B1%3BCirclePos.StartAngle%3B"+ startvalue +"%23");
+		ajaxGet("info.htm?cmd=%23021%3BEVO Distance%3B1%3BCirclePos.LengthAngle%3B"+ anglevalue +"%23");
+		
+		ajaxGet("info.htm?cmd=%23021%3BEVO Distance%3B1%3BResult[0].Evaluation.NominalValue%3B"+ nominalValue +"%23");
+		ajaxGet("info.htm?cmd=%23021%3BEVO Distance%3B1%3BResult[0].Evaluation.PlusTolerance%3B"+ positive +"%23");
+		ajaxGet("info.htm?cmd=%23021%3BEVO Distance%3B1%3BResult[0].Evaluation.MinusTolerance%3B"+ negative +"%23");
+		
+}
+
+function updateRectEvo()
+{
+
+		var startX = $("#tbStartX").val();
+		var endX = $("#tbEndX").val();
+		var startY = $("#tbStartY").val();
+		var endY = $("#tbEndY").val();
+		var width = $("#tbWidth").val();
+				
+		
+		var nominalValue = $("#nv").val();
+		var positive = $("#plus").val();
+		var negative = $("#minus").val();
+		
+		ajaxGet("info.htm?cmd=%23021%3BEVO Distance%3B1%3BRecPos.PointStart.X%3B"+ startX +"%23");
+		ajaxGet("info.htm?cmd=%23021%3BEVO Distance%3B1%3BRecPos.PointEnd.X%3B"+ endX +"%23");
+		
+		ajaxGet("info.htm?cmd=%23021%3BEVO Distance%3B1%3BRecPos.PointStart.Y%3B"+ startY +"%23");
+		ajaxGet("info.htm?cmd=%23021%3BEVO Distance%3B1%3BRecPos.PointEnd.Y%3B"+ endY +"%23");
+		ajaxGet("info.htm?cmd=%23021%3BEVO Distance%3B1%3BRecPos.Width%3B"+ width +"%23");
+		
+		
+		
+		ajaxGet("info.htm?cmd=%23021%3BEVO Distance%3B1%3BResult[0].Evaluation.NominalValue%3B"+ nominalValue +"%23");
+		ajaxGet("info.htm?cmd=%23021%3BEVO Distance%3B1%3BResult[0].Evaluation.PlusTolerance%3B"+ positive +"%23");
+		ajaxGet("info.htm?cmd=%23021%3BEVO Distance%3B1%3BResult[0].Evaluation.MinusTolerance%3B"+ negative +"%23");
+		
 }
 
 
@@ -478,9 +538,25 @@ function displayTexts(){
 	document.getElementById('tbStartY').value=boxes2[0].y;
 	document.getElementById('tbEndY').value=boxes2[0].y+boxes2[0].h;
 	if(arrowDirFlag == "horizontal")
+	{
 		document.getElementById('tbWidth').value=boxes2[0].h;
+		var tempStartY = parseInt(boxes2[0].y);
+		var tempEndY = parseInt(boxes2[0].y+boxes2[0].h);
+		var avgY = (tempStartY + tempEndY) / 2 ;
+		document.getElementById('tbStartY').value=avgY;
+		document.getElementById('tbEndY').value=avgY;
+	}
 	else
+	{
 		document.getElementById('tbWidth').value=boxes2[0].w;
+		var tempStartX = parseInt(boxes2[0].x);
+		var tempEndX = parseInt(boxes2[0].x+boxes2[0].w);
+		var avgX = (tempStartX + tempEndX) / 2 ;
+		document.getElementById('tbStartX').value=avgX;
+		document.getElementById('tbEndX').value=avgX;
+	
+	
+	}
 }
 
 // New methods on the Box class
@@ -646,6 +722,8 @@ function initSquare() {
 		}else{
 			arrowDirFlag = "vertical";
 		}
+		//updateCircleEvo();
+		//updateRectEvo();
 	});
 	
   
@@ -800,6 +878,8 @@ function mainDraw() {
 	
 	
 	displayTexts();
+	//updateCircleEvo();
+	//updateRectEvo();
 	
   }
 }
