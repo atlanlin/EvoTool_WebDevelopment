@@ -89,7 +89,8 @@ function startDragging(e) {
 	if(clicked == false)
 	{
 		
-		if(circle.isInside(p)) {
+		//if(circle.isInside(p)) {
+		if(withinCircle(p)){
 			//alert("delta x " + (p.x - circle.point.x) + " y " + (p.y - circle.point.y));
 			
 			//mouse pointer on the center
@@ -141,7 +142,8 @@ function drag(e) {
 		
 	var p = new Point(mouseX(e), mouseY(e));
 	
-	if(circle.isInside(p)) 
+	//if(circle.isInside(p))
+	if(withinCircle(p))
 		this.style.cursor='move';
 	else
 		this.style.cursor='auto';
@@ -282,6 +284,11 @@ function findMin(x, y) {
 function stopDragging(e) {
     deltaCenter = null;
 	clicked = false;
+}
+
+function withinCircle(pt) {
+
+return Math.pow(pt.x - circle.point.x, 2) + Math.pow(pt.y - circle.point.y, 2) < Math.pow(circle.radius, 2);
 }
 
 function getMousePos(canvas, e) {
