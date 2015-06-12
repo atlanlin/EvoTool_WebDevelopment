@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <title>OCR Reader</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="ocrcode.css">
     <link rel="stylesheet" type="text/css" href="jqueryui.css">
-    <script src="jquery.js"></script> 
+    <!-- <script src="jquery.js"></script>  -->
+	<script src="jquery.js"></script>
     <script src="evt.js"></script>
     <script src="camset.js"></script>
     <script src="jqueryui.js"></script>
@@ -48,45 +49,45 @@
 			<div id="fontSelection" class="functionTab">
 				<label>Font Type</label><br> 
                 <select name="fontType">
-                    <option value="industrial"><label>Industrial</label><br>
-                    <option value="industrial09"><label>Industrial 0-9</label>
-					<option value="industrial09AZ"><label>Industrial 0-9 A-Z</label><br>
-                    <option value="industrial09P"><label>Industrial 0-9 +</label><br>
-                    <option value="industrialAZP"><label>Industrial A-Z +</label><br>
-                    <option value="dotPrint"><label>DotPrint</label><br>
-                    <option value="dotPrint09"><label>DotPrint 0-9</label>
-					<option value="dotPrint09AZ"><label>DotPrint 0-9 A-Z</label><br>
-                    <option value="dotPrint09P"><label>DotPrint 0-9 +</label><br>
-                    <option value="dotPrintAZP"><label>DotPrint A-Z +</label><br>
-					<option value="document"><label>Document</label><br>
-                    <option value="document09"><label>Document 0-9</label>
-					<option value="document09AZ"><label>Document 0-9 A-Z</label><br>
-                    <option value="documentAZP"><label>Document A-Z +</label><br>
-					<option value="enhancedOCRA"><label>Enhanced OCR A</label><br>
-                    <option value="enhancedOCRB"><label>Enhanced OCR B</label>
-					<option value="pharma"><label>Pharma</label><br>
-                    <option value="pharma09"><label>Pharma 0-9</label>
-					<option value="pharma09AZ"><label>Pharma 0-9 A-Z</label><br>
-                    <option value="pharma09P"><label>Pharma 0-9 +</label><br>
-					<option value="micr"><label>MICR</label><br>
-					<option value="semi"><label>SEMI</label><br>
+                    <option id="industrial" value="industrial"><label>Industrial</label><br>
+                    <option id="industrial09" value="industrial09"><label>Industrial 0-9</label>
+					<option id="industrial09AZ" value="industrial09AZ"><label>Industrial 0-9 A-Z</label><br>
+                    <option id="industrial09P" value="industrial09P"><label>Industrial 0-9 +</label><br>
+                    <option id="industrialAZP" value="industrialAZP"><label>Industrial A-Z +</label><br>
+                    <option id="dotPrint" value="dotPrint"><label>DotPrint</label><br>
+                    <option id="dotPrint09" value="dotPrint09"><label>DotPrint 0-9</label>
+					<option id="dotPrint09AZ" value="dotPrint09AZ"><label>DotPrint 0-9 A-Z</label><br>
+                    <option id="dotPrint09P" value="dotPrint09P"><label>DotPrint 0-9 +</label><br>
+                    <option id="dotPrintAZP" value="dotPrintAZP"><label>DotPrint A-Z +</label><br>
+					<option id="document" value="document"><label>Document</label><br>
+                    <option id="document09" value="document09"><label>Document 0-9</label>
+					<option id="document09AZ" value="document09AZ"><label>Document 0-9 A-Z</label><br>
+                    <option id="documentAZP" value="documentAZP"><label>Document A-Z +</label><br>
+					<option id="enhancedOCRA" value="enhancedOCRA"><label>Enhanced OCR A</label><br>
+                    <option id="enhancedOCRB" value="enhancedOCRB"><label>Enhanced OCR B</label>
+					<option id="pharma" value="pharma"><label>Pharma</label><br>
+                    <option id="pharma09" value="pharma09"><label>Pharma 0-9</label>
+					<option id="pharma09AZ" value="pharma09AZ"><label>Pharma 0-9 A-Z</label><br>
+                    <option id="pharma09P" value="pharma09P"><label>Pharma 0-9 +</label><br>
+					<option id="micr" value="micr"><label>MICR</label><br>
+					<option id="semi" value="semi"><label>SEMI</label><br>
                 </select>
             </div>
 			
             <div id="polaritySelection" class="functionTab">  
                 <label>Polarity</label><br> 
-                <input type="radio" value="darkOnLight" name="polarityType" checked><label>Dark on Light</label><br>
-                <input type="radio" value="lightOnDark" name="polarityType"><label>Light on Dark</label><br> 
+                <input type="radio" id="darkOnLight" value="darkOnLight" name="polarityType" checked><label>Dark on Light</label><br>
+                <input type="radio" id="lightOnDark" value="lightOnDark" name="polarityType"><label>Light on Dark</label><br> 
             </div>
 			
-            <input type="button" id="polaritySet" value="Set" class="button leftButton">
+            <input type="button" id="fontSet" value="Set" class="button leftButton">
 			<hr>
 			
 			<div id="characterSelection" class="functionTab">  
                 <label>Character Option</label><br>
                 <input type="checkbox" id="dotted" value="dotted" name="characterType"><label>Dotted</label><br>
                 <input type="checkbox" id="rotationCorrection" value="rotationCorrection" name="characterType"><label>Rotation Correction</label><br>
-				<input type="checkbox" id="characterSize" value="characterSize" name="characterType" onclick="javascript:showCharWindowConfig()"><label>Character Size</label><br>
+				<input type="checkbox" id="characterSize" value="characterSize" name="characterSize" onclick="javascript:showCharWindowConfig()"><label>Character Size</label><br>
 				
 				<div id="characterBoundary">
                 <form>
@@ -105,8 +106,8 @@
                 <label>ROI</label><br> 
 				
 				<div id="roiSelection">
-					<input type="radio" id="wholeWindow" value="full" name="searchType" onclick="javascript:showWindowConfig()" checked><label>Whole Window</label><br>
-					<input type="radio" id="defineWindow" value="set" name="searchType" onclick="javascript:showWindowConfig()"><label>Define Window</label><br>
+					<input type="radio" id="wholeWindow" value="full" name="searchType" checked><label>Whole Window</label><br>
+					<input type="radio" id="defineWindow" value="set" name="searchType"><label>Define Window</label><br>
 				</div>
 				
 				<div id="windowBoundary">
@@ -123,7 +124,7 @@
 			<hr>
 			<!-- can be remove if doesn't require -->
              <div id="result">
-                <p id="title">Result</p>
+                <label>Result</label><br><br>
                 <textarea id="textArea">
                 </textarea>
             </div>

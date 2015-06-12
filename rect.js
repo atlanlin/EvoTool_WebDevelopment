@@ -215,23 +215,164 @@ function init2() {
   
   // add custom initialization here:
   
-  $("input[name='characterType']").change(function(){
-		if($("input[name='characterType']:checkbox:checked").val()=="characterSize"){
-			rectFlag=true;			
+	function showCharWindowConfig(){
+		document.getElementById("characterBoundary").style.display="none";
+		
+		if(document.getElementById("characterSize").checked){
+			document.getElementById("characterBoundary").style.display="block";
+		}
+	}
+  
+	$("input[name='characterSize']").click(function(){
+		if($("input[name='characterSize']:checkbox:checked").val()=="characterSize"){
+			rectFlag=true;		
 		}else{
 			rectFlag=false;
 		}
 	});	
 	
-	$("input[name='searchType']").change(function(){
+	$("input[name='searchType']").click(function(){
 		if($("input[name='searchType']:radio:checked").val()=="set"){
 			rectRoiFlag=true;
 		}else{
 			rectRoiFlag=false;
 		}
+	});	
+	
+	
+	// button functions
+    
+	$("#fontSet").click(function(){
+        if(document.getElementById("industrial").selected){
+			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B2%3BfontNum%3B0%23');
+		}
+		if(document.getElementById("industrial09").selected){
+			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B2%3BfontNum%3B1%23');
+		}
+		if(document.getElementById("industrial09AZ").selected){
+			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B2%3BfontNum%3B2%23');
+		}
+		if(document.getElementById("industrial09P").selected){
+			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B2%3BfontNum%3B3%23');
+		}
+		if(document.getElementById("industrialAZP").selected){
+			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B2%3BfontNum%3B4%23');
+		}
+		if(document.getElementById("dotPrint").selected){
+			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B2%3BfontNum%3B5%23');
+		}
+		if(document.getElementById("dotPrint09").selected){
+			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B2%3BfontNum%3B6%23');
+		}
+		if(document.getElementById("dotPrint09AZ").selected){
+			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B2%3BfontNum%3B7%23');
+		}
+		if(document.getElementById("dotPrint09P").selected){
+			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B2%3BfontNum%3B8%23');
+		}
+		if(document.getElementById("dotPrintAZP").selected){
+			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B2%3BfontNum%3B9%23');
+		}
+		if(document.getElementById("document").selected){
+			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B2%3BfontNum%3B10%23');
+		}
+		if(document.getElementById("document09").selected){
+			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B2%3BfontNum%3B11%23');
+		}
+		if(document.getElementById("document09AZ").selected){
+			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B2%3BfontNum%3B12%23');
+		}
+		if(document.getElementById("documentAZP").selected){
+			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B2%3BfontNum%3B13%23');
+		}
+		if(document.getElementById("enhancedOCRA").selected){
+			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B2%3BfontNum%3B14%23');
+		}
+		if(document.getElementById("enhancedOCRB").selected){
+			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B2%3BfontNum%3B15%23');
+		}
+		if(document.getElementById("pharma").selected){
+			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B2%3BfontNum%3B16%23');
+		}
+		if(document.getElementById("pharma09").selected){
+			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B2%3BfontNum%3B17%23');
+		}
+		if(document.getElementById("pharma09AZ").selected){
+			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B2%3BfontNum%3B18%23');
+		}
+		if(document.getElementById("pharma09P").selected){
+			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B2%3BfontNum%3B19%23');
+		}
+		if(document.getElementById("micr").selected){
+			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B2%3BfontNum%3B20%23');
+		}
+		if(document.getElementById("semi").selected){
+			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B2%3BfontNum%3B21%23');
+		}
+    });
+         
+    $("#polaritySelection").click(function(){
+        if(document.getElementById("darkOnLight").checked){
+			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B2%3BpolarityType%3B0%23');
+        }
+        if(document.getElementById("lightOnDark").checked){
+			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B2%3BpolarityType%3B1%23');
+        }
+    });
+	
+	$("#characterSet").click(function(){
+        if(document.getElementById("dotted").checked){
+			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B2%3BdotType%3B1%23');
+        } else {
+			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B2%3BdotType%3B0%23');
+		}
+		
+        if(document.getElementById("rotationCorrection").checked){
+			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B2%3BrotateType%3B1%23');
+        } else {
+			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B2%3BrotateType%3B0%23');
+		}
+		
+		if(document.getElementById("characterSize").checked){
+			// auto character size
+			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B1%3BAutoCharX%3B'+$("#charXValue").val()+'%23');
+			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B1%3BAutoCharY%3B'+$("#charYValue").val()+'%23');
+			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B1%3BAutoCharW%3B'+$("#charWValue").val()+'%23');
+			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B1%3BAutoCharH%3B'+$("#charHValue").val()+'%23');
+			
+			// manual character size
+			/* ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B1%3BcharX%3B200%23');
+			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B1%3BcharY%3B200%23');
+			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B1%3BcharW%3B100%23');
+			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B1%3BcharH%3B100%23'); */
+        } else {
+			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B1%3BAutoCharX%3B50%23');
+			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B1%3BAutoCharY%3B50%23');
+			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B1%3BAutoCharW%3B40%23');
+			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B1%3BAutoCharH%3B50%23');
+		}
+    });
+
+	$("#roiSet").click(function(){
+		if(document.getElementById("wholeWindow").checked){
+			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B1%3BposRect.PointStart.X%3B0%23');
+			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B1%3BposRect.PointEnd.X%3B750%23');
+			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B1%3BposRect.PointStart.Y%3B240%23');
+			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B1%3BposRect.PointEnd.Y%3B240%23');
+			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B1%3BposRect.Width%3B750%23');
+		}
+		
+		if(document.getElementById("defineWindow").checked){
+			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B1%3BposRect.PointStart.X%3B'+$("#xValue").val()+'%23');
+			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B1%3BposRect.PointEnd.X%3B'+(parseInt($("#xValue").val())+parseInt($("#wValue").val()))+'%23');			
+			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B1%3BposRect.PointStart.Y%3B'+selectionHandles[3].y+'%23');
+			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B1%3BposRect.PointEnd.Y%3B'+selectionHandles[3].y+'%23');
+			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B1%3BposRect.Width%3B'+$("#wValue").val()+'%23');
+			/* ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B1%3BposRect.PointStart.Y%3B'+$("#yValue").val()+'%23');
+			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B1%3BposRect.PointEnd.Y%3B'+$("#yValue").val()+'%23'); */
+		}
 	});
-  
-  
+	
   // add a large green rectangle (roi window)
   addRect(0, 0, 100, 100, 'rgba(0,205,0,0)', 'rgba(0,205,0,1)');
   
@@ -241,6 +382,16 @@ function init2() {
   // add a smaller purple rectangle
   //addRect(45, 60, 25, 25, 'rgba(150,150,250,0.7)');
 }
+
+/* function onClickBoxesShow(){
+	if(document.getElementById("wholeWindow2").checked){
+		alert("Hello");
+		rectRoiFlag = false;
+	}else{
+		alert("Hello2");
+		rectRoiFlag = true;
+	}
+} */
 
 function Line(x1,y1,x2,y2){
         this.x1=x1;
@@ -353,14 +504,16 @@ function mainDraw() {
 	// modified by weiling
 	for (var i = 0; i < l; i++) {
 		if(rectFlag==false && rectRoiFlag==false) {
-		}else if(rectFlag==false) {
+			
+		}else if(rectFlag==false && rectRoiFlag==true) {
 			boxes2[0].draw(ctx);
-		}else if(rectRoiFlag==false) {
+		}else if(rectFlag==true && rectRoiFlag==false) {
 			boxes2[1].draw(ctx);
 		}else{
 			boxes2[i].draw(ctx); // we used to call drawshape, but now each box draws itself
 		}
     }
+	
     
     // Add stuff you want drawn on top all the time here
 	
@@ -630,7 +783,7 @@ function invalidate() {
 // Sets mx, my to the mouse position relative to the canvas
 // unfortunately this can be tricky, we have to worry about padding and borders
 function getMouse(e) {
-      var element = canvas, offsetX = 0, offsetY = 0;
+      var element = canvas, offsetX = 5, offsetY = 5;
 
       if (element.offsetParent) {
         do {
