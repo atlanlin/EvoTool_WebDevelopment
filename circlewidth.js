@@ -94,7 +94,10 @@ function drag(e) {
 	else
 		this.style.cursor='auto';*/
 		
-	if(( mouseXi < circle.point.x + circle.radius / 2&& mouseXi >= circle.point.x - circle.radius/2) && (mouseYi < circle.point.y + circle.radius/2 && mouseYi >= circle.point.y - circle.radius/2))
+	//if(( mouseXi < circle.point.x + circle.radius / 2&& mouseXi >= circle.point.x - circle.radius/2) && (mouseYi < circle.point.y + circle.radius/2 && mouseYi >= circle.point.y - circle.radius/2))
+	var p = new Point(mouseX(e), mouseY(e));
+	
+	if(circle.isInside(p)) 
 		this.style.cursor='move';
 	else
 		this.style.cursor='auto';
@@ -236,12 +239,27 @@ function stopDragging(e) {
 	clicked = false;
 }
 
+function getMousePos(canvas, e) {
+	  
+        var rect = canvas.getBoundingClientRect();
+        return {
+          x: e.clientX - rect.left,
+          y: e.clientY - rect.top
+        };
+}
+	  
 function mouseX(e) {
-    return e.clientX - (element.offsetLeft + additionalFrameLeft);
+    //return e.clientX - (element.offsetLeft + additionalFrameLeft);
+	var cx = document.getElementById('canvas');
+    var mousePos = getMousePos(cx, e);
+	return mousePos.x;
 }
 
 function mouseY(e) {
-    return e.clientY - (element.offsetTop + additionalFrameTop);
+    //return e.clientY - (element.offsetTop + additionalFrameTop);
+	var cy = document.getElementById('canvas');
+    var mousePos = getMousePos(cy, e);
+	return mousePos.y;
 }
 
 function drawCircle(circle, innerCircle) {

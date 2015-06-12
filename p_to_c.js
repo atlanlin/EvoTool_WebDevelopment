@@ -98,8 +98,10 @@ function startDragging(e) {
 			
 		}
 	}
-		 mouseXi = e.pageX - (this.offsetLeft + additionalFrameLeft);
-         mouseYi = e.pageY - (this.offsetTop + additionalFrameTop);
+		 //mouseXi = e.pageX - (this.offsetLeft + additionalFrameLeft);
+         //mouseYi = e.pageY - (this.offsetTop + additionalFrameTop);
+		 mouseXi = mouseX(e);
+		 mouseYi = mouseY(e);
 		 
 		 //small circle
 		//var smallCirclePointX = circle.point.x + (circle.radius*Math.cos(0/(180/Math.PI)));
@@ -117,8 +119,13 @@ function startDragging(e) {
 //mouse move
 function drag(e) {
 
-		 mouseXi = e.pageX - (this.offsetLeft + additionalFrameLeft);
-         mouseYi = e.pageY - (this.offsetTop + additionalFrameTop);
+		 //mouseXi = e.pageX - (this.offsetLeft + additionalFrameLeft);
+         //mouseYi = e.pageY - (this.offsetTop + additionalFrameTop);
+		 mouseXi = mouseX(e);
+		 mouseYi = mouseY(e);
+		 
+		 //$("#xvalue").val(mouseX(e));
+		 //$("#yvalue").val(mouseY(e));
 		 
 	//small circle
 		//var smallCirclePointX = circle.point.x + (circle.radius*Math.cos(0/(180/Math.PI)));
@@ -130,7 +137,11 @@ function drag(e) {
 	else
 		this.style.cursor='auto';*/
 		
-	if(( mouseXi < circle.point.x + circle.radius / 2&& mouseXi >= circle.point.x - circle.radius/2) && (mouseYi < circle.point.y + circle.radius/2 && mouseYi >= circle.point.y - circle.radius/2))
+	//if(( mouseXi < circle.point.x + circle.radius / 2&& mouseXi >= circle.point.x - circle.radius/2) && (mouseYi < circle.point.y + circle.radius/2 && mouseYi >= circle.point.y - circle.radius/2))
+		
+	var p = new Point(mouseX(e), mouseY(e));
+	
+	if(circle.isInside(p)) 
 		this.style.cursor='move';
 	else
 		this.style.cursor='auto';
@@ -253,7 +264,8 @@ function drag(e) {
 	
 	$("#rangeValue").val(circle.radius);
 	drawCircle(circle, innerCircle);
-	mouseXi = e.pageX - (this.offsetLeft + additionalFrameLeft);
+	//mouseXi = e.pageX - (this.offsetLeft + additionalFrameLeft);
+	mouseXi = mouseX(e);
 	lastClickX = mouseXi;
 	
 	}
@@ -272,12 +284,27 @@ function stopDragging(e) {
 	clicked = false;
 }
 
+function getMousePos(canvas, e) {
+	  
+        var rect = canvas.getBoundingClientRect();
+        return {
+          x: e.clientX - rect.left,
+          y: e.clientY - rect.top
+        };
+}
+	  
 function mouseX(e) {
-    return e.clientX - (element.offsetLeft + additionalFrameLeft);
+    //return e.clientX - (element.offsetLeft + additionalFrameLeft);
+	var cx = document.getElementById('canvas');
+    var mousePos = getMousePos(cx, e);
+	return mousePos.x;
 }
 
 function mouseY(e) {
-    return e.clientY - (element.offsetTop + additionalFrameTop);
+    //return e.clientY - (element.offsetTop + additionalFrameTop);
+	var cy = document.getElementById('canvas');
+    var mousePos = getMousePos(cy, e);
+	return mousePos.y;
 }
 
 function drawCircle(circle, innerCircle) {
@@ -392,9 +419,9 @@ var lastClickX = 0;
 
 // canvas frame settings
 // offset of frame
-var additionalFrameLeft = 350;
+var additionalFrameLeft = 288;
 
-var additionalFrameTop = 130;
+var additionalFrameTop = 168;
 
 // imginary frame
 var startFrameX = 5;
