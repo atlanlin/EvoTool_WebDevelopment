@@ -207,8 +207,18 @@ function init2() {
   //canvas.ondblclick = myDblClick;
   canvas.onmousemove = myMove;
   
-  //$.mobile.loading( "hide" );
+  $.mobile.loading( "hide" );
   $.mobile.loading().hide();
+  
+	  //delegate the event binding so elements in the DOM now and in the future will be bound-to
+	$(document).delegate('#my-dialog-button', 'click', function () {
+
+		//change to the dialog, forcing the hash to remain the same and the page to be viewed as a dialog
+		$.mobile.changePage($('#my-dialog'), {
+			changeHash : false,
+			role       : 'dialog'
+		});
+	});
   
   $(canvas).bind( "vmousemove", myMove );
   $(canvas).bind( "vmousedown", myDown );

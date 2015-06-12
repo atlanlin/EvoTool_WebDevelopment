@@ -19,9 +19,9 @@
     <div class="functionPanel">
 		<div id="rightRegion">
 			<div>
-				<input id="btnStart" type="button" value="Monitor" class="button"></input>
-				<input id="btnStop" type="button" value="Stop" class="button"></input>
-				<input id="home" onClick="location.href='index.htm'" type="button" value="Main Page" class="button"></input>
+				<button id="btnStart" type="button" class="button">Monitor</button>
+				<button id="btnStop" type="button" class="button">Stop</button>
+				<button id="home" type="button" class="button" onClick="location.href='index.htm'">Main Page</button>
 			</div>
 			<div id="objectMeasureTools" class="functionTab">
 				<p class="fHeading1">Object Measurement Tools</p>
@@ -52,7 +52,10 @@
 		</div>
         <div id="imageArea">
 			<div id="mainTitle">Width Measurement</div>
-			<canvas id="canvas2" width="752px" height="480px">
+			
+			<img id="imgSnapshot"></img>
+			
+			<canvas id="canvas2" style="z-index: 1; position:absolute; left:0px; top:27px;" width="752" height="480">
 			This text is displayed if your browser does not support HTML5 Canvas.
 			</canvas>
 		 </div>
@@ -71,12 +74,13 @@
 							
 						</td>
 						<td>
-							<select id="dbOption">
-							  <option name="selectOption" value="width">Width</option>
-							  <option name="selectOption" value="gap">Gap</option>
-							  <option name="selectOption" value="pitch">Pitch</option>
-							  <option name="selectOption" value="count">Count</option>
+							<select name="selectOption" id="dbOption">
+								  <option value="width">Width</option>
+								  <option value="gap">Gap</option>
+								  <option value="pitch">Pitch</option>
+								  <option value="count">Count</option>
 							</select>
+							
 						</td>
 					</tr>
 					<tr>
@@ -135,8 +139,9 @@
 					
 					
 				</table>
-				
+				<form>
 				<input type="button" value="Set" class="button leftButton">
+				</form>
 			</div>
 			<hr>
 			<input type="checkbox" id="cbTolSetting" onClick="javascript:clickCheckedBoxes(this)"
