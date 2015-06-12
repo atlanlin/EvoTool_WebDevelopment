@@ -15,7 +15,7 @@
 	var WIDTH;
 	var HEIGHT;
 	var HEIGHT;
-	var INTERVAL = 20;	// how often, in milliseconds, we check to see if a redraw is needed
+	var INTERVAL = 1;	// how often, in milliseconds, we check to see if a redraw is needed
 
 	var isDrag = false;
 	var isResizeDrag = false;
@@ -230,7 +230,7 @@
 			} else {
 				rectRoiFlag=false;
 			}
-		});	
+		});
 		
 		// add a large green rectangle (roi window)
 		addRect(0, 0, 100, 100, 'rgba(0,205,0,0)', 'rgba(0,205,0,1)');
@@ -241,61 +241,81 @@
 	
 	// consists of EVO communication commands
 	function evoComm() {
-		
-		$("#characterSet").click(function(){
-			if (document.getElementById("dotted").checked) {
-				ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B2%3BdotType%3B1%23');
-			} else {
-				ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B2%3BdotType%3B0%23');
-			}
-			
-			if( document.getElementById("rotationCorrection").checked) {
-				ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B2%3BrotateType%3B1%23');
-			} else {
-				ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B2%3BrotateType%3B0%23');
-			}
-			
-			if (document.getElementById("characterSize").checked) {
-				// auto character size
-				ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B1%3BAutoCharX%3B'+$("#charXValue").val()+'%23');
-				ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B1%3BAutoCharY%3B'+$("#charYValue").val()+'%23');
-				ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B1%3BAutoCharW%3B'+$("#charWValue").val()+'%23');
-				ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B1%3BAutoCharH%3B'+$("#charHValue").val()+'%23');
-				
-				// manual character size
-				ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B1%3BcharX%3B200%23');
-				ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B1%3BcharY%3B200%23');
-				ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B1%3BcharW%3B100%23');
-				ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B1%3BcharH%3B100%23');
-			} else {
-				ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B1%3BAutoCharX%3B50%23');
-				ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B1%3BAutoCharY%3B50%23');
-				ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B1%3BAutoCharW%3B40%23');
-				ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B1%3BAutoCharH%3B50%23');
-			}
-		});
-
-		$("#roiSet").click(function(){
-			if (document.getElementById("wholeWindow").checked) {
-				ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B1%3BposRect.PointStart.X%3B0%23');
-				ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B1%3BposRect.PointEnd.X%3B750%23');
-				ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B1%3BposRect.PointStart.Y%3B240%23');
-				ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B1%3BposRect.PointEnd.Y%3B240%23');
-				ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B1%3BposRect.Width%3B750%23');
-			}
-			
-			if (document.getElementById("defineWindow").checked) {
-				ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B1%3BposRect.PointStart.X%3B'+$("#xValue").val()+'%23');
-				ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B1%3BposRect.PointEnd.X%3B'+(parseInt($("#xValue").val())+parseInt($("#wValue").val()))+'%23');			
-				ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B1%3BposRect.PointStart.Y%3B'+selectionHandles[3].y+'%23');
-				ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B1%3BposRect.PointEnd.Y%3B'+selectionHandles[3].y+'%23');
-				ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B1%3BposRect.Width%3B'+$("#wValue").val()+'%23');
-				ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B1%3BposRect.PointStart.Y%3B'+$("#yValue").val()+'%23');
-				ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B1%3BposRect.PointEnd.Y%3B'+$("#yValue").val()+'%23');
-			}
-		});
+		fontType();
+		polarityType();
+		charOptions();
+		roiSet();
 	}	// end evoComm
 	
+	// consists of font type
+	function fontType() {
+		if (document.getElementById("industrial").selected) {
+			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B2%3BfontNum%3B0%23');
+		}
+		if (document.getElementById("industrial09").selected) {
+			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B2%3BfontNum%3B1%23');
+		}
+		if (document.getElementById("industrial09AZ").selected) {
+			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B2%3BfontNum%3B3%23');
+		}
+		if (document.getElementById("industrial09P").selected) {
+			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B2%3BfontNum%3B2%23');
+		}
+		if (document.getElementById("industrialAZP").selected) {
+			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B2%3BfontNum%3B4%23');
+		}
+		if (document.getElementById("dotPrint").selected) {
+			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B2%3BfontNum%3B5%23');
+		}
+		if (document.getElementById("dotPrint09").selected) {
+			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B2%3BfontNum%3B6%23');
+		}
+		if (document.getElementById("dotPrint09AZ").selected) {
+			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B2%3BfontNum%3B7%23');
+		}
+		if (document.getElementById("dotPrint09P").selected) {
+			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B2%3BfontNum%3B9%23');
+		}
+		if (document.getElementById("dotPrintAZP").selected) {
+			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B2%3BfontNum%3B8%23');
+		}
+		if (document.getElementById("document").selected) {
+			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B2%3BfontNum%3B10%23');
+		}
+		if (document.getElementById("document09").selected) {
+			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B2%3BfontNum%3B11%23');
+		}
+		if (document.getElementById("document09AZ").selected) {
+			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B2%3BfontNum%3B12%23');
+		}
+		if (document.getElementById("documentAZP").selected) {
+			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B2%3BfontNum%3B13%23');
+		}
+		if (document.getElementById("enhancedOCRA").selected) {
+			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B2%3BfontNum%3B14%23');
+		}
+		if (document.getElementById("enhancedOCRB").selected) {
+			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B2%3BfontNum%3B15%23');
+		}
+		if (document.getElementById("pharma").selected) {
+			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B2%3BfontNum%3B16%23');
+		}
+		if (document.getElementById("pharma09").selected) {
+			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B2%3BfontNum%3B17%23');
+		}
+		if (document.getElementById("pharma09AZ").selected) {
+			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B2%3BfontNum%3B19%23');
+		}
+		if (document.getElementById("pharma09P").selected) {
+			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B2%3BfontNum%3B19%23');
+		}
+		if (document.getElementById("micr").selected) {
+			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B2%3BfontNum%3B20%23');
+		}
+		if (document.getElementById("semi").selected) {
+			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B2%3BfontNum%3B21%23');
+		}
+	}
 	
 	// consists of polarity type
 	function polarityType() {
@@ -338,6 +358,27 @@
 			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B1%3BAutoCharY%3B50%23');
 			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B1%3BAutoCharW%3B40%23');
 			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B1%3BAutoCharH%3B50%23');
+		}
+	}
+	
+	// consists of roi settings
+	function roiSet() {
+		if (document.getElementById("wholeWindow").checked) {
+			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B1%3BposRect.PointStart.X%3B0%23');
+			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B1%3BposRect.PointEnd.X%3B750%23');
+			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B1%3BposRect.PointStart.Y%3B240%23');
+			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B1%3BposRect.PointEnd.Y%3B240%23');
+			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B1%3BposRect.Width%3B750%23');
+		}
+			
+		if (document.getElementById("defineWindow").checked) {
+			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B1%3BposRect.PointStart.X%3B'+$("#xValue").val()+'%23');
+			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B1%3BposRect.PointEnd.X%3B'+(parseInt($("#xValue").val())+parseInt($("#wValue").val()))+'%23');			
+			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B1%3BposRect.PointStart.Y%3B'+selectionHandles[3].y+'%23');
+			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B1%3BposRect.PointEnd.Y%3B'+selectionHandles[3].y+'%23');
+			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B1%3BposRect.Width%3B'+$("#wValue").val()+'%23');
+			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B1%3BposRect.PointStart.Y%3B'+$("#yValue").val()+'%23');
+			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B1%3BposRect.PointEnd.Y%3B'+$("#yValue").val()+'%23');
 		}
 	}
 
@@ -477,77 +518,7 @@
 			$("#wValue").val(w);
 			$("#hValue").val(h);
 			
-
-			
-			/* if (document.getElementById("industrial").selected) {
-			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B2%3BfontNum%3B0%23');
-			}
-			if (document.getElementById("industrial09").selected) {
-				ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B2%3BfontNum%3B1%23');
-			}
-			if (document.getElementById("industrial09AZ").selected) {
-				ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B2%3BfontNum%3B3%23');
-			}
-			if (document.getElementById("industrial09P").selected) {
-				ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B2%3BfontNum%3B2%23');
-			}
-			if (document.getElementById("industrialAZP").selected) {
-				ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B2%3BfontNum%3B4%23');
-			}
-			if (document.getElementById("dotPrint").selected) {
-				ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B2%3BfontNum%3B5%23');
-			}
-			if (document.getElementById("dotPrint09").selected) {
-				ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B2%3BfontNum%3B6%23');
-			}
-			if (document.getElementById("dotPrint09AZ").selected) {
-				ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B2%3BfontNum%3B7%23');
-			}
-			if (document.getElementById("dotPrint09P").selected) {
-				ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B2%3BfontNum%3B9%23');
-			}
-			if (document.getElementById("dotPrintAZP").selected) {
-				ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B2%3BfontNum%3B8%23');
-			}
-			if (document.getElementById("document").selected) {
-				ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B2%3BfontNum%3B10%23');
-			}
-			if (document.getElementById("document09").selected) {
-				ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B2%3BfontNum%3B11%23');
-			}
-			if (document.getElementById("document09AZ").selected) {
-				ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B2%3BfontNum%3B12%23');
-			}
-			if (document.getElementById("documentAZP").selected) {
-				ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B2%3BfontNum%3B13%23');
-			}
-			if (document.getElementById("enhancedOCRA").selected) {
-				ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B2%3BfontNum%3B14%23');
-			}
-			if (document.getElementById("enhancedOCRB").selected) {
-				ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B2%3BfontNum%3B15%23');
-			}
-			if (document.getElementById("pharma").selected) {
-				ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B2%3BfontNum%3B16%23');
-			}
-			if (document.getElementById("pharma09").selected) {
-				ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B2%3BfontNum%3B17%23');
-			}
-			if (document.getElementById("pharma09AZ").selected) {
-				ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B2%3BfontNum%3B19%23');
-			}
-			if (document.getElementById("pharma09P").selected) {
-				ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B2%3BfontNum%3B19%23');
-			}
-			if (document.getElementById("micr").selected) {
-				ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B2%3BfontNum%3B20%23');
-			}
-			if (document.getElementById("semi").selected) {
-				ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B2%3BfontNum%3B21%23');
-			} */
-			
-			polarityType();
-			
+			evoComm();
 	  }
 	}
 
