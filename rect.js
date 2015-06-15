@@ -191,7 +191,8 @@
 	  
 		// make mainDraw() fire every INTERVAL milliseconds
 		setInterval(mainDraw, INTERVAL);
-			  
+		setInterval(evoComm, INTERVAL);
+
 		// set our events
 		// up and down are for dragging
 		// double click is for making new boxes
@@ -374,11 +375,13 @@
 		if (document.getElementById("defineWindow").checked) {
 			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B1%3BposRect.PointStart.X%3B'+$("#xValue").val()+'%23');
 			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B1%3BposRect.PointEnd.X%3B'+(parseInt($("#xValue").val())+parseInt($("#wValue").val()))+'%23');			
-			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B1%3BposRect.PointStart.Y%3B'+selectionHandles[3].y+'%23');
-			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B1%3BposRect.PointEnd.Y%3B'+selectionHandles[3].y+'%23');
+			/* ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B1%3BposRect.PointStart.Y%3B'+selectionHandles[3].y+'%23');
+			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B1%3BposRect.PointEnd.Y%3B'+selectionHandles[3].y+'%23'); */
+			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B1%3BposRect.PointStart.Y%3B'+(parseInt($("#yValue").val())+(parseInt($("#hValue").val())/2))+'%23');
+			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B1%3BposRect.PointEnd.Y%3B'+(parseInt($("#yValue").val())+(parseInt($("#hValue").val())/2))+'%23');
 			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B1%3BposRect.Width%3B'+$("#wValue").val()+'%23');
-			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B1%3BposRect.PointStart.Y%3B'+$("#yValue").val()+'%23');
-			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B1%3BposRect.PointEnd.Y%3B'+$("#yValue").val()+'%23');
+			/* ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B1%3BposRect.PointStart.Y%3B'+$("#yValue").val()+'%23');
+			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B1%3BposRect.PointEnd.Y%3B'+$("#yValue").val()+'%23'); */
 		}
 	}
 
@@ -518,7 +521,7 @@
 			$("#wValue").val(w);
 			$("#hValue").val(h);
 			
-			evoComm();
+			//evoComm();
 	  }
 	}
 
