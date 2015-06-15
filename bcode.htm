@@ -13,14 +13,19 @@
 <body>
     <img id="logo" src="vclogo.png" alt="vclogo"> 
     <div class="functionPanel"> 
-	
         <div id="rightRegion">
             <div>
                 <input id="btnStart" type="button" value="Monitor" class="button">
                 <input id="btnStop" type="button" value="Stop" class="button">
                 <input id="mainPage" onClick="location.href='index.htm'" type="button" value="Main Page" class="button">
             </div>
-            <hr>
+			<hr>
+			<!-- can be remove if doesn't require -->
+			<p class="fHeading1">Result</p>
+             <div id="resultDetail">
+                <textarea id="resultDisplay" rows="6" cols="15" readonly></textarea>
+            </div>
+			<!-- till here -->
             
         </div>
 		
@@ -32,9 +37,8 @@
         </div> 
 		
         <div id="leftmenu">
-		
+			<label class="fHeading1">Code Type</label>
             <div id="codeSelection">  
-                <label>Code Type</label><br> 
                 <input type="radio" id="acode" value="abarcode" name="barcode" onclick="javascript:showCodeType()" checked><label>Any</label><br>
                 <input type="radio" id="mcode" value="mbarcode" name="barcode" onclick="javascript:showCodeType()"><label>Define Code Type</label><br> 
             </div>
@@ -54,8 +58,8 @@
             <input type="button" value="Set" class="button leftButton">
 			<hr>
 			
+			<label class="fHeading1">ROI</label>
 			<div id="regionOfInterest">
-                <label>ROI</label><br> 
 				
 				<div id="roiSelection">
 					<input type="radio" id="wholeWindow" value="full" name="searchType" onclick="javascript:showWindowConfig()" checked><label>Whole Window</label><br>
@@ -74,13 +78,7 @@
 
 			<input type="button" value="Set" class="button leftButton">
 			<hr>
-			<!-- can be remove if doesn't require -->
-             <div id="result">
-                <p id="title">Result</p>
-                <textarea id="textArea">
-                </textarea>
-            </div>
-			<!-- till here -->
+			
         </div>
 	</div>
 </body>
