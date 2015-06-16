@@ -7,7 +7,8 @@ var shutterSlider;
 var STEP_SIZE_GAIN = 1;
 var STEP_SIZE_SHUTTER = 1;
 var cam = 1;
-var globalResult;
+var myInterval;
+
 
 /*make sure we are in the right mode*/
 //ajaxGet("info.htm?cmd=%23021%3Bchoice%3B1%3BConstantValue%3B2%23");
@@ -64,15 +65,23 @@ function init(){
 		
 	});
 	
-    $("#btnStart").click(function(){
-		//ajaxGet("info.htm?cmd=%23021%3BEVO BarCode%3B1%3BPosX%3B316.94%23");
+   $("#btnStart").click(function(){
+		
 		ajaxGet("info.htm?cmd=%23002%23");
+		
+		myInterval = setInterval(function(){
+		ajaxGet("cfg.ini", getValueFrominiFile);
+		},1000);
+		
 		intervalUpdateStart();
+		
+		
 		}
 	);
 
 
 	$("#btnStop").click(function(){
+		clearInterval(myInterval);
 		ajaxGet("info.htm?cmd=%23004%23");
 		intervalUpdateStop();
 		}
@@ -204,11 +213,11 @@ function iniResponse(){
 	//alert(val);
 }
 
-function getValueFrominiFile(sectionName, entryName)
+function getValueFrominiFile()
 {
 	if (xhr.readyState != 4)  { return; }
 	var resp = xhr.responseText;
-	globalResult = getIniStr(sectionName, entryName, resp);
+	globalResult = getIniStr("cam1", "result1", resp);
 	
 	$("#textArea").val(globalResult);
 	

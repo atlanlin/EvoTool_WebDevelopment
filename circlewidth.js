@@ -23,8 +23,10 @@ function initCircle() {
 		
 		}
 	);
+		
 	
 }
+
 
 var Point = function (x, y) {
     this.x = x;
@@ -44,6 +46,7 @@ var Circle = function (point, radius) {
     };
     return this;
 }
+
 
 //mouse down
 function startDragging(e) {
@@ -371,7 +374,14 @@ function updateCircleEvo()
 		var innerRadius = $("#innervalue").val();
 		var outerRadius = $("#outervalue").val();
 		var startvalue = $("#startvalue").val();
-		var anglevalue = $("#anglevalue").val()
+		var anglevalue = $("#anglevalue").val();
+		
+		/*if ($("#lightToDark").is(":checked")) {
+            alert("light checked");
+        }
+		else if($("#darkToLight").is(":checked")) {
+            alert("dark checked");
+        }*/
 		//alert($("#outervalue").val());
 		ajaxGet("info.htm?cmd=%23021%3BEVO Circle%3B1%3BCirclePos.Center.X%3B"+ centerX +"%23");
 		ajaxGet("info.htm?cmd=%23021%3BEVO Circle%3B1%3BCirclePos.Center.Y%3B"+ centerY +"%23");
@@ -382,7 +392,6 @@ function updateCircleEvo()
 		ajaxGet("info.htm?cmd=%23021%3BEVO Circle%3B1%3BCirclePos.LengthAngle%3B"+ anglevalue +"%23");
 
 }
-
 
     
      
