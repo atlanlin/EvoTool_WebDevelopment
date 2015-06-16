@@ -7,6 +7,7 @@ var shutterSlider;
 var STEP_SIZE_GAIN = 1;
 var STEP_SIZE_SHUTTER = 1;
 var cam = 1;
+var globalResult;
 
 /*make sure we are in the right mode*/
 //ajaxGet("info.htm?cmd=%23021%3Bchoice%3B1%3BConstantValue%3B2%23");
@@ -201,6 +202,16 @@ function iniResponse(){
 	val = getIniStr("cam" + cam,"gain" + cam,resp);
 	gainSlider.setStep(parseInt(val)/STEP_SIZE_GAIN +1);  //because steps start with "0"
 	//alert(val);
+}
+
+function getValueFrominiFile(sectionName, entryName)
+{
+	if (xhr.readyState != 4)  { return; }
+	var resp = xhr.responseText;
+	globalResult = getIniStr(sectionName, entryName, resp);
+	
+	$("#textArea").val(globalResult);
+	
 }
 
 /* called to update the live image into the canvas */
