@@ -300,7 +300,7 @@ function drawCircle(circle, innerCircle) {
 	$("#startvalue").val(0);
 	$("#anglevalue").val(360);
 	$("#outervalue").val(Math.round(circle.radius));
-	$("#innervalue").val(Math.round(circle.radius - (circle.radius/2)));
+	$("#innervalue").val(Math.round(innerCircle.radius));
 	
 	document.querySelector('#circlevolume').value = Math.round(circle.radius);
 	document.querySelector('#innercirclevolume').value = Math.round(innerCircle.radius);
