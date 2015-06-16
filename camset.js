@@ -70,8 +70,10 @@ function init(){
 		ajaxGet("info.htm?cmd=%23002%23");
 		
 		myInterval = setInterval(function(){
+		
 		ajaxGet("cfg.ini", getValueFrominiFile);
-		},1000);
+		
+		},100);
 		
 		intervalUpdateStart();
 		
