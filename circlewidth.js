@@ -16,6 +16,12 @@ function initCircle() {
     element.addEventListener('mouseup', stopDragging, false);
     element.addEventListener('mouseout', stopDragging, false);
 	
+	
+	//element.addEventListener('touchdown', touchScreenMove, false);
+	//tempcanv = document.getElementById('canvas');
+	element.addEventListener('touchmove', t_Move);
+
+	
 	$("#set").click(function(){
 		//var outerRadius = parseFloat();
 		
@@ -52,6 +58,7 @@ var Circle = function (point, radius) {
 function startDragging(e) {
 
     var p = new Point(mouseX(e), mouseY(e));
+		//alert(mouseX(e));
 		
 	if(clicked == false)
 	{
@@ -84,7 +91,9 @@ function startDragging(e) {
 
 //mouse move
 function drag(e) {
-
+		
+		
+		
 		 mouseXi = e.pageX - (this.offsetLeft + additionalFrameLeft);
          mouseYi = e.pageY - (this.offsetTop + additionalFrameTop);
 		 
@@ -145,15 +154,15 @@ function drag(e) {
          mouseYi = e.pageY - (this.offsetTop + additionalFrameTop);
 		
 		//
-	/*var canvas = document.getElementById('myCanvas');
-    var context = canvas.getContext('2d');
+		/*var canvas = document.getElementById('myCanvas');
+		var context = canvas.getContext('2d');
 	
-	context.clearRect(0, 0, canvas.width, canvas.height);
-    context.font = '18pt Calibri';
-    context.fillStyle = 'black';
-    context.fillText("mouseXi" + mouseXi, 10, 25);*/
-	//
-	//circle.radius += Math.abs(circle.radius - mouseXi);
+		context.clearRect(0, 0, canvas.width, canvas.height);
+		context.font = '18pt Calibri';
+		context.fillStyle = 'black';
+		context.fillText("mouseXi" + mouseXi, 10, 25);*/
+		//
+		//circle.radius += Math.abs(circle.radius - mouseXi);
 	
 		
 	  //determine the radius
@@ -231,6 +240,51 @@ function drag(e) {
 	}
 
 }
+
+function t_Move(e){
+	//alert("move");
+	e.preventDefault();
+	
+	tempcanvas = document.getElementById('canvas');
+	var rect = tempcanvas.getBoundingClientRect();
+	
+	//var p = new Point(e.targetTouches[0].pageX, e.targetTouches[0].pageY);
+	
+	
+	//circle.point.x = e.targetTouches[0].pageX - rect.left;
+	//circle.point.y = e.targetTouches[0].pageY - rect.top;
+	circle.point.x = e.targetTouches[0].clientX - rect.left;
+	circle.point.y = e.targetTouches[0].clientY - rect.top;
+	
+			var radius = circle.radius;
+			if(circle.point.x - radius < startFrameX)
+			{
+				circle.point.x = radius;
+			}
+			if(circle.point.y - radius < startFrameY)
+			{
+				circle.point.y = radius;
+			}
+			if(circle.point.x + radius > endFrameX)
+			{
+				circle.point.x = endFrameX - radius; 
+			}
+			if(circle.point.y + radius > endFrameY)
+			{
+				circle.point.y = endFrameY - radius; 
+			}
+	
+	//var p = new Point(e.targetTouches[0].pageX, e.targetTouches[0].pageY);
+	//alert(e.targetTouches[0].pageX);
+	//deltaCenter = new Point(p.x - circle.point.x, p.y - circle.point.y);
+	
+	//circle.point.x = (e.targetTouches[0].pageX - deltaCenter.x);
+	//circle.point.y = (e.targetTouches[0].pageY - deltaCenter.y);
+	drawCircle(circle, innerCircle);
+}
+
+
+
 
 function findMin(x, y) {
         if(x < y)

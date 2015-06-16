@@ -58,7 +58,7 @@ function initCircle() {
     element.addEventListener('mouseup', stopDragging, false);
     element.addEventListener('mouseout', stopDragging, false);
 	
-	
+	element.addEventListener('touchmove', t_Move);
 	
 }
 
@@ -272,6 +272,54 @@ function drag(e) {
 	
 	}
 
+}
+
+
+function t_Move(e){
+	//alert("move");
+	e.preventDefault();
+	
+	tempcanvas = document.getElementById('canvas');
+	var rect = tempcanvas.getBoundingClientRect();
+	
+	//var p = new Point(e.targetTouches[0].pageX, e.targetTouches[0].pageY);
+	
+	var p = new Point(e.targetTouches[0].clientX - rect.left, e.targetTouches[0].clientY - rect.top);
+	
+	//if(circle.isInside(p))
+	if(withinCircle(p))
+	{
+		//circle.point.x = e.targetTouches[0].pageX - rect.left;
+		//circle.point.y = e.targetTouches[0].pageY - rect.top;
+		circle.point.x = e.targetTouches[0].clientX - rect.left;
+		circle.point.y = e.targetTouches[0].clientY - rect.top;
+	
+			var radius = circle.radius;
+			if(circle.point.x - radius < startFrameX)
+			{
+				circle.point.x = radius;
+			}
+			if(circle.point.y - radius < startFrameY)
+			{
+				circle.point.y = radius;
+			}
+			if(circle.point.x + radius > endFrameX)
+			{
+				circle.point.x = endFrameX - radius; 
+			}
+			if(circle.point.y + radius > endFrameY)
+			{
+				circle.point.y = endFrameY - radius; 
+			}
+	
+			//var p = new Point(e.targetTouches[0].pageX, e.targetTouches[0].pageY);
+			//alert(e.targetTouches[0].pageX);
+			//deltaCenter = new Point(p.x - circle.point.x, p.y - circle.point.y);
+	
+			//circle.point.x = (e.targetTouches[0].pageX - deltaCenter.x);
+			//circle.point.y = (e.targetTouches[0].pageY - deltaCenter.y);
+			drawCircle(circle, innerCircle);
+			}
 }
 
 function findMin(x, y) {
