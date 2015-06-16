@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>OCR Reader</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <title>OCR</title>
+    <link rel="stylesheet" type="text/css" href="ocrcode.css">
     <link rel="stylesheet" type="text/css" href="jqueryui.css">
     <!-- <script src="jquery.js"></script>  -->
 	<script src="jquery.js"></script>
@@ -23,14 +23,6 @@
                 <input id="mainPage" onClick="location.href='index.htm'" type="button" value="Main Page" class="button">
             </div>
             <hr>
-			
-			<!-- can be remove if doesn't require -->
-			<p class="fHeading1">Result</p>
-             <div id="resultDetail">
-                <textarea id="resultDisplay" rows="6" cols="15" readonly></textarea>
-            </div>
-			<!-- till here -->
-            
         </div>
 		
         <div id="imageArea">
@@ -48,12 +40,11 @@
 			<!-- <canvas id="layer2" style="z-index: 2; position:absolute; left:0px; top:0px;" height="300px" width="400"> -->
 				This text is displayed if your browser does not support HTML5 Canvas.
 			</canvas>
-			
         </div> 
 		
         <div id="leftmenu">
-			<label class="fHeading1">Font Type</label>
 			<div id="fontSelection" class="functionTab">
+				<label>Font Type</label><br> 
                 <select name="fontType">
                     <option id="industrial" value="industrial"><label>Industrial</label><br>
                     <option id="industrial09" value="industrial09"><label>Industrial 0-9</label>
@@ -79,18 +70,39 @@
 					<option id="semi" value="semi"><label>SEMI</label><br>
                 </select>
             </div>
+			
 			<hr>
 			
-			<label class="fHeading1">Polarity</label>
             <div id="polaritySelection" class="functionTab">  
-                
+                <label>Polarity</label><br> 
                 <input type="radio" id="darkOnLight" value="darkOnLight" name="polarityType" checked><label>Dark on Light</label><br>
                 <input type="radio" id="lightOnDark" value="lightOnDark" name="polarityType"><label>Light on Dark</label><br> 
             </div>
+			
+            <!-- <input type="button" id="fontSet" value="Set" class="button leftButton"> -->
 			<hr>
 			
-			<label class="fHeading1">ROI</label>
+			<div id="characterSelection" class="functionTab">  
+                <label>Character Option</label><br>
+                <input type="checkbox" id="dotted" value="dotted" name="characterType"><label>Dotted</label><br>
+                <input type="checkbox" id="rotationCorrection" value="rotationCorrection" name="characterType"><label>Rotation Correction</label><br>
+				<input type="checkbox" id="characterSize" value="characterSize" name="characterSize" onclick="javascript:showCharWindowConfig()"><label>Character Size</label><br>
+				
+				<div id="characterBoundary">
+                <form>
+                    <label>X:</label> <input type="text" id="charXValue" class="textBox" name="charXValue">
+                    <label>Y:</label> <input type="text" id="charYValue" class="textBox" name="charYValue"></br>
+                    <label>W:</label> <input type="text" id="charWValue" class="textBox" name="charWValue">
+                    <label>H:</label> <input type="text" id="charHValue" class="textBox" name="charHValue">
+                </form> 
+				</div>
+            </div>
+			
+            <input type="button" id="characterSet" value="Set" class="button leftButton">
+			<hr>
+			
 			<div id="regionOfInterest">
+                <label>ROI</label><br> 
 				
 				<div id="roiSelection">
 					<input type="radio" id="wholeWindow" value="full" name="searchType" checked><label>Whole Window</label><br>
@@ -106,33 +118,16 @@
                 </form> 
 				</div>
             </div>
-            <!-- <input type="button" id="fontSet" value="Set" class="button leftButton"> -->
-			<hr>
-			
-			<label class="fHeading1">Character Option<label>
-			<div id="characterSelection" class="functionTab">
-                <input type="checkbox" id="dotted" value="dotted" name="characterType"><label>Dotted</label><br>
-                <input type="checkbox" id="rotationCorrection" value="rotationCorrection" name="characterType"><label>Rotation Correction</label><br>
-				<input type="checkbox" id="characterSize" value="characterSize" name="characterSize" onclick="javascript:showCharWindowConfig()"><label>Character Size</label><br>
-				
-				<div id="characterBoundary">
-                <form>
-                    <label>X:</label> <input type="text" id="charXValue" class="textBox" name="charXValue">
-                    <label>Y:</label> <input type="text" id="charYValue" class="textBox" name="charYValue"></br>
-                    <label>W:</label> <input type="text" id="charWValue" class="textBox" name="charWValue">
-                    <label>H:</label> <input type="text" id="charHValue" class="textBox" name="charHValue">
-                </form> 
-				</div>
-            </div>
-			
-            <!-- <input type="button" id="characterSet" value="Set" class="button leftButton"> -->
-			<hr>
-			
-			
 
 			<!-- <input type="button" id="roiSet" value="Set" class="button leftButton"> -->
-			
-			
+			<hr>
+			<!-- can be remove if doesn't require -->
+             <div id="result">
+                <label>Result</label><br><br>
+                <textarea id="textArea">
+                </textarea>
+            </div>
+			<!-- till here -->
         </div>
 	</div>
 </body>

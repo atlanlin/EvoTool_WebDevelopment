@@ -50,9 +50,6 @@
 	// padding and border style widths for mouse offsets
 	var stylePaddingLeft, stylePaddingTop, styleBorderLeft, styleBorderTop;
 
-	//flag for rectangle opacity (character size)
-	var rectFlag = false;
-
 	// flag for rectangle opacity (roi window)
 	var rectRoiFlag = false;
 
@@ -191,7 +188,7 @@
 	  
 		// make mainDraw() fire every INTERVAL milliseconds
 		setInterval(mainDraw, INTERVAL);
-		//setInterval(evoComm, INTERVAL);
+		setInterval(evoComm, INTERVAL);
 
 		// set our events
 		// up and down are for dragging
@@ -208,22 +205,25 @@
 		}
 	  
 		// add custom initialization here:
-	  
-		function showCharWindowConfig() {
-			document.getElementById("characterBoundary").style.display="none";
-			
-			if (document.getElementById("characterSize").checked) {
-				document.getElementById("characterBoundary").style.display="block";
+	  	
+		function showWindowConfig(){
+			if (document.getElementById("wholeWindow").checked) {
+				document.getElementById("windowBoundary").style.display="none";
+			}
+			if (document.getElementById("defineWindow").checked) {
+				document.getElementById("windowBoundary").style.display="block";
 			}
 		}
-	  
-		$("input[name='characterSize']").click(function() {
-			if( $("input[name='characterSize']:checkbox:checked").val()=="characterSize"){
-				rectFlag=true;		
-			} else {
-				rectFlag=false;
+		
+		function showCodeType(){
+			if(document.getElementById("acode").checked){
+				document.getElementById("anybarcode").style.display="none";
 			}
-		});	
+			if(document.getElementById("mcode").checked){
+				document.getElementById("anybarcode").style.display="block";
+			}
+
+		}
 		
 		$("input[name='searchType']").click(function() {
 			if ($("input[name='searchType']:radio:checked").val()=="set") {
@@ -235,153 +235,60 @@
 		
 		// add a large green rectangle (roi window)
 		addRect(0, 0, 100, 100, 'rgba(0,205,0,0)', 'rgba(0,205,0,1)');
-	  
-		// add a green-blue rectangle (character size)
-		addRect(0, 0, 100, 100, 'rgba(2,165,165,0)', 'rgba(2,165,165,1)');
 	}	// end init2
 	
 	// consists of EVO communication commands
 	function evoComm() {
-		fontType();
-		polarityType();
-		charOptions();
+		codeType();
 		roiSet();
 	}	// end evoComm
 	
-	// consists of font type
-	function fontType() {
-		if (document.getElementById("industrial").selected) {
-			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B2%3BfontNum%3B0%23');
+	// consists of code type
+	function codeType() {
+		if(document.getElementById("acode").checked){
+			ajaxGet('any.htm?cmd=%23021%3BEVO%20BarCode%3B2%3BBarCodetype%3B0%23');
 		}
-		if (document.getElementById("industrial09").selected) {
-			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B2%3BfontNum%3B1%23');
-		}
-		if (document.getElementById("industrial09AZ").selected) {
-			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B2%3BfontNum%3B3%23');
-		}
-		if (document.getElementById("industrial09P").selected) {
-			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B2%3BfontNum%3B2%23');
-		}
-		if (document.getElementById("industrialAZP").selected) {
-			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B2%3BfontNum%3B4%23');
-		}
-		if (document.getElementById("dotPrint").selected) {
-			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B2%3BfontNum%3B5%23');
-		}
-		if (document.getElementById("dotPrint09").selected) {
-			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B2%3BfontNum%3B6%23');
-		}
-		if (document.getElementById("dotPrint09AZ").selected) {
-			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B2%3BfontNum%3B7%23');
-		}
-		if (document.getElementById("dotPrint09P").selected) {
-			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B2%3BfontNum%3B9%23');
-		}
-		if (document.getElementById("dotPrintAZP").selected) {
-			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B2%3BfontNum%3B8%23');
-		}
-		if (document.getElementById("document").selected) {
-			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B2%3BfontNum%3B10%23');
-		}
-		if (document.getElementById("document09").selected) {
-			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B2%3BfontNum%3B11%23');
-		}
-		if (document.getElementById("document09AZ").selected) {
-			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B2%3BfontNum%3B12%23');
-		}
-		if (document.getElementById("documentAZP").selected) {
-			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B2%3BfontNum%3B13%23');
-		}
-		if (document.getElementById("enhancedOCRA").selected) {
-			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B2%3BfontNum%3B14%23');
-		}
-		if (document.getElementById("enhancedOCRB").selected) {
-			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B2%3BfontNum%3B15%23');
-		}
-		if (document.getElementById("pharma").selected) {
-			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B2%3BfontNum%3B16%23');
-		}
-		if (document.getElementById("pharma09").selected) {
-			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B2%3BfontNum%3B17%23');
-		}
-		if (document.getElementById("pharma09AZ").selected) {
-			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B2%3BfontNum%3B19%23');
-		}
-		if (document.getElementById("pharma09P").selected) {
-			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B2%3BfontNum%3B19%23');
-		}
-		if (document.getElementById("micr").selected) {
-			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B2%3BfontNum%3B20%23');
-		}
-		if (document.getElementById("semi").selected) {
-			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B2%3BfontNum%3B21%23');
-		}
-	}
-	
-	// consists of polarity type
-	function polarityType() {
-		if (document.getElementById("darkOnLight").checked) {
-			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B2%3BpolarityType%3B0%23');
-		}
-		else {
-			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B2%3BpolarityType%3B1%23');
-		}
-	}
-	
-	// consists of advanced character options
-	function charOptions() {
-		if (document.getElementById("dotted").checked) {
-			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B2%3BdotType%3B1%23');
-		} else {
-			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B2%3BdotType%3B0%23');
-		}
-			
-		if( document.getElementById("rotationCorrection").checked) {
-			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B2%3BrotateType%3B1%23');
-		} else {
-			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B2%3BrotateType%3B0%23');
-		}
-			
-		if (document.getElementById("characterSize").checked) {
-			// auto character size
-			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B1%3BAutoCharX%3B'+$("#charXValue").val()+'%23');
-			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B1%3BAutoCharY%3B'+$("#charYValue").val()+'%23');
-			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B1%3BAutoCharW%3B'+$("#charWValue").val()+'%23');
-			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B1%3BAutoCharH%3B'+$("#charHValue").val()+'%23');
-			
-			// manual character size
-/* 			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B1%3BcharX%3B200%23');
-			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B1%3BcharY%3B200%23');
-			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B1%3BcharW%3B100%23');
-			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B1%3BcharH%3B100%23'); */
-		} else {
-			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B1%3BAutoCharX%3B50%23');
-			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B1%3BAutoCharY%3B50%23');
-			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B1%3BAutoCharW%3B40%23');
-			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B1%3BAutoCharH%3B50%23');
+					
+		if(document.getElementById("mcode").checked){
+			if(document.getElementById("industrial").selected){
+				ajaxGet('any.htm?cmd=%23021%3BEVO%20BarCode%3B2%3BBarCodetype%3B1%23');
+			}
+			if(document.getElementById("interleaved").selected){
+				ajaxGet('any.htm?cmd=%23021%3BEVO%20BarCode%3B2%3BBarCodetype%3B2%23');
+			}
+			if(document.getElementById("code39").selected){
+				ajaxGet('any.htm?cmd=%23021%3BEVO%20BarCode%3B2%3BBarCodetype%3B3%23');
+			}
+			if(document.getElementById("code93").selected){
+				ajaxGet('any.htm?cmd=%23021%3BEVO%20BarCode%3B2%3BBarCodetype%3B4%23');
+			}
+			if(document.getElementById("code128").selected){
+				ajaxGet('any.htm?cmd=%23021%3BEVO%20BarCode%3B2%3BBarCodetype%3B5%23');
+			}
+			if(document.getElementById("ean8").selected){
+				ajaxGet('any.htm?cmd=%23021%3BEVO%20BarCode%3B2%3BBarCodetype%3B6%23');
+			}
+			if(document.getElementById("ean13").selected){
+				ajaxGet('any.htm?cmd=%23021%3BEVO%20BarCode%3B2%3BBarCodetype%3B7%23');
+			}
+			if(document.getElementById("pharmaCode").selected){
+				ajaxGet('any.htm?cmd=%23021%3BEVO%20BarCode%3B2%3BBarCodetype%3B8%23');
+			}		
 		}
 	}
 	
 	// consists of roi settings
 	function roiSet() {
 		if (document.getElementById("wholeWindow").checked) {
-			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B1%3BposRect.PointStart.X%3B0%23');
-			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B1%3BposRect.PointEnd.X%3B750%23');
-			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B1%3BposRect.PointStart.Y%3B240%23');
-			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B1%3BposRect.PointEnd.Y%3B240%23');
-			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B1%3BposRect.Width%3B750%23');
+			ajaxGet('any.htm?cmd=%23021%3BEVO%20BarCode%3B2%3BSourceWindow.SourceMode%3B4%23');
 		}
 			
 		if (document.getElementById("defineWindow").checked) {
-			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B1%3BposRect.PointStart.X%3B'+$("#xValue").val()+'%23');
-			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B1%3BposRect.PointEnd.X%3B'+(parseInt($("#xValue").val())+parseInt($("#wValue").val()))+'%23');			
-			/* ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B1%3BposRect.PointStart.Y%3B'+selectionHandles[3].y+'%23');
-			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B1%3BposRect.PointEnd.Y%3B'+selectionHandles[3].y+'%23'); */
-			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B1%3BposRect.PointStart.Y%3B'+(parseInt($("#yValue").val())+(parseInt($("#hValue").val())/2))+'%23');
-			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B1%3BposRect.PointEnd.Y%3B'+(parseInt($("#yValue").val())+(parseInt($("#hValue").val())/2))+'%23');
-			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B1%3BposRect.Width%3B'+$("#wValue").val()+'%23');
-			/* ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B1%3BposRect.PointStart.Y%3B'+$("#yValue").val()+'%23');
-			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B1%3BposRect.PointEnd.Y%3B'+$("#yValue").val()+'%23'); */
+			ajaxGet('any.htm?cmd=%23021%3BEVO%20BarCode%3B2%3BSourceWindow.SourceMode%3B3%23');
+			ajaxGet('any.htm?cmd=%23021%3BEVO%20BarCode%3B1%3BSourceWindow.SourceWindow.Left%3B'+$("#xValue").val()+'%23');
+			ajaxGet('any.htm?cmd=%23021%3BEVO%20BarCode%3B1%3BSourceWindow.SourceWindow.Top%3B'+$("#yValue").val()+'%23');
+			ajaxGet('any.htm?cmd=%23021%3BEVO%20BarCode%3B1%3BSourceWindow.SourceWindow.Width%3B'+$("#wValue").val()+'%23');
+			ajaxGet('any.htm?cmd=%23021%3BEVO%20BarCode%3B1%3BSourceWindow.SourceWindow.Height%3B'+$("#hValue").val()+'%23');
 		}
 	}
 
@@ -488,30 +395,15 @@
 			} */
 			
 			// modified by weiling
-			for (var i = 0; i < l; i++) {
-				if (rectFlag==false && rectRoiFlag==false) {
-					
-				} else if (rectFlag==false && rectRoiFlag==true) {
-					boxes2[0].draw(ctx);
-				} else if (rectFlag==true && rectRoiFlag==false) {
-					boxes2[1].draw(ctx);
-				} else {
-					boxes2[i].draw(ctx); // we used to call drawshape, but now each box draws itself
-				}
+			if (rectRoiFlag==true) {
+				boxes2[0].draw(ctx);
+			}
+			else {
 			}
 			
 			// add stuff you want drawn on top all the time here
 			
 			// added by weiling
-			var charXPos = boxes2[1].x;
-			var charYPos = boxes2[1].y;
-			var charW = boxes2[1].w;
-			var charH = boxes2[1].h;
-			$("#charXValue").val(charXPos);
-			$("#charYValue").val(charYPos);
-			$("#charWValue").val(charW);
-			$("#charHValue").val(charH);
-			
 			var xPos = boxes2[0].x;
 			var yPos = boxes2[0].y;
 			var w = boxes2[0].w;

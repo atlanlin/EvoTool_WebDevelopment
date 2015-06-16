@@ -2,15 +2,17 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>2D Code Reader</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <title>2D Code</title>
+    <link rel="stylesheet" type="text/css" href="tdcode.css">
     <link rel="stylesheet" type="text/css" href="jqueryui.css">
     <script src="jquery.js"></script> 
     <script src="evt.js"></script>
     <script src="camset.js"></script>
 	<script src="jqueryui.js"></script>
+	<script src="tdcode.js"></script>
+
 </head>
-<body>
+<body onload="init2()">
     <img id="logo" src="vclogo.png" alt="vclogo"> 
     <div class="functionPanel"> 
 	
@@ -21,35 +23,30 @@
                 <input id="mainPage" onClick="location.href='index.htm'" type="button" value="Main Page" class="button">
             </div>   
             <hr>
-			
-			
-			<!-- can be remove if doesn't require -->
-			<p class="fHeading1">Result</p>
-             <div id="resultDetail">
-                <textarea id="resultDisplay" rows="6" cols="15" readonly></textarea>
-            </div>
-			<!-- till here -->
         </div>
 		
         <div id="imageArea">
             <div id="mainTitle">2D Code</div>
-            <div id="selectionArea"></div>
+            <!-- <div id="selectionArea"></div> -->
             <img id="imgSnapshot"></img>
+			<canvas id="canvas2" style="z-index: 1; position:absolute; left:0px; top:27px;" width="750" height="480">
+					This text is displayed if your browser does not support HTML5 Canvas.
+			</canvas>
         </div> 
 		
         <div id="leftmenu">
-			<label class="fHeading1">Scan Type</label>
-            <div id="codeSelection">
-                <input type="radio" value="dmc" name="datacode" onclick="javascript:showCodeType()" checked><label>DMC Code</label><br>
-                <input type="radio" value="qr" name="datacode" onclick="javascript:showCodeType()"><label>QR Code</label><br>
-				<input type="radio" value="microqr" name="datacode" onclick="javascript:showCodeType()"><label>Micro QR Code</label><br> 
+            <div id="codeSelection">  
+                <label>Code Type</label><br> 
+                <input type="radio" id="dmc" value="dmc" name="datacode" checked><label>DMC Code</label><br>
+                <input type="radio" id="qr" value="qr" name="datacode"><label>QR Code</label><br>
+				<input type="radio" id="microqr" value="microqr" name="datacode"><label>Micro QR Code</label><br> 
             </div>
           
-			<input type="button" value="Set" class="button leftButton">
+			<!-- <input type="button" id="codeSet" value="Set" class="button leftButton"> -->
 			<hr>
 			
-			<label class="fHeading1">ROI</label>
 			<div id="regionOfInterest">
+                <label>ROI</label><br> 
 				
 				<div id="roiSelection">
 					<input type="radio" id="wholeWindow" value="full" name="searchType" onclick="javascript:showWindowConfig()" checked><label>Whole Window</label><br>
@@ -58,16 +55,23 @@
 				
 				<div id="windowBoundary">
                 <form>
-                    <label>X:</label> <input id="xvalue" class="textBox" type="text" name="xvalue">
-                    <label>Y:</label> <input id="yvalue" class="textBox" type="text" name="yvalue"></br>
-                    <label>W:</label> <input id="wvalue" class="textBox" type="text" name="wvalue">
-                    <label>H:</label> <input id="hvalue" class="textBox" type="text" name="hvalue">
+                    <label>X:</label> <input type="text" id="xValue" class="textBox" name="xValue">
+                    <label>Y:</label> <input type="text" id="yValue" class="textBox" name="yValue"></br>
+                    <label>W:</label> <input type="text" id="wValue" class="textBox" name="wValue">
+                    <label>H:</label> <input type="text" id="hValue" class="textBox" name="hValue">
                 </form> 
 				</div>
             </div>
-			<input type="button" value="Set" class="button leftButton">
 			
+			<!-- <input type="button" id="roiSet" value="Set" class="button leftButton"> -->
 			<hr>
+			<!-- can be remove if doesn't require -->
+             <div id="result">
+                <p id="title">Result</p>
+                <textarea id="textArea">
+                </textarea>
+            </div>
+			<!-- till here -->
             
         </div>
 	</div>

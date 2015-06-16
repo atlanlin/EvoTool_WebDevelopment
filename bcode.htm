@@ -2,64 +2,62 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Barcode Reader</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <title>Barcode</title>
+    <link rel="stylesheet" type="text/css" href="bcode.css">
     <link rel="stylesheet" type="text/css" href="jqueryui.css">
     <script src="jquery.js"></script> 
     <script src="evt.js"></script>
     <script src="camset.js"></script>
     <script src="jqueryui.js"></script>
+	<script src="bcode.js"></script>
 </head>
-<body>
+<body onload="init2()">
     <img id="logo" src="vclogo.png" alt="vclogo"> 
     <div class="functionPanel"> 
+	
         <div id="rightRegion">
             <div>
                 <input id="btnStart" type="button" value="Monitor" class="button">
                 <input id="btnStop" type="button" value="Stop" class="button">
                 <input id="mainPage" onClick="location.href='index.htm'" type="button" value="Main Page" class="button">
             </div>
-			<hr>
-			<!-- can be remove if doesn't require -->
-			<p class="fHeading1">Result</p>
-             <div id="resultDetail">
-                <textarea id="resultDisplay" rows="6" cols="15" readonly></textarea>
-            </div>
-			<!-- till here -->
-            
+            <hr>
         </div>
 		
         <div id="imageArea">
             <div id="mainTitle">Barcode</div>
-            <div id="selectionArea"></div>
+            <!-- <div id="selectionArea"></div> -->
             <img id="imgSnapshot"></img>
-			<!-- <canvas id="canvas" width="752" height="480"> -->
+			<canvas id="canvas2" style="z-index: 1; position:absolute; left:0px; top:27px;" width="750" height="480">
+					This text is displayed if your browser does not support HTML5 Canvas.
+			</canvas>
         </div> 
 		
         <div id="leftmenu">
-			<label class="fHeading1">Code Type</label>
             <div id="codeSelection">  
+                <label>Code Type</label><br> 
                 <input type="radio" id="acode" value="abarcode" name="barcode" onclick="javascript:showCodeType()" checked><label>Any</label><br>
-                <input type="radio" id="mcode" value="mbarcode" name="barcode" onclick="javascript:showCodeType()"><label>Define Code Type</label><br> 
-            </div>
-          
-            <div id="anybarcode">
+                <input type="radio" id="mcode" value="mbarcode" name="barcode" onclick="javascript:showCodeType()"><label>Define Code Type</label><br>
+				
+				<div id="anybarcode">
                 <select name="codeType">
-                    <option value="interleaved"><label>2/5 Interleaved</label><br>
-                    <option value="code39"><label>Code 39</label>
-                    <option value="EAN13"><label>EAN 13</label><br>
-                    <option value="EAN8"><label>EAN 8</label><br>
-                    <option value="code128"><label>Code 128</label><br>
-                    <option value="UCPVersionA"><label>UCP Version A</label><br>
-                    <option value="UCPVersionB"><label>UCP Version B</label>
+                    <option id="industrial" value="industrial"><label>2/5 Industrial</label><br>
+					<option id="interleaved" value="interleaved"><label>2/5 Interleaved</label><br>
+                    <option id="code39" value="code39"><label>Code 39</label>
+					<option id="code93" value="code93"><label>Code 93</label>
+					<option id="code128" value="code128"><label>Code 128</label><br>
+					<option id="ean8" value="ean8"><label>EAN 8</label><br>
+                    <option id="ean13" value="ean13"><label>EAN 13</label><br>
+                    <option id="pharmaCode" value="pharmaCode"><label>PharmaCode</label><br>
                 </select>
+				</div>
             </div>
 			
-            <input type="button" value="Set" class="button leftButton">
+            <!-- <input type="button" id="codeTypeSet" value="Set" class="button leftButton"> -->
 			<hr>
 			
-			<label class="fHeading1">ROI</label>
 			<div id="regionOfInterest">
+                <label>ROI</label><br> 
 				
 				<div id="roiSelection">
 					<input type="radio" id="wholeWindow" value="full" name="searchType" onclick="javascript:showWindowConfig()" checked><label>Whole Window</label><br>
@@ -68,17 +66,23 @@
 				
 				<div id="windowBoundary">
                 <form>
-                    <label>X:</label> <input id="xvalue" class="textBox" type="text" name="xvalue">
-                    <label>Y:</label> <input id="yvalue" class="textBox" type="text" name="yvalue"></br>
-                    <label>W:</label> <input id="wvalue" class="textBox" type="text" name="wvalue">
-                    <label>H:</label> <input id="hvalue" class="textBox" type="text" name="hvalue">
+                    <label>X:</label> <input type="text" id="xValue" class="textBox" name="xValue">
+                    <label>Y:</label> <input type="text" id="yValue" class="textBox" name="yValue"></br>
+                    <label>W:</label> <input type="text" id="wValue" class="textBox" name="wValue">
+                    <label>H:</label> <input type="text" id="hValue" class="textBox" name="hValue">
                 </form> 
 				</div>
             </div>
 
-			<input type="button" value="Set" class="button leftButton">
+			<!-- <input type="button" id="roiSet" value="Set" class="button leftButton"> -->
 			<hr>
-			
+			<!-- can be remove if doesn't require -->
+             <div id="result">
+                <p id="title">Result</p>
+                <textarea id="textArea">
+                </textarea>
+            </div>
+			<!-- till here -->
         </div>
 	</div>
 </body>

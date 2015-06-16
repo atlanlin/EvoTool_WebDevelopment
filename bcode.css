@@ -32,20 +32,33 @@ input[type="radio"]{
     margin-left:10px;
 }
 
-#anybarcode{
+ #anybarcode{
     display: none;
 }
 
+/*
 #anybarcode select{
+
+	// original
     background-color:#E6E6DC;
     color:#00628B;
     border-radius:5px 5px;
-    margin-top:20px;
+    margin-top:10px;
     float:left;
     width:120px;
     height:26px;
     margin-left:25px;
-}
+	
+	width:200;
+    height:150;
+    text-align:left;
+    font-size:12px;
+    position:relative;
+	margin-left:10px;
+    padding-top:10px;
+    color:#00628B;
+	
+} */
 
 /* edited */
 #windowBoundary{
@@ -75,22 +88,7 @@ input[type="radio"]{
     font-weight:bold;
 }
 
-#characterBoundary{
-    display: none;
-}
-/* edited */
-#characterBoundary select{
-    background-color:#E6E6DC;
-    color:#00628B;
-    border-radius:5px 5px;
-    margin-top:20px;
-    float:left;
-    width:120px;
-    height:26px;
-    margin-left:25px;
-}
-
-#codeSelection, #regionOfInterest, #polaritySelection, #characterSelection, #fontSelection, #result{
+#codeSelection, #regionOfInterest, #anybarcode, #result{
     width:200;
     height:150;
     text-align:left;
@@ -99,7 +97,6 @@ input[type="radio"]{
 	margin-left:10px;
     padding-top:10px;
     color:#00628B;
-	border-radius:5px 5px;
 }
 
 .functionTab{
