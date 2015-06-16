@@ -379,7 +379,7 @@ function showCharWindowConfig(){
 
 function clickedImgBtn(clickedImageId){
 	document.getElementById(clickedImageId).style.borderColor="green";
-	var filename = "tools_images/";
+	var filename = "";
 	document.getElementById(clickedImageId).src=filename+clickedImageId+"Selected.jpg"
 	setTimeout(function(){
 		document.getElementById(clickedImageId).style.borderColor="gray";
