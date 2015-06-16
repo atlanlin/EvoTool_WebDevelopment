@@ -74,15 +74,29 @@ Box2.prototype = {
   }
 }
 
-function displayTexts(){
-	document.getElementById('tbStartX').value=boxes2[0].x;
-	document.getElementById('tbEndX').value=boxes2[0].x+boxes2[0].w;
-	document.getElementById('tbStartY').value=boxes2[0].y;
-	document.getElementById('tbEndY').value=boxes2[0].y+boxes2[0].h;
-	if(arrowDirFlag == "horizontal")
-		document.getElementById('tbWidth').value=boxes2[0].h;
-	else
-		document.getElementById('tbWidth').value=boxes2[0].w;
+function displayTexts(startXtb, startYtb, endXtb, endYtb, widthtb, inBox){
+	var sx, sy, ex, ey, w;
+	
+	if(arrowDirFlag == "horizontal"){
+		
+		sx = inBox.x;
+		sy = inBox.y + parseInt(inBox.h/2);
+		ex = inBox.x + inBox.w;
+		ey = inBox.y + parseInt(inBox.h/2);
+		w = Math.abs(inBox.h);
+	}else{
+		sx = inBox.x + parseInt(inBox.w/2);
+		sy = inBox.y;
+		ex = inBox.x + parseInt(inBox.w/2);
+		ey = inBox.y + inBox.h;
+		w = Math.abs(inBox.w);
+	}
+	document.getElementById(startXtb).value=sx;
+	document.getElementById(startYtb).value=sy;
+	document.getElementById(endXtb).value=ex;
+	document.getElementById(endYtb).value=ey;
+	document.getElementById(widthtb).value=w;
+	
 }
 
 // New methods on the Box class
@@ -209,7 +223,7 @@ function init2() {
   
   $.mobile.loading( "hide" );
   $.mobile.loading().hide();
-  
+  /*
 	  //delegate the event binding so elements in the DOM now and in the future will be bound-to
 	$(document).delegate('#my-dialog-button', 'click', function () {
 
@@ -219,7 +233,7 @@ function init2() {
 			role       : 'dialog'
 		});
 	});
-  
+  */
   $(canvas).bind( "vmousemove", myMove );
   $(canvas).bind( "vmousedown", myDown );
   $(canvas).bind( "vmouseup", myUp );
@@ -410,7 +424,8 @@ function mainDraw() {
     // draw the line
     line.drawWithArrowheads(ctx);
 	
-	displayTexts();
+	
+	displayTexts("tbStartX", "tbStartY", "tbEndX", "tbEndY", "tbWidth", boxes2[0]);
 	
   }
 }

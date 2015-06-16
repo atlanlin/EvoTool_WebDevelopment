@@ -2,15 +2,16 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>2D Code</title>
-    <link rel="stylesheet" type="text/css" href="tdcode.css">
+	<meta name="viewport" content="width=device-width, initial-scale=0.7">
+    <title>2D Code Reader</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
     <link rel="stylesheet" type="text/css" href="jqueryui.css">
-    <script src="jquery.js"></script> 
+    <script src="jquery.js"></script>
+	<script src="jquery.mobile-1.4.5.min.js"></script>
     <script src="evt.js"></script>
     <script src="camset.js"></script>
 	<script src="jqueryui.js"></script>
-	<script src="tdcode.js"></script>
-
+	<script src="rect.js"></script>
 </head>
 <body onload="init2()">
     <img id="logo" src="vclogo.png" alt="vclogo"> 
@@ -18,16 +19,23 @@
 	
         <div id="rightRegion">
             <div>
-                <input id="btnStart" type="button" value="Monitor" class="button">
-                <input id="btnStop" type="button" value="Stop" class="button">
-                <input id="mainPage" onClick="location.href='index.htm'" type="button" value="Main Page" class="button">
+                <button id="btnStart" type="button" class="button">Monitor</button>
+				<button id="btnStop" type="button" class="button">Stop</button>
+				<button id="home" type="button" class="button" onClick="location.href='index.htm'">Main Page</button>
             </div>   
             <hr>
+			
+			
+			<!-- can be remove if doesn't require -->
+			<p class="fHeading1">Result</p>
+             <div id="resultDetail">
+                <textarea id="resultDisplay" rows="6" cols="15" readonly></textarea>
+            </div>
+			<!-- till here -->
         </div>
 		
         <div id="imageArea">
             <div id="mainTitle">2D Code</div>
-            <!-- <div id="selectionArea"></div> -->
             <img id="imgSnapshot"></img>
 			<canvas id="canvas2" style="z-index: 1; position:absolute; left:0px; top:27px;" width="750" height="480">
 					This text is displayed if your browser does not support HTML5 Canvas.
@@ -35,43 +43,57 @@
         </div> 
 		
         <div id="leftmenu">
-            <div id="codeSelection">  
-                <label>Code Type</label><br> 
-                <input type="radio" id="dmc" value="dmc" name="datacode" checked><label>DMC Code</label><br>
-                <input type="radio" id="qr" value="qr" name="datacode"><label>QR Code</label><br>
-				<input type="radio" id="microqr" value="microqr" name="datacode"><label>Micro QR Code</label><br> 
+			
+			<label class="fHeading1">Scan Type</label>
+            <div id="codeSelection">
+                <input type="radio" id="radioDmc" value="dmc" name="datacode" onclick="javascript:showCodeType()" checked="checked" />
+				<label for="radioDmc">DMC Code</label>
+                
+				<input type="radio" id="radioQr" value="qr" name="datacode" onclick="javascript:showCodeType()" />
+				<label for="radioQr">QR Code</label>
+				
+				<input type="radio" id="radioMicro" value="microqr" name="datacode" onclick="javascript:showCodeType()" />
+				<label for="radioMicro">Micro QR Code</label> 
             </div>
-          
-			<!-- <input type="button" id="codeSet" value="Set" class="button leftButton"> -->
+			
 			<hr>
 			
+			<label class="fHeading1">ROI</label>
 			<div id="regionOfInterest">
-                <label>ROI</label><br> 
 				
 				<div id="roiSelection">
-					<input type="radio" id="wholeWindow" value="full" name="searchType" onclick="javascript:showWindowConfig()" checked><label>Whole Window</label><br>
-					<input type="radio" id="defineWindow" value="set" name="searchType" onclick="javascript:showWindowConfig()"><label>Define Window</label><br>
+					<input type="radio" id="wholeWindow" value="full" name="searchType" onclick="javascript:showWindowConfig()" checked/>
+					<label for="wholeWindow">Whole Window</label>
+					
+					<input type="radio" id="defineWindow" value="set" name="searchType" onclick="javascript:showWindowConfig()"/>
+					<label for="defineWindow">Define Window</label>
 				</div>
 				
 				<div id="windowBoundary">
-                <form>
-                    <label>X:</label> <input type="text" id="xValue" class="textBox" name="xValue">
-                    <label>Y:</label> <input type="text" id="yValue" class="textBox" name="yValue"></br>
-                    <label>W:</label> <input type="text" id="wValue" class="textBox" name="wValue">
-                    <label>H:</label> <input type="text" id="hValue" class="textBox" name="hValue">
-                </form> 
+                
+				
+				<table border="0">
+					<tr>
+						<td>X:</td>
+						<td><input id="xValue" class="textBox" type="text"></td>
+						<td>Y:</td>
+						<td><input id="yValue" class="textBox" type="text"></td>
+					</tr>
+					
+					<tr>
+						<td>W:</td>
+						<td><input id="wValue" class="textBox" type="text"></td>
+						<td>H:</td>
+						<td><input id="hValue" class="textBox" type="text"></td>
+					</tr>				
+					
+				</table>
+				
+				
 				</div>
             </div>
 			
-			<!-- <input type="button" id="roiSet" value="Set" class="button leftButton"> -->
 			<hr>
-			<!-- can be remove if doesn't require -->
-             <div id="result">
-                <p id="title">Result</p>
-                <textarea id="textArea">
-                </textarea>
-            </div>
-			<!-- till here -->
             
         </div>
 	</div>
