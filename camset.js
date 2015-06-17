@@ -237,7 +237,7 @@ function getValueFrominiFile()
 	var resp = xhr.responseText;
 	globalResult = getIniStr("cam1", "result1", resp);
 	
-	$("#textArea").val(globalResult);
+	$("#resultDisplay").val(globalResult);
 	
 }
 
