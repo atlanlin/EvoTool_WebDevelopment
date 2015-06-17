@@ -225,18 +225,28 @@ function drawCircle(circle, innerCircle) {
 	
 	
 	
-	
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
+	ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx.beginPath();
     ctx.arc(circle.point.x, circle.point.y, circle.radius, 0, Math.PI*2, false);
-
-    ctx.arc(circle.point.x, circle.point.y, innerCircle.radius, 0,Math.PI*2,false);
 	
 	ctx.globalAlpha=1;
 	
 	ctx.lineWidth = 3;
     ctx.strokeStyle = "red";
 	ctx.stroke();
+	ctx.closePath();
+	//ctx.globalAlpha=0.4;
+	//ctx.fill();
+
+	ctx.beginPath();
+    ctx.arc(circle.point.x, circle.point.y, innerCircle.radius, 0,Math.PI*2,false);
+	
+	ctx.globalAlpha=1;
+	
+	ctx.lineWidth = 3;
+    ctx.strokeStyle = "blue";
+	ctx.stroke();
+	ctx.closePath();
 	
 	
 	

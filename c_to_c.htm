@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Circle Measurement</title>
+    <link rel="stylesheet" type="text/css" href="jqueryui.css">
+	<link rel="stylesheet" type="text/css" href="style.css">
+    <script src="jquery.js"></script> 
+    <script src="evt.js"></script>
+    <script src="camset.js"></script>
+    <script src="jqueryui.js"></script>
+	<script src="c_to_c.js"></script>
+    
+</head>
+<body>
+    <img id="logo" src="vclogo.png" alt="vclogo"> 
+    <div class="functionPanel"> 
+        <div id="rightRegion">
+            <div>
+                <input id="btnStart" type="button" value="Monitor" class="button">
+                <input id="btnStop" type="button" value="Stop" class="button">
+                <input id="mainPage" onClick="location.href='index.htm'" type="button" value="Main Page" class="button">
+            </div>  
+			
+		
+			
+			<!-- can be remove if doesn't require -->
+			<p class="fHeading1">Result</p>
+             <div id="resultDetail">
+                <textarea id="resultDisplay" rows="6" cols="15" readonly></textarea>
+            </div>
+			<!-- till here -->
+			
+			
+			<div id="objectMeasureTools" class="functionTab">
+				<p class="fHeading1">Object Measurement Tools</p>
+				
+				<img id="circleImgBtn" class="imageButton" src="circleImgBtn.jpg" 
+					onclick="clickedImgBtn(this.id)"></img>
+				<img id="widthImgBtn" class="imageButton" src="widthImgBtn.jpg" 
+					onclick="clickedImgBtn(this.id)"></img>
+				
+			</div>
+			
+			<div id="distanceMeasureTools" class="functionTab">
+				<p class="fHeading1">Distance Measurement Tools</p>
+				
+				<img id="ptpImgBtn" class="imageButton" src="ptpImgBtn.jpg" 
+					onclick="clickedImgBtn(this.id)"></img>
+				<img id="ptlImgBtn" class="imageButton" src="ptlImgBtn.jpg" 
+					onclick="clickedImgBtn(this.id)"></img>
+				<img id="ptcImgBtn" class="imageButton" src="ptcImgBtn.jpg" 
+					onclick="clickedImgBtn(this.id)"></img>
+				<img id="ctlImgBtn" class="imageButton" src="ctlImgBtn.jpg" 
+					onclick="clickedImgBtn(this.id)"></img>
+				<img id="ctcImgBtn" class="imageButton" src="ctcImgBtn.jpg" 
+					onclick="clickedImgBtn(this.id)"></img>
+				
+			</div>
+			
+        </div>
+       <div id="imageArea">
+	   <!-- can be remove -->
+            <div id="mainTitle">Circle Width Measurement</div>
+			<!-- till here -->
+           <div id="selectionArea"></div>
+			
+			<img id="imgSnapshot"></img>
+			
+			
+			<!-- <canvas id="canvas" width="752" height="480"> -->
+			<canvas id="canvas" style="z-index: 1; position:absolute; left:0px; top:27px;" width="752" height="480">
+			
+			
+			
+            <!-- <img id="imgSnapshot"></img> -->
+       </div>
+        <div id="leftmenu"> 
+			<label class="fHeading1">Settings</label>
+			<div id="roiSelection" class="functionTab">
+					<label for=fader> <b>Circle 1 Size </b></label>
+					<br>
+					<input id="rangeValue" type=range min=20 max=200 value=50 id=fader step=1 oninput="outputUpdate(value)">
+
+					<output for=fader id=circlevolume>50</output>
+					<br>
+					
+					<label for=fader> <b>Inner Circle 1 Size </b></label>
+					<br>
+					<input id="rangeValue" type=range min=10 max=190 value=25 id=fader step=1 oninput="outputInnerUpdate(value)">
+
+					<output for=fader id=innercirclevolume>25</output>
+					<br>
+					
+					<input type="radio" id="lightToDark" value="lightToDark" name="barcode" checked><label>Light To Dark</label><br>
+					<input type="radio" id="darkToLight" value="darkToLight" name="barcode"><label>Dark To Light</label><br> <br>
+					
+					<label for=fader> <b>Circle 2 Size </b></label>
+					<br>
+					<input id="rangeValue2" type=range min=20 max=200 value=50 id=fader step=1 oninput="outputUpdate2(value)">
+
+					<output for=fader id=circlevolume2>50</output>
+					<br>
+					
+					<label for=fader> <b>Inner Circle 2 Size </b></label>
+					<br>
+					<input id="rangeValue2" type=range min=10 max=190 value=25 id=fader step=1 oninput="outputInnerUpdate2(value)">
+
+					<output for=fader id=innercirclevolume2>25</output>
+					<br>
+					
+					<input type="radio" id="lightToDark2" value="lightToDark2" name="barcode2" checked><label>Light To Dark</label><br>
+					<input type="radio" id="darkToLight2" value="darkToLight2" name="barcode2"><label>Dark To Light</label><br> 
+			</div>
+			<hr>
+		
+			<label class="fHeading1">ROI</label>
+			<div id="regionOfInterest" class="functionTab">
+                
+
+					
+                    <!-- <label>X:</label> <input id="xvalue" class="textBox" type="text" name="xvalue">
+                    <label>Y:</label> <input id="yvalue" class="textBox" type="text" name="yvalue"></br>
+                    <label>W:</label> <input id="wvalue" class="textBox" type="text" name="wvalue">
+                    <label>H:</label> <input id="hvalue" class="textBox" type="text" name="hvalue">
+					
+                    <input id="searchWindow" type="button" value="Search Window" class="button leftButton">
+                    <input id="set" type="button" value="Set" class="button leftButton" > -->
+                    <!--<input id="completeWindow" type="button" value="Complete Window" class="button" id="completeWindow"> -->
+					
+					<table>
+					<tr>
+						<td><label>Center 1 X:</label> </td> 
+						<td><input id="xvalue" class="textBox" type="text" name="xvalue" readonly></td>
+						<td><label>Center 1 Y:</label> </td>
+						<td><input id="yvalue" class="textBox" type="text" name="yvalue" readonly></td>
+					</tr>
+					<tr>
+                    <td><label>Start angle 1:</label> </td>
+					<td><input id="startvalue" class="textBox" type="text" name="startvalue" readonly></td>
+					
+                    <td><label>Angle Length 1:</label> </td>
+					<td><input id="anglevalue" class="textBox" type="text" name="anglevalue" readonly></td>
+					</tr>
+					<tr>
+					<td><label>Outer radius 1:</label> </td>
+					<td><input id="outervalue" class="textBox" type="text" name="outervalue" readonly></td>
+					
+					<td><label>Inner radius 1:</label></td> 
+					<td><input id="innervalue" class="textBox" type="text" name="innervalue" readonly></td>
+                    
+					</tr>
+					</table>
+					
+					<br>
+					
+					<table>
+					<tr>
+						<td><label>Center 2 X:</label> </td> 
+						<td><input id="xvalue2" class="textBox" type="text" name="xvalue" readonly></td>
+						<td><label>Center 2 Y:</label> </td>
+						<td><input id="yvalue2" class="textBox" type="text" name="yvalue" readonly></td>
+					</tr>
+					<tr>
+                    <td><label>Start angle 2:</label> </td>
+					<td><input id="startvalue2" class="textBox" type="text" name="startvalue" readonly></td>
+					
+                    <td><label>Angle Length 2:</label> </td>
+					<td><input id="anglevalue2" class="textBox" type="text" name="anglevalue" readonly></td>
+					</tr>
+					<tr>
+					<td><label>Outer radius 2:</label> </td>
+					<td><input id="outervalue2" class="textBox" type="text" name="outervalue" readonly></td>
+					
+					<td><label>Inner radius 2:</label></td> 
+					<td><input id="innervalue2" class="textBox" type="text" name="innervalue" readonly></td>
+                    
+					</tr>
+					</table>
+				<hr>
+            </div>
+			
+			<label class="fHeading1">Tolerance</label>
+			<div id="tolDetail" class="functionTab">
+			<table class="toleranceTable">
+					<tr> 
+					<td><label>Nominal Value</label></td>
+					<td><input type="number" id="nv" value="0" name="tolerance" ></td> </tr>
+					<tr> 
+					<td>+</td>
+					<td><input type="number" id="plus" value="10000" name="tolerance" min="0"> </td> </tr>
+					<tr> 
+					<td>-</td>
+					<td><input type="number" id="minus" value="0" name="tolerance" min="0"> </td> </tr>
+					</table>
+			</div>
+			
+			<hr>
+			
+			
+			
+			
+			
+        </div>
+		
+				
+</body>
+
+
+
+<script>
+
+
+</script>
+
+</html>
