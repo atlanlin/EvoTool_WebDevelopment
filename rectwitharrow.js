@@ -221,8 +221,8 @@ function init2() {
   //canvas.ondblclick = myDblClick;
   canvas.onmousemove = myMove;
   
-  $.mobile.loading( "hide" );
-  $.mobile.loading().hide();
+  //$.mobile.loading( "hide" );
+  //$.mobile.loading().hide();
   /*
 	  //delegate the event binding so elements in the DOM now and in the future will be bound-to
 	$(document).delegate('#my-dialog-button', 'click', function () {
@@ -234,10 +234,15 @@ function init2() {
 		});
 	});
   */
-  $(canvas).bind( "vmousemove", myMove );
-  $(canvas).bind( "vmousedown", myDown );
-  $(canvas).bind( "vmouseup", myUp );
-  $(canvas).bind( "vmouseover", myMove );
+  //$(canvas).bind( "vmousemove", myMove );
+  //$(canvas).bind( "vmousedown", myDown );
+  //$(canvas).bind( "vmouseup", myUp );
+  //$(canvas).bind( "vmouseover", myMove );
+  
+  
+  canvas.addEventListener("touchstart", myDown);
+  canvas.addEventListener("touchend", myUp);
+  canvas.addEventListener("touchmove", myMove);
   
   // set up the selection handle boxes
   for (var i = 0; i < 8; i ++) {
@@ -426,7 +431,12 @@ function mainDraw() {
 	
 	
 	displayTexts("tbStartX", "tbStartY", "tbEndX", "tbEndY", "tbWidth", boxes2[0]);
-	
+	if(isDrag)
+		document.getElementById("resultDisplay").value="moving";
+	else if(isResizeDrag)
+		document.getElementById("resultDisplay").value="resize";
+	else
+		document.getElementById("resultDisplay").value="";
   }
 }
 
@@ -434,6 +444,7 @@ function mainDraw() {
 // Happens when the mouse is moving inside the canvas
 function myMove(e){
 	e.preventDefault();
+	
   if (isDrag) {
     getMouse(e);
     
@@ -566,10 +577,41 @@ function myDown(e){
 	e.preventDefault();
   getMouse(e);
   
+  //added by yelling
+  // if there's a selection see if we grabbed one of the selection handles
+  if (mySel !== null && !isResizeDrag) {
+    for (var i = 0; i < 8; i++) {
+      // 0  1  2
+      // 3     4
+      // 5  6  7
+      
+      var cur = selectionHandles[i];
+      
+      // we dont need to use the ghost context because
+      // selection handles will always be rectangles
+	  //changes made by yelling
+      if (mx >= cur.x && mx <= cur.x + mySelBoxSize*3 &&
+          my >= cur.y && my <= cur.y + mySelBoxSize*3) {
+        // we found one!
+        expectResize = i;
+		isResizeDrag = true;
+        invalidate();
+        return;
+      }
+      
+    }
+  /*
   //we are over a selection box
   if (expectResize !== -1) {
     isResizeDrag = true;
     return;
+  }
+  */
+  
+    // not over a selection box, return to normal
+    isResizeDrag = false;
+    expectResize = -1;
+    this.style.cursor='auto';
   }
   
   clear(gctx);
