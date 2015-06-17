@@ -72,10 +72,8 @@ var Circle = function (point, radius) {
     this.point = point;
     this.radius = radius;
     this.isInside = function (pt) {
-		//alert(Math.pow(pt.x - point.x, 2) + Math.pow(pt.y - point.y, 2) < Math.pow(radius, 2));
-        return Math.pow(pt.x - point.x, 2) + Math.pow(pt.y - point.y, 2) < Math.pow(radius, 2); 
 		
-		//return true;
+        return Math.pow(pt.x - point.x, 2) + Math.pow(pt.y - point.y, 2) < Math.pow(radius, 2); 
 		
     };
     return this;
@@ -89,9 +87,8 @@ function startDragging(e) {
 	if(clicked == false)
 	{
 		
-		//if(circle.isInside(p)) {
 		if(withinCircle(p)){
-			//alert("delta x " + (p.x - circle.point.x) + " y " + (p.y - circle.point.y));
+			
 			
 			//mouse pointer on the center
 			deltaCenter = new Point(p.x - circle.point.x, p.y - circle.point.y);
@@ -99,20 +96,6 @@ function startDragging(e) {
 			
 		}
 	}
-		 //mouseXi = e.pageX - (this.offsetLeft + additionalFrameLeft);
-         //mouseYi = e.pageY - (this.offsetTop + additionalFrameTop);
-		 mouseXi = mouseX(e);
-		 mouseYi = mouseY(e);
-		 
-		 //small circle
-		//var smallCirclePointX = circle.point.x + (circle.radius*Math.cos(0/(180/Math.PI)));
-		//if(( mouseXi <= smallCirclePointX + 15 && mouseXi >= smallCirclePointX) )
-	/*if(( mouseXi <= circle.point.x + circle.radius + 10 && mouseXi >= circle.point.x + circle.radius) && (mouseYi <= circle.point.y - 5))
-	{
-			clicked = true;
-			lastClickX = mouseXi;
-			
-	}*/
 	
 	
 }
@@ -120,29 +103,10 @@ function startDragging(e) {
 //mouse move
 function drag(e) {
 
-		 //mouseXi = e.pageX - (this.offsetLeft + additionalFrameLeft);
-         //mouseYi = e.pageY - (this.offsetTop + additionalFrameTop);
-		 mouseXi = mouseX(e);
-		 mouseYi = mouseY(e);
-		 
-		 //$("#xvalue").val(mouseX(e));
-		 //$("#yvalue").val(mouseY(e));
-		 
-	//small circle
-		//var smallCirclePointX = circle.point.x + (circle.radius*Math.cos(0/(180/Math.PI)));
-		//if(( mouseXi <= smallCirclePointX + 15 && mouseXi >= smallCirclePointX) )
-	/*if(( mouseXi <= circle.point.x + circle.radius + 10 && mouseXi >= circle.point.x + circle.radius) && (mouseYi <= circle.point.y - 5))
-	{
-		this.style.cursor='e-resize';
-	}
-	else
-		this.style.cursor='auto';*/
-		
-	//if(( mouseXi < circle.point.x + circle.radius / 2&& mouseXi >= circle.point.x - circle.radius/2) && (mouseYi < circle.point.y + circle.radius/2 && mouseYi >= circle.point.y - circle.radius/2))
-		
+		 	
 	var p = new Point(mouseX(e), mouseY(e));
 	
-	//if(circle.isInside(p))
+	
 	if(withinCircle(p))
 		this.style.cursor='move';
 	else
@@ -177,124 +141,26 @@ function drag(e) {
 			drawCircle(circle, innerCircle);
 		}
 	}
-		
-	
-	if(clicked == true)
-	{
-		
-		 mouseXi = e.pageX - (this.offsetLeft + additionalFrameLeft);
-         mouseYi = e.pageY - (this.offsetTop + additionalFrameTop);
-		
-		//
-	/*var canvas = document.getElementById('myCanvas');
-    var context = canvas.getContext('2d');
-	
-	context.clearRect(0, 0, canvas.width, canvas.height);
-    context.font = '18pt Calibri';
-    context.fillStyle = 'black';
-    context.fillText("mouseXi" + mouseXi, 10, 25);*/
-	//
-	//circle.radius += Math.abs(circle.radius - mouseXi);
-	
-		
-	  //determine the radius
-	  
-		
-	//if(mouseXi >= (circle.point.x + (circle.radius / 2)) && (mouseYi <= circle.point.y + circle.radius || mouseYi >= circle.point.y + circle.radius))
-	//{
-		if(lastClickX < mouseXi)
-		{
-			if( circle.radius < maxRadius && circle.radius < findMin(circle.point.x, circle.point.y))
-			{
-				if((circle.point.x + circle.radius) < endFrameX && (circle.point.y + circle.radius) < endFrameY)
-				{
-					/*var x1 = circle.point.x;
-					var y1 = circle.point.y;
-					var x2 = mouseXi;
-					var y2 = mouseYi;
-					var dx = x1 - x2;
-					var dy = y1 - y2;
-					var r = Math.sqrt(dx*dx+dy*dy) - 40;
-					r = Math.max(5, r);
-					circle.radius += r;*/
-					
-					circle.radius += (mouseXi / mouseSensitivity);
-				}
-			}
-			if(circle.radius > maxRadius)
-			{
-				circle.radius = maxRadius;
-			}
-			
-			//circle.radius += 3;
-			
-			//circle.radius = circle.radius + Math.sqrt(mouseXi);
-			//circle.point.x = mouseXi;
-			//circle.point.y = 10;
-		}
-	//}
-	//else if(mouseXi <= (circle.point.x + (circle.radius / 2)) && (mouseYi <= circle.point.y + circle.radius || mouseYi >= circle.point.y + circle.radius))
-	//{
-		if(lastClickX > mouseXi)
-		{
-			if( circle.radius > minRadius)
-				circle.radius -= (mouseXi / mouseSensitivity);
-				
-				/*var x1 = circle.point.x;
-					var y1 = circle.point.y;
-					var x2 = mouseXi;
-					var y2 = mouseYi;
-					var dx = x1 - x2;
-					var dy = y1 - y2;
-					var r = Math.sqrt(dx*dx+dy*dy) - 40;
-					r = Math.min(100, r);
-					circle.radius -= r;*/
-					
-				if(circle.radius < minRadius)
-				{
-					circle.radius = minRadius;
-				}
-				
-				
-				//circle.radius -= 3;
-				
-				//circle.radius = circle.radius - Math.sqrt(mouseXi);
-				//circle.point.x = circle.point.x;
-				//circle.point.y = circle.point.y;
-		}
-	//}
-	
-	$("#rangeValue").val(circle.radius);
-	drawCircle(circle, innerCircle);
-	//mouseXi = e.pageX - (this.offsetLeft + additionalFrameLeft);
-	mouseXi = mouseX(e);
-	lastClickX = mouseXi;
-	
-	}
 
 }
 
 
 function t_Move(e){
-	//alert("move");
+	
 	e.preventDefault();
 	
 	tempcanvas = document.getElementById('canvas');
 	var rect = tempcanvas.getBoundingClientRect();
-	
-	//var p = new Point(e.targetTouches[0].pageX, e.targetTouches[0].pageY);
-	
 	var p = new Point(e.targetTouches[0].clientX - rect.left, e.targetTouches[0].clientY - rect.top);
 	
-	//if(circle.isInside(p))
+	
 	if(withinCircle(p))
 	{
-		//circle.point.x = e.targetTouches[0].pageX - rect.left;
-		//circle.point.y = e.targetTouches[0].pageY - rect.top;
+	
 		circle.point.x = e.targetTouches[0].clientX - rect.left;
 		circle.point.y = e.targetTouches[0].clientY - rect.top;
 	
-			var radius = circle.radius;
+		var radius = circle.radius;
 			if(circle.point.x - radius < startFrameX)
 			{
 				circle.point.x = radius;
@@ -311,15 +177,9 @@ function t_Move(e){
 			{
 				circle.point.y = endFrameY - radius; 
 			}
-	
-			//var p = new Point(e.targetTouches[0].pageX, e.targetTouches[0].pageY);
-			//alert(e.targetTouches[0].pageX);
-			//deltaCenter = new Point(p.x - circle.point.x, p.y - circle.point.y);
-	
-			//circle.point.x = (e.targetTouches[0].pageX - deltaCenter.x);
-			//circle.point.y = (e.targetTouches[0].pageY - deltaCenter.y);
-			drawCircle(circle, innerCircle);
-			}
+			
+		drawCircle(circle, innerCircle);
+		}
 }
 
 function findMin(x, y) {
@@ -349,14 +209,12 @@ function getMousePos(canvas, e) {
 }
 	  
 function mouseX(e) {
-    //return e.clientX - (element.offsetLeft + additionalFrameLeft);
 	var cx = document.getElementById('canvas');
     var mousePos = getMousePos(cx, e);
 	return mousePos.x;
 }
 
 function mouseY(e) {
-    //return e.clientY - (element.offsetTop + additionalFrameTop);
 	var cy = document.getElementById('canvas');
     var mousePos = getMousePos(cy, e);
 	return mousePos.y;
@@ -372,22 +230,19 @@ function drawCircle(circle, innerCircle) {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx.beginPath();
     ctx.arc(circle.point.x, circle.point.y, circle.radius, 0, Math.PI*2, false);
-	//ctx.moveTo(0,0);
+
     ctx.arc(circle.point.x, circle.point.y, innerCircle.radius, 0,Math.PI*2,false);
-	//small circle
-	//ctx.arc( (circle.point.x + circle.radius), circle.point.y, smallCircle.radius,0, Math.PI*2, false);
 	
-	//alert(circle.radius);
 	ctx.globalAlpha=1;
 	
-	ctx.lineWidth = 1;
+	ctx.lineWidth = 3;
     ctx.strokeStyle = "red";
 	ctx.stroke();
 	
 	
 	
 	
-	//alert("h");
+	
 	$("#xvalue").val(Math.round(circle.point.x));
 	$("#yvalue").val(Math.round(circle.point.y));
 	$("#startvalue").val(0);
@@ -400,7 +255,7 @@ function drawCircle(circle, innerCircle) {
 	
 	//updateCircleEvo();
 	//updateRectEvo();
-    //ctx.fill();
+
 }
 
 function outputUpdate(size) {
@@ -415,18 +270,7 @@ function outputUpdate(size) {
 					circle.radius = intSize;
 				}
 			}
-			/*if((circle.point.x + intSize) < endFrameX && (circle.point.y + intSize) < endFrameY)
-			{
-				var minValue = findMin((circle.point.x + intSize), (circle.point.y + intSize));
-				if(minValue == (circle.point.x + intSize))
-					circle.radius = minValue - circle.point.x;
-				else if(minValue == (circle.point.y + intSize))
-					circle.radius = minValue - circle.point.y;
-			}*/
 			
-			//if(size)
-	
-			//alert(circle.point.x);
 	drawCircle(circle, innerCircle);
 
 }
@@ -441,18 +285,7 @@ function outputInnerUpdate(size){
 					innerCircle.radius = intSize;
 				}
 			}
-			/*if((circle.point.x + intSize) < endFrameX && (circle.point.y + intSize) < endFrameY)
-			{
-				var minValue = findMin((circle.point.x + intSize), (circle.point.y + intSize));
-				if(minValue == (circle.point.x + intSize))
-					circle.radius = minValue - circle.point.x;
-				else if(minValue == (circle.point.y + intSize))
-					circle.radius = minValue - circle.point.y;
-			}*/
 			
-			//if(size)
-	
-			//alert(circle.point.x);
 	drawCircle(circle, innerCircle);
 
 }
@@ -762,13 +595,17 @@ function initSquare() {
   //canvas.ondblclick = myDblClick;
   canvas.onmousemove = myMove;
   
-  $.mobile.loading( "hide" );
+  /*$.mobile.loading( "hide" );
   $.mobile.loading().hide();
 		 
   $(canvas).bind( "vmousemove", myMove );
   $(canvas).bind( "vmousedown", myDown );
   $(canvas).bind( "vmouseup", myUp );
-  $(canvas).bind( "vmouseover", myMove );
+  $(canvas).bind( "vmouseover", myMove );*/
+  
+  canvas.addEventListener("touchstart", myDown);
+  canvas.addEventListener("touchend", myUp);
+  canvas.addEventListener("touchmove", myMove);
   
   
   // set up the selection handle boxes
@@ -968,6 +805,13 @@ function mainDraw() {
 	//updateCircleEvo();
 	//updateRectEvo();
 	
+	if(isDrag)
+		document.getElementById("resultDisplay").value="moving";
+	else if(isResizeDrag)
+		document.getElementById("resultDisplay").value="resize";
+	else
+		document.getElementById("resultDisplay").value="";
+	
   }
 }
 
@@ -1058,8 +902,8 @@ function myMove(e){
       // we dont need to use the ghost context because
       // selection handles will always be rectangles
 	  //changes made by yelling
-      if (mx >= cur.x && mx <= cur.x + mySelBoxSize*3/2 &&
-          my >= cur.y && my <= cur.y + mySelBoxSize*3/2) {
+      if (mx >= cur.x && mx <= cur.x + mySelBoxSize*3 &&
+          my >= cur.y && my <= cur.y + mySelBoxSize*3) {
         // we found one!
         expectResize = i;
         invalidate();
@@ -1107,11 +951,33 @@ function myDown(e){
   e.preventDefault();
   getMouse(e);
   
-  //we are over a selection box
-  if (expectResize !== -1) {
-    isResizeDrag = true;
-    return;
+  if (mySel !== null && !isResizeDrag) {
+    for (var i = 0; i < 8; i++) {
+      // 0  1  2
+      // 3     4
+      // 5  6  7
+      
+      var cur = selectionHandles[i];
+      
+      // we dont need to use the ghost context because
+      // selection handles will always be rectangles
+	  //changes made by yelling
+      if (mx >= cur.x && mx <= cur.x + mySelBoxSize*3 &&
+          my >= cur.y && my <= cur.y + mySelBoxSize*3) {
+        // we found one!
+        expectResize = i;
+		isResizeDrag = true;
+        invalidate();
+        return;
+      }
+      
+    }
+    // not over a selection box, return to normal
+    isResizeDrag = false;
+    expectResize = -1;
+    this.style.cursor='auto';
   }
+  
   
   clear(gctx);
   var l = boxes2.length;
