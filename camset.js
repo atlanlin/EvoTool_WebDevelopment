@@ -90,9 +90,9 @@ function init(){
 	);
 	
 	
-	document.getElementById("circleDetail").style.display="none";
-	document.getElementById("rectDetail").style.display="none";
-	document.getElementById("tolDetail").style.display="none";
+	//document.getElementById("circleDetail").style.display="none";
+	//document.getElementById("rectDetail").style.display="none";
+	//document.getElementById("tolDetail").style.display="none";
 	
 	
 	
