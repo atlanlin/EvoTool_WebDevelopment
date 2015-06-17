@@ -21,6 +21,7 @@ function initCircle() {
 	
 	element.addEventListener('touchmove', t_Move);
 
+	setInterval(updateCircleEvo, UPDATECIRCLEINTERVAL);
 	
 	$("#set").click(function(){
 		
@@ -222,7 +223,7 @@ function drawCircle(circle, innerCircle) {
 	document.querySelector('#innercirclevolume').value = Math.round(innerCircle.radius);
 	
 	
-	updateCircleEvo();
+	//updateCircleEvo();
 
 }
 
@@ -306,4 +307,6 @@ var endFrameY = 470;
 var maxRadius = 200;
 
 var minRadius = 20;
+
+var UPDATECIRCLEINTERVAL = 2000;
 
