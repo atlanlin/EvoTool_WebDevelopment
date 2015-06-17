@@ -8,23 +8,26 @@
     <link rel="stylesheet" type="text/css" href="jqueryui.css">
     <script src="jquery.js"></script>
     <script src="evt.js"></script>
+	<script src="camset.js"></script>
     <script src="jqueryui.js"></script>
-    <script src="camset.js"></script>
 	<script src="rect.js"></script>
 </head>
 <body onload="init2()">
     <img id="logo" src="vclogo.png" alt="vclogo"> 
     <div class="functionPanel"> 
+	
         <div id="rightRegion">
             <div>
-                <button id="btnStart" type="button" class="button">Monitor</button>
+                <button id="btnCodeStart" type="button" class="button">Monitor</button>
 				<button id="btnStop" type="button" class="button">Stop</button>
 				<button id="home" type="button" class="button" onClick="location.href='index.htm'">Main Page</button>
             </div>
+			
 			<hr>
+			
 			<!-- can be remove if doesn't require -->
 			<p class="fHeading1">Result</p>
-             <div id="resultDetail">
+            <div id="resultDetail">
                 <textarea id="resultDisplay" rows="6" cols="15" readonly></textarea>
             </div>
 			<!-- till here -->
@@ -35,21 +38,17 @@
             <div id="mainTitle">Barcode</div>
             <img id="imgSnapshot"></img>
 			<canvas id="canvas2" style="z-index: 1; position:absolute; left:0px; top:27px;" width="750" height="480">
-					This text is displayed if your browser does not support HTML5 Canvas.
+				This text is displayed if your browser does not support HTML5 Canvas.
 			</canvas>
         </div> 
 		
         <div id="leftmenu">
-		
-		
 		
 			<label class="fHeading1">Code Type</label>
             <div id="codeSelection">  
                 <input type="radio" id="acode" value="abarcode" name="barcode" onclick="javascript:showCodeType()" checked><label>Any</label><br>
                 <input type="radio" id="mcode" value="mbarcode" name="barcode" onclick="javascript:showCodeType()"><label>Define Code Type</label><br> 
             </div>
-			
-			
 			
             <div id="anybarcode" style="display:none">
                 <select name="codeType">
@@ -87,11 +86,9 @@
 						<td>H:</td>
 						<td><input id="hValue" class="textBox" type="text"></td>
 					</tr>				
-					
 				</table>
 				</div>
             </div>
-			
 			
 			<hr>
 			

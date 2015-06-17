@@ -5,7 +5,6 @@
     <title>OCR</title>
     <link rel="stylesheet" type="text/css" href="style.css">
     <link rel="stylesheet" type="text/css" href="jqueryui.css">
-    <!-- <script src="jquery.js"></script>  -->
 	<script src="jquery.js"></script>
     <script src="evt.js"></script>
     <script src="camset.js"></script>
@@ -18,10 +17,13 @@
 	
         <div id="rightRegion">
             <div>
-                <input id="btnStart" type="button" value="Monitor" class="button">
-                <input id="btnStop" type="button" value="Stop" class="button">
-                <input id="mainPage" onClick="location.href='index.htm'" type="button" value="Main Page" class="button">
+                <button id="btnCodeStart" type="button" class="button">Monitor</button>
+				<button id="btnStop" type="button" class="button">Stop</button>
+				<button id="home" type="button" class="button" onClick="location.href='index.htm'">Main Page</button>
             </div>
+			
+			<hr>
+			
 			<!-- can be remove if doesn't require -->
 			<p class="fHeading1">Result</p>
              <div id="resultDetail">
@@ -32,22 +34,14 @@
 		
         <div id="imageArea">
             <div id="mainTitle">OCR</div>
-			<!-- <div id="selectionArea"></div>
-            <img id="imgSnapshot"></img>
-			<canvas id="canvas" width="750" height="478">
-				This text is displayed if your browser does not support HTML5 Canvas.
-			</canvas>
-			<canvas id="canvas1" style="z-index: 1; position:absolute;" width="750" height="478">
-				This text is displayed if your browser does not support HTML5 Canvas.
-			</canvas> -->
 			<img id="imgSnapshot"></img>
 			<canvas id="canvas2" style="z-index: 1; position:absolute; left:0px; top:27px;" width="750" height="480">
-			<!-- <canvas id="layer2" style="z-index: 2; position:absolute; left:0px; top:0px;" height="300px" width="400"> -->
 				This text is displayed if your browser does not support HTML5 Canvas.
 			</canvas>
         </div> 
 		
         <div id="leftmenu">
+		
 			<label class="fHeading1">Font Type</label>
 			<div id="fontSelection" class="functionTab">
 				
@@ -78,6 +72,7 @@
             </div>
 			
 			<hr>
+			
 			<label class="fHeading1">Polarity</label>
             <div id="polaritySelection" class="functionTab">  
                 <input type="radio" id="darkOnLight" value="darkOnLight" name="polarityType" checked><label>Dark on Light</label><br>
@@ -107,7 +102,6 @@
 			<label class="fHeading1">ROI</label>
 			<div id="regionOfInterest">
                 
-				
 				<div id="roiSelection">
 					<input type="radio" id="wholeWindow" value="full" name="searchType" checked><label>Whole Window</label><br>
 					<input type="radio" id="defineWindow" value="set" name="searchType"><label>Define Window</label><br>

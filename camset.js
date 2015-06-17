@@ -80,6 +80,22 @@ function init(){
 		
 		}
 	);
+	
+	$("#btnCodeStart").click(function(){
+		
+		ajaxGet("info.htm?cmd=%23002%23");
+		
+		myInterval = setInterval(function(){
+		
+		ajaxGet("cfg.ini", getCodeValueFrominiFile);
+		
+		},100);
+		
+		intervalUpdateStart();
+		
+		
+		}
+	);
 
 
 	$("#btnStop").click(function(){
@@ -223,6 +239,15 @@ function getValueFrominiFile()
 	
 	$("#textArea").val(globalResult);
 	
+}
+
+function getCodeValueFrominiFile()
+{
+	if (xhr.readyState != 4)  { return; }
+	var resp = xhr.responseText;
+	globalResult = getIniCodeStr("camcode1", "result1=", resp);
+	
+	$("#resultDisplay").val(globalResult);
 }
 
 /* called to update the live image into the canvas */
