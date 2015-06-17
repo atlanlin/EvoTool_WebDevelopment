@@ -398,8 +398,8 @@ function drawCircle(circle, innerCircle) {
 	document.querySelector('#circlevolume').value = Math.round(circle.radius);
 	document.querySelector('#innercirclevolume').value = Math.round(innerCircle.radius);
 	
-	updateCircleEvo();
-	updateRectEvo();
+	//updateCircleEvo();
+	//updateRectEvo();
     //ctx.fill();
 }
 
@@ -580,7 +580,7 @@ Box2.prototype = {
   }
 }
 
-function displayTexts(){
+/*function displayTexts(){
 	document.getElementById('tbStartX').value=boxes2[0].x;
 	document.getElementById('tbEndX').value=boxes2[0].x+boxes2[0].w;
 	document.getElementById('tbStartY').value=boxes2[0].y;
@@ -605,6 +605,31 @@ function displayTexts(){
 	
 	
 	}
+}*/
+
+function displayTexts(startXtb, startYtb, endXtb, endYtb, widthtb, inBox){
+	var sx, sy, ex, ey, w;
+	
+	if(arrowDirFlag == "horizontal"){
+		
+		sx = inBox.x;
+		sy = inBox.y + parseInt(inBox.h/2);
+		ex = inBox.x + inBox.w;
+		ey = inBox.y + parseInt(inBox.h/2);
+		w = Math.abs(inBox.h);
+	}else{
+		sx = inBox.x + parseInt(inBox.w/2);
+		sy = inBox.y;
+		ex = inBox.x + parseInt(inBox.w/2);
+		ey = inBox.y + inBox.h;
+		w = Math.abs(inBox.w);
+	}
+	document.getElementById(startXtb).value=sx;
+	document.getElementById(startYtb).value=sy;
+	document.getElementById(endXtb).value=ex;
+	document.getElementById(endYtb).value=ey;
+	document.getElementById(widthtb).value=w;
+	
 }
 
 // New methods on the Box class
@@ -726,6 +751,9 @@ function initSquare() {
   
   // make mainDraw() fire every INTERVAL milliseconds
   setInterval(mainDraw, INTERVAL);
+  setInterval(updateRectEvo, UPDATERECTINTERVAL);
+  setInterval(updateCircleEvo, UPDATECIRCLEINTERVAL);
+ 
   
   // set our events. Up and down are for dragging,
   // double click is for making new boxes
@@ -733,6 +761,15 @@ function initSquare() {
   canvas.onmouseup = myUp;
   //canvas.ondblclick = myDblClick;
   canvas.onmousemove = myMove;
+  
+  $.mobile.loading( "hide" );
+  $.mobile.loading().hide();
+		 
+  $(canvas).bind( "vmousemove", myMove );
+  $(canvas).bind( "vmousedown", myDown );
+  $(canvas).bind( "vmouseup", myUp );
+  $(canvas).bind( "vmouseover", myMove );
+  
   
   // set up the selection handle boxes
   for (var i = 0; i < 8; i ++) {
@@ -925,7 +962,9 @@ function mainDraw() {
     line.drawWithArrowheads(ctx);
 	
 	
-	displayTexts();
+	//displayTexts();
+	
+	displayTexts("tbStartX", "tbStartY", "tbEndX", "tbEndY", "tbWidth", boxes2[0]);
 	//updateCircleEvo();
 	//updateRectEvo();
 	
@@ -935,6 +974,7 @@ function mainDraw() {
 
 // Happens when the mouse is moving inside the canvas
 function myMove(e){
+  e.preventDefault();
   if (isDrag) {
     getMouse(e);
     
@@ -1064,6 +1104,7 @@ function myMove(e){
 
 // Happens when the mouse is clicked in the canvas
 function myDown(e){
+  e.preventDefault();
   getMouse(e);
   
   //we are over a selection box
@@ -1129,7 +1170,7 @@ function invalidate() {
 // Sets mx,my to the mouse position relative to the canvas
 // unfortunately this can be tricky, we have to worry about padding and borders
 function getMouse(e) {
-      var element = canvas, offsetX = 0, offsetY = 0;
+      var element = canvas, offsetX = 5, offsetY = 5;
 
       if (element.offsetParent) {
         do {
@@ -1171,6 +1212,8 @@ var ctx;
 var WIDTH;
 var HEIGHT;
 var INTERVAL = 1;  // how often, in milliseconds, we check to see if a redraw is needed
+var UPDATERECTINTERVAL = 2000;
+var UPDATECIRCLEINTERVAL = 4000;
 
 var isDrag = false;
 var isResizeDrag = false;
