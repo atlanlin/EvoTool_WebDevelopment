@@ -7,7 +7,6 @@
     <link rel="stylesheet" type="text/css" href="style.css">
     <link rel="stylesheet" type="text/css" href="jqueryui.css">
     <script src="jquery.js"></script>
-	<script src="jquery.mobile-1.4.5.min.js"></script>
     <script src="evt.js"></script>
     <script src="camset.js"></script>
 	<script src="jqueryui.js"></script>
@@ -46,14 +45,9 @@
 			
 			<label class="fHeading1">Scan Type</label>
             <div id="codeSelection">
-                <input type="radio" id="radioDmc" value="dmc" name="datacode" onclick="javascript:showCodeType()" checked="checked" />
-				<label for="radioDmc">DMC Code</label>
-                
-				<input type="radio" id="radioQr" value="qr" name="datacode" onclick="javascript:showCodeType()" />
-				<label for="radioQr">QR Code</label>
-				
-				<input type="radio" id="radioMicro" value="microqr" name="datacode" onclick="javascript:showCodeType()" />
-				<label for="radioMicro">Micro QR Code</label> 
+                <input type="radio" value="dmc" name="datacode" onclick="javascript:showCodeType()" checked><label>DMC Code</label><br>
+                <input type="radio" value="qr" name="datacode" onclick="javascript:showCodeType()"><label>QR Code</label><br>
+				<input type="radio" value="microqr" name="datacode" onclick="javascript:showCodeType()"><label>Micro QR Code</label><br> 
             </div>
 			
 			<hr>
@@ -62,11 +56,8 @@
 			<div id="regionOfInterest">
 				
 				<div id="roiSelection">
-					<input type="radio" id="wholeWindow" value="full" name="searchType" onclick="javascript:showWindowConfig()" checked/>
-					<label for="wholeWindow">Whole Window</label>
-					
-					<input type="radio" id="defineWindow" value="set" name="searchType" onclick="javascript:showWindowConfig()"/>
-					<label for="defineWindow">Define Window</label>
+					<input type="radio" id="wholeWindow" value="full" name="searchType" onclick="javascript:showWindowConfig()" checked><label>Whole Window</label><br>
+					<input type="radio" id="defineWindow" value="set" name="searchType" onclick="javascript:showWindowConfig()"><label>Define Window</label><br>
 				</div>
 				
 				<div id="windowBoundary">

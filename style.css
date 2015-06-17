@@ -38,19 +38,14 @@ input[type="radio"]{
     margin-left:10px;
 }
 
-#anybarcode{
-    display: none;
-}
-
 #anybarcode select{
     background-color:#E6E6DC;
     color:#00628B;
     border-radius:5px 5px;
-    margin-top:20px;
-    float:left;
+    margin-top:10px;
     width:120px;
     height:26px;
-    margin-left:25px;
+    margin-left:35px;
 }
 
 /* edited */

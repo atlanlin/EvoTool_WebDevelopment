@@ -7,7 +7,6 @@
     <link rel="stylesheet" type="text/css" href="style.css">
     <link rel="stylesheet" type="text/css" href="jqueryui.css">
     <script src="jquery.js"></script>
-	<script src="jquery.mobile-1.4.5.min.js"></script>
     <script src="evt.js"></script>
     <script src="jqueryui.js"></script>
     <script src="camset.js"></script>
@@ -46,15 +45,13 @@
 		
 			<label class="fHeading1">Code Type</label>
             <div id="codeSelection">  
-                <input type="radio" id="acode" value="abarcode" name="barcode" onclick="javascript:showCodeType()" checked/>
-				<label for="acode">Any</label>
-                <input type="radio" id="mcode" value="mbarcode" name="barcode" onclick="javascript:showCodeType()">
-				<label for="mcode">Define Code Type</label>
+                <input type="radio" id="acode" value="abarcode" name="barcode" onclick="javascript:showCodeType()" checked><label>Any</label><br>
+                <input type="radio" id="mcode" value="mbarcode" name="barcode" onclick="javascript:showCodeType()"><label>Define Code Type</label><br> 
             </div>
 			
 			
 			
-            <div id="anybarcode">
+            <div id="anybarcode" style="display:none">
                 <select name="codeType">
                     <option value="interleaved"/><label>2/5 Interleaved</label><br>
                     <option value="code39"/><label>Code 39</label>
@@ -65,19 +62,14 @@
                     <option value="UCPVersionB"><label>UCP Version B</label>
                 </select>
             </div>
-			<br>
-			<br>
 			<hr>
 			
 			<label class="fHeading1">ROI</label>
 			<div id="regionOfInterest">
 				
 				<div id="roiSelection">
-					<input type="radio" id="wholeWindow" value="full" name="searchType" onclick="javascript:showWindowConfig()" checked/>
-					<label for="wholeWindow">Whole Window</label>
-					
-					<input type="radio" id="defineWindow" value="set" name="searchType" onclick="javascript:showWindowConfig()"/>
-					<label for="defineWindow">Define Window</label>
+					<input type="radio" id="wholeWindow" value="full" name="searchType" onclick="javascript:showWindowConfig()" checked><label>Whole Window</label><br>
+					<input type="radio" id="defineWindow" value="set" name="searchType" onclick="javascript:showWindowConfig()"><label>Define Window</label><br>
 				</div>
 				
 				<div id="windowBoundary">
@@ -99,7 +91,8 @@
 				</table>
 				</div>
             </div>
-
+			
+			
 			<hr>
 			
         </div>

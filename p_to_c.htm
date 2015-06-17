@@ -22,6 +22,10 @@
                 <input id="mainPage" onClick="location.href='index.htm'" type="button" value="Main Page" class="button">
             </div>  
 			
+			<p class="fHeading1">Result</p>
+             <div id="resultDetail">
+                <textarea id="resultDisplay" rows="6" cols="15" readonly></textarea>
+            </div>
 			
 			<div id="objectMeasureTools" class="functionTab">
 				<p class="fHeading1">Object Measurement Tools</p>
@@ -53,17 +57,13 @@
 			
         </div>
        <div id="imageArea">
-	   <!-- can be remove -->
             <div id="mainTitle">Distance Measurement: Point to Circle</div>
-			<!-- till here -->
-            <div id="selectionArea"></div>
 			
 			<img id="imgSnapshot"></img>
 			
-			
-			<!-- <canvas id="canvas" width="752" height="480"> -->
 			<canvas id="canvas" style="z-index: 1; position:absolute; left:0px; top:27px;" width="752" height="480">
-			
+			Your browser does not support HTML5 Canvas. Please use latest version.
+			</canvas>
 			
 			
             <!-- <img id="imgSnapshot"></img> -->
@@ -71,8 +71,7 @@
 	   
         <div id="leftmenu"> 
           
-			<input type="checkbox" id="cbCircleSetting" onClick="javascript:clickCheckedBoxes(this)"
-			>Circle Settings</input>
+			<label class="fHeading1">Circle Settings</label>
 			<div id="circleDetail" class="functionTab">
                 <form>
 					
@@ -145,14 +144,10 @@
 					<input type="radio" id="clightToDark" value="lightToDark" name="barcode" checked><label>Light To Dark</label><br>
 					<input type="radio" id="cdarkToLight" value="darkToLight" name="barcode"><label>Dark To Light</label><br> 
 				
-					
-
-					
 				</div>
 				<hr>
 				
-				<input type="checkbox" id="cbRectSetting" onClick="javascript:clickCheckedBoxes(this)"
-					>Rectangle Settings</input>
+				<label class="fHeading1">Rectangle Settings</label>
 				<div id="rectDetail"class="functionTab">
 				<table>
 					
@@ -205,8 +200,7 @@
 				
 			<hr>
 			
-			<input type="checkbox" id="cbTolSetting" onClick="javascript:clickCheckedBoxes(this)"
-			>Tolerance</input>
+			<label class="fHeading1">Tolerance</label>
 			<div id="tolDetail" class="functionTab">
 			
 			<table class="toleranceTable">
@@ -224,16 +218,6 @@
 			
 			<hr>
 			
-			<!-- can be remove if doesn't require -->
-			<input type="checkbox" id="cbResultSetting" onClick="javascript:clickCheckedBoxes(this)"
-			checked>Result</input>
-             <div id="resultDetail">
-                <textarea id="textArea">
-                </textarea>
-               
-            </div>
-			
-			<!-- till here -->
 			
 			
 			

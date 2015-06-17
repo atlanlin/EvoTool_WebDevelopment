@@ -200,6 +200,10 @@
 		canvas.onmouseup = myUp;
 		//canvas.ondblclick = myDblClick;
 		canvas.onmousemove = myMove;
+		
+		canvas.addEventListener("touchstart", myDown);
+		canvas.addEventListener("touchend", myUp);
+		canvas.addEventListener("touchmove", myMove);
 			  
 		// set up the selection handle boxes
 		for (var i = 0; i < 8; i ++) {
@@ -495,12 +499,22 @@
 					boxes2[0].draw(ctx);
 				} else if (rectFlag==true && rectRoiFlag==false) {
 					boxes2[1].draw(ctx);
+					//create text boxes2[1] is for character, boxes2[0] is for roi
+					ctx.font="20px Georgia";
+					ctx.fillStyle = 'black';
+					ctx.fillText("C",boxes2[1].x+boxes2[1].w-20,boxes2[1].y+20);
 				} else {
 					boxes2[i].draw(ctx); // we used to call drawshape, but now each box draws itself
+					//create text boxes2[1] is for character, boxes2[0] is for roi
+					ctx.font="20px Georgia";
+					ctx.fillStyle = 'black';
+					ctx.fillText("C",boxes2[1].x+boxes2[1].w-20,boxes2[1].y+20);
 				}
 			}
 			
 			// add stuff you want drawn on top all the time here
+			
+			
 			
 			// added by weiling
 			var charXPos = boxes2[1].x;
@@ -527,6 +541,7 @@
 
 	// happens when the mouse is moving inside the canvas
 	function myMove(e) {
+		e.preventDefault();
 		if (isDrag) {
 			getMouse(e);
 		
@@ -697,13 +712,44 @@
 
 	// happens when the mouse is clicked in the canvas
 	function myDown(e) {
+		e.preventDefault();
 		getMouse(e);
-	  
-		//we are over a selection box
-		if (expectResize !== -1) {
+		
+		if (mySel !== null && !isResizeDrag) {
+			for (var i = 0; i < 8; i++) {
+			  // 0  1  2
+			  // 3     4
+			  // 5  6  7
+			  
+			  var cur = selectionHandles[i];
+			  
+			  // we dont need to use the ghost context because
+			  // selection handles will always be rectangles
+			  //changes made by yelling
+			  if (mx >= cur.x && mx <= cur.x + mySelBoxSize*3 &&
+				  my >= cur.y && my <= cur.y + mySelBoxSize*3) {
+				// we found one!
+				expectResize = i;
+				isResizeDrag = true;
+				invalidate();
+				return;
+			  }
+			  
+			}
+		  /*
+		  //we are over a selection box
+		  if (expectResize !== -1) {
 			isResizeDrag = true;
 			return;
-		}
+		  }
+		  */
+		  
+			// not over a selection box, return to normal
+			isResizeDrag = false;
+			expectResize = -1;
+			this.style.cursor='auto';
+		  }
+	  
 	  
 		clear(gctx);
 		var l = boxes2.length;
