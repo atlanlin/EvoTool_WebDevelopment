@@ -15,7 +15,7 @@
 	var WIDTH;
 	var HEIGHT;
 	var HEIGHT;
-	var INTERVAL = 1;	// how often, in milliseconds, we check to see if a redraw is needed
+	var INTERVAL = 20;	// how often, in milliseconds, we check to see if a redraw is needed
 
 	var isDrag = false;
 	var isResizeDrag = false;
