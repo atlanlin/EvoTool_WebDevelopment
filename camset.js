@@ -424,6 +424,9 @@ function clickedImgBtn(clickedImageId){
 		case "ptcImgBtn":
 			location.href = 'p_to_c.htm';
 		break;
+		case "ctcImgBtn":
+			location.href = 'c_to_c.htm';
+		break;
 		default:
 			
 		break;

@@ -449,7 +449,7 @@ var circle = new Circle(new Point(50, 50), 50);
 var innerCircle = new Circle(new Point(50, 50), 25);
 
 
-var circle2 = new Circle(new Point(200, 200), 50);
+var circle2 = new Circle(new Point(50, 200), 50);
 var innerCircle2 = new Circle(new Point(100, 50), 25);
 
 var deltaCenter = null;
