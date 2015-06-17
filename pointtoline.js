@@ -236,6 +236,10 @@ function init2() {
   //canvas.ondblclick = myDblClick;
   canvas.onmousemove = myMove;
   
+  canvas.addEventListener("touchstart", myDown);
+  canvas.addEventListener("touchend", myUp);
+  canvas.addEventListener("touchmove", myMove);
+  
   // set up the selection handle boxes
   for (var i = 0; i < 8; i ++) {
     var rect = new Box2;
@@ -474,6 +478,16 @@ function mainDraw() {
     }
     
     // Add stuff you want drawn on top all the time here
+	
+	
+	
+	//create text boxes2[1] is for line, boxes2[0] is for point
+	ctx.font="20px Georgia";
+	ctx.fillStyle = 'black';
+	ctx.fillText("P",boxes2[0].x+boxes2[0].w-20,boxes2[0].y+20);
+	ctx.fillText("L",boxes2[1].x+boxes2[1].w-20,boxes2[1].y+20);
+	
+	
 	//var point1={x:10, y:20};
 	//var point2={x:200, y:80};
 	//arrow(ctx, point1, point2, 10);
@@ -510,6 +524,7 @@ function mainDraw() {
 		plx2 = boxes2[0].x + boxes2[0].w/2;
 		ply2 = boxes2[0].y + boxes2[0].h;
 	}
+	
 	// create a new line object
     var pointLine=new Line(plx1,ply1,plx2,ply2);
     // draw the line
@@ -539,6 +554,7 @@ function mainDraw() {
 
 // Happens when the mouse is moving inside the canvas
 function myMove(e){
+	e.preventDefault();
   if (isDrag) {
     getMouse(e);
     
@@ -622,8 +638,8 @@ function myMove(e){
       // we dont need to use the ghost context because
       // selection handles will always be rectangles
 	  //changes made by yelling
-      if (mx >= cur.x && mx <= cur.x + mySelBoxSize*3/2 &&
-          my >= cur.y && my <= cur.y + mySelBoxSize*3/2) {
+      if (mx >= cur.x && mx <= cur.x + mySelBoxSize*3 &&
+          my >= cur.y && my <= cur.y + mySelBoxSize*3) {
         // we found one!
         expectResize = i;
         invalidate();
@@ -668,12 +684,42 @@ function myMove(e){
 
 // Happens when the mouse is clicked in the canvas
 function myDown(e){
+	e.preventDefault();
   getMouse(e);
   
+  if (mySel !== null && !isResizeDrag) {
+    for (var i = 0; i < 8; i++) {
+      // 0  1  2
+      // 3     4
+      // 5  6  7
+      
+      var cur = selectionHandles[i];
+      
+      // we dont need to use the ghost context because
+      // selection handles will always be rectangles
+	  //changes made by yelling
+      if (mx >= cur.x && mx <= cur.x + mySelBoxSize*3 &&
+          my >= cur.y && my <= cur.y + mySelBoxSize*3) {
+        // we found one!
+        expectResize = i;
+		isResizeDrag = true;
+        invalidate();
+        return;
+      }
+      
+    }
+  /*
   //we are over a selection box
   if (expectResize !== -1) {
     isResizeDrag = true;
     return;
+  }
+  */
+  
+    // not over a selection box, return to normal
+    isResizeDrag = false;
+    expectResize = -1;
+    this.style.cursor='auto';
   }
   
   clear(gctx);
