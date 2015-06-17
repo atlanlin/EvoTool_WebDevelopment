@@ -103,8 +103,8 @@
 			<div id="regionOfInterest">
                 
 				<div id="roiSelection">
-					<input type="radio" id="wholeWindow" value="full" name="searchType" checked><label>Whole Window</label><br>
-					<input type="radio" id="defineWindow" value="set" name="searchType"><label>Define Window</label><br>
+					<input type="radio" value="full" name="searchType" onchange="javascript:showWindowConfig(this.value)" checked><label>Whole Window</label><br>
+					<input type="radio" value="set" name="searchType" onchange="javascript:showWindowConfig(this.value)"><label>Define Window</label><br>
 				</div>
 				
 				<div id="windowBoundary">

@@ -46,8 +46,8 @@
 		
 			<label class="fHeading1">Code Type</label>
             <div id="codeSelection">  
-                <input type="radio" id="acode" value="abarcode" name="barcode" onclick="javascript:showCodeType()" checked><label>Any</label><br>
-                <input type="radio" id="mcode" value="mbarcode" name="barcode" onclick="javascript:showCodeType()"><label>Define Code Type</label><br> 
+                <input type="radio" value="abarcode" name="barcode" onchange="javascript:showCodeType(this.value)" checked><label>Any</label><br>
+                <input type="radio" value="mbarcode" name="barcode" onchange="javascript:showCodeType(this.value)"><label>Define Code Type</label><br> 
             </div>
 			
             <div id="anybarcode" style="display:none">
@@ -67,8 +67,8 @@
 			<div id="regionOfInterest">
 				
 				<div id="roiSelection">
-					<input type="radio" id="wholeWindow" value="full" name="searchType" onclick="javascript:showWindowConfig()" checked><label>Whole Window</label><br>
-					<input type="radio" id="defineWindow" value="set" name="searchType" onclick="javascript:showWindowConfig()"><label>Define Window</label><br>
+					<input type="radio" value="full" name="searchType" onchange="javascript:showWindowConfig(this.value)" checked><label>Whole Window</label><br>
+					<input type="radio" value="set" name="searchType" onchange="javascript:showWindowConfig(this.value)"><label>Define Window</label><br>
 				</div>
 				
 				<div id="windowBoundary">

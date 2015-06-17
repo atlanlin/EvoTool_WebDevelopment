@@ -371,27 +371,21 @@ function showSelectedAreaCircle(){
 		);
 }
 
- function showCodeType(){
-            if(document.getElementById("acode").checked){
+function showCodeType(radioVal){
+            if(radioVal === "abarcode" ){
                 document.getElementById("anybarcode").style.display="none";
-            }
-            if(document.getElementById("mcode").checked){
+            }else{
                 document.getElementById("anybarcode").style.display="block";
             }
-
 }
 
 /* edited */
-function showWindowConfig(){
-            if(document.getElementById("wholeWindow").checked){
+function showWindowConfig(radioVal){
+            if(radioVal === "full"){
                 document.getElementById("windowBoundary").style.display="none";
-            }
-            if(document.getElementById("defineWindow").checked){
+            }else{
                 document.getElementById("windowBoundary").style.display="block";
             }
-			
-			
-
 }
 
 function showCharWindowConfig(){
