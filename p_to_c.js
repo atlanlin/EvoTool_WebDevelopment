@@ -84,8 +84,7 @@ function startDragging(e) {
 
     var p = new Point(mouseX(e), mouseY(e));
 		
-	if(clicked == false)
-	{
+	
 		
 		if(withinCircle(p)){
 			
@@ -95,7 +94,7 @@ function startDragging(e) {
 			
 			
 		}
-	}
+	
 	
 	
 }
@@ -112,8 +111,7 @@ function drag(e) {
 	else
 		this.style.cursor='auto';
 
-	if(clicked == false)
-	{
+	
 	
 	// make sure it doesn't go out of frame
 		if(deltaCenter != null) {
@@ -140,7 +138,7 @@ function drag(e) {
 			
 			drawCircle(circle, innerCircle);
 		}
-	}
+	
 
 }
 
@@ -179,6 +177,7 @@ function t_Move(e){
 			}
 			
 		drawCircle(circle, innerCircle);
+		mainDraw();
 		}
 }
 
@@ -191,7 +190,7 @@ function findMin(x, y) {
 // mouse up & mouse out
 function stopDragging(e) {
     deltaCenter = null;
-	clicked = false;
+	
 }
 
 function withinCircle(pt) {
@@ -253,6 +252,7 @@ function drawCircle(circle, innerCircle) {
 	document.querySelector('#circlevolume').value = Math.round(circle.radius);
 	document.querySelector('#innercirclevolume').value = Math.round(innerCircle.radius);
 	
+	
 	//updateCircleEvo();
 	//updateRectEvo();
 
@@ -272,6 +272,7 @@ function outputUpdate(size) {
 			}
 			
 	drawCircle(circle, innerCircle);
+	mainDraw();
 
 }
 function outputInnerUpdate(size){
@@ -287,7 +288,7 @@ function outputInnerUpdate(size){
 			}
 			
 	drawCircle(circle, innerCircle);
-
+	mainDraw();
 }
 
 function updateCircleEvo()
@@ -359,18 +360,7 @@ var smallCircle = new Circle(new Point(100, 50), 10);
 
 var deltaCenter = null;
 
-var clicked=false;
-
-var closeEnough = 10;
-
-var lastClickX = 0;
-
 // canvas frame settings
-// offset of frame
-var additionalFrameLeft = 288;
-
-var additionalFrameTop = 168;
-
 // imginary frame
 var startFrameX = 5;
 
@@ -386,7 +376,6 @@ var maxRadius = 200;
 
 var minRadius = 20;
 
-var mouseSensitivity = 100;
 
 
 //rect code
@@ -1078,8 +1067,8 @@ var ctx;
 var WIDTH;
 var HEIGHT;
 var INTERVAL = 1;  // how often, in milliseconds, we check to see if a redraw is needed
-var UPDATERECTINTERVAL = 2000;
-var UPDATECIRCLEINTERVAL = 4000;
+var UPDATERECTINTERVAL = 1000;
+var UPDATECIRCLEINTERVAL = 3000;
 
 var isDrag = false;
 var isResizeDrag = false;

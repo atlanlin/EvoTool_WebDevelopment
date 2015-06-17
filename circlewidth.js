@@ -56,11 +56,6 @@ function startDragging(e) {
 
     var p = new Point(mouseX(e), mouseY(e));
 	
-		
-	if(clicked == false)
-	{
-		
-		
 		if(withinCircle(p)) {
 			
 			//mouse pointer on the center
@@ -68,7 +63,7 @@ function startDragging(e) {
 			
 			
 		}
-	}
+	
 	
 	
 }
@@ -157,7 +152,7 @@ function findMin(x, y) {
 // mouse up & mouse out
 function stopDragging(e) {
     deltaCenter = null;
-	clicked = false;
+	
 }
 
 function withinCircle(pt) {
