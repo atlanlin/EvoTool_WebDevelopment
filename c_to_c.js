@@ -459,9 +459,9 @@ var deltaCenter2 = null;
 
 
 // imginary frame
-var startFrameX = 5;
+var startFrameX = 1;
 
-var startFrameY = 5;
+var startFrameY = 1;
 
 var endFrameX = 747;
 

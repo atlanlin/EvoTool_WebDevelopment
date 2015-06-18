@@ -372,9 +372,9 @@ var deltaCenter = null;
 
 // canvas frame settings
 // imginary frame
-var startFrameX = 5;
+var startFrameX = 1;
 
-var startFrameY = 5;
+var startFrameY = 1;
 
 var endFrameX = 747;
 
@@ -804,12 +804,7 @@ function mainDraw() {
 	//updateCircleEvo();
 	//updateRectEvo();
 	
-	if(isDrag)
-		document.getElementById("resultDisplay").value="moving";
-	else if(isResizeDrag)
-		document.getElementById("resultDisplay").value="resize";
-	else
-		document.getElementById("resultDisplay").value="";
+	
 	
   }
 }
