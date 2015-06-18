@@ -49,6 +49,12 @@ function showSquareDetails()
 
 function initCircle() {
 	
+	//image 1024 by 768
+	mulCenterX = 1.35667;
+	mulCenterY = 1.6;
+	mulOuterRadius = 1.5;
+	
+	
     drawCircle(circle, innerCircle);
 	
 	
@@ -306,8 +312,13 @@ function updateCircleEvo()
 
 		var centerX = $("#xvalue").val();
 		var centerY = $("#yvalue").val();
+		var calCenterX = centerX * mulCenterX;
+		var calCenterY = centerY * mulCenterY;
+		
 		var innerRadius = $("#innervalue").val();
 		var outerRadius = $("#outervalue").val();
+		var calOuterRadius = outerRadius * mulOuterRadius;
+		
 		var startvalue = $("#startvalue").val();
 		var anglevalue = $("#anglevalue").val();
 		
@@ -316,11 +327,11 @@ function updateCircleEvo()
 		var negative = $("#minus").val();
 		
 		
-		ajaxGet("info.htm?cmd=%23021%3BEVO Distance%3B1%3BCirclePos.Center.X%3B"+ centerX +"%23");
-		ajaxGet("info.htm?cmd=%23021%3BEVO Distance%3B1%3BCirclePos.Center.Y%3B"+ centerY +"%23");
+		ajaxGet("info.htm?cmd=%23021%3BEVO Distance%3B1%3BCirclePos.Center.X%3B"+ calCenterX +"%23");
+		ajaxGet("info.htm?cmd=%23021%3BEVO Distance%3B1%3BCirclePos.Center.Y%3B"+ calCenterY +"%23");
 		
 		ajaxGet("info.htm?cmd=%23021%3BEVO Distance%3B1%3BCirclePos.InnerRadius%3B"+ innerRadius +"%23");
-		ajaxGet("info.htm?cmd=%23021%3BEVO Distance%3B1%3BCirclePos.OuterRadius%3B"+ outerRadius +"%23");
+		ajaxGet("info.htm?cmd=%23021%3BEVO Distance%3B1%3BCirclePos.OuterRadius%3B"+ calOuterRadius +"%23");
 		ajaxGet("info.htm?cmd=%23021%3BEVO Distance%3B1%3BCirclePos.StartAngle%3B"+ startvalue +"%23");
 		ajaxGet("info.htm?cmd=%23021%3BEVO Distance%3B1%3BCirclePos.LengthAngle%3B"+ anglevalue +"%23");
 		
@@ -338,17 +349,22 @@ function updateRectEvo()
 		var startY = $("#tbStartY").val();
 		var endY = $("#tbEndY").val();
 		var width = $("#tbWidth").val();
+		
+		var calStartX = startX * mulStartX;
+		var calStartY = startY * mulStartY;
+		var calEndX = endX * mulEndX;
+		var calEndY = endY * mulEndY;
 				
 		
 		var nominalValue = $("#nv").val();
 		var positive = $("#plus").val();
 		var negative = $("#minus").val();
 		
-		ajaxGet("info.htm?cmd=%23021%3BEVO Distance%3B1%3BRecPos.PointStart.X%3B"+ startX +"%23");
-		ajaxGet("info.htm?cmd=%23021%3BEVO Distance%3B1%3BRecPos.PointEnd.X%3B"+ endX +"%23");
+		ajaxGet("info.htm?cmd=%23021%3BEVO Distance%3B1%3BRecPos.PointStart.X%3B"+ calStartX +"%23");
+		ajaxGet("info.htm?cmd=%23021%3BEVO Distance%3B1%3BRecPos.PointEnd.X%3B"+ calEndX +"%23");
 		
-		ajaxGet("info.htm?cmd=%23021%3BEVO Distance%3B1%3BRecPos.PointStart.Y%3B"+ startY +"%23");
-		ajaxGet("info.htm?cmd=%23021%3BEVO Distance%3B1%3BRecPos.PointEnd.Y%3B"+ endY +"%23");
+		ajaxGet("info.htm?cmd=%23021%3BEVO Distance%3B1%3BRecPos.PointStart.Y%3B"+ calStartY +"%23");
+		ajaxGet("info.htm?cmd=%23021%3BEVO Distance%3B1%3BRecPos.PointEnd.Y%3B"+ calEndY +"%23");
 		ajaxGet("info.htm?cmd=%23021%3BEVO Distance%3B1%3BRecPos.Width%3B"+ width +"%23");
 		
 		
@@ -386,7 +402,11 @@ var maxRadius = 200;
 
 var minRadius = 20;
 
+var mulCenterX;
 
+var mulCenterY;
+
+var mulOuterRadius;
 
 //rect code
 {
@@ -557,6 +577,9 @@ function addRect(x, y, w, h, fill) {
 function initSquare() {
   canvas = document.getElementById('canvas');
   
+  setScaleSize(1, 0)
+
+  
   HEIGHT = canvas.height;
   
   WIDTH = canvas.width;
@@ -632,16 +655,24 @@ function initSquare() {
 	$("#dbArrow").change(function(){
 		if($("#dbArrow").val() == "vertical"){
 			arrowDirFlag = "vertical";
+			setScaleSize(0, 0);
+			
 		}else{
 			arrowDirFlag = "horizontal";
+			setScaleSize(1, 0);
+			
 		}
 	});
 	
 	$("#cbArrowHor").change(function() {
 		if(this.checked) {
 			arrowDirFlag = "horizontal";
+			setScaleSize(1, 0);
+			
 		}else{
 			arrowDirFlag = "vertical";
+			setScaleSize(0, 0);
+			
 		}
 		//updateCircleEvo();
 		//updateRectEvo();
@@ -1050,6 +1081,36 @@ function getMouse(e) {
       my = e.pageY - offsetY
 }
 
+//horizontal == 0 means vertical, choice 0, 1, 2..
+function setScaleSize(horizontal, resolutionChoice)
+{
+
+	//image 1024 by 768
+	if(resolutionChoice == 0)
+	{
+		if(horizontal == 1)
+		{
+			mulStartX = 1.3648;
+			mulStartY = 1.668;
+			mulEndX = 1.303;
+			mulEndY = 1.668;
+			
+		
+		}else if(horizontal == 0)
+		{
+			mulStartX = 1.346;
+			mulStartY = 1.6;
+			mulEndX = 1.346;
+			mulEndY = 1.6;
+		
+		
+		}
+	
+	
+	
+	}
+}
+
 // If you dont want to use <body onLoad='init()'>
 // You could uncomment this init() reference and place the script reference inside the body tag
 //init();
@@ -1110,5 +1171,13 @@ var stylePaddingLeft, stylePaddingTop, styleBorderLeft, styleBorderTop;
 //flag for rectangle opacity
 var rectFlag = true;
 var arrowDirFlag = "horizontal";
+
+var mulStartX;
+
+var mulStartY;
+
+var mulEndX;
+
+var mulEndY;
 }
 }

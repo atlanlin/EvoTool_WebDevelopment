@@ -6,6 +6,10 @@ window.onload = function() {
 }
 
 function initCircle() {
+	//image 1024 by 768
+	mulCenterX = 1.35667;
+	mulCenterY = 1.6;
+	mulOuterRadius = 1.5;
 	
     drawCircle(circle, innerCircle);
 	
@@ -262,8 +266,11 @@ function updateCircleEvo()
 {
 		var centerX = $("#xvalue").val();
 		var centerY = $("#yvalue").val();
+		var calCenterX = centerX * mulCenterX;
+		var calCenterY = centerY * mulCenterY;
 		var innerRadius = $("#innervalue").val();
 		var outerRadius = $("#outervalue").val();
+		var calOuterRadius = outerRadius * mulOuterRadius;
 		var startvalue = $("#startvalue").val();
 		var anglevalue = $("#anglevalue").val();
 		
@@ -274,11 +281,11 @@ function updateCircleEvo()
             alert("dark checked");
         }*/
 		
-		ajaxGet("info.htm?cmd=%23021%3BEVO Circle%3B1%3BCirclePos.Center.X%3B"+ centerX +"%23");
-		ajaxGet("info.htm?cmd=%23021%3BEVO Circle%3B1%3BCirclePos.Center.Y%3B"+ centerY +"%23");
+		ajaxGet("info.htm?cmd=%23021%3BEVO Circle%3B1%3BCirclePos.Center.X%3B"+ calCenterX +"%23");
+		ajaxGet("info.htm?cmd=%23021%3BEVO Circle%3B1%3BCirclePos.Center.Y%3B"+ calCenterY +"%23");
 		
 		ajaxGet("info.htm?cmd=%23021%3BEVO Circle%3B1%3BCirclePos.InnerRadius%3B"+ innerRadius +"%23");
-		ajaxGet("info.htm?cmd=%23021%3BEVO Circle%3B1%3BCirclePos.OuterRadius%3B"+ outerRadius +"%23");
+		ajaxGet("info.htm?cmd=%23021%3BEVO Circle%3B1%3BCirclePos.OuterRadius%3B"+ calOuterRadius +"%23");
 		ajaxGet("info.htm?cmd=%23021%3BEVO Circle%3B1%3BCirclePos.StartAngle%3B"+ startvalue +"%23");
 		ajaxGet("info.htm?cmd=%23021%3BEVO Circle%3B1%3BCirclePos.LengthAngle%3B"+ anglevalue +"%23");
 
@@ -309,4 +316,10 @@ var maxRadius = 200;
 var minRadius = 20;
 
 var UPDATECIRCLEINTERVAL = 2000;
+
+var mulCenterX;
+
+var mulCenterY;
+
+var mulOuterRadius;
 
