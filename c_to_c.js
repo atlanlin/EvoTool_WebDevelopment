@@ -119,7 +119,7 @@ function drag(e) {
 		
 			circle2.point.x = (mouseX(e) - deltaCenter2.x);
 			circle2.point.y = (mouseY(e) - deltaCenter2.y); 
-			var radius = circle.radius;
+			var radius = circle2.radius;
 			if(circle2.point.x - radius < startFrameX)
 			{
 				circle2.point.x = radius;
@@ -180,7 +180,7 @@ function t_Move(e){
 			circle2.point.x = e.targetTouches[0].clientX - rect.left;
 			circle2.point.y = e.targetTouches[0].clientY - rect.top;
 	
-			var radius = circle.radius;
+			var radius = circle2.radius;
 			if(circle2.point.x - radius < startFrameX)
 			{
 				circle2.point.x = radius;
