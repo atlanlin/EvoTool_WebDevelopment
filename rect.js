@@ -15,7 +15,8 @@
 	var WIDTH;
 	var HEIGHT;
 	var HEIGHT;
-	var INTERVAL = 20;	// how often, in milliseconds, we check to see if a redraw is needed
+	var INTERVAL = 35;	// how often, in milliseconds, we check to see if a redraw is needed
+	var OPTIONINTERVAL = 20;
 
 	var isDrag = false;
 	var isResizeDrag = false;
@@ -165,6 +166,7 @@
 	// initialize our canvas, add a ghost canvas, set draw loop
 	// then add everything we want to initially exist on the canvas
 	function init2() {
+	
 		canvas = document.getElementById('canvas2');
 		HEIGHT = canvas.height;
 		WIDTH = canvas.width;
@@ -188,7 +190,7 @@
 	  
 		// make mainDraw() fire every INTERVAL milliseconds
 		setInterval(mainDraw, INTERVAL);
-		setInterval(evoComm, INTERVAL);
+		setInterval(evoComm, OPTIONINTERVAL);
 
 		// set our events
 		// up and down are for dragging
@@ -221,10 +223,10 @@
 		}
 		
 		function showCodeType(){
-			if(document.getElementById("acode").checked){
+			if(document.getElementById("abarcode").checked){
 				document.getElementById("anybarcode").style.display="none";
 			}
-			if(document.getElementById("mcode").checked){
+			if(document.getElementById("mbarcode").checked){
 				document.getElementById("anybarcode").style.display="block";
 			}
 
@@ -250,11 +252,10 @@
 	
 	// consists of code type
 	function codeType() {
-		if(document.getElementById("acode").checked){
+		if(document.getElementById("abarcode").checked){
 			ajaxGet('any.htm?cmd=%23021%3BEVO%20BarCode%3B2%3BBarCodetype%3B0%23');
 		}
-					
-		if(document.getElementById("mcode").checked){
+		if(document.getElementById("mbarcode").checked){
 			if(document.getElementById("industrial").selected){
 				ajaxGet('any.htm?cmd=%23021%3BEVO%20BarCode%3B2%3BBarCodetype%3B1%23');
 			}
@@ -278,7 +279,7 @@
 			}
 			if(document.getElementById("pharmaCode").selected){
 				ajaxGet('any.htm?cmd=%23021%3BEVO%20BarCode%3B2%3BBarCodetype%3B8%23');
-			}		
+			}
 		}
 	}
 	
