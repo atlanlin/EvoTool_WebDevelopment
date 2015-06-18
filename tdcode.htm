@@ -10,7 +10,7 @@
     <script src="evt.js"></script>
     <script src="camset.js"></script>
 	<script src="jqueryui.js"></script>
-	<script src="rect.js"></script>
+	<script src="tdcode.js"></script>
 </head>
 <body onload="init2()">
     <img id="logo" src="vclogo.png" alt="vclogo"> 
@@ -45,9 +45,9 @@
 			
 			<label class="fHeading1">Scan Type</label>
             <div id="codeSelection">
-                <input type="radio" value="dmc" name="datacode" checked><label>DMC Code</label><br>
-                <input type="radio" value="qr" name="datacode"><label>QR Code</label><br>
-				<input type="radio" value="microqr" name="datacode"><label>Micro QR Code</label><br> 
+                <input type="radio" id="dmc" value="dmc" name="datacode" checked><label>DMC Code</label><br>
+                <input type="radio" id="qr" value="qr" name="datacode"><label>QR Code</label><br>
+				<input type="radio" id="microqr" value="microqr" name="datacode"><label>Micro QR Code</label><br> 
             </div>
 			
 			<hr>
@@ -56,8 +56,8 @@
 			<div id="regionOfInterest">
 				
 				<div id="roiSelection">
-					<input type="radio" value="full" name="searchType" onchange="javascript:showWindowConfig(this.value)" checked><label>Whole Window</label><br>
-					<input type="radio" value="set" name="searchType" onchange="javascript:showWindowConfig(this.value)"><label>Define Window</label><br>
+					<input type="radio" id="wholeWindow" value="full" name="searchType" onchange="javascript:showWindowConfig(this.value)" checked><label>Whole Window</label><br>
+					<input type="radio" id="defineWindow" value="set" name="searchType" onchange="javascript:showWindowConfig(this.value)"><label>Define Window</label><br>
 				</div>
 				
 				<div id="windowBoundary">

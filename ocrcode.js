@@ -191,7 +191,7 @@
 	  
 		// make mainDraw() fire every INTERVAL milliseconds
 		setInterval(mainDraw, INTERVAL);
-		//setInterval(evoComm, INTERVAL);
+		setInterval(evoComm, INTERVAL);
 
 		// set our events
 		// up and down are for dragging
@@ -291,6 +291,7 @@
 			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B2%3BfontNum%3B11%23');
 		}
 		if (document.getElementById("document09AZ").selected) {
+		
 			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B2%3BfontNum%3B12%23');
 		}
 		if (document.getElementById("documentAZP").selected) {
@@ -312,7 +313,7 @@
 			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B2%3BfontNum%3B19%23');
 		}
 		if (document.getElementById("pharma09P").selected) {
-			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B2%3BfontNum%3B19%23');
+			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B2%3BfontNum%3B18%23');
 		}
 		if (document.getElementById("micr").selected) {
 			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B2%3BfontNum%3B20%23');
