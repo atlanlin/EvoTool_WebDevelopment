@@ -23,10 +23,15 @@ function initCircle() {
 	setInterval(updateCircleEvo, UPDATECIRCLEINTERVAL);
 	setInterval(updateCircle2Evo, UPDATECIRCLE2INTERVAL);
 	
-	$("#set").click(function(){
+	
+	$("#btnMeasure").click(function(){
 		
-		updateCircleEvo();
-		
+			ajaxGet("cfg.ini", getValueFrominiFile);
+			
+			var result = $("#resultDisplay").val();
+			
+			setCookie("n",result,1);
+			
 		}
 	);
 		

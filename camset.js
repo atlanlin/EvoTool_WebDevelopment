@@ -69,11 +69,11 @@ function init(){
 		
 		ajaxGet("info.htm?cmd=%23002%23");
 		
-		myInterval = setInterval(function(){
+		//myInterval = setInterval(function(){
 		
-		ajaxGet("cfg.ini", getValueFrominiFile);
+		//ajaxGet("cfg.ini", getValueFrominiFile);
 		
-		},100);
+		//},100);
 		
 		intervalUpdateStart();
 		

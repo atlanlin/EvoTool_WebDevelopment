@@ -62,6 +62,17 @@ function initCircle() {
 	
 	element.addEventListener('touchmove', t_Move);
 	
+	$("#btnMeasure").click(function(){
+		
+			ajaxGet("cfg.ini", getValueFrominiFile);
+			
+			var result = $("#resultDisplay").val();
+			
+			setCookie("n",result,1);
+			
+		}
+	);
+	
 }
 
 var Point = function (x, y) {

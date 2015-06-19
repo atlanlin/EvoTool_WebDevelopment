@@ -11,6 +11,7 @@ function initCircle() {
 	
     drawCircle(circle, innerCircle);
 	
+	  
 	
     element = document.getElementById('canvas');
     element.addEventListener('mousedown', startDragging, false);
@@ -25,13 +26,18 @@ function initCircle() {
 
 	setInterval(updateCircleEvo, UPDATECIRCLEINTERVAL);
 	
-	$("#set").click(function(){
+	
+	$("#btnMeasure").click(function(){
 		
-		updateCircleEvo();
-		
+			ajaxGet("cfg.ini", getValueFrominiFile);
+			
+			var result = $("#resultDisplay").val();
+			
+			setCookie("n",result,1);
+			
 		}
 	);
-		
+	
 	
 }
 
@@ -319,7 +325,7 @@ function setPageScaleSize(resolutionChoice)
 	
 }
 
-var resolution = 0;
+var resolution = 1;
 
 
 var element;
