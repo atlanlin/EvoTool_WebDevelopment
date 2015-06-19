@@ -1,5 +1,4 @@
-// center x plus radius to fin arc --> )
-// 
+// screen on load 
 window.onload = function() {
 	initSquare();
 	initCircle();
@@ -49,10 +48,7 @@ function showSquareDetails()
 
 function initCircle() {
 	
-	//image 1024 by 768
-	mulCenterX = 1.35667;
-	mulCenterY = 1.6;
-	mulOuterRadius = 1.5;
+	setPageScaleSize(resolution);
 	
 	
     drawCircle(circle, innerCircle);
@@ -90,18 +86,13 @@ function startDragging(e) {
 
     var p = new Point(mouseX(e), mouseY(e));
 		
-	
-		
+
 		if(withinCircle(p)){
-			
-			
+
 			//mouse pointer on the center
 			deltaCenter = new Point(p.x - circle.point.x, p.y - circle.point.y);
-			
-			
+
 		}
-	
-	
 	
 }
 
@@ -117,7 +108,6 @@ function drag(e) {
 	else
 		this.style.cursor='auto';
 
-	
 	
 	// make sure it doesn't go out of frame
 		if(deltaCenter != null) {
@@ -230,7 +220,6 @@ function drawCircle(circle, innerCircle) {
     var ctx = canvas.getContext('2d');
 	
 	
-	
 	ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx.beginPath();
     ctx.arc(circle.point.x, circle.point.y, circle.radius, 0, Math.PI*2, false);
@@ -254,10 +243,7 @@ function drawCircle(circle, innerCircle) {
 	ctx.stroke();
 	ctx.closePath();
 	
-	
-	
-	
-	
+	//update values to the page
 	$("#xvalue").val(Math.round(circle.point.x));
 	$("#yvalue").val(Math.round(circle.point.y));
 	$("#startvalue").val(0);
@@ -307,6 +293,7 @@ function outputInnerUpdate(size){
 	mainDraw();
 }
 
+//update circle values to evo3
 function updateCircleEvo()
 {
 
@@ -341,6 +328,7 @@ function updateCircleEvo()
 		
 }
 
+//update rect values to evo3
 function updateRectEvo()
 {
 
@@ -577,7 +565,7 @@ function addRect(x, y, w, h, fill) {
 function initSquare() {
   canvas = document.getElementById('canvas');
   
-  setScaleSize(1, 0)
+  setScaleSize(1, resolution)
 
   
   HEIGHT = canvas.height;
@@ -1081,34 +1069,105 @@ function getMouse(e) {
       my = e.pageY - offsetY
 }
 
-//horizontal == 0 means vertical, choice 0, 1, 2..
+//set rect scale to map evo3
+//horizontal == 0 means vertical, choice 0 (640 by 480), 1 (1024 by 768), 2(2592 by 1944)..
 function setScaleSize(horizontal, resolutionChoice)
 {
-
-	//image 1024 by 768
-	if(resolutionChoice == 0)
+	
+	if(resolutionChoice == 0) // image 640 by 480
 	{
 		if(horizontal == 1)
+		{
+			mulStartX = 0.831;
+			mulStartY = 1;
+			mulEndX = 0.871;
+			mulEndY = 1;
+			mulWidth = 1;
+		
+		}
+		else if(horizontal == 0) 
+		{
+			mulStartX = 0.859;
+			mulStartY = 1;
+			mulEndX = 0.859;
+			mulEndY = 1;
+			mulWidth = 0.81;
+			
+		} 
+	} 
+	else if(resolutionChoice == 1) //image 1024 by 768
+	{
+		if(horizontal == 1) 
 		{
 			mulStartX = 1.3648;
 			mulStartY = 1.668;
 			mulEndX = 1.303;
 			mulEndY = 1.668;
+			mulWidth = 1;
 			
-		
-		}else if(horizontal == 0)
+		} 
+		else if(horizontal == 0)
 		{
 			mulStartX = 1.346;
 			mulStartY = 1.6;
 			mulEndX = 1.346;
 			mulEndY = 1.6;
-		
+			mulWidth = 1;
 		
 		}
+		
+	}
+	else if(resolutionChoice == 2) // image 2592 by 1944
+	{
+		if(horizontal == 1)
+		{
+			mulStartX = 3.451;
+			mulStartY = 4.069;
+			mulEndX = 3.432;
+			mulEndY = 4.069;
+			mulWidth = 3.992;
+		
+		}
+		else if(horizontal == 0) 
+		{
+			mulStartX = 3.449;
+			mulStartY = 3.919;
+			mulEndX = 3.449;
+			mulEndY = 4.051;
+			mulWidth = 3.305;
+			
+		} 
+	}
 	
+}
+
+//set circle scale to map evo3
+//choice 0 (640 by 480), 1 (1024 by 768), 2(2592 by 1944)..
+function setPageScaleSize(resolutionChoice)
+{
 	
+	if(resolutionChoice == 0) // image 640 by 480
+	{
+		mulCenterX = 0.854;
+		mulCenterY = 1;
+		mulOuterRadius = 0.9;
 	
 	}
+	else if(resolutionChoice == 1) //image 1024 by 768
+	{
+		mulCenterX = 1.35667;
+		mulCenterY = 1.6;
+		mulOuterRadius = 1.5;
+	
+	}
+	else if(resolutionChoice == 2) // image 2592 by 1944
+	{
+		mulCenterX = 3.445;
+		mulCenterY = 4.09;
+		mulOuterRadius = 5;
+	
+	}
+	
 }
 
 // If you dont want to use <body onLoad='init()'>
@@ -1179,5 +1238,10 @@ var mulStartY;
 var mulEndX;
 
 var mulEndY;
+
+var mulWidth;
+
+// this is the resolution choice where choice 0 (640 by 480), 1 (1024 by 768), 2 (2592 by 1944)..
+var resolution = 0;
 }
 }

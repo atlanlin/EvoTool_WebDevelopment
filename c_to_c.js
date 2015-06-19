@@ -1,5 +1,4 @@
-// center x plus radius to fin arc --> )
-// 
+// screen on load 
 window.onload = function() {
 	initCircle();
 	
@@ -7,10 +6,7 @@ window.onload = function() {
 
 function initCircle() {
 	
-	//image 1024 by 768
-	mulCenterX = 1.35667;
-	mulCenterY = 1.6;
-	mulOuterRadius = 1.5;
+	setPageScaleSize(resolution);
 	
     drawCircle(circle, innerCircle);
 	
@@ -21,8 +17,6 @@ function initCircle() {
     element.addEventListener('mouseup', stopDragging, false);
     element.addEventListener('mouseout', stopDragging, false);
 	
-	
-	//element.addEventListener('touchdown', touchScreenMove, false);
 	
 	element.addEventListener('touchmove', t_Move);
 
@@ -94,7 +88,6 @@ function drag(e) {
 		this.style.cursor='auto';
 
 		
-		
 	// make sure it doesn't go out of frame
 		if(deltaCenter != null) {
 		
@@ -118,8 +111,6 @@ function drag(e) {
 				circle.point.y = endFrameY - radius; 
 			}
 			
-			
-			
 		}else if(deltaCenter2 != null) {
 		
 			circle2.point.x = (mouseX(e) - deltaCenter2.x);
@@ -141,7 +132,6 @@ function drag(e) {
 			{
 				circle2.point.y = endFrameY - radius; 
 			}
-			
 			
 		}
 	drawCircle(circle, innerCircle);
@@ -425,11 +415,10 @@ function updateCircleEvo()
 		ajaxGet("info.htm?cmd=%23021%3BEVO Distance%3B1%3BCirclePos.OuterRadius%3B"+ calOuterRadius +"%23");
 		ajaxGet("info.htm?cmd=%23021%3BEVO Distance%3B1%3BCirclePos.StartAngle%3B"+ startvalue +"%23");
 		ajaxGet("info.htm?cmd=%23021%3BEVO Distance%3B1%3BCirclePos.LengthAngle%3B"+ anglevalue +"%23");
-		
-		
 
 }
 
+//update circle values to evo3
 function updateCircle2Evo()
 {
 		var centerX = $("#xvalue2").val();
@@ -460,7 +449,38 @@ function updateCircle2Evo()
 
 }
 
-    
+//set circle scale to map evo3
+//choice 0 (640 by 480), 1 (1024 by 768), 2(2592 by 1944)..
+function setPageScaleSize(resolutionChoice)
+{
+	
+	if(resolutionChoice == 0) // image 640 by 480
+	{
+		mulCenterX = 0.854;
+		mulCenterY = 1;
+		mulOuterRadius = 0.9;
+	
+	}
+	else if(resolutionChoice == 1) //image 1024 by 768
+	{
+		mulCenterX = 1.35667;
+		mulCenterY = 1.6;
+		mulOuterRadius = 1.5;
+	
+	}
+	else if(resolutionChoice == 2) // image 2592 by 1944
+	{
+		mulCenterX = 3.445;
+		mulCenterY = 4.09;
+		mulOuterRadius = 5;
+	
+	}
+	
+}
+
+// this is the resolution choice where choice 0 (640 by 480), 1 (1024 by 768), 2 (2592 by 1944)..
+var resolution = 0;   
+
 var element;
 var circle = new Circle(new Point(50, 50), 50);
 var innerCircle = new Circle(new Point(50, 50), 25);
