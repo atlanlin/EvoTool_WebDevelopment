@@ -421,6 +421,9 @@ function clickedImgBtn(clickedImageId){
 		case "ctcImgBtn":
 			location.href = 'c_to_c.htm';
 		break;
+		case "ctlImgBtn":
+			location.href = 'l_to_c.htm';
+		break;
 		default:
 			
 		break;
