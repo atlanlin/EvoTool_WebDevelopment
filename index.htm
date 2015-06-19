@@ -4,8 +4,11 @@
     <meta charset="UTF-8">
     <title>VizCam Web</title>
     <link rel="stylesheet" type="text/css" href="index.css">
+	<script src="jquery.js"></script>
+	<script src="evt.js"></script>
+	<script src="index.js"></script>
 </head>
-<body>
+<body onload="init2()">
     <img id="logo" src="logo.jpg" alt="companylogo">
     <table class="functionPanel">
         <tr>
@@ -14,9 +17,9 @@
             <td><img src="ocr.jpg" class="functionLogo" alt="function logo"></td>
         </tr>
         <tr>
-            <td><input type="button" id="barcode" onClick="location.href='bcode.htm'" class="functionButton" value="Barcode"></td>
-            <td><input type="button" id ="_2dbarcode" onClick="location.href='tdcode.htm'" class="functionButton" value="2D Code"></td>
-            <td><input type="button" id="ocrcode" onClick="location.href='ocrcode.htm'" class="functionButton" value="OCR"></td>
+			<td><input type="button" id="barcode" onClick="location.href='bcode.htm'" class="functionButton" value="Barcode"></td>
+			<td><input type="button" id ="_2dbarcode" onClick="location.href='tdcode.htm'" class="functionButton" value="2D Code"></td>
+			<td><input type="button" id="ocrcode" onClick="location.href='ocrcode.htm'" class="functionButton" value="OCR"></td>
         </tr>
         <tr>
             <td><img src="measurement.jpg" id="" class="functionLogo" alt="function logo"></td>
