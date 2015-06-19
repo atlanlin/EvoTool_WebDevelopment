@@ -228,6 +228,7 @@ function init2() {
   
   // make mainDraw() fire every INTERVAL milliseconds
   setInterval(mainDraw, INTERVAL);
+  //setInterval(evoComm, INTERVAL);
   
   // set our events. Up and down are for dragging,
   // double click is for making new boxes
@@ -362,7 +363,51 @@ function init2() {
   
   // add a smaller purple rectangle
   //addRect(45, 60, 25, 25, 'rgba(150,150,250,0.7)');	
+}
+
+// consists of EVO communication commands
+function evoComm() {
+	pointSettings();
+	lineSettings();
+	toleranceSettings();
+}	// end evoComm
+
+function pointSettings() {
+	if (document.getElementById("pointDOL").checked) {
+			ajaxGet('any.htm?cmd=%23021%3BEVO%20Distance%3B2%3BTransition_1%3B0%23');
+	}	
 	
+	if (document.getElementById("pointLOD").checked) {
+			ajaxGet('any.htm?cmd=%23021%3BEVO%20Distance%3B2%3BTransition_1%3B1%23');
+	}
+	
+	ajaxGet("info.htm?cmd=%23021%3BEVO%20Distance%3B1%3BRecPos.PointStart.X%3B"+ pointStartX +"%23");
+	ajaxGet("info.htm?cmd=%23021%3BEVO%20Distance%3B1%3BRecPos.PointEnd.X%3B"+ pointEndX +"%23");
+	ajaxGet("info.htm?cmd=%23021%3BEVO%20Distance%3B1%3BRecPos.PointStart.Y%3B"+ pointStartY +"%23");
+	ajaxGet("info.htm?cmd=%23021%3BEVO%20Distance%3B1%3BRecPos.PointEnd.Y%3B"+ pointEndY +"%23");
+	ajaxGet("info.htm?cmd=%23021%3BEVO%20Distance%3B1%3BRecPos.Width%3B"+ pointWidth +"%23");
+}
+
+function lineSettings() {
+	if (document.getElementById("lineDOL").checked) {
+			ajaxGet('any.htm?cmd=%23021%3BEVO%20Distance%3B2%3BTransition_2%3B0%23');
+	}
+	
+	if (document.getElementById("lineLOD").checked) {
+			ajaxGet('any.htm?cmd=%23021%3BEVO%20Distance%3B2%3BTransition_2%3B1%23');
+	}
+	
+	ajaxGet("info.htm?cmd=%23021%3BEVO%20Distance%3B1%3BRecPos2.PointStart.X%3B"+ lineStartX +"%23");
+	ajaxGet("info.htm?cmd=%23021%3BEVO%20Distance%3B1%3BRecPos2.PointEnd.X%3B"+ lineEndX +"%23");
+	ajaxGet("info.htm?cmd=%23021%3BEVO%20Distance%3B1%3BRecPos2.PointStart.Y%3B"+ lineStartY +"%23");
+	ajaxGet("info.htm?cmd=%23021%3BEVO%20Distance%3B1%3BRecPos2.PointEnd.Y%3B"+ lineEndY +"%23");
+	ajaxGet("info.htm?cmd=%23021%3BEVO%20Distance%3B1%3BRecPos2.Width%3B"+ lineWidth +"%23");
+}
+
+function toleranceSettings() {
+	ajaxGet("info.htm?cmd=%23021%3BEVO%20Distance%3B1%3BResult[0].Evaluation.NominalValue%3B"+ nominalValue +"%23");
+	ajaxGet("info.htm?cmd=%23021%3BEVO%20Distance%3B1%3BResult[0].Evaluation.PlusTolerance%3B"+ positive +"%23");
+	ajaxGet("info.htm?cmd=%23021%3BEVO%20Distance%3B1%3BResult[0].Evaluation.MinusTolerance%3B"+ negative +"%23");
 }
 
 function Line(x1,y1,x2,y2){

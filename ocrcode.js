@@ -291,7 +291,6 @@
 			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B2%3BfontNum%3B11%23');
 		}
 		if (document.getElementById("document09AZ").selected) {
-		
 			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B2%3BfontNum%3B12%23');
 		}
 		if (document.getElementById("documentAZP").selected) {
