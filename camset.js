@@ -8,7 +8,7 @@ var STEP_SIZE_GAIN = 1;
 var STEP_SIZE_SHUTTER = 1;
 var cam = 1;
 var myInterval;
-
+var queryString;
 
 /*make sure we are in the right mode*/
 //ajaxGet("info.htm?cmd=%23021%3Bchoice%3B1%3BConstantValue%3B2%23");
@@ -21,6 +21,25 @@ $(document).ready(function(){
 
 /* bind events to button elements initialize the sliders... */
 function init(){
+	
+	queryString = new Array();
+    
+    if (queryString.length == 0) {
+        if (window.location.search.split('?').length > 1) {
+            var params = window.location.search.split('?')[1].split('&');
+            for (var i = 0; i < params.length; i++) {
+                var key = params[i].split('=')[0];
+                var value = decodeURIComponent(params[i].split('=')[1]);
+                queryString[key] = value;
+            }
+        }
+    }
+    if (queryString["tool"] != null && queryString["toolNo"] != null) {
+        alert(queryString["tool"] + " " + queryString["toolNo"]);
+    }
+    
+	
+	
 	
  	$("input[name='searchType']").change(function(){
 		if($("input[name='searchType']:radio:checked").val()=="full"){
@@ -410,7 +429,7 @@ function clickedImgBtn(clickedImageId){
 			location.href = 'circlewidth.htm';
 		break;
 		case "widthImgBtn":
-			location.href = 'measurement.html';
+			location.href = 'width.html';
 		break;
 		case "ptpImgBtn":
 			location.href = 'p_to_p.html';

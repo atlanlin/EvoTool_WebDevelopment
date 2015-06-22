@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=0.7">
+    <title>Barcode Reader</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+	
+	<style>
+		#toolSelectionForm{
+			background-color:#81A594;
+			width: 800px;
+			margin-left: auto;
+			margin-right: auto;
+		}
+		input[type="radio"]{
+			margin-left: 40px;
+		}
+		#btnGo{
+			margin-left: 150px;
+			width: 100px;
+			background-color: #0099FF;
+			margin-top: 20px;
+		}
+		
+	</style>
+	
+</head>
+
+<body>
+	<img id="logo" src="vclogo.png" alt="vclogo"> 
+	<div id="toolSelectionForm"> 
+		
+		<fieldset>
+		<legend>Select tool to change Parameters:</legend>
+		
+		<label>Select Measure Tool</label><br>
+			<input type="radio" name="selectedTool" value="circle" checked>EVO Circle</input><br>
+			<input type="radio" name="selectedTool" value="width">EVO Width</input><br>
+			<input type="radio" name="selectedTool" value="ptp">EVO Distance (Point To Point)</input><br>
+			<input type="radio" name="selectedTool" value="ptl">EVO Distance (Point To Line)</input><br>
+			<input type="radio" name="selectedTool" value="ptc">EVO Distance (Point To Circle)</input><br>
+			<input type="radio" name="selectedTool" value="ctl">EVO Distance (Circle To Line)</input><br>
+			<input type="radio" name="selectedTool" value="ctc">EVO Distance (Circle To Circle)</input><br>
+		<br>
+		<label>Select Tool Number</label>
+		<select id="selectedNumber">
+		  <option value="1">Tool 1</option>
+		  <option value="2">Tool 2</option>
+		</select><br>
+		<input type="button" id="btnGo" value="GO"/>
+		</fieldset>
+		
+		
+		<fieldset>
+		
+		<label><b>Results<b></label><br>
+		<textarea id="showResults" cols="40" rows="12" ></textarea><br>
+		<input type="button" id="btnClear" value="Clear"/>
+		<input type="button" onClick="location.href='index.htm'" value="Main Menu"/>
+		
+		</fieldset>
+	</div>
+	
+	<script>
+		document.getElementById("btnClear").addEventListener("click", function(){
+			document.getElementById("showResults").value = "";
+		});
+		
+		document.getElementById("btnGo").addEventListener("click", function(){
+			
+			var tool = getValueByName("selectedTool");
+			var toolNo = document.getElementById("selectedNumber").value;
+			var requestedPage;
+			switch(tool){
+				case "circle":
+					requestedPage="circlewidth.htm?";
+					break;
+				case "width":
+					requestedPage="width.html?";
+					break;
+				case "ptp":
+					requestedPage="p_to_p.html?";
+					break;
+				case "ptl":
+					requestedPage="p_to_l.html?";
+					break;
+				case "ptc":
+					requestedPage="p_to_c.htm?";
+					break;
+				case "ctl":
+					requestedPage="l_to_c.htm?";
+					break;
+				case "ctc":
+					requestedPage="c_to_c.htm?";
+					break;
+				default:
+					requestedPage="";
+			}
+			
+			
+			var queryString = requestedPage + "tool=" + tool + "&toolNo=" + toolNo;
+			window.location.href = queryString;
+		});
+		
+		function getValueByName(elementName){
+			var radioGroup = document.getElementsByName(elementName);
+			for (var i=0; i<radioGroup.length; i++)  {
+			   if (radioGroup[i].checked)  {
+					return radioGroup[i].value;
+			   }
+			}
+			return null;
+		}	
+		
+	</script>
+	
+</body>
+</html>
