@@ -35,7 +35,8 @@ function init(){
         }
     }
     if (queryString["tool"] != null && queryString["toolNo"] != null) {
-        alert(queryString["tool"] + " " + queryString["toolNo"]);
+        //added temporarily
+		document.getElementById("resultDisplay").value=queryString["tool"] + " " + queryString["toolNo"];
     }
     
 	

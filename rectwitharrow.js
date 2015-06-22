@@ -431,12 +431,7 @@ function mainDraw() {
 	
 	
 	displayTexts("tbStartX", "tbStartY", "tbEndX", "tbEndY", "tbWidth", boxes2[0]);
-	if(isDrag)
-		document.getElementById("resultDisplay").value="moving";
-	else if(isResizeDrag)
-		document.getElementById("resultDisplay").value="resize";
-	else
-		document.getElementById("resultDisplay").value="";
+	
   }
 }
 
