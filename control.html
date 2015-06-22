@@ -5,7 +5,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=0.7">
     <title>Barcode Reader</title>
     <link rel="stylesheet" type="text/css" href="style.css">
-	
+	<script src="evt.js"></script>
+    <script src="camset.js"></script>
 	<style>
 		#toolSelectionForm{
 			background-color:#81A594;
@@ -111,8 +112,13 @@
 			   }
 			}
 			return null;
-		}	
+		}
 		
+		//disable all functions - enter function names here to disable
+		var functionNames = ["EVO Width", "EVO Distance"];
+		for(var i=0; i < functionNames.length; i++){
+			ajaxGet("info.htm?cmd=%23021%3B" + functionNames[i] +"%3B2%3BGeneral.Enabled%3B0%23");
+		}
 	</script>
 	
 </body>
