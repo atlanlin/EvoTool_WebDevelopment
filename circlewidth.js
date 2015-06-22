@@ -28,7 +28,15 @@ function initCircle() {
 	
 	
 	$("#btnMeasure").click(function(){
-		
+	
+			if(getCookie("resolution") == null)
+			{
+				setCookie("resolution","1",1);
+			}
+			
+			resolution = parseInt(getCookie("resolution"));
+			
+			ajaxGet("info.htm?cmd=%23021%3BEVO Circle%3B2%3BGeneral.Enabled%3B1%23");
 			ajaxGet("cfg.ini", getValueFrominiFile);
 			
 			

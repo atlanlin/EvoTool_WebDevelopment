@@ -63,7 +63,16 @@ function initCircle() {
 	element.addEventListener('touchmove', t_Move);
 	
 	$("#btnMeasure").click(function(){
-		
+	
+			if(getCookie("resolution") == null)
+			{
+				setCookie("resolution","1",1);
+			}
+			
+			resolution = parseInt(getCookie("resolution"));
+			
+			ajaxGet("info.htm?cmd=%23021%3BEVO Distance%3B2%3BGeneral.Enabled%3B1%23");
+			ajaxGet("info.htm?cmd=%23021%3BEVO Distance%3B2%3BOptionForType%3B3%23");
 			ajaxGet("cfg.ini", getValueFrominiFile);
 			
 			//var result = $("#resultDisplay").val();
@@ -1253,6 +1262,6 @@ var mulEndY;
 var mulWidth;
 
 // this is the resolution choice where choice 0 (640 by 480), 1 (1024 by 768), 2 (2592 by 1944)..
-var resolution = 0;
+var resolution = 1;
 }
 }
