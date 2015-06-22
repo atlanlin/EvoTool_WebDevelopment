@@ -51,12 +51,12 @@ var stylePaddingLeft, stylePaddingTop, styleBorderLeft, styleBorderTop;
 
 //flag for rectangle opacity
 //var rectFlag = true;
-var pointArrowDirFlag = "horizontal";
-var pointFlag = false;
+var point1ArrowDirFlag = "horizontal";
+var point1Flag = false;
 
 //flag for rectange 2 opacity
-var lineArrowDirFlag = "horizontal";
-var lineFlag = false;
+var point2ArrowDirFlag = "horizontal";
+var point2Flag = false;
 
 // Box object to hold data
 function Box2() {
@@ -80,28 +80,28 @@ Box2.prototype = {
 }
 
 function pointDisplayTexts(){
-	document.getElementById('pointStartX').value=boxes2[0].x;
-	document.getElementById('pointEndX').value=boxes2[0].x+boxes2[0].w;
-	document.getElementById('pointStartY').value=boxes2[0].y;
-	document.getElementById('pointEndY').value=boxes2[0].y+boxes2[0].h;
-	if(pointArrowDirFlag == "horizontal")
-		document.getElementById('pointWidth').value=boxes2[0].h;
+	document.getElementById('point1StartX').value=boxes2[0].x;
+	document.getElementById('point1EndX').value=boxes2[0].x+boxes2[0].w;
+	document.getElementById('point1StartY').value=boxes2[0].y;
+	document.getElementById('point1EndY').value=boxes2[0].y+boxes2[0].h;
+	if(point1ArrowDirFlag == "horizontal")
+		document.getElementById('point1Width').value=boxes2[0].h;
 	else
-		document.getElementById('pointWidth').value=boxes2[0].w;
+		document.getElementById('point1Width').value=boxes2[0].w;
 }
 
 function lineDisplayTexts(){
-	document.getElementById('lineStartX').value=boxes2[1].x;
-	document.getElementById('lineEndX').value=boxes2[1].x+boxes2[1].w;
-	document.getElementById('lineStartY').value=boxes2[1].y;
-	document.getElementById('lineEndY').value=boxes2[1].y+boxes2[1].h;
-	if(lineArrowDirFlag == "horizontal")
-		document.getElementById('lineWidth').value=boxes2[1].h;
+	document.getElementById('point2StartX').value=boxes2[1].x;
+	document.getElementById('point2EndX').value=boxes2[1].x+boxes2[1].w;
+	document.getElementById('point2StartY').value=boxes2[1].y;
+	document.getElementById('point2EndY').value=boxes2[1].y+boxes2[1].h;
+	if(point2ArrowDirFlag == "horizontal")
+		document.getElementById('point2Width').value=boxes2[1].h;
 	else
-		document.getElementById('lineWidth').value=boxes2[1].w;
+		document.getElementById('point2Width').value=boxes2[1].w;
 }
 
-function showProbeSettings(){
+/* function showProbeSettings(){
 	
 	document.getElementById("pointProbeSettings").style.display="none";
 	document.getElementById("lineProbeSettings").style.display="none";
@@ -112,7 +112,7 @@ function showProbeSettings(){
 	if(document.getElementById("lineProbe").checked){
 		document.getElementById("lineProbeSettings").style.display="block";
 	}
-}
+} */
 
 // New methods on the Box class
 Box2.prototype = {
@@ -263,21 +263,32 @@ function init2() {
 	}); */
 	
 	
-	$("#cbPointHor").change(function() {
+	$("#cbPoint1Hor").change(function() {
 		if(this.checked) {
-			pointArrowDirFlag = "horizontal";
+			point1ArrowDirFlag = "horizontal";
 		}else{
-			pointArrowDirFlag = "vertical";
+			point1ArrowDirFlag = "vertical";
 		}
 	});
 	
-	$("#cbLineHor").change(function() {
+	$("#cbPoint2Hor").change(function() {
 		if(this.checked) {
-			lineArrowDirFlag = "horizontal";
+			point2ArrowDirFlag = "horizontal";
 		}else{
-			lineArrowDirFlag = "vertical";
+			point2ArrowDirFlag = "vertical";
 		}
 	});
+	
+	$("#btnMeasure").click(function(){
+		
+			ajaxGet("cfg.ini", getValueFrominiFile);
+			
+			var result = $("#resultDisplay").val();
+			
+			setCookie("n",result,1);
+			
+		}
+	);
 	
 	//$("#pointProbeSettings").css("display", "none");
 	//$("#lineProbeSettings").css("display", "none");
@@ -286,26 +297,26 @@ function init2() {
 			if($("input[name='probeType']:checkbox:checked").val()=="lineProbe"){
 				$("#pointProbeSettings").show();
 				$("#lineProbeSettings").show();
-				pointFlag = true;
-				lineFlag = true;
+				point1Flag = true;
+				point2Flag = true;
 			} else {
 				$("#pointProbeSettings").show();
 				$("#lineProbeSettings").hide();
-				pointFlag = true;
-				lineFlag = false;
+				point1Flag = true;
+				point2Flag = false;
 			}
 		}
 		else if($("input[name='probeType']:checkbox:checked").val()=="lineProbe"){
 			if($("input[name='probeType']:checkbox:checked").val()=="pointProbe"){
 				$("#pointProbeSettings").show();
 				$("#lineProbeSettings").show();
-				pointFlag = true;
-				lineFlag = true;
+				point1Flag = true;
+				point2Flag = true;
 			} else {
 				$("#pointProbeSettings").hide();
 				$("#lineProbeSettings").show();
-				pointFlag = false;
-				lineFlag = true;
+				point1Flag = false;
+				point2Flag = true;
 			}
 		}
 	}); */
@@ -315,25 +326,25 @@ function init2() {
 		if(($("input[name='probeType']:checkbox:checked").val()=="pointProbe") && ($("input[name='probeType']:checkbox:checked").val()=="lineProbe")){
 			$("#pointProbeSettings").show();
 			$("#lineProbeSettings").show();
-			pointFlag = true;
-			lineFlag = true;
+			point1Flag = true;
+			point2Flag = true;
 		}
 		else if($("input[name='probeType']:checkbox:checked").val()=="pointProbe"){
 			$("#pointProbeSettings").show();
 			$("#lineProbeSettings").hide();
-			pointFlag = true;
-			lineFlag = false;
+			point1Flag = true;
+			point2Flag = false;
 		} else if($("input[name='probeType']:checkbox:checked").val()=="lineProbe"){
 			$("#pointProbeSettings").hide();
 			$("#lineProbeSettings").show();
-			pointFlag = false;
-			lineFlag = true;
+			point1Flag = false;
+			point2Flag = true;
 		}
 		else{
 			$("#pointProbeSettings").show();
 			$("#lineProbeSettings").show();
-			pointFlag = true;
-			lineFlag = true;
+			point1Flag = true;
+			point2Flag = true;
 		}
 	}); */
 	
@@ -342,13 +353,13 @@ function init2() {
 			if($("input[name='probeType']:checkbox:checked").val()=="lineProbe"){
 				$("#pointProbeSettings").show();
 				$("#lineProbeSettings").show();
-				pointFlag = true;
-				lineFlag = true;
+				point1Flag = true;
+				point2Flag = true;
 			} else {
 				$("#pointProbeSettings").show();
 				$("#lineProbeSettings").hide();
-				pointFlag = true;
-				lineFlag = false;
+				point1Flag = true;
+				point2Flag = false;
 			}
 		}
 	}); */
@@ -367,41 +378,42 @@ function init2() {
 
 // consists of EVO communication commands
 function evoComm() {
-	pointSettings();
-	lineSettings();
+	point1Settings();
+	point2Settings();
 	toleranceSettings();
 }	// end evoComm
 
-function pointSettings() {
-	if (document.getElementById("pointDOL").checked) {
+function point1Settings() {
+	if (document.getElementById("point1DOL").checked) {
 			ajaxGet('any.htm?cmd=%23021%3BEVO%20Distance%3B2%3BTransition_1%3B0%23');
 	}	
 	
-	if (document.getElementById("pointLOD").checked) {
+	if (document.getElementById("point1LOD").checked) {
 			ajaxGet('any.htm?cmd=%23021%3BEVO%20Distance%3B2%3BTransition_1%3B1%23');
 	}
 	
-	ajaxGet("info.htm?cmd=%23021%3BEVO%20Distance%3B1%3BRecPos.PointStart.X%3B"+ pointStartX +"%23");
-	ajaxGet("info.htm?cmd=%23021%3BEVO%20Distance%3B1%3BRecPos.PointEnd.X%3B"+ pointEndX +"%23");
-	ajaxGet("info.htm?cmd=%23021%3BEVO%20Distance%3B1%3BRecPos.PointStart.Y%3B"+ pointStartY +"%23");
-	ajaxGet("info.htm?cmd=%23021%3BEVO%20Distance%3B1%3BRecPos.PointEnd.Y%3B"+ pointEndY +"%23");
-	ajaxGet("info.htm?cmd=%23021%3BEVO%20Distance%3B1%3BRecPos.Width%3B"+ pointWidth +"%23");
+	ajaxGet("info.htm?cmd=%23021%3BEVO%20Distance%3B1%3BRecPos.PointStart.X%3B"+ point1StartX +"%23");
+	ajaxGet("info.htm?cmd=%23021%3BEVO%20Distance%3B1%3BRecPos.PointStart.X%3B"+ point1StartX +"%23");
+	ajaxGet("info.htm?cmd=%23021%3BEVO%20Distance%3B1%3BRecPos.PointEnd.X%3B"+ point1EndX +"%23");
+	ajaxGet("info.htm?cmd=%23021%3BEVO%20Distance%3B1%3BRecPos.PointStart.Y%3B"+ point1StartY +"%23");
+	ajaxGet("info.htm?cmd=%23021%3BEVO%20Distance%3B1%3BRecPos.PointEnd.Y%3B"+ point1EndY +"%23");
+	ajaxGet("info.htm?cmd=%23021%3BEVO%20Distance%3B1%3BRecPos.Width%3B"+ point1Width +"%23");
 }
 
-function lineSettings() {
-	if (document.getElementById("lineDOL").checked) {
+function point2Settings() {
+	if (document.getElementById("point2DOL").checked) {
 			ajaxGet('any.htm?cmd=%23021%3BEVO%20Distance%3B2%3BTransition_2%3B0%23');
 	}
 	
-	if (document.getElementById("lineLOD").checked) {
+	if (document.getElementById("point2LOD").checked) {
 			ajaxGet('any.htm?cmd=%23021%3BEVO%20Distance%3B2%3BTransition_2%3B1%23');
 	}
 	
-	ajaxGet("info.htm?cmd=%23021%3BEVO%20Distance%3B1%3BRecPos2.PointStart.X%3B"+ lineStartX +"%23");
-	ajaxGet("info.htm?cmd=%23021%3BEVO%20Distance%3B1%3BRecPos2.PointEnd.X%3B"+ lineEndX +"%23");
-	ajaxGet("info.htm?cmd=%23021%3BEVO%20Distance%3B1%3BRecPos2.PointStart.Y%3B"+ lineStartY +"%23");
-	ajaxGet("info.htm?cmd=%23021%3BEVO%20Distance%3B1%3BRecPos2.PointEnd.Y%3B"+ lineEndY +"%23");
-	ajaxGet("info.htm?cmd=%23021%3BEVO%20Distance%3B1%3BRecPos2.Width%3B"+ lineWidth +"%23");
+	ajaxGet("info.htm?cmd=%23021%3BEVO%20Distance%3B1%3BRecPos2.PointStart.X%3B"+ point2StartX +"%23");
+	ajaxGet("info.htm?cmd=%23021%3BEVO%20Distance%3B1%3BRecPos2.PointEnd.X%3B"+ point2EndX +"%23");
+	ajaxGet("info.htm?cmd=%23021%3BEVO%20Distance%3B1%3BRecPos2.PointStart.Y%3B"+ point2StartY +"%23");
+	ajaxGet("info.htm?cmd=%23021%3BEVO%20Distance%3B1%3BRecPos2.PointEnd.Y%3B"+ point2EndY +"%23");
+	ajaxGet("info.htm?cmd=%23021%3BEVO%20Distance%3B1%3BRecPos2.Width%3B"+ point2Width +"%23");
 }
 
 function toleranceSettings() {
@@ -529,8 +541,8 @@ function mainDraw() {
 	//create text boxes2[1] is for line, boxes2[0] is for point
 	ctx.font="20px Georgia";
 	ctx.fillStyle = 'black';
-	ctx.fillText("P",boxes2[0].x+boxes2[0].w-20,boxes2[0].y+20);
-	ctx.fillText("L",boxes2[1].x+boxes2[1].w-20,boxes2[1].y+20);
+	ctx.fillText("P1",boxes2[0].x+boxes2[0].w-20,boxes2[0].y+20);
+	ctx.fillText("P2",boxes2[1].x+boxes2[1].w-20,boxes2[1].y+20);
 	
 	
 	//var point1={x:10, y:20};
@@ -539,7 +551,7 @@ function mainDraw() {
     //canvasValid = true;
 	
 	var lx1, ly1, lx2, ly2;
-	if(lineArrowDirFlag == "horizontal"){
+	if(point2ArrowDirFlag == "horizontal"){
 		lx1 = boxes2[1].x;
 		ly1 = boxes2[1].y + boxes2[1].h/2;
 		lx2 = boxes2[1].x + boxes2[1].w;
@@ -558,7 +570,7 @@ function mainDraw() {
 	lineDisplayTexts();
 	
 	var plx1, ply1, plx2, ply2;
-	if(pointArrowDirFlag == "horizontal"){
+	if(point1ArrowDirFlag == "horizontal"){
 		plx1 = boxes2[0].x;
 		ply1 = boxes2[0].y + boxes2[0].h/2;
 		plx2 = boxes2[0].x + boxes2[0].w;
@@ -582,10 +594,10 @@ function mainDraw() {
 	
 /* 	// modified by weiling
 	for (var i = 0; i < l; i++) {
-		if(lineFlag==false) {
+		if(point2Flag==false) {
 			boxes2[0].draw(ctx);
 			pointLine.drawWithArrowheads(ctx);
-		}else if(pointFlag==false) {
+		}else if(point1Flag==false) {
 			boxes2[1].draw(ctx);
 			line.drawWithArrowheads(ctx);
 		}else{

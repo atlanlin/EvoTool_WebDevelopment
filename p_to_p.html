@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Point to Line</title>
+    <link rel="stylesheet" type="text/css" href="jqueryui.css">
+	<link rel="stylesheet" type="text/css" href="style.css">
+    <script src="jquery.js"></script> 
+    <script src="evt.js"></script>
+    <script src="jqueryui.js"></script>
+    <script src="camset.js"></script>
+	<script src="p_to_p.js"></script>
+    
+</head>
+<body onload="init2()">
+    <img id="logo" src="vclogo.png" alt="vclogo"> 
+    <div class="functionPanel">
+		<div id="rightRegion">
+			<div>
+				<input id="btnStart" type="button" value="Monitor" class="button">
+				<input id="btnStop" type="button" value="Stop" class="button">
+				<input id="home" onClick="location.href='index.htm'" type="button" value="Main Page" class="button">
+			</div>
+			
+			<p class="fHeading1">Result</p>
+             <div id="resultDetail">
+                <textarea id="resultDisplay" rows="6" cols="15" readonly></textarea>
+				<input id="btnMeasure" type="button" value="Get Result" class="button">
+            </div>
+			
+			
+			<div id="objectMeasureTools" class="functionTab">
+				<p class="fHeading1">Object Measurement Tools</p>
+				
+				<img id="circleImgBtn" class="imageButton" src="circleImgBtn.jpg" 
+					onclick="clickedImgBtn(this.id)"></img>
+				<img id="widthImgBtn" class="imageButton" src="widthImgBtn.jpg" 
+					onclick="clickedImgBtn(this.id)"></img>
+				
+			</div>
+			
+			<div id="distanceMeasureTools" class="functionTab">
+				<p class="fHeading1">Distance Measurement Tools</p>
+				
+				<img id="ptpImgBtn" class="imageButton" src="ptpImgBtn.jpg" 
+					onclick="clickedImgBtn(this.id)"></img>
+				<img id="ptlImgBtn" class="imageButton" src="ptlImgBtn.jpg" 
+					onclick="clickedImgBtn(this.id)"></img>
+				<img id="ptcImgBtn" class="imageButton" src="ptcImgBtn.jpg" 
+					onclick="clickedImgBtn(this.id)"></img>
+				<img id="ctlImgBtn" class="imageButton" src="ctlImgBtn.jpg" 
+					onclick="clickedImgBtn(this.id)"></img>
+				<img id="ctcImgBtn" class="imageButton" src="ctcImgBtn.jpg" 
+					onclick="clickedImgBtn(this.id)"></img>
+				
+			</div>
+				
+		</div>
+        <div id="imageArea">
+			<div id="mainTitle">Point to Point Measurement</div>
+			<img id="imgSnapshot"></img>
+			<canvas id="canvas2" style="z-index: 1; position:absolute; left:0px; top:27px;" width="752" height="480">
+			Your browser does not support HTML5 Canvas. Please use latest version.
+			</canvas>
+		 </div>
+		 
+		 <div id="leftmenu">
+			
+			<label class="fHeading1">Point 1 Settings</label>
+			<div id="pointDetail" class="functionTab">
+				
+				<table>
+					<tr>
+						<td>
+							<p class="fHeading2">Horizontal Arrow</p>
+						</td>
+						<td>
+							<input type="checkbox" id="cbPoint1Hor" checked>
+						</td>
+					</tr>
+					
+					<tr>
+						<td>
+							<p class="fHeading2">Edge Detection</p>
+						</td>
+						<td>
+							<input type="radio" id="point1DOL" value="darkOnLight1" name="point1EdgeType" checked><label>Dark on Light</label><br>
+							<input type="radio" id="point1LOD" value="lightOnDark1" name="point1EdgeType"><label>Light on Dark</label>
+						</td>
+					</tr>
+				</table>
+
+				<div id="regionOfInterest">
+					<form>
+						<label>StartX:</label> <input type="text" id="point1StartX" class="textBox" name="x1Value">
+						<label>EndX:</label> <input type="text" id="point1EndX" class="textBox" name="x1Value"></br>
+						<label>StartY:</label> <input type="text" id="point1StartY" class="textBox" name="y1Value">
+						<label>EndY:</label> <input type="text" id="point1EndY" class="textBox" name="y1Value"></br>
+						<label>Width:</label> <input type="text" id="point1Width" class="textBox" name="w1Value">
+					</form> 
+				</div>
+				
+			</div>
+			<hr>
+			
+			<label class="fHeading1">Point 2 Settings</label>
+			<div id="lineDetail" class="functionTab">
+				
+				<table>
+					<tr>
+						<td>
+							<p class="fHeading2">Horizontal Arrow</p>
+						</td>
+						<td>
+							<input type="checkbox" id="cbPoint2Hor" checked>
+						</td>
+					</tr>
+					
+					<tr>
+						<td>
+							<p class="fHeading2">Edge Detection</p>
+						</td>
+						<td>
+							<input type="radio" id="point2DOL" value="darkOnLight2" name="point2EdgeType" checked><label>Dark on Light</label><br>
+							<input type="radio" id="point2LOD" value="lightOnDark2" name="point2EdgeType"><label>Light on Dark</label>
+						</td>
+					</tr>
+				</table>
+			
+
+				<div id="regionOfInterest">
+					<form>
+						<label>StartX:</label> <input type="text" id="point2StartX" class="textBox" name="x2Value">
+						<label>EndX:</label> <input type="text" id="point2EndX" class="textBox" name="x2Value"></br>
+						<label>StartY:</label> <input type="text" id="point2StartY" class="textBox" name="y2Value">
+						<label>EndY:</label> <input type="text" id="point2EndY" class="textBox" name="y2Value"></br>
+						<label>Width:</label> <input type="text" id="point2Width" class="textBox" name="w2Value">
+					</form> 
+				</div>
+			</div>
+			<hr>
+			<label class="fHeading1">Tolerance</label>
+			<div id="tolDetail" class="functionTab">
+			
+			<table class="toleranceTable">
+					<tr> 
+					<td><label>Nominal Value</label></td>
+					<td><input type="number" id="nv" value="0" name="tolerance" ></td> </tr>
+					<tr> 
+					<td>+</td>
+					<td><input type="number" id="plus" value="10000" name="tolerance" min="0"> </td> </tr>
+					<tr> 
+					<td>-</td>
+					<td><input type="number" id="minus" value="0" name="tolerance" min="0"> </td> </tr>
+					</table>
+			</div>
+			
+			
+        </div>
+		
+
+		
+		
+	</div>
+		
+		
+</body>
+</html>

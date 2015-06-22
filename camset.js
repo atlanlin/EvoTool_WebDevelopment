@@ -412,8 +412,11 @@ function clickedImgBtn(clickedImageId){
 		case "widthImgBtn":
 			location.href = 'measurement.html';
 		break;
+		case "ptpImgBtn":
+			location.href = 'p_to_p.html';
+		break;
 		case "ptlImgBtn":
-			location.href = 'pointtoline.html';
+			location.href = 'p_to_l.html';
 		break;
 		case "ptcImgBtn":
 			location.href = 'p_to_c.htm';
