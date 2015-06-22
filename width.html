@@ -176,8 +176,6 @@
 	</div>
 		
 	<script>
-		var PARAUPDATEINTERVAL = 2000;
-		setInterval(updateParameters, PARAUPDATEINTERVAL);
 		
 		function updateParameters(){
 			
@@ -217,6 +215,7 @@
 		}
 		
 		$("#btnMeasure").click(function(){
+			updateParameters();
 			ajaxGet("cfg.ini", getValueFrominiFile);
 		});
 	</script>
