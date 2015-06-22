@@ -66,9 +66,9 @@ function initCircle() {
 		
 			ajaxGet("cfg.ini", getValueFrominiFile);
 			
-			var result = $("#resultDisplay").val();
+			//var result = $("#resultDisplay").val();
 			
-			setCookie("n",result,1);
+			//setCookie("n",result,1);
 			
 		}
 	);

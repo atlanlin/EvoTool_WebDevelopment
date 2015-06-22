@@ -105,11 +105,11 @@ function init(){
 		
 		ajaxGet("info.htm?cmd=%23002%23");
 		
-		myInterval = setInterval(function(){
+		//myInterval = setInterval(function(){
 		
 		ajaxGet("cfg.ini", getCodeValueFrominiFile);
 		
-		},100);
+		//},100);
 		
 		intervalUpdateStart();
 		
@@ -259,6 +259,11 @@ function getValueFrominiFile()
 	
 	$("#resultDisplay").val(globalResult);
 	
+			
+	var cookieName = queryString["tool"] + queryString["toolNo"];
+			
+	setCookie(cookieName,globalResult,1);
+			
 }
 
 function getCodeValueFrominiFile()
@@ -268,6 +273,10 @@ function getCodeValueFrominiFile()
 	globalResult = getIniCodeStr("camcode1", "result1=", resp);
 	
 	$("#resultDisplay").val(globalResult);
+	
+	var cookieName = queryString["tool"] + queryString["toolNo"];
+			
+	setCookie(cookieName,globalResult,1);
 }
 
 /* called to update the live image into the canvas */
