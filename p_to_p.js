@@ -392,12 +392,11 @@ function point1Settings() {
 			ajaxGet('any.htm?cmd=%23021%3BEVO%20Distance%3B2%3BTransition_1%3B1%23');
 	}
 	
-	ajaxGet("info.htm?cmd=%23021%3BEVO%20Distance%3B1%3BRecPos.PointStart.X%3B"+ point1StartX +"%23");
-	ajaxGet("info.htm?cmd=%23021%3BEVO%20Distance%3B1%3BRecPos.PointStart.X%3B"+ point1StartX +"%23");
-	ajaxGet("info.htm?cmd=%23021%3BEVO%20Distance%3B1%3BRecPos.PointEnd.X%3B"+ point1EndX +"%23");
-	ajaxGet("info.htm?cmd=%23021%3BEVO%20Distance%3B1%3BRecPos.PointStart.Y%3B"+ point1StartY +"%23");
-	ajaxGet("info.htm?cmd=%23021%3BEVO%20Distance%3B1%3BRecPos.PointEnd.Y%3B"+ point1EndY +"%23");
-	ajaxGet("info.htm?cmd=%23021%3BEVO%20Distance%3B1%3BRecPos.Width%3B"+ point1Width +"%23");
+	ajaxGet("info.htm?cmd=%23021%3BEVO%20Distance%3B1%3BRecPos.PointStart.X%3B"+$("#point1StartX").val()+"%23");
+	ajaxGet("info.htm?cmd=%23021%3BEVO%20Distance%3B1%3BRecPos.PointEnd.X%3B"+$("#point1EndX").val()+"%23");
+	ajaxGet("info.htm?cmd=%23021%3BEVO%20Distance%3B1%3BRecPos.PointStart.Y%3B"+$("#point1StartY").val()+"%23");
+	ajaxGet("info.htm?cmd=%23021%3BEVO%20Distance%3B1%3BRecPos.PointEnd.Y%3B"+$("#point1EndY").val()+"%23");
+	ajaxGet("info.htm?cmd=%23021%3BEVO%20Distance%3B1%3BRecPos.Width%3B"+$("#point1Width").val()+"%23");
 }
 
 function point2Settings() {
@@ -409,17 +408,17 @@ function point2Settings() {
 			ajaxGet('any.htm?cmd=%23021%3BEVO%20Distance%3B2%3BTransition_2%3B1%23');
 	}
 	
-	ajaxGet("info.htm?cmd=%23021%3BEVO%20Distance%3B1%3BRecPos2.PointStart.X%3B"+ point2StartX +"%23");
-	ajaxGet("info.htm?cmd=%23021%3BEVO%20Distance%3B1%3BRecPos2.PointEnd.X%3B"+ point2EndX +"%23");
-	ajaxGet("info.htm?cmd=%23021%3BEVO%20Distance%3B1%3BRecPos2.PointStart.Y%3B"+ point2StartY +"%23");
-	ajaxGet("info.htm?cmd=%23021%3BEVO%20Distance%3B1%3BRecPos2.PointEnd.Y%3B"+ point2EndY +"%23");
-	ajaxGet("info.htm?cmd=%23021%3BEVO%20Distance%3B1%3BRecPos2.Width%3B"+ point2Width +"%23");
+	ajaxGet("info.htm?cmd=%23021%3BEVO%20Distance%3B1%3BRecPos2.PointStart.X%3B"+$("#point2StartX").val()+"%23");
+	ajaxGet("info.htm?cmd=%23021%3BEVO%20Distance%3B1%3BRecPos2.PointEnd.X%3B"+$("#point2EndX").val()+"%23");
+	ajaxGet("info.htm?cmd=%23021%3BEVO%20Distance%3B1%3BRecPos2.PointStart.Y%3B"+$("#point2StartY").val()+"%23");
+	ajaxGet("info.htm?cmd=%23021%3BEVO%20Distance%3B1%3BRecPos2.PointEnd.Y%3B"+$("#point2EndY").val()+"%23");
+	ajaxGet("info.htm?cmd=%23021%3BEVO%20Distance%3B1%3BRecPos2.Width%3B"+$("#point2Width").val()+"%23");
 }
 
 function toleranceSettings() {
-	ajaxGet("info.htm?cmd=%23021%3BEVO%20Distance%3B1%3BResult[0].Evaluation.NominalValue%3B"+ nominalValue +"%23");
-	ajaxGet("info.htm?cmd=%23021%3BEVO%20Distance%3B1%3BResult[0].Evaluation.PlusTolerance%3B"+ positive +"%23");
-	ajaxGet("info.htm?cmd=%23021%3BEVO%20Distance%3B1%3BResult[0].Evaluation.MinusTolerance%3B"+ negative +"%23");
+	ajaxGet("info.htm?cmd=%23021%3BEVO%20Distance%3B1%3BResult[0].Evaluation.NominalValue%3B"+$("#nv").val()+"%23");
+	ajaxGet("info.htm?cmd=%23021%3BEVO%20Distance%3B1%3BResult[0].Evaluation.PlusTolerance%3B"+$("#plus").val()+"%23");
+	ajaxGet("info.htm?cmd=%23021%3BEVO%20Distance%3B1%3BResult[0].Evaluation.MinusTolerance%3B"+$("#minus").val()+"%23");
 }
 
 function Line(x1,y1,x2,y2){
