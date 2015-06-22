@@ -79,26 +79,29 @@ Box2.prototype = {
   }
 }
 
-function pointDisplayTexts(){
-	document.getElementById('point1StartX').value=boxes2[0].x;
-	document.getElementById('point1EndX').value=boxes2[0].x+boxes2[0].w;
-	document.getElementById('point1StartY').value=boxes2[0].y;
-	document.getElementById('point1EndY').value=boxes2[0].y+boxes2[0].h;
-	if(point1ArrowDirFlag == "horizontal")
-		document.getElementById('point1Width').value=boxes2[0].h;
-	else
-		document.getElementById('point1Width').value=boxes2[0].w;
-}
 
-function lineDisplayTexts(){
-	document.getElementById('point2StartX').value=boxes2[1].x;
-	document.getElementById('point2EndX').value=boxes2[1].x+boxes2[1].w;
-	document.getElementById('point2StartY').value=boxes2[1].y;
-	document.getElementById('point2EndY').value=boxes2[1].y+boxes2[1].h;
-	if(point2ArrowDirFlag == "horizontal")
-		document.getElementById('point2Width').value=boxes2[1].h;
-	else
-		document.getElementById('point2Width').value=boxes2[1].w;
+function displayTexts(startXtb, startYtb, endXtb, endYtb, widthtb, arrowDirFlag, inBox){
+	var sx, sy, ex, ey, w;
+	
+	if(arrowDirFlag == "horizontal"){
+		
+		sx = inBox.x;
+		sy = inBox.y + parseInt(inBox.h/2);
+		ex = inBox.x + inBox.w;
+		ey = inBox.y + parseInt(inBox.h/2);
+		w = Math.abs(inBox.h);
+	}else{
+		sx = inBox.x + parseInt(inBox.w/2);
+		sy = inBox.y;
+		ex = inBox.x + parseInt(inBox.w/2);
+		ey = inBox.y + inBox.h;
+		w = Math.abs(inBox.w);
+	}
+	document.getElementById(startXtb).value=sx;
+	document.getElementById(startYtb).value=sy;
+	document.getElementById(endXtb).value=ex;
+	document.getElementById(endYtb).value=ey;
+	document.getElementById(widthtb).value=w;
 }
 
 /* function showProbeSettings(){
@@ -566,7 +569,7 @@ function mainDraw() {
     // draw the line
     line.drawWithArrowheads(ctx);
 	
-	lineDisplayTexts();
+	displayTexts('point2StartX', 'point2StartY', 'point2EndX', 'point2EndY', 'point2Width', point2ArrowDirFlag, boxes2[1]);
 	
 	var plx1, ply1, plx2, ply2;
 	if(point1ArrowDirFlag == "horizontal"){
@@ -586,8 +589,8 @@ function mainDraw() {
     // draw the line
     pointLine.drawWithArrowheads(ctx);
 	
-	pointDisplayTexts();
 	
+	displayTexts('point1StartX', 'point1StartY', 'point1EndX', 'point1EndY', 'point1Width', point1ArrowDirFlag, boxes2[0]);
 	//showProbeSettings();
 	
 	

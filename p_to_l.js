@@ -79,27 +79,30 @@ Box2.prototype = {
   }
 }
 
-function pointDisplayTexts(){
-	document.getElementById('pointStartX').value=boxes2[0].x;
-	document.getElementById('pointEndX').value=boxes2[0].x+boxes2[0].w;
-	document.getElementById('pointStartY').value=boxes2[0].y;
-	document.getElementById('pointEndY').value=boxes2[0].y+boxes2[0].h;
-	if(pointArrowDirFlag == "horizontal")
-		document.getElementById('pointWidth').value=boxes2[0].h;
-	else
-		document.getElementById('pointWidth').value=boxes2[0].w;
+function displayTexts(startXtb, startYtb, endXtb, endYtb, widthtb, arrowDirFlag, inBox){
+	var sx, sy, ex, ey, w;
+	
+	if(arrowDirFlag == "horizontal"){
+		
+		sx = inBox.x;
+		sy = inBox.y + parseInt(inBox.h/2);
+		ex = inBox.x + inBox.w;
+		ey = inBox.y + parseInt(inBox.h/2);
+		w = Math.abs(inBox.h);
+	}else{
+		sx = inBox.x + parseInt(inBox.w/2);
+		sy = inBox.y;
+		ex = inBox.x + parseInt(inBox.w/2);
+		ey = inBox.y + inBox.h;
+		w = Math.abs(inBox.w);
+	}
+	document.getElementById(startXtb).value=sx;
+	document.getElementById(startYtb).value=sy;
+	document.getElementById(endXtb).value=ex;
+	document.getElementById(endYtb).value=ey;
+	document.getElementById(widthtb).value=w;
 }
 
-function lineDisplayTexts(){
-	document.getElementById('lineStartX').value=boxes2[1].x;
-	document.getElementById('lineEndX').value=boxes2[1].x+boxes2[1].w;
-	document.getElementById('lineStartY').value=boxes2[1].y;
-	document.getElementById('lineEndY').value=boxes2[1].y+boxes2[1].h;
-	if(lineArrowDirFlag == "horizontal")
-		document.getElementById('lineWidth').value=boxes2[1].h;
-	else
-		document.getElementById('lineWidth').value=boxes2[1].w;
-}
 
 function showProbeSettings(){
 	
@@ -566,7 +569,7 @@ function mainDraw() {
     // draw the line
     line.drawWithArrowheads(ctx);
 	
-	lineDisplayTexts();
+	displayTexts('lineStartX', 'lineStartY', 'lineEndX', 'lineEndY', 'lineWidth', lineArrowDirFlag, boxes2[1]);
 	
 	var plx1, ply1, plx2, ply2;
 	if(pointArrowDirFlag == "horizontal"){
@@ -586,8 +589,7 @@ function mainDraw() {
     // draw the line
     pointLine.drawWithArrowheads(ctx);
 	
-	pointDisplayTexts();
-	
+	displayTexts('pointStartX', 'pointStartY', 'pointEndX', 'pointEndY', 'pointWidth', pointArrowDirFlag, boxes2[0]);
 	//showProbeSettings();
 	
 	
