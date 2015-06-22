@@ -12,6 +12,7 @@
     <script src="camset.js"></script>
 	<script src="rectwitharrow.js"></script>
 	
+	
     
 </head>
 <body onload="init2()">
@@ -27,6 +28,7 @@
 			<p class="fHeading1">Result</p>
              <div id="resultDetail">
                 <textarea id="resultDisplay" rows="6" cols="15" readonly></textarea>
+				<input id="btnMeasure" type="button" value="Get Result" class="button">
             </div>
 			<!--
 			<div id="objectMeasureTools" class="functionTab">
@@ -93,7 +95,7 @@
 							<p class="fHeading2">Object Dark Color</p>
 						</td>
 						<td>
-							<input type="checkbox" name="objectColor" value="dark" checked>
+							<input type="checkbox" id="cbObjectColor" value="dark" checked>
 						</td>
 					</tr>
 					<tr>
@@ -173,6 +175,50 @@
 		
 	</div>
 		
+	<script>
+		var PARAUPDATEINTERVAL = 2000;
+		setInterval(updateParameters, PARAUPDATEINTERVAL);
 		
+		function updateParameters(){
+			
+			var sx = document.getElementById("tbStartX").value;
+			var sy = document.getElementById("tbStartY").value;
+			var ex = document.getElementById("tbEndX").value;
+			var ey = document.getElementById("tbEndY").value;
+			var width = document.getElementById("tbWidth").value;
+			
+			var color, option;
+			if(document.getElementById("cbObjectColor").checked){
+				color = 1;
+			}else{
+				color = 0;
+			}
+			
+			
+			var optVal = document.getElementById("dbOption").value;
+			if(optVal == "width")
+				option = 0;
+			else if(optVal == "gap")
+				option = 1;
+			else if(optVal == "pitch")
+				option = 2;
+			else
+				option = 3;
+			
+			
+			ajaxGet("info.htm?cmd=%23021%3BEVO Width%3B1%3BRecPos.PointStart.X%3B" + sx +"%23");
+			ajaxGet("info.htm?cmd=%23021%3BEVO Width%3B1%3BRecPos.PointStart.Y%3B" + sy +"%23");
+			ajaxGet("info.htm?cmd=%23021%3BEVO Width%3B1%3BRecPos.PointEnd.X%3B" + ex +"%23");
+			ajaxGet("info.htm?cmd=%23021%3BEVO Width%3B1%3BRecPos.PointEnd.Y%3B" + ey +"%23");
+			ajaxGet("info.htm?cmd=%23021%3BEVO Width%3B1%3BRecPos.Width%3B" + width +"%23");
+			ajaxGet("info.htm?cmd=%23021%3BEVO Width%3B2%3BObjColor%3B" + color +"%23");
+			ajaxGet("info.htm?cmd=%23021%3BEVO Width%3B2%3BMeasureOption%3B" + option +"%23");
+			
+		}
+		
+		$("#btnMeasure").click(function(){
+			ajaxGet("cfg.ini", getValueFrominiFile);
+		});
+	</script>
 </body>
 </html>
