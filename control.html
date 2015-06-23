@@ -67,7 +67,7 @@
 		displayResults();
 		document.getElementById("btnClear").addEventListener("click", function(){
 			
-			var cookieNames = ["circle", "width", "ptp", "ptl", "ptc", "ltc", "ctc"];
+			var cookieNames = ["circle", "width", "ptp", "ptl", "ptc", "ltc", "ctc", "ctl"];
 			for(var i = 0; i < cookieNames.length; i++){
 				for(var j = 1; j < 3; j++){
 					if(getCookie(cookieNames[i]+String(j)) != null)
@@ -77,7 +77,8 @@
 					
 				}
 			}
-			loadResults();
+			//loadResults();
+			displayResults();
 			
 		});
 		
@@ -127,7 +128,7 @@
 			return null;
 		}
 		
-		function loadResults()
+		/*function loadResults()
 		{
 		
 			var strResult = ""; 
@@ -148,7 +149,7 @@
 			//alert(strResult);
 			document.getElementById("showResults").value = strResult;
 		
-		}
+		}*/
 		
 		//disable all functions - enter function names here to disable
 		var functionNames = ["EVO Width", "EVO Distance"];
@@ -156,10 +157,10 @@
 			ajaxGet("info.htm?cmd=%23021%3B" + functionNames[i] +"%3B2%3BGeneral.Enabled%3B0%23");
 		}
 		
-<<<<<<< HEAD
-		loadResults();
+
+		//loadResults();
 		
-=======
+
 		function displayResults() {
 			var ca = document.cookie.split("; ");
 			var ta = [];
@@ -182,10 +183,10 @@
 					ta[n] = "EVO Distance (Point to Circle) Tool " + ca[i].substring(3,4) + " = " + ca[i].substring(5,ca[i].length);  
 				}
 				else if (ca[i].substring(0,3) == "ctc") {
-					ta[n] = "EVO Distance (Circle to Line) Tool " + ca[i].substring(3,4) + " = " + ca[i].substring(5,ca[i].length);  
+					ta[n] = "EVO Distance (Circle to Circle) Tool " + ca[i].substring(3,4) + " = " + ca[i].substring(5,ca[i].length);  
 				}
 				else if (ca[i].substring(0,3) == "ctl") {
-					ta[n] = "EVO Distance (Circle to Circle) Tool " + ca[i].substring(3,4) + " = " + ca[i].substring(5,ca[i].length);  
+					ta[n] = "EVO Distance (Circle to Line) Tool " + ca[i].substring(3,4) + " = " + ca[i].substring(5,ca[i].length);  
 				}
 				else {
 					n--;
@@ -196,7 +197,7 @@
 			ta = ta.sort()
 			document.getElementById("showResults").value = ta.join("\n");
 		}
->>>>>>> origin/master
+
 	</script>
 	
 </body>

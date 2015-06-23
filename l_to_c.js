@@ -247,7 +247,7 @@ function drawCircle(circle, innerCircle) {
     var ctx = canvas.getContext('2d');
 	
 	
-	ctx.clearRect(0, 0, canvas.width, canvas.height);
+	//ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx.beginPath();
     ctx.arc(circle.point.x, circle.point.y, circle.radius, 0, Math.PI*2, false);
 	
