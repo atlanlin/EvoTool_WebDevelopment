@@ -65,7 +65,19 @@
 	
 	<script>
 		document.getElementById("btnClear").addEventListener("click", function(){
-			document.getElementById("showResults").value = "";
+			
+			var cookieNames = ["circle", "width", "ptp", "ptl", "ptc", "ltc", "ctc"];
+			for(var i = 0; i < cookieNames.length; i++){
+				for(var j = 1; j < 3; j++){
+					if(getCookie(cookieNames[i]+String(j)) != null)
+					{
+						deleteCookie(cookieNames[i]+String(j));
+					}
+					
+				}
+			}
+			loadResults();
+			
 		});
 		
 		document.getElementById("btnGo").addEventListener("click", function(){
@@ -114,11 +126,37 @@
 			return null;
 		}
 		
+		function loadResults()
+		{
+		
+			var strResult = ""; 
+			var cookieNames = ["circle", "width", "ptp", "ptl", "ptc", "ltc", "ctc"];
+			for(var i = 0; i < cookieNames.length; i++){
+				for(var j = 1; j < 3; j++){
+					if(getCookie(cookieNames[i]+String(j)) != null)
+					{
+						strResult += cookieNames[i]+String(j) + " : " +getCookie(cookieNames[i]+String(j)) +"\n";
+						
+					}
+					else
+					{
+						strResult += cookieNames[i]+String(j) + " : 0 \n";
+					}
+				}
+			}
+			//alert(strResult);
+			document.getElementById("showResults").value = strResult;
+		
+		}
+		
 		//disable all functions - enter function names here to disable
 		var functionNames = ["EVO Width", "EVO Distance"];
 		for(var i=0; i < functionNames.length; i++){
 			ajaxGet("info.htm?cmd=%23021%3B" + functionNames[i] +"%3B2%3BGeneral.Enabled%3B0%23");
 		}
+		
+		loadResults();
+		
 	</script>
 	
 </body>

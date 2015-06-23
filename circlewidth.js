@@ -37,7 +37,14 @@ function initCircle() {
 			resolution = parseInt(getCookie("resolution"));
 			
 			ajaxGet("info.htm?cmd=%23021%3BEVO Circle%3B2%3BGeneral.Enabled%3B1%23");
+			
+			//ajaxGet("info.htm?cmd=%23021%3BEVO Circle "+queryString["toolNo"]+"%3B2%3BGeneral.Enabled%3B1%23");
+			
 			ajaxGet("cfg.ini", getValueFrominiFile);
+			
+		
+			
+			//setCookie("Circle Width " +queryString["toolNo"], $("#resultDisplay").val(),1);
 			
 			
 		}
