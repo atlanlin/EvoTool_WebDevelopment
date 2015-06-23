@@ -36,7 +36,7 @@ function init(){
     }
     if (queryString["tool"] != null && queryString["toolNo"] != null) {
         //added temporarily
-		document.getElementById("resultDisplay").value=queryString["tool"] + " " + queryString["toolNo"];
+		//document.getElementById("resultDisplay").value=queryString["tool"] + " " + queryString["toolNo"];
     }
     
 	

@@ -284,11 +284,16 @@ function init2() {
 	
 	$("#btnMeasure").click(function(){
 		
+			if(getCookie("resolution") == null)
+			{
+				setCookie("resolution","1",1);
+			}
+			
+			resolution = parseInt(getCookie("resolution"));
+			
+			ajaxGet("info.htm?cmd=%23021%3BEVO Distance%3B2%3BGeneral.Enabled%3B1%23");
+			ajaxGet("info.htm?cmd=%23021%3BEVO Distance%3B2%3BOptionForType%3B1%23");
 			ajaxGet("cfg.ini", getValueFrominiFile);
-			
-			var result = $("#resultDisplay").val();
-			
-			setCookie("n",result,1);
 			
 		}
 	);
