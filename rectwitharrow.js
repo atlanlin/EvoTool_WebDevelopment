@@ -79,17 +79,17 @@ function displayTexts(startXtb, startYtb, endXtb, endYtb, widthtb, inBox){
 	
 	if(arrowDirFlag == "horizontal"){
 		
-		sx = inBox.x;
-		sy = inBox.y + parseInt(inBox.h/2);
-		ex = inBox.x + inBox.w;
-		ey = inBox.y + parseInt(inBox.h/2);
-		w = Math.abs(inBox.h);
+		sx = inBox.x * mulCenterX;
+		sy = (inBox.y + parseInt(inBox.h/2)) * mulCenterY;
+		ex = (inBox.x + inBox.w) * mulCenterX;
+		ey = (inBox.y + parseInt(inBox.h/2)) * mulCenterY;
+		w = Math.abs(inBox.h) * mulCenterY;
 	}else{
-		sx = inBox.x + parseInt(inBox.w/2);
-		sy = inBox.y;
-		ex = inBox.x + parseInt(inBox.w/2);
-		ey = inBox.y + inBox.h;
-		w = Math.abs(inBox.w);
+		sx = (inBox.x + parseInt(inBox.w/2)) * mulCenterX;
+		sy = inBox.y * mulCenterY;
+		ex = (inBox.x + parseInt(inBox.w/2)) * mulCenterX;
+		ey = (inBox.y + inBox.h) * mulCenterY;
+		w = Math.abs(inBox.w) * mulCenterX;
 	}
 	document.getElementById(startXtb).value=sx;
 	document.getElementById(startYtb).value=sy;
@@ -252,19 +252,6 @@ function init2() {
   
   // add custom initialization here:
 
-  $("input[name='toolChoice']").change(function(){
-		if($("input[name='toolChoice']:radio:checked").val()=="evoWidth"){
-			rectFlag=true;
-		}
-		else if($("input[name='toolChoice']:radio:checked").val()=="evoCircle"){
-			//alert(String(boxes2[0].x));
-			rectFlag=false;
-			
-		}else{
-			rectFlag=true;
-		}
-	});
-
 
 	$("#dbArrow").change(function(){
 		if($("#dbArrow").val() == "vertical"){
@@ -292,6 +279,15 @@ function init2() {
   
   // add a smaller purple rectangle
   //addRect(45, 60, 25, 25, 'rgba(150,150,250,0.7)');
+  
+  if(getCookie("resolution") == null)
+	{
+		setCookie("resolution","1",1);
+	}
+			
+	resolution = parseInt(getCookie("resolution"));
+	
+	setPageScaleSize(0);
 }
 
 function Line(x1,y1,x2,y2){

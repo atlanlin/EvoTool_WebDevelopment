@@ -7,7 +7,7 @@ window.onload = function() {
 
 function initCircle() {
 	
-	setPageScaleSize(resolution);
+	
 	
     drawCircle(circle, innerCircle);
 	
@@ -29,13 +29,6 @@ function initCircle() {
 	
 	$("#btnMeasure").click(function(){
 	
-			if(getCookie("resolution") == null)
-			{
-				setCookie("resolution","1",1);
-			}
-			
-			resolution = parseInt(getCookie("resolution"));
-			
 			ajaxGet("info.htm?cmd=%23021%3BEVO Circle%3B2%3BGeneral.Enabled%3B1%23");
 			
 			//ajaxGet("info.htm?cmd=%23021%3BEVO Circle "+queryString["toolNo"]+"%3B2%3BGeneral.Enabled%3B1%23");
@@ -50,7 +43,14 @@ function initCircle() {
 		}
 	);
 	
+	if(getCookie("resolution") == null)
+	{
+		setCookie("resolution","1",1);
+	}
+			
+	resolution = parseInt(getCookie("resolution"));
 	
+	setPageScaleSize(resolution);
 }
 
 
@@ -308,36 +308,7 @@ function updateCircleEvo()
 
 }
 
-//set circle scale to map evo3
-//choice 0 (640 by 480), 1 (1024 by 768), 2(2592 by 1944)..
-function setPageScaleSize(resolutionChoice)
-{
-	
-	if(resolutionChoice == 0) // image 640 by 480
-	{
-		mulCenterX = 0.854;
-		mulCenterY = 1;
-		mulOuterRadius = 0.9;
-	
-	}
-	else if(resolutionChoice == 1) //image 1024 by 768
-	{
-		mulCenterX = 1.35667;
-		mulCenterY = 1.6;
-		mulOuterRadius = 1.5;
-	
-	}
-	else if(resolutionChoice == 2) // image 2592 by 1944
-	{
-		mulCenterX = 3.445;
-		mulCenterY = 4.09;
-		mulOuterRadius = 5;
-	
-	}
-	
-}
 
-var resolution = 1;
 
 
 var element;
@@ -366,9 +337,5 @@ var minRadius = 20;
 
 var UPDATECIRCLEINTERVAL = 2000;
 
-var mulCenterX;
 
-var mulCenterY;
-
-var mulOuterRadius;
 
