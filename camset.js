@@ -86,8 +86,8 @@ function init(){
 	});
 	
    $("#btnStart").click(function(){
-		
-		ajaxGet("info.htm?cmd=%23002%23");
+		var curTime = new Date().getTime();
+		ajaxGet("info.htm?cmd=%23002%23&time=" + curTime);
 		
 		//myInterval = setInterval(function(){
 		
@@ -102,8 +102,8 @@ function init(){
 	);
 	
 	$("#btnCodeStart").click(function(){
-		
-		ajaxGet("info.htm?cmd=%23002%23");
+		var curTime = new Date().getTime();
+		ajaxGet("info.htm?cmd=%23002%23&time=" + curTime);
 		
 		//myInterval = setInterval(function(){
 		
@@ -120,7 +120,8 @@ function init(){
 
 	$("#btnStop").click(function(){
 		clearInterval(myInterval);
-		ajaxGet("info.htm?cmd=%23004%23");
+		var curTime = new Date().getTime();
+		ajaxGet("info.htm?cmd=%23004%23&time=" + curTime);
 		intervalUpdateStop();
 		}
 	);
