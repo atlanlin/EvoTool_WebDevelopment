@@ -524,3 +524,40 @@ function clickCheckedBoxes(clickedCb){
 		
 	}
 }
+
+//set circle scale to map evo3
+//choice 0 (640 by 480), 1 (1024 by 768), 2(2592 by 1944)..
+function setPageScaleSize(resolutionChoice)
+{
+	
+	if(resolutionChoice == 0) // image 640 by 480
+	{
+		mulCenterX = 0.854;
+		mulCenterY = 1;
+		mulOuterRadius = 0.9;
+	
+	}
+	else if(resolutionChoice == 1) //image 1024 by 768
+	{
+		mulCenterX = 1.35667;
+		mulCenterY = 1.6;
+		mulOuterRadius = 1.5;
+	
+	}
+	else if(resolutionChoice == 2) // image 2592 by 1944
+	{
+		mulCenterX = 3.445;
+		mulCenterY = 4.09;
+		mulOuterRadius = 5;
+	
+	}
+	
+}
+
+var resolution = 1;
+
+var mulCenterX;
+
+var mulCenterY;
+
+var mulOuterRadius;
