@@ -124,29 +124,34 @@
 		function displayResults() {
 			var ca = document.cookie.split("; ");
 			var ta = [];
+			var n = 0;
 			
 			for (var i=0;i<ca.length;i++) {
 				if (ca[i].substring(0,6) == "circle") {
-					ta[i] = "Circle Tool " + ca[i].substring(6,7) + " = " + ca[i].substring(8,ca[i].length);  
+					ta[n] = "Circle Tool " + ca[i].substring(6,7) + " = " + ca[i].substring(8,ca[i].length);  
 				}
 				else if (ca[i].substring(0,5) == "width") {
-					ta[i] = "Width Tool " + ca[i].substring(5,6) + " = " + ca[i].substring(7,ca[i].length);  
+					ta[n] = "Width Tool " + ca[i].substring(5,6) + " = " + ca[i].substring(7,ca[i].length);  
 				}
 				else if (ca[i].substring(0,3) == "ptp") {
-					ta[i] = "Point to Point Tool " + ca[i].substring(3,4) + " = " + ca[i].substring(5,ca[i].length);  
+					ta[n] = "Point to Point Tool " + ca[i].substring(3,4) + " = " + ca[i].substring(5,ca[i].length);  
 				}
 				else if (ca[i].substring(0,3) == "ptl") {
-					ta[i] = "Point to Line Tool " + ca[i].substring(3,4) + " = " + ca[i].substring(5,ca[i].length);  
+					ta[n] = "Point to Line Tool " + ca[i].substring(3,4) + " = " + ca[i].substring(5,ca[i].length);  
 				}
 				else if (ca[i].substring(0,3) == "ptc") {
-					ta[i] = "Point to Circle Tool " + ca[i].substring(3,4) + " = " + ca[i].substring(5,ca[i].length);  
+					ta[n] = "Point to Circle Tool " + ca[i].substring(3,4) + " = " + ca[i].substring(5,ca[i].length);  
 				}
 				else if (ca[i].substring(0,3) == "ctc") {
-					ta[i] = "Circle to Line Tool " + ca[i].substring(3,4) + " = " + ca[i].substring(5,ca[i].length);  
+					ta[n] = "Circle to Line Tool " + ca[i].substring(3,4) + " = " + ca[i].substring(5,ca[i].length);  
 				}
 				else if (ca[i].substring(0,3) == "ctl") {
-					ta[i] = "Circle to Circle Tool " + ca[i].substring(3,4) + " = " + ca[i].substring(5,ca[i].length);  
+					ta[n] = "Circle to Circle Tool " + ca[i].substring(3,4) + " = " + ca[i].substring(5,ca[i].length);  
 				}
+				else {
+					n--;
+				}
+				n++;
 			}
 			
 			document.getElementById("showResults").value = ta.join("\n");
