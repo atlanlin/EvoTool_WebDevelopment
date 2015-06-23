@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Setting</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+    <script src="jquery.js"></script> 
+    <script src="evt.js"></script>
+    <script src="camset.js"></script>
+	
+	<style>
+		label{
+			font-size: 18px;
+			margin-left: 10px;
+		}
+		input[type="range"]{
+			margin-left: 15px;
+		}
+		.subHeading{
+			font-size: 24px;
+			font-weight:bold;
+			color:#003399;
+		}
+		input[type="button"]{
+			margin-left:auto;
+			margin-right:auto;
+		}
+		
+		#btnSet{
+			margin-left:auto;
+			margin-right:auto;
+			width: 60%;
+			height: 25px;
+			background-color: #33FF66;
+		}
+		
+		#btnCancel{
+			margin-left:auto;
+			margin-right:auto;
+			width: 30%;
+			height: 25px;
+			background-color: #FF00FF;
+		}
+	</style>
+    
+</head>
+<body>
+    <img id="logo" src="vclogo.png" alt="vclogo">
+	
+    <div class="functionPanel"> 
+        <div id="rightRegion">
+            <div>
+                <input id="btnStart" type="button" value="Monitor" class="button">
+                <input id="btnStop" type="button" value="Stop" class="button">
+                <input id="mainPage" onClick="location.href='control.html'" type="button" value="Control Page" class="button">
+            </div>  
+			
+			
+        </div>
+       <div id="imageArea">
+            <div id="mainTitle">Settings</div>
+			
+			<img id="imgSnapshot"></img>			
+			
+            <!-- <img id="imgSnapshot"></img> -->
+       </div>
+	   
+        <div id="leftmenu"> 
+          
+			<label class="subHeading">Camera Settings</label><br><br>
+			<div class="functionTab">
+				
+				<label for="rGain">Gain:</label>
+				<input type="text" id="txtGain" value="20" style="width: 30px" readonly/><br>
+				<input type="range" name="rGain" id="rGain" value="20" min="0" max="100" oninput="changeRangeValue(this)"><br><br>
+				<label for="rShuuter">Shutter:</label>
+				<input type="text" id="txtShutter" value="20" style="width: 30px" readonly/><br>
+				<input type="range" name="rShutter" id="rShutter" value="20" min="0" max="100" oninput="changeRangeValue(this)">
+				<br><br>
+				<label>Resolution</label>
+				<select id="resSelectBox">
+					<option>640x480</option>
+					<option>1024x768</option>
+					<option>2592x1944</option>
+				</select><br><br>
+				<input id="btnSet" type="button" value="Set" onclick="setBtnClick()"/>
+				<input id="btnCancel" type="button" value="Cancel" onclick="cancelBtnClick()"/>
+			
+			</div>
+            
+        </div>
+		
+	</div>
+		<script>
+		function changeRangeValue(rangeId){
+			if(rangeId.id === "rGain"){
+				document.getElementById("txtGain").value = rangeId.value;
+			}else if(rangeId.id === "rShutter"){
+				document.getElementById("txtShutter").value = rangeId.value;
+			}
+		}
+		
+		function setBtnClick(){
+			resCookieVal = document.getElementById("resSelectBox").selectedIndex;
+			setCookie("resolution",resCookieVal,356);
+		}
+		
+		function cancelBtnClick(){
+			document.getElementById("resSelectBox").selectedIndex = resCookieVal;
+		}
+		
+		function setResSelectBox(index){
+			document.getElementById("resSelectBox").selectedIndex = index;
+		}
+		
+		
+		var resCookieVal = getCookie("resolution");
+		setResSelectBox(resCookieVal);
+		
+		
+		
+	</script>
+				
+</body>
+
+
+</html>
