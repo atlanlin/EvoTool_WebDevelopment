@@ -3,6 +3,9 @@
 window.onload = function() {
 	initCircle();
 	
+	ajaxGet("info.htm?cmd=%23021%3BEVO Circle%3B2%3BGeneral.Enabled%3B1%23");
+			
+	ajaxGet("info.htm?cmd=%23021%3BINI Circle%3B2%3BGeneral.Enabled%3B1%23");
 }
 
 function initCircle() {
@@ -29,7 +32,7 @@ function initCircle() {
 	
 	$("#btnMeasure").click(function(){
 	
-			ajaxGet("info.htm?cmd=%23021%3BEVO Circle%3B2%3BGeneral.Enabled%3B1%23");
+			
 			
 			//ajaxGet("info.htm?cmd=%23021%3BEVO Circle "+queryString["toolNo"]+"%3B2%3BGeneral.Enabled%3B1%23");
 			

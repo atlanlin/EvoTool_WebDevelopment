@@ -64,6 +64,7 @@
 	</div>
 	
 	<script>
+		
 		displayResults();
 		document.getElementById("btnClear").addEventListener("click", function(){
 			
@@ -152,11 +153,13 @@
 		}*/
 		
 		//disable all functions - enter function names here to disable
-		var functionNames = ["EVO Width", "EVO Distance"];
-		for(var i=0; i < functionNames.length; i++){
-			ajaxGet("info.htm?cmd=%23021%3B" + functionNames[i] +"%3B2%3BGeneral.Enabled%3B0%23");
+		var frontFunctionNames = ["EVO ", "INI "];
+		var functionNames = ["Circle", "Width", "Distance", "BarCode", "DataCode", "OCR"];
+		for(var i=0; i < frontFunctionNames.length; i++){
+			for(var j=0; j < functionNames.length; j++){
+				ajaxGet("info.htm?cmd=%23021%3B" + frontFunctionNames[i] + functionNames[j] +"%3B2%3BGeneral.Enabled%3B0%23");
+			}
 		}
-		
 
 		//loadResults();
 		

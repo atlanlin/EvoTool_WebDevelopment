@@ -3,6 +3,9 @@ window.onload = function() {
 	initSquare();
 	initCircle();
 	
+	ajaxGet("info.htm?cmd=%23021%3BEVO Distance%3B2%3BGeneral.Enabled%3B1%23");
+	ajaxGet("info.htm?cmd=%23021%3BINI Distance%3B2%3BGeneral.Enabled%3B1%23");
+	
 }
 
 function showPoints(){
@@ -74,8 +77,9 @@ function initCircle() {
 			
 			
 			 
-			ajaxGet("info.htm?cmd=%23021%3BEVO Distance%3B2%3BGeneral.Enabled%3B0%23");
+			
 			ajaxGet("info.htm?cmd=%23021%3BEVO Distance%3B2%3BOptionForType%3B2%23");
+			
 			
 			//ajaxGet("info.htm?cmd=%23021%3BEVO Distance "+queryString["toolNo"]+"%3B2%3BGeneral.Enabled%3B1%23");
 			//ajaxGet("info.htm?cmd=%23021%3BEVO Distance "+queryString["toolNo"]+"%3B2%3BOptionForType%3B2%23");

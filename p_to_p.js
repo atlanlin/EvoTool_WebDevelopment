@@ -208,6 +208,10 @@ function addRect(x, y, w, h, fill) {
 // initialize our canvas, add a ghost canvas, set draw loop
 // then add everything we want to intially exist on the canvas
 function init2() {
+
+  ajaxGet("info.htm?cmd=%23021%3BEVO Distance%3B2%3BGeneral.Enabled%3B1%23");
+  ajaxGet("info.htm?cmd=%23021%3BINI Distance%3B2%3BGeneral.Enabled%3B1%23");
+  
   canvas = document.getElementById('canvas2');
   HEIGHT = canvas.height;
   WIDTH = canvas.width;
@@ -291,7 +295,7 @@ function init2() {
 			
 			resolution = parseInt(getCookie("resolution"));
 			
-			ajaxGet("info.htm?cmd=%23021%3BEVO Distance%3B2%3BGeneral.Enabled%3B1%23");
+
 			ajaxGet("info.htm?cmd=%23021%3BEVO Distance%3B2%3BOptionForType%3B0%23");
 			ajaxGet("cfg.ini", getValueFrominiFile);
 			
