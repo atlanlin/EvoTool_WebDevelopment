@@ -294,12 +294,14 @@ function updateCircleEvo()
 		var startvalue = $("#startvalue").val();
 		var anglevalue = $("#anglevalue").val();
 		
-		/*if ($("#lightToDark").is(":checked")) {
-            alert("light checked");
+		
+		
+		if ($("#lightToDark").is(":checked")) {
+			ajaxGet("info.htm?cmd=%23021%3BEVO Circle%3B2%3BTransition%3B0%23");
         }
 		else if($("#darkToLight").is(":checked")) {
-            alert("dark checked");
-        }*/
+            ajaxGet("info.htm?cmd=%23021%3BEVO Circle%3B2%3BTransition%3B1%23");
+        }
 		
 		ajaxGet("info.htm?cmd=%23021%3BEVO Circle%3B1%3BCirclePos.Center.X%3B"+ calCenterX +"%23");
 		ajaxGet("info.htm?cmd=%23021%3BEVO Circle%3B1%3BCirclePos.Center.Y%3B"+ calCenterY +"%23");

@@ -423,12 +423,12 @@ function updateCircleEvo()
 		var startvalue = $("#startvalue").val();
 		var anglevalue = $("#anglevalue").val();
 		
-		/*if ($("#lightToDark").is(":checked")) {
-            alert("light checked");
+		if ($("#clightToDark").is(":checked")) {
+			ajaxGet("info.htm?cmd=%23021%3BEVO Distance%3B2%3BTransition_1%3B0%23");
         }
-		else if($("#darkToLight").is(":checked")) {
-            alert("dark checked");
-        }*/
+		else if($("#cdarkToLight").is(":checked")) {
+            ajaxGet("info.htm?cmd=%23021%3BEVO Distance%3B2%3BTransition_1%3B1%23");
+        }
 		
 		
 		ajaxGet("info.htm?cmd=%23021%3BEVO Distance%3B1%3BCirclePos.Center.X%3B"+ calCenterX +"%23");
@@ -455,12 +455,12 @@ function updateCircle2Evo()
 		var startvalue = $("#startvalue2").val();
 		var anglevalue = $("#anglevalue2").val();
 		
-		/*if ($("#lightToDark").is(":checked")) {
-            alert("light checked");
+		if ($("#rlightToDark").is(":checked")) {
+			ajaxGet("info.htm?cmd=%23021%3BEVO Distance%3B2%3BTransition_2%3B0%23");
         }
-		else if($("#darkToLight").is(":checked")) {
-            alert("dark checked");
-        }*/
+		else if($("#rdarkToLight").is(":checked")) {
+            ajaxGet("info.htm?cmd=%23021%3BEVO Distance%3B2%3BTransition_2%3B1%23");
+        }
 		
 		ajaxGet("info.htm?cmd=%23021%3BEVO Distance%3B1%3BCirclePos2.Center.X%3B"+ calCenterX +"%23");
 		ajaxGet("info.htm?cmd=%23021%3BEVO Distance%3B1%3BCirclePos2.Center.Y%3B"+ calCenterY +"%23");

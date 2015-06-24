@@ -343,6 +343,13 @@ function updateCircleEvo()
 		var positive = $("#plus").val();
 		var negative = $("#minus").val();
 		
+		if ($("#clightToDark").is(":checked")) {
+			ajaxGet("info.htm?cmd=%23021%3BEVO Distance%3B2%3BTransition_1%3B0%23");
+        }
+		else if($("#cdarkToLight").is(":checked")) {
+            ajaxGet("info.htm?cmd=%23021%3BEVO Distance%3B2%3BTransition_1%3B1%23");
+        }
+		
 		
 		ajaxGet("info.htm?cmd=%23021%3BEVO Distance%3B1%3BCirclePos.Center.X%3B"+ calCenterX +"%23");
 		ajaxGet("info.htm?cmd=%23021%3BEVO Distance%3B1%3BCirclePos.Center.Y%3B"+ calCenterY +"%23");
@@ -377,6 +384,13 @@ function updateRectEvo()
 		var nominalValue = $("#nv").val();
 		var positive = $("#plus").val();
 		var negative = $("#minus").val();
+		
+		if ($("#rlightToDark").is(":checked")) {
+			ajaxGet("info.htm?cmd=%23021%3BEVO Distance%3B2%3BTransition_2%3B0%23");
+        }
+		else if($("#rdarkToLight").is(":checked")) {
+            ajaxGet("info.htm?cmd=%23021%3BEVO Distance%3B2%3BTransition_2%3B1%23");
+        }
 		
 		ajaxGet("info.htm?cmd=%23021%3BEVO Distance%3B1%3BRecPos.PointStart.X%3B"+ calStartX +"%23");
 		ajaxGet("info.htm?cmd=%23021%3BEVO Distance%3B1%3BRecPos.PointEnd.X%3B"+ calEndX +"%23");
