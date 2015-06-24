@@ -393,21 +393,34 @@
 		var endY = (parseInt($("#yValue").val()) + (parseInt($("#hValue").val())/2)) * mulEndY;
 		var width = $("#wValue").val() * mulWidth; */
 		
-		var startX = $("#xValue").val() * mulStartX;
-		var endX = (parseInt($("#xValue").val()) + parseInt($("#wValue").val())) * mulEndX;
-		var startY = (parseInt($("#yValue").val()) + (parseInt($("#hValue").val())/2)) * mulStartY;
-		var endY = (parseInt($("#yValue").val()) + (parseInt($("#hValue").val())/2)) * mulEndY;
-		var width = $("#hValue").val() * mulWidth;
-		
 		if (document.getElementById("wholeWindow").checked) {
-			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B1%3BposRect.PointStart.X%3B0%23');
+			/* ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B1%3BposRect.PointStart.X%3B0%23');
 			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B1%3BposRect.PointEnd.X%3B752%23');
 			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B1%3BposRect.PointStart.Y%3B240%23');
 			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B1%3BposRect.PointEnd.Y%3B240%23');
-			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B1%3BposRect.Width%3B750%23');
+			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B1%3BposRect.Width%3B750%23'); */
+			
+			var startX = 0 * mulStartX;
+			var endX = 752 * mulEndX;
+			var startY = 240 * mulStartY;
+			var endY = 240 * mulEndY;
+			var width = 480 * mulWidth;
+			
+			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B1%3BposRect.PointStart.X%3B'+startX+'%23');
+			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B1%3BposRect.PointEnd.X%3B'+endX+'%23');			
+			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B1%3BposRect.PointStart.Y%3B'+startY+'%23');
+			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B1%3BposRect.PointEnd.Y%3B'+endY+'%23');
+			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B1%3BposRect.Width%3B'+width+'%23');
 		}
 			
 		if (document.getElementById("defineWindow").checked) {
+			
+			var startX = $("#xValue").val() * mulStartX;
+			var endX = (parseInt($("#xValue").val()) + parseInt($("#wValue").val())) * mulEndX;
+			var startY = (parseInt($("#yValue").val()) + (parseInt($("#hValue").val())/2)) * mulStartY;
+			var endY = (parseInt($("#yValue").val()) + (parseInt($("#hValue").val())/2)) * mulEndY;
+			var width = $("#hValue").val() * mulWidth;
+		
 			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B1%3BposRect.PointStart.X%3B'+startX+'%23');
 			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B1%3BposRect.PointEnd.X%3B'+endX+'%23');			
 			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B1%3BposRect.PointStart.Y%3B'+startY+'%23');
@@ -861,11 +874,17 @@
 	
 		if(resolutionChoice == 0) { // image 640 by 480
 			if(horizontal == 1) {
-				mulStartX = 0.831;
+				mulStartX = 0.853;
+				mulStartY = 0.987;
+				mulEndX = 0.851;
+				mulEndY = 0.987;
+				mulWidth = 1;
+				
+				/* mulStartX = 0.831;
 				mulStartY = 1;
 				mulEndX = 0.871;
 				mulEndY = 1;
-				mulWidth = 1;
+				mulWidth = 1; */
 			}
 			else if(horizontal == 0) {
 				mulStartX = 0.859;
@@ -878,10 +897,16 @@
 		else if(resolutionChoice == 1) { //image 1024 by 768
 			if(horizontal == 1) {
 				mulStartX = 1.3648;
+				mulStartY = 1.583;
+				mulEndX = 1.363;
+				mulEndY = 1.583;
+				mulWidth = 1.6;
+				
+				/* mulStartX = 1.3648;
 				mulStartY = 1.668;
 				mulEndX = 1.303;
 				mulEndY = 1.668;
-				mulWidth = 1;
+				mulWidth = 1; */
 			} 
 			else if(horizontal == 0) {
 				mulStartX = 1.346;
