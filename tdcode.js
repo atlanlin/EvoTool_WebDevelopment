@@ -52,6 +52,14 @@
 
 	// flag for rectangle opacity (roi window)
 	var rectRoiFlag = false;
+	
+	// scaling
+	var mulStartX;
+	var mulEndX;
+	var mulStartY;
+	var mulEndY;
+	var mulWidth;
+	var mulHeight;
 
 	// box object to hold data
 	// default width and height
@@ -255,35 +263,34 @@
 	// consists of code type
 	function codeType() {
 		if (document.getElementById("dmc").checked) {
-			ajaxGet('any.htm?cmd=%23021%3BEVO%20DataCode%3B2%3BDataCodeType%3B0%23');
+			ajaxGet('info.htm?cmd=%23021%3BEVO%20DataCode%3B2%3BDataCodeType%3B0%23');
 		}	
 		if (document.getElementById("qr").checked) {
-			ajaxGet('any.htm?cmd=%23021%3BEVO%20DataCode%3B2%3BDataCodeType%3B1%23');
+			ajaxGet('info.htm?cmd=%23021%3BEVO%20DataCode%3B2%3BDataCodeType%3B1%23');
 		}
 		
 		if (document.getElementById("microqr").checked) {
-			ajaxGet('any.htm?cmd=%23021%3BEVO%20DataCode%3B2%3BDataCodeType%3B2%23');
+			ajaxGet('info.htm?cmd=%23021%3BEVO%20DataCode%3B2%3BDataCodeType%3B2%23');
 		}
 	}
 	
 	// consists of roi settings
 	function roiSet() {
-	
 		var startX = $("#xValue").val() * mulStartX;
 		var startY = $("#yValue").val() * mulStartY;
 		var width = $("#wValue").val() * mulWidth;
-		var height = $("#wValue").val() * mulHeight;
+		var height = $("#hValue").val() * mulHeight;
 		
 		if (document.getElementById("wholeWindow").checked) {
-			ajaxGet('any.htm?cmd=%23021%3BEVO%20DataCode%3B2%3BSourceWindow.SourceMode%3B4%23');
+			ajaxGet('info.htm?cmd=%23021%3BEVO%20DataCode%3B2%3BSourceWindow.SourceMode%3B4%23');
 		}
 			
 		if (document.getElementById("defineWindow").checked) {
-			ajaxGet('any.htm?cmd=%23021%3BEVO%20DataCode%3B2%3BSourceWindow.SourceMode%3B3%23');
-			ajaxGet('any.htm?cmd=%23021%3BEVO%20DataCode%3B1%3BSourceWindow.SourceWindow.Left%3B'+startX+'%23');
-			ajaxGet('any.htm?cmd=%23021%3BEVO%20DataCode%3B1%3BSourceWindow.SourceWindow.Top%3B'+startY+'%23');
-			ajaxGet('any.htm?cmd=%23021%3BEVO%20DataCode%3B1%3BSourceWindow.SourceWindow.Width%3B'+width+'%23');
-			ajaxGet('any.htm?cmd=%23021%3BEVO%20DataCode%3B1%3BSourceWindow.SourceWindow.Height%3B'+height+'%23');
+			ajaxGet('info.htm?cmd=%23021%3BEVO%20DataCode%3B2%3BSourceWindow.SourceMode%3B3%23');
+			ajaxGet('info.htm?cmd=%23021%3BEVO%20DataCode%3B1%3BSourceWindow.SourceWindow.Left%3B'+startX+'%23');
+			ajaxGet('info.htm?cmd=%23021%3BEVO%20DataCode%3B1%3BSourceWindow.SourceWindow.Top%3B'+startY+'%23');
+			ajaxGet('info.htm?cmd=%23021%3BEVO%20DataCode%3B1%3BSourceWindow.SourceWindow.Width%3B'+width+'%23');
+			ajaxGet('info.htm?cmd=%23021%3BEVO%20DataCode%3B1%3BSourceWindow.SourceWindow.Height%3B'+height+'%23');
 		}
 	}
 
@@ -674,12 +681,19 @@
 	
 		if(resolutionChoice == 0) { // image 640 by 480
 			if(horizontal == 1) {
-				mulStartX = 0.831;
+				mulStartX = 0.854;
+				mulStartY = 1;
+				mulEndX = 0.854;
+				mulEndY = 1;
+				mulWidth = 0.872;
+				mulHeight = 1;
+				
+				/* mulStartX = 0.831;
 				mulStartY = 1;
 				mulEndX = 0.871;
 				mulEndY = 1;
 				mulWidth = 1;
-				mulHeight = 1;
+				mulHeight = 1; */
 			}
 			else if(horizontal == 0) {
 				mulStartX = 0.859;
@@ -693,10 +707,17 @@
 		else if(resolutionChoice == 1) { //image 1024 by 768
 			if(horizontal == 1) {
 				mulStartX = 1.3648;
+				mulStartY = 1.538;
+				mulEndX = 1.303;
+				mulEndY = 1.668;
+				mulWidth = 1.385;
+				mulHeight = 1.678;
+				
+				/* mulStartX = 1.3648;
 				mulStartY = 1.668;
 				mulEndX = 1.303;
 				mulEndY = 1.668;
-				mulWidth = 1;
+				mulWidth = 1; */
 			} 
 			else if(horizontal == 0) {
 				mulStartX = 1.346;
