@@ -20,6 +20,13 @@
                 <button id="btnCodeStart" type="button" class="button">Monitor</button>
 				<button id="btnStop" type="button" class="button">Stop</button>
 				<button id="home" type="button" class="button" onClick="location.href='index.htm'">Main Page</button>
+				<script>
+					$("#home").click(function(){
+						var curTime = new Date().getTime();
+						ajaxGet("info.htm?cmd=%23004%23&time=" + curTime);
+						ajaxGet('info.htm?cmd=%23021%3BEVO%20OCR%3B2%3BGeneral.Enabled%3B0%23');
+					});
+				</script>
             </div>
 			
 			<hr>
@@ -28,6 +35,7 @@
 			<p class="fHeading1">Result</p>
              <div id="resultDetail">
                 <textarea id="resultDisplay" rows="6" cols="15" readonly></textarea>
+				<input id="btnMeasure" type="button" value="Get Result" class="button">
             </div>
 			<!-- till here -->
         </div>
@@ -35,7 +43,7 @@
         <div id="imageArea">
             <div id="mainTitle">OCR</div>
 			<img id="imgSnapshot"></img>
-			<canvas id="canvas2" style="z-index: 1; position:absolute; left:0px; top:27px;" width="750" height="480">
+			<canvas id="canvas2" style="z-index: 1; position:absolute; left:0px; top:27px;" width="752" height="480">
 				This text is displayed if your browser does not support HTML5 Canvas.
 			</canvas>
         </div> 

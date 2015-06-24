@@ -168,6 +168,14 @@
 	// initialize our canvas, add a ghost canvas, set draw loop
 	// then add everything we want to initially exist on the canvas
 	function init2() {
+		ajaxGet('info.htm?cmd=%23021%3BEVO%20OCR%3B2%3BGeneral.Enabled%3B1%23');
+	
+		if (getCookie("resolution") == null) {
+			setCookie("resolution","0",1);
+		}
+		resolution = parseInt(getCookie("resolution"));
+			
+		setScaleSize(1, resolution);
 		canvas = document.getElementById('canvas2');
 		HEIGHT = canvas.height;
 		WIDTH = canvas.width;
@@ -191,7 +199,7 @@
 	  
 		// make mainDraw() fire every INTERVAL milliseconds
 		setInterval(mainDraw, INTERVAL);
-		setInterval(evoComm, INTERVAL);
+		//setInterval(evoComm, INTERVAL);
 
 		// set our events
 		// up and down are for dragging
@@ -236,6 +244,16 @@
 				rectRoiFlag=false;
 			}
 		});
+		
+		$("#btnMeasure").click(function(){
+	
+			evoComm();
+			
+			ajaxGet("cfg.ini", getCodeValueFrominiFile);
+			
+		});
+		
+		
 		
 		// add a large green rectangle (roi window)
 		addRect(0, 0, 100, 100, 'rgba(0,205,0,0)', 'rgba(0,205,0,1)');
@@ -368,24 +386,34 @@
 	
 	// consists of roi settings
 	function roiSet() {
+		
+		/* var startX = $("#xValue").val() * mulStartX;
+		var endX = (parseInt($("#xValue").val()) + parseInt($("#wValue").val())) * mulEndX;
+		var startY = (parseInt($("#yValue").val()) + (parseInt($("#hValue").val())/2)) * mulStartY;
+		var endY = (parseInt($("#yValue").val()) + (parseInt($("#hValue").val())/2)) * mulEndY;
+		var width = $("#wValue").val() * mulWidth; */
+		
+		var startX = $("#xValue").val() * mulStartX;
+		var endX = (parseInt($("#xValue").val()) + parseInt($("#wValue").val())) * mulEndX;
+		var startY = (parseInt($("#yValue").val()) + (parseInt($("#hValue").val())/2)) * mulStartY;
+		var endY = (parseInt($("#yValue").val()) + (parseInt($("#hValue").val())/2)) * mulEndY;
+		var width = $("#hValue").val() * mulWidth;
+		
 		if (document.getElementById("wholeWindow").checked) {
 			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B1%3BposRect.PointStart.X%3B0%23');
-			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B1%3BposRect.PointEnd.X%3B750%23');
+			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B1%3BposRect.PointEnd.X%3B752%23');
 			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B1%3BposRect.PointStart.Y%3B240%23');
 			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B1%3BposRect.PointEnd.Y%3B240%23');
 			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B1%3BposRect.Width%3B750%23');
 		}
 			
 		if (document.getElementById("defineWindow").checked) {
-			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B1%3BposRect.PointStart.X%3B'+$("#xValue").val()+'%23');
-			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B1%3BposRect.PointEnd.X%3B'+(parseInt($("#xValue").val())+parseInt($("#wValue").val()))+'%23');			
-			/* ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B1%3BposRect.PointStart.Y%3B'+selectionHandles[3].y+'%23');
-			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B1%3BposRect.PointEnd.Y%3B'+selectionHandles[3].y+'%23'); */
-			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B1%3BposRect.PointStart.Y%3B'+(parseInt($("#yValue").val())+(parseInt($("#hValue").val())/2))+'%23');
-			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B1%3BposRect.PointEnd.Y%3B'+(parseInt($("#yValue").val())+(parseInt($("#hValue").val())/2))+'%23');
-			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B1%3BposRect.Width%3B'+$("#wValue").val()+'%23');
-			/* ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B1%3BposRect.PointStart.Y%3B'+$("#yValue").val()+'%23');
-			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B1%3BposRect.PointEnd.Y%3B'+$("#yValue").val()+'%23'); */
+			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B1%3BposRect.PointStart.X%3B'+startX+'%23');
+			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B1%3BposRect.PointEnd.X%3B'+endX+'%23');			
+			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B1%3BposRect.PointStart.Y%3B'+startY+'%23');
+			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B1%3BposRect.PointEnd.Y%3B'+endY+'%23');
+			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B1%3BposRect.Width%3B'+width+'%23');
+
 		}
 	}
 
@@ -825,6 +853,60 @@
 
 		mx = e.pageX - offsetX;
 		my = e.pageY - offsetY
+	}
+	
+	//set rect scale to map evo3
+	//horizontal == 0 means vertical, choice 0 (640 by 480), 1 (1024 by 768), 2(2592 by 1944)..
+	function setScaleSize(horizontal, resolutionChoice) {
+	
+		if(resolutionChoice == 0) { // image 640 by 480
+			if(horizontal == 1) {
+				mulStartX = 0.831;
+				mulStartY = 1;
+				mulEndX = 0.871;
+				mulEndY = 1;
+				mulWidth = 1;
+			}
+			else if(horizontal == 0) {
+				mulStartX = 0.859;
+				mulStartY = 1;
+				mulEndX = 0.859;
+				mulEndY = 1;
+				mulWidth = 0.81;
+			} 
+		} 
+		else if(resolutionChoice == 1) { //image 1024 by 768
+			if(horizontal == 1) {
+				mulStartX = 1.3648;
+				mulStartY = 1.668;
+				mulEndX = 1.303;
+				mulEndY = 1.668;
+				mulWidth = 1;
+			} 
+			else if(horizontal == 0) {
+				mulStartX = 1.346;
+				mulStartY = 1.6;
+				mulEndX = 1.346;
+				mulEndY = 1.6;
+				mulWidth = 1;
+			}
+		}
+		else if(resolutionChoice == 2) { // image 2592 by 1944
+			if(horizontal == 1) {
+				mulStartX = 3.451;
+				mulStartY = 4.069;
+				mulEndX = 3.432;
+				mulEndY = 4.069;
+				mulWidth = 3.992;
+			}
+			else if(horizontal == 0) {
+				mulStartX = 3.449;
+				mulStartY = 3.919;
+				mulEndX = 3.449;
+				mulEndY = 4.051;
+				mulWidth = 3.305;
+			} 
+		}
 	}
 
 	// if you don't want to use <body onLoad='init()'>

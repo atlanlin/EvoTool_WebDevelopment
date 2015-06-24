@@ -304,24 +304,27 @@ function getIniStr(section,key,fileStr)
 
 }
 
-function getIniCodeStr(section,key,fileStr)
+function getIniCodeStr(key,fileStr)
 {
 	var substr = fileStr.split("\r\n");
-	var flag = 0;
+	//var flag = 0;
 	for (i in substr) {
-		if( substr[i] == '['+section+']') {
+		/* if( substr[i] == '\n['+section+']') {
+			alert("hi");
 			flag = 1;
 			continue;
 		}
 		else if (substr[i] == "[") {
+		
 			flag = 0;
 		}
 		
 		if (flag == 0) {
 			continue;
-		}
-
+		} */
+		
 		if (substr[i] == key) {
+			
 			return substr[parseInt(i)+1];
 		}
 	}

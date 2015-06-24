@@ -271,7 +271,7 @@ function getCodeValueFrominiFile()
 {
 	if (xhr.readyState != 4)  { return; }
 	var resp = xhr.responseText;
-	globalResult = getIniCodeStr("camcode1", "result1=", resp);
+	globalResult = getIniCodeStr("coderesult1=", resp);
 	
 	$("#resultDisplay").val(globalResult);
 	
