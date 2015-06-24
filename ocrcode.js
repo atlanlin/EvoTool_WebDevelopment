@@ -55,6 +55,13 @@
 
 	// flag for rectangle opacity (roi window)
 	var rectRoiFlag = false;
+	
+	// scaling
+	var mulStartX;
+	var mulEndX;
+	var mulStartY;
+	var mulEndY;
+	var mulWidth;
 
 	// box object to hold data
 	// default width and height
@@ -273,114 +280,114 @@
 	// consists of font type
 	function fontType() {
 		if (document.getElementById("industrial").selected) {
-			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B2%3BfontNum%3B0%23');
+			ajaxGet('info.htm?cmd=%23021%3BEVO%20OCR%3B2%3BfontNum%3B0%23');
 		}
 		if (document.getElementById("industrial09").selected) {
-			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B2%3BfontNum%3B1%23');
+			ajaxGet('info.htm?cmd=%23021%3BEVO%20OCR%3B2%3BfontNum%3B1%23');
 		}
 		if (document.getElementById("industrial09AZ").selected) {
-			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B2%3BfontNum%3B3%23');
+			ajaxGet('info.htm?cmd=%23021%3BEVO%20OCR%3B2%3BfontNum%3B3%23');
 		}
 		if (document.getElementById("industrial09P").selected) {
-			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B2%3BfontNum%3B2%23');
+			ajaxGet('info.htm?cmd=%23021%3BEVO%20OCR%3B2%3BfontNum%3B2%23');
 		}
 		if (document.getElementById("industrialAZP").selected) {
-			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B2%3BfontNum%3B4%23');
+			ajaxGet('info.htm?cmd=%23021%3BEVO%20OCR%3B2%3BfontNum%3B4%23');
 		}
 		if (document.getElementById("dotPrint").selected) {
-			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B2%3BfontNum%3B5%23');
+			ajaxGet('info.htm?cmd=%23021%3BEVO%20OCR%3B2%3BfontNum%3B5%23');
 		}
 		if (document.getElementById("dotPrint09").selected) {
-			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B2%3BfontNum%3B6%23');
+			ajaxGet('info.htm?cmd=%23021%3BEVO%20OCR%3B2%3BfontNum%3B6%23');
 		}
 		if (document.getElementById("dotPrint09AZ").selected) {
-			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B2%3BfontNum%3B7%23');
+			ajaxGet('info.htm?cmd=%23021%3BEVO%20OCR%3B2%3BfontNum%3B7%23');
 		}
 		if (document.getElementById("dotPrint09P").selected) {
-			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B2%3BfontNum%3B9%23');
+			ajaxGet('info.htm?cmd=%23021%3BEVO%20OCR%3B2%3BfontNum%3B9%23');
 		}
 		if (document.getElementById("dotPrintAZP").selected) {
-			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B2%3BfontNum%3B8%23');
+			ajaxGet('info.htm?cmd=%23021%3BEVO%20OCR%3B2%3BfontNum%3B8%23');
 		}
 		if (document.getElementById("document").selected) {
-			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B2%3BfontNum%3B10%23');
+			ajaxGet('info.htm?cmd=%23021%3BEVO%20OCR%3B2%3BfontNum%3B10%23');
 		}
 		if (document.getElementById("document09").selected) {
-			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B2%3BfontNum%3B11%23');
+			ajaxGet('info.htm?cmd=%23021%3BEVO%20OCR%3B2%3BfontNum%3B11%23');
 		}
 		if (document.getElementById("document09AZ").selected) {
-			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B2%3BfontNum%3B12%23');
+			ajaxGet('info.htm?cmd=%23021%3BEVO%20OCR%3B2%3BfontNum%3B12%23');
 		}
 		if (document.getElementById("documentAZP").selected) {
-			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B2%3BfontNum%3B13%23');
+			ajaxGet('info.htm?cmd=%23021%3BEVO%20OCR%3B2%3BfontNum%3B13%23');
 		}
 		if (document.getElementById("enhancedOCRA").selected) {
-			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B2%3BfontNum%3B14%23');
+			ajaxGet('info.htm?cmd=%23021%3BEVO%20OCR%3B2%3BfontNum%3B14%23');
 		}
 		if (document.getElementById("enhancedOCRB").selected) {
-			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B2%3BfontNum%3B15%23');
+			ajaxGet('info.htm?cmd=%23021%3BEVO%20OCR%3B2%3BfontNum%3B15%23');
 		}
 		if (document.getElementById("pharma").selected) {
-			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B2%3BfontNum%3B16%23');
+			ajaxGet('info.htm?cmd=%23021%3BEVO%20OCR%3B2%3BfontNum%3B16%23');
 		}
 		if (document.getElementById("pharma09").selected) {
-			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B2%3BfontNum%3B17%23');
+			ajaxGet('info.htm?cmd=%23021%3BEVO%20OCR%3B2%3BfontNum%3B17%23');
 		}
 		if (document.getElementById("pharma09AZ").selected) {
-			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B2%3BfontNum%3B19%23');
+			ajaxGet('info.htm?cmd=%23021%3BEVO%20OCR%3B2%3BfontNum%3B19%23');
 		}
 		if (document.getElementById("pharma09P").selected) {
-			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B2%3BfontNum%3B18%23');
+			ajaxGet('info.htm?cmd=%23021%3BEVO%20OCR%3B2%3BfontNum%3B18%23');
 		}
 		if (document.getElementById("micr").selected) {
-			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B2%3BfontNum%3B20%23');
+			ajaxGet('info.htm?cmd=%23021%3BEVO%20OCR%3B2%3BfontNum%3B20%23');
 		}
 		if (document.getElementById("semi").selected) {
-			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B2%3BfontNum%3B21%23');
+			ajaxGet('info.htm?cmd=%23021%3BEVO%20OCR%3B2%3BfontNum%3B21%23');
 		}
 	}
 	
 	// consists of polarity type
 	function polarityType() {
 		if (document.getElementById("darkOnLight").checked) {
-			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B2%3BpolarityType%3B0%23');
+			ajaxGet('info.htm?cmd=%23021%3BEVO%20OCR%3B2%3BpolarityType%3B0%23');
 		}
 		else {
-			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B2%3BpolarityType%3B1%23');
+			ajaxGet('info.htm?cmd=%23021%3BEVO%20OCR%3B2%3BpolarityType%3B1%23');
 		}
 	}
 	
 	// consists of advanced character options
 	function charOptions() {
 		if (document.getElementById("dotted").checked) {
-			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B2%3BdotType%3B1%23');
+			ajaxGet('info.htm?cmd=%23021%3BEVO%20OCR%3B2%3BdotType%3B1%23');
 		} else {
-			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B2%3BdotType%3B0%23');
+			ajaxGet('info.htm?cmd=%23021%3BEVO%20OCR%3B2%3BdotType%3B0%23');
 		}
 			
 		if( document.getElementById("rotationCorrection").checked) {
-			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B2%3BrotateType%3B1%23');
+			ajaxGet('info.htm?cmd=%23021%3BEVO%20OCR%3B2%3BrotateType%3B1%23');
 		} else {
-			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B2%3BrotateType%3B0%23');
+			ajaxGet('info.htm?cmd=%23021%3BEVO%20OCR%3B2%3BrotateType%3B0%23');
 		}
 			
 		if (document.getElementById("characterSize").checked) {
 			// auto character size
-			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B1%3BAutoCharX%3B'+$("#charXValue").val()+'%23');
-			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B1%3BAutoCharY%3B'+$("#charYValue").val()+'%23');
-			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B1%3BAutoCharW%3B'+$("#charWValue").val()+'%23');
-			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B1%3BAutoCharH%3B'+$("#charHValue").val()+'%23');
+			ajaxGet('info.htm?cmd=%23021%3BEVO%20OCR%3B1%3BAutoCharX%3B'+$("#charXValue").val()+'%23');
+			ajaxGet('info.htm?cmd=%23021%3BEVO%20OCR%3B1%3BAutoCharY%3B'+$("#charYValue").val()+'%23');
+			ajaxGet('info.htm?cmd=%23021%3BEVO%20OCR%3B1%3BAutoCharW%3B'+$("#charWValue").val()+'%23');
+			ajaxGet('info.htm?cmd=%23021%3BEVO%20OCR%3B1%3BAutoCharH%3B'+$("#charHValue").val()+'%23');
 			
 			// manual character size
-/* 			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B1%3BcharX%3B200%23');
-			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B1%3BcharY%3B200%23');
-			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B1%3BcharW%3B100%23');
-			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B1%3BcharH%3B100%23'); */
+/* 			ajaxGet('info.htm?cmd=%23021%3BEVO%20OCR%3B1%3BcharX%3B200%23');
+			ajaxGet('info.htm?cmd=%23021%3BEVO%20OCR%3B1%3BcharY%3B200%23');
+			ajaxGet('info.htm?cmd=%23021%3BEVO%20OCR%3B1%3BcharW%3B100%23');
+			ajaxGet('info.htm?cmd=%23021%3BEVO%20OCR%3B1%3BcharH%3B100%23'); */
 		} else {
-			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B1%3BAutoCharX%3B50%23');
-			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B1%3BAutoCharY%3B50%23');
-			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B1%3BAutoCharW%3B40%23');
-			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B1%3BAutoCharH%3B50%23');
+			ajaxGet('info.htm?cmd=%23021%3BEVO%20OCR%3B1%3BAutoCharX%3B50%23');
+			ajaxGet('info.htm?cmd=%23021%3BEVO%20OCR%3B1%3BAutoCharY%3B50%23');
+			ajaxGet('info.htm?cmd=%23021%3BEVO%20OCR%3B1%3BAutoCharW%3B40%23');
+			ajaxGet('info.htm?cmd=%23021%3BEVO%20OCR%3B1%3BAutoCharH%3B50%23');
 		}
 	}
 	
@@ -394,11 +401,11 @@
 		var width = $("#wValue").val() * mulWidth; */
 		
 		if (document.getElementById("wholeWindow").checked) {
-			/* ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B1%3BposRect.PointStart.X%3B0%23');
-			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B1%3BposRect.PointEnd.X%3B752%23');
-			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B1%3BposRect.PointStart.Y%3B240%23');
-			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B1%3BposRect.PointEnd.Y%3B240%23');
-			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B1%3BposRect.Width%3B750%23'); */
+			/* ajaxGet('info.htm?cmd=%23021%3BEVO%20OCR%3B1%3BposRect.PointStart.X%3B0%23');
+			ajaxGet('info.htm?cmd=%23021%3BEVO%20OCR%3B1%3BposRect.PointEnd.X%3B752%23');
+			ajaxGet('info.htm?cmd=%23021%3BEVO%20OCR%3B1%3BposRect.PointStart.Y%3B240%23');
+			ajaxGet('info.htm?cmd=%23021%3BEVO%20OCR%3B1%3BposRect.PointEnd.Y%3B240%23');
+			ajaxGet('info.htm?cmd=%23021%3BEVO%20OCR%3B1%3BposRect.Width%3B750%23'); */
 			
 			var startX = 0 * mulStartX;
 			var endX = 752 * mulEndX;
@@ -406,11 +413,11 @@
 			var endY = 240 * mulEndY;
 			var width = 480 * mulWidth;
 			
-			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B1%3BposRect.PointStart.X%3B'+startX+'%23');
-			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B1%3BposRect.PointEnd.X%3B'+endX+'%23');			
-			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B1%3BposRect.PointStart.Y%3B'+startY+'%23');
-			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B1%3BposRect.PointEnd.Y%3B'+endY+'%23');
-			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B1%3BposRect.Width%3B'+width+'%23');
+			ajaxGet('info.htm?cmd=%23021%3BEVO%20OCR%3B1%3BposRect.PointStart.X%3B'+startX+'%23');
+			ajaxGet('info.htm?cmd=%23021%3BEVO%20OCR%3B1%3BposRect.PointEnd.X%3B'+endX+'%23');			
+			ajaxGet('info.htm?cmd=%23021%3BEVO%20OCR%3B1%3BposRect.PointStart.Y%3B'+startY+'%23');
+			ajaxGet('info.htm?cmd=%23021%3BEVO%20OCR%3B1%3BposRect.PointEnd.Y%3B'+endY+'%23');
+			ajaxGet('info.htm?cmd=%23021%3BEVO%20OCR%3B1%3BposRect.Width%3B'+width+'%23');
 		}
 			
 		if (document.getElementById("defineWindow").checked) {
@@ -421,11 +428,11 @@
 			var endY = (parseInt($("#yValue").val()) + (parseInt($("#hValue").val())/2)) * mulEndY;
 			var width = $("#hValue").val() * mulWidth;
 		
-			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B1%3BposRect.PointStart.X%3B'+startX+'%23');
-			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B1%3BposRect.PointEnd.X%3B'+endX+'%23');			
-			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B1%3BposRect.PointStart.Y%3B'+startY+'%23');
-			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B1%3BposRect.PointEnd.Y%3B'+endY+'%23');
-			ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B1%3BposRect.Width%3B'+width+'%23');
+			ajaxGet('info.htm?cmd=%23021%3BEVO%20OCR%3B1%3BposRect.PointStart.X%3B'+startX+'%23');
+			ajaxGet('info.htm?cmd=%23021%3BEVO%20OCR%3B1%3BposRect.PointEnd.X%3B'+endX+'%23');			
+			ajaxGet('info.htm?cmd=%23021%3BEVO%20OCR%3B1%3BposRect.PointStart.Y%3B'+startY+'%23');
+			ajaxGet('info.htm?cmd=%23021%3BEVO%20OCR%3B1%3BposRect.PointEnd.Y%3B'+endY+'%23');
+			ajaxGet('info.htm?cmd=%23021%3BEVO%20OCR%3B1%3BposRect.Width%3B'+width+'%23');
 
 		}
 	}
