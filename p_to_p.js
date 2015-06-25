@@ -208,10 +208,16 @@ function addRect(x, y, w, h, fill) {
 // initialize our canvas, add a ghost canvas, set draw loop
 // then add everything we want to intially exist on the canvas
 function init2() {
+	ajaxGet("info.htm?cmd=%23021%3BEVO%20Distance%3B2%3BGeneral.Enabled%3B1%23");
+	ajaxGet("info.htm?cmd=%23021%3BEVO%20Distance%3B2%3BOptionForType%3B0%23");
+	ajaxGet("info.htm?cmd=%23021%3BINI%20Distance%3B2%3BGeneral.Enabled%3B1%23");
 
-  ajaxGet("info.htm?cmd=%23021%3BEVO Distance%3B2%3BGeneral.Enabled%3B1%23");
-  ajaxGet("info.htm?cmd=%23021%3BINI Distance%3B2%3BGeneral.Enabled%3B1%23");
+	if (getCookie("resolution") == null) {
+		setCookie("resolution","0",1);
+	}
+	resolution = parseInt(getCookie("resolution"));
   
+	setScaleSize(1, resolution);
   canvas = document.getElementById('canvas2');
   HEIGHT = canvas.height;
   WIDTH = canvas.width;
@@ -287,16 +293,9 @@ function init2() {
 	});
 	
 	$("#btnMeasure").click(function(){
-		
-			if(getCookie("resolution") == null)
-			{
-				setCookie("resolution","1",1);
-			}
-			
-			resolution = parseInt(getCookie("resolution"));
-			
+	
+			evoComm();
 
-			ajaxGet("info.htm?cmd=%23021%3BEVO Distance%3B2%3BOptionForType%3B0%23");
 			ajaxGet("cfg.ini", getValueFrominiFile);
 			
 		}
@@ -396,6 +395,12 @@ function evoComm() {
 }	// end evoComm
 
 function point1Settings() {
+	var start1X = $("#point1StartX").val() * mulStartX;
+	var end1X = $("#point1EndX").val() * mulEndX;
+	var start1Y = $("#point1StartY").val() * mulStartY;
+	var end1Y = $("#point1EndY").val() * mulEndY;
+	var width1 = $("#point1Width").val() * mulWidth;
+			
 	if (document.getElementById("point1DOL").checked) {
 			ajaxGet('any.htm?cmd=%23021%3BEVO%20Distance%3B2%3BTransition_1%3B0%23');
 	}	
@@ -404,14 +409,20 @@ function point1Settings() {
 			ajaxGet('any.htm?cmd=%23021%3BEVO%20Distance%3B2%3BTransition_1%3B1%23');
 	}
 	
-	ajaxGet("info.htm?cmd=%23021%3BEVO%20Distance%3B1%3BRecPos.PointStart.X%3B"+$("#point1StartX").val()+"%23");
-	ajaxGet("info.htm?cmd=%23021%3BEVO%20Distance%3B1%3BRecPos.PointEnd.X%3B"+$("#point1EndX").val()+"%23");
-	ajaxGet("info.htm?cmd=%23021%3BEVO%20Distance%3B1%3BRecPos.PointStart.Y%3B"+$("#point1StartY").val()+"%23");
-	ajaxGet("info.htm?cmd=%23021%3BEVO%20Distance%3B1%3BRecPos.PointEnd.Y%3B"+$("#point1EndY").val()+"%23");
-	ajaxGet("info.htm?cmd=%23021%3BEVO%20Distance%3B1%3BRecPos.Width%3B"+$("#point1Width").val()+"%23");
+	ajaxGet("info.htm?cmd=%23021%3BEVO%20Distance%3B1%3BRecPos.PointStart.X%3B"+start1X+"%23");
+	ajaxGet("info.htm?cmd=%23021%3BEVO%20Distance%3B1%3BRecPos.PointEnd.X%3B"+end1X+"%23");
+	ajaxGet("info.htm?cmd=%23021%3BEVO%20Distance%3B1%3BRecPos.PointStart.Y%3B"+start1Y+"%23");
+	ajaxGet("info.htm?cmd=%23021%3BEVO%20Distance%3B1%3BRecPos.PointEnd.Y%3B"+end1Y+"%23");
+	ajaxGet("info.htm?cmd=%23021%3BEVO%20Distance%3B1%3BRecPos.Width%3B"+width1+"%23");
 }
 
 function point2Settings() {
+	var start2X = $("#point2StartX").val() * mulStartX;
+	var end2X = $("#point2EndX").val() * mulEndX;
+	var start2Y = $("#point2StartY").val() * mulStartY;
+	var end2Y = $("#point2EndY").val() * mulEndY;
+	var width2 = $("#point2Width").val() * mulWidth;
+	
 	if (document.getElementById("point2DOL").checked) {
 			ajaxGet('any.htm?cmd=%23021%3BEVO%20Distance%3B2%3BTransition_2%3B0%23');
 	}
@@ -420,11 +431,11 @@ function point2Settings() {
 			ajaxGet('any.htm?cmd=%23021%3BEVO%20Distance%3B2%3BTransition_2%3B1%23');
 	}
 	
-	ajaxGet("info.htm?cmd=%23021%3BEVO%20Distance%3B1%3BRecPos2.PointStart.X%3B"+$("#point2StartX").val()+"%23");
-	ajaxGet("info.htm?cmd=%23021%3BEVO%20Distance%3B1%3BRecPos2.PointEnd.X%3B"+$("#point2EndX").val()+"%23");
-	ajaxGet("info.htm?cmd=%23021%3BEVO%20Distance%3B1%3BRecPos2.PointStart.Y%3B"+$("#point2StartY").val()+"%23");
-	ajaxGet("info.htm?cmd=%23021%3BEVO%20Distance%3B1%3BRecPos2.PointEnd.Y%3B"+$("#point2EndY").val()+"%23");
-	ajaxGet("info.htm?cmd=%23021%3BEVO%20Distance%3B1%3BRecPos2.Width%3B"+$("#point2Width").val()+"%23");
+	ajaxGet("info.htm?cmd=%23021%3BEVO%20Distance%3B1%3BRecPos2.PointStart.X%3B"+start2X+"%23");
+	ajaxGet("info.htm?cmd=%23021%3BEVO%20Distance%3B1%3BRecPos2.PointEnd.X%3B"+end2X+"%23");
+	ajaxGet("info.htm?cmd=%23021%3BEVO%20Distance%3B1%3BRecPos2.PointStart.Y%3B"+start2Y+"%23");
+	ajaxGet("info.htm?cmd=%23021%3BEVO%20Distance%3B1%3BRecPos2.PointEnd.Y%3B"+end2Y+"%23");
+	ajaxGet("info.htm?cmd=%23021%3BEVO%20Distance%3B1%3BRecPos2.Width%3B"+width2+"%23");
 }
 
 function toleranceSettings() {
@@ -866,6 +877,72 @@ function getMouse(e) {
       mx = e.pageX - offsetX;
       my = e.pageY - offsetY
 }
+
+	//set rect scale to map evo3
+	//horizontal == 0 means vertical, choice 0 (640 by 480), 1 (1024 by 768), 2(2592 by 1944)..
+	function setScaleSize(horizontal, resolutionChoice) {
+	
+		if(resolutionChoice == 0) { // image 640 by 480
+			if(horizontal == 1) {
+				mulStartX = 0.853;
+				mulStartY = 0.987;
+				mulEndX = 0.851;
+				mulEndY = 0.987;
+				mulWidth = 1;
+				
+				/* mulStartX = 0.831;
+				mulStartY = 1;
+				mulEndX = 0.871;
+				mulEndY = 1;
+				mulWidth = 1; */
+			}
+			else if(horizontal == 0) {
+				mulStartX = 0.859;
+				mulStartY = 1;
+				mulEndX = 0.859;
+				mulEndY = 1;
+				mulWidth = 0.81;
+			} 
+		} 
+		else if(resolutionChoice == 1) { //image 1024 by 768
+			if(horizontal == 1) {
+				mulStartX = 1.354;
+				mulStartY = 1.592;
+				mulEndX = 1.355;
+				mulEndY = 1.591;
+				mulWidth = 1.6;
+				
+				/* mulStartX = 1.3648;
+				mulStartY = 1.668;
+				mulEndX = 1.303;
+				mulEndY = 1.668;
+				mulWidth = 1; */
+			} 
+			else if(horizontal == 0) {
+				mulStartX = 1.346;
+				mulStartY = 1.6;
+				mulEndX = 1.346;
+				mulEndY = 1.6;
+				mulWidth = 1;
+			}
+		}
+		else if(resolutionChoice == 2) { // image 2592 by 1944
+			if(horizontal == 1) {
+				mulStartX = 3.451;
+				mulStartY = 4.069;
+				mulEndX = 3.432;
+				mulEndY = 4.069;
+				mulWidth = 3.992;
+			}
+			else if(horizontal == 0) {
+				mulStartX = 3.449;
+				mulStartY = 3.919;
+				mulEndX = 3.449;
+				mulEndY = 4.051;
+				mulWidth = 3.305;
+			} 
+		}
+	}
 
 // If you dont want to use <body onLoad='init()'>
 // You could uncomment this init() reference and place the script reference inside the body tag

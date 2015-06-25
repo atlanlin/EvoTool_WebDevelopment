@@ -62,6 +62,12 @@
 	var mulStartY;
 	var mulEndY;
 	var mulWidth;
+	var mulHeight;
+	
+	var mulCharStartX;
+	var mulCharStartY;
+	var	mulCharWidth;
+	var mulCharHeight;
 
 	// box object to hold data
 	// default width and height
@@ -362,6 +368,11 @@
 	
 	// consists of advanced character options
 	function charOptions() {
+		var charStartX = $("#charXValue").val() * mulCharStartX;
+		var charStartY = $("#charYValue").val() * mulCharStartY;
+		var charWidth = $("#charWValue").val() * mulCharWidth;
+		var charHeight = $("#charHValue").val() * mulCharHeight;
+			
 		if (document.getElementById("dotted").checked) {
 			ajaxGet('info.htm?cmd=%23021%3BEVO%20OCR%3B2%3BdotType%3B1%23');
 		} else {
@@ -376,10 +387,10 @@
 			
 		if (document.getElementById("characterSize").checked) {
 			// auto character size
-			ajaxGet('info.htm?cmd=%23021%3BEVO%20OCR%3B1%3BAutoCharX%3B'+$("#charXValue").val()+'%23');
-			ajaxGet('info.htm?cmd=%23021%3BEVO%20OCR%3B1%3BAutoCharY%3B'+$("#charYValue").val()+'%23');
-			ajaxGet('info.htm?cmd=%23021%3BEVO%20OCR%3B1%3BAutoCharW%3B'+$("#charWValue").val()+'%23');
-			ajaxGet('info.htm?cmd=%23021%3BEVO%20OCR%3B1%3BAutoCharH%3B'+$("#charHValue").val()+'%23');
+			ajaxGet('info.htm?cmd=%23021%3BEVO%20OCR%3B1%3BAutoCharX%3B'+charStartX+'%23');
+			ajaxGet('info.htm?cmd=%23021%3BEVO%20OCR%3B1%3BAutoCharY%3B'+charStartY+'%23');
+			ajaxGet('info.htm?cmd=%23021%3BEVO%20OCR%3B1%3BAutoCharW%3B'+charWidth+'%23');
+			ajaxGet('info.htm?cmd=%23021%3BEVO%20OCR%3B1%3BAutoCharH%3B'+charHeight+'%23');
 			
 			// manual character size
 /* 			ajaxGet('info.htm?cmd=%23021%3BEVO%20OCR%3B1%3BcharX%3B200%23');
@@ -890,6 +901,11 @@
 				mulEndY = 0.987;
 				mulWidth = 1;
 				
+				mulCharStartX = 0.853;
+				mulCharStartY = 0.987;
+				mulCharWidth = 0.932;
+				mulCharHeight = 0.973;
+				
 				/* mulStartX = 0.831;
 				mulStartY = 1;
 				mulEndX = 0.871;
@@ -911,6 +927,11 @@
 				mulEndX = 1.363;
 				mulEndY = 1.583;
 				mulWidth = 1.6;
+				
+				mulCharStartX = 1.362;
+				mulCharStartY = 1.554;
+				mulCharWidth = 1.362;
+				mulCharHeight = 1.687;
 				
 				/* mulStartX = 1.3648;
 				mulStartY = 1.668;
