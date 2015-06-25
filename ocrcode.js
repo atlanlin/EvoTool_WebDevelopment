@@ -192,6 +192,9 @@
 		resolution = parseInt(getCookie("resolution"));
 			
 		setScaleSize(1, resolution);
+		
+		evoComm();
+		
 		canvas = document.getElementById('canvas2');
 		HEIGHT = canvas.height;
 		WIDTH = canvas.width;
