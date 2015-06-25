@@ -211,10 +211,12 @@ function drawCircle(circle, innerCircle) {
     var canvas = document.getElementById('canvas');
     var ctx = canvas.getContext('2d');
 	
+	var calStartAngle = startAngle * Math.PI / 180;
+	var calEndAngle = EndAngle * Math.PI / 180;
 	
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx.beginPath();
-    ctx.arc(circle.point.x, circle.point.y, circle.radius, 0, Math.PI*2, false);
+    ctx.arc(circle.point.x, circle.point.y, circle.radius, calStartAngle, calEndAngle, false);
 	
 	ctx.globalAlpha=1;
 	
@@ -226,7 +228,7 @@ function drawCircle(circle, innerCircle) {
 	//ctx.fill();
 
 	ctx.beginPath();
-    ctx.arc(circle.point.x, circle.point.y, innerCircle.radius, 0,Math.PI*2,false);
+    ctx.arc(circle.point.x, circle.point.y, innerCircle.radius, calStartAngle,calEndAngle,false);
 	
 	ctx.globalAlpha=1;
 	
@@ -237,13 +239,16 @@ function drawCircle(circle, innerCircle) {
 	
 	$("#xvalue").val(Math.round(circle.point.x));
 	$("#yvalue").val(Math.round(circle.point.y));
-	$("#startvalue").val(0);
-	$("#anglevalue").val(360);
+	$("#startvalue").val(startAngle);
+	$("#anglevalue").val(EndAngle);
 	$("#outervalue").val(Math.round(circle.radius));
 	$("#innervalue").val(Math.round(innerCircle.radius));
 	
 	document.querySelector('#circlevolume').value = Math.round(circle.radius);
 	document.querySelector('#innercirclevolume').value = Math.round(innerCircle.radius);
+	
+	document.querySelector('#startangle').value = Math.round(startAngle);
+	document.querySelector('#endangle').value = Math.round(EndAngle);
 	
 	
 	//updateCircleEvo();
@@ -281,6 +286,34 @@ function outputInnerUpdate(size){
 
 }
 
+function outputStartAngle(size){
+	var intSize = parseInt(size);
+
+	startAngle = intSize;
+	if(startAngle == 0 && EndAngle == 0)
+		startAngle = 1;
+	else if(startAngle == 360 && EndAngle == 360)
+		startAngle = 359;
+	
+
+	drawCircle(circle, innerCircle);
+
+}
+
+function outputEndAngle(size){
+	var intSize = parseInt(size);
+
+	EndAngle = intSize;
+	if(startAngle == 0 && EndAngle == 0)
+		EndAngle = 1;
+	else if(startAngle == 360 && EndAngle == 360)
+		EndAngle = 359;	
+	
+			
+	drawCircle(circle, innerCircle);
+
+}
+
 //update circle values to evo3
 function updateCircleEvo()
 {
@@ -293,6 +326,55 @@ function updateCircleEvo()
 		var calOuterRadius = outerRadius * mulOuterRadius;
 		var startvalue = $("#startvalue").val();
 		var anglevalue = $("#anglevalue").val();
+		
+		
+		/*var calStartValue = parseInt(360 - startAngle);
+		
+		var calDiffer = 0;
+		
+		var addDiffer = 0;
+		
+		
+		if(startAngle <= 90 && startAngle > 0)
+		{
+			addDiffer = 270;
+		}
+		else if(startAngle > 90 && startAngle < 180)
+		{
+			addDiffer = 180;
+		}
+		else if(startAngle < 270)
+		{
+			addDiffer = 180;
+		}
+		else 
+		{
+			addDiffer = 0;
+		}
+		
+		
+		if(startAngle < EndAngle && EndAngle < 360)
+		{
+			calDiffer = EndAngle - startAngle;
+		}
+		else 
+		{
+			calDiffer = EndAngle + addDiffer;
+		}*/
+		
+		var calDiffer = 0;
+		
+		if(startAngle < EndAngle)
+		{
+			calDiffer = EndAngle - startAngle;
+		}
+		else
+		{
+			var tempDiffer = startAngle - EndAngle;
+			calDiffer = 360 - tempDiffer;
+		}
+			
+		
 		
 		
 		
@@ -309,7 +391,7 @@ function updateCircleEvo()
 		ajaxGet("info.htm?cmd=%23021%3BEVO Circle%3B1%3BCirclePos.InnerRadius%3B"+ innerRadius +"%23");
 		ajaxGet("info.htm?cmd=%23021%3BEVO Circle%3B1%3BCirclePos.OuterRadius%3B"+ calOuterRadius +"%23");
 		ajaxGet("info.htm?cmd=%23021%3BEVO Circle%3B1%3BCirclePos.StartAngle%3B"+ startvalue +"%23");
-		ajaxGet("info.htm?cmd=%23021%3BEVO Circle%3B1%3BCirclePos.LengthAngle%3B"+ anglevalue +"%23");
+		ajaxGet("info.htm?cmd=%23021%3BEVO Circle%3B1%3BCirclePos.LengthAngle%3B"+ calDiffer +"%23");
 
 }
 
@@ -339,6 +421,10 @@ var endFrameY = 470;
 var maxRadius = 200;
 
 var minRadius = 20;
+
+var startAngle = 0;
+
+var EndAngle = 360;
 
 var UPDATECIRCLEINTERVAL = 2000;
 

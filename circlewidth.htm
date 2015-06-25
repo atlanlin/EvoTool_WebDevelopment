@@ -93,6 +93,20 @@
 					<output for=fader id=innercirclevolume>25</output>
 					<br>
 					
+					<label for=fader> <b>Start Angle </b></label>
+					<br>
+					<input id="startAngleValue" type=range min=0 max=360 value=0 id=fader step=1 oninput="outputStartAngle(value)">
+
+					<output for=fader id=startangle>0</output>
+					<br>
+					
+					<label for=fader> <b>End Angle </b></label>
+					<br>
+					<input id="endAngleValue" type=range min=0 max=360 value=360 id=fader step=1 oninput="outputEndAngle(value)">
+
+					<output for=fader id=endangle>360</output>
+					<br>
+					
 					<input type="radio" id="lightToDark" value="lightToDark" name="barcode" checked><label>Light To Dark</label><br>
 					<input type="radio" id="darkToLight" value="darkToLight" name="barcode"><label>Dark To Light</label><br> 
 			</div>
@@ -123,7 +137,7 @@
                     <td><label>Start angle:</label> </td>
 					<td><input id="startvalue" class="textBox" type="text" name="startvalue" readonly></td>
 					
-                    <td><label>Angle Length:</label> </td>
+                    <td><label>End angle:</label> </td>
 					<td><input id="anglevalue" class="textBox" type="text" name="anglevalue" readonly></td>
 					</tr>
 					<tr>
