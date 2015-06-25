@@ -269,8 +269,10 @@ if this function is called before a previous returned the older callback funtion
 */
 function ajaxGet(file,callBackFck){
 	var undefined;
-	var curTime = new Date().getTime();
-	file = file + "&time=" + curTime;
+	if(callBackFck == undefined){
+		var curTime = new Date().getTime();
+		file = file + "&time=" + curTime;
+	}
 	xhr = new XMLHttpRequest();
 	xhr.overrideMimeType('text/plain; charset=x-user-defined');
 	xhr.open("GET", file, true);

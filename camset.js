@@ -255,7 +255,7 @@ function getValueFrominiFile()
 	var resp = xhr.responseText;
 	globalResult = getIniStr("cam1", "result1", resp);
 	
-	$("#resultDisplay").val(globalResult);
+	$("#resultDisplay").val("result = " + globalResult);
 	
 			
 	var cookieName = queryString["tool"] + queryString["toolNo"];
@@ -270,7 +270,7 @@ function getCodeValueFrominiFile()
 	var resp = xhr.responseText;
 	globalResult = getIniCodeStr("coderesult1=", resp);
 	
-	$("#resultDisplay").val(globalResult);
+	$("#resultDisplay").val("result = " + globalResult);
 	
 	var cookieName = queryString["tool"] + queryString["toolNo"];
 			
