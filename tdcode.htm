@@ -21,16 +21,6 @@
                 <button id="btnCodeStart" type="button" class="button">Monitor</button>
 				<button id="btnStop" type="button" class="button">Stop</button>
 				<button id="home" type="button" class="button" onClick="location.href='index.htm'">Main Page</button>
-				<script>
-					$("#home").click(function(){
-						var curTime = new Date().getTime();
-						ajaxGet("info.htm?cmd=%23004%23&time=" + curTime);
-						ajaxGet('info.htm?cmd=%23021%3BEVO%20DataCode%3B2%3BGeneral.Enabled%3B0%23');
-						ajaxGet('info.htm?cmd=%23021%3BINI%20FlushData%3B2%3BGeneral.Enabled%3B0%23');
-						ajaxGet('info.htm?cmd=%23021%3BINI%20CodeData%3B2%3BGeneral.Enabled%3B0%23');
-						ajaxGet('info.htm?cmd=%23021%3BSend%20CodeData%3B2%3BGeneral.Enabled%3B0%23');
-					});
-				</script>
             </div>   
 			
             <hr>
