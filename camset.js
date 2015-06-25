@@ -105,7 +105,7 @@ function init(){
 		
 		//myInterval = setInterval(function(){
 		
-		ajaxGet("cfg.ini", getCodeValueFrominiFile);
+		//ajaxGet("cfg.ini", getCodeValueFrominiFile);
 		
 		//},100);
 		
