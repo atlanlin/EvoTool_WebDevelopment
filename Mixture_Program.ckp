@@ -3,7 +3,7 @@ EYEVISION_VERSION
 FILE_VERSION 
 CREATED 
 CREATED_BY 
-LAST_MODIFIED 25.06.2015 09:47:59
+LAST_MODIFIED 25.06.2015 16:25:16
 LAST_MODIFIED_BY 
 START_PARM_LIST 
   KEY 1
@@ -52,18 +52,18 @@ START_PARM_LIST
     END_CKRESULT 
     CaptureWithVIC 0
     CaptureType 2
-    SaveType 0
+    SaveType 2
     OnlyOnActivate 0
     SaveWithGrafic 0
     TriggeredCapture 0
     ApplyTimeout 0
     CaptureWithFlash 0
     NumberOfCyclicFiles 10
-    CurrentCycleNumber 0
+    CurrentCycleNumber 2
     TriggerTimeout 0
     TriggerInputLine 0
     MinimumSignalDuration 0
-    FileName C:/Users/user3/Desktop/barcode640480.bmp
+    FileName C:/Users/user3/Desktop/ocr640480.bmp
     AVIframes 1
     AVImode 0
     HWTriggeredCapture 0
@@ -74,9 +74,9 @@ START_PARM_LIST
     ImageRefresh 0
     SourceImageMode 0
     SourceVIC 0
-    LoadOption 0
+    LoadOption 1
     LoadImageIndex 0
-    LoadDirectory C:/ProgramData/EVT/EyeVision/Devices/PC_Local/Images/
+    LoadDirectory C:/Program Files (x86)/VizCam/SmartBuilder2.6.056/Devices/PC_Local/Images/DMC
     RawDataConversionActive 0
     RawDataType 1
     PixelDataSize 2
@@ -179,16 +179,16 @@ START_PARM_LIST
       ClassVersion 1
       Name 
       ID 0
-      InnerRadius 0,0
-      OuterRadius 0,0
+      InnerRadius 25,0
+      OuterRadius 75,0
       StartAngle 0,0
-      LengthAngle 0,0
+      LengthAngle 360,0
       Direction 1
       CKPOINT 
         ClassVersion 1
         Name 
-        X 0,0
-        Y 0,0
+        X 67,8335
+        Y 80,0
       END_CKPOINT 
     END_CKCIRCLE_PROBE_POS 
     DetermineEum 0
@@ -301,37 +301,37 @@ START_PARM_LIST
     Val_Y2 100,0
     Val_W2 40,0
     Val_H2 200,0
-    OptionForType 4
+    OptionForType 1
     CKRECT_PROBE_POS 
       ClassVersion 1
-      Width 89,0
+      Width 68,8
       CKPOINT 
         ClassVersion 1
         Name Start point
-        X 238,1811
-        Y 365,42519685
+        X 464,422
+        Y 283,376
       END_CKPOINT 
       CKPOINT 
         ClassVersion 1
         Name End point
-        X 471,1811
-        Y 365,42519685
+        X 532,515
+        Y 283,198
       END_CKPOINT 
     END_CKRECT_PROBE_POS 
     CKRECT_PROBE_POS 
       ClassVersion 1
-      Width 100,0
+      Width 49,6
       CKPOINT 
         ClassVersion 1
         Name Start point
-        X 100,0
-        Y 100,0
+        X 595,76
+        Y 361,384
       END_CKPOINT 
       CKPOINT 
         ClassVersion 1
         Name End point
-        X 100,0
-        Y 200,0
+        X 647,69
+        Y 361,157
       END_CKPOINT 
     END_CKRECT_PROBE_POS 
     CKCIRCLE_PROBE_POS 
@@ -613,98 +613,10 @@ START_PARM_LIST
     TeachInCounter 0
   END_KEY 4
   KEY 5
-    ClassVersion 7
-    CKGENERAL 
-      ClassVersion 1
-      Position 7
-      CommandType 137
-      CommandName INI FlushData
-      Enabled 0
-      Hidden 0
-      GraficMode 2
-      TextMode 2
-      ImageMemory 0
-      InvertResult 0
-      Memo 
-    END_CKGENERAL 
-    CKRESULT 
-      ClassVersion 1
-      Name INI - File access
-      EnterResultToRTDisplay 0
-      RTDisplayIndex 0
-      RTWidthOfToleranceRegion 80
-      CKEVALUATION 
-        ClassVersion 3
-        GlobalToleranceIndex -1
-        UseWarningTolerances 0
-        NominalValue 0,0
-        PlusTolerance 10000,0
-        MinusTolerance 0,0
-        WarnPlusTolerance 0,0
-        WarnMinusTolerance 0,0
-        DynamicEvaluation 0
-        FileName 
-        Section 
-        CorrectionActive 0
-        CorrectionType 0
-        EnableAutoTeachIn 1
-        NumberOfUsedCorrections 0
-      END_CKEVALUATION 
-      CKSTATISTIC 
-        ClassVersion 1
-        EnterToStatistic 0
-        Index -1
-      END_CKSTATISTIC 
-    END_CKRESULT 
-    Entry 0,0
-    AccessType 6
-    ObjectType 1
-    RegisterIndex 0
-    UpdateFile 0
-    ApplyCorrection 0
-    CorrectionType 1
-    VariableType 2
-    ConstantValue 0,0
-    IniFileName C:\temp\wwwroot\cfg.ini
-    SegmentName camcode1
-    EntryName coderesult1
-    PointType 3
-    PointRegisterIndex 0
-    CKPICKUP_TYPE_READ 
-      ClassVersion 1
-      Name 
-      PickupObjectType 0
-      PickupListIndex 363572
-    END_CKPICKUP_TYPE_READ 
-    CKPICKUP_TYPE_READ 
-      ClassVersion 1
-      Name 
-      PickupObjectType 0
-      PickupListIndex -1
-    END_CKPICKUP_TYPE_READ 
-    TextStringType 0
-    TextString 
-    WriteSendString 1
-    SendStringWriteType 0
-    SeparationIndex 0
-    SegmentType 0
-    EntryType 0
-    FloatingPointPrecision 4
-    FloatingPointMode 1
-    IniFileSource 0
-    CKPICKUP_TYPE_WRITE 
-      ClassVersion 1
-      Name 
-      PickupObjectType 0
-      PickupListIndex 1506257
-    END_CKPICKUP_TYPE_WRITE 
-    TeachInCounter 0
-  END_KEY 5
-  KEY 6
     ClassVersion 1
     CKGENERAL 
       ClassVersion 1
-      Position 9
+      Position 7
       CommandType 10010000
       CommandName EVO BarCode
       Enabled 0
@@ -793,12 +705,12 @@ START_PARM_LIST
     SendStringISOIEC15415 0
     ISOIEC15415DisplayBool 0
     TeachInCounter 0
-  END_KEY 6
-  KEY 7
+  END_KEY 5
+  KEY 6
     ClassVersion 1
     CKGENERAL 
       ClassVersion 1
-      Position 10
+      Position 8
       CommandType 10010001
       CommandName EVO DataCode
       Enabled 0
@@ -895,12 +807,12 @@ START_PARM_LIST
       PickupListIndex 383896
     END_CKPICKUP_TYPE_WRITE 
     TeachInCounter 0
-  END_KEY 7
-  KEY 8
+  END_KEY 6
+  KEY 7
     ClassVersion 1
     CKGENERAL 
       ClassVersion 1
-      Position 11
+      Position 9
       CommandType 10019111
       CommandName EVO OCR
       Enabled 0
@@ -1026,18 +938,18 @@ START_PARM_LIST
     AutoCharH 50,0
     CKRECT_PROBE_POS 
       ClassVersion 1
-      Width 10,0
+      Width 768,0
       CKPOINT 
         ClassVersion 1
         Name Start point
-        X 100,0
-        Y 100,0
+        X 0,0
+        Y 379,92
       END_CKPOINT 
       CKPOINT 
         ClassVersion 1
         Name End point
-        X 200,0
-        Y 100,0
+        X 1024,976
+        Y 379,92
       END_CKPOINT 
     END_CKRECT_PROBE_POS 
     dynamicPos 0
@@ -1079,12 +991,12 @@ START_PARM_LIST
       PickupListIndex 371092
     END_CKPICKUP_TYPE_WRITE 
     TeachInCounter 0
-  END_KEY 8
-  KEY 9
+  END_KEY 7
+  KEY 8
     ClassVersion 7
     CKGENERAL 
       ClassVersion 1
-      Position 13
+      Position 11
       CommandType 137
       CommandName INI Circle
       Enabled 0
@@ -1167,12 +1079,12 @@ START_PARM_LIST
       PickupListIndex 141709
     END_CKPICKUP_TYPE_WRITE 
     TeachInCounter 0
-  END_KEY 9
-  KEY 10
+  END_KEY 8
+  KEY 9
     ClassVersion 7
     CKGENERAL 
       ClassVersion 1
-      Position 14
+      Position 12
       CommandType 137
       CommandName INI Distance
       Enabled 0
@@ -1255,12 +1167,12 @@ START_PARM_LIST
       PickupListIndex 422805
     END_CKPICKUP_TYPE_WRITE 
     TeachInCounter 0
-  END_KEY 10
-  KEY 11
+  END_KEY 9
+  KEY 10
     ClassVersion 7
     CKGENERAL 
       ClassVersion 1
-      Position 15
+      Position 13
       CommandType 137
       CommandName INI Width
       Enabled 0
@@ -1343,12 +1255,100 @@ START_PARM_LIST
       PickupListIndex 438421
     END_CKPICKUP_TYPE_WRITE 
     TeachInCounter 0
+  END_KEY 10
+  KEY 11
+    ClassVersion 7
+    CKGENERAL 
+      ClassVersion 1
+      Position 15
+      CommandType 137
+      CommandName INI FlushData
+      Enabled 0
+      Hidden 0
+      GraficMode 2
+      TextMode 2
+      ImageMemory 0
+      InvertResult 0
+      Memo 
+    END_CKGENERAL 
+    CKRESULT 
+      ClassVersion 1
+      Name INI - File access
+      EnterResultToRTDisplay 0
+      RTDisplayIndex 0
+      RTWidthOfToleranceRegion 80
+      CKEVALUATION 
+        ClassVersion 3
+        GlobalToleranceIndex -1
+        UseWarningTolerances 0
+        NominalValue 0,0
+        PlusTolerance 10000,0
+        MinusTolerance 0,0
+        WarnPlusTolerance 0,0
+        WarnMinusTolerance 0,0
+        DynamicEvaluation 0
+        FileName 
+        Section 
+        CorrectionActive 0
+        CorrectionType 0
+        EnableAutoTeachIn 1
+        NumberOfUsedCorrections 0
+      END_CKEVALUATION 
+      CKSTATISTIC 
+        ClassVersion 1
+        EnterToStatistic 0
+        Index -1
+      END_CKSTATISTIC 
+    END_CKRESULT 
+    Entry 0,0
+    AccessType 6
+    ObjectType 1
+    RegisterIndex 0
+    UpdateFile 0
+    ApplyCorrection 0
+    CorrectionType 1
+    VariableType 2
+    ConstantValue 0,0
+    IniFileName C:/temp/wwwroot/cfg.ini
+    SegmentName camcode1
+    EntryName coderesult1
+    PointType 3
+    PointRegisterIndex 0
+    CKPICKUP_TYPE_READ 
+      ClassVersion 1
+      Name 
+      PickupObjectType 0
+      PickupListIndex 363572
+    END_CKPICKUP_TYPE_READ 
+    CKPICKUP_TYPE_READ 
+      ClassVersion 1
+      Name 
+      PickupObjectType 0
+      PickupListIndex -1
+    END_CKPICKUP_TYPE_READ 
+    TextStringType 0
+    TextString 
+    WriteSendString 1
+    SendStringWriteType 0
+    SeparationIndex 0
+    SegmentType 0
+    EntryType 0
+    FloatingPointPrecision 4
+    FloatingPointMode 1
+    IniFileSource 0
+    CKPICKUP_TYPE_WRITE 
+      ClassVersion 1
+      Name 
+      PickupObjectType 0
+      PickupListIndex 1989461
+    END_CKPICKUP_TYPE_WRITE 
+    TeachInCounter 0
   END_KEY 11
   KEY 12
     ClassVersion 7
     CKGENERAL 
       ClassVersion 1
-      Position 17
+      Position 16
       CommandType 137
       CommandName INI CodeData
       Enabled 0
@@ -1436,7 +1436,7 @@ START_PARM_LIST
     ClassVersion 14
     CKGENERAL 
       ClassVersion 1
-      Position 18
+      Position 17
       CommandType 246
       CommandName Send CodeData
       Enabled 0
@@ -1548,7 +1548,7 @@ START_PARM_LIST
     ClassVersion 4
     CKGENERAL 
       ClassVersion 1
-      Position 20
+      Position 19
       CommandType 1042
       CommandName Image transfer
       Enabled 1
