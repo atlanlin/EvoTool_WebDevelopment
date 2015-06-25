@@ -85,17 +85,17 @@ function displayTexts(startXtb, startYtb, endXtb, endYtb, widthtb, arrowDirFlag,
 	
 	if(arrowDirFlag == "horizontal"){
 		
-		sx = inBox.x;
-		sy = inBox.y + parseInt(inBox.h/2);
-		ex = inBox.x + inBox.w;
-		ey = inBox.y + parseInt(inBox.h/2);
-		w = Math.abs(inBox.h);
+		sx = inBox.x * mulCenterX;
+		sy = (inBox.y + parseInt(inBox.h/2))*mulCenterY;
+		ex = (inBox.x + inBox.w) * mulCenterX;
+		ey = (inBox.y + parseInt(inBox.h/2)) * mulCenterY;
+		w = Math.abs(inBox.h) * mulCenterY;
 	}else{
-		sx = inBox.x + parseInt(inBox.w/2);
-		sy = inBox.y;
-		ex = inBox.x + parseInt(inBox.w/2);
-		ey = inBox.y + inBox.h;
-		w = Math.abs(inBox.w);
+		sx = (inBox.x + parseInt(inBox.w/2)) * mulCenterX;
+		sy = inBox.y * mulCenterY;
+		ex = (inBox.x + parseInt(inBox.w/2)) * mulCenterX;
+		ey = (inBox.y + inBox.h) * mulCenterY;
+		w = Math.abs(inBox.w) * mulCenterX;
 	}
 	document.getElementById(startXtb).value=sx;
 	document.getElementById(startYtb).value=sy;
@@ -287,20 +287,23 @@ function init2() {
 	});
 	
 	$("#btnMeasure").click(function(){
-		
-			if(getCookie("resolution") == null)
-			{
-				setCookie("resolution","1",1);
-			}
 			
-			resolution = parseInt(getCookie("resolution"));
-			
+			evoComm();
 
 			ajaxGet("info.htm?cmd=%23021%3BEVO Distance%3B2%3BOptionForType%3B0%23");
 			ajaxGet("cfg.ini", getValueFrominiFile);
 			
 		}
 	);
+	
+	if(getCookie("resolution") == null)
+	{
+		setCookie("resolution","1",365);
+	}
+			
+	resolution = parseInt(getCookie("resolution"));
+	
+	setPageScaleSize(resolution);
 	
 	//$("#pointProbeSettings").css("display", "none");
 	//$("#lineProbeSettings").css("display", "none");

@@ -84,17 +84,17 @@ function displayTexts(startXtb, startYtb, endXtb, endYtb, widthtb, arrowDirFlag,
 	
 	if(arrowDirFlag == "horizontal"){
 		
-		sx = inBox.x;
-		sy = inBox.y + parseInt(inBox.h/2);
-		ex = inBox.x + inBox.w;
-		ey = inBox.y + parseInt(inBox.h/2);
-		w = Math.abs(inBox.h);
+		sx = inBox.x * mulCenterX;
+		sy = (inBox.y + parseInt(inBox.h/2))*mulCenterY;
+		ex = (inBox.x + inBox.w) * mulCenterX;
+		ey = (inBox.y + parseInt(inBox.h/2)) * mulCenterY;
+		w = Math.abs(inBox.h) * mulCenterY;
 	}else{
-		sx = inBox.x + parseInt(inBox.w/2);
-		sy = inBox.y;
-		ex = inBox.x + parseInt(inBox.w/2);
-		ey = inBox.y + inBox.h;
-		w = Math.abs(inBox.w);
+		sx = (inBox.x + parseInt(inBox.w/2)) * mulCenterX;
+		sy = inBox.y * mulCenterY;
+		ex = (inBox.x + parseInt(inBox.w/2)) * mulCenterX;
+		ey = (inBox.y + inBox.h) * mulCenterY;
+		w = Math.abs(inBox.w) * mulCenterX;
 	}
 	document.getElementById(startXtb).value=sx;
 	document.getElementById(startYtb).value=sy;
@@ -289,19 +289,22 @@ function init2() {
 	
 	$("#btnMeasure").click(function(){
 		
-			if(getCookie("resolution") == null)
-			{
-				setCookie("resolution","1",1);
-			}
-			
-			resolution = parseInt(getCookie("resolution"));
-			
+			evoComm();
 			
 			ajaxGet("info.htm?cmd=%23021%3BEVO Distance%3B2%3BOptionForType%3B1%23");
 			ajaxGet("cfg.ini", getValueFrominiFile);
 			
 		}
 	);
+	
+	if(getCookie("resolution") == null)
+	{
+		setCookie("resolution","1",365);
+	}
+			
+	resolution = parseInt(getCookie("resolution"));
+	
+	setPageScaleSize(resolution);
 	
 	//$("#pointProbeSettings").css("display", "none");
 	//$("#lineProbeSettings").css("display", "none");
@@ -405,11 +408,11 @@ function pointSettings() {
 			ajaxGet('any.htm?cmd=%23021%3BEVO%20Distance%3B2%3BTransition_1%3B1%23');
 	}
 	
-	ajaxGet("info.htm?cmd=%23021%3BEVO%20Distance%3B1%3BRecPos.PointStart.X%3B"+$("#point1StartX").val()+"%23");
-	ajaxGet("info.htm?cmd=%23021%3BEVO%20Distance%3B1%3BRecPos.PointEnd.X%3B"+$("#point1EndX").val()+"%23");
-	ajaxGet("info.htm?cmd=%23021%3BEVO%20Distance%3B1%3BRecPos.PointStart.Y%3B"+$("#point1StartY").val()+"%23");
-	ajaxGet("info.htm?cmd=%23021%3BEVO%20Distance%3B1%3BRecPos.PointEnd.Y%3B"+$("#point1EndY").val()+"%23");
-	ajaxGet("info.htm?cmd=%23021%3BEVO%20Distance%3B1%3BRecPos.Width%3B"+$("#point1Width").val()+"%23");
+	ajaxGet("info.htm?cmd=%23021%3BEVO%20Distance%3B1%3BRecPos.PointStart.X%3B"+$("#pointStartX").val()+"%23");
+	ajaxGet("info.htm?cmd=%23021%3BEVO%20Distance%3B1%3BRecPos.PointEnd.X%3B"+$("#pointEndX").val()+"%23");
+	ajaxGet("info.htm?cmd=%23021%3BEVO%20Distance%3B1%3BRecPos.PointStart.Y%3B"+$("#pointStartY").val()+"%23");
+	ajaxGet("info.htm?cmd=%23021%3BEVO%20Distance%3B1%3BRecPos.PointEnd.Y%3B"+$("#pointEndY").val()+"%23");
+	ajaxGet("info.htm?cmd=%23021%3BEVO%20Distance%3B1%3BRecPos.Width%3B"+$("#pointWidth").val()+"%23");
 }
 
 function lineSettings() {
@@ -421,11 +424,11 @@ function lineSettings() {
 			ajaxGet('any.htm?cmd=%23021%3BEVO%20Distance%3B2%3BTransition_2%3B1%23');
 	}
 	
-	ajaxGet("info.htm?cmd=%23021%3BEVO%20Distance%3B1%3BRecPos2.PointStart.X%3B"+$("#point2StartX").val()+"%23");
-	ajaxGet("info.htm?cmd=%23021%3BEVO%20Distance%3B1%3BRecPos2.PointEnd.X%3B"+$("#point2EndX").val()+"%23");
-	ajaxGet("info.htm?cmd=%23021%3BEVO%20Distance%3B1%3BRecPos2.PointStart.Y%3B"+$("#point2StartY").val()+"%23");
-	ajaxGet("info.htm?cmd=%23021%3BEVO%20Distance%3B1%3BRecPos2.PointEnd.Y%3B"+$("#point2EndY").val()+"%23");
-	ajaxGet("info.htm?cmd=%23021%3BEVO%20Distance%3B1%3BRecPos2.Width%3B"+$("#point2Width").val()+"%23");
+	ajaxGet("info.htm?cmd=%23021%3BEVO%20Distance%3B1%3BRecPos2.PointStart.X%3B"+$("#lineStartX").val()+"%23");
+	ajaxGet("info.htm?cmd=%23021%3BEVO%20Distance%3B1%3BRecPos2.PointEnd.X%3B"+$("#lineEndX").val()+"%23");
+	ajaxGet("info.htm?cmd=%23021%3BEVO%20Distance%3B1%3BRecPos2.PointStart.Y%3B"+$("#lineStartY").val()+"%23");
+	ajaxGet("info.htm?cmd=%23021%3BEVO%20Distance%3B1%3BRecPos2.PointEnd.Y%3B"+$("#lineEndY").val()+"%23");
+	ajaxGet("info.htm?cmd=%23021%3BEVO%20Distance%3B1%3BRecPos2.Width%3B"+$("#lineWidth").val()+"%23");
 }
 
 function toleranceSettings() {
@@ -579,7 +582,7 @@ function mainDraw() {
     // draw the line
     line.drawWithArrowheads(ctx);
 	
-	displayTexts('lineStartX', 'lineStartY', 'lineEndX', 'lineEndY', 'lineWidth', lineArrowDirFlag, boxes2[1]);
+	
 	
 	var plx1, ply1, plx2, ply2;
 	if(pointArrowDirFlag == "horizontal"){
@@ -600,6 +603,8 @@ function mainDraw() {
     pointLine.drawWithArrowheads(ctx);
 	
 	displayTexts('pointStartX', 'pointStartY', 'pointEndX', 'pointEndY', 'pointWidth', pointArrowDirFlag, boxes2[0]);
+	displayTexts('lineStartX', 'lineStartY', 'lineEndX', 'lineEndY', 'lineWidth', lineArrowDirFlag, boxes2[1]);
+	
 	//showProbeSettings();
 	
 	

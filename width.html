@@ -178,6 +178,10 @@
 	<script>
 		
 		function updateParameters(){
+		
+			ajaxGet("info.htm?cmd=%23021%3BEVO Width%3B2%3BGeneral.Enabled%3B1%23");
+			
+			ajaxGet("info.htm?cmd=%23021%3BINI Width%3B2%3BGeneral.Enabled%3B1%23");
 			
 			var sx = document.getElementById("tbStartX").value;
 			var sy = document.getElementById("tbStartY").value;
@@ -218,6 +222,8 @@
 			updateParameters();
 			ajaxGet("cfg.ini", getValueFrominiFile);
 		});
+		
+		
 	</script>
 </body>
 </html>

@@ -282,12 +282,12 @@ function init2() {
   
   if(getCookie("resolution") == null)
 	{
-		setCookie("resolution","1",1);
+		setCookie("resolution","1",365);
 	}
 			
 	resolution = parseInt(getCookie("resolution"));
 	
-	setPageScaleSize(0);
+	setPageScaleSize(resolution);
 }
 
 function Line(x1,y1,x2,y2){
