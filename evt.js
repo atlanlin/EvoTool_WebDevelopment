@@ -269,7 +269,8 @@ if this function is called before a previous returned the older callback funtion
 */
 function ajaxGet(file,callBackFck){
 	var undefined;
-	
+	var curTime = new Date().getTime();
+	file = file + "&time=" + curTime;
 	xhr = new XMLHttpRequest();
 	xhr.overrideMimeType('text/plain; charset=x-user-defined');
 	xhr.open("GET", file, true);
@@ -355,3 +356,14 @@ function deleteCookie(name) {
     setCookie(name,"",-1);
 }
 
+
+function disableAllFunctions(){
+	//disable all functions - enter function names here to disable
+	var frontFunctionNames = ["EVO ", "INI "];
+	var functionNames = ["Circle", "Width", "Distance", "BarCode", "DataCode", "OCR"];
+	for(var i=0; i < frontFunctionNames.length; i++){
+		for(var j=0; j < functionNames.length; j++){
+			ajaxGet("info.htm?cmd=%23021%3B" + frontFunctionNames[i] + functionNames[j] +"%3B2%3BGeneral.Enabled%3B0%23");
+		}
+	}
+}

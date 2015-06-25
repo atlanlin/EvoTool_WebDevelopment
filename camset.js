@@ -86,8 +86,7 @@ function init(){
 	});
 	
    $("#btnStart").click(function(){
-		var curTime = new Date().getTime();
-		ajaxGet("info.htm?cmd=%23002%23&time=" + curTime);
+		ajaxGet("info.htm?cmd=%23002%23");
 		
 		//myInterval = setInterval(function(){
 		
@@ -102,8 +101,7 @@ function init(){
 	);
 	
 	$("#btnCodeStart").click(function(){
-		var curTime = new Date().getTime();
-		ajaxGet("info.htm?cmd=%23002%23&time=" + curTime);
+		ajaxGet("info.htm?cmd=%23002%23");
 		
 		//myInterval = setInterval(function(){
 		
@@ -120,8 +118,7 @@ function init(){
 
 	$("#btnStop").click(function(){
 		clearInterval(myInterval);
-		var curTime = new Date().getTime();
-		ajaxGet("info.htm?cmd=%23004%23&time=" + curTime);
+		ajaxGet("info.htm?cmd=%23004%23");
 		intervalUpdateStop();
 		}
 	);
@@ -525,6 +522,8 @@ function clickCheckedBoxes(clickedCb){
 		
 	}
 }
+
+
 
 //set circle scale to map evo3
 //choice 0 (640 by 480), 1 (1024 by 768), 2(2592 by 1944)..
