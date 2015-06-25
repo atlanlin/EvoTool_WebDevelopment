@@ -327,6 +327,10 @@ function updateCircleEvo()
 		var startvalue = $("#startvalue").val();
 		var anglevalue = $("#anglevalue").val();
 		
+		var nominalValue = $("#nv").val();
+		var positive = $("#plus").val();
+		var negative = $("#minus").val();
+		
 		
 		/*var calStartValue = parseInt(360 - startAngle);
 		
@@ -392,6 +396,10 @@ function updateCircleEvo()
 		ajaxGet("info.htm?cmd=%23021%3BEVO Circle%3B1%3BCirclePos.OuterRadius%3B"+ calOuterRadius +"%23");
 		ajaxGet("info.htm?cmd=%23021%3BEVO Circle%3B1%3BCirclePos.StartAngle%3B"+ startvalue +"%23");
 		ajaxGet("info.htm?cmd=%23021%3BEVO Circle%3B1%3BCirclePos.LengthAngle%3B"+ calDiffer +"%23");
+		
+		ajaxGet("info.htm?cmd=%23021%3BEVO Circle%3B1%3BResult[0].Evaluation.NominalValue%3B"+ nominalValue +"%23");
+		ajaxGet("info.htm?cmd=%23021%3BEVO Circle%3B1%3BResult[0].Evaluation.PlusTolerance%3B"+ positive +"%23");
+		ajaxGet("info.htm?cmd=%23021%3BEVO Circle%3B1%3BResult[0].Evaluation.MinusTolerance%3B"+ negative +"%23");
 
 }
 

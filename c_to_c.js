@@ -423,6 +423,10 @@ function updateCircleEvo()
 		var startvalue = $("#startvalue").val();
 		var anglevalue = $("#anglevalue").val();
 		
+		var nominalValue = $("#nv").val();
+		var positive = $("#plus").val();
+		var negative = $("#minus").val();
+		
 		if ($("#clightToDark").is(":checked")) {
 			ajaxGet("info.htm?cmd=%23021%3BEVO Distance%3B2%3BTransition_1%3B0%23");
         }
@@ -437,6 +441,10 @@ function updateCircleEvo()
 		ajaxGet("info.htm?cmd=%23021%3BEVO Distance%3B1%3BCirclePos.OuterRadius%3B"+ calOuterRadius +"%23");
 		ajaxGet("info.htm?cmd=%23021%3BEVO Distance%3B1%3BCirclePos.StartAngle%3B"+ startvalue +"%23");
 		ajaxGet("info.htm?cmd=%23021%3BEVO Distance%3B1%3BCirclePos.LengthAngle%3B"+ anglevalue +"%23");
+		
+		ajaxGet("info.htm?cmd=%23021%3BEVO Distance%3B1%3BResult[0].Evaluation.NominalValue%3B"+ nominalValue +"%23");
+		ajaxGet("info.htm?cmd=%23021%3BEVO Distance%3B1%3BResult[0].Evaluation.PlusTolerance%3B"+ positive +"%23");
+		ajaxGet("info.htm?cmd=%23021%3BEVO Distance%3B1%3BResult[0].Evaluation.MinusTolerance%3B"+ negative +"%23");
 
 }
 
@@ -455,6 +463,10 @@ function updateCircle2Evo()
 		var startvalue = $("#startvalue2").val();
 		var anglevalue = $("#anglevalue2").val();
 		
+		var nominalValue = $("#nv").val();
+		var positive = $("#plus").val();
+		var negative = $("#minus").val();
+		
 		if ($("#rlightToDark").is(":checked")) {
 			ajaxGet("info.htm?cmd=%23021%3BEVO Distance%3B2%3BTransition_2%3B0%23");
         }
@@ -468,6 +480,10 @@ function updateCircle2Evo()
 		ajaxGet("info.htm?cmd=%23021%3BEVO Distance%3B1%3BCirclePos2.OuterRadius%3B"+ calOuterRadius +"%23");
 		ajaxGet("info.htm?cmd=%23021%3BEVO Distance%3B1%3BCirclePos2.StartAngle%3B"+ startvalue +"%23");
 		ajaxGet("info.htm?cmd=%23021%3BEVO Distance%3B1%3BCirclePos2.LengthAngle%3B"+ anglevalue +"%23");
+		
+		ajaxGet("info.htm?cmd=%23021%3BEVO Distance%3B1%3BResult[0].Evaluation.NominalValue%3B"+ nominalValue +"%23");
+		ajaxGet("info.htm?cmd=%23021%3BEVO Distance%3B1%3BResult[0].Evaluation.PlusTolerance%3B"+ positive +"%23");
+		ajaxGet("info.htm?cmd=%23021%3BEVO Distance%3B1%3BResult[0].Evaluation.MinusTolerance%3B"+ negative +"%23");
 
 }
 
