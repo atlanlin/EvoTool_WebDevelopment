@@ -52,6 +52,14 @@
 
 	// flag for rectangle opacity (roi window)
 	var rectRoiFlag = false;
+	
+	// scaling
+	var mulStartX;
+	var mulEndX;
+	var mulStartY;
+	var mulEndY;
+	var mulWidth;
+	var mulHeight;
 
 	// box object to hold data
 	// default width and height
@@ -313,7 +321,7 @@
 			ajaxGet('any.htm?cmd=%23021%3BEVO%20BarCode%3B1%3BSourceWindow.SourceWindow.Left%3B'+startX+'%23');
 			ajaxGet('any.htm?cmd=%23021%3BEVO%20BarCode%3B1%3BSourceWindow.SourceWindow.Top%3B'+startY+'%23');
 			ajaxGet('any.htm?cmd=%23021%3BEVO%20BarCode%3B1%3BSourceWindow.SourceWindow.Width%3B'+width+'%23');
-			ajaxGet('any.htm?cmd=%23021%3BEVO%20BarCode%3B1%3BSourceWindow.SourceWindow.Height%3B'+$("#hValue").val()+'%23');
+			ajaxGet('any.htm?cmd=%23021%3BEVO%20BarCode%3B1%3BSourceWindow.SourceWindow.Height%3B'+height+'%23');
 		}
 	}
 
@@ -738,12 +746,19 @@
 	
 		if(resolutionChoice == 0) { // image 640 by 480
 			if(horizontal == 1) {
-				mulStartX = 0.831;
+				mulStartX = 0.846;
+				mulStartY = 0.993;
+				mulEndX = 0.871;
+				mulEndY = 1;
+				mulWidth = 0.864;
+				mulHeight = 1.015;
+				
+				/* mulStartX = 0.831;
 				mulStartY = 1;
 				mulEndX = 0.871;
 				mulEndY = 1;
 				mulWidth = 1;
-				mulHeight = 1;
+				mulHeight = 1; */
 			}
 			else if(horizontal == 0) {
 				mulStartX = 0.859;
@@ -757,10 +772,17 @@
 		else if(resolutionChoice == 1) { //image 1024 by 768
 			if(horizontal == 1) {
 				mulStartX = 1.3648;
+				mulStartY = 1.568;
+				mulEndX = 1.303;
+				mulEndY = 1.668;
+				mulWidth = 1.337;
+				mulHeight = 1.591;
+				
+				/* mulStartX = 1.3648;
 				mulStartY = 1.668;
 				mulEndX = 1.303;
 				mulEndY = 1.668;
-				mulWidth = 1;
+				mulWidth = 1; */
 			} 
 			else if(horizontal == 0) {
 				mulStartX = 1.346;
