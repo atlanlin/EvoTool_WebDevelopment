@@ -271,8 +271,10 @@ function iniResponse(){
 function getValueFrominiFile()
 {
 	if (xhr.readyState != 4 || xhr.status != 200)  { return; }
-	$("#resultDisplay").val("Fetching values");
-	setTimeout(function(){
+	//$("#resultDisplay").val("Fetching values");
+	
+	//setTimeout(function(){
+		
 		var resp = xhr.responseText;
 		
 		globalResult = getIniStr("cam1", "result1", resp);
@@ -283,7 +285,7 @@ function getValueFrominiFile()
 		var cookieName = queryString["tool"] + queryString["toolNo"];
 				
 		setCookie(cookieName,globalResult,1);
-	}, 2000);
+	//}, 2000);
 	
 			
 }
@@ -291,8 +293,8 @@ function getValueFrominiFile()
 function getCodeValueFrominiFile()
 {
 	if (xhr.readyState != 4)  { return; }
-	$("#resultDisplay").val("Fetching values");
-	setTimeout(function(){
+	//$("#resultDisplay").val("Fetching values");
+	//setTimeout(function(){
 		var resp = xhr.responseText;
 	
 		globalResult = getIniCodeStr("coderesult1=", resp);
@@ -302,7 +304,7 @@ function getCodeValueFrominiFile()
 		var cookieName = queryString["tool"] + queryString["toolNo"];
 				
 		setCookie(cookieName,globalResult,1);
-	}, 1000);
+	//}, 2000);
 	
 	
 	
