@@ -270,31 +270,46 @@ function iniResponse(){
 
 function getValueFrominiFile()
 {
-	if (xhr.readyState != 4)  { return; }
-	var resp = xhr.responseText;
-	globalResult = getIniStr("cam1", "result1", resp);
+	if (xhr.readyState != 4 || xhr.status != 200)  { return; }
+	$("#resultDisplay").val("Fetching values");
+	setTimeout(function(){
+		var resp = xhr.responseText;
+		
+		globalResult = getIniStr("cam1", "result1", resp);
+		
+		$("#resultDisplay").val(globalResult);
+		
+				
+		var cookieName = queryString["tool"] + queryString["toolNo"];
+				
+		setCookie(cookieName,globalResult,1);
+	}, 2000);
 	
-	$("#resultDisplay").val(globalResult);
-	
-			
-	var cookieName = queryString["tool"] + queryString["toolNo"];
-			
-	setCookie(cookieName,globalResult,1);
 			
 }
 
 function getCodeValueFrominiFile()
 {
 	if (xhr.readyState != 4)  { return; }
-	var resp = xhr.responseText;
-	globalResult = getIniCodeStr("coderesult1=", resp);
+	$("#resultDisplay").val("Fetching values");
+	setTimeout(function(){
+		var resp = xhr.responseText;
 	
-	$("#resultDisplay").val("result = " + globalResult);
+		globalResult = getIniCodeStr("coderesult1=", resp);
+		
+		$("#resultDisplay").val("result = " + globalResult);
+		
+		var cookieName = queryString["tool"] + queryString["toolNo"];
+				
+		setCookie(cookieName,globalResult,1);
+	}, 1000);
 	
-	var cookieName = queryString["tool"] + queryString["toolNo"];
-			
-	setCookie(cookieName,globalResult,1);
+	
+	
+	
 }
+
+
 
 /* called to update the live image into the canvas */
 function updateHelper(){
