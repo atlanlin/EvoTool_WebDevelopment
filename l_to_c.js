@@ -1,6 +1,6 @@
 // screen on load 
 window.onload = function() {
-	if(getCookie("resolution") == null)
+	/*if(getCookie("resolution") == null)
 	{
 		setCookie("resolution","1",1);
 	}
@@ -9,7 +9,7 @@ window.onload = function() {
 			
 	resolution = parseInt(getCookie("resolution"));
 			
-	setPageScaleSize(resolution);
+	setPageScaleSize(resolution);*/
 	
 	initSquare();
 	initCircle();
@@ -445,11 +445,17 @@ function updateRectEvo()
 		var calEndX = endX * mulEndX;
 		var calEndY = endY * mulEndY;*/
 		
-		var calStartX = startX * GLOBAL_SCALE;
+		/*var calStartX = startX * GLOBAL_SCALE;
 		var calStartY = startY * GLOBAL_SCALE;
 		var calEndX = endX * GLOBAL_SCALE;
 		var calEndY = endY * GLOBAL_SCALE;
-		var calWidth = width * GLOBAL_SCALE;
+		var calWidth = width * GLOBAL_SCALE;*/
+		
+		var calStartX = stx;
+		var calStartY = sty;
+		var calEndX = edx;
+		var calEndY = edy;
+		var calWidth = wi;
 		
 		var nominalValue = $("#nv").val();
 		var positive = $("#plus").val();
@@ -560,27 +566,27 @@ Box2.prototype = {
 }*/
 
 function displayTexts(startXtb, startYtb, endXtb, endYtb, widthtb, inBox){
-	var sx, sy, ex, ey, w;
+	
 	
 	if(arrowDirFlag == "horizontal"){
 		
-		sx = inBox.x;
-		sy = inBox.y + parseInt(inBox.h/2);
-		ex = inBox.x + inBox.w;
-		ey = inBox.y + parseInt(inBox.h/2);
-		w = Math.abs(inBox.h);
+		stx = inBox.x * GLOBAL_SCALE;
+		sty = (inBox.y + parseInt(inBox.h/2))*GLOBAL_SCALE;
+		edx = (inBox.x + inBox.w) * GLOBAL_SCALE;
+		edy = (inBox.y + parseInt(inBox.h/2)) * GLOBAL_SCALE;
+		wi = Math.abs(inBox.h) * GLOBAL_SCALE;
 	}else{
-		sx = inBox.x + parseInt(inBox.w/2);
-		sy = inBox.y;
-		ex = inBox.x + parseInt(inBox.w/2);
-		ey = inBox.y + inBox.h;
-		w = Math.abs(inBox.w);
+		stx = (inBox.x + parseInt(inBox.w/2)) * GLOBAL_SCALE;
+		sty = inBox.y * GLOBAL_SCALE;
+		edx = (inBox.x + parseInt(inBox.w/2)) * GLOBAL_SCALE;
+		edy = (inBox.y + inBox.h) * GLOBAL_SCALE;
+		wi = Math.abs(inBox.w) * GLOBAL_SCALE;
 	}
-	document.getElementById(startXtb).value=sx;
-	document.getElementById(startYtb).value=sy;
-	document.getElementById(endXtb).value=ex;
-	document.getElementById(endYtb).value=ey;
-	document.getElementById(widthtb).value=w;
+	document.getElementById(startXtb).value=parseInt(stx);
+	document.getElementById(startYtb).value=parseInt(sty);
+	document.getElementById(endXtb).value=parseInt(edx);
+	document.getElementById(endYtb).value=parseInt(edy);
+	document.getElementById(widthtb).value=parseInt(wi);
 	
 }
 
@@ -755,11 +761,11 @@ function initSquare() {
 	$("#dbArrow").change(function(){
 		if($("#dbArrow").val() == "vertical"){
 			arrowDirFlag = "vertical";
-			setScaleSize(0, 0);
+			//setScaleSize(0, 0);
 			
 		}else{
 			arrowDirFlag = "horizontal";
-			setScaleSize(1, 0);
+			//setScaleSize(1, 0);
 			
 		}
 	});
@@ -767,11 +773,11 @@ function initSquare() {
 	$("#cbArrowHor").change(function() {
 		if(this.checked) {
 			arrowDirFlag = "horizontal";
-			setScaleSize(1, 0);
+			//setScaleSize(1, 0);
 			
 		}else{
 			arrowDirFlag = "vertical";
-			setScaleSize(0, 0);
+			//setScaleSize(0, 0);
 			
 		}
 		//updateCircleEvo();
@@ -1258,7 +1264,7 @@ function setScaleSize(horizontal, resolutionChoice)
 
 //set circle scale to map evo3
 //choice 0 (640 by 480), 1 (1024 by 768), 2(2592 by 1944)..
-function setPageScaleSize(resolutionChoice)
+/*function setPageScaleSize(resolutionChoice)
 {
 	
 	if(resolutionChoice == 0) // image 640 by 480
@@ -1283,7 +1289,7 @@ function setPageScaleSize(resolutionChoice)
 	
 	}
 	
-}
+}*/
 
 // If you dont want to use <body onLoad='init()'>
 // You could uncomment this init() reference and place the script reference inside the body tag
@@ -1346,7 +1352,8 @@ var stylePaddingLeft, stylePaddingTop, styleBorderLeft, styleBorderTop;
 var rectFlag = true;
 var arrowDirFlag = "horizontal";
 
-var mulStartX;
+var stx, sty, edx, edy, wi;
+/*var mulStartX;
 
 var mulStartY;
 
@@ -1354,9 +1361,9 @@ var mulEndX;
 
 var mulEndY;
 
-var mulWidth;
+var mulWidth;*/
 
 // this is the resolution choice where choice 0 (640 by 480), 1 (1024 by 768), 2 (2592 by 1944)..
-var resolution = 1;
+//var resolution = 1;
 }
 }
