@@ -8,7 +8,7 @@ window.onload = function() {
 
 function initCircle() {
 	
-	setPageScaleSize(resolution);
+	
 	
     drawCircle(circle, innerCircle);
 	
@@ -36,6 +36,7 @@ function initCircle() {
 			 
 			resolution = parseInt(getCookie("resolution"));
 		
+			setPageScaleSize(resolution);
 			
 			ajaxGet("info.htm?cmd=%23021%3BEVO Distance%3B2%3BOptionForType%3B4%23");
 			
