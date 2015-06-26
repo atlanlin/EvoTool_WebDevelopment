@@ -524,9 +524,12 @@ function mainDraw() {
   if (canvasValid == false) {
     clear(ctx);
     
+	if(WIDTH != null && HEIGHT != null){
+		WIDTH = IMG_WIDTH;
+		HEIGHT = IMG_HEIGHT;
+	}
     // Add stuff you want drawn in the background all the time here
-	WIDTH = IMG_WIDTH;
-	HEIGHT = IMG_HEIGHT;
+	
     /*var imageObj = new Image();
 
     imageObj.onload = function() {

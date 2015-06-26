@@ -50,7 +50,7 @@ var xhr;
 var timeout;
 var count;
 var oImg;
-
+var isSetImgSize = false;
 
 /* Rubberbandrectangle ***************************************/ 
 /*
@@ -254,15 +254,16 @@ function updateImg(imgId,imgSrc){
 		$(imgId)[0].src = imgSrc + "?" + count;
 		oImg = new Image();
 		oImg.onload = function() {
-			if(count === 1){
+			if(isSetImgSize == false){
 			  setImgActualSize(this.width, this.height);
+			  isSetImgSize = true;
 			}
 		}
 		count += 1;
 		oImg.src = imgSrc + "?" + count;
 		timeout = 0;
 	}
-	else if(timeout > 10){
+	else if(timeout > 30){//initially 10
 		count += 1;
 		oImg.src = imgSrc + "?" + count;
 		alert("timeout");

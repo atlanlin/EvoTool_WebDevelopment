@@ -321,7 +321,6 @@ function setImgActualSize(width, height){
 }
 function setGlobalScale(){
 	GLOBAL_SCALE = IMG_ACT_WIDTH/IMG_WIDTH;
-	alert("ACT Width:" + IMG_ACT_WIDTH + "/nIMG Width:" + IMG_WIDTH + "/nGlobal Scale" + GLOBAL_SCALE);
 }
 
 function hideSelectedAreaBox(){
