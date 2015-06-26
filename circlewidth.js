@@ -214,6 +214,13 @@ function drawCircle(circle, innerCircle) {
 	var calStartAngle = startAngle * Math.PI / 180;
 	var calEndAngle = EndAngle * Math.PI / 180;
 	
+	if(IMG_HEIGHT != null)
+	{
+		endFrameY = IMG_HEIGHT - 2;
+	
+		endFrameX = IMG_WIDTH - 2;
+	}
+	
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx.beginPath();
     ctx.arc(circle.point.x, circle.point.y, circle.radius, calStartAngle, calEndAngle, false);
@@ -422,7 +429,7 @@ var startFrameY = 1;
 
 var endFrameX = 747;
 
-var endFrameY = 470;
+var endFrameY = 560;
 
 // settings
 

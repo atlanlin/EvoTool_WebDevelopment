@@ -1,5 +1,16 @@
 // screen on load 
 window.onload = function() {
+	if(getCookie("resolution") == null)
+	{
+		setCookie("resolution","1",1);
+	}
+			
+			
+			
+	resolution = parseInt(getCookie("resolution"));
+			
+	setPageScaleSize(resolution);
+	
 	initSquare();
 	initCircle();
 	
@@ -66,16 +77,7 @@ function initCircle() {
 	
 	$("#btnMeasure").click(function(){
 	
-			if(getCookie("resolution") == null)
-			{
-				setCookie("resolution","1",1);
-			}
 			
-			
-			
-			resolution = parseInt(getCookie("resolution"));
-			
-			setPageScaleSize(resolution);
 			
 			ajaxGet("info.htm?cmd=%23021%3BEVO Distance%3B2%3BOptionForType%3B3%23");
 			
@@ -249,6 +251,12 @@ function drawCircle(circle, innerCircle) {
     var canvas = document.getElementById('canvas');
     var ctx = canvas.getContext('2d');
 	
+	if(IMG_HEIGHT != null)
+	{
+		endFrameY = IMG_HEIGHT - 2;
+	
+		endFrameX = IMG_WIDTH - 2;
+	}
 	
 	//ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx.beginPath();
@@ -426,7 +434,7 @@ var startFrameY = 1;
 
 var endFrameX = 747;
 
-var endFrameY = 470;
+var endFrameY = 560;
 
 // settings
 
@@ -800,7 +808,8 @@ function arrow(context,p1,p2,size){//
 
 //wipes the canvas context
 function clear(c) {
-  c.clearRect(0, 0, WIDTH, HEIGHT);
+  //c.clearRect(0, 0, WIDTH, HEIGHT);
+  c.clearRect(0, 0, WIDTH + mySelBoxSize, HEIGHT + mySelBoxSize);
 }
 
 // Main draw loop.
@@ -811,6 +820,8 @@ function mainDraw() {
     clear(ctx);
     
     // Add stuff you want drawn in the background all the time here
+	WIDTH = IMG_WIDTH;
+	HEIGHT = IMG_HEIGHT;
     /*var imageObj = new Image();
 
     imageObj.onload = function() {
@@ -1123,19 +1134,19 @@ function setScaleSize(horizontal, resolutionChoice)
 		if(horizontal == 1)
 		{
 			mulStartX = 0.831;
-			mulStartY = 1;
-			mulEndX = 0.871;
-			mulEndY = 1;
-			mulWidth = 1;
+			mulStartY = 0.853;
+			mulEndX = 0.846;
+			mulEndY = 0.853;
+			mulWidth = 0.825;
 		
 		}
 		else if(horizontal == 0) 
 		{
-			mulStartX = 0.859;
-			mulStartY = 1;
-			mulEndX = 0.859;
-			mulEndY = 1;
-			mulWidth = 0.81;
+			mulStartX = 0.852;
+			mulStartY = 0.851;
+			mulEndX = 0.852;
+			mulEndY = 0.849;
+			mulWidth = 0.852;
 			
 		} 
 	} 
@@ -1143,20 +1154,20 @@ function setScaleSize(horizontal, resolutionChoice)
 	{
 		if(horizontal == 1) 
 		{
-			mulStartX = 1.3648;
-			mulStartY = 1.668;
-			mulEndX = 1.303;
-			mulEndY = 1.668;
-			mulWidth = 1;
+			mulStartX = 1.369;
+			mulStartY = 1.374;
+			mulEndX = 1.352;
+			mulEndY = 1.374;
+			mulWidth = 1.325;
 			
 		} 
 		else if(horizontal == 0)
 		{
-			mulStartX = 1.346;
-			mulStartY = 1.6;
-			mulEndX = 1.346;
-			mulEndY = 1.6;
-			mulWidth = 1;
+			mulStartX = 1.363;
+			mulStartY = 1.339;
+			mulEndX = 1.363;
+			mulEndY = 1.361;
+			mulWidth = 1.302;
 		
 		}
 		
@@ -1166,18 +1177,18 @@ function setScaleSize(horizontal, resolutionChoice)
 		if(horizontal == 1)
 		{
 			mulStartX = 3.451;
-			mulStartY = 4.069;
+			mulStartY = 3.534;
 			mulEndX = 3.432;
-			mulEndY = 4.069;
+			mulEndY = 3.534;
 			mulWidth = 3.992;
 		
 		}
 		else if(horizontal == 0) 
 		{
 			mulStartX = 3.449;
-			mulStartY = 3.919;
+			mulStartY = 3.426;
 			mulEndX = 3.449;
-			mulEndY = 4.051;
+			mulEndY = 3.47;
 			mulWidth = 3.305;
 			
 		} 

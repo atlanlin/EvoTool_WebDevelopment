@@ -272,6 +272,12 @@ function drawCircle(circle, innerCircle) {
     var canvas = document.getElementById('canvas');
     var ctx = canvas.getContext('2d');
 	
+	if(IMG_HEIGHT != null)
+	{
+		endFrameY = IMG_HEIGHT - 2;
+	
+		endFrameX = IMG_WIDTH - 2;
+	}
 	
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 	
@@ -490,7 +496,7 @@ function updateCircle2Evo()
 
 //set circle scale to map evo3
 //choice 0 (640 by 480), 1 (1024 by 768), 2(2592 by 1944)..
-function setPageScaleSize(resolutionChoice)
+/*function setPageScaleSize(resolutionChoice)
 {
 	
 	if(resolutionChoice == 0) // image 640 by 480
@@ -515,7 +521,7 @@ function setPageScaleSize(resolutionChoice)
 	
 	}
 	
-}
+}*/
 
 // this is the resolution choice where choice 0 (640 by 480), 1 (1024 by 768), 2 (2592 by 1944)..
 var resolution = 1;   
@@ -539,7 +545,7 @@ var startFrameY = 1;
 
 var endFrameX = 747;
 
-var endFrameY = 470;
+var endFrameY = 560;
 
 // settings
 

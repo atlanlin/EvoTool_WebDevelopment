@@ -118,6 +118,21 @@ function init(){
 		
 	}
 	
+	function getImgWidth(){
+		var img = document.getElementById("imgSnapshot");
+		return img.clientWidth;
+		
+	
+	}
+	
+	function getImgHeight(){
+		var img = document.getElementById("imgSnapshot");
+		
+		return img.clientHeight;
+	
+	
+	}
+	
 	$("#btnCodeStart").click(function(){
 		ajaxGet("info.htm?cmd=%23002%23");
 		
@@ -561,21 +576,21 @@ function setPageScaleSize(resolutionChoice)
 	if(resolutionChoice == 0) // image 640 by 480
 	{
 		mulCenterX = 0.854;
-		mulCenterY = 1;
+		mulCenterY = 0.856;
 		mulOuterRadius = 0.9;
 	
 	}
 	else if(resolutionChoice == 1) //image 1024 by 768
 	{
 		mulCenterX = 1.35667;
-		mulCenterY = 1.6;
+		mulCenterY = 1.374;
 		mulOuterRadius = 1.5;
 	
 	}
 	else if(resolutionChoice == 2) // image 2592 by 1944
 	{
 		mulCenterX = 3.445;
-		mulCenterY = 4.09;
+		mulCenterY = 3.468;
 		mulOuterRadius = 5;
 	
 	}
