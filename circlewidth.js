@@ -1,6 +1,16 @@
 // center x plus radius to fin arc --> )
 // 
 window.onload = function() {
+
+	if(getCookie("resolution") == null)
+	{
+		setCookie("resolution","1",1);
+	}
+			
+	resolution = parseInt(getCookie("resolution"));
+	
+	setPageScaleSize(resolution);
+	
 	initCircle();
 	
 	ajaxGet("info.htm?cmd=%23021%3BEVO Circle%3B2%3BGeneral.Enabled%3B1%23");
@@ -46,14 +56,7 @@ function initCircle() {
 		}
 	);
 	
-	if(getCookie("resolution") == null)
-	{
-		setCookie("resolution","1",1);
-	}
-			
-	resolution = parseInt(getCookie("resolution"));
 	
-	setPageScaleSize(resolution);
 }
 
 
@@ -329,12 +332,19 @@ function updateCircleEvo()
 		/* var calCenterX = centerX * mulCenterX;
 		var calCenterY = centerY * mulCenterY; */
 		
-		var innerRadius = $("#innervalue").val();
-		var outerRadius = $("#outervalue").val();
+		//var innerRadius = $("#innervalue").val();
+		//var outerRadius = $("#outervalue").val();
 		//var calOuterRadius = outerRadius * mulOuterRadius;
 		
-		var startvalue = $("#startvalue").val();
-		var anglevalue = $("#anglevalue").val();
+		//var startvalue = $("#startvalue").val();
+		//var anglevalue = $("#anglevalue").val();
+		
+		var innerRadius = $("#innerRadiusValue").val();
+		var outerRadius = $("#outerRadiusValue").val();
+		
+		var startvalue = $("#startAngleValue").val();
+		var anglevalue = $("#endAngleValue").val();
+		
 		
 		var nominalValue = $("#nv").val();
 		var positive = $("#plus").val();

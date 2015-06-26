@@ -1,5 +1,15 @@
 // screen on load 
 window.onload = function() {
+	if(getCookie("resolution") == null)
+	{
+		setCookie("resolution","1",1);
+	}
+			
+			 
+	resolution = parseInt(getCookie("resolution"));
+		
+	setPageScaleSize(resolution);
+	
 	initCircle();
 	
 	ajaxGet("info.htm?cmd=%23021%3BEVO Distance%3B2%3BGeneral.Enabled%3B1%23");
@@ -28,15 +38,7 @@ function initCircle() {
 	
 	$("#btnMeasure").click(function(){
 	
-			if(getCookie("resolution") == null)
-			{
-				setCookie("resolution","1",1);
-			}
 			
-			 
-			resolution = parseInt(getCookie("resolution"));
-		
-			setPageScaleSize(resolution);
 			
 			ajaxGet("info.htm?cmd=%23021%3BEVO Distance%3B2%3BOptionForType%3B4%23");
 			
@@ -272,6 +274,12 @@ function drawCircle(circle, innerCircle) {
     var canvas = document.getElementById('canvas');
     var ctx = canvas.getContext('2d');
 	
+	var calStartAngle1 = startAngle1 * Math.PI / 180;
+	var calEndAngle1 = EndAngle1 * Math.PI / 180;
+	
+	var calStartAngle2 = startAngle2 * Math.PI / 180;
+	var calEndAngle2 = EndAngle2 * Math.PI / 180;
+	
 	if(IMG_HEIGHT != null)
 	{
 		endFrameY = IMG_HEIGHT - 2;
@@ -283,7 +291,7 @@ function drawCircle(circle, innerCircle) {
 	
 	//circle 1
     ctx.beginPath();
-    ctx.arc(circle.point.x, circle.point.y, circle.radius, 0, Math.PI*2, false);
+    ctx.arc(circle.point.x, circle.point.y, circle.radius, calStartAngle1, calEndAngle1, false);
 	
 	ctx.globalAlpha=1;
 	
@@ -295,7 +303,7 @@ function drawCircle(circle, innerCircle) {
 	//ctx.fill();
 
 	ctx.beginPath();
-    ctx.arc(circle.point.x, circle.point.y, innerCircle.radius, 0,Math.PI*2,false);
+    ctx.arc(circle.point.x, circle.point.y, innerCircle.radius, calStartAngle1, calEndAngle1,false);
 	
 	ctx.globalAlpha=1;
 	
@@ -307,7 +315,7 @@ function drawCircle(circle, innerCircle) {
 	//circle 2
 	//ctx.clearRect(0, 0, canvas.width, canvas.height);
 	ctx.beginPath();
-    ctx.arc(circle2.point.x, circle2.point.y, circle2.radius, 0, Math.PI*2, false);
+    ctx.arc(circle2.point.x, circle2.point.y, circle2.radius, calStartAngle2, calEndAngle2, false);
 	
 	ctx.globalAlpha=1;
 	
@@ -319,7 +327,7 @@ function drawCircle(circle, innerCircle) {
 	//ctx.fill();
 
 	ctx.beginPath();
-    ctx.arc(circle2.point.x, circle2.point.y, innerCircle2.radius, 0,Math.PI*2,false);
+    ctx.arc(circle2.point.x, circle2.point.y, innerCircle2.radius, calStartAngle2, calEndAngle2,false);
 	
 	ctx.globalAlpha=1;
 	
@@ -330,23 +338,29 @@ function drawCircle(circle, innerCircle) {
 	
 	$("#xvalue").val(Math.round(circle.point.x));
 	$("#yvalue").val(Math.round(circle.point.y));
-	$("#startvalue").val(0);
-	$("#anglevalue").val(360);
-	$("#outervalue").val(Math.round(circle.radius));
-	$("#innervalue").val(Math.round(innerCircle.radius));
+	//$("#startvalue").val(startAngle1);
+	//$("#anglevalue").val(EndAngle1);
+	//$("#outervalue").val(Math.round(circle.radius));
+	//$("#innervalue").val(Math.round(innerCircle.radius));
 	
 	$("#xvalue2").val(Math.round(circle2.point.x));
 	$("#yvalue2").val(Math.round(circle2.point.y));
-	$("#startvalue2").val(0);
-	$("#anglevalue2").val(360);
-	$("#outervalue2").val(Math.round(circle2.radius));
-	$("#innervalue2").val(Math.round(innerCircle2.radius));
+	//$("#startvalue2").val(startAngle2);
+	//$("#anglevalue2").val(EndAngle2);
+	//$("#outervalue2").val(Math.round(circle2.radius));
+	//$("#innervalue2").val(Math.round(innerCircle2.radius));
 	
 	document.querySelector('#circlevolume').value = Math.round(circle.radius);
 	document.querySelector('#innercirclevolume').value = Math.round(innerCircle.radius);
 	
+	document.querySelector('#startangle1').value = Math.round(startAngle1);
+	document.querySelector('#endangle1').value = Math.round(EndAngle1);
+	
 	document.querySelector('#circlevolume2').value = Math.round(circle2.radius);
 	document.querySelector('#innercirclevolume2').value = Math.round(innerCircle2.radius);
+	
+	document.querySelector('#startangle2').value = Math.round(startAngle2);
+	document.querySelector('#endangle2').value = Math.round(EndAngle2);
 	
 	
 	//updateCircleEvo();
@@ -384,10 +398,39 @@ function outputInnerUpdate(size){
 	drawCircle(circle, innerCircle);
 
 }
+function outputStartAngle1(size){
+	var intSize = parseInt(size);
+
+	startAngle1 = intSize;
+	if(startAngle1 == 0 && EndAngle1 == 0)
+		startAngle1 = 1;
+	else if(startAngle1 == 360 && EndAngle1 == 360)
+		startAngle1 = 359;
+	
+
+	drawCircle(circle, innerCircle);
+
+}
+
+function outputEndAngle1(size){
+	var intSize = parseInt(size);
+
+	EndAngle1 = intSize;
+	if(startAngle1 == 0 && EndAngle1 == 0)
+		EndAngle1 = 1;
+	else if(startAngle1 == 360 && EndAngle1 == 360)
+		EndAngle1 = 359;	
+	
+			
+	drawCircle(circle, innerCircle);
+
+}
+
+
 
 function outputUpdate2(size) {
 
-			var intSize = parseInt(size);
+	var intSize = parseInt(size);
 
 			if(intSize < maxRadius && intSize < findMin(circle2.point.x, circle2.point.y))
 			{
@@ -416,6 +459,34 @@ function outputInnerUpdate2(size){
 
 }
 
+function outputStartAngle2(size){
+	var intSize = parseInt(size);
+
+	startAngle2 = intSize;
+	if(startAngle2 == 0 && EndAngle2 == 0)
+		startAngle2 = 1;
+	else if(startAngle2 == 360 && EndAngle2 == 360)
+		startAngle2 = 359;
+	
+
+	drawCircle(circle, innerCircle);
+
+}
+
+function outputEndAngle2(size){
+	var intSize = parseInt(size);
+
+	EndAngle2 = intSize;
+	if(startAngle2 == 0 && EndAngle2 == 0)
+		EndAngle2 = 1;
+	else if(startAngle2 == 360 && EndAngle2 == 360)
+		EndAngle2 = 359;	
+	
+			
+	drawCircle(circle, innerCircle);
+
+}
+
 function updateCircleEvo()
 {
 		var centerX = $("#xvalue").val();
@@ -423,12 +494,19 @@ function updateCircleEvo()
 		//var calCenterX = centerX * mulCenterX;
 		//var calCenterY = centerY * mulCenterY;
 		
-		var innerRadius = $("#innervalue").val();
-		var outerRadius = $("#outervalue").val();
+		//var innerRadius = $("#innervalue").val();
+		//var outerRadius = $("#outervalue").val();
 		//var calOuterRadius = outerRadius * mulOuterRadius;
 		
-		var startvalue = $("#startvalue").val();
-		var anglevalue = $("#anglevalue").val();
+		//var startvalue = $("#startvalue").val();
+		//var anglevalue = $("#anglevalue").val();
+		
+		var innerRadius = $("#innerRadiusValue1").val();
+		var outerRadius = $("#outerRadiusValue1").val();
+		
+		var startvalue = $("#startAngleValue1").val();
+		var anglevalue = $("#endAngleValue1").val();
+		
 		
 		var nominalValue = $("#nv").val();
 		var positive = $("#plus").val();
@@ -439,6 +517,20 @@ function updateCircleEvo()
 		
 		var calInnerRadius = innerRadius * GLOBAL_SCALE;
 		var calOuterRadius = outerRadius * GLOBAL_SCALE;
+		
+		
+		var calDiffer = 0;
+		
+		if(startAngle1 < EndAngle1)
+		{
+			calDiffer = EndAngle1 - startAngle1;
+		}
+		else
+		{
+			var tempDiffer = startAngle1 - EndAngle1;
+			calDiffer = 360 - tempDiffer;
+		}
+		
 		
 		if ($("#clightToDark").is(":checked")) {
 			ajaxGet("info.htm?cmd=%23021%3BEVO Distance%3B2%3BTransition_1%3B0%23");
@@ -453,7 +545,7 @@ function updateCircleEvo()
 		ajaxGet("info.htm?cmd=%23021%3BEVO Distance%3B1%3BCirclePos.InnerRadius%3B"+ calInnerRadius +"%23");
 		ajaxGet("info.htm?cmd=%23021%3BEVO Distance%3B1%3BCirclePos.OuterRadius%3B"+ calOuterRadius +"%23");
 		ajaxGet("info.htm?cmd=%23021%3BEVO Distance%3B1%3BCirclePos.StartAngle%3B"+ startvalue +"%23");
-		ajaxGet("info.htm?cmd=%23021%3BEVO Distance%3B1%3BCirclePos.LengthAngle%3B"+ anglevalue +"%23");
+		ajaxGet("info.htm?cmd=%23021%3BEVO Distance%3B1%3BCirclePos.LengthAngle%3B"+ calDiffer +"%23");
 		
 		ajaxGet("info.htm?cmd=%23021%3BEVO Distance%3B1%3BResult[0].Evaluation.NominalValue%3B"+ nominalValue +"%23");
 		ajaxGet("info.htm?cmd=%23021%3BEVO Distance%3B1%3BResult[0].Evaluation.PlusTolerance%3B"+ positive +"%23");
@@ -469,12 +561,18 @@ function updateCircle2Evo()
 		//var calCenterX = centerX * mulCenterX;
 		//var calCenterY = centerY * mulCenterY;
 		
-		var innerRadius = $("#innervalue2").val();
-		var outerRadius = $("#outervalue2").val();
+		//var innerRadius = $("#innervalue2").val();
+		//var outerRadius = $("#outervalue2").val();
 		//var calOuterRadius = outerRadius * mulOuterRadius;
 		
-		var startvalue = $("#startvalue2").val();
-		var anglevalue = $("#anglevalue2").val();
+		//var startvalue = $("#startvalue2").val();
+		//var anglevalue = $("#anglevalue2").val();
+		
+		var innerRadius = $("#innerRadiusValue2").val();
+		var outerRadius = $("#outerRadiusValue2").val();
+		
+		var startvalue = $("#startAngleValue2").val();
+		var anglevalue = $("#endAngleValue2").val();
 		
 		var nominalValue = $("#nv").val();
 		var positive = $("#plus").val();
@@ -485,6 +583,19 @@ function updateCircle2Evo()
 		
 		var calInnerRadius = innerRadius * GLOBAL_SCALE;
 		var calOuterRadius = outerRadius * GLOBAL_SCALE;
+		
+		var calDiffer = 0;
+		
+		if(startAngle2 < EndAngle2)
+		{
+			calDiffer = EndAngle2 - startAngle2;
+		}
+		else
+		{
+			var tempDiffer = startAngle2 - EndAngle2;
+			calDiffer = 360 - tempDiffer2;
+		}
+		
 		
 		if ($("#rlightToDark").is(":checked")) {
 			ajaxGet("info.htm?cmd=%23021%3BEVO Distance%3B2%3BTransition_2%3B0%23");
@@ -498,7 +609,7 @@ function updateCircle2Evo()
 		ajaxGet("info.htm?cmd=%23021%3BEVO Distance%3B1%3BCirclePos2.InnerRadius%3B"+ calInnerRadius +"%23");
 		ajaxGet("info.htm?cmd=%23021%3BEVO Distance%3B1%3BCirclePos2.OuterRadius%3B"+ calOuterRadius +"%23");
 		ajaxGet("info.htm?cmd=%23021%3BEVO Distance%3B1%3BCirclePos2.StartAngle%3B"+ startvalue +"%23");
-		ajaxGet("info.htm?cmd=%23021%3BEVO Distance%3B1%3BCirclePos2.LengthAngle%3B"+ anglevalue +"%23");
+		ajaxGet("info.htm?cmd=%23021%3BEVO Distance%3B1%3BCirclePos2.LengthAngle%3B"+ calDiffer +"%23");
 		
 		ajaxGet("info.htm?cmd=%23021%3BEVO Distance%3B1%3BResult[0].Evaluation.NominalValue%3B"+ nominalValue +"%23");
 		ajaxGet("info.htm?cmd=%23021%3BEVO Distance%3B1%3BResult[0].Evaluation.PlusTolerance%3B"+ positive +"%23");
@@ -569,8 +680,10 @@ var UPDATECIRCLEINTERVAL = 2000;
 
 var UPDATECIRCLE2INTERVAL = 4000;
 
-var mulCenterX;
+var startAngle1 = 0;
 
-var mulCenterY;
+var EndAngle1 = 360;
 
-var mulOuterRadius;
+var startAngle2 = 0;
+
+var EndAngle2= 360;
