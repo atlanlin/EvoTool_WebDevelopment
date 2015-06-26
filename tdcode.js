@@ -52,14 +52,6 @@
 
 	// flag for rectangle opacity (roi window)
 	var rectRoiFlag = false;
-	
-	// scaling
-	var mulStartX;
-	var mulEndX;
-	var mulStartY;
-	var mulEndY;
-	var mulWidth;
-	var mulHeight;
 
 	// box object to hold data
 	// default width and height
@@ -279,10 +271,10 @@
 	
 	// consists of roi settings
 	function roiSet() {
-		var startX = $("#xValue").val() * mulStartX;
-		var startY = $("#yValue").val() * mulStartY;
-		var width = $("#wValue").val() * mulWidth;
-		var height = $("#hValue").val() * mulHeight;
+		var startX = $("#xValue").val() * GLOBAL_SCALE;
+		var startY = $("#yValue").val() * GLOBAL_SCALE;
+		var width = $("#wValue").val() * GLOBAL_SCALE;
+		var height = $("#hValue").val() * GLOBAL_SCALE;
 		
 		if (document.getElementById("wholeWindow").checked) {
 			ajaxGet('info.htm?cmd=%23021%3BEVO%20DataCode%3B2%3BSourceWindow.SourceMode%3B4%23');

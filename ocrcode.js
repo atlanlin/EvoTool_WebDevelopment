@@ -55,19 +55,6 @@
 
 	// flag for rectangle opacity (roi window)
 	var rectRoiFlag = false;
-	
-	// scaling
-	var mulStartX;
-	var mulEndX;
-	var mulStartY;
-	var mulEndY;
-	var mulWidth;
-	var mulHeight;
-	
-	var mulCharStartX;
-	var mulCharStartY;
-	var	mulCharWidth;
-	var mulCharHeight;
 
 	// box object to hold data
 	// default width and height
@@ -188,7 +175,7 @@
 		}
 		resolution = parseInt(getCookie("resolution"));
 			
-		setScaleSize(1, resolution);
+		//setScaleSize(1, resolution);
 		
 		evoComm();
 		
@@ -368,10 +355,10 @@
 	
 	// consists of advanced character options
 	function charOptions() {
-		var charStartX = $("#charXValue").val() * mulCharStartX;
-		var charStartY = $("#charYValue").val() * mulCharStartY;
-		var charWidth = $("#charWValue").val() * mulCharWidth;
-		var charHeight = $("#charHValue").val() * mulCharHeight;
+		var charStartX = $("#charXValue").val() * GLOBAL_SCALE;
+		var charStartY = $("#charYValue").val() * GLOBAL_SCALE;
+		var charWidth = $("#charWValue").val() * GLOBAL_SCALE;
+		var charHeight = $("#charHValue").val() * GLOBAL_SCALE;
 			
 		if (document.getElementById("dotted").checked) {
 			ajaxGet('info.htm?cmd=%23021%3BEVO%20OCR%3B2%3BdotType%3B1%23');
@@ -421,11 +408,17 @@
 			ajaxGet('info.htm?cmd=%23021%3BEVO%20OCR%3B1%3BposRect.PointEnd.Y%3B240%23');
 			ajaxGet('info.htm?cmd=%23021%3BEVO%20OCR%3B1%3BposRect.Width%3B750%23'); */
 			
-			var startX = 0 * mulStartX;
-			var endX = 752 * mulEndX;
-			var startY = 240 * mulStartY;
-			var endY = 240 * mulEndY;
-			var width = 480 * mulWidth;
+			/* var startX = 0 * GLOBAL_SCALE;
+			var endX = 752 * GLOBAL_SCALE;
+			var startY = 240 * GLOBAL_SCALE;
+			var endY = 240 * GLOBAL_SCALE;
+			var width = 480 * GLOBAL_SCALE; */
+			
+			var startX = 0 * GLOBAL_SCALE;
+			var endX = IMG_WIDTH * GLOBAL_SCALE;
+			var startY = IMG_HEIGHT / 2 * GLOBAL_SCALE;
+			var endY = IMG_HEIGHT / 2 * GLOBAL_SCALE;
+			var width = IMG_HEIGHT * GLOBAL_SCALE;
 			
 			ajaxGet('info.htm?cmd=%23021%3BEVO%20OCR%3B1%3BposRect.PointStart.X%3B'+startX+'%23');
 			ajaxGet('info.htm?cmd=%23021%3BEVO%20OCR%3B1%3BposRect.PointEnd.X%3B'+endX+'%23');			
@@ -436,11 +429,11 @@
 			
 		if (document.getElementById("defineWindow").checked) {
 			
-			var startX = $("#xValue").val() * mulStartX;
-			var endX = (parseInt($("#xValue").val()) + parseInt($("#wValue").val())) * mulEndX;
-			var startY = (parseInt($("#yValue").val()) + (parseInt($("#hValue").val())/2)) * mulStartY;
-			var endY = (parseInt($("#yValue").val()) + (parseInt($("#hValue").val())/2)) * mulEndY;
-			var width = $("#hValue").val() * mulWidth;
+			var startX = $("#xValue").val() * GLOBAL_SCALE;
+			var endX = (parseInt($("#xValue").val()) + parseInt($("#wValue").val())) * GLOBAL_SCALE;
+			var startY = (parseInt($("#yValue").val()) + (parseInt($("#hValue").val())/2)) * GLOBAL_SCALE;
+			var endY = (parseInt($("#yValue").val()) + (parseInt($("#hValue").val())/2)) * GLOBAL_SCALE;
+			var width = $("#hValue").val() * GLOBAL_SCALE;
 		
 			ajaxGet('info.htm?cmd=%23021%3BEVO%20OCR%3B1%3BposRect.PointStart.X%3B'+startX+'%23');
 			ajaxGet('info.htm?cmd=%23021%3BEVO%20OCR%3B1%3BposRect.PointEnd.X%3B'+endX+'%23');			
