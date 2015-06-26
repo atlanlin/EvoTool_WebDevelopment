@@ -9,6 +9,8 @@ var STEP_SIZE_SHUTTER = 1;
 var cam = 1;
 var myInterval;
 var queryString;
+var IMG_WIDTH;
+var IMG_HEIGHT;
 
 /*make sure we are in the right mode*/
 //ajaxGet("info.htm?cmd=%23021%3Bchoice%3B1%3BConstantValue%3B2%23");
@@ -95,10 +97,23 @@ function init(){
 		//},100);
 		
 		intervalUpdateStart();
-		
+
+		setTimeout(getImgSize, 1000); 
 		
 		}
 	);
+	
+	function getImgSize(){
+		var img = document.getElementById("imgSnapshot");
+		IMG_WIDTH = img.clientWidth;
+		IMG_HEIGHT = img.clientHeight;
+		
+		//var canvasNode = document.getElementById('canvas2');
+		//canvasNode.width  = IMG_WIDTH; // in pixels
+		//canvasNode.height = IMG_HEIGHT; // in pixels
+		
+		
+	}
 	
 	$("#btnCodeStart").click(function(){
 		ajaxGet("info.htm?cmd=%23002%23");

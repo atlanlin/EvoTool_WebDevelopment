@@ -514,7 +514,7 @@ function arrow(context,p1,p2,size){//
 
 //wipes the canvas context
 function clear(c) {
-  c.clearRect(0, 0, WIDTH, HEIGHT);
+  c.clearRect(0, 0, WIDTH + mySelBoxSize, HEIGHT + mySelBoxSize);
 }
 
 // Main draw loop.
@@ -525,6 +525,8 @@ function mainDraw() {
     clear(ctx);
     
     // Add stuff you want drawn in the background all the time here
+	WIDTH = IMG_WIDTH;
+	HEIGHT = IMG_HEIGHT;
     /*var imageObj = new Image();
 
     imageObj.onload = function() {
