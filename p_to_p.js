@@ -85,17 +85,17 @@ function displayTexts(startXtb, startYtb, endXtb, endYtb, widthtb, arrowDirFlag,
 	
 	if(arrowDirFlag == "horizontal"){
 		
-		sx = inBox.x * mulCenterX;
-		sy = (inBox.y + parseInt(inBox.h/2))*mulCenterY;
-		ex = (inBox.x + inBox.w) * mulCenterX;
-		ey = (inBox.y + parseInt(inBox.h/2)) * mulCenterY;
-		w = Math.abs(inBox.h) * mulCenterY;
+		sx = inBox.x * GLOBAL_SCALE;
+		sy = (inBox.y + parseInt(inBox.h/2))*GLOBAL_SCALE;
+		ex = (inBox.x + inBox.w) * GLOBAL_SCALE;
+		ey = (inBox.y + parseInt(inBox.h/2)) * GLOBAL_SCALE;
+		w = Math.abs(inBox.h) * GLOBAL_SCALE;
 	}else{
-		sx = (inBox.x + parseInt(inBox.w/2)) * mulCenterX;
-		sy = inBox.y * mulCenterY;
-		ex = (inBox.x + parseInt(inBox.w/2)) * mulCenterX;
-		ey = (inBox.y + inBox.h) * mulCenterY;
-		w = Math.abs(inBox.w) * mulCenterX;
+		sx = (inBox.x + parseInt(inBox.w/2)) * GLOBAL_SCALE;
+		sy = inBox.y * GLOBAL_SCALE;
+		ex = (inBox.x + parseInt(inBox.w/2)) * GLOBAL_SCALE;
+		ey = (inBox.y + inBox.h) * GLOBAL_SCALE;
+		w = Math.abs(inBox.w) * GLOBAL_SCALE;
 	}
 	document.getElementById(startXtb).value=sx;
 	document.getElementById(startYtb).value=sy;

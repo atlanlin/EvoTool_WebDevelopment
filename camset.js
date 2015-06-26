@@ -11,6 +11,9 @@ var myInterval;
 var queryString;
 var IMG_WIDTH;
 var IMG_HEIGHT;
+var IMG_ACT_WIDTH;
+var IMG_ACT_HEIGHT;
+var GLOBAL_SCALE = 1;
 
 /*make sure we are in the right mode*/
 //ajaxGet("info.htm?cmd=%23021%3Bchoice%3B1%3BConstantValue%3B2%23");
@@ -107,7 +110,7 @@ function init(){
 		var img = document.getElementById("imgSnapshot");
 		IMG_WIDTH = img.clientWidth;
 		IMG_HEIGHT = img.clientHeight;
-		
+		setGlobalScale();
 		//var canvasNode = document.getElementById('canvas2');
 		//canvasNode.width  = IMG_WIDTH; // in pixels
 		//canvasNode.height = IMG_HEIGHT; // in pixels
@@ -296,6 +299,16 @@ function getCodeValueFrominiFile()
 function updateHelper(){
 	updateImg("#imgSnapshot","/snapshot");
 }
+
+function setImgActualSize(width, height){
+	IMG_ACT_WIDTH = width;
+	IMG_ACT_HEIGHT = height;
+}
+function setGlobalScale(){
+	GLOBAL_SCALE = IMG_ACT_WIDTH/IMG_WIDTH;
+	alert("ACT Width:" + IMG_ACT_WIDTH + "/nIMG Width:" + IMG_WIDTH + "/nGlobal Scale" + GLOBAL_SCALE);
+}
+
 function hideSelectedAreaBox(){
 	$("#selectionArea").css("display","none");
 }

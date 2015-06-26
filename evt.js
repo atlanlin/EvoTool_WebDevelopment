@@ -245,12 +245,19 @@ function updateImg(imgId,imgSrc){
 
 	if (timeout === undefined) {timeout = 0;} else {timeout += 1;}
 	if (count === undefined) {count = 0;}
-	if (oImg === undefined) {oImg = new Image();};
+	if (oImg === undefined) {
+		oImg = new Image();
+	};
 	
 	//alert("updateImg");
 	if(oImg.complete){
 		$(imgId)[0].src = imgSrc + "?" + count;
 		oImg = new Image();
+		oImg.onload = function() {
+			if(count === 1){
+			  setImgActualSize(this.width, this.height);
+			}
+		}
 		count += 1;
 		oImg.src = imgSrc + "?" + count;
 		timeout = 0;
