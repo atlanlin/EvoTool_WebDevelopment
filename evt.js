@@ -271,6 +271,10 @@ function updateImg(imgId,imgSrc){
 	}
 }
 
+function setImgFlag(inputValue){
+	isSetImgSize = inputValue;
+}
+
 /* helper funtion for ajax, 
 callback function is optional,
 if this function is called before a previous returned the older callback funtion will not execute.

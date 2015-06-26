@@ -97,11 +97,11 @@ function displayTexts(startXtb, startYtb, endXtb, endYtb, widthtb, arrowDirFlag,
 		ey = (inBox.y + inBox.h) * GLOBAL_SCALE;
 		w = Math.abs(inBox.w) * GLOBAL_SCALE;
 	}
-	document.getElementById(startXtb).value=sx;
-	document.getElementById(startYtb).value=sy;
-	document.getElementById(endXtb).value=ex;
-	document.getElementById(endYtb).value=ey;
-	document.getElementById(widthtb).value=w;
+	document.getElementById(startXtb).value=sx.toFixed(2);
+	document.getElementById(startYtb).value=sy.toFixed(2);
+	document.getElementById(endXtb).value=ex.toFixed(2);
+	document.getElementById(endYtb).value=ey.toFixed(2);
+	document.getElementById(widthtb).value=w.toFixed(2);
 }
 
 /* function showProbeSettings(){
@@ -400,11 +400,11 @@ function evoComm() {
 
 function point1Settings() {
 	if (document.getElementById("point1DOL").checked) {
-			ajaxGet('any.htm?cmd=%23021%3BEVO%20Distance%3B2%3BTransition_1%3B0%23');
+			ajaxGet('any.htm?cmd=%23021%3BEVO%20Distance%3B2%3BTransition_1%3B1%23');
 	}	
 	
 	if (document.getElementById("point1LOD").checked) {
-			ajaxGet('any.htm?cmd=%23021%3BEVO%20Distance%3B2%3BTransition_1%3B1%23');
+			ajaxGet('any.htm?cmd=%23021%3BEVO%20Distance%3B2%3BTransition_1%3B0%23');
 	}
 	
 	ajaxGet("info.htm?cmd=%23021%3BEVO%20Distance%3B1%3BRecPos.PointStart.X%3B"+$("#point1StartX").val()+"%23");
@@ -416,11 +416,11 @@ function point1Settings() {
 
 function point2Settings() {
 	if (document.getElementById("point2DOL").checked) {
-			ajaxGet('any.htm?cmd=%23021%3BEVO%20Distance%3B2%3BTransition_2%3B0%23');
+			ajaxGet('any.htm?cmd=%23021%3BEVO%20Distance%3B2%3BTransition_2%3B1%23');
 	}
 	
 	if (document.getElementById("point2LOD").checked) {
-			ajaxGet('any.htm?cmd=%23021%3BEVO%20Distance%3B2%3BTransition_2%3B1%23');
+			ajaxGet('any.htm?cmd=%23021%3BEVO%20Distance%3B2%3BTransition_2%3B0%23');
 	}
 	
 	ajaxGet("info.htm?cmd=%23021%3BEVO%20Distance%3B1%3BRecPos2.PointStart.X%3B"+$("#point2StartX").val()+"%23");
@@ -524,8 +524,10 @@ function mainDraw() {
   if (canvasValid == false) {
     clear(ctx);
 	
-	WIDTH = IMG_WIDTH;
-	HEIGHT = IMG_HEIGHT;
+	if(IMG_WIDTH != null && IMG_HEIGHT != null){
+		WIDTH = IMG_WIDTH;
+		HEIGHT = IMG_HEIGHT;
+	}
     // Add stuff you want drawn in the background all the time here
 	
     /*var imageObj = new Image();

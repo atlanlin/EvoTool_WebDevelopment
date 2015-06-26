@@ -84,23 +84,23 @@ function displayTexts(startXtb, startYtb, endXtb, endYtb, widthtb, arrowDirFlag,
 	
 	if(arrowDirFlag == "horizontal"){
 		
-		sx = inBox.x * mulCenterX;
-		sy = (inBox.y + parseInt(inBox.h/2))*mulCenterY;
-		ex = (inBox.x + inBox.w) * mulCenterX;
-		ey = (inBox.y + parseInt(inBox.h/2)) * mulCenterY;
-		w = Math.abs(inBox.h) * mulCenterY;
+		sx = inBox.x * GLOBAL_SCALE;
+		sy = (inBox.y + parseInt(inBox.h/2))*GLOBAL_SCALE;
+		ex = (inBox.x + inBox.w) * GLOBAL_SCALE;
+		ey = (inBox.y + parseInt(inBox.h/2)) * GLOBAL_SCALE;
+		w = Math.abs(inBox.h) * GLOBAL_SCALE;
 	}else{
-		sx = (inBox.x + parseInt(inBox.w/2)) * mulCenterX;
-		sy = inBox.y * mulCenterY;
-		ex = (inBox.x + parseInt(inBox.w/2)) * mulCenterX;
-		ey = (inBox.y + inBox.h) * mulCenterY;
-		w = Math.abs(inBox.w) * mulCenterX;
+		sx = (inBox.x + parseInt(inBox.w/2)) * GLOBAL_SCALE;
+		sy = inBox.y * GLOBAL_SCALE;
+		ex = (inBox.x + parseInt(inBox.w/2)) * GLOBAL_SCALE;
+		ey = (inBox.y + inBox.h) * GLOBAL_SCALE;
+		w = Math.abs(inBox.w) * GLOBAL_SCALE;
 	}
-	document.getElementById(startXtb).value=sx;
-	document.getElementById(startYtb).value=sy;
-	document.getElementById(endXtb).value=ex;
-	document.getElementById(endYtb).value=ey;
-	document.getElementById(widthtb).value=w;
+	document.getElementById(startXtb).value=sx.toFixed(2);
+	document.getElementById(startYtb).value=sy.toFixed(2);
+	document.getElementById(endXtb).value=ex.toFixed(2);
+	document.getElementById(endYtb).value=ey.toFixed(2);
+	document.getElementById(widthtb).value=w.toFixed(2);
 }
 
 
@@ -401,11 +401,11 @@ function evoComm() {
 
 function pointSettings() {
 	if (document.getElementById("pointDOL").checked) {
-			ajaxGet('any.htm?cmd=%23021%3BEVO%20Distance%3B2%3BTransition_1%3B0%23');
+			ajaxGet('any.htm?cmd=%23021%3BEVO%20Distance%3B2%3BTransition_1%3B1%23');
 	}	
 	
 	if (document.getElementById("pointLOD").checked) {
-			ajaxGet('any.htm?cmd=%23021%3BEVO%20Distance%3B2%3BTransition_1%3B1%23');
+			ajaxGet('any.htm?cmd=%23021%3BEVO%20Distance%3B2%3BTransition_1%3B0%23');
 	}
 	
 	ajaxGet("info.htm?cmd=%23021%3BEVO%20Distance%3B1%3BRecPos.PointStart.X%3B"+$("#pointStartX").val()+"%23");
@@ -417,11 +417,11 @@ function pointSettings() {
 
 function lineSettings() {
 	if (document.getElementById("lineDOL").checked) {
-			ajaxGet('any.htm?cmd=%23021%3BEVO%20Distance%3B2%3BTransition_2%3B0%23');
+			ajaxGet('any.htm?cmd=%23021%3BEVO%20Distance%3B2%3BTransition_2%3B1%23');
 	}
 	
 	if (document.getElementById("lineLOD").checked) {
-			ajaxGet('any.htm?cmd=%23021%3BEVO%20Distance%3B2%3BTransition_2%3B1%23');
+			ajaxGet('any.htm?cmd=%23021%3BEVO%20Distance%3B2%3BTransition_2%3B0%23');
 	}
 	
 	ajaxGet("info.htm?cmd=%23021%3BEVO%20Distance%3B1%3BRecPos2.PointStart.X%3B"+$("#lineStartX").val()+"%23");
@@ -515,7 +515,7 @@ function arrow(context,p1,p2,size){//
 
 //wipes the canvas context
 function clear(c) {
-  c.clearRect(0, 0, WIDTH, HEIGHT);
+  c.clearRect(0, 0, WIDTH + mySelBoxSize, HEIGHT + mySelBoxSize);
 }
 
 // Main draw loop.
@@ -525,6 +525,11 @@ function mainDraw() {
   if (canvasValid == false) {
     clear(ctx);
     
+	if(IMG_WIDTH != null && IMG_HEIGHT != null){
+		WIDTH = IMG_WIDTH;
+		HEIGHT = IMG_HEIGHT;
+	}
+	
     // Add stuff you want drawn in the background all the time here
     /*var imageObj = new Image();
 

@@ -9,8 +9,8 @@ var STEP_SIZE_SHUTTER = 1;
 var cam = 1;
 var myInterval;
 var queryString;
-var IMG_WIDTH = 752;
-var IMG_HEIGHT = 752;
+var IMG_WIDTH
+var IMG_HEIGHT;
 var IMG_ACT_WIDTH;
 var IMG_ACT_HEIGHT;
 var GLOBAL_SCALE = 1;
@@ -100,9 +100,9 @@ function init(){
 		//},100);
 		
 		intervalUpdateStart();
-
-		setTimeout(getImgSize, 1000); 
 		
+		setTimeout(getImgSize, 1000); 
+		setImgFlag(false);
 		}
 	);
 	
@@ -129,7 +129,8 @@ function init(){
 		
 		intervalUpdateStart();
 		
-		
+		//setTimeout(getImgSize, 1000); 
+		//setImgFlag(false);
 		}
 	);
 
@@ -273,7 +274,7 @@ function getValueFrominiFile()
 	var resp = xhr.responseText;
 	globalResult = getIniStr("cam1", "result1", resp);
 	
-	$("#resultDisplay").val("result = " + globalResult);
+	$("#resultDisplay").val(globalResult);
 	
 			
 	var cookieName = queryString["tool"] + queryString["toolNo"];
