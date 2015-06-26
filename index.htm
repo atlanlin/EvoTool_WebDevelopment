@@ -33,7 +33,23 @@
     </table>
     <script>
 		disableAllFunctions();
-	</script>
+		
+		document.getElementById("barcode").addEventListener("click", function(){
+			ajaxGet('info.htm?cmd=%23001Code_Reader.ckp%23');
+		});
+		
+		document.getElementById("_2dbarcode").addEventListener("click", function(){
+			ajaxGet('info.htm?cmd=%23001Code_Reader.ckp%23');
+		});
+		
+		document.getElementById("ocrcode").addEventListener("click", function(){
+			ajaxGet('info.htm?cmd=%23001Code_Reader.ckp%23');
+		});
+		
+		document.getElementById("control").addEventListener("click", function(){
+			ajaxGet('info.htm?cmd=%23001Measurement.ckp%23');
+		});
+</script>
 </body>
 <footer class="footer">
 Copyright @ Inspiraz Pte. Ltd 2014

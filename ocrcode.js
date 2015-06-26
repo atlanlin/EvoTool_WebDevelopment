@@ -182,9 +182,6 @@
 	// then add everything we want to initially exist on the canvas
 	function init2() {
 		ajaxGet('info.htm?cmd=%23021%3BEVO%20OCR%3B2%3BGeneral.Enabled%3B1%23');
-		ajaxGet('info.htm?cmd=%23021%3BINI%20FlushData%3B2%3BGeneral.Enabled%3B1%23');
-		ajaxGet('info.htm?cmd=%23021%3BINI%20CodeData%3B2%3BGeneral.Enabled%3B1%23');
-		ajaxGet('info.htm?cmd=%23021%3BSend%20CodeData%3B2%3BGeneral.Enabled%3B1%23');
 	
 		if (getCookie("resolution") == null) {
 			setCookie("resolution","0",1);
