@@ -337,12 +337,12 @@ function updateCircleEvo()
 
 		var centerX = $("#xvalue").val();
 		var centerY = $("#yvalue").val();
-		var calCenterX = centerX * mulCenterX;
-		var calCenterY = centerY * mulCenterY;
+		//var calCenterX = centerX * mulCenterX;
+		//var calCenterY = centerY * mulCenterY;
 		
 		var innerRadius = $("#innervalue").val();
 		var outerRadius = $("#outervalue").val();
-		var calOuterRadius = outerRadius * mulOuterRadius;
+		//var calOuterRadius = outerRadius * mulOuterRadius;
 		
 		var startvalue = $("#startvalue").val();
 		var anglevalue = $("#anglevalue").val();
@@ -350,6 +350,12 @@ function updateCircleEvo()
 		var nominalValue = $("#nv").val();
 		var positive = $("#plus").val();
 		var negative = $("#minus").val();
+		
+		var calCenterX = centerX * GLOBAL_SCALE;
+		var calCenterY = centerY * GLOBAL_SCALE;
+		
+		var calInnerRadius = innerRadius * GLOBAL_SCALE;
+		var calOuterRadius = outerRadius * GLOBAL_SCALE;
 		
 		if ($("#clightToDark").is(":checked")) {
 			ajaxGet("info.htm?cmd=%23021%3BEVO Distance%3B2%3BTransition_1%3B0%23");
@@ -362,7 +368,7 @@ function updateCircleEvo()
 		ajaxGet("info.htm?cmd=%23021%3BEVO Distance%3B1%3BCirclePos.Center.X%3B"+ calCenterX +"%23");
 		ajaxGet("info.htm?cmd=%23021%3BEVO Distance%3B1%3BCirclePos.Center.Y%3B"+ calCenterY +"%23");
 		
-		ajaxGet("info.htm?cmd=%23021%3BEVO Distance%3B1%3BCirclePos.InnerRadius%3B"+ innerRadius +"%23");
+		ajaxGet("info.htm?cmd=%23021%3BEVO Distance%3B1%3BCirclePos.InnerRadius%3B"+ calInnerRadius +"%23");
 		ajaxGet("info.htm?cmd=%23021%3BEVO Distance%3B1%3BCirclePos.OuterRadius%3B"+ calOuterRadius +"%23");
 		ajaxGet("info.htm?cmd=%23021%3BEVO Distance%3B1%3BCirclePos.StartAngle%3B"+ startvalue +"%23");
 		ajaxGet("info.htm?cmd=%23021%3BEVO Distance%3B1%3BCirclePos.LengthAngle%3B"+ anglevalue +"%23");
@@ -383,11 +389,16 @@ function updateRectEvo()
 		var endY = $("#tbEndY").val();
 		var width = $("#tbWidth").val();
 		
-		var calStartX = startX * mulStartX;
+		/*var calStartX = startX * mulStartX;
 		var calStartY = startY * mulStartY;
 		var calEndX = endX * mulEndX;
-		var calEndY = endY * mulEndY;
-				
+		var calEndY = endY * mulEndY;*/
+		
+		var calStartX = startX * GLOBAL_SCALE;
+		var calStartY = startY * GLOBAL_SCALE;
+		var calEndX = endX * GLOBAL_SCALE;
+		var calEndY = endY * GLOBAL_SCALE;
+		var calWidth = width * GLOBAL_SCALE;
 		
 		var nominalValue = $("#nv").val();
 		var positive = $("#plus").val();
