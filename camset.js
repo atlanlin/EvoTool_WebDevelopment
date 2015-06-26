@@ -9,8 +9,8 @@ var STEP_SIZE_SHUTTER = 1;
 var cam = 1;
 var myInterval;
 var queryString;
-var IMG_WIDTH;
-var IMG_HEIGHT;
+var IMG_WIDTH = 752;
+var IMG_HEIGHT = 752;
 var IMG_ACT_WIDTH;
 var IMG_ACT_HEIGHT;
 var GLOBAL_SCALE = 1;
@@ -116,21 +116,6 @@ function init(){
 		//canvasNode.height = IMG_HEIGHT; // in pixels
 		
 		
-	}
-	
-	function getImgWidth(){
-		var img = document.getElementById("imgSnapshot");
-		return img.clientWidth;
-		
-	
-	}
-	
-	function getImgHeight(){
-		var img = document.getElementById("imgSnapshot");
-		
-		return img.clientHeight;
-	
-	
 	}
 	
 	$("#btnCodeStart").click(function(){
@@ -575,21 +560,21 @@ function setPageScaleSize(resolutionChoice)
 	if(resolutionChoice == 0) // image 640 by 480
 	{
 		mulCenterX = 0.854;
-		mulCenterY = 0.856;
+		mulCenterY = 1;
 		mulOuterRadius = 0.9;
 	
 	}
 	else if(resolutionChoice == 1) //image 1024 by 768
 	{
 		mulCenterX = 1.35667;
-		mulCenterY = 1.374;
+		mulCenterY = 1.6;
 		mulOuterRadius = 1.5;
 	
 	}
 	else if(resolutionChoice == 2) // image 2592 by 1944
 	{
 		mulCenterX = 3.445;
-		mulCenterY = 3.468;
+		mulCenterY = 4.09;
 		mulOuterRadius = 5;
 	
 	}
