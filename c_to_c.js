@@ -1,6 +1,5 @@
 // screen on load 
 window.onload = function() {
-
 	initCircle();
 	
 	ajaxGet("info.htm?cmd=%23021%3BEVO Distance%3B2%3BGeneral.Enabled%3B1%23");
@@ -9,10 +8,7 @@ window.onload = function() {
 
 function initCircle() {
 	
-	
-	
     drawCircle(circle, innerCircle);
-	
 	
     element = document.getElementById('canvas');
     element.addEventListener('mousedown', startDragging, false);
@@ -26,15 +22,9 @@ function initCircle() {
 	setInterval(updateCircleEvo, UPDATECIRCLEINTERVAL);
 	setInterval(updateCircle2Evo, UPDATECIRCLE2INTERVAL);
 	
-	
 	$("#btnMeasure").click(function(){
 	
-			
-			
 			ajaxGet("info.htm?cmd=%23021%3BEVO Distance%3B2%3BOptionForType%3B4%23");
-			
-			//ajaxGet("info.htm?cmd=%23021%3BEVO Distance "+queryString["toolNo"]+"%3B2%3BGeneral.Enabled%3B1%23");
-			//ajaxGet("info.htm?cmd=%23021%3BEVO Distance "+queryString["toolNo"]+"%3B2%3BOptionForType%3B4%23");
 			ajaxGet("cfg.ini", getValueFrominiFile);
 			
 		}
@@ -54,9 +44,7 @@ var Circle = function (point, radius) {
     this.point = point;
     this.radius = radius;
     this.isInside = function (pt) {
-		
         return Math.pow(pt.x - point.x, 2) + Math.pow(pt.y - point.y, 2) < Math.pow(radius, 2); 
-		
     };
     return this;
 }
@@ -68,27 +56,23 @@ function startDragging(e) {
     var p = new Point(mouseX(e), mouseY(e));
 	
 		if(withinCircle(p)) {
-			
 			//mouse pointer on the center
 			deltaCenter = new Point(p.x - circle.point.x, p.y - circle.point.y);
 			deltaCenter2 = null;
 			
 		}else if(withinCircle2(p)) {
-			
 			//mouse pointer on the center
 			deltaCenter2 = new Point(p.x - circle2.point.x, p.y - circle2.point.y);
 			deltaCenter = null;
 			
 		}
 	
-	
-	
 }
 
 //mouse move
 function drag(e) {
 		 
-		var p = new Point(mouseX(e), mouseY(e));
+	var p = new Point(mouseX(e), mouseY(e));
 	
 	if(withinCircle(p))
 		this.style.cursor='move';
@@ -207,9 +191,6 @@ function t_Move(e){
 	drawCircle(circle, innerCircle);
 }
 
-
-
-
 function findMin(x, y) {
         if(x < y)
 			return x
@@ -223,22 +204,20 @@ function stopDragging(e) {
 }
 
 function withinCircle(pt) {
-
-return Math.pow(pt.x - circle.point.x, 2) + Math.pow(pt.y - circle.point.y, 2) < Math.pow(circle.radius, 2);
+	return Math.pow(pt.x - circle.point.x, 2) + Math.pow(pt.y - circle.point.y, 2) < Math.pow(circle.radius, 2);
 }
 
 function withinCircle2(pt) {
-
-return Math.pow(pt.x - circle2.point.x, 2) + Math.pow(pt.y - circle2.point.y, 2) < Math.pow(circle2.radius, 2);
+	return Math.pow(pt.x - circle2.point.x, 2) + Math.pow(pt.y - circle2.point.y, 2) < Math.pow(circle2.radius, 2);
 }
 
 function getMousePos(canvas, e) {
 	  
-        var rect = canvas.getBoundingClientRect();
-        return {
-          x: e.clientX - rect.left,
-          y: e.clientY - rect.top
-        };
+    var rect = canvas.getBoundingClientRect();
+    return {
+      x: e.clientX - rect.left,
+      y: e.clientY - rect.top
+    };
 }
 	  
 function mouseX(e) {
@@ -355,30 +334,30 @@ function drawCircle(circle, innerCircle) {
 
 function outputUpdate(size) {
 
-			var intSize = parseInt(size);
+	var intSize = parseInt(size);
 
-			if(intSize < maxRadius && intSize < findMin(circle.point.x, circle.point.y))
-			{
-				if((circle.point.x + intSize) < endFrameX && (circle.point.y + intSize) < endFrameY)
-				{
-					if(intSize >= innerCircle.radius)
-					circle.radius = intSize;
-				}
-			}
+	if(intSize < maxRadius && intSize < findMin(circle.point.x, circle.point.y))
+	{
+		if((circle.point.x + intSize) < endFrameX && (circle.point.y + intSize) < endFrameY)
+		{
+			if(intSize >= innerCircle.radius)
+			circle.radius = intSize;
+		}
+	}
 	drawCircle(circle, innerCircle);
 
 }
 function outputInnerUpdate(size){
 	var intSize = parseInt(size);
 
-			if(intSize < maxRadius && intSize < findMin(circle.point.x, circle.point.y))
-			{
-				if((circle.point.x + intSize) < endFrameX && (circle.point.y + intSize) < endFrameY)
-				{
-					if(intSize <= circle.radius)
-					innerCircle.radius = intSize;
-				}
-			}
+	if(intSize < maxRadius && intSize < findMin(circle.point.x, circle.point.y))
+	{
+		if((circle.point.x + intSize) < endFrameX && (circle.point.y + intSize) < endFrameY)
+		{
+			if(intSize <= circle.radius)
+				innerCircle.radius = intSize;
+		}
+	}
 			
 	drawCircle(circle, innerCircle);
 

@@ -5,7 +5,6 @@ window.onload = function() {
 	initCircle();
 	
 	ajaxGet("info.htm?cmd=%23021%3BEVO Circle%3B2%3BGeneral.Enabled%3B1%23");
-			
 	ajaxGet("info.htm?cmd=%23021%3BINI Circle%3B2%3BGeneral.Enabled%3B1%23");
 }
 
@@ -19,15 +18,12 @@ function initCircle() {
     element.addEventListener('mouseup', stopDragging, false);
     element.addEventListener('mouseout', stopDragging, false);
 	
-	
 	element.addEventListener('touchmove', t_Move);
 
 	setInterval(updateCircleEvo, UPDATECIRCLEINTERVAL);
 	
-	
 	$("#btnMeasure").click(function(){
 			
-		//ajaxGet("info.htm?cmd=%23021%3BEVO Circle "+queryString["toolNo"]+"%3B2%3BGeneral.Enabled%3B1%23");
 		ajaxGet("cfg.ini", getValueFrominiFile);
 	}
 	);
@@ -72,7 +68,6 @@ function drag(e) {
 	else
 		this.style.cursor='auto';
 
-	
 	// make sure it doesn't go out of frame
 	if(deltaCenter != null) {
 		
@@ -338,9 +333,10 @@ function updateCircleEvo()
 
 
 var element;
+
+// Determine circle1 coordinates and radius
 var circle = new Circle(new Point(50, 50), 50);
 var innerCircle = new Circle(new Point(50, 50), 25);
-var smallCircle = new Circle(new Point(100, 50), 10);
 
 var deltaCenter = null;
 

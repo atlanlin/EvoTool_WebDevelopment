@@ -13,7 +13,6 @@ function initCircle() {
 
     drawCircle(circle, innerCircle);
 	
-	
     element = document.getElementById('canvas');
     element.addEventListener('mousedown', startDragging, false);
     element.addEventListener('mousemove', drag, false);
@@ -398,9 +397,9 @@ function updateRectEvo()
 }
      
 var element;
+// Determine circle coordinates and radius
 var circle = new Circle(new Point(50, 150), 50);
 var innerCircle = new Circle(new Point(50, 150), 25);
-var smallCircle = new Circle(new Point(100, 50), 10);
 
 var deltaCenter = null;
 
@@ -443,9 +442,7 @@ Box2.prototype = {
   // this function will only erase the first object in the listStyleType
   // it will not erase the selected canvas object
   erase: function(context, optionalColor) {
-	  
 	context.clearRect(this.x - mySelBoxSize, this.y - mySelBoxSize, this.w + 2*mySelBoxSize, this.h + 2*mySelBoxSize);
-  
   }
 }
 
@@ -653,7 +650,6 @@ function initSquare() {
 			rectFlag=true;
 		}
 		else if($("input[name='toolChoice']:radio:checked").val()=="evoCircle"){
-			//alert(String(boxes2[0].x));
 			rectFlag=false;
 			
 		}else{
@@ -682,8 +678,6 @@ function initSquare() {
 		//updateRectEvo();
 	});
 	
-  
-  
 	// add a large green rectangle
 	addRect(0, 0, 60, 65, 'rgba(0,205,0,0.7)');
   
@@ -783,9 +777,8 @@ function clear(c) {
 function mainDraw() {
 	if (canvasValid == false) {
 		clear(ctx);
-    
+		
 		drawCircle(circle, innerCircle);
-	
 	
 		// Add stuff you want drawn in the background all the time here
 		if(IMG_WIDTH != null && IMG_HEIGHT != null){
@@ -794,9 +787,7 @@ function mainDraw() {
 		}else{
 			WIDTH = endFrameX;
 			HEIGHT = endFrameY;
-	
 		}
-	
 	
 		// draw all boxes
 		var l = boxes2.length;
@@ -840,9 +831,6 @@ function mainDraw() {
 		displayTexts("tbStartX", "tbStartY", "tbEndX", "tbEndY", "tbWidth", boxes2[0]);
 		//updateCircleEvo();
 		//updateRectEvo();
-	
-	
-	
 	}
 }
 
@@ -875,8 +863,6 @@ function myMove(e){
 			mySel.y = HEIGHT;
 		else if(mySel.y + mySel.h < 0)
 			mySel.y = 0 - mySel.h;
-	
-	
 	
 	
 		// something is changing position so we better invalidate the canvas!

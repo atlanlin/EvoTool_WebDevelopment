@@ -4,7 +4,6 @@ window.onload = function() {
 	initSquare();
 	initCircle();
 	
-	
 	//enable function in evo 3 ckp file
 	ajaxGet("info.htm?cmd=%23021%3BEVO Distance%3B2%3BGeneral.Enabled%3B1%23");
 	ajaxGet("info.htm?cmd=%23021%3BINI Distance%3B2%3BGeneral.Enabled%3B1%23");
@@ -27,14 +26,7 @@ function initCircle() {
 	element.addEventListener('touchmove', t_Move);
 	
 	$("#btnMeasure").click(function(){
-		
-			 
-			
 			ajaxGet("info.htm?cmd=%23021%3BEVO Distance%3B2%3BOptionForType%3B2%23");
-			
-			
-			//ajaxGet("info.htm?cmd=%23021%3BEVO Distance "+queryString["toolNo"]+"%3B2%3BGeneral.Enabled%3B1%23");
-			//ajaxGet("info.htm?cmd=%23021%3BEVO Distance "+queryString["toolNo"]+"%3B2%3BOptionForType%3B2%23");
 			ajaxGet("cfg.ini", getValueFrominiFile);
 			
 		}
@@ -52,9 +44,7 @@ var Circle = function (point, radius) {
     this.point = point;
     this.radius = radius;
     this.isInside = function (pt) {
-		
-        return Math.pow(pt.x - point.x, 2) + Math.pow(pt.y - point.y, 2) < Math.pow(radius, 2); 
-		
+        return Math.pow(pt.x - point.x, 2) + Math.pow(pt.y - point.y, 2) < Math.pow(radius, 2);
     };
     return this;
 }
@@ -65,7 +55,6 @@ function startDragging(e) {
     var p = new Point(mouseX(e), mouseY(e));
 		
 		if(withinCircle(p)){
-			
 			//mouse pointer on the center
 			deltaCenter = new Point(p.x - circle.point.x, p.y - circle.point.y);
 		}
@@ -75,7 +64,6 @@ function startDragging(e) {
 //mouse move
 function drag(e) {
 
-		 	
 	var p = new Point(mouseX(e), mouseY(e));
 	
 	
@@ -89,7 +77,9 @@ function drag(e) {
 		
 			circle.point.x = (mouseX(e) - deltaCenter.x);
 			circle.point.y = (mouseY(e) - deltaCenter.y); 
+			
 			var radius = circle.radius;
+			
 			if(circle.point.x - radius < startFrameX)
 			{
 				circle.point.x = radius;
@@ -124,7 +114,6 @@ function t_Move(e){
 	
 	if(withinCircle(p))
 	{
-	
 		circle.point.x = e.targetTouches[0].clientX - rect.left;
 		circle.point.y = e.targetTouches[0].clientY - rect.top;
 	
@@ -160,16 +149,13 @@ function findMin(x, y) {
 // mouse up & mouse out
 function stopDragging(e) {
     deltaCenter = null;
-	
 }
 
 function withinCircle(pt) {
-
-return Math.pow(pt.x - circle.point.x, 2) + Math.pow(pt.y - circle.point.y, 2) < Math.pow(circle.radius, 2);
+	return Math.pow(pt.x - circle.point.x, 2) + Math.pow(pt.y - circle.point.y, 2) < Math.pow(circle.radius, 2);
 }
 
 function getMousePos(canvas, e) {
-	  
         var rect = canvas.getBoundingClientRect();
         return {
           x: e.clientX - rect.left,
@@ -193,17 +179,17 @@ function drawCircle(circle, innerCircle) {
     var canvas = document.getElementById('canvas');
     var ctx = canvas.getContext('2d');
 	
+	// calculate the radian given in degree 
 	var calStartAngle = startAngle * Math.PI / 180;
 	var calEndAngle = EndAngle * Math.PI / 180;
-	
 	
 	if(IMG_HEIGHT != null)
 	{
 		endFrameY = IMG_HEIGHT - 2;
-	
 		endFrameX = IMG_WIDTH - 2;
 	}
 	
+	//drawing of arc
 	//ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx.beginPath();
     ctx.arc(circle.point.x, circle.point.y, circle.radius, calStartAngle, calEndAngle, false);
@@ -241,7 +227,6 @@ function drawCircle(circle, innerCircle) {
 	document.querySelector('#startangle').value = Math.round(startAngle);
 	document.querySelector('#endangle').value = Math.round(EndAngle);
 	
-	
 	//updateCircleEvo();
 	//updateRectEvo();
 
@@ -249,16 +234,16 @@ function drawCircle(circle, innerCircle) {
 
 function outputUpdate(size) {
 
-			var intSize = parseInt(size);
+	var intSize = parseInt(size);
 
-			if(intSize < maxRadius && intSize < findMin(circle.point.x, circle.point.y))
-			{
-				if((circle.point.x + intSize) < endFrameX && (circle.point.y + intSize) < endFrameY)
-				{
-					if(intSize >= innerCircle.radius)
-					circle.radius = intSize;
-				}
-			}
+	if(intSize < maxRadius && intSize < findMin(circle.point.x, circle.point.y))
+	{
+		if((circle.point.x + intSize) < endFrameX && (circle.point.y + intSize) < endFrameY)
+		{
+			if(intSize >= innerCircle.radius)
+				circle.radius = intSize;
+		}
+	}
 			
 	drawCircle(circle, innerCircle);
 	mainDraw();
@@ -267,14 +252,14 @@ function outputUpdate(size) {
 function outputInnerUpdate(size){
 	var intSize = parseInt(size);
 
-			if(intSize < maxRadius && intSize < findMin(circle.point.x, circle.point.y))
-			{
-				if((circle.point.x + intSize) < endFrameX && (circle.point.y + intSize) < endFrameY)
-				{
-					if(intSize <= circle.radius)
-					innerCircle.radius = intSize;
-				}
-			}
+	if(intSize < maxRadius && intSize < findMin(circle.point.x, circle.point.y))
+	{
+		if((circle.point.x + intSize) < endFrameX && (circle.point.y + intSize) < endFrameY)
+		{
+			if(intSize <= circle.radius)
+				innerCircle.radius = intSize;
+		}
+	}
 			
 	drawCircle(circle, innerCircle);
 	mainDraw();
@@ -288,10 +273,8 @@ function outputStartAngle(size){
 		startAngle = 1;
 	else if(startAngle == 360 && EndAngle == 360)
 		startAngle = 359;
-	
 
 	drawCircle(circle, innerCircle);
-
 }
 
 function outputEndAngle(size){
@@ -312,64 +295,63 @@ function outputEndAngle(size){
 function updateCircleEvo()
 {
 
-		var centerX = $("#xvalue").val();
-		var centerY = $("#yvalue").val();
+	var centerX = $("#xvalue").val();
+	var centerY = $("#yvalue").val();
 
-		//var innerRadius = $("#innervalue").val();
-		//var outerRadius = $("#outervalue").val();
-		//var startvalue = $("#startvalue").val();
-		//var anglevalue = $("#anglevalue").val();
+	//var innerRadius = $("#innervalue").val();
+	//var outerRadius = $("#outervalue").val();
+	//var startvalue = $("#startvalue").val();
+	//var anglevalue = $("#anglevalue").val();
 		
-		var innerRadius = $("#innerRadiusValue").val();
-		var outerRadius = $("#outerRadiusValue").val();
+	var innerRadius = $("#innerRadiusValue").val();
+	var outerRadius = $("#outerRadiusValue").val();
 		
-		var startvalue = $("#startAngleValue").val();
-		var anglevalue = $("#endAngleValue").val();
-		
-		
-		var nominalValue = $("#nv").val();
-		var positive = $("#plus").val();
-		var negative = $("#minus").val();
-		
-		// multiple by scaling offset to match coordinates at different image resolution
-		var calCenterX = centerX * GLOBAL_SCALE;
-		var calCenterY = centerY * GLOBAL_SCALE;
-		
-		var calInnerRadius = innerRadius * GLOBAL_SCALE;
-		var calOuterRadius = outerRadius * GLOBAL_SCALE;
-		
-		var calDiffer = 0;
-		
-		// calculation for getting the angle length which is required by the evo3 tools
-		if(startAngle < EndAngle)
-		{
-			calDiffer = EndAngle - startAngle;
-		}
-		else
-		{
-			var tempDiffer = startAngle - EndAngle;
-			calDiffer = 360 - tempDiffer;
-		}
-		
-		if ($("#clightToDark").is(":checked")) {
-			ajaxGet("info.htm?cmd=%23021%3BEVO Distance%3B2%3BTransition_2%3B0%23");
-        }
-		else if($("#cdarkToLight").is(":checked")) {
-            ajaxGet("info.htm?cmd=%23021%3BEVO Distance%3B2%3BTransition_2%3B1%23");
-        }
+	var startvalue = $("#startAngleValue").val();
+	var anglevalue = $("#endAngleValue").val();
 		
 		
-		ajaxGet("info.htm?cmd=%23021%3BEVO Distance%3B1%3BCirclePos.Center.X%3B"+ calCenterX +"%23");
-		ajaxGet("info.htm?cmd=%23021%3BEVO Distance%3B1%3BCirclePos.Center.Y%3B"+ calCenterY +"%23");
+	var nominalValue = $("#nv").val();
+	var positive = $("#plus").val();
+	var negative = $("#minus").val();
 		
-		ajaxGet("info.htm?cmd=%23021%3BEVO Distance%3B1%3BCirclePos.InnerRadius%3B"+ calInnerRadius +"%23");
-		ajaxGet("info.htm?cmd=%23021%3BEVO Distance%3B1%3BCirclePos.OuterRadius%3B"+ calOuterRadius +"%23");
-		ajaxGet("info.htm?cmd=%23021%3BEVO Distance%3B1%3BCirclePos.StartAngle%3B"+ startvalue +"%23");
-		ajaxGet("info.htm?cmd=%23021%3BEVO Distance%3B1%3BCirclePos.LengthAngle%3B"+ calDiffer +"%23");
+	// multiple by scaling offset to match coordinates at different image resolution
+	var calCenterX = centerX * GLOBAL_SCALE;
+	var calCenterY = centerY * GLOBAL_SCALE;
 		
-		ajaxGet("info.htm?cmd=%23021%3BEVO Distance%3B1%3BResult[0].Evaluation.NominalValue%3B"+ nominalValue +"%23");
-		ajaxGet("info.htm?cmd=%23021%3BEVO Distance%3B1%3BResult[0].Evaluation.PlusTolerance%3B"+ positive +"%23");
-		ajaxGet("info.htm?cmd=%23021%3BEVO Distance%3B1%3BResult[0].Evaluation.MinusTolerance%3B"+ negative +"%23");
+	var calInnerRadius = innerRadius * GLOBAL_SCALE;
+	var calOuterRadius = outerRadius * GLOBAL_SCALE;
+		
+	var calDiffer = 0;
+		
+	// calculation for getting the angle length which is required by the evo3 tools
+	if(startAngle < EndAngle)
+	{
+		calDiffer = EndAngle - startAngle;
+	}
+	else
+	{
+		var tempDiffer = startAngle - EndAngle;
+		calDiffer = 360 - tempDiffer;
+	}
+		
+	if ($("#clightToDark").is(":checked")) {
+		ajaxGet("info.htm?cmd=%23021%3BEVO Distance%3B2%3BTransition_2%3B0%23");
+    }
+	else if($("#cdarkToLight").is(":checked")) {
+        ajaxGet("info.htm?cmd=%23021%3BEVO Distance%3B2%3BTransition_2%3B1%23");
+    }
+		
+	ajaxGet("info.htm?cmd=%23021%3BEVO Distance%3B1%3BCirclePos.Center.X%3B"+ calCenterX +"%23");
+	ajaxGet("info.htm?cmd=%23021%3BEVO Distance%3B1%3BCirclePos.Center.Y%3B"+ calCenterY +"%23");
+		
+	ajaxGet("info.htm?cmd=%23021%3BEVO Distance%3B1%3BCirclePos.InnerRadius%3B"+ calInnerRadius +"%23");
+	ajaxGet("info.htm?cmd=%23021%3BEVO Distance%3B1%3BCirclePos.OuterRadius%3B"+ calOuterRadius +"%23");
+	ajaxGet("info.htm?cmd=%23021%3BEVO Distance%3B1%3BCirclePos.StartAngle%3B"+ startvalue +"%23");
+	ajaxGet("info.htm?cmd=%23021%3BEVO Distance%3B1%3BCirclePos.LengthAngle%3B"+ calDiffer +"%23");
+		
+	ajaxGet("info.htm?cmd=%23021%3BEVO Distance%3B1%3BResult[0].Evaluation.NominalValue%3B"+ nominalValue +"%23");
+	ajaxGet("info.htm?cmd=%23021%3BEVO Distance%3B1%3BResult[0].Evaluation.PlusTolerance%3B"+ positive +"%23");
+	ajaxGet("info.htm?cmd=%23021%3BEVO Distance%3B1%3BResult[0].Evaluation.MinusTolerance%3B"+ negative +"%23");
 		
 }
 
@@ -413,8 +395,6 @@ function updateRectEvo()
 		ajaxGet("info.htm?cmd=%23021%3BEVO Distance%3B1%3BRecPos.PointEnd.Y%3B"+ calEndY +"%23");
 		ajaxGet("info.htm?cmd=%23021%3BEVO Distance%3B1%3BRecPos.Width%3B"+ calWidth +"%23");
 		
-		
-		
 		ajaxGet("info.htm?cmd=%23021%3BEVO Distance%3B1%3BResult[0].Evaluation.NominalValue%3B"+ nominalValue +"%23");
 		ajaxGet("info.htm?cmd=%23021%3BEVO Distance%3B1%3BResult[0].Evaluation.PlusTolerance%3B"+ positive +"%23");
 		ajaxGet("info.htm?cmd=%23021%3BEVO Distance%3B1%3BResult[0].Evaluation.MinusTolerance%3B"+ negative +"%23");
@@ -424,9 +404,11 @@ function updateRectEvo()
 
     
 var element;
+
+// Determine circle1 coordinates and radius
 var circle = new Circle(new Point(50, 150), 50);
 var innerCircle = new Circle(new Point(50, 150), 25);
-var smallCircle = new Circle(new Point(100, 50), 10);
+
 
 var deltaCenter = null;
 
@@ -534,73 +516,73 @@ Box2.prototype = {
   // but now each box is responsible for its own drawing
   // mainDraw() will call this with the normal canvas
   // myDown will call this with the ghost canvas with 'black'
-  draw: function(context, optionalColor) {
-      if (context === gctx) {
-        context.fillStyle = 'black'; // always want black for the ghost canvas
-      } else {
-        context.fillStyle = this.fill;
-      }
+	draw: function(context, optionalColor) {
+		if (context === gctx) {
+			context.fillStyle = 'black'; // always want black for the ghost canvas
+		} else {
+			context.fillStyle = this.fill;
+		}
       
-      // We can skip the drawing of elements that have moved off the screen:
-      if (this.x > WIDTH || this.y > HEIGHT) return; 
-      if (this.x + this.w < 0 || this.y + this.h < 0) return;
+		// We can skip the drawing of elements that have moved off the screen:
+		if (this.x > WIDTH || this.y > HEIGHT) return; 
+		if (this.x + this.w < 0 || this.y + this.h < 0) return;
 	  
-      context.fillRect(this.x,this.y,this.w,this.h);
+		context.fillRect(this.x,this.y,this.w,this.h);
       
-    // draw selection
-    // this is a stroke along the box and also 8 new selection handles
-    if (mySel === this) {
-      context.strokeStyle = mySelColor;
-      context.lineWidth = mySelWidth;
-      context.strokeRect(this.x,this.y,this.w,this.h);
+		// draw selection
+		// this is a stroke along the box and also 8 new selection handles
+		if (mySel === this) {
+			context.strokeStyle = mySelColor;
+			context.lineWidth = mySelWidth;
+			context.strokeRect(this.x,this.y,this.w,this.h);
       
-      // draw the boxes
+			// draw the boxes
       
-      var half = mySelBoxSize / 2;
+			var half = mySelBoxSize / 2;
       
-      // 0  1  2
-      // 3     4
-      // 5  6  7
+			// 0  1  2
+			// 3     4
+			// 5  6  7
       
-      // top left, middle, right
-      selectionHandles[0].x = this.x-half;
-      selectionHandles[0].y = this.y-half;
+			// top left, middle, right
+			selectionHandles[0].x = this.x-half;
+			selectionHandles[0].y = this.y-half;
       
-      selectionHandles[1].x = this.x+this.w/2-half;
-      selectionHandles[1].y = this.y-half;
+			selectionHandles[1].x = this.x+this.w/2-half;
+			selectionHandles[1].y = this.y-half;
       
-      selectionHandles[2].x = this.x+this.w-half;
-      selectionHandles[2].y = this.y-half;
+			selectionHandles[2].x = this.x+this.w-half;
+			selectionHandles[2].y = this.y-half;
       
-      //middle left
-      selectionHandles[3].x = this.x-half;
-      selectionHandles[3].y = this.y+this.h/2-half;
+			//middle left
+			selectionHandles[3].x = this.x-half;
+			selectionHandles[3].y = this.y+this.h/2-half;
       
-      //middle right
-      selectionHandles[4].x = this.x+this.w-half;
-      selectionHandles[4].y = this.y+this.h/2-half;
+			//middle right
+			selectionHandles[4].x = this.x+this.w-half;
+			selectionHandles[4].y = this.y+this.h/2-half;
       
-      //bottom left, middle, right
-      selectionHandles[6].x = this.x+this.w/2-half;
-      selectionHandles[6].y = this.y+this.h-half;
+			//bottom left, middle, right
+			selectionHandles[6].x = this.x+this.w/2-half;
+			selectionHandles[6].y = this.y+this.h-half;
       
-      selectionHandles[5].x = this.x-half;
-      selectionHandles[5].y = this.y+this.h-half;
+			selectionHandles[5].x = this.x-half;
+			selectionHandles[5].y = this.y+this.h-half;
       
-      selectionHandles[7].x = this.x+this.w-half;
-      selectionHandles[7].y = this.y+this.h-half;
+			selectionHandles[7].x = this.x+this.w-half;
+			selectionHandles[7].y = this.y+this.h-half;
 
       
-      context.fillStyle = mySelBoxColor;
-      for (var i = 0; i < 8; i ++) {
-        var cur = selectionHandles[i];
-        context.fillRect(cur.x, cur.y, mySelBoxSize, mySelBoxSize);
-      }
+			context.fillStyle = mySelBoxColor;
+			for (var i = 0; i < 8; i ++) {
+				var cur = selectionHandles[i];
+				context.fillRect(cur.x, cur.y, mySelBoxSize, mySelBoxSize);
+			}
 	  
-    }
+		}
 	
     
-  } // end draw
+	} // end draw
 
 }
 
@@ -691,20 +673,16 @@ function initSquare() {
 	$("#dbArrow").change(function(){
 		if($("#dbArrow").val() == "vertical"){
 			arrowDirFlag = "vertical";
-			
 		}else{
 			arrowDirFlag = "horizontal";
-			
 		}
 	});
 	
 	$("#cbArrowHor").change(function() {
 		if(this.checked) {
 			arrowDirFlag = "horizontal";
-			
 		}else{
 			arrowDirFlag = "vertical";
-			
 		}
 		//updateCircleEvo();
 		//updateRectEvo();
@@ -766,8 +744,7 @@ function Line(x1,y1,x2,y2){
     }
 
 
-function arrow(context,p1,p2,size){//
-
+function arrow(context,p1,p2,size){
 
 	context.lineWidth=2;
 	context.fillStyle = context.strokeStyle = '#099';
@@ -859,13 +836,11 @@ function mainDraw() {
 		// draw the line
 		line.drawWithArrowheads(ctx);
 	
-	
 		//displayTexts();
 	
 		displayTexts("tbStartX", "tbStartY", "tbEndX", "tbEndY", "tbWidth", boxes2[0]);
 		//updateCircleEvo();
 		//updateRectEvo();
-	
 	
 	
   }
@@ -874,258 +849,257 @@ function mainDraw() {
 
 // Happens when the mouse is moving inside the canvas
 function myMove(e){
-  e.preventDefault();
-  if (isDrag) {
-    getMouse(e);
+	e.preventDefault();
+	if (isDrag) {
+		getMouse(e);
     
-    mySel.x = mx - offsetx;
-    mySel.y = my - offsety;   
-    
+		mySel.x = mx - offsetx;
+		mySel.y = my - offsety;   
 	
 	
-	/*Changes made by yelling*/
-	if(mySel.x < 0)
-		mySel.x = 0;
-	else if(mySel.x + mySel.w > WIDTH)
-		mySel.x = WIDTH - mySel.w;
-	else if(mySel.x > WIDTH)
-		mySel.x = WIDTH;
-	else if(mySel.x + mySel.w < 0)
-		mySel.x = 0 - mySel.w;
+		/*Changes made by yelling*/
+		if(mySel.x < 0)
+			mySel.x = 0;
+		else if(mySel.x + mySel.w > WIDTH)
+			mySel.x = WIDTH - mySel.w;
+		else if(mySel.x > WIDTH)
+			mySel.x = WIDTH;
+		else if(mySel.x + mySel.w < 0)
+			mySel.x = 0 - mySel.w;
 		
-	if(mySel.y < 0)
-		mySel.y = 0;
-	else if(mySel.y + mySel.h > HEIGHT)
-		mySel.y = HEIGHT - mySel.h;
-	else if(mySel.y > HEIGHT)
-		mySel.y = HEIGHT;
-	else if(mySel.y + mySel.h < 0)
-		mySel.y = 0 - mySel.h;
+		if(mySel.y < 0)
+			mySel.y = 0;
+		else if(mySel.y + mySel.h > HEIGHT)
+			mySel.y = HEIGHT - mySel.h;
+		else if(mySel.y > HEIGHT)
+			mySel.y = HEIGHT;
+		else if(mySel.y + mySel.h < 0)
+			mySel.y = 0 - mySel.h;
 	
 	
 	
 	
-    // something is changing position so we better invalidate the canvas!
-    invalidate();
-  } else if (isResizeDrag) {
-    // time to resize!
-    var oldx = mySel.x;
-    var oldy = mySel.y;
-    
-	/*Changes made by yelling*/
+		// something is changing position so we better invalidate the canvas!
+		invalidate();
+	} else if (isResizeDrag) {
+		// time to resize!
+		var oldx = mySel.x;
+		var oldy = mySel.y;
+		
+		/*Changes made by yelling*/
 		if(mx > WIDTH)
 			mx = WIDTH;
 		if(my > HEIGHT)
 			my = HEIGHT;
-	
-    // 0  1  2
-    // 3     4
-    // 5  6  7
-    switch (expectResize) {
-      case 0:
-        mySel.x = mx;
-        mySel.y = my;
-        mySel.w += oldx - mx;
-        mySel.h += oldy - my;
-        break;
-      case 1:
-        mySel.y = my;
-        mySel.h += oldy - my;
-        break;
-      case 2:
-        mySel.y = my;
-        mySel.w = mx - oldx;
-        mySel.h += oldy - my;
-        break;
-      case 3:
-        mySel.x = mx;
-        mySel.w += oldx - mx;
-        break;
-      case 4:
-        mySel.w = mx - oldx;
-        break;
-      case 5:
-        mySel.x = mx;
-        mySel.w += oldx - mx;
-        mySel.h = my - oldy;
-        break;
-      case 6:
-        mySel.h = my - oldy;
-        break;
-      case 7:
-        mySel.w = mx - oldx;
-        mySel.h = my - oldy;
-        break;
-    }
+		
+		// 0  1  2
+		// 3     4
+		// 5  6  7
+		switch (expectResize) {
+		case 0:
+			mySel.x = mx;
+			mySel.y = my;
+			mySel.w += oldx - mx;
+			mySel.h += oldy - my;
+			break;
+		case 1:
+			mySel.y = my;
+			mySel.h += oldy - my;
+			break;
+		case 2:
+			mySel.y = my;
+			mySel.w = mx - oldx;
+			mySel.h += oldy - my;
+			break;
+		case 3:
+			mySel.x = mx;
+			mySel.w += oldx - mx;
+			break;
+		case 4:
+			mySel.w = mx - oldx;
+			break;
+		case 5:
+			mySel.x = mx;
+			mySel.w += oldx - mx;
+			mySel.h = my - oldy;
+			break;
+		case 6:
+			mySel.h = my - oldy;
+			break;
+		case 7:
+			mySel.w = mx - oldx;
+			mySel.h = my - oldy;
+			break;
+		}
     
-    invalidate();
-  }
+		invalidate();
+	}
   
-  getMouse(e);
-  // if there's a selection see if we grabbed one of the selection handles
-  if (mySel !== null && !isResizeDrag) {
-    for (var i = 0; i < 8; i++) {
-      // 0  1  2
-      // 3     4
-      // 5  6  7
+	getMouse(e);
+	// if there's a selection see if we grabbed one of the selection handles
+	if (mySel !== null && !isResizeDrag) {
+		for (var i = 0; i < 8; i++) {
+			// 0  1  2
+			// 3     4
+			// 5  6  7
       
-      var cur = selectionHandles[i];
+			var cur = selectionHandles[i];
       
-      // we dont need to use the ghost context because
-      // selection handles will always be rectangles
-	  //changes made by yelling
-      if (mx >= cur.x && mx <= cur.x + mySelBoxSize*3 &&
-          my >= cur.y && my <= cur.y + mySelBoxSize*3) {
-        // we found one!
-        expectResize = i;
-        invalidate();
+			// we dont need to use the ghost context because
+			// selection handles will always be rectangles
+			//changes made by yelling
+			if (mx >= cur.x && mx <= cur.x + mySelBoxSize*3 &&
+			my >= cur.y && my <= cur.y + mySelBoxSize*3) {
+				// we found one!
+				expectResize = i;
+				invalidate();
         
-        switch (i) {
-          case 0:
-            this.style.cursor='nw-resize';
-            break;
-          case 1:
-            this.style.cursor='n-resize';
-            break;
-          case 2:
-            this.style.cursor='ne-resize';
-            break;
-          case 3:
-            this.style.cursor='w-resize';
-            break;
-          case 4:
-            this.style.cursor='e-resize';
-            break;
-          case 5:
-            this.style.cursor='sw-resize';
-            break;
-          case 6:
-            this.style.cursor='s-resize';
-            break;
-          case 7:
-            this.style.cursor='se-resize';
-            break;
-        }
-        return;
-      }
+				switch (i) {
+				case 0:
+					this.style.cursor='nw-resize';
+					break;
+				case 1:
+					this.style.cursor='n-resize';
+					break;
+				case 2:
+					this.style.cursor='ne-resize';
+					break;
+				case 3:
+					this.style.cursor='w-resize';
+					break;
+				case 4:
+					this.style.cursor='e-resize';
+					break;
+				case 5:
+					this.style.cursor='sw-resize';
+					break;
+				case 6:
+					this.style.cursor='s-resize';
+					break;
+				case 7:
+					this.style.cursor='se-resize';
+					break;
+				}
+				return;
+			}
       
-    }
-    // not over a selection box, return to normal
-    isResizeDrag = false;
-    expectResize = -1;
-    this.style.cursor='auto';
-  }
+		}
+		// not over a selection box, return to normal
+		isResizeDrag = false;
+		expectResize = -1;
+		this.style.cursor='auto';
+	}
   
 }
 
 // Happens when the mouse is clicked in the canvas
 function myDown(e){
-  e.preventDefault();
-  getMouse(e);
+	e.preventDefault();
+	getMouse(e);
   
-  if (mySel !== null && !isResizeDrag) {
-    for (var i = 0; i < 8; i++) {
-      // 0  1  2
-      // 3     4
-      // 5  6  7
+	if (mySel !== null && !isResizeDrag) {
+		for (var i = 0; i < 8; i++) {
+			// 0  1  2
+			// 3     4
+			// 5  6  7
       
-      var cur = selectionHandles[i];
+			var cur = selectionHandles[i];
       
-      // we dont need to use the ghost context because
-      // selection handles will always be rectangles
-	  //changes made by yelling
-      if (mx >= cur.x && mx <= cur.x + mySelBoxSize*3 &&
-          my >= cur.y && my <= cur.y + mySelBoxSize*3) {
-        // we found one!
-        expectResize = i;
-		isResizeDrag = true;
-        invalidate();
-        return;
-      }
+			// we dont need to use the ghost context because
+			// selection handles will always be rectangles
+			//changes made by yelling
+			if (mx >= cur.x && mx <= cur.x + mySelBoxSize*3 &&
+				my >= cur.y && my <= cur.y + mySelBoxSize*3) {
+				// we found one!
+				expectResize = i;
+				isResizeDrag = true;
+				invalidate();
+				return;
+			}
       
-    }
-    // not over a selection box, return to normal
-    isResizeDrag = false;
-    expectResize = -1;
-    this.style.cursor='auto';
-  }
+		}
+		// not over a selection box, return to normal
+		isResizeDrag = false;
+		expectResize = -1;
+		this.style.cursor='auto';
+	}
   
   
-  clear(gctx);
-  var l = boxes2.length;
-  for (var i = l-1; i >= 0; i--) {
-    // draw shape onto ghost context
-    boxes2[i].draw(gctx, 'black');
+	clear(gctx);
+	var l = boxes2.length;
+	for (var i = l-1; i >= 0; i--) {
+		// draw shape onto ghost context
+		boxes2[i].draw(gctx, 'black');
     
-    // get image data at the mouse x,y pixel
-    var imageData = gctx.getImageData(mx, my, 1, 1);
-    var index = (mx + my * imageData.width) * 4;
+		// get image data at the mouse x,y pixel
+		var imageData = gctx.getImageData(mx, my, 1, 1);
+		var index = (mx + my * imageData.width) * 4;
     
-    // if the mouse pixel exists, select and break
-    if (imageData.data[3] > 0) {
-      mySel = boxes2[i];
-      offsetx = mx - mySel.x;
-      offsety = my - mySel.y;
-      mySel.x = mx - offsetx;
-      mySel.y = my - offsety;
-      isDrag = true;
+		// if the mouse pixel exists, select and break
+		if (imageData.data[3] > 0) {
+			mySel = boxes2[i];
+			offsetx = mx - mySel.x;
+			offsety = my - mySel.y;
+			mySel.x = mx - offsetx;
+			mySel.y = my - offsety;
+			isDrag = true;
       
-      invalidate();
-      clear(gctx);
-      return;
-    }
+			invalidate();
+			clear(gctx);
+			return;
+		}
     
-  }
-  // havent returned means we have selected nothing
-  mySel = null;
-  // clear the ghost canvas for next time
-  clear(gctx);
-  // invalidate because we might need the selection border to disappear
-  invalidate();
+	}
+	// havent returned means we have selected nothing
+	mySel = null;
+	// clear the ghost canvas for next time
+	clear(gctx);
+	// invalidate because we might need the selection border to disappear
+	invalidate();
 }
 
 function myUp(){
-  isDrag = false;
-  isResizeDrag = false;
-  expectResize = -1;
+	isDrag = false;
+	isResizeDrag = false;
+	expectResize = -1;
 }
 
 // adds a new node
 function myDblClick(e) {
-  getMouse(e);
-  // for this method width and height determine the starting X and Y, too.
-  // so I left them as vars in case someone wanted to make them args for something and copy this code
-  var width = 20;
-  var height = 20;
-  addRect(mx - (width / 2), my - (height / 2), width, height, 'rgba(220,205,65,0.7)');
+	getMouse(e);
+	// for this method width and height determine the starting X and Y, too.
+	// so I left them as vars in case someone wanted to make them args for something and copy this code
+	var width = 20;
+	var height = 20;
+	addRect(mx - (width / 2), my - (height / 2), width, height, 'rgba(220,205,65,0.7)');
 }
 
 
 function invalidate() {
-  canvasValid = false;
+	canvasValid = false;
 }
 
 // Sets mx,my to the mouse position relative to the canvas
 // unfortunately this can be tricky, we have to worry about padding and borders
 function getMouse(e) {
-      var element = canvas, offsetX = 5, offsetY = 5;
+	var element = canvas, offsetX = 5, offsetY = 5;
 
-      if (element.offsetParent) {
-        do {
-          offsetX += element.offsetLeft;
-          offsetY += element.offsetTop;
+    if (element.offsetParent) {
+		do {
+			offsetX += element.offsetLeft;
+			offsetY += element.offsetTop;
         } while ((element = element.offsetParent));
-      }
+    }
 
-      // Add padding and border style widths to offset
-      offsetX += stylePaddingLeft;
-      offsetY += stylePaddingTop;
+    // Add padding and border style widths to offset
+    offsetX += stylePaddingLeft;
+    offsetY += stylePaddingTop;
 
-      offsetX += styleBorderLeft;
-      offsetY += styleBorderTop;
+    offsetX += styleBorderLeft;
+    offsetY += styleBorderTop;
 
-      mx = e.pageX - offsetX;
-      my = e.pageY - offsetY
+    mx = e.pageX - offsetX;
+    my = e.pageY - offsetY
 }
 
 // If you dont want to use <body onLoad='init()'>
