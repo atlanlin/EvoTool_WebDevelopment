@@ -271,9 +271,6 @@ function iniResponse(){
 function getValueFrominiFile()
 {
 	if (xhr.readyState != 4 || xhr.status != 200)  { return; }
-	//$("#resultDisplay").val("Fetching values");
-	
-	//setTimeout(function(){
 		
 		var resp = xhr.responseText;
 		
@@ -285,30 +282,21 @@ function getValueFrominiFile()
 		var cookieName = queryString["tool"] + queryString["toolNo"];
 				
 		setCookie(cookieName,globalResult,1);
-	//}, 2000);
-	
-			
 }
 
 function getCodeValueFrominiFile()
 {
 	if (xhr.readyState != 4)  { return; }
-	//$("#resultDisplay").val("Fetching values");
-	//setTimeout(function(){
+
 		var resp = xhr.responseText;
 	
 		globalResult = getIniCodeStr("coderesult1=", resp);
 		
-		$("#resultDisplay").val("result = " + globalResult);
+		$("#resultDisplay").val(globalResult);
 		
 		var cookieName = queryString["tool"] + queryString["toolNo"];
 				
 		setCookie(cookieName,globalResult,1);
-	//}, 2000);
-	
-	
-	
-	
 }
 
 

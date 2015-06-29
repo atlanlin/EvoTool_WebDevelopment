@@ -883,64 +883,72 @@ function mainDraw() {
   if (canvasValid == false) {
     clear(ctx);
     
-    // Add stuff you want drawn in the background all the time here
-	WIDTH = IMG_WIDTH;
-	HEIGHT = IMG_HEIGHT;
-    /*var imageObj = new Image();
-
-    imageObj.onload = function() {
-    ctx.drawImage(imageObj, 0, 0);
-    };
-    imageObj.src = 'jpeg.jpg';
-	
-	var img = document.getElementsByTagName('img')[0];
-	img.src = can.toDataURL();
-	*/
-	
 	drawCircle(circle, innerCircle);
-	
-    // draw all boxes
-    var l = boxes2.length;
-	
-	//added by yelling
-	if(rectFlag==false){
-		boxes2[0].erase(ctx);
+    // Add stuff you want drawn in the background all the time here
+	if(IMG_WIDTH != null && IMG_HEIGHT != null){
+		WIDTH = IMG_WIDTH;
+		HEIGHT = IMG_HEIGHT;
 	}
+	else{
+		WIDTH = endFrameX;
+		HEIGHT = endFrameY;
 	
-    for (var i = 0; i < l; i++) {
-      boxes2[i].draw(ctx); // we used to call drawshape, but now each box draws itself
-    }
+	}
+		/*var imageObj = new Image();
+
+		imageObj.onload = function() {
+		ctx.drawImage(imageObj, 0, 0);
+		};
+		imageObj.src = 'jpeg.jpg';
+	
+		var img = document.getElementsByTagName('img')[0];
+		img.src = can.toDataURL();
+		*/
+	
+	
+	
+		// draw all boxes
+		var l = boxes2.length;
+	
+		//added by yelling
+		if(rectFlag==false){
+			boxes2[0].erase(ctx);
+		}
+	
+		for (var i = 0; i < l; i++) {
+			boxes2[i].draw(ctx); // we used to call drawshape, but now each box draws itself
+		}
     
-    // Add stuff you want drawn on top all the time here
-	//var point1={x:10, y:20};
-	//var point2={x:200, y:80};
-	//arrow(ctx, point1, point2, 10);
-    //canvasValid = true;
+		// Add stuff you want drawn on top all the time here
+		//var point1={x:10, y:20};
+		//var point2={x:200, y:80};
+		//arrow(ctx, point1, point2, 10);
+		//canvasValid = true;
 	
 	
-	var lx1, ly1, lx2, ly2;
-	if(arrowDirFlag == "horizontal"){
-		lx1 = boxes2[0].x;
-		ly1 = boxes2[0].y + boxes2[0].h/2;
-		lx2 = boxes2[0].x + boxes2[0].w;
-		ly2 = boxes2[0].y + boxes2[0].h/2;
-	}else{
-		lx1 = boxes2[0].x + boxes2[0].w/2;
-		ly1 = boxes2[0].y;
-		lx2 = boxes2[0].x + boxes2[0].w/2;
-		ly2 = boxes2[0].y + boxes2[0].h;
-	}
-	// create a new line object
-    var line=new Line(lx1,ly1,lx2,ly2);
-    // draw the line
-    line.drawWithArrowheads(ctx);
+		var lx1, ly1, lx2, ly2;
+		if(arrowDirFlag == "horizontal"){
+			lx1 = boxes2[0].x;
+			ly1 = boxes2[0].y + boxes2[0].h/2;
+			lx2 = boxes2[0].x + boxes2[0].w;
+			ly2 = boxes2[0].y + boxes2[0].h/2;
+		}else{
+			lx1 = boxes2[0].x + boxes2[0].w/2;
+			ly1 = boxes2[0].y;
+			lx2 = boxes2[0].x + boxes2[0].w/2;
+			ly2 = boxes2[0].y + boxes2[0].h;
+		}
+		// create a new line object
+		var line=new Line(lx1,ly1,lx2,ly2);
+		// draw the line
+		line.drawWithArrowheads(ctx);
 	
 	
-	//displayTexts();
+		//displayTexts();
 	
-	displayTexts("tbStartX", "tbStartY", "tbEndX", "tbEndY", "tbWidth", boxes2[0]);
-	//updateCircleEvo();
-	//updateRectEvo();
+		displayTexts("tbStartX", "tbStartY", "tbEndX", "tbEndY", "tbWidth", boxes2[0]);
+		//updateCircleEvo();
+		//updateRectEvo();
 	
 	
 	

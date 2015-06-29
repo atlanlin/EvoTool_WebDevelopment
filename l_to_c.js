@@ -885,9 +885,19 @@ function mainDraw() {
   if (canvasValid == false) {
     clear(ctx);
     
+	drawCircle(circle, innerCircle);
+	
+	
     // Add stuff you want drawn in the background all the time here
-	WIDTH = IMG_WIDTH;
-	HEIGHT = IMG_HEIGHT;
+	if(IMG_WIDTH != null && IMG_HEIGHT != null){
+		WIDTH = IMG_WIDTH;
+		HEIGHT = IMG_HEIGHT;
+	}else{
+		WIDTH = endFrameX;
+		HEIGHT = endFrameY;
+	
+	}
+	
     /*var imageObj = new Image();
 
     imageObj.onload = function() {
@@ -899,7 +909,7 @@ function mainDraw() {
 	img.src = can.toDataURL();
 	*/
 	
-	drawCircle(circle, innerCircle);
+	
 	
     // draw all boxes
     var l = boxes2.length;
