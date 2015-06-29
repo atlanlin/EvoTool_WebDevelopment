@@ -669,6 +669,12 @@ function myMove(e){
     var oldx = mySel.x;
     var oldy = mySel.y;
     
+	/*Changes made by yelling*/
+		if(mx > WIDTH)
+			mx = WIDTH;
+		if(my > HEIGHT)
+			my = HEIGHT;
+	
     // 0  1  2
     // 3     4
     // 5  6  7

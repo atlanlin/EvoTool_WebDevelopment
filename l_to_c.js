@@ -885,6 +885,12 @@ function myMove(e){
 		// time to resize!
 		var oldx = mySel.x;
 		var oldy = mySel.y;
+		
+		/*Changes made by yelling*/
+		if(mx > WIDTH)
+			mx = WIDTH;
+		if(my > HEIGHT)
+			my = HEIGHT;
     
 		// 0  1  2
 		// 3     4
