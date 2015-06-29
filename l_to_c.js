@@ -261,7 +261,7 @@ function drawCircle(circle, innerCircle) {
 		endFrameX = IMG_WIDTH - 2;
 	}
 	
-	ctx.clearRect(0, 0, canvas.width, canvas.height);
+	//ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx.beginPath();
     ctx.arc(circle.point.x, circle.point.y, circle.radius, calStartAngle, calEndAngle, false);
 	
