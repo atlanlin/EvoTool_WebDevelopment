@@ -640,13 +640,22 @@ function myMove(e){
 	
 	/*Changes made by yelling*/
 	if(mySel.x < 0)
-		mySel.x = 0;
-	else if(mySel.x + mySel.w > WIDTH)
-		mySel.x = WIDTH - mySel.w;
-	if(mySel.y < 0)
-		mySel.y = 0;
-	else if(mySel.y + mySel.h > HEIGHT)
-		mySel.y = HEIGHT - mySel.h;
+			mySel.x = 0;
+		else if(mySel.x + mySel.w > WIDTH)
+			mySel.x = WIDTH - mySel.w;
+		else if(mySel.x > WIDTH)
+			mySel.x = WIDTH;
+		else if(mySel.x + mySel.w < 0)
+			mySel.x = 0 - mySel.w;
+		
+		if(mySel.y < 0)
+			mySel.y = 0;
+		else if(mySel.y + mySel.h > HEIGHT)
+			mySel.y = HEIGHT - mySel.h;
+		else if(mySel.y > HEIGHT)
+			mySel.y = HEIGHT;
+		else if(mySel.y + mySel.h < 0)
+			mySel.y = 0 - mySel.h;
 	
 	
 	
