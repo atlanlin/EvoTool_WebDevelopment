@@ -1,15 +1,6 @@
 // screen on load 
 window.onload = function() {
-	if(getCookie("resolution") == null)
-	{
-		setCookie("resolution","1",1);
-	}
-			
-			 
-	resolution = parseInt(getCookie("resolution"));
-		
-	setPageScaleSize(resolution);
-	
+
 	initCircle();
 	
 	ajaxGet("info.htm?cmd=%23021%3BEVO Distance%3B2%3BGeneral.Enabled%3B1%23");
@@ -45,12 +36,6 @@ function initCircle() {
 			//ajaxGet("info.htm?cmd=%23021%3BEVO Distance "+queryString["toolNo"]+"%3B2%3BGeneral.Enabled%3B1%23");
 			//ajaxGet("info.htm?cmd=%23021%3BEVO Distance "+queryString["toolNo"]+"%3B2%3BOptionForType%3B4%23");
 			ajaxGet("cfg.ini", getValueFrominiFile);
-			
-			
-			
-			//var result = $("#resultDisplay").val();
-			
-			//setCookie("n",result,1);
 			
 		}
 	);
@@ -491,13 +476,9 @@ function updateCircleEvo()
 {
 		var centerX = $("#xvalue").val();
 		var centerY = $("#yvalue").val();
-		//var calCenterX = centerX * mulCenterX;
-		//var calCenterY = centerY * mulCenterY;
 		
 		//var innerRadius = $("#innervalue").val();
 		//var outerRadius = $("#outervalue").val();
-		//var calOuterRadius = outerRadius * mulOuterRadius;
-		
 		//var startvalue = $("#startvalue").val();
 		//var anglevalue = $("#anglevalue").val();
 		
@@ -512,6 +493,7 @@ function updateCircleEvo()
 		var positive = $("#plus").val();
 		var negative = $("#minus").val();
 		
+		// multiple by scaling offset to match coordinates at different image resolution
 		var calCenterX = centerX * GLOBAL_SCALE;
 		var calCenterY = centerY * GLOBAL_SCALE;
 		
@@ -558,13 +540,9 @@ function updateCircle2Evo()
 {
 		var centerX = $("#xvalue2").val();
 		var centerY = $("#yvalue2").val();
-		//var calCenterX = centerX * mulCenterX;
-		//var calCenterY = centerY * mulCenterY;
 		
 		//var innerRadius = $("#innervalue2").val();
 		//var outerRadius = $("#outervalue2").val();
-		//var calOuterRadius = outerRadius * mulOuterRadius;
-		
 		//var startvalue = $("#startvalue2").val();
 		//var anglevalue = $("#anglevalue2").val();
 		
@@ -578,6 +556,7 @@ function updateCircle2Evo()
 		var positive = $("#plus").val();
 		var negative = $("#minus").val();
 		
+		// multiple by scaling offset to match coordinates at different image resolution
 		var calCenterX = centerX * GLOBAL_SCALE;
 		var calCenterY = centerY * GLOBAL_SCALE;
 		
@@ -586,6 +565,7 @@ function updateCircle2Evo()
 		
 		var calDiffer = 0;
 		
+		// calculation for getting the angle length which is required by the evo3 tools
 		if(startAngle2 < EndAngle2)
 		{
 			calDiffer = EndAngle2 - startAngle2;
@@ -617,43 +597,13 @@ function updateCircle2Evo()
 
 }
 
-//set circle scale to map evo3
-//choice 0 (640 by 480), 1 (1024 by 768), 2(2592 by 1944)..
-/*function setPageScaleSize(resolutionChoice)
-{
-	
-	if(resolutionChoice == 0) // image 640 by 480
-	{
-		mulCenterX = 0.854;
-		mulCenterY = 1;
-		mulOuterRadius = 0.9;
-	
-	}
-	else if(resolutionChoice == 1) //image 1024 by 768
-	{
-		mulCenterX = 1.35667;
-		mulCenterY = 1.6;
-		mulOuterRadius = 1.5;
-	
-	}
-	else if(resolutionChoice == 2) // image 2592 by 1944
-	{
-		mulCenterX = 3.445;
-		mulCenterY = 4.09;
-		mulOuterRadius = 5;
-	
-	}
-	
-}*/
-
-// this is the resolution choice where choice 0 (640 by 480), 1 (1024 by 768), 2 (2592 by 1944)..
-var resolution = 1;   
-
 var element;
+
+// Determine circle1 coordinates and radius
 var circle = new Circle(new Point(50, 50), 50);
 var innerCircle = new Circle(new Point(50, 50), 25);
 
-
+// Determine circle1 coordinates and radius
 var circle2 = new Circle(new Point(50, 200), 50);
 var innerCircle2 = new Circle(new Point(100, 50), 25);
 
@@ -671,7 +621,7 @@ var endFrameX = 747;
 var endFrameY = 560;
 
 // settings
-
+// min and max radius for each circle able to increase or decrease
 var maxRadius = 200;
 
 var minRadius = 20;
@@ -680,10 +630,13 @@ var UPDATECIRCLEINTERVAL = 2000;
 
 var UPDATECIRCLE2INTERVAL = 4000;
 
+// angle settings for drawing arcs
+// settings circle1
 var startAngle1 = 0;
 
 var EndAngle1 = 360;
 
+// settings for circle2
 var startAngle2 = 0;
 
 var EndAngle2= 360;

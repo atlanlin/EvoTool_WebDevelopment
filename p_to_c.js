@@ -1,71 +1,19 @@
 // screen on load 
 window.onload = function() {
-	/*if(getCookie("resolution") == null)
-	{
-		setCookie("resolution","1",1);
-	}
-			
-	resolution = parseInt(getCookie("resolution"));
-			
-	setPageScaleSize(resolution);*/
 	
 	initSquare();
 	initCircle();
 	
 	
-	
+	//enable function in evo 3 ckp file
 	ajaxGet("info.htm?cmd=%23021%3BEVO Distance%3B2%3BGeneral.Enabled%3B1%23");
 	ajaxGet("info.htm?cmd=%23021%3BINI Distance%3B2%3BGeneral.Enabled%3B1%23");
 	
 }
 
-function showPoints(){
-
-	
-	if(document.getElementById("circlePoint").checked){
-		initCircle();
-	}
-	if(document.getElementById("sqPoint").checked){
-		clearCircle();
-	}
-
-}
-
-function showCircleDetails()
-{
-	if(document.getElementById("circleCheck").checked){
-		document.getElementById("circleDetail").style.display="block";
-		document.getElementById("circleSettings").style.display="block";
-	}else
-	{
-		document.getElementById("circleDetail").style.display="none";
-		document.getElementById("circleSettings").style.display="none";
-	}
-
-}
-
-function showSquareDetails()
-{
-	
-	if(document.getElementById("squareCheck").checked){
-		document.getElementById("rectDetail").style.display="block";
-		document.getElementById("rectSettings").style.display="block";
-	}
-	else
-	{
-		document.getElementById("rectDetail").style.display="none";
-		document.getElementById("rectSettings").style.display="none";
-	}
-
-}
-
 // circle code
 
 function initCircle() {
-	
-	
-	
-	//alert(resolution);
 			
     drawCircle(circle, innerCircle);
 	
@@ -88,12 +36,6 @@ function initCircle() {
 			//ajaxGet("info.htm?cmd=%23021%3BEVO Distance "+queryString["toolNo"]+"%3B2%3BGeneral.Enabled%3B1%23");
 			//ajaxGet("info.htm?cmd=%23021%3BEVO Distance "+queryString["toolNo"]+"%3B2%3BOptionForType%3B2%23");
 			ajaxGet("cfg.ini", getValueFrominiFile);
-			
-		
-			
-			//var result = $("#resultDisplay").val();
-			
-			//setCookie("n",result,1);
 			
 		}
 	);
@@ -142,8 +84,6 @@ function drag(e) {
 	else
 		this.style.cursor='auto';
 
-	
-	
 	// make sure it doesn't go out of frame
 		if(deltaCenter != null) {
 		
@@ -374,13 +314,9 @@ function updateCircleEvo()
 
 		var centerX = $("#xvalue").val();
 		var centerY = $("#yvalue").val();
-		//var calCenterX = centerX * mulCenterX;
-		//var calCenterY = centerY * mulCenterY;
-		
+
 		//var innerRadius = $("#innervalue").val();
 		//var outerRadius = $("#outervalue").val();
-		//var calOuterRadius = outerRadius * mulOuterRadius;
-		
 		//var startvalue = $("#startvalue").val();
 		//var anglevalue = $("#anglevalue").val();
 		
@@ -395,6 +331,7 @@ function updateCircleEvo()
 		var positive = $("#plus").val();
 		var negative = $("#minus").val();
 		
+		// multiple by scaling offset to match coordinates at different image resolution
 		var calCenterX = centerX * GLOBAL_SCALE;
 		var calCenterY = centerY * GLOBAL_SCALE;
 		
@@ -403,6 +340,7 @@ function updateCircleEvo()
 		
 		var calDiffer = 0;
 		
+		// calculation for getting the angle length which is required by the evo3 tools
 		if(startAngle < EndAngle)
 		{
 			calDiffer = EndAngle - startAngle;
@@ -444,14 +382,6 @@ function updateRectEvo()
 		var startY = $("#tbStartY").val();
 		var endY = $("#tbEndY").val();
 		var width = $("#tbWidth").val();
-		
-		
-		
-		/*var calStartX = startX * mulStartX;
-		var calStartY = startY * mulStartY;
-		var calEndX = endX * mulEndX;
-		var calEndY = endY * mulEndY;
-		var calWidth = width * mulWidth;*/
 		
 		/*var calStartX = startX * GLOBAL_SCALE;
 		var calStartY = startY * GLOBAL_SCALE;
@@ -511,11 +441,12 @@ var endFrameX = 747;
 var endFrameY = 560;
 
 // settings
-
+// min and max radius for each circle able to increase or decrease
 var maxRadius = 200;
 
 var minRadius = 20;
 
+//angle settings for drawing arcs
 var startAngle = 0;
 
 var EndAngle = 360;
@@ -576,6 +507,7 @@ function displayTexts(startXtb, startYtb, endXtb, endYtb, widthtb, inBox){
 	
 	if(arrowDirFlag == "horizontal"){
 		
+		// multiple by scaling offset to match coordinates at different image resolution
 		stx = inBox.x * GLOBAL_SCALE;
 		sty = (inBox.y + parseInt(inBox.h/2))*GLOBAL_SCALE;
 		edx = (inBox.x + inBox.w) * GLOBAL_SCALE;
@@ -759,11 +691,9 @@ function initSquare() {
 	$("#dbArrow").change(function(){
 		if($("#dbArrow").val() == "vertical"){
 			arrowDirFlag = "vertical";
-			//setScaleSize(0, resolution);
 			
 		}else{
 			arrowDirFlag = "horizontal";
-			//setScaleSize(1, resolution);
 			
 		}
 	});
@@ -771,11 +701,9 @@ function initSquare() {
 	$("#cbArrowHor").change(function() {
 		if(this.checked) {
 			arrowDirFlag = "horizontal";
-			//setScaleSize(1, resolution);
 			
 		}else{
 			arrowDirFlag = "vertical";
-			//setScaleSize(0, resolution);
 			
 		}
 		//updateCircleEvo();
@@ -894,18 +822,6 @@ function mainDraw() {
 		HEIGHT = endFrameY;
 	
 	}
-		/*var imageObj = new Image();
-
-		imageObj.onload = function() {
-		ctx.drawImage(imageObj, 0, 0);
-		};
-		imageObj.src = 'jpeg.jpg';
-	
-		var img = document.getElementsByTagName('img')[0];
-		img.src = can.toDataURL();
-		*/
-	
-	
 	
 		// draw all boxes
 		var l = boxes2.length;
@@ -966,15 +882,25 @@ function myMove(e){
     mySel.y = my - offsety;   
     
 	
+	
 	/*Changes made by yelling*/
 	if(mySel.x < 0)
 		mySel.x = 0;
 	else if(mySel.x + mySel.w > WIDTH)
 		mySel.x = WIDTH - mySel.w;
+	else if(mySel.x > WIDTH)
+		mySel.x = WIDTH;
+	else if(mySel.x + mySel.w < 0)
+		mySel.x = 0 - mySel.w;
+		
 	if(mySel.y < 0)
 		mySel.y = 0;
 	else if(mySel.y + mySel.h > HEIGHT)
 		mySel.y = HEIGHT - mySel.h;
+	else if(mySel.y > HEIGHT)
+		mySel.y = HEIGHT;
+	else if(mySel.y + mySel.h < 0)
+		mySel.y = 0 - mySel.h;
 	
 	
 	
@@ -982,7 +908,7 @@ function myMove(e){
     // something is changing position so we better invalidate the canvas!
     invalidate();
   } else if (isResizeDrag) {
-    // time ro resize!
+    // time to resize!
     var oldx = mySel.x;
     var oldy = mySel.y;
     
@@ -1196,79 +1122,6 @@ function getMouse(e) {
       my = e.pageY - offsetY
 }
 
-//set rect scale to map evo3
-//horizontal == 0 means vertical, choice 0 (640 by 480), 1 (1024 by 768), 2(2592 by 1944)..
-/*function setScaleSize(horizontal, resolutionChoice)
-{
-	
-	if(resolutionChoice == 0) // image 640 by 480
-	{
-		if(horizontal == 1)
-		{
-			mulStartX = 0.831;
-			mulStartY = 0.853;
-			mulEndX = 0.846;
-			mulEndY = 0.853;
-			mulWidth = 0.825;
-		
-		}
-		else if(horizontal == 0) 
-		{
-			mulStartX = 0.852;
-			mulStartY = 0.851;
-			mulEndX = 0.852;
-			mulEndY = 0.849;
-			mulWidth = 0.852;
-			
-		} 
-	} 
-	else if(resolutionChoice == 1) //image 1024 by 768
-	{
-		if(horizontal == 1) 
-		{
-			mulStartX = 1.369;
-			mulStartY = 1.374;
-			mulEndX = 1.352;
-			mulEndY = 1.374;
-			mulWidth = 1.325;
-			
-		} 
-		else if(horizontal == 0)
-		{
-			mulStartX = 1.363;
-			mulStartY = 1.339;
-			mulEndX = 1.363;
-			mulEndY = 1.361;
-			mulWidth = 1.302;
-		
-		}
-		
-	}
-	else if(resolutionChoice == 2) // image 2592 by 1944
-	{
-		if(horizontal == 1)
-		{
-			mulStartX = 3.451;
-			mulStartY = 3.534;
-			mulEndX = 3.432;
-			mulEndY = 3.534;
-			mulWidth = 3.992;
-		
-		}
-		else if(horizontal == 0) 
-		{
-			mulStartX = 3.449;
-			mulStartY = 3.426;
-			mulEndX = 3.449;
-			mulEndY = 3.47;
-			mulWidth = 3.305;
-			
-		} 
-	}
-	
-}*/
-
-
 // If you dont want to use <body onLoad='init()'>
 // You could uncomment this init() reference and place the script reference inside the body tag
 //init();
@@ -1330,20 +1183,9 @@ var stylePaddingLeft, stylePaddingTop, styleBorderLeft, styleBorderTop;
 var rectFlag = true;
 var arrowDirFlag = "horizontal";
 
+//startx, starty, endx, endy, width coordinates or values.
 var stx, sty, edx, edy, wi;
 
-/*var mulStartX;
-
-var mulStartY;
-
-var mulEndX;
-
-var mulEndY;
-
-var mulWidth;*/
-
-// this is the resolution choice where choice 0 (640 by 480), 1 (1024 by 768), 2 (2592 by 1944)..
-//var resolution = 1;
 
 }
 

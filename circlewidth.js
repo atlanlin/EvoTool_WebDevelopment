@@ -1,15 +1,6 @@
 // center x plus radius to fin arc --> )
 // 
 window.onload = function() {
-
-	if(getCookie("resolution") == null)
-	{
-		setCookie("resolution","1",1);
-	}
-			
-	resolution = parseInt(getCookie("resolution"));
-	
-	setPageScaleSize(resolution);
 	
 	initCircle();
 	
@@ -20,11 +11,7 @@ window.onload = function() {
 
 function initCircle() {
 	
-	
-	
     drawCircle(circle, innerCircle);
-	
-	  
 	
     element = document.getElementById('canvas');
     element.addEventListener('mousedown', startDragging, false);
@@ -33,29 +20,17 @@ function initCircle() {
     element.addEventListener('mouseout', stopDragging, false);
 	
 	
-	//element.addEventListener('touchdown', touchScreenMove, false);
-	
 	element.addEventListener('touchmove', t_Move);
 
 	setInterval(updateCircleEvo, UPDATECIRCLEINTERVAL);
 	
 	
 	$("#btnMeasure").click(function(){
-	
 			
-			
-			//ajaxGet("info.htm?cmd=%23021%3BEVO Circle "+queryString["toolNo"]+"%3B2%3BGeneral.Enabled%3B1%23");
-			
-			ajaxGet("cfg.ini", getValueFrominiFile);
-			
-		
-			
-			//setCookie("Circle Width " +queryString["toolNo"], $("#resultDisplay").val(),1);
-			
-			
-		}
+		//ajaxGet("info.htm?cmd=%23021%3BEVO Circle "+queryString["toolNo"]+"%3B2%3BGeneral.Enabled%3B1%23");
+		ajaxGet("cfg.ini", getValueFrominiFile);
+	}
 	);
-	
 	
 }
 
@@ -70,9 +45,7 @@ var Circle = function (point, radius) {
     this.point = point;
     this.radius = radius;
     this.isInside = function (pt) {
-		
         return Math.pow(pt.x - point.x, 2) + Math.pow(pt.y - point.y, 2) < Math.pow(radius, 2); 
-		
     };
     return this;
 }
@@ -83,22 +56,16 @@ function startDragging(e) {
 
     var p = new Point(mouseX(e), mouseY(e));
 	
-		if(withinCircle(p)) {
-			
-			//mouse pointer on the center
-			deltaCenter = new Point(p.x - circle.point.x, p.y - circle.point.y);
-			
-			
-		}
-	
-	
-	
+	if(withinCircle(p)) {
+		//mouse pointer on the center
+		deltaCenter = new Point(p.x - circle.point.x, p.y - circle.point.y);
+	}
 }
 
 //mouse move
 function drag(e) {
 		 
-		var p = new Point(mouseX(e), mouseY(e));
+	var p = new Point(mouseX(e), mouseY(e));
 	
 	if(withinCircle(p))
 		this.style.cursor='move';
@@ -106,34 +73,31 @@ function drag(e) {
 		this.style.cursor='auto';
 
 	
-	
 	// make sure it doesn't go out of frame
-		if(deltaCenter != null) {
+	if(deltaCenter != null) {
 		
-			circle.point.x = (mouseX(e) - deltaCenter.x);
-			circle.point.y = (mouseY(e) - deltaCenter.y); 
-			var radius = circle.radius;
-			if(circle.point.x - radius < startFrameX)
-			{
-				circle.point.x = radius;
-			}
-			if(circle.point.y - radius < startFrameY)
-			{
-				circle.point.y = radius;
-			}
-			if(circle.point.x + radius > endFrameX)
-			{
-				circle.point.x = endFrameX - radius; 
-			}
-			if(circle.point.y + radius > endFrameY)
-			{
-				circle.point.y = endFrameY - radius; 
-			}
-			
-			drawCircle(circle, innerCircle);
+		circle.point.x = (mouseX(e) - deltaCenter.x);
+		circle.point.y = (mouseY(e) - deltaCenter.y); 
+		var radius = circle.radius;
+		if(circle.point.x - radius < startFrameX)
+		{
+			circle.point.x = radius;
 		}
-	
-
+		if(circle.point.y - radius < startFrameY)
+		{
+			circle.point.y = radius;
+		}
+		if(circle.point.x + radius > endFrameX)
+		{
+			circle.point.x = endFrameX - radius; 
+		}
+		if(circle.point.y + radius > endFrameY)
+		{
+			circle.point.y = endFrameY - radius; 
+		}
+			
+		drawCircle(circle, innerCircle);
+	}
 }
 
 function t_Move(e){
@@ -146,65 +110,57 @@ function t_Move(e){
 	circle.point.x = e.targetTouches[0].clientX - rect.left;
 	circle.point.y = e.targetTouches[0].clientY - rect.top;
 	
-			var radius = circle.radius;
-			if(circle.point.x - radius < startFrameX)
-			{
-				circle.point.x = radius;
-			}
-			if(circle.point.y - radius < startFrameY)
-			{
-				circle.point.y = radius;
-			}
-			if(circle.point.x + radius > endFrameX)
-			{
-				circle.point.x = endFrameX - radius; 
-			}
-			if(circle.point.y + radius > endFrameY)
-			{
-				circle.point.y = endFrameY - radius; 
-			}
+	var radius = circle.radius;
+	if(circle.point.x - radius < startFrameX)
+	{
+		circle.point.x = radius;
+	}
+	if(circle.point.y - radius < startFrameY)
+	{
+		circle.point.y = radius;
+	}
+	if(circle.point.x + radius > endFrameX)
+	{
+		circle.point.x = endFrameX - radius; 
+	}
+	if(circle.point.y + radius > endFrameY)
+	{
+		circle.point.y = endFrameY - radius; 
+	}
 
 	drawCircle(circle, innerCircle);
 }
 
-
-
-
 function findMin(x, y) {
-        if(x < y)
-			return x
+	if(x < y)
+		return x
 	return y
 }
 
 // mouse up & mouse out
 function stopDragging(e) {
     deltaCenter = null;
-	
 }
 
 function withinCircle(pt) {
-
-return Math.pow(pt.x - circle.point.x, 2) + Math.pow(pt.y - circle.point.y, 2) < Math.pow(circle.radius, 2);
+	return Math.pow(pt.x - circle.point.x, 2) + Math.pow(pt.y - circle.point.y, 2) < Math.pow(circle.radius, 2);
 }
 
 function getMousePos(canvas, e) {
-	  
-        var rect = canvas.getBoundingClientRect();
-        return {
-          x: e.clientX - rect.left,
-          y: e.clientY - rect.top
-        };
+    var rect = canvas.getBoundingClientRect();
+    return {
+		x: e.clientX - rect.left,
+        y: e.clientY - rect.top
+    };
 }
 	  
 function mouseX(e) {
-    
 	var cx = document.getElementById('canvas');
     var mousePos = getMousePos(cx, e);
 	return mousePos.x;
 }
 
 function mouseY(e) {
-    
 	var cy = document.getElementById('canvas');
     var mousePos = getMousePos(cy, e);
 	return mousePos.y;
@@ -220,7 +176,6 @@ function drawCircle(circle, innerCircle) {
 	if(IMG_HEIGHT != null)
 	{
 		endFrameY = IMG_HEIGHT - 2;
-	
 		endFrameX = IMG_WIDTH - 2;
 	}
 	
@@ -249,10 +204,10 @@ function drawCircle(circle, innerCircle) {
 	
 	$("#xvalue").val(Math.round(circle.point.x));
 	$("#yvalue").val(Math.round(circle.point.y));
-	$("#startvalue").val(startAngle);
-	$("#anglevalue").val(EndAngle);
-	$("#outervalue").val(Math.round(circle.radius));
-	$("#innervalue").val(Math.round(innerCircle.radius));
+	//$("#startvalue").val(startAngle);
+	//$("#anglevalue").val(EndAngle);
+	//$("#outervalue").val(Math.round(circle.radius));
+	//$("#innervalue").val(Math.round(innerCircle.radius));
 	
 	document.querySelector('#circlevolume').value = Math.round(circle.radius);
 	document.querySelector('#innercirclevolume').value = Math.round(innerCircle.radius);
@@ -260,40 +215,36 @@ function drawCircle(circle, innerCircle) {
 	document.querySelector('#startangle').value = Math.round(startAngle);
 	document.querySelector('#endangle').value = Math.round(EndAngle);
 	
-	
 	//updateCircleEvo();
 
 }
 
 function outputUpdate(size) {
 
-			var intSize = parseInt(size);
+	var intSize = parseInt(size);
 
-			if(intSize < maxRadius && intSize < findMin(circle.point.x, circle.point.y))
-			{
-				if((circle.point.x + intSize) < endFrameX && (circle.point.y + intSize) < endFrameY)
-				{
-					if(intSize >= innerCircle.radius)
-					circle.radius = intSize;
-				}
-			}
+	if(intSize < maxRadius && intSize < findMin(circle.point.x, circle.point.y))
+	{
+		if((circle.point.x + intSize) < endFrameX && (circle.point.y + intSize) < endFrameY)
+		{
+			if(intSize >= innerCircle.radius)
+				circle.radius = intSize;
+		}
+	}
 	drawCircle(circle, innerCircle);
-
 }
 function outputInnerUpdate(size){
 	var intSize = parseInt(size);
 
-			if(intSize < maxRadius && intSize < findMin(circle.point.x, circle.point.y))
-			{
-				if((circle.point.x + intSize) < endFrameX && (circle.point.y + intSize) < endFrameY)
-				{
-					if(intSize <= circle.radius)
-					innerCircle.radius = intSize;
-				}
-			}
-			
+	if(intSize < maxRadius && intSize < findMin(circle.point.x, circle.point.y))
+	{
+		if((circle.point.x + intSize) < endFrameX && (circle.point.y + intSize) < endFrameY)
+		{
+			if(intSize <= circle.radius)
+				innerCircle.radius = intSize;
+		}
+	}
 	drawCircle(circle, innerCircle);
-
 }
 
 function outputStartAngle(size){
@@ -305,7 +256,6 @@ function outputStartAngle(size){
 	else if(startAngle == 360 && EndAngle == 360)
 		startAngle = 359;
 	
-
 	drawCircle(circle, innerCircle);
 
 }
@@ -319,9 +269,7 @@ function outputEndAngle(size){
 	else if(startAngle == 360 && EndAngle == 360)
 		EndAngle = 359;	
 	
-			
 	drawCircle(circle, innerCircle);
-
 }
 
 //update circle values to evo3
@@ -329,13 +277,9 @@ function updateCircleEvo()
 {
 		var centerX = $("#xvalue").val();
 		var centerY = $("#yvalue").val();
-		/* var calCenterX = centerX * mulCenterX;
-		var calCenterY = centerY * mulCenterY; */
 		
 		//var innerRadius = $("#innervalue").val();
 		//var outerRadius = $("#outervalue").val();
-		//var calOuterRadius = outerRadius * mulOuterRadius;
-		
 		//var startvalue = $("#startvalue").val();
 		//var anglevalue = $("#anglevalue").val();
 		
@@ -350,49 +294,16 @@ function updateCircleEvo()
 		var positive = $("#plus").val();
 		var negative = $("#minus").val();
 		
+		// multiple by scaling offset to match coordinates at different image resolution
 		var calCenterX = centerX * GLOBAL_SCALE;
 		var calCenterY = centerY * GLOBAL_SCALE;
 		
 		var calInnerRadius = innerRadius * GLOBAL_SCALE;
 		var calOuterRadius = outerRadius * GLOBAL_SCALE;
 		
-		
-		/*var calStartValue = parseInt(360 - startAngle);
-		
 		var calDiffer = 0;
 		
-		var addDiffer = 0;
-		
-		
-		if(startAngle <= 90 && startAngle > 0)
-		{
-			addDiffer = 270;
-		}
-		else if(startAngle > 90 && startAngle < 180)
-		{
-			addDiffer = 180;
-		}
-		else if(startAngle < 270)
-		{
-			addDiffer = 180;
-		}
-		else 
-		{
-			addDiffer = 0;
-		}
-		
-		
-		if(startAngle < EndAngle && EndAngle < 360)
-		{
-			calDiffer = EndAngle - startAngle;
-		}
-		else 
-		{
-			calDiffer = EndAngle + addDiffer;
-		}*/
-		
-		var calDiffer = 0;
-		
+		// calculation for getting the angle length which is required by the evo3 tools
 		if(startAngle < EndAngle)
 		{
 			calDiffer = EndAngle - startAngle;
@@ -426,16 +337,12 @@ function updateCircleEvo()
 }
 
 
-
-
 var element;
 var circle = new Circle(new Point(50, 50), 50);
 var innerCircle = new Circle(new Point(50, 50), 25);
 var smallCircle = new Circle(new Point(100, 50), 10);
 
 var deltaCenter = null;
-
-
 
 // imginary frame
 var startFrameX = 1;
@@ -447,16 +354,14 @@ var endFrameX = 747;
 var endFrameY = 560;
 
 // settings
-
+// min and max radius for each circle able to increase or decrease
 var maxRadius = 200;
 
 var minRadius = 20;
 
+//angle settings for drawing arcs
 var startAngle = 0;
 
 var EndAngle = 360;
 
 var UPDATECIRCLEINTERVAL = 2000;
-
-
-
