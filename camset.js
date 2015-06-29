@@ -1,7 +1,7 @@
 /* this file uses jquery.js framework */
 /* this file uses evt.js */
 /* this file uses dragdeal.js framework */
-
+var test;
 var gainSlider;
 var shutterSlider;
 var STEP_SIZE_GAIN = 1;
@@ -129,8 +129,11 @@ function init(){
 		
 		intervalUpdateStart();
 		
-		//setTimeout(getImgSize, 1000); 
-		//setImgFlag(false);
+		setTimeout(getImgSize, 1000); 
+		setImgFlag(false);
+		
+		setTimeout(roiSet, 1000);
+		alert("");
 		}
 	);
 

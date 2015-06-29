@@ -55,6 +55,10 @@
 
 	// flag for rectangle opacity (roi window)
 	var rectRoiFlag = false;
+	
+	var iniRoiFlag = false;
+	var iniWidth = 752;
+	var iniHeight = 752;
 
 	// box object to hold data
 	// default width and height
@@ -69,11 +73,11 @@
 
 	//added by yelling
 	Box2.prototype = {
-	  // this function will only erase the first object in the listStyleType
-	  // it will not erase the selected canvas object
-	  erase: function(context, optionalColor) {
-		context.clearRect(this.x - mySelBoxSize, this.y - mySelBoxSize, this.w + 2*mySelBoxSize, this.h + 2*mySelBoxSize);
-	  }
+		// this function will only erase the first object in the listStyleType
+		// it will not erase the selected canvas object
+		erase: function(context, optionalColor) {
+			context.clearRect(this.x - mySelBoxSize, this.y - mySelBoxSize, this.w + 2*mySelBoxSize, this.h + 2*mySelBoxSize);
+		}
 	}
 
 	// new methods on the Box class
@@ -91,7 +95,7 @@
 				// added by weiling
 				context.strokeStyle = this.lineColor;
 				context.lineWidth = mySelWidth;
-			 }
+			}
 			  
 			// we can skip the drawing of elements that have moved off the screen:
 			if (this.x > WIDTH || this.y > HEIGHT) return; 
@@ -169,15 +173,9 @@
 	// then add everything we want to initially exist on the canvas
 	function init2() {
 		ajaxGet('info.htm?cmd=%23021%3BEVO%20OCR%3B2%3BGeneral.Enabled%3B1%23');
-	
-		if (getCookie("resolution") == null) {
-			setCookie("resolution","0",1);
-		}
-		resolution = parseInt(getCookie("resolution"));
-			
-		//setScaleSize(1, resolution);
 		
 		evoComm();
+		iniRoiFlag = true;
 		
 		canvas = document.getElementById('canvas2');
 		HEIGHT = canvas.height;
@@ -202,14 +200,12 @@
 	  
 		// make mainDraw() fire every INTERVAL milliseconds
 		setInterval(mainDraw, INTERVAL);
-		//setInterval(evoComm, INTERVAL);
 
 		// set our events
 		// up and down are for dragging
 		// double click is for making new boxes
 		canvas.onmousedown = myDown;
 		canvas.onmouseup = myUp;
-		//canvas.ondblclick = myDblClick;
 		canvas.onmousemove = myMove;
 		
 		canvas.addEventListener("touchstart", myDown);
@@ -249,14 +245,10 @@
 		});
 		
 		$("#btnMeasure").click(function(){
-	
 			evoComm();
-			
 			ajaxGet("cfg.ini", getCodeValueFrominiFile);
 			
 		});
-		
-		
 		
 		// add a large green rectangle (roi window)
 		addRect(0, 0, 100, 100, 'rgba(0,205,0,0)', 'rgba(0,205,0,1)');
@@ -347,8 +339,7 @@
 	function polarityType() {
 		if (document.getElementById("darkOnLight").checked) {
 			ajaxGet('info.htm?cmd=%23021%3BEVO%20OCR%3B2%3BpolarityType%3B0%23');
-		}
-		else {
+		} else {
 			ajaxGet('info.htm?cmd=%23021%3BEVO%20OCR%3B2%3BpolarityType%3B1%23');
 		}
 	}
@@ -378,12 +369,6 @@
 			ajaxGet('info.htm?cmd=%23021%3BEVO%20OCR%3B1%3BAutoCharY%3B'+charStartY+'%23');
 			ajaxGet('info.htm?cmd=%23021%3BEVO%20OCR%3B1%3BAutoCharW%3B'+charWidth+'%23');
 			ajaxGet('info.htm?cmd=%23021%3BEVO%20OCR%3B1%3BAutoCharH%3B'+charHeight+'%23');
-			
-			// manual character size
-/* 			ajaxGet('info.htm?cmd=%23021%3BEVO%20OCR%3B1%3BcharX%3B200%23');
-			ajaxGet('info.htm?cmd=%23021%3BEVO%20OCR%3B1%3BcharY%3B200%23');
-			ajaxGet('info.htm?cmd=%23021%3BEVO%20OCR%3B1%3BcharW%3B100%23');
-			ajaxGet('info.htm?cmd=%23021%3BEVO%20OCR%3B1%3BcharH%3B100%23'); */
 		} else {
 			ajaxGet('info.htm?cmd=%23021%3BEVO%20OCR%3B1%3BAutoCharX%3B50%23');
 			ajaxGet('info.htm?cmd=%23021%3BEVO%20OCR%3B1%3BAutoCharY%3B50%23');
@@ -394,31 +379,20 @@
 	
 	// consists of roi settings
 	function roiSet() {
-		
-		/* var startX = $("#xValue").val() * mulStartX;
-		var endX = (parseInt($("#xValue").val()) + parseInt($("#wValue").val())) * mulEndX;
-		var startY = (parseInt($("#yValue").val()) + (parseInt($("#hValue").val())/2)) * mulStartY;
-		var endY = (parseInt($("#yValue").val()) + (parseInt($("#hValue").val())/2)) * mulEndY;
-		var width = $("#wValue").val() * mulWidth; */
-		
-		if (document.getElementById("wholeWindow").checked) {
-			/* ajaxGet('info.htm?cmd=%23021%3BEVO%20OCR%3B1%3BposRect.PointStart.X%3B0%23');
-			ajaxGet('info.htm?cmd=%23021%3BEVO%20OCR%3B1%3BposRect.PointEnd.X%3B752%23');
-			ajaxGet('info.htm?cmd=%23021%3BEVO%20OCR%3B1%3BposRect.PointStart.Y%3B240%23');
-			ajaxGet('info.htm?cmd=%23021%3BEVO%20OCR%3B1%3BposRect.PointEnd.Y%3B240%23');
-			ajaxGet('info.htm?cmd=%23021%3BEVO%20OCR%3B1%3BposRect.Width%3B750%23'); */
-			
-			/* var startX = 0 * GLOBAL_SCALE;
-			var endX = 752 * GLOBAL_SCALE;
-			var startY = 240 * GLOBAL_SCALE;
-			var endY = 240 * GLOBAL_SCALE;
-			var width = 480 * GLOBAL_SCALE; */
-			
-			var startX = 0 * GLOBAL_SCALE;
-			var endX = IMG_WIDTH * GLOBAL_SCALE;
-			var startY = IMG_HEIGHT / 2 * GLOBAL_SCALE;
-			var endY = IMG_HEIGHT / 2 * GLOBAL_SCALE;
-			var width = IMG_HEIGHT * GLOBAL_SCALE;
+		if (document.getElementById("wholeWindow").checked) {					
+			if (iniRoiFlag == false) {
+				var startX = 0;
+				var endX = iniWidth;
+				var startY = iniHeight / 2;
+				var endY = iniHeight / 2;
+				var width = iniHeight;
+			} else {
+				var startX = 0;
+				var endX = IMG_WIDTH * GLOBAL_SCALE;
+				var startY = IMG_HEIGHT / 2 * GLOBAL_SCALE;
+				var endY = IMG_HEIGHT / 2 * GLOBAL_SCALE;
+				var width = IMG_HEIGHT * GLOBAL_SCALE;
+			}
 			
 			ajaxGet('info.htm?cmd=%23021%3BEVO%20OCR%3B1%3BposRect.PointStart.X%3B'+startX+'%23');
 			ajaxGet('info.htm?cmd=%23021%3BEVO%20OCR%3B1%3BposRect.PointEnd.X%3B'+endX+'%23');			
@@ -426,9 +400,7 @@
 			ajaxGet('info.htm?cmd=%23021%3BEVO%20OCR%3B1%3BposRect.PointEnd.Y%3B'+endY+'%23');
 			ajaxGet('info.htm?cmd=%23021%3BEVO%20OCR%3B1%3BposRect.Width%3B'+width+'%23');
 		}
-			
 		if (document.getElementById("defineWindow").checked) {
-			
 			var startX = $("#xValue").val() * GLOBAL_SCALE;
 			var endX = (parseInt($("#xValue").val()) + parseInt($("#wValue").val())) * GLOBAL_SCALE;
 			var startY = (parseInt($("#yValue").val()) + (parseInt($("#hValue").val())/2)) * GLOBAL_SCALE;
@@ -440,78 +412,7 @@
 			ajaxGet('info.htm?cmd=%23021%3BEVO%20OCR%3B1%3BposRect.PointStart.Y%3B'+startY+'%23');
 			ajaxGet('info.htm?cmd=%23021%3BEVO%20OCR%3B1%3BposRect.PointEnd.Y%3B'+endY+'%23');
 			ajaxGet('info.htm?cmd=%23021%3BEVO%20OCR%3B1%3BposRect.Width%3B'+width+'%23');
-
 		}
-	}
-
-	function Line(x1,y1,x2,y2) {
-		this.x1=x1;
-		this.y1=y1;
-		this.x2=x2;
-		this.y2=y2;
-	}
-	
-	Line.prototype.drawWithArrowheads=function(ctx) {
-		// arbitrary styling
-		ctx.strokeStyle="blue";
-		ctx.fillStyle="blue";
-		ctx.lineWidth=1;
-
-		// draw the line
-		ctx.beginPath();
-		ctx.moveTo(this.x1,this.y1);
-		ctx.lineTo(this.x2,this.y2);
-		ctx.stroke();
-
-		// draw the starting arrowhead
-		//var startRadians=Math.atan((this.y2-this.y1)/(this.x2-this.x1));
-		//startRadians+=((this.x2>=this.x1)?-90:90)*Math.PI/180;
-		//this.drawArrowhead(ctx,this.x1,this.y1,startRadians);
-		// draw the ending arrowhead
-		var endRadians=Math.atan((this.y2-this.y1)/(this.x2-this.x1));
-		endRadians+=((this.x2>=this.x1)?90:-90)*Math.PI/180;
-		this.drawArrowhead(ctx,this.x2,this.y2,endRadians);
-	}
-	
-	Line.prototype.drawArrowhead=function(ctx,x,y,radians){
-		ctx.save();
-		ctx.beginPath();
-		ctx.translate(x,y);
-		ctx.rotate(radians);
-		ctx.moveTo(0,0);
-		ctx.lineTo(5,20);
-		ctx.lineTo(-5,20);
-		ctx.closePath();
-		ctx.restore();
-		ctx.fill();
-	}
-
-	function arrow(context,p1,p2,size){
-		context.lineWidth=2;
-		context.fillStyle = context.strokeStyle = '#099';
-		
-		// rotate the context to point along the path
-		  var dx = p2.x-p1.x, dy=p2.y-p1.y, len=Math.sqrt(dx*dx+dy*dy);
-		  context.translate(p2.x,p2.y);
-		  context.rotate(Math.atan2(dy,dx));
-
-		  // line
-		  context.lineCap = 'round';
-		  //ctx.beginPath();
-		  context.moveTo(0,0);
-		  context.lineTo(-len,0);
-		  //ctx.closePath();
-		  context.stroke();
-
-		  // arrowhead
-		  //ctx.beginPath();
-		  context.moveTo(0,0);
-		  context.lineTo(-size,-size);
-		  context.lineTo(-size, size);
-		  //ctx.closePath();
-		  context.fill();
-
-		  //ctx.restore();
 	}
 
 	// wipes the canvas context
@@ -527,40 +428,25 @@
 			clear(ctx);
 
 			// add stuff you want drawn in the background all the time here
-			/*var imageObj = new Image();
-
-			imageObj.onload = function() {
-			ctx.drawImage(imageObj, 0, 0);
-			};
-			imageObj.src = 'jpeg.jpg';
-			
-			var img = document.getElementsByTagName('img')[0];
-			img.src = can.toDataURL();
-			*/
 			
 			// draw all boxes
 			var l = boxes2.length;
 			
-			// added by yelling
-			/* if(rectFlag==false){
-				boxes2[0].erase(ctx);
-			} */
-			
 			// modified by weiling
 			for (var i = 0; i < l; i++) {
 				if (rectFlag==false && rectRoiFlag==false) {
-					
-				} else if (rectFlag==false && rectRoiFlag==true) {
+					// don't draw both rectangles
+				} else if (rectFlag==false && rectRoiFlag==true) {	// draw roi rectangle
 					boxes2[0].draw(ctx);
-				} else if (rectFlag==true && rectRoiFlag==false) {
+				} else if (rectFlag==true && rectRoiFlag==false) {	// draw character size rectangle
 					boxes2[1].draw(ctx);
-					//create text boxes2[1] is for character, boxes2[0] is for roi
+					// create text for character size
+					// boxes2[0] is for roi, boxes2[1] is for character size
 					ctx.font="20px Georgia";
 					ctx.fillStyle = 'black';
 					ctx.fillText("C",boxes2[1].x+boxes2[1].w-20,boxes2[1].y+20);
-				} else {
+				} else {	// draw both rectangles
 					boxes2[i].draw(ctx); // we used to call drawshape, but now each box draws itself
-					//create text boxes2[1] is for character, boxes2[0] is for roi
 					ctx.font="20px Georgia";
 					ctx.fillStyle = 'black';
 					ctx.fillText("C",boxes2[1].x+boxes2[1].w-20,boxes2[1].y+20);
@@ -568,8 +454,6 @@
 			}
 			
 			// add stuff you want drawn on top all the time here
-			
-			
 			
 			// added by weiling
 			var charXPos = boxes2[1].x;
@@ -589,8 +473,6 @@
 			$("#yValue").val(yPos);
 			$("#wValue").val(w);
 			$("#hValue").val(h);
-			
-			//evoComm();
 	  }
 	}
 
@@ -762,7 +644,6 @@
 			expectResize = -1;
 			this.style.cursor='auto';
 		}
-	  
 	}	// end myMove
 
 	// happens when the mouse is clicked in the canvas
@@ -772,39 +653,35 @@
 		
 		if (mySel !== null && !isResizeDrag) {
 			for (var i = 0; i < 8; i++) {
-			  // 0  1  2
-			  // 3     4
-			  // 5  6  7
+				// 0  1  2
+				// 3     4
+				// 5  6  7
 			  
-			  var cur = selectionHandles[i];
+				var cur = selectionHandles[i];
 			  
-			  // we dont need to use the ghost context because
-			  // selection handles will always be rectangles
-			  //changes made by yelling
-			  if (mx >= cur.x && mx <= cur.x + mySelBoxSize*3 &&
-				  my >= cur.y && my <= cur.y + mySelBoxSize*3) {
-				// we found one!
-				expectResize = i;
-				isResizeDrag = true;
-				invalidate();
-				return;
-			  }
-			  
+				// we dont need to use the ghost context because
+				// selection handles will always be rectangles
+				//changes made by yelling
+				if (mx >= cur.x && mx <= cur.x + mySelBoxSize*3 && my >= cur.y && my <= cur.y + mySelBoxSize*3) {
+					// we found one!
+					expectResize = i;
+					isResizeDrag = true;
+					invalidate();
+					return;
+				}
 			}
-		  /*
-		  //we are over a selection box
-		  if (expectResize !== -1) {
-			isResizeDrag = true;
-			return;
-		  }
-		  */
 		  
+			// we are over a selection box
+			if (expectResize !== -1) {
+				isResizeDrag = true;
+				return;
+			}
+
 			// not over a selection box, return to normal
 			isResizeDrag = false;
 			expectResize = -1;
 			this.style.cursor='auto';
-		  }
-	  
+		}
 	  
 		clear(gctx);
 		var l = boxes2.length;
@@ -829,7 +706,6 @@
 				clear(gctx);
 				return;
 			}
-		
 		}
 		// haven't returned means we have selected nothing
 		mySel = null;
@@ -856,7 +732,7 @@
 	}	// end myDblClick
 
 	function invalidate() {
-	  canvasValid = false;
+		canvasValid = false;
 	}
 
 	// sets mx, my to the mouse position relative to the canvas
@@ -880,82 +756,6 @@
 
 		mx = e.pageX - offsetX;
 		my = e.pageY - offsetY
-	}
-	
-	//set rect scale to map evo3
-	//horizontal == 0 means vertical, choice 0 (640 by 480), 1 (1024 by 768), 2(2592 by 1944)..
-	function setScaleSize(horizontal, resolutionChoice) {
-	
-		if(resolutionChoice == 0) { // image 640 by 480
-			if(horizontal == 1) {
-				mulStartX = 0.853;
-				mulStartY = 0.987;
-				mulEndX = 0.851;
-				mulEndY = 0.987;
-				mulWidth = 1;
-				
-				mulCharStartX = 0.853;
-				mulCharStartY = 0.987;
-				mulCharWidth = 0.932;
-				mulCharHeight = 0.973;
-				
-				/* mulStartX = 0.831;
-				mulStartY = 1;
-				mulEndX = 0.871;
-				mulEndY = 1;
-				mulWidth = 1; */
-			}
-			else if(horizontal == 0) {
-				mulStartX = 0.859;
-				mulStartY = 1;
-				mulEndX = 0.859;
-				mulEndY = 1;
-				mulWidth = 0.81;
-			} 
-		} 
-		else if(resolutionChoice == 1) { //image 1024 by 768
-			if(horizontal == 1) {
-				mulStartX = 1.3648;
-				mulStartY = 1.583;
-				mulEndX = 1.363;
-				mulEndY = 1.583;
-				mulWidth = 1.6;
-				
-				mulCharStartX = 1.362;
-				mulCharStartY = 1.554;
-				mulCharWidth = 1.362;
-				mulCharHeight = 1.687;
-				
-				/* mulStartX = 1.3648;
-				mulStartY = 1.668;
-				mulEndX = 1.303;
-				mulEndY = 1.668;
-				mulWidth = 1; */
-			} 
-			else if(horizontal == 0) {
-				mulStartX = 1.346;
-				mulStartY = 1.6;
-				mulEndX = 1.346;
-				mulEndY = 1.6;
-				mulWidth = 1;
-			}
-		}
-		else if(resolutionChoice == 2) { // image 2592 by 1944
-			if(horizontal == 1) {
-				mulStartX = 3.451;
-				mulStartY = 4.069;
-				mulEndX = 3.432;
-				mulEndY = 4.069;
-				mulWidth = 3.992;
-			}
-			else if(horizontal == 0) {
-				mulStartX = 3.449;
-				mulStartY = 3.919;
-				mulEndX = 3.449;
-				mulEndY = 4.051;
-				mulWidth = 3.305;
-			} 
-		}
 	}
 
 	// if you don't want to use <body onLoad='init()'>
