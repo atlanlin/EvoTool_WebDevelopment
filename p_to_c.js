@@ -1,6 +1,6 @@
 // screen on load 
 window.onload = function() {
-	
+	//initialize square and circle on canvas
 	initSquare();
 	initCircle();
 	
@@ -13,18 +13,20 @@ window.onload = function() {
 // circle code
 
 function initCircle() {
-			
+		
     drawCircle(circle, innerCircle);
 	
-	
+	// mouse handler
     element = document.getElementById('canvas');
     element.addEventListener('mousedown', startDragging, false);
     element.addEventListener('mousemove', drag, false);
     element.addEventListener('mouseup', stopDragging, false);
     element.addEventListener('mouseout', stopDragging, false);
 	
+	// touch screen handler
 	element.addEventListener('touchmove', t_Move);
 	
+	// getting of result to display on text area
 	$("#btnMeasure").click(function(){
 			ajaxGet("info.htm?cmd=%23021%3BEVO Distance%3B2%3BOptionForType%3B2%23");
 			ajaxGet("cfg.ini", getValueFrominiFile);
@@ -34,12 +36,14 @@ function initCircle() {
 	
 }
 
+// circle point of x and y coordinates
 var Point = function (x, y) {
     this.x = x;
     this.y = y;
     return this;
 }
 
+// circle details
 var Circle = function (point, radius) {
     this.point = point;
     this.radius = radius;
@@ -102,21 +106,24 @@ function drag(e) {
 	
 }
 
-
+// moving of circle using touch screen
 function t_Move(e){
-	
+	// to prevent screen move or zooming when using touch screen
 	e.preventDefault();
 	
 	tempcanvas = document.getElementById('canvas');
 	var rect = tempcanvas.getBoundingClientRect();
+	// get point or coordinates on touch
 	var p = new Point(e.targetTouches[0].clientX - rect.left, e.targetTouches[0].clientY - rect.top);
 	
-	
+	// move the circle accordingly allows to move only within the frame when touches the circle.
 	if(withinCircle(p))
 	{
+		// move the circle according to where the user directs
 		circle.point.x = e.targetTouches[0].clientX - rect.left;
 		circle.point.y = e.targetTouches[0].clientY - rect.top;
 	
+		// reset coordinates if it is not within the canvas frame
 		var radius = circle.radius;
 			if(circle.point.x - radius < startFrameX)
 			{
@@ -140,10 +147,11 @@ function t_Move(e){
 		}
 }
 
+// find minimum value
 function findMin(x, y) {
-        if(x < y)
-			return x
-	return y
+	if(x < y)
+		return x
+return y
 }
 
 // mouse up & mouse out
@@ -151,10 +159,12 @@ function stopDragging(e) {
     deltaCenter = null;
 }
 
+// return true if given points is within the circle, else false
 function withinCircle(pt) {
 	return Math.pow(pt.x - circle.point.x, 2) + Math.pow(pt.y - circle.point.y, 2) < Math.pow(circle.radius, 2);
 }
 
+// getting mouse coordinates
 function getMousePos(canvas, e) {
         var rect = canvas.getBoundingClientRect();
         return {
@@ -162,19 +172,22 @@ function getMousePos(canvas, e) {
           y: e.clientY - rect.top
         };
 }
-	  
+
+// return mouse X coordinate	  
 function mouseX(e) {
 	var cx = document.getElementById('canvas');
     var mousePos = getMousePos(cx, e);
 	return mousePos.x;
 }
 
+// return mouse Y coordinate	
 function mouseY(e) {
 	var cy = document.getElementById('canvas');
     var mousePos = getMousePos(cy, e);
 	return mousePos.y;
 }
 
+// drawing of inner and outer circle/arc
 function drawCircle(circle, innerCircle) {
     var canvas = document.getElementById('canvas');
     var ctx = canvas.getContext('2d');
@@ -183,6 +196,8 @@ function drawCircle(circle, innerCircle) {
 	var calStartAngle = startAngle * Math.PI / 180;
 	var calEndAngle = EndAngle * Math.PI / 180;
 	
+	// set the imaginary frame limit to cater different image size
+	// if no image, frame will set to default value
 	if(IMG_HEIGHT != null)
 	{
 		endFrameY = IMG_HEIGHT - 2;
@@ -221,6 +236,7 @@ function drawCircle(circle, innerCircle) {
 	//$("#outervalue").val(Math.round(circle.radius));
 	//$("#innervalue").val(Math.round(innerCircle.radius));
 	
+	// update value of the label beside the slider
 	document.querySelector('#circlevolume').value = Math.round(circle.radius);
 	document.querySelector('#innercirclevolume').value = Math.round(innerCircle.radius);
 	
@@ -232,6 +248,7 @@ function drawCircle(circle, innerCircle) {
 
 }
 
+// increase or decrease the outer circle radius size
 function outputUpdate(size) {
 
 	var intSize = parseInt(size);
@@ -249,6 +266,8 @@ function outputUpdate(size) {
 	mainDraw();
 
 }
+
+// increase or decrease the inner circle radius size
 function outputInnerUpdate(size){
 	var intSize = parseInt(size);
 
@@ -265,6 +284,7 @@ function outputInnerUpdate(size){
 	mainDraw();
 }
 
+// change of start angle
 function outputStartAngle(size){
 	var intSize = parseInt(size);
 
@@ -277,6 +297,7 @@ function outputStartAngle(size){
 	drawCircle(circle, innerCircle);
 }
 
+// change of end angle
 function outputEndAngle(size){
 	var intSize = parseInt(size);
 
@@ -340,7 +361,8 @@ function updateCircleEvo()
 	else if($("#cdarkToLight").is(":checked")) {
         ajaxGet("info.htm?cmd=%23021%3BEVO Distance%3B2%3BTransition_2%3B1%23");
     }
-		
+
+	// update circle parameters to evo3	
 	ajaxGet("info.htm?cmd=%23021%3BEVO Distance%3B1%3BCirclePos.Center.X%3B"+ calCenterX +"%23");
 	ajaxGet("info.htm?cmd=%23021%3BEVO Distance%3B1%3BCirclePos.Center.Y%3B"+ calCenterY +"%23");
 		
@@ -388,6 +410,7 @@ function updateRectEvo()
             ajaxGet("info.htm?cmd=%23021%3BEVO Distance%3B2%3BTransition_1%3B1%23");
         }
 		
+		// update square parameters to evo3
 		ajaxGet("info.htm?cmd=%23021%3BEVO Distance%3B1%3BRecPos.PointStart.X%3B"+ calStartX +"%23");
 		ajaxGet("info.htm?cmd=%23021%3BEVO Distance%3B1%3BRecPos.PointEnd.X%3B"+ calEndX +"%23");
 		
@@ -484,7 +507,7 @@ Box2.prototype = {
 	
 	}
 }*/
-
+// update rect text boxes values
 function displayTexts(startXtb, startYtb, endXtb, endYtb, widthtb, inBox){
 	
 	if(arrowDirFlag == "horizontal"){
@@ -602,12 +625,9 @@ function addRect(x, y, w, h, fill) {
 // then add everything we want to intially exist on the canvas
 function initSquare() {
   canvas = document.getElementById('canvas');
-  
-  //setScaleSize(1, resolution)
-
-  
+  // get canvas height
   HEIGHT = canvas.height;
-  
+  //get canvas width
   WIDTH = canvas.width;
   ctx = canvas.getContext('2d');
   
@@ -705,8 +725,9 @@ function Line(x1,y1,x2,y2){
         this.y1=y1;
         this.x2=x2;
         this.y2=y2;
-    }
-    Line.prototype.drawWithArrowheads=function(ctx){
+}
+
+Line.prototype.drawWithArrowheads=function(ctx){
 
         // arbitrary styling
         ctx.strokeStyle="blue";
@@ -729,8 +750,9 @@ function Line(x1,y1,x2,y2){
         this.drawArrowhead(ctx,this.x2,this.y2,endRadians);
 
 
-    }
-    Line.prototype.drawArrowhead=function(ctx,x,y,radians){
+}
+
+Line.prototype.drawArrowhead=function(ctx,x,y,radians){
         ctx.save();
         ctx.beginPath();
         ctx.translate(x,y);
@@ -741,7 +763,7 @@ function Line(x1,y1,x2,y2){
         ctx.closePath();
         ctx.restore();
         ctx.fill();
-    }
+}
 
 
 function arrow(context,p1,p2,size){
@@ -790,6 +812,9 @@ function mainDraw() {
     
 	drawCircle(circle, innerCircle);
     // Add stuff you want drawn in the background all the time here
+	
+	// set the imaginary frame limit to cater different image size
+	// if no image, frame will set to default value
 	if(IMG_WIDTH != null && IMG_HEIGHT != null){
 		WIDTH = IMG_WIDTH;
 		HEIGHT = IMG_HEIGHT;

@@ -1,9 +1,9 @@
 // center x plus radius to fin arc --> )
 // 
 window.onload = function() {
-	
+	//initialize circle on canvas
 	initCircle();
-	
+	//enable function in evo 3 ckp file
 	ajaxGet("info.htm?cmd=%23021%3BEVO Circle%3B2%3BGeneral.Enabled%3B1%23");
 	ajaxGet("info.htm?cmd=%23021%3BINI Circle%3B2%3BGeneral.Enabled%3B1%23");
 }
@@ -12,31 +12,35 @@ function initCircle() {
 	
     drawCircle(circle, innerCircle);
 	
+	// mouse handler
     element = document.getElementById('canvas');
     element.addEventListener('mousedown', startDragging, false);
     element.addEventListener('mousemove', drag, false);
     element.addEventListener('mouseup', stopDragging, false);
     element.addEventListener('mouseout', stopDragging, false);
-	
+		
+	// touch screen handler
 	element.addEventListener('touchmove', t_Move);
 
+	// update circle parameter at every certain interval
 	setInterval(updateCircleEvo, UPDATECIRCLEINTERVAL);
 	
+	// getting of result to display on text area
 	$("#btnMeasure").click(function(){
-			
 		ajaxGet("cfg.ini", getValueFrominiFile);
 	}
 	);
 	
 }
 
-
+// circle point of x and y coordinates
 var Point = function (x, y) {
     this.x = x;
     this.y = y;
     return this;
 }
 
+// circle details
 var Circle = function (point, radius) {
     this.point = point;
     this.radius = radius;
@@ -95,8 +99,9 @@ function drag(e) {
 	}
 }
 
+// moving of circle using touch screen
 function t_Move(e){
-	
+	// to prevent screen move or zooming when using touch screen
 	e.preventDefault();
 	
 	tempcanvas = document.getElementById('canvas');
@@ -126,6 +131,7 @@ function t_Move(e){
 	drawCircle(circle, innerCircle);
 }
 
+// find minimum value
 function findMin(x, y) {
 	if(x < y)
 		return x
@@ -137,10 +143,12 @@ function stopDragging(e) {
     deltaCenter = null;
 }
 
+// return true if given points is within the circle, else false
 function withinCircle(pt) {
 	return Math.pow(pt.x - circle.point.x, 2) + Math.pow(pt.y - circle.point.y, 2) < Math.pow(circle.radius, 2);
 }
 
+// getting mouse coordinates
 function getMousePos(canvas, e) {
     var rect = canvas.getBoundingClientRect();
     return {
@@ -148,32 +156,36 @@ function getMousePos(canvas, e) {
         y: e.clientY - rect.top
     };
 }
-	  
+
+// return mouse X coordinate		  
 function mouseX(e) {
 	var cx = document.getElementById('canvas');
     var mousePos = getMousePos(cx, e);
 	return mousePos.x;
 }
-
+// return mouse Y coordinate
 function mouseY(e) {
 	var cy = document.getElementById('canvas');
     var mousePos = getMousePos(cy, e);
 	return mousePos.y;
 }
-
+// drawing of inner and outer circle/arc
 function drawCircle(circle, innerCircle) {
     var canvas = document.getElementById('canvas');
     var ctx = canvas.getContext('2d');
 	
+	// calculate the radian given in degree 
 	var calStartAngle = startAngle * Math.PI / 180;
 	var calEndAngle = EndAngle * Math.PI / 180;
 	
+	// set the imaginary frame limit to cater different image size
+	// if no image, frame will set to default value
 	if(IMG_HEIGHT != null)
 	{
 		endFrameY = IMG_HEIGHT - 2;
 		endFrameX = IMG_WIDTH - 2;
 	}
-	
+	//drawing of arc
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx.beginPath();
     ctx.arc(circle.point.x, circle.point.y, circle.radius, calStartAngle, calEndAngle, false);
@@ -197,6 +209,7 @@ function drawCircle(circle, innerCircle) {
 	ctx.stroke();
 	ctx.closePath();
 	
+	//update values to the page
 	$("#xvalue").val(Math.round(circle.point.x));
 	$("#yvalue").val(Math.round(circle.point.y));
 	//$("#startvalue").val(startAngle);
@@ -204,6 +217,7 @@ function drawCircle(circle, innerCircle) {
 	//$("#outervalue").val(Math.round(circle.radius));
 	//$("#innervalue").val(Math.round(innerCircle.radius));
 	
+	// update value of the label beside the slider
 	document.querySelector('#circlevolume').value = Math.round(circle.radius);
 	document.querySelector('#innercirclevolume').value = Math.round(innerCircle.radius);
 	
@@ -214,6 +228,7 @@ function drawCircle(circle, innerCircle) {
 
 }
 
+// increase or decrease the outer circle radius size
 function outputUpdate(size) {
 
 	var intSize = parseInt(size);
@@ -228,6 +243,8 @@ function outputUpdate(size) {
 	}
 	drawCircle(circle, innerCircle);
 }
+
+// increase or decrease the inner circle radius size
 function outputInnerUpdate(size){
 	var intSize = parseInt(size);
 
@@ -242,6 +259,7 @@ function outputInnerUpdate(size){
 	drawCircle(circle, innerCircle);
 }
 
+// change of start angle
 function outputStartAngle(size){
 	var intSize = parseInt(size);
 
@@ -255,6 +273,7 @@ function outputStartAngle(size){
 
 }
 
+// change of end angle
 function outputEndAngle(size){
 	var intSize = parseInt(size);
 
@@ -317,6 +336,7 @@ function updateCircleEvo()
             ajaxGet("info.htm?cmd=%23021%3BEVO Circle%3B2%3BTransition%3B1%23");
         }
 		
+		// update circle parameters to evo3	
 		ajaxGet("info.htm?cmd=%23021%3BEVO Circle%3B1%3BCirclePos.Center.X%3B"+ calCenterX +"%23");
 		ajaxGet("info.htm?cmd=%23021%3BEVO Circle%3B1%3BCirclePos.Center.Y%3B"+ calCenterY +"%23");
 		
