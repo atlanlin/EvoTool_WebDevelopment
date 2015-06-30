@@ -2,20 +2,23 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=0.7">
-    <title>Barcode Reader</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
+	<title>Barcode Reader</title>
 	<script src="evt.js"></script>
     <script src="camset.js"></script>
 	<style>
+		#logo{
+			width:100px;
+			float:right;
+			
+		}
 		#toolSelectionForm{
 			background-color:#81A594;
-			width: 800px;
-			margin-left: auto;
-			margin-right: auto;
+			width: 300px;
+			height:600px;
+			float:left;
 		}
 		input[type="radio"]{
-			margin-left: 40px;
+			margin-left: 20px;
 		}
 		#btnGo{
 			margin-left: 150px;
@@ -23,14 +26,37 @@
 			background-color: #0099FF;
 			margin-top: 20px;
 		}
-		
+		#imageRegion{
+			background-color:#81A594;
+			margin-left:310px;
+		}
+		#imgView{
+			border-style:solid;
+			border-width:5px;
+			margin-left: auto;
+			margin-right:auto;
+			display: block;
+			height:550px;
+		}
 	</style>
 	
 </head>
 
 <body>
-	<img id="logo" src="vclogo.png" alt="vclogo"> 
+	
 	<div id="toolSelectionForm"> 
+		
+		<fieldset>
+		
+		<label><b>Results</b></label><br>
+		<textarea id="showResults" style="width:100%" rows="12" ></textarea><br>
+		<input type="button" id="btnClear" value="Clear"/>
+		<input type="button" onClick="location.href='index.htm'" value="Main Menu"/><br><br>
+		<label><b>View Items</b></label>
+		<select id="viewToolDb">
+		</select>
+		<input type="button" id="btnView" value="View"/>
+		</fieldset>
 		
 		<fieldset>
 		<legend>Select tool to change Parameters:</legend>
@@ -53,71 +79,76 @@
 		</fieldset>
 		
 		
-		<fieldset>
-		
-		<label><b>Results<b></label><br>
-		<textarea id="showResults" cols="40" rows="12" ></textarea><br>
-		<input type="button" id="btnClear" value="Clear"/>
-		<input type="button" onClick="location.href='index.htm'" value="Main Menu"/>
-		
-		</fieldset>
 	</div>
 	
+	<div id="imageRegion">
+		<img id="imgView"/>
+	</div>
+	<img id="logo" src="vclogo.png" alt="vclogo"> 
 	<script>
-		
-		displayResults();
-		document.getElementById("btnClear").addEventListener("click", function(){
-			
-			var cookieNames = ["circle", "width", "ptp", "ptl", "ptc", "ltc", "ctc", "ctl"];
-			for(var i = 0; i < cookieNames.length; i++){
-				for(var j = 1; j < 3; j++){
-					if(getCookie(cookieNames[i]+String(j)) != null)
-					{
-						deleteCookie(cookieNames[i]+String(j));
-					}
-					
-				}
-			}
-			//loadResults();
+		window.onload = function() {
 			displayResults();
+			addItemsIntoDb();
+			loadScreenshot();
+			document.getElementById("btnView").addEventListener("click", loadScreenshot);
+			document.getElementById("btnClear").addEventListener("click", function(){
+				
+				var cookieNames = ["circle", "width", "ptp", "ptl", "ptc", "ltc", "ctc", "ctl"];
+				for(var i = 0; i < cookieNames.length; i++){
+					for(var j = 1; j < 3; j++){
+						if(getCookie(cookieNames[i]+String(j)) != null)
+						{
+							deleteCookie(cookieNames[i]+String(j));
+						}
+						
+					}
+				}
+				
+				displayResults();
+				
+				
+				
+			});
 			
-		});
+			document.getElementById("btnGo").addEventListener("click", function(){
+				
+				var tool = getValueByName("selectedTool");
+				var toolNo = document.getElementById("selectedNumber").value;
+				var requestedPage;
+				switch(tool){
+					case "circle":
+						requestedPage="circlewidth.htm?";
+						break;
+					case "width":
+						requestedPage="width.html?";
+						break;
+					case "ptp":
+						requestedPage="p_to_p.html?";
+						break;
+					case "ptl":
+						requestedPage="p_to_l.html?";
+						break;
+					case "ptc":
+						requestedPage="p_to_c.htm?";
+						break;
+					case "ctl":
+						requestedPage="l_to_c.htm?";
+						break;
+					case "ctc":
+						requestedPage="c_to_c.htm?";
+						break;
+					default:
+						requestedPage="";
+				}
+				
+				
+				var queryString = requestedPage + "tool=" + tool + "&toolNo=" + toolNo;
+				window.location.href = queryString;
+			});
+			
+			disableAllFunctions();
+		}
 		
-		document.getElementById("btnGo").addEventListener("click", function(){
-			
-			var tool = getValueByName("selectedTool");
-			var toolNo = document.getElementById("selectedNumber").value;
-			var requestedPage;
-			switch(tool){
-				case "circle":
-					requestedPage="circlewidth.htm?";
-					break;
-				case "width":
-					requestedPage="width.html?";
-					break;
-				case "ptp":
-					requestedPage="p_to_p.html?";
-					break;
-				case "ptl":
-					requestedPage="p_to_l.html?";
-					break;
-				case "ptc":
-					requestedPage="p_to_c.htm?";
-					break;
-				case "ctl":
-					requestedPage="l_to_c.htm?";
-					break;
-				case "ctc":
-					requestedPage="c_to_c.htm?";
-					break;
-				default:
-					requestedPage="";
-			}
-			
-			
-			var queryString = requestedPage + "tool=" + tool + "&toolNo=" + toolNo;
-			window.location.href = queryString;
-		});
 		
 		function getValueByName(elementName){
 			var radioGroup = document.getElementsByName(elementName);
@@ -127,6 +158,18 @@
 			   }
 			}
 			return null;
+		}
+		
+		function loadScreenshot(){
+			if(typeof(Storage) !== "undefined") {
+			
+				var db = document.getElementById("viewToolDb");
+				var tool = db.options[db.selectedIndex].value;
+				var dataURL = localStorage.getItem("shot" + tool);
+				document.getElementById("imgView").src=dataURL;
+			} else {
+				alert("Sorry! No Web Storage support..");
+			}
 		}
 		
 		/*function loadResults()
@@ -152,10 +195,53 @@
 		
 		}*/
 		
-		disableAllFunctions();
+		
 
 		//loadResults();
+		function addItemsIntoDb(){
+			
+			var viewTool = document.getElementById('viewToolDb');
+			var length = viewTool.options.length;
+			for (i = 0; i < length; i++) {
+			  viewTool.options[i] = null;
+			}
+			
+			
 		
+			var ca = document.cookie.split("; ");
+			var ta = [];
+			var n = 0;
+			
+			
+			for (var i=0;i<ca.length;i++) {
+				if (ca[i].substring(0,6) == "circle") {
+					viewTool.options[viewTool.options.length] = new Option("EVO Circle Tool " + ca[i].substring(6,7), ca[i].substring(0,7));
+				}
+				else if (ca[i].substring(0,5) == "width") {
+					viewTool.options[viewTool.options.length] = new Option("EVO Width Tool " + ca[i].substring(5,6), ca[i].substring(0,6));
+				}
+				else if (ca[i].substring(0,3) == "ptp") {
+					viewTool.options[viewTool.options.length] = new Option("EVO Distance (Point to Point) Tool " + ca[i].substring(3,4), ca[i].substring(0,4)); 
+				}
+				else if (ca[i].substring(0,3) == "ptl") {
+					viewTool.options[viewTool.options.length] = new Option("EVO Distance (Point to Line) Tool " + ca[i].substring(3,4), ca[i].substring(0,4));
+				}
+				else if (ca[i].substring(0,3) == "ptc") {
+					viewTool.options[viewTool.options.length] = new Option("EVO Distance (Point to Circle) Tool " + ca[i].substring(3,4), ca[i].substring(0,4));
+				}
+				else if (ca[i].substring(0,3) == "ctc") {
+					viewTool.options[viewTool.options.length] = new Option("EVO Distance (Circle to Circle) Tool " + ca[i].substring(3,4), ca[i].substring(0,4)); 
+				}
+				else if (ca[i].substring(0,3) == "ctl") {
+					viewTool.options[viewTool.options.length] = new Option("EVO Distance (Circle to Line) Tool " + ca[i].substring(3,4), ca[i].substring(0,4)); 
+				}
+				else {
+					n--;
+				}
+				n++;
+			}
+			
+		}
 
 		function displayResults() {
 			var ca = document.cookie.split("; ");

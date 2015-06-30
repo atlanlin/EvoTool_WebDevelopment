@@ -590,6 +590,19 @@ function setPageScaleSize(resolutionChoice)
 	
 }
 
+
+function saveScreenshot(){
+	html2canvas(document.getElementById("imageArea")).then(function(canvas) {
+		
+		if (queryString["tool"] != null && queryString["toolNo"] != null) {
+			var dataURL = canvas.toDataURL();
+			localStorage.setItem("shot" + queryString["tool"] + queryString["toolNo"], dataURL);
+		}
+		
+		
+	});
+}
+
 var resolution = 1;
 
 var mulCenterX;

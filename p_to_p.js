@@ -292,6 +292,7 @@ function init2() {
 
 			ajaxGet("info.htm?cmd=%23021%3BEVO Distance%3B2%3BOptionForType%3B0%23");
 			ajaxGet("cfg.ini", getValueFrominiFile);
+			saveScreenshot();
 			
 		}
 	);
