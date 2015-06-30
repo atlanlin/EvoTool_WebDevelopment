@@ -719,7 +719,7 @@
 		isDrag = false;
 		isResizeDrag = false;
 		expectResize = -1;
-	}	// end myDown
+	}	// end myUp
 
 	// adds a new node
 	function myDblClick(e) {

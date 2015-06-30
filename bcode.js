@@ -590,7 +590,7 @@
 		isDrag = false;
 		isResizeDrag = false;
 		expectResize = -1;
-	}	// end myDown
+	}	// end myUp
 
 	function invalidate() {
 	  canvasValid = false;
