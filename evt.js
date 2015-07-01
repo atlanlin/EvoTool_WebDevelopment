@@ -232,7 +232,7 @@ function canvasUpdate(imgSrc,w,h){
 		oImg.src = imgSrc + "?" + count;
 		timeout = 0;
 	}
-	else if(timeout > 10){
+	else if(timeout > 30){
 		count += 1;
 		oImg.src = imgSrc + "?" + count;
 		alert("timeout");
