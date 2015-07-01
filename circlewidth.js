@@ -28,6 +28,8 @@ function initCircle() {
 	// getting of result to display on text area
 	$("#btnMeasure").click(function(){
 		ajaxGet("cfg.ini", getValueFrominiFile);
+		//save screenshot of the current measurement taken
+		saveScreenshot();
 	}
 	);
 	
