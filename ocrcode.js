@@ -247,6 +247,7 @@
 		$("#btnMeasure").click(function(){
 			evoComm();
 			ajaxGet("cfg.ini", getCodeValueFrominiFile);
+			saveScreenshot();
 			
 		});
 		
