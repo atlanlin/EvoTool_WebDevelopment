@@ -246,9 +246,7 @@
 		
 		$("#btnMeasure").click(function(){
 			evoComm();
-			ajaxGet("cfg.ini", getCodeValueFrominiFile);
-			saveScreenshot();
-			
+			ajaxGet("cfg.ini", getCodeValueFrominiFile);	
 		});
 		
 		// add a large green rectangle (roi window)
