@@ -2,7 +2,9 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
+	<link rel="stylesheet" type="text/css" href="style.css">
 	<title>Barcode Reader</title>
+	<script src="jquery.js"></script>
 	<script src="evt.js"></script>
     <script src="camset.js"></script>
 	<style>
@@ -12,31 +14,31 @@
 			
 		}
 		#toolSelectionForm{
+			border-style:solid;
+			border-width:3px;
 			background-color:#81A594;
 			width: 300px;
-			height:600px;
 			float:left;
 		}
 		input[type="radio"]{
 			margin-left: 20px;
 		}
-		#btnGo{
-			margin-left: 150px;
-			width: 100px;
-			background-color: #0099FF;
-			margin-top: 20px;
-		}
 		#imageRegion{
+			border-style:solid;
+			border-width:3px;
 			background-color:#81A594;
-			margin-left:310px;
+			margin-left:320px;
 		}
 		#imgView{
-			border-style:solid;
-			border-width:5px;
 			margin-left: auto;
 			margin-right:auto;
 			display: block;
-			height:550px;
+			height:690px;
+		}
+		textarea{
+			margin: 15px;
+			width:90%;
+			font-size:12px;
 		}
 	</style>
 	
@@ -45,23 +47,19 @@
 <body>
 	
 	<div id="toolSelectionForm"> 
+		<p style="margin:10px;"><b>Results</b></p>
+		<textarea id="showResults" rows="12" ></textarea><br>
+		<input class="button" type="button" id="btnClear" value="Clear"/>
+		<input class="button" type="button" onClick="location.href='index.htm'" value="Main Menu"/><br><br>
 		
-		<fieldset>
-		
-		<label><b>Results</b></label><br>
-		<textarea id="showResults" style="width:100%" rows="12" ></textarea><br>
-		<input type="button" id="btnClear" value="Clear"/>
-		<input type="button" onClick="location.href='index.htm'" value="Main Menu"/><br><br>
-		<label><b>View Items</b></label>
+		<label><b>Measured Items</b></label>
 		<select id="viewToolDb">
-		</select>
-		<input type="button" id="btnView" value="View"/>
-		</fieldset>
+		</select><br>
+		<input type="button" id="btnView" value="View" class="button"/>
 		
-		<fieldset>
-		<legend>Select tool to change Parameters:</legend>
+		<hr>
 		
-		<label>Select Measure Tool</label><br>
+		<label><b>Select Measure Tool</b></label><br>
 			<input type="radio" name="selectedTool" value="circle" checked>EVO Circle</input><br>
 			<input type="radio" name="selectedTool" value="width">EVO Width</input><br>
 			<input type="radio" name="selectedTool" value="ptp">EVO Distance (Point To Point)</input><br>
@@ -70,32 +68,46 @@
 			<input type="radio" name="selectedTool" value="ctl">EVO Distance (Circle To Line)</input><br>
 			<input type="radio" name="selectedTool" value="ctc">EVO Distance (Circle To Circle)</input><br>
 		<br>
-		<label>Select Tool Number</label>
+		<label><b>Tool Number</b></label>
 		<select id="selectedNumber">
 		  <option value="1">Tool 1</option>
 		  <option value="2">Tool 2</option>
+		  <option value="3">Tool 3</option>
+		  <option value="4">Tool 4</option>
+		  <option value="5">Tool 5</option>
+		  <option value="6">Tool 6</option>
+		  <option value="7">Tool 7</option>
+		  <option value="8">Tool 8</option>
+		  <option value="9">Tool 9</option>
 		</select><br>
-		<input type="button" id="btnGo" value="GO"/>
-		</fieldset>
+		<input type="button" id="btnGo" value="Select" class="button"/>
 		
+		<p></p>
 		
 	</div>
 	
 	<div id="imageRegion">
 		<img id="imgView"/>
 	</div>
-	<img id="logo" src="vclogo.png" alt="vclogo"> 
 	<script>
+		var cookieNames = ["circle", "width", "ptp", "ptl", "ptc", "ltc", "ctc", "ctl"];
+		var displayNames = ["EVO Circle Tool", "EVO Width Tool", "EVO Distance (Point to Point) Tool", "EVO Distance(Point to Line) Tool", 
+			"EVO Distance (Point to Circle) Tool", "EVO Distance (Line to Circle) Tool", "EVO Distance (Circle to Circle) Tool", "EVO Distance (Circle to Line) Tool"];
+	
 		window.onload = function() {
 			displayResults();
 			addItemsIntoDb();
+			//displayResultsFromCookies();
+			//addItemsIntoDbFromCookies();
 			loadScreenshot();
+			disableAllFunctions();
+			
+			
 			document.getElementById("btnView").addEventListener("click", loadScreenshot);
 			document.getElementById("btnClear").addEventListener("click", function(){
 				
-				var cookieNames = ["circle", "width", "ptp", "ptl", "ptc", "ltc", "ctc", "ctl"];
 				for(var i = 0; i < cookieNames.length; i++){
-					for(var j = 1; j < 3; j++){
+					for(var j = 1; j < 10; j++){
 						if(getCookie(cookieNames[i]+String(j)) != null)
 						{
 							deleteCookie(cookieNames[i]+String(j));
@@ -105,13 +117,13 @@
 				}
 				
 				displayResults();
-				
-				
+				addItemsIntoDb();
+				localStorage.clear();
+				loadScreenshot();
 				
 			});
 			
 			document.getElementById("btnGo").addEventListener("click", function(){
-				
 				var tool = getValueByName("selectedTool");
 				var toolNo = document.getElementById("selectedNumber").value;
 				var requestedPage;
@@ -141,12 +153,11 @@
 						requestedPage="";
 				}
 				
-				
 				var queryString = requestedPage + "tool=" + tool + "&toolNo=" + toolNo;
 				window.location.href = queryString;
 			});
 			
-			disableAllFunctions();
+			
 		}
 		
 		
@@ -165,6 +176,8 @@
 			
 				var db = document.getElementById("viewToolDb");
 				var tool = db.options[db.selectedIndex].value;
+				if(tool == "none")
+					return;
 				var dataURL = localStorage.getItem("shot" + tool);
 				document.getElementById("imgView").src=dataURL;
 			} else {
@@ -195,45 +208,54 @@
 		
 		}*/
 		
+		function removeOptions(selectbox)
+		{
+			var i;
+			for(i=selectbox.options.length-1;i>=0;i--)
+			{
+				selectbox.remove(i);
+			}
+		}
 		
-
-		//loadResults();
 		function addItemsIntoDb(){
 			
-			var viewTool = document.getElementById('viewToolDb');
-			var length = viewTool.options.length;
-			for (i = 0; i < length; i++) {
-			  viewTool.options[i] = null;
-			}
+			removeOptions(document.getElementById("viewToolDb"));
 			
 			
-		
 			var ca = document.cookie.split("; ");
 			var ta = [];
+			var taValue = [];
 			var n = 0;
 			
-			
+			ca = ca.sort();
 			for (var i=0;i<ca.length;i++) {
 				if (ca[i].substring(0,6) == "circle") {
-					viewTool.options[viewTool.options.length] = new Option("EVO Circle Tool " + ca[i].substring(6,7), ca[i].substring(0,7));
+					ta[n] = "EVO Circle Tool " + ca[i].substring(6,7);
+					taValue[n] = ca[i].substring(0,7);
 				}
 				else if (ca[i].substring(0,5) == "width") {
-					viewTool.options[viewTool.options.length] = new Option("EVO Width Tool " + ca[i].substring(5,6), ca[i].substring(0,6));
+					ta[n] = "EVO Width Tool " + ca[i].substring(5,6);
+					taValue[n] = ca[i].substring(0,6);
 				}
 				else if (ca[i].substring(0,3) == "ptp") {
-					viewTool.options[viewTool.options.length] = new Option("EVO Distance (Point to Point) Tool " + ca[i].substring(3,4), ca[i].substring(0,4)); 
+					ta[n] = "EVO Distance (Point to Point) Tool " + ca[i].substring(3,4);
+					taValue[n] = ca[i].substring(0,4); 
 				}
 				else if (ca[i].substring(0,3) == "ptl") {
-					viewTool.options[viewTool.options.length] = new Option("EVO Distance (Point to Line) Tool " + ca[i].substring(3,4), ca[i].substring(0,4));
+					ta[n] = "EVO Distance (Point to Line) Tool " + ca[i].substring(3,4);
+					taValue[n] = ca[i].substring(0,4);
 				}
 				else if (ca[i].substring(0,3) == "ptc") {
-					viewTool.options[viewTool.options.length] = new Option("EVO Distance (Point to Circle) Tool " + ca[i].substring(3,4), ca[i].substring(0,4));
+					ta[n] = "EVO Distance (Point to Circle) Tool " + ca[i].substring(3,4); 
+					taValue[n] = ca[i].substring(0,4);
 				}
 				else if (ca[i].substring(0,3) == "ctc") {
-					viewTool.options[viewTool.options.length] = new Option("EVO Distance (Circle to Circle) Tool " + ca[i].substring(3,4), ca[i].substring(0,4)); 
+					ta[n] = "EVO Distance (Circle to Circle) Tool " + ca[i].substring(3,4);
+					taValue[n] = ca[i].substring(0,4);
 				}
 				else if (ca[i].substring(0,3) == "ctl") {
-					viewTool.options[viewTool.options.length] = new Option("EVO Distance (Circle to Line) Tool " + ca[i].substring(3,4), ca[i].substring(0,4)); 
+					ta[n] = "EVO Distance (Circle to Line) Tool " + ca[i].substring(3,4);
+					taValue[n] = ca[i].substring(0,4);
 				}
 				else {
 					n--;
@@ -241,13 +263,26 @@
 				n++;
 			}
 			
+			var viewTool = document.getElementById('viewToolDb');
+			
+			
+			for(var j=0; j < ta.length; j++){
+				viewTool.options[viewTool.options.length] = new Option(ta[j], taValue[j]);
+			}
+			
+			var length = viewTool.length;
+			if(length ==0)
+				viewTool.options[viewTool.options.length] = new Option("No records", "none");
+			
 		}
-
+		
+		
+		
 		function displayResults() {
 			var ca = document.cookie.split("; ");
 			var ta = [];
 			var n = 0;
-			
+			ca = ca.sort();
 			for (var i=0;i<ca.length;i++) {
 				if (ca[i].substring(0,6) == "circle") {
 					ta[n] = "EVO Circle Tool " + ca[i].substring(6,7) + " = " + ca[i].substring(8,ca[i].length);  
@@ -276,10 +311,68 @@
 				n++;
 			}
 			
-			ta = ta.sort()
+			
 			document.getElementById("showResults").value = ta.join("\n");
 		}
-
+		
+			
+		/*
+		function displayResultsFromCookies(){
+			var ca = document.cookie.split("; ");
+			var ta = [];
+			var n = 0;
+			
+			ca = ca.sort();
+			for (var i=0;i<ca.length;i++) {
+				var cookieIndex = $.inArray(ca[i].substring(0,3), cookieNames);
+				if(cookieIndex >= 0){
+					ta[i] = displayNames[i] + " " + ca[i].substring(3,4) + " = " + ca[i].substring(5,ca[i].length);
+				}
+					
+			}
+			
+			
+			document.getElementById("showResults").value = ta.join("\n");
+			
+		}
+		
+		function addItemsIntoDbFromCookies(){
+			
+			var ca = document.cookie.split("; ");
+			var ta = [];
+			var taValue = [];
+			var n = 0;
+			
+			ca = ca.sort();
+			for (var i=0; i<ca.length; i++) {
+				var cookieIndex = $.inArray(ca[i].substring(0,3), cookieNames);
+				if(cookieIndex >= 0){
+					ta[i] = displayNames[i] + " " + ca[i].substring(3,4);
+					taValue[i] = cookieNames[cookieIndex] + a[i].substring(3,4);
+				}
+			}
+			alert('hi');
+			
+			var viewTool = document.getElementById('viewToolDb');
+			var length = viewTool.options.length;
+			for (var i = 0; i < length; i++) {
+			  viewTool.options[i] = null;
+			}
+			
+			for(var j=0; j < ta.length; j++){
+				viewTool.options[viewTool.options.length] = new Option(ta[j], taValue[j]);
+			}
+			
+			length = viewTool.options.length;
+			if(length ==0)
+				viewTool.options[viewTool.options.length] = new Option("No records", "none");
+		}
+		
+		function getValueofDb(){
+			
+		}
+		
+		*/
 	</script>
 	
 </body>
