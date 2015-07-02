@@ -106,8 +106,6 @@ function drag(e) {
 
 // moving of circle using touch screen
 function t_Move(e){
-	// to prevent screen move or zooming when using touch screen
-	e.preventDefault();
 	
 	tempcanvas = document.getElementById('canvas');
 	var rect = tempcanvas.getBoundingClientRect();
@@ -117,6 +115,8 @@ function t_Move(e){
 	// move the circle accordingly allows to move only within the frame when touches the circle.
 	if(withinCircle(p))
 	{
+		// to prevent screen move or zooming when using touch screen
+		e.preventDefault();
 		// move the circle according to where the user directs
 		circle.point.x = e.targetTouches[0].clientX - rect.left;
 		circle.point.y = e.targetTouches[0].clientY - rect.top;

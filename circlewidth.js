@@ -103,34 +103,42 @@ function drag(e) {
 
 // moving of circle using touch screen
 function t_Move(e){
-	// to prevent screen move or zooming when using touch screen
-	e.preventDefault();
 	
 	tempcanvas = document.getElementById('canvas');
 	var rect = tempcanvas.getBoundingClientRect();
 	
-	circle.point.x = e.targetTouches[0].clientX - rect.left;
-	circle.point.y = e.targetTouches[0].clientY - rect.top;
+	var touchX = e.targetTouches[0].clientX - rect.left;
+	var touchY = e.targetTouches[0].clientY - rect.top;
 	
-	var radius = circle.radius;
-	if(circle.point.x - radius < startFrameX)
+	var p = new Point(touchX, touchY);
+	
+	if(withinCircle(p))
 	{
-		circle.point.x = radius;
-	}
-	if(circle.point.y - radius < startFrameY)
-	{
-		circle.point.y = radius;
-	}
-	if(circle.point.x + radius > endFrameX)
-	{
-		circle.point.x = endFrameX - radius; 
-	}
-	if(circle.point.y + radius > endFrameY)
-	{
-		circle.point.y = endFrameY - radius; 
-	}
+		// to prevent screen move or zooming when using touch screen
+		e.preventDefault();
+		circle.point.x = e.targetTouches[0].clientX - rect.left;
+		circle.point.y = e.targetTouches[0].clientY - rect.top;
+	
+		var radius = circle.radius;
+		if(circle.point.x - radius < startFrameX)
+		{
+			circle.point.x = radius;
+		}
+		if(circle.point.y - radius < startFrameY)
+		{
+			circle.point.y = radius;
+		}
+		if(circle.point.x + radius > endFrameX)
+		{
+			circle.point.x = endFrameX - radius; 
+		}
+		if(circle.point.y + radius > endFrameY)
+		{
+			circle.point.y = endFrameY - radius; 
+		}
 
 	drawCircle(circle, innerCircle);
+	}
 }
 
 // find minimum value
