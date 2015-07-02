@@ -356,8 +356,7 @@
 			ajaxGet('info.htm?cmd=%23021%3BEVO%20OCR%3B2%3BdotType%3B0%23');
 		}
 			
-		if( document.getElementById("rotlobal
-		ationCorrection").checked) {
+		if( document.getElementById("rotationCorrection").checked) {
 			ajaxGet('info.htm?cmd=%23021%3BEVO%20OCR%3B2%3BrotateType%3B1%23');
 		} else {
 			ajaxGet('info.htm?cmd=%23021%3BEVO%20OCR%3B2%3BrotateType%3B0%23');
