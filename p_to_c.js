@@ -636,6 +636,7 @@ function addRect(x, y, w, h, fill) {
 // then add everything we want to intially exist on the canvas
 function initSquare() {
   canvas = document.getElementById('canvas');
+  canvas.height = endFrameY;
   // get canvas height
   HEIGHT = canvas.height;
   //get canvas width
@@ -643,8 +644,8 @@ function initSquare() {
   ctx = canvas.getContext('2d');
   
   ghostcanvas = document.createElement('canvas');
-  
   ghostcanvas.height = HEIGHT;
+  ghostcanvas.height = endFrameY;
   ghostcanvas.width = WIDTH;
   
   gctx = ghostcanvas.getContext('2d');
@@ -886,9 +887,9 @@ function mainDraw() {
 // Happens when the mouse is moving inside the canvas
 function myMove(e){
 	e.preventDefault();
+	getMouse(e);
 	if (isDrag) {
-		getMouse(e);
-    
+		
 		mySel.x = mx - offsetx;
 		mySel.y = my - offsety;   
 	
@@ -921,13 +922,19 @@ function myMove(e){
 		// time to resize!
 		var oldx = mySel.x;
 		var oldy = mySel.y;
-		
+		//alert(mx);
 		/*Changes made by yelling*/
 		if(mx > WIDTH)
 			mx = WIDTH;
 		if(my > HEIGHT)
 			my = HEIGHT;
 		
+		// for android bug
+		if(mx < 0)
+			mx = 0;
+		if(my < 0)
+			my = 0;
+			
 		// 0  1  2
 		// 3     4
 		// 5  6  7
@@ -972,6 +979,7 @@ function myMove(e){
 	}
   
 	getMouse(e);
+	
 	// if there's a selection see if we grabbed one of the selection handles
 	if (mySel !== null && !isResizeDrag) {
 		for (var i = 0; i < 8; i++) {
@@ -1032,7 +1040,8 @@ function myMove(e){
 function myDown(e){
 	e.preventDefault();
 	getMouse(e);
-  
+	
+		
 	if (mySel !== null && !isResizeDrag) {
 		for (var i = 0; i < 8; i++) {
 			// 0  1  2
@@ -1066,11 +1075,11 @@ function myDown(e){
 	for (var i = l-1; i >= 0; i--) {
 		// draw shape onto ghost context
 		boxes2[i].draw(gctx, 'black');
-    
+		
 		// get image data at the mouse x,y pixel
 		var imageData = gctx.getImageData(mx, my, 1, 1);
 		var index = (mx + my * imageData.width) * 4;
-    
+		
 		// if the mouse pixel exists, select and break
 		if (imageData.data[3] > 0) {
 			mySel = boxes2[i];
@@ -1103,6 +1112,7 @@ function myUp(){
 // adds a new node
 function myDblClick(e) {
 	getMouse(e);
+	
 	// for this method width and height determine the starting X and Y, too.
 	// so I left them as vars in case someone wanted to make them args for something and copy this code
 	var width = 20;
@@ -1135,7 +1145,15 @@ function getMouse(e) {
     offsetY += styleBorderTop;
 
     mx = e.pageX - offsetX;
-    my = e.pageY - offsetY
+    my = e.pageY - offsetY;
+	
+	// for android bug
+	if(mx < 0)
+	{
+			var rect = canvas.getBoundingClientRect();
+			mx = e.targetTouches[0].clientX - rect.left;
+			my = e.targetTouches[0].clientY - rect.top;
+	}
 }
 
 // If you dont want to use <body onLoad='init()'>

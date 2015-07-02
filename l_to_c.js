@@ -623,6 +623,7 @@ function addRect(x, y, w, h, fill) {
 // then add everything we want to intially exist on the canvas
 function initSquare() {
 	canvas = document.getElementById('canvas');
+	canvas.height = endFrameY;
 	// get canvas height
 	HEIGHT = canvas.height;
 	//get canvas width  
@@ -632,6 +633,7 @@ function initSquare() {
 	ghostcanvas = document.createElement('canvas');
   
 	ghostcanvas.height = HEIGHT;
+	ghostcanvas.height = endFrameY;
 	ghostcanvas.width = WIDTH;
   
 	gctx = ghostcanvas.getContext('2d');
@@ -907,6 +909,12 @@ function myMove(e){
 			mx = WIDTH;
 		if(my > HEIGHT)
 			my = HEIGHT;
+			
+		// for android bug
+		if(mx < 0)
+			mx = 0;
+		if(my < 0)
+			my = 0;
     
 		// 0  1  2
 		// 3     4
@@ -1113,7 +1121,15 @@ function getMouse(e) {
     offsetY += styleBorderTop;
 
     mx = e.pageX - offsetX;
-    my = e.pageY - offsetY
+    my = e.pageY - offsetY;
+	
+	// for android bug
+	if(mx < 0)
+	{
+			var rect = canvas.getBoundingClientRect();
+			mx = e.targetTouches[0].clientX - rect.left;
+			my = e.targetTouches[0].clientY - rect.top;
+	}
 }
 
 // If you dont want to use <body onLoad='init()'>
