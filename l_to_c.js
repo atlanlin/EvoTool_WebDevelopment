@@ -17,6 +17,7 @@ function initCircle() {
 	
 	// mouse handler
     element = document.getElementById('canvas');
+	element.style.height = IMG_HEIGHT;
     element.addEventListener('mousedown', startDragging, false);
     element.addEventListener('mousemove', drag, false);
     element.addEventListener('mouseup', stopDragging, false);

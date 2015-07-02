@@ -14,6 +14,7 @@ function initCircle() {
 	
 	// mouse handler
     element = document.getElementById('canvas');
+	element.style.height = IMG_HEIGHT;
     element.addEventListener('mousedown', startDragging, false);
     element.addEventListener('mousemove', drag, false);
     element.addEventListener('mouseup', stopDragging, false);
@@ -201,6 +202,7 @@ function drawCircle(circle, innerCircle) {
 		endFrameY = IMG_HEIGHT - 2;
 		endFrameX = IMG_WIDTH - 2;
 	}
+	
 	//drawing of arc
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx.beginPath();
