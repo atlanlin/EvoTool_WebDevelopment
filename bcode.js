@@ -289,10 +289,10 @@
 	
 	// consists of roi settings
 	function roiSet() {
-		var startX = $("#xValue").val() * GLOBAL_SCALE;
-		var startY = $("#yValue").val() * GLOBAL_SCALE;
-		var width = $("#wValue").val() * GLOBAL_SCALE;
-		var height = $("#hValue").val() * GLOBAL_SCALE;
+		var startX = $("#xValue").val() * GLOBAL_SCALE * GLOBAL_SCALE_X;
+		var startY = $("#yValue").val() * GLOBAL_SCALE * GLOBAL_SCALE_Y;
+		var width = $("#wValue").val() * GLOBAL_SCALE * GLOBAL_SCALE_X;
+		var height = $("#hValue").val() * GLOBAL_SCALE * GLOBAL_SCALE_Y;
 		
 		if (document.getElementById("wholeWindow").checked) {
 			ajaxGet('info.htm?cmd=%23021%3BEVO%20BarCode%3B2%3BSourceWindow.SourceMode%3B4%23');

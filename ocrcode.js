@@ -345,10 +345,10 @@
 	
 	// consists of advanced character options
 	function charOptions() {
-		var charStartX = $("#charXValue").val() * GLOBAL_SCALE;
-		var charStartY = $("#charYValue").val() * GLOBAL_SCALE;
-		var charWidth = $("#charWValue").val() * GLOBAL_SCALE;
-		var charHeight = $("#charHValue").val() * GLOBAL_SCALE;
+		var charStartX = $("#charXValue").val() * GLOBAL_SCALE * GLOBAL_SCALE_X;
+		var charStartY = $("#charYValue").val() * GLOBAL_SCALE * GLOBAL_SCALE_Y;
+		var charWidth = $("#charWValue").val() * GLOBAL_SCALE * GLOBAL_SCALE_X;
+		var charHeight = $("#charHValue").val() * GLOBAL_SCALE * GLOBAL_SCALE_Y;
 			
 		if (document.getElementById("dotted").checked) {
 			ajaxGet('info.htm?cmd=%23021%3BEVO%20OCR%3B2%3BdotType%3B1%23');
@@ -356,7 +356,8 @@
 			ajaxGet('info.htm?cmd=%23021%3BEVO%20OCR%3B2%3BdotType%3B0%23');
 		}
 			
-		if( document.getElementById("rotationCorrection").checked) {
+		if( document.getElementById("rotlobal
+		ationCorrection").checked) {
 			ajaxGet('info.htm?cmd=%23021%3BEVO%20OCR%3B2%3BrotateType%3B1%23');
 		} else {
 			ajaxGet('info.htm?cmd=%23021%3BEVO%20OCR%3B2%3BrotateType%3B0%23');
@@ -387,10 +388,10 @@
 				var width = iniHeight;
 			} else {
 				var startX = 0;
-				var endX = IMG_WIDTH * GLOBAL_SCALE;
-				var startY = IMG_HEIGHT / 2 * GLOBAL_SCALE;
-				var endY = IMG_HEIGHT / 2 * GLOBAL_SCALE;
-				var width = IMG_HEIGHT * GLOBAL_SCALE;
+				var endX = IMG_WIDTH * GLOBAL_SCALE * GLOBAL_SCALE_X;
+				var startY = IMG_HEIGHT / 2 * GLOBAL_SCALE * GLOBAL_SCALE_Y;
+				var endY = IMG_HEIGHT / 2 * GLOBAL_SCALE * GLOBAL_SCALE_Y;
+				var width = IMG_HEIGHT * GLOBAL_SCALE * GLOBAL_SCALE_Y;
 			}
 			
 			ajaxGet('info.htm?cmd=%23021%3BEVO%20OCR%3B1%3BposRect.PointStart.X%3B'+startX+'%23');
@@ -400,11 +401,11 @@
 			ajaxGet('info.htm?cmd=%23021%3BEVO%20OCR%3B1%3BposRect.Width%3B'+width+'%23');
 		}
 		if (document.getElementById("defineWindow").checked) {
-			var startX = $("#xValue").val() * GLOBAL_SCALE;
-			var endX = (parseInt($("#xValue").val()) + parseInt($("#wValue").val())) * GLOBAL_SCALE;
-			var startY = (parseInt($("#yValue").val()) + (parseInt($("#hValue").val())/2)) * GLOBAL_SCALE;
-			var endY = (parseInt($("#yValue").val()) + (parseInt($("#hValue").val())/2)) * GLOBAL_SCALE;
-			var width = $("#hValue").val() * GLOBAL_SCALE;
+			var startX = $("#xValue").val() * GLOBAL_SCALE * GLOBAL_SCALE_X;
+			var endX = (parseInt($("#xValue").val()) + parseInt($("#wValue").val())) * GLOBAL_SCALE * GLOBAL_SCALE_X;
+			var startY = (parseInt($("#yValue").val()) + (parseInt($("#hValue").val())/2)) * GLOBAL_SCALE * GLOBAL_SCALE_Y;
+			var endY = (parseInt($("#yValue").val()) + (parseInt($("#hValue").val())/2)) * GLOBAL_SCALE * GLOBAL_SCALE_Y;
+			var width = $("#hValue").val() * GLOBAL_SCALE * GLOBAL_SCALE_Y;
 		
 			ajaxGet('info.htm?cmd=%23021%3BEVO%20OCR%3B1%3BposRect.PointStart.X%3B'+startX+'%23');
 			ajaxGet('info.htm?cmd=%23021%3BEVO%20OCR%3B1%3BposRect.PointEnd.X%3B'+endX+'%23');			
