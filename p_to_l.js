@@ -509,7 +509,10 @@ function arrow(context,p1,p2,size){//
 function clear(c) {
   c.clearRect(0, 0, WIDTH + mySelBoxSize, HEIGHT + mySelBoxSize);
 }
-
+function setWidthAndHeight(){
+	
+	alert("No");
+}
 // Main draw loop.
 // While draw is called as often as the INTERVAL variable demands,
 // It only ever does something if the canvas gets invalidated by our code
@@ -518,8 +521,13 @@ function mainDraw() {
     clear(ctx);
     
 	if(IMG_WIDTH != null && IMG_HEIGHT != null){
+		//alert("Yes");
 		WIDTH = IMG_WIDTH;
 		HEIGHT = IMG_HEIGHT;
+		canvas.width = WIDTH;
+		canvas.height = HEIGHT;
+		ghostcanvas.height = HEIGHT;
+		ghostcanvas.width = WIDTH;
 	}
 	
     // Add stuff you want drawn in the background all the time here

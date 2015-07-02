@@ -520,6 +520,10 @@ function mainDraw() {
 	if(IMG_WIDTH != null && IMG_HEIGHT != null){
 		WIDTH = IMG_WIDTH;
 		HEIGHT = IMG_HEIGHT;
+		canvas.width = WIDTH;
+		canvas.height = HEIGHT;
+		ghostcanvas.height = HEIGHT;
+		ghostcanvas.width = WIDTH;
 	}
     // Add stuff you want drawn in the background all the time here
 	

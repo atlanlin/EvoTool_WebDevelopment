@@ -111,6 +111,7 @@ function init(){
 		var img = document.getElementById("imgSnapshot");
 		IMG_WIDTH = img.clientWidth;
 		IMG_HEIGHT = img.clientHeight;
+		setWidthAndHeight();
 		setGlobalScale();
 		//var canvasNode = document.getElementById('canvas2');
 		//canvasNode.width  = IMG_WIDTH; // in pixels
