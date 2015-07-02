@@ -280,14 +280,6 @@ function init2() {
   // add a smaller purple rectangle
   //addRect(45, 60, 25, 25, 'rgba(150,150,250,0.7)');
   
-  if(getCookie("resolution") == null)
-	{
-		setCookie("resolution","1",365);
-	}
-			
-	resolution = parseInt(getCookie("resolution"));
-	
-	setPageScaleSize(resolution);
 }
 
 function Line(x1,y1,x2,y2){

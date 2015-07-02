@@ -297,14 +297,6 @@ function init2() {
 		}
 	);
 	
-	if(getCookie("resolution") == null)
-	{
-		setCookie("resolution","1",365);
-	}
-			
-	resolution = parseInt(getCookie("resolution"));
-	
-	setPageScaleSize(resolution);
 	
 	//$("#pointProbeSettings").css("display", "none");
 	//$("#lineProbeSettings").css("display", "none");
