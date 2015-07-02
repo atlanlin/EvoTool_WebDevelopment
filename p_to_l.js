@@ -509,10 +509,6 @@ function arrow(context,p1,p2,size){//
 function clear(c) {
   c.clearRect(0, 0, WIDTH + mySelBoxSize, HEIGHT + mySelBoxSize);
 }
-function setWidthAndHeight(){
-	
-	alert("No");
-}
 // Main draw loop.
 // While draw is called as often as the INTERVAL variable demands,
 // It only ever does something if the canvas gets invalidated by our code
