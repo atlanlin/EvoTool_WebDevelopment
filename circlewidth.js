@@ -148,6 +148,12 @@ function findMin(x, y) {
 	return y
 }
 
+function findMax(x, y) {
+        if(x > y)
+			return x
+	return y
+}
+
 // mouse up & mouse out
 function stopDragging(e) {
     deltaCenter = null;
@@ -319,11 +325,13 @@ function updateCircleEvo()
 		var negative = $("#minus").val();
 		
 		// multiple by scaling offset to match coordinates at different image resolution
-		var calCenterX = centerX * GLOBAL_SCALE;
-		var calCenterY = centerY * GLOBAL_SCALE;
+		var calCenterX = centerX * GLOBAL_SCALE * GLOBAL_SCALE_X;
+		var calCenterY = centerY * GLOBAL_SCALE * GLOBAL_SCALE_Y;
 		
-		var calInnerRadius = innerRadius * GLOBAL_SCALE;
-		var calOuterRadius = outerRadius * GLOBAL_SCALE;
+		var maxGLOBAL_SCALE = findMax(GLOBAL_SCALE_X, GLOBAL_SCALE_Y);
+		
+		var calInnerRadius = innerRadius * GLOBAL_SCALE * maxGLOBAL_SCALE;
+		var calOuterRadius = outerRadius * GLOBAL_SCALE * maxGLOBAL_SCALE;
 		
 		var calDiffer = 0;
 		

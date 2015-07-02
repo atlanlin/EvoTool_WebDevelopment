@@ -152,6 +152,12 @@ function findMin(x, y) {
 	return y
 }
 
+function findMax(x, y) {
+        if(x > y)
+			return x
+	return y
+}
+
 // mouse up & mouse out
 function stopDragging(e) {
     deltaCenter = null;
@@ -330,11 +336,13 @@ function updateCircleEvo()
 	var negative = $("#minus").val();
 		
 	// multiple by scaling offset to match coordinates at different image resolution
-	var calCenterX = centerX * GLOBAL_SCALE;
-	var calCenterY = centerY * GLOBAL_SCALE;
+	var calCenterX = centerX * GLOBAL_SCALE * GLOBAL_SCALE_X;
+	var calCenterY = centerY * GLOBAL_SCALE * GLOBAL_SCALE_Y;
+	
+	var maxGLOBAL_SCALE = findMax(GLOBAL_SCALE_X, GLOBAL_SCALE_Y);
 		
-	var calInnerRadius = innerRadius * GLOBAL_SCALE;
-	var calOuterRadius = outerRadius * GLOBAL_SCALE;
+	var calInnerRadius = innerRadius * GLOBAL_SCALE * maxGLOBAL_SCALE;
+	var calOuterRadius = outerRadius * GLOBAL_SCALE * maxGLOBAL_SCALE;
 		
 	var calDiffer = 0;
 		
@@ -500,19 +508,19 @@ function displayTexts(startXtb, startYtb, endXtb, endYtb, widthtb, inBox){
 	if(arrowDirFlag == "horizontal"){
 		
 		// multiple by scaling offset to match coordinates at different image resolution
-		stx = inBox.x * GLOBAL_SCALE;
-		sty = (inBox.y + parseInt(inBox.h/2))*GLOBAL_SCALE;
-		edx = (inBox.x + inBox.w) * GLOBAL_SCALE;
-		edy = (inBox.y + parseInt(inBox.h/2)) * GLOBAL_SCALE;
-		wi = Math.abs(inBox.h) * GLOBAL_SCALE;
+		stx = inBox.x * GLOBAL_SCALE * GLOBAL_SCALE_X;
+		sty = (inBox.y + parseInt(inBox.h/2))*GLOBAL_SCALE * GLOBAL_SCALE_Y;
+		edx = (inBox.x + inBox.w) * GLOBAL_SCALE * GLOBAL_SCALE_X;
+		edy = (inBox.y + parseInt(inBox.h/2)) * GLOBAL_SCALE * GLOBAL_SCALE_Y;
+		wi = Math.abs(inBox.h) * GLOBAL_SCALE * GLOBAL_SCALE_Y;
 	}
 	else{
 		// multiple by scaling offset to match coordinates at different image resolution
-		stx = (inBox.x + parseInt(inBox.w/2)) * GLOBAL_SCALE;
-		sty = inBox.y * GLOBAL_SCALE;
-		edx = (inBox.x + parseInt(inBox.w/2)) * GLOBAL_SCALE;
-		edy = (inBox.y + inBox.h) * GLOBAL_SCALE;
-		wi = Math.abs(inBox.w) * GLOBAL_SCALE;
+		stx = (inBox.x + parseInt(inBox.w/2)) * GLOBAL_SCALE * GLOBAL_SCALE_X;
+		sty = inBox.y * GLOBAL_SCALE * GLOBAL_SCALE_Y;
+		edx = (inBox.x + parseInt(inBox.w/2)) * GLOBAL_SCALE * GLOBAL_SCALE_X;
+		edy = (inBox.y + inBox.h) * GLOBAL_SCALE * GLOBAL_SCALE_Y;
+		wi = Math.abs(inBox.w) * GLOBAL_SCALE * GLOBAL_SCALE_X;
 	}
 	document.getElementById(startXtb).value=parseInt(stx);
 	document.getElementById(startYtb).value=parseInt(sty);

@@ -98,11 +98,7 @@ function init(){
    $("#btnStart").click(function(){
 		ajaxGet("info.htm?cmd=%23002%23");
 		
-		//myInterval = setInterval(function(){
-		
 		//ajaxGet("cfg.ini", getValueFrominiFile);
-		
-		//},100);
 		
 		intervalUpdateStart();
 		
@@ -126,11 +122,7 @@ function init(){
 	$("#btnCodeStart").click(function(){
 		ajaxGet("info.htm?cmd=%23002%23");
 		
-		//myInterval = setInterval(function(){
-		
 		//ajaxGet("cfg.ini", getCodeValueFrominiFile);
-		
-		//},100);
 		
 		intervalUpdateStart();
 		
@@ -138,7 +130,7 @@ function init(){
 		setImgFlag(false);
 		
 		setTimeout(roiSet, 1000);
-		alert("");
+		//alert("");
 		}
 	);
 
@@ -150,39 +142,7 @@ function init(){
 		}
 	);
 	
-	
-	//document.getElementById("circleDetail").style.display="none";
-	//document.getElementById("rectDetail").style.display="none";
-	//document.getElementById("tolDetail").style.display="none";
-	
-	
-	
-	
-	
-	/*
-	$("input[name='toolChoice']").change(function(){
-		if($("input[name='toolChoice']:radio:checked").val()=="evoWidth"){
-			$("#evoWidthSettings").show(100);
-			$("#evoCircleSettings").hide(100);
-			//$("#evoWidthSettings").css("display", "block");
-			hideSelectedAreaCircle();
-			showSelectedAreaBox();
-		}
-		else if($("input[name='toolChoice']:radio:checked").val()=="evoCircle"){
-			$("#evoWidthSettings").hide(100);
-			$("#evoCircleSettings").show(100);
-			hideSelectedAreaBox();
-			showSelectedAreaCircle();
-			
-			
-		}else{
-			$("#evoWidthSettings").hide(100);
-			$("#evoCircleSettings").hide(100);
-			hideSelectedAreaBox();
-			hideSelectedAreaCircle();
-		}
-	});	
-	*/
+
     $("#tabs_container").tabs();
 
     //$("#searchWindow").click(function(){
@@ -195,13 +155,6 @@ function init(){
      $('#completeWindow').click(function(){
         $('#selectionArea').css("display","none");
      });
-	 
-	 
-
-
-	
-
-	
 	
 
 	gainSlider = new Dragdealer('gain-slider', {
@@ -421,18 +374,6 @@ function showSelectedAreaCircle(){
 		 
 		 .resize(function(){
 				var cw = $("#selectionArea").height();
-		 
-				/* var offset = $(this).position();
-				var xPos = offset.left;
-				var yPos = parseInt(offset.top)-27;
-				var w = $(this).width();
-				var h = $(this).height();
-				var centriodx = w;
-				var centriody = h;
-				$("#xvalue").val(centriodx);
-				$("#yvalue").val(centriody);
-				$("#startvalue").val(w);
-				$("#anglevalue").val(h); */
 				
 				$("#selectionArea").css({'width':cw+'px'});
 			}
@@ -564,38 +505,6 @@ function clickCheckedBoxes(clickedCb){
 	}
 }
 
-
-
-//set circle scale to map evo3
-//choice 0 (640 by 480), 1 (1024 by 768), 2(2592 by 1944)..
-function setPageScaleSize(resolutionChoice)
-{
-	
-	if(resolutionChoice == 0) // image 640 by 480
-	{
-		mulCenterX = 0.854;
-		mulCenterY = 1;
-		mulOuterRadius = 0.9;
-	
-	}
-	else if(resolutionChoice == 1) //image 1024 by 768
-	{
-		mulCenterX = 1.35667;
-		mulCenterY = 1.6;
-		mulOuterRadius = 1.5;
-	
-	}
-	else if(resolutionChoice == 2) // image 2592 by 1944
-	{
-		mulCenterX = 3.445;
-		mulCenterY = 4.09;
-		mulOuterRadius = 5;
-	
-	}
-	
-}
-
-
 function saveScreenshot(){
 	html2canvas(document.getElementById("imageArea")).then(function(canvas) {
 		
@@ -617,11 +526,3 @@ function setCalibrationFromCookie(){
 	if(calY !== null  && calY !== 0)
 		GLOBAL_SCALE_Y = calY;
 }
-
-var resolution = 1;
-
-var mulCenterX;
-
-var mulCenterY;
-
-var mulOuterRadius;
