@@ -674,6 +674,13 @@ function myMove(e){
 			mx = WIDTH;
 		if(my > HEIGHT)
 			my = HEIGHT;
+		
+		// for android bug
+		if(mx < 0)
+			mx = 0;
+		if(my < 0)
+			my = 0;
+	
 	
     // 0  1  2
     // 3     4
@@ -889,7 +896,15 @@ function getMouse(e) {
       offsetY += styleBorderTop;
 
       mx = e.pageX - offsetX;
-      my = e.pageY - offsetY
+      my = e.pageY - offsetY;
+	  
+	  // for android bug
+	if(mx < 0)
+	{
+			var rect = canvas.getBoundingClientRect();
+			mx = e.targetTouches[0].clientX - rect.left;
+			my = e.targetTouches[0].clientY - rect.top;
+	}
 }
 
 // If you dont want to use <body onLoad='init()'>
