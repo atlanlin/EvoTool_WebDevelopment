@@ -1,0 +1,146 @@
+<html>
+<title> Converter </title>
+
+<table>
+
+<tr>
+<td>
+<select id="cmdType">
+                    <option value="1" id="1" selected><label>set parameter with cmd name</label><br>
+                    <option value="2" id="2"><label>start</label>
+                    <option value="3" id="3"><label>stop immediately</label><br>
+                    <option value="4" id="4"><label>change ckp</label><br>
+                    <!-- <option value="5" id="5"><label>Code 128</label><br>
+                    <option value="6" id="6"><label>UCP Version A</label><br>
+                    <option value="7" id="7"><label>UCP Version B</label> -->
+                </select>
+</td>				
+</tr>
+<tr>
+<td>
+<label>Command name/Program name: </label></td><td><input id="cmdname" class="textBox" type="text" name="xvalue"></td>
+</tr>
+<tr>
+<td>
+<label>Parameter Type: </label></td><td><input id="ptype" class="textBox" type="text" name="yvalue" ></td>
+</tr>
+<tr>
+<td>
+<label>Parameter Name: </label></td><td><input id="pname" class="textBox" type="text" name="startvalue"></td>
+</tr>
+<tr>
+<td>
+<label>Value: </label></td><td><input id="pvalue" class="textBox" type="text" name="startvalue"></td>
+</tr>
+<tr>
+<td>
+
+<tr>
+<td>
+<input id="clear" type="button" value="Clear" onClick="clearValue()" > </td>
+<td>
+<input id="convert" type="button" value="Convert" class="button leftButton" onClick="selection()" > </td>
+
+</tr>
+
+<tr><td>
+<label>Result: </label></td><td><textarea id="result" rows="4" cols="50"> </textarea></td>
+</tr>
+
+
+</table>
+
+
+<script>
+
+	var ajaxget;
+	var cmdname;
+	var pType;
+	var pName;
+	var pValue;
+	
+	var semi = "%3B";
+	var hex = "%23";
+	
+	
+function selection()
+{
+
+	var optionvalue = document.getElementById("cmdType").value;
+	//document.getElementById("result").value = "";
+	cmdname = document.getElementById("cmdname").value;
+	pType = document.getElementById("ptype").value;
+	pName = document.getElementById("pname").value;
+	pValue = document.getElementById("pvalue").value;
+	//alert(test);
+	if(optionvalue == "1"){
+		convert021();
+	
+	}
+	else if(optionvalue == "2"){
+		start();
+	
+	}
+	else if(optionvalue == "3"){
+		stop();
+	
+	}
+	else if(optionvalue == "4"){
+		changeCKP();
+	
+	}
+	
+	//document.getElementById("cmdname").value = "";
+	//document.getElementById("ptype").value = "";
+	document.getElementById("pname").value = "";
+	document.getElementById("pvalue").value = "";
+
+}
+
+function convert021()
+{
+	ajaxget = "ajaxGet(\"info.htm?cmd="+hex+"021"+ semi;
+		
+	var combine = ajaxget+cmdname+semi+pType+semi+pName+semi+pValue+hex+"\");";
+	//alert(ajaxget+cmdname);
+	document.getElementById("result").value = combine;
+}
+
+function start()
+{
+	ajaxget = "ajaxGet(\"info.htm?cmd="+hex+"002"+ semi +"\");";
+	document.getElementById("result").value = ajaxget;
+}
+
+function stop()
+{
+	ajaxget = "ajaxGet(\"info.htm?cmd="+hex+"004"+ semi +"\");";
+	document.getElementById("result").value = ajaxget;
+
+}
+
+function changeCKP()
+{
+	ajaxget = "ajaxGet(\"info.htm?cmd="+hex+"017";
+	
+	var combine = ajaxget+cmdname+hex+"\");";
+	//alert(ajaxget+cmdname);
+	document.getElementById("result").value = combine;
+
+}
+
+function clearValue()
+{
+	//alert("d");
+	document.getElementById("cmdname").value = "";
+	document.getElementById("ptype").value = "";
+	document.getElementById("pname").value = "";
+	document.getElementById("pvalue").value = "";
+
+
+}
+
+
+</script>
+</html>
+
