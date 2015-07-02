@@ -10,7 +10,7 @@
 	
 	<style>
 		label{
-			font-size: 18px;
+			font-size: 16px;
 			margin-left: 10px;
 		}
 		input[type="range"]{
@@ -25,21 +25,8 @@
 			margin-left:auto;
 			margin-right:auto;
 		}
-		
-		#btnSet{
-			margin-left:auto;
-			margin-right:auto;
-			width: 60%;
-			height: 25px;
-			background-color: #33FF66;
-		}
-		
-		#btnCancel{
-			margin-left:auto;
-			margin-right:auto;
-			width: 30%;
-			height: 25px;
-			background-color: #FF00FF;
+		.disableElement{
+			color:#C0C0C0;
 		}
 	</style>
     
@@ -70,28 +57,80 @@
 			<label class="subHeading">Camera Settings</label><br><br>
 			<div class="functionTab">
 				
-				<label for="rGain">Gain:</label>
-				<input type="text" id="txtGain" value="20" style="width: 30px" readonly/><br>
-				<input type="range" name="rGain" id="rGain" value="20" min="0" max="100" oninput="changeRangeValue(this)"><br><br>
-				<label for="rShuuter">Shutter:</label>
-				<input type="text" id="txtShutter" value="20" style="width: 30px" readonly/><br>
-				<input type="range" name="rShutter" id="rShutter" value="20" min="0" max="100" oninput="changeRangeValue(this)">
+				<label class="disableElement" for="rGain">Gain:</label>
+				<input class="disableElement" type="text" id="txtGain" value="20" style="width: 30px" readonly/><br>
+				<input class="disableElement" type="range" name="rGain" id="rGain" value="20" min="0" max="100" oninput="changeRangeValue(this)"><br><br>
+				<label class="disableElement" for="rShuuter">Shutter:</label>
+				<input class="disableElement" type="text" id="txtShutter" value="20" style="width: 30px" readonly/><br>
+				<input class="disableElement" type="range" name="rShutter" id="rShutter" value="20" min="0" max="100" oninput="changeRangeValue(this)">
 				<br><br>
-				<label>Resolution</label>
-				<select id="resSelectBox">
+				<label class="disableElement" >Resolution</label>
+				<select class="disableElement" id="resSelectBox">
 					<option>640x480</option>
 					<option>1024x768</option>
 					<option>2592x1944</option>
-				</select><br><br>
-				<input id="btnSet" type="button" value="Set" onclick="setBtnClick()"/>
-				<input id="btnCancel" type="button" value="Cancel" onclick="cancelBtnClick()"/>
+				</select>
+				<hr>
+				<label style="margin-left:0px; font-size:20px;"><b>Calibration</b></label><br>
+				<label>X</label>
+				<input type="text" id="tbCalxVal" style="width:70px;"/>
+				<label>Y</label>
+				<input type="text" id="tbCalyVal" style="width:70px;"/>
+				<input id="btnSet" class="button" type="button" value="Set" onclick="setBtnClick()"/>
+				<input id="btnCancel" class="button" type="button" value="Cancel" onclick="cancelBtnClick()" style="width:100px;"/>
 			
 			</div>
             
         </div>
 		
 	</div>
-		<script>
+	<script>
+		var resCookieVal;
+		var calX, calY;
+		var COOKIE_DURATION = 365;
+		restoreValues();
+		function restoreValues(){
+			//resCookieVal = getCookie("resolution");
+			//document.getElementById("resSelectBox").selectedIndex = resCookieVal;
+			
+			calX = getCookie("calX");
+			calY = getCookie("calY");
+			document.getElementById("tbCalxVal").value = calX;
+			document.getElementById("tbCalyVal").value = calY;
+		}
+		
+		function updateValuesToCookies(){
+			//resCookieVal = document.getElementById("resSelectBox").selectedIndex;
+			//setCookie("resolution",resCookieVal,COOKIE_DURATION);
+		
+			if(!updateCalValues())
+				return false;
+			return true;
+		}
+		
+		function cancelValues(){
+			//document.getElementById("resSelectBox").selectedIndex = resCookieVal;
+			
+			document.getElementById("tbCalxVal").value = calX;
+			document.getElementById("tbCalyVal").value = calY;
+		}
+		
+		function updateCalValues(){
+			calX = document.getElementById("tbCalxVal").value;
+			calY = document.getElementById("tbCalyVal").value;
+			
+			if(isNaN(calX))
+				return false;
+			if(isNaN(calY))
+				return false;
+			
+			setCookie("calX", calX, COOKIE_DURATION);
+			setCookie("calY", calY, COOKIE_DURATION);
+			return true;
+		}
+		
+		
+		
 		function changeRangeValue(rangeId){
 			if(rangeId.id === "rGain"){
 				document.getElementById("txtGain").value = rangeId.value;
@@ -101,21 +140,22 @@
 		}
 		
 		function setBtnClick(){
-			resCookieVal = document.getElementById("resSelectBox").selectedIndex;
-			setCookie("resolution",resCookieVal,356);
+			if(updateValuesToCookies() === true)
+				alert("updated successfully");
+			else
+				alert("wrong input values");
 		}
 		
 		function cancelBtnClick(){
-			document.getElementById("resSelectBox").selectedIndex = resCookieVal;
-		}
-		
-		function setResSelectBox(index){
-			document.getElementById("resSelectBox").selectedIndex = index;
+			cancelValues();
 		}
 		
 		
-		var resCookieVal = getCookie("resolution");
-		setResSelectBox(resCookieVal);
+		
+		
+		
+		
+		
 		
 		
 		

@@ -14,6 +14,8 @@ var IMG_HEIGHT;
 var IMG_ACT_WIDTH;
 var IMG_ACT_HEIGHT;
 var GLOBAL_SCALE = 1;
+var GLOBAL_SCALE_X = 1;
+var GLOBAL_SCALE_Y = 1;
 
 /*make sure we are in the right mode*/
 //ajaxGet("info.htm?cmd=%23021%3Bchoice%3B1%3BConstantValue%3B2%23");
@@ -26,6 +28,9 @@ $(document).ready(function(){
 
 /* bind events to button elements initialize the sliders... */
 function init(){
+	setCalibrationFromCookie();
+	ajaxGet("info.htm?cmd=%23021%3BCalibration%3B1%3BScaleFactorX%3B" + GLOBAL_SCALE_X + "%23");
+	ajaxGet("info.htm?cmd=%23021%3BCalibration%3B1%3BScaleFactorY%3B" + GLOBAL_SCALE_Y + "%23");
 	
 	queryString = new Array();
     
@@ -601,6 +606,16 @@ function saveScreenshot(){
 		
 		
 	});
+}
+
+function setCalibrationFromCookie(){
+	var calX = getCookie("calX");
+	var calY = getCookie("calY");
+	
+	if(calX !== null  && calX !== 0)
+		GLOBAL_SCALE_X = calX;
+	if(calY !== null  && calY !== 0)
+		GLOBAL_SCALE_Y = calY;
 }
 
 var resolution = 1;

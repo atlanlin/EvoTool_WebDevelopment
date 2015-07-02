@@ -79,17 +79,17 @@ function displayTexts(startXtb, startYtb, endXtb, endYtb, widthtb, inBox){
 	
 	if(arrowDirFlag == "horizontal"){
 		
-		sx = inBox.x * GLOBAL_SCALE;
-		sy = (inBox.y + parseInt(inBox.h/2)) * GLOBAL_SCALE;
-		ex = (inBox.x + inBox.w) * GLOBAL_SCALE;
-		ey = (inBox.y + parseInt(inBox.h/2)) * GLOBAL_SCALE;
-		w = Math.abs(inBox.h) * GLOBAL_SCALE;
+		sx = inBox.x * GLOBAL_SCALE * GLOBAL_SCALE_X;
+		sy = (inBox.y + parseInt(inBox.h/2)) * GLOBAL_SCALE * GLOBAL_SCALE_Y;
+		ex = (inBox.x + inBox.w) * GLOBAL_SCALE * GLOBAL_SCALE_X;
+		ey = (inBox.y + parseInt(inBox.h/2)) * GLOBAL_SCALE * GLOBAL_SCALE_Y;
+		w = Math.abs(inBox.h) * GLOBAL_SCALE * GLOBAL_SCALE_Y;
 	}else{
-		sx = (inBox.x + parseInt(inBox.w/2)) * GLOBAL_SCALE;
-		sy = inBox.y * GLOBAL_SCALE;
-		ex = (inBox.x + parseInt(inBox.w/2)) * GLOBAL_SCALE;
-		ey = (inBox.y + inBox.h) * GLOBAL_SCALE;
-		w = Math.abs(inBox.w) * GLOBAL_SCALE;
+		sx = (inBox.x + parseInt(inBox.w/2)) * GLOBAL_SCALE * GLOBAL_SCALE_X;
+		sy = inBox.y * GLOBAL_SCALE * GLOBAL_SCALE_Y;
+		ex = (inBox.x + parseInt(inBox.w/2)) * GLOBAL_SCALE * GLOBAL_SCALE_X;
+		ey = (inBox.y + inBox.h) * GLOBAL_SCALE * GLOBAL_SCALE_Y;
+		w = Math.abs(inBox.w) * GLOBAL_SCALE * GLOBAL_SCALE_X;
 	}
 	document.getElementById(startXtb).value=sx.toFixed(2);
 	document.getElementById(startYtb).value=sy.toFixed(2);

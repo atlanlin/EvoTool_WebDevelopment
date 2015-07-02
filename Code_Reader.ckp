@@ -3,7 +3,7 @@ EYEVISION_VERSION
 FILE_VERSION 
 CREATED 
 CREATED_BY 
-LAST_MODIFIED 26.06.2015 11:33:14
+LAST_MODIFIED 02.07.2015 13:49:53
 LAST_MODIFIED_BY 
 START_PARM_LIST 
   KEY 1
@@ -99,10 +99,96 @@ START_PARM_LIST
     TeachInCounter 0
   END_KEY 1
   KEY 2
+    ClassVersion 3
+    CKGENERAL 
+      ClassVersion 1
+      Position 2
+      CommandType 112
+      CommandName Calibration
+      Enabled 1
+      Hidden 0
+      GraficMode 2
+      TextMode 2
+      ImageMemory 0
+      InvertResult 0
+      Memo 
+    END_CKGENERAL 
+    CKRESULT 
+      ClassVersion 1
+      Name Calibration
+      EnterResultToRTDisplay 0
+      RTDisplayIndex 0
+      RTWidthOfToleranceRegion 80
+      CKEVALUATION 
+        ClassVersion 3
+        GlobalToleranceIndex -1
+        UseWarningTolerances 0
+        NominalValue 0,0
+        PlusTolerance 10000,0
+        MinusTolerance 0,0
+        WarnPlusTolerance 0,0
+        WarnMinusTolerance 0,0
+        DynamicEvaluation 0
+        FileName 
+        Section 
+        CorrectionActive 0
+        CorrectionType 0
+        EnableAutoTeachIn 1
+        NumberOfUsedCorrections 0
+      END_CKEVALUATION 
+      CKSTATISTIC 
+        ClassVersion 1
+        EnterToStatistic 0
+        Index -1
+      END_CKSTATISTIC 
+    END_CKRESULT 
+    TypeOfAction 2
+    SubTypeOfAction 3
+    ModifyOrigin 1
+    Orientation 1
+    ScaleFactorX 1,0
+    ScaleFactorY 1,0
+    SourcePoint 2
+    SourcePoint_RegisterIndex 0
+    SourcePoint1 2
+    SourcePoint1_RegisterIndex 0
+    SourcePoint2 2
+    SourcePoint2_RegisterIndex 1
+    CKPICKUP_TYPE_READ 
+      ClassVersion 1
+      Name 
+      PickupObjectType 1
+      PickupListIndex -1
+    END_CKPICKUP_TYPE_READ 
+    CKPICKUP_TYPE_READ 
+      ClassVersion 1
+      Name 
+      PickupObjectType 0
+      PickupListIndex -1
+    END_CKPICKUP_TYPE_READ 
+    CKPICKUP_TYPE_READ 
+      ClassVersion 1
+      Name 
+      PickupObjectType 0
+      PickupListIndex -1
+    END_CKPICKUP_TYPE_READ 
+    SourceValue1 3
+    SourceValue1_RegisterIndex 0
+    SourceValue2 3
+    SourceValue2_RegisterIndex 1
+    CKPICKUP_TYPE_WRITE 
+      ClassVersion 1
+      Name 
+      PickupObjectType 5
+      PickupListIndex 1687798
+    END_CKPICKUP_TYPE_WRITE 
+    TeachInCounter 0
+  END_KEY 2
+  KEY 3
     ClassVersion 1
     CKGENERAL 
       ClassVersion 1
-      Position 3
+      Position 4
       CommandType 10010000
       CommandName EVO BarCode
       Enabled 0
@@ -191,12 +277,12 @@ START_PARM_LIST
     SendStringISOIEC15415 0
     ISOIEC15415DisplayBool 0
     TeachInCounter 0
-  END_KEY 2
-  KEY 3
+  END_KEY 3
+  KEY 4
     ClassVersion 1
     CKGENERAL 
       ClassVersion 1
-      Position 4
+      Position 5
       CommandType 10010001
       CommandName EVO DataCode
       Enabled 0
@@ -293,12 +379,12 @@ START_PARM_LIST
       PickupListIndex 383896
     END_CKPICKUP_TYPE_WRITE 
     TeachInCounter 0
-  END_KEY 3
-  KEY 4
+  END_KEY 4
+  KEY 5
     ClassVersion 1
     CKGENERAL 
       ClassVersion 1
-      Position 5
+      Position 6
       CommandType 10019111
       CommandName EVO OCR
       Enabled 0
@@ -477,12 +563,12 @@ START_PARM_LIST
       PickupListIndex 371092
     END_CKPICKUP_TYPE_WRITE 
     TeachInCounter 0
-  END_KEY 4
-  KEY 5
+  END_KEY 5
+  KEY 6
     ClassVersion 7
     CKGENERAL 
       ClassVersion 1
-      Position 7
+      Position 8
       CommandType 137
       CommandName INI FlushData
       Enabled 1
@@ -565,12 +651,12 @@ START_PARM_LIST
       PickupListIndex 1989461
     END_CKPICKUP_TYPE_WRITE 
     TeachInCounter 0
-  END_KEY 5
-  KEY 6
+  END_KEY 6
+  KEY 7
     ClassVersion 7
     CKGENERAL 
       ClassVersion 1
-      Position 8
+      Position 9
       CommandType 137
       CommandName INI CodeData
       Enabled 1
@@ -653,12 +739,12 @@ START_PARM_LIST
       PickupListIndex 447840
     END_CKPICKUP_TYPE_WRITE 
     TeachInCounter 0
-  END_KEY 6
-  KEY 7
+  END_KEY 7
+  KEY 8
     ClassVersion 14
     CKGENERAL 
       ClassVersion 1
-      Position 9
+      Position 10
       CommandType 246
       CommandName Send CodeData
       Enabled 1
@@ -765,12 +851,12 @@ START_PARM_LIST
       PickupListIndex 2003306
     END_CKPICKUP_TYPE_WRITE 
     TeachInCounter 0
-  END_KEY 7
-  KEY 8
+  END_KEY 8
+  KEY 9
     ClassVersion 4
     CKGENERAL 
       ClassVersion 1
-      Position 11
+      Position 12
       CommandType 1042
       CommandName Image transfer
       Enabled 1
@@ -852,7 +938,7 @@ START_PARM_LIST
       PickupListIndex 136655
     END_CKPICKUP_TYPE_WRITE 
     TeachInCounter 0
-  END_KEY 8
+  END_KEY 9
 END_PARM_LIST 
 CKPARAMETERS 
   ClassVersion 1
