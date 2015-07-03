@@ -104,19 +104,6 @@ function displayTexts(startXtb, startYtb, endXtb, endYtb, widthtb, arrowDirFlag,
 	document.getElementById(widthtb).value=w.toFixed(2);
 }
 
-/* function showProbeSettings(){
-	
-	document.getElementById("pointProbeSettings").style.display="none";
-	document.getElementById("lineProbeSettings").style.display="none";
-	
-	if(document.getElementById("pointProbe").checked){
-		document.getElementById("pointProbeSettings").style.display="block";
-	}
-	if(document.getElementById("lineProbe").checked){
-		document.getElementById("lineProbeSettings").style.display="block";
-	}
-} */
-
 // New methods on the Box class
 Box2.prototype = {
   // we used to have a solo draw function
@@ -209,6 +196,7 @@ function addRect(x, y, w, h, fill) {
 // then add everything we want to intially exist on the canvas
 function init2() {
 
+  //enable the command in EVO 3
   ajaxGet("info.htm?cmd=%23021%3BEVO Distance%3B2%3BGeneral.Enabled%3B1%23");
   ajaxGet("info.htm?cmd=%23021%3BINI Distance%3B2%3BGeneral.Enabled%3B1%23");
   
@@ -237,7 +225,7 @@ function init2() {
   setInterval(mainDraw, INTERVAL);
   //setInterval(evoComm, INTERVAL);
   
-  // set our events. Up and down are for dragging,
+  // set our events. Up and down are for mobile dragging,
   // double click is for making new boxes
   canvas.onmousedown = myDown;
   canvas.onmouseup = myUp;
@@ -255,19 +243,6 @@ function init2() {
   }
   
   // add custom initialization here:
-
-/* 	$("input[name='toolChoice']").change(function(){
-		if($("input[name='toolChoice']:radio:checked").val()=="evoWidth"){
-			rectFlag=true;
-		}
-		else if($("input[name='toolChoice']:radio:checked").val()=="evoCircle"){
-			//alert(String(boxes2[0].x));
-			rectFlag=false;
-			
-		}else{
-			rectFlag=true;
-		}
-	}); */
 	
 	
 	$("#cbPoint1Hor").change(function() {
@@ -296,81 +271,6 @@ function init2() {
 			
 		}
 	);
-	
-	
-	//$("#pointProbeSettings").css("display", "none");
-	//$("#lineProbeSettings").css("display", "none");
-/* 	$("input[name='probeType']").change(function(){
-		if($("input[name='probeType']:checkbox:checked").val()=="pointProbe"){
-			if($("input[name='probeType']:checkbox:checked").val()=="lineProbe"){
-				$("#pointProbeSettings").show();
-				$("#lineProbeSettings").show();
-				point1Flag = true;
-				point2Flag = true;
-			} else {
-				$("#pointProbeSettings").show();
-				$("#lineProbeSettings").hide();
-				point1Flag = true;
-				point2Flag = false;
-			}
-		}
-		else if($("input[name='probeType']:checkbox:checked").val()=="lineProbe"){
-			if($("input[name='probeType']:checkbox:checked").val()=="pointProbe"){
-				$("#pointProbeSettings").show();
-				$("#lineProbeSettings").show();
-				point1Flag = true;
-				point2Flag = true;
-			} else {
-				$("#pointProbeSettings").hide();
-				$("#lineProbeSettings").show();
-				point1Flag = false;
-				point2Flag = true;
-			}
-		}
-	}); */
-	
-	
-/* 	$("input[name='probeType']").change(function(){
-		if(($("input[name='probeType']:checkbox:checked").val()=="pointProbe") && ($("input[name='probeType']:checkbox:checked").val()=="lineProbe")){
-			$("#pointProbeSettings").show();
-			$("#lineProbeSettings").show();
-			point1Flag = true;
-			point2Flag = true;
-		}
-		else if($("input[name='probeType']:checkbox:checked").val()=="pointProbe"){
-			$("#pointProbeSettings").show();
-			$("#lineProbeSettings").hide();
-			point1Flag = true;
-			point2Flag = false;
-		} else if($("input[name='probeType']:checkbox:checked").val()=="lineProbe"){
-			$("#pointProbeSettings").hide();
-			$("#lineProbeSettings").show();
-			point1Flag = false;
-			point2Flag = true;
-		}
-		else{
-			$("#pointProbeSettings").show();
-			$("#lineProbeSettings").show();
-			point1Flag = true;
-			point2Flag = true;
-		}
-	}); */
-	
-/* 	$("input[name='probeType']").change(function(){
-		if($("input[name='probeType']:checkbox:checked").val()=="pointProbe"){
-			if($("input[name='probeType']:checkbox:checked").val()=="lineProbe"){
-				$("#pointProbeSettings").show();
-				$("#lineProbeSettings").show();
-				point1Flag = true;
-				point2Flag = true;
-			} else {
-				$("#pointProbeSettings").show();
-				$("#lineProbeSettings").hide();
-				point1Flag = true;
-				point2Flag = false;
-			}
-		}
-	}); */
   
 
   
@@ -391,6 +291,7 @@ function evoComm() {
 	toleranceSettings();
 }	// end evoComm
 
+//send settings for point1
 function point1Settings() {
 	if (document.getElementById("point1DOL").checked) {
 			ajaxGet('any.htm?cmd=%23021%3BEVO%20Distance%3B2%3BTransition_1%3B1%23');
@@ -407,6 +308,7 @@ function point1Settings() {
 	ajaxGet("info.htm?cmd=%23021%3BEVO%20Distance%3B1%3BRecPos.Width%3B"+$("#point1Width").val()+"%23");
 }
 
+//send settings for point2
 function point2Settings() {
 	if (document.getElementById("point2DOL").checked) {
 			ajaxGet('any.htm?cmd=%23021%3BEVO%20Distance%3B2%3BTransition_2%3B1%23');
@@ -423,12 +325,14 @@ function point2Settings() {
 	ajaxGet("info.htm?cmd=%23021%3BEVO%20Distance%3B1%3BRecPos2.Width%3B"+$("#point2Width").val()+"%23");
 }
 
+//send settings for tolerance
 function toleranceSettings() {
 	ajaxGet("info.htm?cmd=%23021%3BEVO%20Distance%3B1%3BResult[0].Evaluation.NominalValue%3B"+$("#nv").val()+"%23");
 	ajaxGet("info.htm?cmd=%23021%3BEVO%20Distance%3B1%3BResult[0].Evaluation.PlusTolerance%3B"+$("#plus").val()+"%23");
 	ajaxGet("info.htm?cmd=%23021%3BEVO%20Distance%3B1%3BResult[0].Evaluation.MinusTolerance%3B"+$("#minus").val()+"%23");
 }
 
+//create a line and an arrow head
 function Line(x1,y1,x2,y2){
         this.x1=x1;
         this.y1=y1;
@@ -527,32 +431,14 @@ function mainDraw() {
 	}
     // Add stuff you want drawn in the background all the time here
 	
-    /*var imageObj = new Image();
-
-    imageObj.onload = function() {
-    ctx.drawImage(imageObj, 0, 0);
-    };
-    imageObj.src = 'jpeg.jpg';
-	
-	var img = document.getElementsByTagName('img')[0];
-	img.src = can.toDataURL();
-	*/
-	
     // draw all boxes
     var l = boxes2.length;
-	
-/* 	//added by yelling
-	if(rectFlag==false){
-		boxes2[0].erase(ctx);
-	} */
 	
     for (var i = 0; i < l; i++) {
       boxes2[i].draw(ctx); // we used to call drawshape, but now each box draws itself
     }
     
     // Add stuff you want drawn on top all the time here
-	
-	
 	
 	//create text boxes2[1] is for line, boxes2[0] is for point
 	ctx.font="20px Georgia";
@@ -566,6 +452,7 @@ function mainDraw() {
 	//arrow(ctx, point1, point2, 10);
     //canvasValid = true;
 	
+	//calculation for EVO 3 parameters
 	var lx1, ly1, lx2, ly2;
 	if(point2ArrowDirFlag == "horizontal"){
 		lx1 = boxes2[1].x;
@@ -578,6 +465,7 @@ function mainDraw() {
 		lx2 = boxes2[1].x + boxes2[1].w/2;
 		ly2 = boxes2[1].y + boxes2[1].h;
 	}
+	
 	// create a new line object
     var line=new Line(lx1,ly1,lx2,ly2);
     // draw the line
@@ -585,6 +473,7 @@ function mainDraw() {
 	
 	displayTexts('point2StartX', 'point2StartY', 'point2EndX', 'point2EndY', 'point2Width', point2ArrowDirFlag, boxes2[1]);
 	
+	//calculation for EVO 3 parameters
 	var plx1, ply1, plx2, ply2;
 	if(point1ArrowDirFlag == "horizontal"){
 		plx1 = boxes2[0].x;
@@ -664,7 +553,7 @@ function myMove(e){
     var oldx = mySel.x;
     var oldy = mySel.y;
     
-	/*Changes made by yelling*/
+		//limit mouse movements
 		if(mx > WIDTH)
 			mx = WIDTH;
 		if(my > HEIGHT)

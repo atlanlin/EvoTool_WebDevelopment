@@ -214,31 +214,13 @@ function init2() {
   // make mainDraw() fire every INTERVAL milliseconds
   setInterval(mainDraw, INTERVAL);
   
-  // set our events. Up and down are for dragging,
+  // set our events. Up and down are for mobile dragging,
   // double click is for making new boxes
   canvas.onmousedown = myDown;
   canvas.onmouseup = myUp;
   //canvas.ondblclick = myDblClick;
   canvas.onmousemove = myMove;
-  
-  //$.mobile.loading( "hide" );
-  //$.mobile.loading().hide();
-  /*
-	  //delegate the event binding so elements in the DOM now and in the future will be bound-to
-	$(document).delegate('#my-dialog-button', 'click', function () {
-
-		//change to the dialog, forcing the hash to remain the same and the page to be viewed as a dialog
-		$.mobile.changePage($('#my-dialog'), {
-			changeHash : false,
-			role       : 'dialog'
-		});
-	});
-  */
-  //$(canvas).bind( "vmousemove", myMove );
-  //$(canvas).bind( "vmousedown", myDown );
-  //$(canvas).bind( "vmouseup", myUp );
-  //$(canvas).bind( "vmouseover", myMove );
-  
+   
   
   canvas.addEventListener("touchstart", myDown);
   canvas.addEventListener("touchend", myUp);
@@ -282,6 +264,7 @@ function init2() {
   
 }
 
+//draw a line and an arrow head
 function Line(x1,y1,x2,y2){
         this.x1=x1;
         this.y1=y1;
@@ -380,16 +363,6 @@ function mainDraw() {
 	}
     
     // Add stuff you want drawn in the background all the time here
-    /*var imageObj = new Image();
-
-    imageObj.onload = function() {
-    ctx.drawImage(imageObj, 0, 0);
-    };
-    imageObj.src = 'jpeg.jpg';
-	
-	var img = document.getElementsByTagName('img')[0];
-	img.src = can.toDataURL();
-	*/
 	
     // draw all boxes
     var l = boxes2.length;
@@ -409,6 +382,8 @@ function mainDraw() {
 	//arrow(ctx, point1, point2, 10);
     //canvasValid = true;
 	
+	
+	//calculation for EVO 3 parameters
 	var lx1, ly1, lx2, ly2;
 	if(arrowDirFlag == "horizontal"){
 		lx1 = boxes2[0].x;
@@ -444,7 +419,7 @@ function myMove(e){
     mySel.y = my - offsety;   
     
 	
-	/*Changes made by yelling*/
+	//limit mouse movements
 	if(mySel.x < 0)
 		mySel.x = 0;
 	else if(mySel.x + mySel.w > WIDTH)
