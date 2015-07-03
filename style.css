@@ -331,4 +331,6 @@ border-color: #FF4040 #A60000 #A60000 #FF4040;
   background-color:#E6E6DC; 
 }
 
+#showResults,#resultDisplay { resize: vertical; }
+
 canvas{ display:block; border:0px solid black; }

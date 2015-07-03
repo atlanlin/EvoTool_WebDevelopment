@@ -1,67 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
+    <meta charset="UTF-8">
+    <title>Circle Measurement</title>
 	<link rel="stylesheet" type="text/css" href="style.css">
-	<title>Barcode Reader</title>
-	<script src="jquery.js"></script>
-	<script src="evt.js"></script>
+    <script src="jquery.js"></script> 
+    <script src="evt.js"></script>
     <script src="camset.js"></script>
-	<style>
-		#logo{
-			width:100px;
-			float:right;
-			
-		}
-		#toolSelectionForm{
-			border-style:solid;
-			border-width:3px;
-			background-color:#81A594;
-			width: 300px;
-			float:left;
-		}
-		input[type="radio"]{
-			margin-left: 20px;
-		}
-		#imageRegion{
-			border-style:solid;
-			border-width:3px;
-			background-color:#81A594;
-			margin-left:320px;
-			position:absolute;
-			width: 1000px;
-		}
-		#imgView{
-			margin-left: auto;
-			margin-right:auto;
-			display: block;
-			height:690px;
-		}
-		textarea{
-			margin: 15px;
-			width:90%;
-			font-size:12px;
-		}
-	</style>
-	
+    
 </head>
-
 <body>
-	
-	<div id="toolSelectionForm"> 
-		<p style="margin:10px;"><b>Results</b></p>
-		<textarea id="showResults" rows="12" ></textarea><br>
-		<input class="button" type="button" id="btnClear" value="Clear"/>
-		<input class="button" type="button" onClick="location.href='index.htm'" value="Main Menu"/><br><br>
+    <img id="logo" src="vclogo.png" alt="vclogo"> 
+    <div class="functionPanel"> 
+        <div id="rightRegion" style="width:300px;">
+            <input class="button" type="button" onClick="location.href='index.htm'" value="Main Menu"/><br><br>
 		
-		<label><b>Measured Items</b></label>
-		<select id="viewToolDb">
-		</select><br>
-		<input type="button" id="btnView" value="View" class="button"/>
+			<hr>
+			
+			
+			
+			<p class="fHeading1">Result</p>
+             <div id="resultDetail">
+                <textarea id="showResults" rows="6" style="width:90%;" readonly></textarea>
+				<input class="button" type="button" id="btnClear" value="Clear"/>
+            </div>
+			
+			
+			
+        </div>
+       <div id="imageArea" style="width:602px;">
+	   <!-- can be remove -->
+			
+			
+			<img id="imgView" style="width:602px;"></img>
+			
+       </div>
+        <div id="leftmenu"> 
 		
-		<hr>
-		
-		<label><b>Select Measure Tool</b></label><br>
+			<label><b>Select Measure Tool</b></label><br>
 			<input type="radio" name="selectedTool" value="circle" checked>EVO Circle</input><br>
 			<input type="radio" name="selectedTool" value="width">EVO Width</input><br>
 			<input type="radio" name="selectedTool" value="ptp">EVO Distance (Point To Point)</input><br>
@@ -69,29 +45,33 @@
 			<input type="radio" name="selectedTool" value="ptc">EVO Distance (Point To Circle)</input><br>
 			<input type="radio" name="selectedTool" value="ctl">EVO Distance (Circle To Line)</input><br>
 			<input type="radio" name="selectedTool" value="ctc">EVO Distance (Circle To Circle)</input><br>
-		<br>
-		<label><b>Tool Number</b></label>
-		<select id="selectedNumber">
-		  <option value="1">Tool 1</option>
-		  <option value="2">Tool 2</option>
-		  <option value="3">Tool 3</option>
-		  <option value="4">Tool 4</option>
-		  <option value="5">Tool 5</option>
-		  <option value="6">Tool 6</option>
-		  <option value="7">Tool 7</option>
-		  <option value="8">Tool 8</option>
-		  <option value="9">Tool 9</option>
-		</select><br>
-		<input type="button" id="btnGo" value="Select" class="button"/>
+			<br>
+			<label><b>Tool Number</b></label>
+			<select id="selectedNumber">
+			  <option value="1">Tool 1</option>
+			  <option value="2">Tool 2</option>
+			  <option value="3">Tool 3</option>
+			  <option value="4">Tool 4</option>
+			  <option value="5">Tool 5</option>
+			  <option value="6">Tool 6</option>
+			  <option value="7">Tool 7</option>
+			  <option value="8">Tool 8</option>
+			  <option value="9">Tool 9</option>
+			</select><br>
+			<input type="button" id="btnGo" value="Select" class="button"/>
+			
+			<hr>
+			
+			<label><b>Measured Items</b></label>
+			<select id="viewToolDb">
+			</select><br>
+			<input type="button" id="btnView" value="View" class="button"/>
 		
-		<p></p>
-		
-	</div>
-	
-	<div id="imageRegion">
-		<img id="imgView"/>
-	</div>
-	<script>
+			
+			
+			
+        </div>
+		<script>
 		var cookieNames = ["circle", "width", "ptp", "ptl", "ptc", "ltc", "ctc", "ctl"];
 		var displayNames = ["EVO Circle Tool", "EVO Width Tool", "EVO Distance (Point to Point) Tool", "EVO Distance(Point to Line) Tool", 
 			"EVO Distance (Point to Circle) Tool", "EVO Distance (Line to Circle) Tool", "EVO Distance (Circle to Circle) Tool", "EVO Distance (Circle to Line) Tool"];
@@ -234,31 +214,31 @@
 			ca = ca.sort();
 			for (var i=0;i<ca.length;i++) {
 				if (ca[i].substring(0,6) == "circle") {
-					ta[n] = "EVO Circle Tool " + ca[i].substring(6,7);
+					ta[n] = (n+1) +". Circle Tool " + ca[i].substring(6,7);
 					taValue[n] = ca[i].substring(0,7);
 				}
 				else if (ca[i].substring(0,5) == "width") {
-					ta[n] = "EVO Width Tool " + ca[i].substring(5,6);
+					ta[n] = (n+1) +". Width Tool " + ca[i].substring(5,6);
 					taValue[n] = ca[i].substring(0,6);
 				}
 				else if (ca[i].substring(0,3) == "ptp") {
-					ta[n] = "EVO Distance (Point to Point) Tool " + ca[i].substring(3,4);
+					ta[n] = (n+1) +". Point to Point Dist " + ca[i].substring(3,4);
 					taValue[n] = ca[i].substring(0,4); 
 				}
 				else if (ca[i].substring(0,3) == "ptl") {
-					ta[n] = "EVO Distance (Point to Line) Tool " + ca[i].substring(3,4);
+					ta[n] = (n+1) +". Point to Line Dist " + ca[i].substring(3,4);
 					taValue[n] = ca[i].substring(0,4);
 				}
 				else if (ca[i].substring(0,3) == "ptc") {
-					ta[n] = "EVO Distance (Point to Circle) Tool " + ca[i].substring(3,4); 
+					ta[n] = (n+1) +". Point to Circle Dist " + ca[i].substring(3,4); 
 					taValue[n] = ca[i].substring(0,4);
 				}
 				else if (ca[i].substring(0,3) == "ctc") {
-					ta[n] = "EVO Distance (Circle to Circle) Tool " + ca[i].substring(3,4);
+					ta[n] = (n+1) +". Circle to Circle Dist " + ca[i].substring(3,4);
 					taValue[n] = ca[i].substring(0,4);
 				}
 				else if (ca[i].substring(0,3) == "ctl") {
-					ta[n] = "EVO Distance (Circle to Line) Tool " + ca[i].substring(3,4);
+					ta[n] = (n+1) +". Circle to Line Dist " + ca[i].substring(3,4);
 					taValue[n] = ca[i].substring(0,4);
 				}
 				else {
@@ -289,25 +269,25 @@
 			ca = ca.sort();
 			for (var i=0;i<ca.length;i++) {
 				if (ca[i].substring(0,6) == "circle") {
-					ta[n] = "EVO Circle Tool " + ca[i].substring(6,7) + " = " + ca[i].substring(8,ca[i].length);  
+					ta[n] = (n+1) +". Circle Tool " + ca[i].substring(6,7) + " = " + ca[i].substring(8,ca[i].length);  
 				}
 				else if (ca[i].substring(0,5) == "width") {
-					ta[n] = "EVO Width Tool " + ca[i].substring(5,6) + " = " + ca[i].substring(7,ca[i].length);  
+					ta[n] = (n+1) +". Width Tool " + ca[i].substring(5,6) + " = " + ca[i].substring(7,ca[i].length);  
 				}
 				else if (ca[i].substring(0,3) == "ptp") {
-					ta[n] = "EVO Distance (Point to Point) Tool " + ca[i].substring(3,4) + " = " + ca[i].substring(5,ca[i].length);  
+					ta[n] = (n+1) +". Point to Point Dist " + ca[i].substring(3,4) + " = " + ca[i].substring(5,ca[i].length);  
 				}
 				else if (ca[i].substring(0,3) == "ptl") {
-					ta[n] = "EVO Distance (Point to Line) Tool " + ca[i].substring(3,4) + " = " + ca[i].substring(5,ca[i].length);  
+					ta[n] = (n+1) +". Point to Line Dist " + ca[i].substring(3,4) + " = " + ca[i].substring(5,ca[i].length);  
 				}
 				else if (ca[i].substring(0,3) == "ptc") {
-					ta[n] = "EVO Distance (Point to Circle) Tool " + ca[i].substring(3,4) + " = " + ca[i].substring(5,ca[i].length);  
+					ta[n] = (n+1) +". Point to Circle Dist " + ca[i].substring(3,4) + " = " + ca[i].substring(5,ca[i].length);  
 				}
 				else if (ca[i].substring(0,3) == "ctc") {
-					ta[n] = "EVO Distance (Circle to Circle) Tool " + ca[i].substring(3,4) + " = " + ca[i].substring(5,ca[i].length);  
+					ta[n] = (n+1) +". Circle to Circle Dist " + ca[i].substring(3,4) + " = " + ca[i].substring(5,ca[i].length);  
 				}
 				else if (ca[i].substring(0,3) == "ctl") {
-					ta[n] = "EVO Distance (Circle to Line) Tool " + ca[i].substring(3,4) + " = " + ca[i].substring(5,ca[i].length);  
+					ta[n] = (n+1) +". Circle to Line Dist " + ca[i].substring(3,4) + " = " + ca[i].substring(5,ca[i].length);  
 				}
 				else {
 					n--;
@@ -378,6 +358,14 @@
 		
 		*/
 	</script>
-	
+				
 </body>
+
+
+
+<script>
+
+
+</script>
+
 </html>
