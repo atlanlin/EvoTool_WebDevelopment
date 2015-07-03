@@ -890,10 +890,13 @@ function myMove(e){
 	getMouse(e);
 	if (isDrag) {
 		
-		mySel.x = mx - offsetx;
-		mySel.y = my - offsety;   
+		if(mySel.x >= 0 && mySel.y >= 0)
+		{
+			mySel.x = mx - offsetx;
+			mySel.y = my - offsety;   
+		}
 	
-	
+	//alert(mySel.x);
 		/*Changes made by yelling*/
 		if(mySel.x < 0)
 			mySel.x = 0;
@@ -912,7 +915,6 @@ function myMove(e){
 			mySel.y = HEIGHT;
 		else if(mySel.y + mySel.h < 0)
 			mySel.y = 0 - mySel.h;
-	
 	
 	
 	
