@@ -16,7 +16,8 @@
 	var HEIGHT;
 	var HEIGHT;
 	var INTERVAL = 20;	// how often, in milliseconds, we check to see if a redraw is needed
-
+	var EVOINTERVAL = 500;
+	
 	var isDrag = false;
 	var isResizeDrag = false;
 	var expectResize = -1;	// will save the # of the selection handle if the mouse is over one
@@ -192,6 +193,7 @@
 	  
 		// make mainDraw() fire every INTERVAL milliseconds
 		setInterval(mainDraw, INTERVAL);
+		setInterval(evoComm, EVOINTERVAL);
 
 		// set our events
 		// up and down are for dragging
