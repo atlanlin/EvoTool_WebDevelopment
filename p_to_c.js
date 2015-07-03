@@ -13,7 +13,7 @@ window.onload = function() {
 // circle code
 
 function initCircle() {
-		
+	ajaxGet("info.htm?cmd=%23021%3BEVO Distance%3B2%3BOptionForType%3B2%23");	
     drawCircle(circle, innerCircle);
 	
 	// mouse handler
@@ -998,6 +998,7 @@ function myMove(e){
 			if (mx >= cur.x && mx <= cur.x + mySelBoxSize*3 &&
 			my >= cur.y && my <= cur.y + mySelBoxSize*3) {
 				// we found one!
+				e.preventDefault();
 				expectResize = i;
 				invalidate();
         
@@ -1041,6 +1042,7 @@ function myMove(e){
 
 // Happens when the mouse is clicked in the canvas
 function myDown(e){
+	//e.preventDefault();
 	getMouse(e);
 	
 		

@@ -12,7 +12,7 @@ window.onload = function() {
 // circle code
 
 function initCircle() {
-
+	ajaxGet("info.htm?cmd=%23021%3BEVO Distance%3B2%3BOptionForType%3B3%23");
     drawCircle(circle, innerCircle);
 	
 	// mouse handler
@@ -869,11 +869,10 @@ function mainDraw() {
 
 // Happens when the mouse is moving inside the canvas
 function myMove(e){
-	
-	if (isDrag) {
-		
-		e.preventDefault();
 		getMouse(e);
+	if (isDrag) {
+		e.preventDefault();
+		
     
 		mySel.x = mx - offsetx;
 		mySel.y = my - offsety;   
