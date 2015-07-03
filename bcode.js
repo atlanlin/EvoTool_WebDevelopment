@@ -195,7 +195,6 @@
 
 		// set our events
 		// up and down are for dragging
-		// double click is for making new boxes
 		canvas.onmousedown = myDown;
 		canvas.onmouseup = myUp;
 		canvas.onmousemove = myMove;
@@ -377,14 +376,26 @@
 			var oldw = mySel.w;
 			var oldh = mySel.h;
 			
+			/*Changes made by yelling*/
+			if (mx > WIDTH)
+				mx = WIDTH;
+			if (my > HEIGHT)
+				my = HEIGHT;
+			
+			// for android bug
+			if (mx < 0)
+				mx = 0;
+			if (my < 0)
+				my = 0;
+			
 			switch (expectResize) {
 				case 0:
 					// added by weiling
 					while (mx >= oldx + oldw) {
-						mx = (oldx + oldw) - 1;
+						mx = (oldx + oldw) - 25;
 					}
 					while (my >= oldy + oldh) {
-						my = (oldy + oldh) - 1;
+						my = (oldy + oldh) - 25;
 					}
 					mySel.x = mx;
 					mySel.y = my;
@@ -394,7 +405,7 @@
 				case 1:
 					// added by weiling
 					while (my >= oldy + oldh) {
-						my = (oldy + oldh) - 1;
+						my = (oldy + oldh) - 25;
 					}
 					mySel.y = my;
 					mySel.h += oldy - my;
@@ -402,10 +413,10 @@
 				case 2:
 					// added by weiling
 					while (mx <= oldx) {
-						mx = oldx + 1;
+						mx = oldx + 25;
 					}
 					while (my >= oldy + oldh) {
-						my = (oldy + oldh) - 1;
+						my = (oldy + oldh) - 25;
 					}
 					mySel.y = my;
 					mySel.w = mx - oldx;
@@ -414,7 +425,7 @@
 				case 3:
 					// added by weiling
 					while (mx >= oldx + oldw) {
-						mx = (oldx + oldw) - 1;
+						mx = (oldx + oldw) - 25;
 					}
 					mySel.x = mx;
 					mySel.w += oldx - mx;
@@ -422,17 +433,17 @@
 				case 4:
 					// added by weiling
 					while (mx <= oldx) {
-						mx = oldx + 1;
+						mx = oldx + 25;
 					}
 					mySel.w = mx - oldx;
 					break;
 				case 5:
 					// added by weiling
 					while (mx >= oldx + oldw) {
-						mx = (oldx + oldw) - 1;
+						mx = (oldx + oldw) - 25;
 					}
 					while (my <= oldy) {
-						my = oldy + 1;
+						my = oldy + 25;
 					}
 					mySel.x = mx;
 					mySel.w += oldx - mx;
@@ -441,17 +452,17 @@
 				case 6:
 					// added by weiling
 					while (my <= oldy) {
-						my = oldy + 1;
+						my = oldy + 25;
 					}
 					mySel.h = my - oldy;
 					break;
 				case 7:
 					// added by weiling
 					while (mx <= oldx) {
-						mx = oldx + 1;
+						mx = oldx + 25;
 					}
 					while (my <= oldy) {
-						my = oldy + 1;
+						my = oldy + 25;
 					}
 					mySel.w = mx - oldx;
 					mySel.h = my - oldy;
@@ -532,8 +543,7 @@
 				// we dont need to use the ghost context because
 				// selection handles will always be rectangles
 				//changes made by yelling
-				if (mx >= cur.x && mx <= cur.x + mySelBoxSize*3 &&
-					my >= cur.y && my <= cur.y + mySelBoxSize*3) {
+				if (mx >= cur.x && mx <= cur.x + mySelBoxSize*3 && my >= cur.y && my <= cur.y + mySelBoxSize*3) {
 					// we found one!
 					expectResize = i;
 					isResizeDrag = true;
@@ -617,6 +627,13 @@
 
 		mx = e.pageX - offsetX;
 		my = e.pageY - offsetY
+		
+		// for android bug
+		if (mx < 0) {
+			var rect = canvas.getBoundingClientRect();
+			mx = e.targetTouches[0].clientX - rect.left;
+			my = e.targetTouches[0].clientY - rect.top;
+		}
 	}
 
 	// if you don't want to use <body onLoad='init()'>

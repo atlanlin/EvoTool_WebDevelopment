@@ -63,12 +63,12 @@
 	// box object to hold data
 	// default width and height
 	function Box2() {
-	  this.x = 0;
-	  this.y = 0;
-	  this.w = 1;
-	  this.h = 1;
-	  this.fill = '#444444';
-	  this.lineColor = '#444444';
+		this.x = 0;
+		this.y = 0;
+		this.w = 1;
+		this.h = 1;
+		this.fill = '#444444';
+		this.lineColor = '#444444';
 	}
 
 	//added by yelling
@@ -203,7 +203,6 @@
 
 		// set our events
 		// up and down are for dragging
-		// double click is for making new boxes
 		canvas.onmousedown = myDown;
 		canvas.onmouseup = myUp;
 		canvas.onmousemove = myMove;
@@ -508,14 +507,26 @@
 			var oldw = mySel.w;
 			var oldh = mySel.h;
 			
+			/*Changes made by yelling*/
+			if (mx > WIDTH)
+				mx = WIDTH;
+			if (my > HEIGHT)
+				my = HEIGHT;
+			
+			// for android bug
+			if (mx < 0)
+				mx = 0;
+			if (my < 0)
+				my = 0;
+			
 			switch (expectResize) {
 				case 0:
 					// added by weiling
 					while (mx >= oldx + oldw) {
-						mx = (oldx + oldw) - 1;
+						mx = (oldx + oldw) - 25;
 					}
 					while (my >= oldy + oldh) {
-						my = (oldy + oldh) - 1;
+						my = (oldy + oldh) - 25;
 					}
 					mySel.x = mx;
 					mySel.y = my;
@@ -525,7 +536,7 @@
 				case 1:
 					// added by weiling
 					while (my >= oldy + oldh) {
-						my = (oldy + oldh) - 1;
+						my = (oldy + oldh) - 25;
 					}
 					mySel.y = my;
 					mySel.h += oldy - my;
@@ -533,10 +544,10 @@
 				case 2:
 					// added by weiling
 					while (mx <= oldx) {
-						mx = oldx + 1;
+						mx = oldx + 25;
 					}
 					while (my >= oldy + oldh) {
-						my = (oldy + oldh) - 1;
+						my = (oldy + oldh) - 25;
 					}
 					mySel.y = my;
 					mySel.w = mx - oldx;
@@ -545,7 +556,7 @@
 				case 3:
 					// added by weiling
 					while (mx >= oldx + oldw) {
-						mx = (oldx + oldw) - 1;
+						mx = (oldx + oldw) - 25;
 					}
 					mySel.x = mx;
 					mySel.w += oldx - mx;
@@ -553,17 +564,17 @@
 				case 4:
 					// added by weiling
 					while (mx <= oldx) {
-						mx = oldx + 1;
+						mx = oldx + 25;
 					}
 					mySel.w = mx - oldx;
 					break;
 				case 5:
 					// added by weiling
 					while (mx >= oldx + oldw) {
-						mx = (oldx + oldw) - 1;
+						mx = (oldx + oldw) - 25;
 					}
 					while (my <= oldy) {
-						my = oldy + 1;
+						my = oldy + 25;
 					}
 					mySel.x = mx;
 					mySel.w += oldx - mx;
@@ -572,17 +583,17 @@
 				case 6:
 					// added by weiling
 					while (my <= oldy) {
-						my = oldy + 1;
+						my = oldy + 25;
 					}
 					mySel.h = my - oldy;
 					break;
 				case 7:
 					// added by weiling
 					while (mx <= oldx) {
-						mx = oldx + 1;
+						mx = oldx + 25;
 					}
 					while (my <= oldy) {
-						my = oldy + 1;
+						my = oldy + 25;
 					}
 					mySel.w = mx - oldx;
 					mySel.h = my - oldy;
@@ -650,6 +661,8 @@
 		e.preventDefault();
 		getMouse(e);
 		
+		//added by yelling
+		// if there's a selection see if we grabbed one of the selection handles
 		if (mySel !== null && !isResizeDrag) {
 			for (var i = 0; i < 8; i++) {
 				// 0  1  2
@@ -720,16 +733,6 @@
 		expectResize = -1;
 	}	// end myUp
 
-	// adds a new node
-	function myDblClick(e) {
-		getMouse(e);
-		// for this method width and height determine the starting X and Y, too.
-		// so I left them as vars in case someone wanted to make them args for something and copy this code
-		var width = 20;
-		var height = 20;
-		addRect(mx - (width / 2), my - (height / 2), width, height, 'rgba(220,205,65,0.7)');
-	}	// end myDblClick
-
 	function invalidate() {
 		canvasValid = false;
 	}
@@ -755,6 +758,13 @@
 
 		mx = e.pageX - offsetX;
 		my = e.pageY - offsetY
+		
+		// for android bug
+		if (mx < 0) {
+			var rect = canvas.getBoundingClientRect();
+			mx = e.targetTouches[0].clientX - rect.left;
+			my = e.targetTouches[0].clientY - rect.top;
+		}
 	}
 
 	// if you don't want to use <body onLoad='init()'>
