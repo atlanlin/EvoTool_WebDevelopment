@@ -869,10 +869,9 @@ function mainDraw() {
 
 // Happens when the mouse is moving inside the canvas
 function myMove(e){
-		getMouse(e);
+	e.preventDefault();
 	if (isDrag) {
-		e.preventDefault();
-		
+		getMouse(e);
     
 		mySel.x = mx - offsetx;
 		mySel.y = my - offsety;   
@@ -902,7 +901,6 @@ function myMove(e){
 		invalidate();
 	} else if (isResizeDrag) {
 		// time to resize!
-		e.preventDefault();
 		var oldx = mySel.x;
 		var oldy = mySel.y;
 		
@@ -976,7 +974,6 @@ function myMove(e){
 	  //changes made by yelling
       if (mx >= cur.x && mx <= cur.x + mySelBoxSize*3 && my >= cur.y && my <= cur.y + mySelBoxSize*3) {
 			// we found one!
-			e.preventDefault();
 			expectResize = i;
 			invalidate();
         
@@ -1020,7 +1017,7 @@ function myMove(e){
 
 // Happens when the mouse is clicked in the canvas
 function myDown(e){
-	
+	e.preventDefault();
 	getMouse(e);
   
 	if (mySel !== null && !isResizeDrag) {
@@ -1036,7 +1033,6 @@ function myDown(e){
 			//changes made by yelling
 			if (mx >= cur.x && mx <= cur.x + mySelBoxSize*3 && my >= cur.y && my <= cur.y + mySelBoxSize*3) {
 				// we found one!
-				e.preventDefault();
 				expectResize = i;
 				isResizeDrag = true;
 				invalidate();
@@ -1157,7 +1153,7 @@ var canvas;
 var ctx;
 var WIDTH;
 var HEIGHT;
-var INTERVAL = 1;  // how often, in milliseconds, we check to see if a redraw is needed
+var INTERVAL = 20;  // how often, in milliseconds, we check to see if a redraw is needed
 var UPDATERECTINTERVAL = 1000;
 var UPDATECIRCLEINTERVAL = 3000;
 
