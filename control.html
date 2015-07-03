@@ -46,7 +46,12 @@
 			<input type="radio" name="selectedTool" value="ctl">EVO Distance (Circle To Line)</input><br>
 			<input type="radio" name="selectedTool" value="ctc">EVO Distance (Circle To Circle)</input><br>
 			<br>
+			<table>
+			<tr>
+			<td>
 			<label><b>Tool Number</b></label>
+			</td>
+			<td>
 			<select id="selectedNumber">
 			  <option value="1">Tool 1</option>
 			  <option value="2">Tool 2</option>
@@ -57,15 +62,34 @@
 			  <option value="7">Tool 7</option>
 			  <option value="8">Tool 8</option>
 			  <option value="9">Tool 9</option>
-			</select><br>
+			</select>
+			</tr>
+			<tr> <td></td>
+			<td>
 			<input type="button" id="btnGo" value="Select" class="button"/>
-			
+			</td>
+			</tr>
+			<table>
 			<hr>
 			
-			<label><b>Measured Items</b></label>
+			<table>
+			<tr>
+			<td>
+			<label><b>Select screenshot items</b></label>
+			</td> 
+			</tr>
+			<tr>
+			<td>
 			<select id="viewToolDb">
-			</select><br>
+			</select>
+			</td>
+			</tr>
+			<tr>
+			<td>
 			<input type="button" id="btnView" value="View" class="button"/>
+			</td>
+			</tr>
+			</table>
 		
 			
 			
