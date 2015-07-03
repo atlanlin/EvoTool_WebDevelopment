@@ -13,7 +13,7 @@ window.onload = function() {
 // circle code
 
 function initCircle() {
-	ajaxGet("info.htm?cmd=%23021%3BEVO Distance%3B2%3BOptionForType%3B2%23");	
+		
     drawCircle(circle, innerCircle);
 	
 	// mouse handler
@@ -886,10 +886,10 @@ function mainDraw() {
 
 // Happens when the mouse is moving inside the canvas
 function myMove(e){
-	e.preventDefault();
+	
 	getMouse(e);
 	if (isDrag) {
-		
+		e.preventDefault();
 		if(mySel.x >= 0 && mySel.y >= 0)
 		{
 			mySel.x = mx - offsetx;
@@ -922,6 +922,7 @@ function myMove(e){
 		invalidate();
 	} else if (isResizeDrag) {
 		// time to resize!
+		e.preventDefault();
 		var oldx = mySel.x;
 		var oldy = mySel.y;
 		//alert(mx);
@@ -1040,7 +1041,6 @@ function myMove(e){
 
 // Happens when the mouse is clicked in the canvas
 function myDown(e){
-	e.preventDefault();
 	getMouse(e);
 	
 		
@@ -1058,6 +1058,7 @@ function myDown(e){
 			if (mx >= cur.x && mx <= cur.x + mySelBoxSize*3 &&
 				my >= cur.y && my <= cur.y + mySelBoxSize*3) {
 				// we found one!
+				e.preventDefault();
 				expectResize = i;
 				isResizeDrag = true;
 				invalidate();
