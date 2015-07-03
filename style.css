@@ -29,6 +29,7 @@ body{
     width:250px;
     height:650px;
     border-right:1px solid white;
+	color:#00628B;
 }
 
 input[type="radio"]{
