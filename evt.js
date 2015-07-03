@@ -201,13 +201,17 @@ function intervalUpdateStart(){
 	if(oInterval === 0){
 		oInterval = setInterval("updateHelper()",IMG_UPDATE_INTERVAL);
 		setCookie("live",1,30);
+		document.getElementById("commuStatus").style.display = "block";
 	}
 }
 
 function intervalUpdateStop(){
+	
 	clearInterval(oInterval);
 	oInterval = 0;
 	setCookie("live",0,0);
+	document.getElementById("commuStatus").style.display = "none";
+	
 }
 
 
@@ -234,7 +238,7 @@ function canvasUpdate(imgSrc,w,h){
 		document.getElementById("commuStatus").style.backgroundColor = "green";
 		timeout = 0;
 	}
-	else if(timeout > 30){
+	else if(timeout > 10){
 		count += 1;
 		oImg.src = imgSrc + "?" + count;
 		document.getElementById("commuStatus").innerHTML = "<p>Connection Status: Timeout</p>";
@@ -268,7 +272,7 @@ function updateImg(imgId,imgSrc){
 		document.getElementById("commuStatus").innerHTML = "<p>Connection Status: OK</p>";
 		document.getElementById("commuStatus").style.backgroundColor = "green";
 	}
-	else if(timeout > 30){//initially 10
+	else if(timeout > 10){//initially 10
 		count += 1;
 		oImg.src = imgSrc + "?" + count;
 		timeout = 0;
