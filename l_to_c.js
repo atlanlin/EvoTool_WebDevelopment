@@ -12,7 +12,7 @@ window.onload = function() {
 // circle code
 
 function initCircle() {
-
+	ajaxGet("info.htm?cmd=%23021%3BEVO Distance%3B2%3BOptionForType%3B3%23");
     drawCircle(circle, innerCircle);
 	
 	// mouse handler
