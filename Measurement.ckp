@@ -3,7 +3,7 @@ EYEVISION_VERSION
 FILE_VERSION 
 CREATED 
 CREATED_BY 
-LAST_MODIFIED 02.07.2015 13:49:36
+LAST_MODIFIED 03.07.2015 14:46:55
 LAST_MODIFIED_BY 
 START_PARM_LIST 
   KEY 1
@@ -63,7 +63,7 @@ START_PARM_LIST
     TriggerTimeout 0
     TriggerInputLine 0
     MinimumSignalDuration 0
-    FileName C:/Users/user3/Desktop/training640480.bmp
+    FileName C:/Users/user2/Desktop/3.0_21 Test Demo/Door Knob -Align-Measure/Images/Training_1_00000.jpg
     AVIframes 1
     AVImode 0
     HWTriggeredCapture 0
@@ -265,16 +265,16 @@ START_PARM_LIST
       ClassVersion 1
       Name 
       ID 0
-      InnerRadius 25,0
-      OuterRadius 75,0
+      InnerRadius 34,0425531915
+      OuterRadius 68,0851
       StartAngle 0,0
       LengthAngle 360,0
       Direction 1
       CKPOINT 
         ClassVersion 1
         Name 
-        X 67,8335
-        Y 80,0
+        X 68,0851
+        Y 68,0851
       END_CKPOINT 
     END_CKCIRCLE_PROBE_POS 
     DetermineEum 0
@@ -307,7 +307,7 @@ START_PARM_LIST
       Position 5
       CommandType 10010020
       CommandName EVO Distance
-      Enabled 0
+      Enabled 1
       Hidden 0
       GraficMode 2
       TextMode 2
@@ -390,50 +390,50 @@ START_PARM_LIST
     OptionForType 1
     CKRECT_PROBE_POS 
       ClassVersion 1
-      Width 68,8
+      Width 50,38
       CKPOINT 
         ClassVersion 1
         Name Start point
-        X 464,422
-        Y 283,376
+        X 526,98
+        Y 389,45
       END_CKPOINT 
       CKPOINT 
         ClassVersion 1
         Name End point
-        X 532,515
-        Y 283,198
+        X 456,17
+        Y 389,45
       END_CKPOINT 
     END_CKRECT_PROBE_POS 
     CKRECT_PROBE_POS 
       ClassVersion 1
-      Width 49,6
+      Width 88,51
       CKPOINT 
         ClassVersion 1
         Name Start point
-        X 595,76
-        Y 361,384
+        X 354,04
+        Y 388,09
       END_CKPOINT 
       CKPOINT 
         ClassVersion 1
         Name End point
-        X 647,69
-        Y 361,157
+        X 435,74
+        Y 388,09
       END_CKPOINT 
     END_CKRECT_PROBE_POS 
     CKCIRCLE_PROBE_POS 
       ClassVersion 1
       Name 
       ID 0
-      InnerRadius 13,348
-      OuterRadius 42,313
+      InnerRadius 25,0
+      OuterRadius 50,0
       StartAngle 0,0
       LengthAngle 360,0
       Direction 1
       CKPOINT 
         ClassVersion 1
         Name 
-        X 500,126
-        Y 278,4
+        X 50,0
+        Y 150,0
       END_CKPOINT 
     END_CKCIRCLE_PROBE_POS 
     CKCIRCLE_PROBE_POS 
@@ -793,7 +793,7 @@ START_PARM_LIST
       Position 9
       CommandType 137
       CommandName INI Distance
-      Enabled 0
+      Enabled 1
       Hidden 0
       GraficMode 2
       TextMode 2
@@ -838,7 +838,7 @@ START_PARM_LIST
     ApplyCorrection 0
     CorrectionType 1
     VariableType 0
-    ConstantValue 0,0
+    ConstantValue 77,3528
     IniFileName C:\temp\wwwroot\cfg.ini
     SegmentName cam1
     EntryName result1
@@ -1021,8 +1021,8 @@ START_PARM_LIST
     ImageAreaHeight 0,0
     DynamicRoiSource 1
     ImageResolutionType 1
-    OverlayType 3
-    TransmissionImageFormat 1
+    OverlayType 2
+    TransmissionImageFormat 2
     TransmissionImageCompression 2
     UDPRetryNOfRetries 0
     UDPRetryTimeout 20

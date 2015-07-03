@@ -3,7 +3,7 @@ EYEVISION_VERSION
 FILE_VERSION 
 CREATED 
 CREATED_BY 
-LAST_MODIFIED 02.07.2015 13:24:12
+LAST_MODIFIED 03.07.2015 14:46:51
 LAST_MODIFIED_BY 
 START_PARM_LIST 
   KEY 1
@@ -59,7 +59,7 @@ START_PARM_LIST
     ApplyTimeout 0
     CaptureWithFlash 0
     NumberOfCyclicFiles 10
-    CurrentCycleNumber 3
+    CurrentCycleNumber 4
     TriggerTimeout 0
     TriggerInputLine 0
     MinimumSignalDuration 0
@@ -1689,8 +1689,8 @@ START_PARM_LIST
     ImageAreaHeight 0,0
     DynamicRoiSource 1
     ImageResolutionType 1
-    OverlayType 3
-    TransmissionImageFormat 1
+    OverlayType 2
+    TransmissionImageFormat 2
     TransmissionImageCompression 2
     UDPRetryNOfRetries 0
     UDPRetryTimeout 20
