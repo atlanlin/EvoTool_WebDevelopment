@@ -65,6 +65,7 @@
 			<canvas id="canvas2" style="z-index: 1; position:absolute; left:0px; top:27px;" width="752" height="480">
 			Your browser does not support HTML5 Canvas. Please use latest version.
 			</canvas>
+			
 		 </div>
 		 
         
@@ -169,15 +170,15 @@
 			
 			
 			
-        </div>
-		
+        </div><br>
+		<div id="commuStatus"/>
 		
 	</div>
 		
 	<script>
+		var EVO_UPDATE_INTERVAL = 2000;
 		//enable width command in evo 3
 		ajaxGet("info.htm?cmd=%23021%3BEVO Width%3B2%3BGeneral.Enabled%3B1%23");
-			
 		ajaxGet("info.htm?cmd=%23021%3BINI Width%3B2%3BGeneral.Enabled%3B1%23");
 		
 		//send parameters to evo 3
@@ -225,6 +226,7 @@
 			saveScreenshot();
 		});
 		
+		setInterval(updateParameters, EVO_UPDATE_INTERVAL);
 		
 	</script>
 </body>

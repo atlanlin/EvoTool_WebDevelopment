@@ -16,6 +16,7 @@ var ctx;
 var WIDTH;
 var HEIGHT;
 var INTERVAL = 20;  // how often, in milliseconds, we check to see if a redraw is needed
+var EVO_UPDATE_INTERVAL = 2000;
 
 var isDrag = false;
 var isResizeDrag = false;
@@ -222,7 +223,7 @@ function init2() {
   
   // make mainDraw() fire every INTERVAL milliseconds
   setInterval(mainDraw, INTERVAL);
-  //setInterval(evoComm, INTERVAL);
+  setInterval(evoComm, EVO_UPDATE_INTERVAL);
   
   // set our events. Up and down are for mobile dragging,
   // double click is for making new boxes
@@ -263,7 +264,7 @@ function init2() {
 		
 			evoComm();
 			
-			ajaxGet("info.htm?cmd=%23021%3BEVO Distance%3B2%3BOptionForType%3B1%23");
+			
 			ajaxGet("cfg.ini", getValueFrominiFile);
 			saveScreenshot();
 		}
@@ -282,6 +283,7 @@ function init2() {
 
 // consists of EVO communication commands
 function evoComm() {
+	ajaxGet("info.htm?cmd=%23021%3BEVO Distance%3B2%3BOptionForType%3B1%23");
 	pointSettings();
 	lineSettings();
 	toleranceSettings();
