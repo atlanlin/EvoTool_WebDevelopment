@@ -518,8 +518,9 @@ function mainDraw() {
 
 // Happens when the mouse is moving inside the canvas
 function myMove(e){
-	e.preventDefault();
+	
   if (isDrag) {
+	  e.preventDefault();
     getMouse(e);
     
     mySel.x = mx - offsetx;
@@ -552,6 +553,7 @@ function myMove(e){
     invalidate();
   } else if (isResizeDrag) {
     // time ro resize!
+	e.preventDefault();
     var oldx = mySel.x;
     var oldy = mySel.y;
     
@@ -627,6 +629,7 @@ function myMove(e){
       if (mx >= cur.x && mx <= cur.x + mySelBoxSize*3 &&
           my >= cur.y && my <= cur.y + mySelBoxSize*3) {
         // we found one!
+		e.preventDefault();
         expectResize = i;
         invalidate();
         
@@ -670,7 +673,6 @@ function myMove(e){
 
 // Happens when the mouse is clicked in the canvas
 function myDown(e){
-	e.preventDefault();
   getMouse(e);
   
   if (mySel !== null && !isResizeDrag) {
@@ -687,6 +689,7 @@ function myDown(e){
       if (mx >= cur.x && mx <= cur.x + mySelBoxSize*3 &&
           my >= cur.y && my <= cur.y + mySelBoxSize*3) {
         // we found one!
+		e.preventDefault();
         expectResize = i;
 		isResizeDrag = true;
         invalidate();
