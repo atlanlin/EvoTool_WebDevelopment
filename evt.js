@@ -234,15 +234,13 @@ function canvasUpdate(imgSrc,w,h){
 		oImg = new Image();
 		count += 1;
 		oImg.src = imgSrc + "?" + count;
-		document.getElementById("commuStatus").innerHTML = "<p>Connection Status: OK</p>";
-		document.getElementById("commuStatus").style.backgroundColor = "green";
+		document.getElementById("commuStatus").innerHTML = "<label>Connection Status: OK</label>";
 		timeout = 0;
 	}
 	else if(timeout > 10){
 		count += 1;
 		oImg.src = imgSrc + "?" + count;
-		document.getElementById("commuStatus").innerHTML = "<p>Connection Status: Timeout</p>";
-		document.getElementById("commuStatus").style.backgroundColor = "red";
+		document.getElementById("commuStatus").innerHTML = "<label>Connection Status: Timeout</label>";
 		timeout = 0;
 	}
 }
@@ -269,15 +267,13 @@ function updateImg(imgId,imgSrc){
 		count += 1;
 		oImg.src = imgSrc + "?" + count;
 		timeout = 0;
-		document.getElementById("commuStatus").innerHTML = "<p>Connection Status: OK</p>";
-		document.getElementById("commuStatus").style.backgroundColor = "green";
+		document.getElementById("commuStatus").innerHTML = "<label>Connection Status: OK</label>";
 	}
 	else if(timeout > 10){//initially 10
 		count += 1;
 		oImg.src = imgSrc + "?" + count;
 		timeout = 0;
-		document.getElementById("commuStatus").innerHTML = "<p>Connection Status: Timeout</p>";
-		document.getElementById("commuStatus").style.backgroundColor = "red";
+		document.getElementById("commuStatus").innerHTML = "<label>Connection Status: Timeout</label>";
 	}
 }
 
