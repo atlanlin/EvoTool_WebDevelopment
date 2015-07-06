@@ -15,7 +15,6 @@
     
 </head>
 <body onload="init2()">
-	<label id="warning-message">This webpage is best used when it is in landscape mode.</label>
     <img id="logo" src="vclogo.png" alt="vclogo"> 
     <div class="functionPanel">
 		<div id="rightRegion">
@@ -224,6 +223,8 @@
 		$("#btnMeasure").click(function(){
 			updateParameters();
 			ajaxGet("cfg.ini", getValueFrominiFile);
+			//html2canvas has limitation which has to go back to origin point, therefore scroll to top
+			$("body").scrollTop(0);
 			saveScreenshot();
 		});
 		
