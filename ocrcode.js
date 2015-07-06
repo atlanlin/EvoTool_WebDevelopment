@@ -14,9 +14,8 @@
 	var ctx;
 	var WIDTH;
 	var HEIGHT;
-	var HEIGHT;
 	var INTERVAL = 20;	// how often, in milliseconds, we check to see if a redraw is needed
-	var EVOINTERVAL = 500;
+	var EVOINTERVAL = 1000;
 	
 	var isDrag = false;
 	var isResizeDrag = false;
@@ -57,7 +56,6 @@
 	// flag for rectangle opacity (roi window)
 	var rectRoiFlag = false;
 	
-	var iniRoiFlag = false;
 	var iniWidth = 752;
 	var iniHeight = 752;
 
@@ -181,7 +179,6 @@
 		ajaxGet('info.htm?cmd=%23021%3BEVO%20DataCode%3B2%3BGeneral.Enabled%3B0%23');
 		
 		evoComm();
-		iniRoiFlag = true;
 		
 		canvas = document.getElementById('canvas2');
 		HEIGHT = canvas.height;
@@ -385,7 +382,7 @@
 	// consists of roi settings
 	function roiSet() {
 		if (document.getElementById("wholeWindow").checked) {					
-			if (iniRoiFlag == false) {
+			if (isNaN(IMG_WIDTH) || isNaN(IMG_HEIGHT) || isNaN(GLOBAL_SCALE)) {
 				var startX = 0;
 				var endX = iniWidth;
 				var startY = iniHeight / 2;
@@ -396,7 +393,7 @@
 				var endX = IMG_WIDTH * GLOBAL_SCALE;
 				var startY = IMG_HEIGHT / 2 * GLOBAL_SCALE;
 				var endY = IMG_HEIGHT / 2 * GLOBAL_SCALE;
-				var width = IMG_HEIGHT * GLOBAL_SCALE;
+				var width = IMG_HEIGHT;
 			}
 			
 			ajaxGet('info.htm?cmd=%23021%3BEVO%20OCR%3B1%3BposRect.PointStart.X%3B'+startX+'%23');

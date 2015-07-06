@@ -14,9 +14,8 @@
 	var ctx;
 	var WIDTH;
 	var HEIGHT;
-	var HEIGHT;
 	var INTERVAL = 20;	// how often, in milliseconds, we check to see if a redraw is needed
-	var EVOINTERVAL = 500;
+	var EVOINTERVAL = 1000;
 	
 	var isDrag = false;
 	var isResizeDrag = false;
