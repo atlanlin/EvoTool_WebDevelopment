@@ -57,8 +57,6 @@ input[type="radio"]{
 
 #anybarcode select{
     background-color:#E6E6DC;
-    color:#00628B;
-    border-radius:5px 5px;
     margin-top:10px;
     width:120px;
     height:26px;
@@ -103,16 +101,22 @@ input[type="radio"]{
 			width: 48px;
 		}
 
-#codeSelection, #regionOfInterest, #polaritySelection,
-#fontSelection
-{
+#codeSelection, #regionOfInterest, #polaritySelection, #characterSelection{
     width:200;
     height:150;
     text-align:left;
-    font-size:12px;
+    font-size:14px;
     position:relative;
 	margin-left:10px;
     color:#00628B;
+}
+
+#fontSelection select{
+    background-color:#E6E6DC;
+    margin-top:10px;
+    width:120px;
+    height:26px;
+    margin-left:10px;
 }
 
 .functionTab{

@@ -6,12 +6,14 @@
     <link rel="stylesheet" type="text/css" href="style.css">
     <link rel="stylesheet" type="text/css" href="jqueryui.css">
 	<script src="jquery.js"></script>
+	<script src="html2canvas.min.js"></script>
     <script src="evt.js"></script>
     <script src="camset.js"></script>
     <script src="jqueryui.js"></script>
 	<script src="ocrcode.js"></script>
 </head>
 <body onload="init2()">
+	<label id="warning-message">This webpage is best used when it is in landscape mode.</label>
     <img id="logo" src="vclogo.png" alt="vclogo"> 
     <div class="functionPanel"> 
 	
@@ -88,11 +90,21 @@
 				<input type="checkbox" id="characterSize" value="characterSize" name="characterSize" onclick="javascript:showCharWindowConfig()"><label>Character Size</label><br>
 				
 				<div id="characterBoundary" style="display:none">
-                    <label>X:</label> <input type="text" id="charXValue" class="textBox" name="charXValue">
-                    <label>Y:</label> <input type="text" id="charYValue" class="textBox" name="charYValue"></br>
-                    <label>W:</label> <input type="text" id="charWValue" class="textBox" name="charWValue">
-                    <label>H:</label> <input type="text" id="charHValue" class="textBox" name="charHValue">
-                
+				<table border="0">
+					<tr>
+						<td>X:</td>
+						<td><input id="charXValue" class="textBox" type="text"></td>
+						<td>Y:</td>
+						<td><input id="charYValue" class="textBox" type="text"></td>
+					</tr>
+					
+					<tr>
+						<td>W:</td>
+						<td><input id="charWValue" class="textBox" type="text"></td>
+						<td>H:</td>
+						<td><input id="charHValue" class="textBox" type="text"></td>
+					</tr>				
+				</table>
 				</div>
             </div>
 			
@@ -107,12 +119,21 @@
 				</div>
 				
 				<div id="windowBoundary">
-                <form>
-                    <label>X:</label> <input type="text" id="xValue" class="textBox" name="xValue">
-                    <label>Y:</label> <input type="text" id="yValue" class="textBox" name="yValue"></br>
-                    <label>W:</label> <input type="text" id="wValue" class="textBox" name="wValue">
-                    <label>H:</label> <input type="text" id="hValue" class="textBox" name="hValue">
-                </form> 
+				<table border="0">
+					<tr>
+						<td>X:</td>
+						<td><input id="xValue" class="textBox" type="text"></td>
+						<td>Y:</td>
+						<td><input id="yValue" class="textBox" type="text"></td>
+					</tr>
+					
+					<tr>
+						<td>W:</td>
+						<td><input id="wValue" class="textBox" type="text"></td>
+						<td>H:</td>
+						<td><input id="hValue" class="textBox" type="text"></td>
+					</tr>				
+				</table>
 				</div>
             </div>
 
