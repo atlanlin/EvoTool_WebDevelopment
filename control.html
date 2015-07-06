@@ -114,15 +114,21 @@
 			document.getElementById("btnView").addEventListener("click", loadScreenshot);
 			document.getElementById("btnClear").addEventListener("click", function(){
 				
-				for(var i = 0; i < cookieNames.length; i++){
-					for(var j = 1; j < 10; j++){
-						if(getCookie(cookieNames[i]+String(j)) != null)
-						{
-							deleteCookie(cookieNames[i]+String(j));
-						}
+				var userResponse = confirm("Do you wish to delete all existing data?");
+					if (userResponse == true) {
+						for(var i = 0; i < cookieNames.length; i++){
+							for(var j = 1; j < 10; j++){
+								if(getCookie(cookieNames[i]+String(j)) != null)
+								{
+									deleteCookie(cookieNames[i]+String(j));
+								}
 						
-					}
-				}
+							}
+						}
+					} else {
+					
+					} 
+				
 				
 				displayResults();
 				addItemsIntoDb();
@@ -162,8 +168,24 @@
 						requestedPage="";
 				}
 				
-				var queryString = requestedPage + "tool=" + tool + "&toolNo=" + toolNo;
-				window.location.href = queryString;
+				var foundStatus = findCookie(tool, toolNo);
+				
+				if(foundStatus == true)
+				{
+					var userResponse = confirm("The "+tool+ " "+toolNo + " measurement have been used. Do you wish to overwrite the existing data?");
+					if (userResponse == true) {
+						var queryString = requestedPage + "tool=" + tool + "&toolNo=" + toolNo;
+						window.location.href = queryString;
+					} else {
+					
+					} 
+				}
+				else
+				{
+					var queryString = requestedPage + "tool=" + tool + "&toolNo=" + toolNo;
+					window.location.href = queryString;
+				}
+				
 			});
 			
 			
@@ -322,6 +344,51 @@
 			
 			
 			document.getElementById("showResults").value = ta.join("\n");
+		}
+		
+		function findCookie(cookieName, tool)
+		{
+			var ca = document.cookie.split("; ");
+			var ta = [];
+			var n = 0;
+			ca = ca.sort();
+			
+			for (var i=0;i<ca.length;i++) {
+				if (ca[i].substring(0,6) == "circle") {
+					if (ca[i].substring(6,7) == tool)
+						return true;
+				}
+				else if (ca[i].substring(0,5) == "width") {
+					if (ca[i].substring(5,6) == tool)
+						return true;
+				}
+				else if (ca[i].substring(0,3) == "ptp") {
+					if (ca[i].substring(3,4) == tool)
+						return true;
+				}
+				else if (ca[i].substring(0,3) == "ptl") {
+					if (ca[i].substring(3,4) == tool)
+						return true;
+				}
+				else if (ca[i].substring(0,3) == "ptc") {
+					if (ca[i].substring(3,4) == tool)
+						return true;					
+				}
+				else if (ca[i].substring(0,3) == "ctc") {
+					if (ca[i].substring(3,4) == tool)
+						return true;
+				}
+				else if (ca[i].substring(0,3) == "ctl") {
+					if (ca[i].substring(3,4) == tool)
+						return true;					
+				}
+				else {
+					n--;
+				}
+				n++;
+			}
+			return false;
+		
 		}
 		
 			
