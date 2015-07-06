@@ -396,7 +396,10 @@ function outputInnerUpdate(size){
 function outputStartAngle1(size){
 	var intSize = parseInt(size);
 
-	startAngle1 = intSize;
+	if(EndAngle1 > intSize)
+	{
+		startAngle1 = intSize;
+	}
 	if(startAngle1 == 0 && EndAngle1 == 0)
 		startAngle1 = 1;
 	else if(startAngle1 == 360 && EndAngle1 == 360)
@@ -411,7 +414,10 @@ function outputStartAngle1(size){
 function outputEndAngle1(size){
 	var intSize = parseInt(size);
 
-	EndAngle1 = intSize;
+	if(startAngle1 < intSize)
+	{
+		EndAngle1 = intSize;
+	}
 	if(startAngle1 == 0 && EndAngle1 == 0)
 		EndAngle1 = 1;
 	else if(startAngle1 == 360 && EndAngle1 == 360)
@@ -458,7 +464,10 @@ function outputInnerUpdate2(size){
 function outputStartAngle2(size){
 	var intSize = parseInt(size);
 
-	startAngle2 = intSize;
+	if(EndAngle2 > intSize)
+	{
+		startAngle2 = intSize;
+	}
 	if(startAngle2 == 0 && EndAngle2 == 0)
 		startAngle2 = 1;
 	else if(startAngle2 == 360 && EndAngle2 == 360)
@@ -472,7 +481,10 @@ function outputStartAngle2(size){
 function outputEndAngle2(size){
 	var intSize = parseInt(size);
 
-	EndAngle2 = intSize;
+	if(startAngle2 < intSize)
+	{
+		EndAngle2 = intSize;
+	}
 	if(startAngle2 == 0 && EndAngle2 == 0)
 		EndAngle2 = 1;
 	else if(startAngle2 == 360 && EndAngle2 == 360)

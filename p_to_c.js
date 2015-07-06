@@ -297,7 +297,10 @@ function outputInnerUpdate(size){
 function outputStartAngle(size){
 	var intSize = parseInt(size);
 
-	startAngle = intSize;
+	if(EndAngle > intSize)
+	{
+		startAngle = intSize;
+	}
 	if(startAngle == 0 && EndAngle == 0)
 		startAngle = 1;
 	else if(startAngle == 360 && EndAngle == 360)
@@ -310,7 +313,10 @@ function outputStartAngle(size){
 function outputEndAngle(size){
 	var intSize = parseInt(size);
 
-	EndAngle = intSize;
+	if(startAngle < intSize)
+	{
+		EndAngle = intSize;
+	}
 	if(startAngle == 0 && EndAngle == 0)
 		EndAngle = 1;
 	else if(startAngle == 360 && EndAngle == 360)
