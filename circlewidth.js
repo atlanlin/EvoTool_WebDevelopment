@@ -29,6 +29,8 @@ function initCircle() {
 	// getting of result to display on text area
 	$("#btnMeasure").click(function(){
 		ajaxGet("cfg.ini", getValueFrominiFile);
+		//html2canvas has limitation which has to go back to origin point, therefore scroll to top
+		$("body").scrollTop(0);
 		//save screenshot of the current measurement taken
 		saveScreenshot();
 	}

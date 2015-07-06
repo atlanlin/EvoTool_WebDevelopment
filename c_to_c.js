@@ -31,6 +31,8 @@ function initCircle() {
 	$("#btnMeasure").click(function(){
 			ajaxGet("info.htm?cmd=%23021%3BEVO Distance%3B2%3BOptionForType%3B4%23");
 			ajaxGet("cfg.ini", getValueFrominiFile);
+			//html2canvas has limitation which has to go back to origin point, therefore scroll to top
+			$("body").scrollTop(0);
 			//save screenshot of the current measurement taken
 			saveScreenshot();
 		}
