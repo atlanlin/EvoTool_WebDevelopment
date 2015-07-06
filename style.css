@@ -32,6 +32,22 @@ body{
 	color:#00628B;
 }
 
+#warning-message {
+	background-color:red;
+	font-weight:bold;
+	font-size:20px;
+	text-align: center;
+	display: none; 
+}
+@media only screen and (orientation:portrait){
+    #wrapper { display:none; }
+    #warning-message { display:block; }
+}
+@media only screen and (orientation:landscape){
+    #warning-message { display:none; }
+}
+
+
 input[type="radio"]{
     margin-top:10px;  
     background-color:#E6E6DC;
