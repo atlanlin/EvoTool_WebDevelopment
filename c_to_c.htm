@@ -14,6 +14,7 @@
     
 </head>
 <body>
+	<label id="warning-message">This webpage is best used when it is in landscape mode.</label>
     <img id="logo" src="vclogo.png" alt="vclogo"> 
     <div class="functionPanel"> 
         <div id="rightRegion">
@@ -58,11 +59,10 @@
 				<img id="ctcImgBtn" class="imageButton" src="ctcImgBtn.jpg" 
 					onclick="clickedImgBtn(this.id)"></img>
 				
-			</div>
-			-->
+			</div>-->
         </div>
-       <div id="imageArea">
-	   <!-- can be remove -->
+		<div id="imageArea">
+		<!-- can be remove -->
             <div id="mainTitle">Distance Measurement: Circle to Circle</div>
 			<!-- till here -->
            <div id="selectionArea"></div>
@@ -78,101 +78,77 @@
             <!-- <img id="imgSnapshot"></img> -->
        </div>
         <div id="leftmenu"> 
-			<label class="fHeading1">Settings</label>
+			<label class="fHeading1">Circle 1 Settings</label>
 			<div id="roiSelection" class="functionTab">
 				<table>
 					<tr>
-						<td><label for=fader> Circle 1 Size </label></td>
-						<td><input id="outerRadiusValue1" type=range min=20 max=200 value=50 id=fader step=1 oninput="outputUpdate(value)"></td>
-						<td><output for=fader id=circlevolume>50</output></td>
+						<td>
+							<label for=fader> Circle Size </label>
+						</td>
+						<td>
+							<input id="outerRadiusValue1" type=range min=20 max=200 value=50 id=fader step=1 oninput="outputUpdate(value)">
+						</td>
+						<td>
+							<output for=fader id=circlevolume>50</output>
+						</td>
 					</tr>
 					<tr>
-						<td><label for=fader> Inner Circle 1 Size </label></td>
-						<td><input id="innerRadiusValue1" type=range min=10 max=190 value=25 id=fader step=1 oninput="outputInnerUpdate(value)"></td>
-						<td><output for=fader id=innercirclevolume>25</output></td>
-					</tr>
-					
-					<tr>
-						<td><label for=fader> Start Angle 1 </label></td>
-						<td><input id="startAngleValue1" type=range min=0 max=360 value=0 id=fader step=1 oninput="outputStartAngle1(value)"></td>
-						<td><output for=fader id=startangle1>0</output></td>
-					</tr>
-					
-					<tr>
-						<td><label for=fader> End Angle 1 </label></td>
-						<td><input id="endAngleValue1" type=range min=0 max=360 value=360 id=fader step=1 oninput="outputEndAngle1(value)"></td>
-						<td><output for=fader id=endangle1>360</output></td>
-					</tr>
-					
-					<tr>
-						<td></td>
-						<td><input type="radio" id="clightToDark" value="lightToDark" name="circle" checked><label>Light To Dark</label></td>
+						<td>
+							<label for=fader> Inner Circle Size </label>
+						</td>
+						<td>
+							<input id="innerRadiusValue1" type=range min=10 max=190 value=25 id=fader step=1 oninput="outputInnerUpdate(value)">
+						</td>
+						<td>
+							<output for=fader id=innercirclevolume>25</output>
+						</td>
 					</tr>
 					<tr>
-						<td></td>
-						<td><input type="radio" id="cdarkToLight" value="darkToLight" name="circle"><label>Dark To Light</label></td> 
+						<td>
+							<label for=fader> Start Angle </label>
+						</td>
+						<td>
+							<input id="startAngleValue1" type=range min=0 max=360 value=0 id=fader step=1 oninput="outputStartAngle1(value)">
+						</td>
+						<td>
+							<output for=fader id=startangle1>0</output>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label for=fader> End Angle </label>
+						</td>
+						<td>
+							<input id="endAngleValue1" type=range min=0 max=360 value=360 id=fader step=1 oninput="outputEndAngle1(value)">
+						</td>
+						<td>
+							<output for=fader id=endangle1>360</output>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label>Edge Detection</label>
+						</td>
+						<td>
+							<input type="radio" id="clightToDark" value="lightToDark" name="circle" checked><label>Light To Dark</label> </br>
+							<input type="radio" id="cdarkToLight" value="darkToLight" name="circle"><label>Dark To Light</label>
+						</td> 
 					</tr>
 				</table>
-				<hr>
-					
 				<table>
 					<tr>
-						<td><label for=fader> Circle 2 Size </label></td>
-						<td><input id="outerRadiusValue2" type=range min=20 max=200 value=50 id=fader step=1 oninput="outputUpdate2(value)"></td>
-						<td><output for=fader id=circlevolume2>50</output></td>
-					</tr>
-					
-					<tr>
-						<td><label for=fader> Inner Circle 2 Size </label></td>
-						<td><input id="innerRadiusValue2" type=range min=10 max=190 value=25 id=fader step=1 oninput="outputInnerUpdate2(value)"></td>
-						<td><output for=fader id=innercirclevolume2>25</output></td>
-					</tr>
-					
-					<tr>
-						<td><label for=fader> Start Angle 2 </label></td>
-						<td><input id="startAngleValue2" type=range min=0 max=360 value=0 id=fader step=1 oninput="outputStartAngle2(value)"></td>
-						<td><output for=fader id=startangle2>0</output></td>
-					</tr>
-					
-					<tr>
-						<td><label for=fader> End Angle 2 </label></td>
-						<td><input id="endAngleValue2" type=range min=0 max=360 value=360 id=fader step=1 oninput="outputEndAngle2(value)"></td>
-						<td><output for=fader id=endangle2>360</output></td>
-					</tr>
-					
-					<tr>
-						<td></td>
-						<td><input type="radio" id="rlightToDark" value="lightToDark" name="rect" checked><label>Light To Dark</label></td>
-					</tr>
-					<tr>
-						<td></td>
-						<td><input type="radio" id="rdarkToLight" value="darkToLight" name="rect"><label>Dark To Light</label></td> 
-					</tr>
-				</table>
-				
-			</div>
-			<hr>
-		
-			<label class="fHeading1">ROI</label>
-			<div id="regionOfInterest" class="functionTab">
-                
-
-					
-                    <!-- <label>X:</label> <input id="xvalue" class="textBox" type="text" name="xvalue">
-                    <label>Y:</label> <input id="yvalue" class="textBox" type="text" name="yvalue"></br>
-                    <label>W:</label> <input id="wvalue" class="textBox" type="text" name="wvalue">
-                    <label>H:</label> <input id="hvalue" class="textBox" type="text" name="hvalue">
-					
-                    <input id="searchWindow" type="button" value="Search Window" class="button leftButton">
-                    <input id="set" type="button" value="Set" class="button leftButton" > -->
-                    <!--<input id="completeWindow" type="button" value="Complete Window" class="button" id="completeWindow"> -->
-					
-					<table>
-					<tr>
-						<td><label>Center 1 X:</label> </td> 
-						<td><input id="xvalue" class="textBox" type="text" name="xvalue" readonly></td>
-						<td><label>Center 1 Y:</label> </td>
-						<td><input id="yvalue" class="textBox" type="text" name="yvalue" readonly></td>
+						<td>
+							<label>Center X:</label> 
+						</td> 
+						<td>
+							<input id="xvalue" class="textBox" type="text" name="xvalue" readonly>
+						</td>
+						<td>
+							<label>Center Y:</label> 
+						</td>
+						<td>
+							<input id="yvalue" class="textBox" type="text" name="yvalue" readonly>
+						</td>
 					</tr>
 					<!--<tr>
                     <td><label>Start angle 1:</label> </td>
@@ -189,52 +165,149 @@
 					<td><input id="innervalue" class="textBox" type="text" name="innervalue" readonly></td>
                     
 					</tr>-->
-					</table>
-					
-					
-					
-					<table>
+				</table>
+			</div>
+			<hr>
+			<label class="fHeading1">Circle 2 Settings</label>
+			<div id="roiSelection" class="functionTab">
+				<table>
 					<tr>
-						<td><label>Center 2 X:</label> </td> 
-						<td><input id="xvalue2" class="textBox" type="text" name="xvalue" readonly></td>
-						<td><label>Center 2 Y:</label> </td>
-						<td><input id="yvalue2" class="textBox" type="text" name="yvalue" readonly></td>
+						<td>
+							<label for=fader> Circle Size </label>
+						</td>
+						<td>
+							<input id="outerRadiusValue2" type=range min=20 max=200 value=50 id=fader step=1 oninput="outputUpdate2(value)">
+						</td>
+						<td>
+							<output for=fader id=circlevolume2>50</output>
+						</td>
 					</tr>
-					<!--<tr>
+					<tr>
+						<td>
+							<label for=fader> Inner Circle Size </label>
+						</td>
+						<td>
+							<input id="innerRadiusValue2" type=range min=10 max=190 value=25 id=fader step=1 oninput="outputInnerUpdate2(value)">
+						</td>
+						<td>
+							<output for=fader id=innercirclevolume2>25</output>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label for=fader> Start Angle </label>
+						</td>
+						<td>
+							<input id="startAngleValue2" type=range min=0 max=360 value=0 id=fader step=1 oninput="outputStartAngle2(value)">
+						</td>
+						<td>
+							<output for=fader id=startangle2>0</output>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label for=fader> End Angle </label>
+						</td>
+						<td>
+							<input id="endAngleValue2" type=range min=0 max=360 value=360 id=fader step=1 oninput="outputEndAngle2(value)">
+						</td>
+						<td>
+							<output for=fader id=endangle2>360</output>
+						</td>
+					</tr>
+					<tr>
+						<td>
+						<label>Edge Detection</label> 
+						</td>
+						<td>
+							<input type="radio" id="rlightToDark" value="lightToDark" name="rect" checked><label>Light To Dark</label> </br>
+							<input type="radio" id="rdarkToLight" value="darkToLight" name="rect"><label>Dark To Light</label>
+						</td> 
+					</tr>
+				</table>
+				
+				<table>
+					<tr>
+						<td>
+							<label>Center X:</label> 
+						</td> 
+						<td>
+							<input id="xvalue2" class="textBox" type="text" name="xvalue" readonly>
+						</td>
+						<td>
+							<label>Center Y:</label> 
+						</td>
+						<td>
+							<input id="yvalue2" class="textBox" type="text" name="yvalue" readonly>
+						</td>
+					</tr>
+				<!--<tr>
                     <td><label>Start angle 2:</label> </td>
 					<td><input id="startvalue2" class="textBox" type="text" name="startvalue" readonly></td>
 					
                     <td><label>Angle Length 2:</label> </td>
 					<td><input id="anglevalue2" class="textBox" type="text" name="anglevalue" readonly></td>
-					</tr>
-					<tr>
+				</tr>
+				<tr>
 					<td><label>Outer radius 2:</label> </td>
 					<td><input id="outervalue2" class="textBox" type="text" name="outervalue" readonly></td>
 					
 					<td><label>Inner radius 2:</label></td> 
 					<td><input id="innervalue2" class="textBox" type="text" name="innervalue" readonly></td>
                     
-					</tr>-->
-					</table>
+				</tr>-->
+				</table>
+					
+			</div>
+			<hr>
+		
+			<!-- <label class="fHeading1">ROI</label>
+			<div id="regionOfInterest" class="functionTab">
+                
+
+					
+                    <label>X:</label> <input id="xvalue" class="textBox" type="text" name="xvalue">
+                    <label>Y:</label> <input id="yvalue" class="textBox" type="text" name="yvalue"></br>
+                    <label>W:</label> <input id="wvalue" class="textBox" type="text" name="wvalue">
+                    <label>H:</label> <input id="hvalue" class="textBox" type="text" name="hvalue">
+					
+                    <input id="searchWindow" type="button" value="Search Window" class="button leftButton">
+                    <input id="set" type="button" value="Set" class="button leftButton" >
+                    <input id="completeWindow" type="button" value="Complete Window" class="button" id="completeWindow"> 
+				
 					
 				
 				<hr>
-            </div>
+            </div>-->
 			
 			<label class="fHeading1">Tolerance</label>
 			<div id="tolDetail" class="functionTab">
 			<table class="toleranceTable">
-					<tr> 
-					<td><label>Nominal Value</label></td>
-					<td><input type="number" id="nv" value="0" name="tolerance" ></td> </tr>
-					<tr> 
-					<td>+</td>
-					<td><input type="number" id="plus" value="10000" name="tolerance" min="0"> </td> </tr>
-					<tr> 
-					<td>-</td>
-					<td><input type="number" id="minus" value="0" name="tolerance" min="0"> </td> </tr>
-					</table>
-			</div>
+				<tr> 
+					<td>
+						<label>Nominal Value</label>
+					</td>
+					<td>
+						<input type="number" id="nv" value="0" name="tolerance" >
+					</td> 
+				</tr>
+				<tr> 
+					<td>
+						<label>+</label>
+					</td>
+					<td>
+						<input type="number" id="plus" value="10000" name="tolerance" min="0"> </td> 
+				</tr>
+				<tr> 
+					<td>
+						<label>-</label>
+					</td>
+					<td>	
+						<input type="number" id="minus" value="0" name="tolerance" min="0"> 
+					</td> 
+				</tr>
+			</table>
+		</div>
 			
 			
 			
