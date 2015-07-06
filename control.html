@@ -166,7 +166,7 @@
 				
 				if(foundStatus == true)
 				{
-					var userResponse = confirm("The "+tool+ " "+toolNo + " measurement have been used.\nDo you wish to overwrite the existing data?");
+					var userResponse = confirm("The "+tool+ " "+toolNo + " measurement have been used.\nDo you wish to overwrite the existing result?");
 					if (userResponse == true) {
 						var queryString = requestedPage + "tool=" + tool + "&toolNo=" + toolNo;
 						window.location.href = queryString;
