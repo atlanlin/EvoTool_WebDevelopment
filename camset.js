@@ -103,22 +103,11 @@ function init(){
 		intervalUpdateStart();
 		disableBtn($(this).attr('id'));
 		undisableBtn("btnMeasure");
-		setTimeout(getImgSize, 1000); 
 		setImgFlag(false);
 		}
 	);
 	
-	function getImgSize(){
-		var img = document.getElementById("imgSnapshot");
-		IMG_WIDTH = img.clientWidth;
-		IMG_HEIGHT = img.clientHeight;
-		setGlobalScale();
-		//var canvasNode = document.getElementById('canvas2');
-		//canvasNode.width  = IMG_WIDTH; // in pixels
-		//canvasNode.height = IMG_HEIGHT; // in pixels
-		
-		
-	}
+	
 	
 	$("#btnCodeStart").click(function(){
 		ajaxGet("info.htm?cmd=%23002%23");
@@ -128,10 +117,7 @@ function init(){
 		intervalUpdateStart();
 		disableBtn($(this).attr('id'));
 		undisableBtn("btnMeasure");
-		setTimeout(getImgSize, 1000); 
 		setImgFlag(false);
-		
-		setTimeout(roiSet, 1000);
 		//alert("");
 		}
 	);
@@ -228,12 +214,23 @@ function iniResponse(){
 	//alert(val);
 }
 
+function getImgSize(inWidth, inHeight){
+		IMG_WIDTH = inWidth;
+		IMG_HEIGHT = inHeight;
+		setGlobalScale();
+		//var canvasNode = document.getElementById('canvas2');
+		//canvasNode.width  = IMG_WIDTH; // in pixels
+		//canvasNode.height = IMG_HEIGHT; // in pixels
+		
+		
+	}
+
+//var responseCount = 0;
 function getValueFrominiFile()
 {
-	if (xhr.readyState != 4 || xhr.status != 200)  { return; }
-		
+	if (xhr.readyState != 4)  {return; }
+	//if(responseCount <2){ responseCount+= 1; return;}	
 		var resp = xhr.responseText;
-		
 		globalResult = getIniStr("cam1", "result1", resp);
 		
 		$("#resultDisplay").val(globalResult);
@@ -242,6 +239,8 @@ function getValueFrominiFile()
 		var cookieName = queryString["tool"] + queryString["toolNo"];
 				
 		setCookie(cookieName,globalResult,1);
+		
+		//responseCount = 0;
 }
 
 function getCodeValueFrominiFile()

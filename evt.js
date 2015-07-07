@@ -259,8 +259,9 @@ function updateImg(imgId,imgSrc){
 		$(imgId)[0].src = imgSrc + "?" + count;
 		oImg = new Image();
 		oImg.onload = function() {
-			if(isSetImgSize == false){
+			if(isSetImgSize == false && $(imgId).height() > 0){
 			  setImgActualSize(this.width, this.height);
+			  getImgSize($(imgId).width(), $(imgId).height());
 			  isSetImgSize = true;
 			}
 		}
