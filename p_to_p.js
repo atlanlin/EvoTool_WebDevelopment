@@ -263,10 +263,9 @@ function init2() {
 	});
 	
 	$("#btnMeasure").click(function(){
-			
-			evoComm();
-
-			
+			//not to confuse with previous result
+			$("#resultDisplay").val("");
+			//evoComm();
 			ajaxGet("cfg.ini", getValueFrominiFile);
 			//html2canvas has limitation which has to go back to origin point, therefore scroll to top
 			$("body").scrollTop(0);

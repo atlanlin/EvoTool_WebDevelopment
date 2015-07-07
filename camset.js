@@ -101,7 +101,8 @@ function init(){
 		//ajaxGet("cfg.ini", getValueFrominiFile);
 		
 		intervalUpdateStart();
-		
+		disableBtn($(this).attr('id'));
+		undisableBtn("btnMeasure");
 		setTimeout(getImgSize, 1000); 
 		setImgFlag(false);
 		}
@@ -125,7 +126,8 @@ function init(){
 		//ajaxGet("cfg.ini", getCodeValueFrominiFile);
 		
 		intervalUpdateStart();
-		
+		disableBtn($(this).attr('id'));
+		undisableBtn("btnMeasure");
 		setTimeout(getImgSize, 1000); 
 		setImgFlag(false);
 		
@@ -139,9 +141,13 @@ function init(){
 		clearInterval(myInterval);
 		ajaxGet("info.htm?cmd=%23004%23");
 		intervalUpdateStop();
+		undisableBtn("btnStart");
+		undisableBtn("btnCodeStart");
+		disableBtn("btnMeasure");
 		}
 	);
 	
+	disableBtn("btnMeasure");
 
     $("#tabs_container").tabs();
 
@@ -525,4 +531,20 @@ function setCalibrationFromCookie(){
 		GLOBAL_SCALE_X = calX;
 	if(calY !== null  && calY !== 0)
 		GLOBAL_SCALE_Y = calY;
+}
+
+function disableBtn(btnId) {
+	var btn = document.getElementById(btnId);
+	if(btn !== null){
+		btn.disabled = true;
+		btn.style.color="gray";
+	}
+}
+
+function undisableBtn(btnId) {
+	var btn = document.getElementById(btnId);
+	if(btn !== null){
+		document.getElementById(btnId).disabled = false;
+		document.getElementById(btnId).style.color="#00628B";
+	}
 }
