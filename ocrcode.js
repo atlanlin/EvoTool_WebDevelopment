@@ -178,7 +178,7 @@
 		ajaxGet('info.htm?cmd=%23021%3BEVO%20BarCode%3B2%3BGeneral.Enabled%3B0%23');
 		ajaxGet('info.htm?cmd=%23021%3BEVO%20DataCode%3B2%3BGeneral.Enabled%3B0%23');
 		
-		evoComm();
+		//evoComm();
 		
 		canvas = document.getElementById('canvas2');
 		HEIGHT = canvas.height;
@@ -248,7 +248,7 @@
 		});
 		
 		$("#btnMeasure").click(function(){
-			evoComm();
+			//evoComm();
 			ajaxGet("cfg.ini", getCodeValueFrominiFile);	
 		});
 		
@@ -678,7 +678,7 @@
 				// we dont need to use the ghost context because
 				// selection handles will always be rectangles
 				//changes made by yelling
-				if (mx >= cur.x && mx <= cur.x + mySelBoxSize*3 && my >= cur.y && my <= cur.y + mySelBoxSize*3) {
+				if (mx >= cur.x && mx <= cur.x + mySelBoxSize*3/2 && my >= cur.y && my <= cur.y + mySelBoxSize*3/2) {
 					// we found one!
 					expectResize = i;
 					isResizeDrag = true;
