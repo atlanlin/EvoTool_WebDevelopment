@@ -148,13 +148,21 @@ function init(){
 	);
 	
 	disableBtn("btnMeasure");
+
+    $("#tabs_container").tabs();
+
+    //$("#searchWindow").click(function(){
+        
+
+    //});
+   
  
 
      $('#completeWindow').click(function(){
         $('#selectionArea').css("display","none");
      });
 	
-	/*
+
 	gainSlider = new Dragdealer('gain-slider', {
 		steps: 100/STEP_SIZE_GAIN,
 		speed: 100,
@@ -172,7 +180,7 @@ function init(){
 			}
 		}
 	});
-	/* event to actually send the slider value to the server 
+	/* event to actually send the slider value to the server */
 	$("#divSlideBarGain").mouseup(function(){
 		ajaxGet('info.htm?cmd=%23021%3Bgain' + cam + '%3B1%3BConstantValue%3B'+ $("#divSlideBarGain")[0].innerHTML +'%23');
 		}
@@ -195,24 +203,23 @@ function init(){
 			}
 		}
 	});
-	/* event to actually send the slider value to the server 
+	/* event to actually send the slider value to the server */
 	$("#divSlideBarShutter").mouseup(function(){
 		ajaxGet('info.htm?cmd=%23021%3Bshutter' + cam + '%3B1%3BConstantValue%3B'+ $("#divSlideBarShutter")[0].innerHTML +'%23');
 		}
 	);
 	
-	
-	/* load ini file and call iniResponse function 
+	/* load ini file and call iniResponse function */
 	ajaxGet("cfg.ini",iniResponse);
 	
 	img = $("#imgSnapshot")[0].src = "/snapshot";
 
-	/* by cookies update state is passed between pages 
+	/* by cookies update state is passed between pages */ 
 	if(getCookie("live") == 1){
 		intervalUpdateStart();
 	}
 	
-	*/
+	
 
 }
 
