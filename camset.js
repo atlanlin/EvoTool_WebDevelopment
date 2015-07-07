@@ -511,7 +511,31 @@ function clickCheckedBoxes(clickedCb){
 	}
 }
 
+var radioNames =[];
+var radioValues = [];
+function saveRadioButtons(){
+	var elems = document.getElementsByTagName('input');
+	//var str = "";
+	for(var i=0; i < elems.length; i++){
+		if(elems[i].type=="radio"){
+			radioNames[i] = elems[i].id;
+			radioValues[i] = elems[i].checked;
+			//str += elems[i].id + ": " + elems[i].checked + "\n";
+		}
+	}
+	//alert(str);
+}
+
+function restoreRadioButtons(){
+	for(var i=0; i < radioNames.length; i++){
+		var radioButt = document.getElementById(radioNames[i]);
+		if(radioButt !== null){
+			radioButt.checked = radioValues[i];
+		}
+	}
+}
 function saveScreenshot(){
+	saveRadioButtons();
 	html2canvas(document.getElementById("imageArea")).then(function(canvas) {
 		
 		if (queryString["tool"] != null && queryString["toolNo"] != null) {
@@ -521,6 +545,7 @@ function saveScreenshot(){
 		
 		
 	});
+	restoreRadioButtons();
 }
 
 function setCalibrationFromCookie(){
