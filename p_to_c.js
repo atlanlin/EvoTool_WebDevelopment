@@ -1,8 +1,9 @@
 // screen on load 
 window.onload = function() {
 	//initialize square and circle on canvas
-	initSquare();
 	initCircle();
+	initSquare();
+	
 	
 	//enable function in evo 3 ckp file
 	ajaxGet("info.htm?cmd=%23021%3BEVO Distance%3B2%3BGeneral.Enabled%3B1%23");
@@ -77,7 +78,7 @@ function drag(e) {
 	
 	if(withinCircle(p))
 		this.style.cursor='move';
-	else
+	else 
 		this.style.cursor='auto';
 
 	// make sure it doesn't go out of frame
@@ -1007,7 +1008,7 @@ function myMove(e){
 				// we found one!
 				expectResize = i;
 				invalidate();
-        
+				
 				switch (i) {
 				case 0:
 					this.style.cursor='nw-resize';
@@ -1038,6 +1039,7 @@ function myMove(e){
 			}
       
 		}
+		
 		// not over a selection box, return to normal
 		isResizeDrag = false;
 		expectResize = -1;
@@ -1188,8 +1190,8 @@ var ctx;
 var WIDTH;
 var HEIGHT;
 var INTERVAL = 20;  // how often, in milliseconds, we check to see if a redraw is needed
-var UPDATERECTINTERVAL = 1000;
-var UPDATECIRCLEINTERVAL = 3000;
+var UPDATERECTINTERVAL = 2000;
+var UPDATECIRCLEINTERVAL = 5000;
 
 var isDrag = false;
 var isResizeDrag = false;
