@@ -535,6 +535,8 @@ function restoreRadioButtons(){
 	}
 }
 function saveScreenshot(){
+	//html2canvas will cause radiobuttons' values disappear in mobile, therefore fixed the bug
+	//save radiobuttons values
 	saveRadioButtons();
 	html2canvas(document.getElementById("imageArea")).then(function(canvas) {
 		
@@ -545,6 +547,7 @@ function saveScreenshot(){
 		
 		
 	});
+	//reload radiobuttons values
 	restoreRadioButtons();
 }
 
