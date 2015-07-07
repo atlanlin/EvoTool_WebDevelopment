@@ -420,7 +420,8 @@ function mainDraw() {
     clear(ctx);
     
 	//to dynamically change the image size and canvas size
-	if(IMG_WIDTH != null && IMG_HEIGHT != null){
+	var undefined;
+	if(IMG_WIDTH !== undefined && IMG_HEIGHT !== undefined && IMG_WIDTH > 0 && IMG_HEIGHT > 0){
 		WIDTH = IMG_WIDTH;
 		HEIGHT = IMG_HEIGHT;
 		canvas.width = WIDTH;
@@ -451,7 +452,7 @@ function mainDraw() {
 	//var point1={x:10, y:20};
 	//var point2={x:200, y:80};
 	//arrow(ctx, point1, point2, 10);
-    //canvasValid = true;
+    canvasValid = true;
 	
 	//calculation for EVO 3 parameters
 	var lx1, ly1, lx2, ly2;
