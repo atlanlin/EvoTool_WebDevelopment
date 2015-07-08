@@ -265,8 +265,6 @@ function init2() {
 			$("#resultDisplay").val("");
 			//evoComm();
 			ajaxGet("cfg.ini", getValueFrominiFile);
-			//html2canvas has limitation which has to go back to origin point, therefore scroll to top
-			$("body").scrollTop(0);
 			saveScreenshot();
 		}
 	);
