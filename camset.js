@@ -527,6 +527,12 @@ function restoreRadioButtons(){
 	}
 }
 function saveScreenshot(){
+	//html2canvas has limitation which has to go back to origin point, therefore scroll to top
+	var leftScroll = $(window).scrollLeft();
+	var topScroll = $(window).scrollTop();
+	$(window).scrollLeft(0);
+	$(window).scrollTop(0);
+	
 	//html2canvas will cause radiobuttons' values disappear in mobile, therefore fixed the bug
 	//save radiobuttons values
 	saveRadioButtons();
@@ -541,6 +547,9 @@ function saveScreenshot(){
 	});
 	//reload radiobuttons values
 	restoreRadioButtons();
+	
+	$(window).scrollLeft(leftScroll);
+	$(window).scrollTop(topScroll);
 }
 
 function setCalibrationFromCookie(){
