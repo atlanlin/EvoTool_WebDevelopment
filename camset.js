@@ -225,11 +225,18 @@ function getImgSize(inWidth, inHeight){
 		
 	}
 
-//var responseCount = 0;
+var responseCount = 0;
 function getValueFrominiFile()
 {
-	if (xhr.readyState != 4)  {return; }
-	//if(responseCount <2){ responseCount+= 1; return;}	
+	if (xhr.readyState != 4)  {
+		responseCount++;
+		if(responseCount > 2){
+			ajaxGet("cfg.ini", getValueFrominiFile);
+			responseCount = 0;
+		}
+		return; 
+	}
+		//console.log("ready state");
 		var resp = xhr.responseText;
 		globalResult = getIniStr("cam1", "result1", resp);
 		
@@ -240,7 +247,7 @@ function getValueFrominiFile()
 				
 		setCookie(cookieName,globalResult,1);
 		
-		//responseCount = 0;
+		responseCount = 0;
 }
 
 function getCodeValueFrominiFile()
