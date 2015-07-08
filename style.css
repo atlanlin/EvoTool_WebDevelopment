@@ -16,7 +16,7 @@ body{
 
 .functionPanel{
     width:1152px;
-    height:650px;
+    height:800px;
     position:relative;
     margin:0 auto;
     background-color:#81A594;
@@ -27,7 +27,7 @@ body{
 #leftmenu{
     position:relative;
     width:250px;
-    height:650px;
+    height:800px;
     border-right:1px solid white;
 	color:#00628B;
 }
@@ -196,7 +196,7 @@ input[type="radio"]{
     position:relative;
     text-align:center;
     margin-top:22px;
-    height:650px;
+    height:800px;
     width:752px;
 }
 
@@ -209,7 +209,7 @@ input[type="radio"]{
 
 #rightRegion{
     width: 150px;
-    height:650px;
+    height:800px;
     float: right;
     border-left: 1px solid white;
     text-align:center;
