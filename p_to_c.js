@@ -30,10 +30,9 @@ function initCircle() {
 	
 	// getting of result to display on text area
 	$("#btnMeasure").click(function(){
+			$("#resultDisplay").val("");
 			ajaxGet("info.htm?cmd=%23021%3BEVO Distance%3B2%3BOptionForType%3B2%23");
 			ajaxGet("cfg.ini", getValueFrominiFile);
-			//html2canvas has limitation which has to go back to origin point, therefore scroll to top
-			$("body").scrollTop(0);
 			//save screenshot of the current measurement taken
 			saveScreenshot();
 		}
@@ -218,6 +217,7 @@ function drawCircle(circle, innerCircle) {
 	
 	//drawing of arc
 	//ctx.clearRect(0, 0, canvas.width, canvas.height);
+	//ctx.clearRect(circle.point.x, circle.point.y, circle.radius, circle.radius);
     ctx.beginPath();
     ctx.arc(circle.point.x, circle.point.y, circle.radius, calStartAngle, calEndAngle, false);
 	
@@ -463,7 +463,7 @@ var startFrameY = 1;
 
 var endFrameX = 747;
 
-var endFrameY = 560;
+var endFrameY = 570;
 
 // settings
 // min and max radius for each circle able to increase or decrease
