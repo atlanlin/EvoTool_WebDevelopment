@@ -294,10 +294,10 @@
 	
 	// consists of roi settings
 	function roiSet() {
-		var startX = $("#xValue").val() * GLOBAL_SCALE;
-		var startY = $("#yValue").val() * GLOBAL_SCALE;
-		var width = $("#wValue").val() * GLOBAL_SCALE;
-		var height = $("#hValue").val() * GLOBAL_SCALE;
+		var startX = $("#xValue").val();
+		var startY = $("#yValue").val();
+		var width = $("#wValue").val();
+		var height = $("#hValue").val();
 		
 		if (document.getElementById("wholeWindow").checked) {
 			ajaxGet('info.htm?cmd=%23021%3BEVO%20BarCode%3B2%3BSourceWindow.SourceMode%3B4%23');
@@ -338,10 +338,10 @@
 			// add stuff you want drawn on top all the time here
 			
 			// added by weiling
-			var xPos = boxes2[0].x;
-			var yPos = boxes2[0].y;
-			var w = boxes2[0].w;
-			var h = boxes2[0].h;
+			var xPos = boxes2[0].x * GLOBAL_SCALE;
+			var yPos = boxes2[0].y * GLOBAL_SCALE;
+			var w = boxes2[0].w * GLOBAL_SCALE;
+			var h = boxes2[0].h * GLOBAL_SCALE;
 			$("#xValue").val(xPos);
 			$("#yValue").val(yPos);
 			$("#wValue").val(w);
