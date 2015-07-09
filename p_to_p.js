@@ -69,7 +69,7 @@ function Box2() {
 }
 
 
-//added by yelling
+
 Box2.prototype = {
   // this function will only erase the first object in the listStyleType
   // it will not erase the selected canvas object
@@ -526,7 +526,7 @@ function myMove(e){
     mySel.y = my - offsety;   
     
 	
-	/*Changes made by yelling*/
+	
 	if(mySel.x < 0)
 			mySel.x = 0;
 		else if(mySel.x + mySel.w > WIDTH)
@@ -624,7 +624,7 @@ function myMove(e){
       
       // we dont need to use the ghost context because
       // selection handles will always be rectangles
-	  //changes made by yelling
+	  
       if (mx >= cur.x && mx <= cur.x + mySelBoxSize*3 &&
           my >= cur.y && my <= cur.y + mySelBoxSize*3) {
         // we found one!
@@ -684,7 +684,7 @@ function myDown(e){
       
       // we dont need to use the ghost context because
       // selection handles will always be rectangles
-	  //changes made by yelling
+	  
       if (mx >= cur.x && mx <= cur.x + mySelBoxSize*3 &&
           my >= cur.y && my <= cur.y + mySelBoxSize*3) {
         // we found one!

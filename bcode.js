@@ -64,7 +64,7 @@
 		this.lineColor = '#444444';
 	}
 
-	//added by yelling
+	
 	Box2.prototype = {
 		// this function will only erase the first object in the listStyleType
 		// it will not erase the selected canvas object
@@ -352,14 +352,15 @@
 
 	// happens when the mouse is moving inside the canvas
 	function myMove(e) {
-		e.preventDefault();
+		
 		if (isDrag) {
+			e.preventDefault();
 			getMouse(e);
 		
 			mySel.x = mx - offsetx;
 			mySel.y = my - offsety;   
 		
-			// changes made by yelling
+			
 			if (mySel.x < 0)
 				mySel.x = 0;
 			else if (mySel.x + mySel.w > WIDTH)
@@ -373,6 +374,7 @@
 			invalidate();
 		} else if (isResizeDrag) {
 			// time to resize!
+			e.preventDefault();
 			var oldx = mySel.x;
 			var oldy = mySel.y;
 			// 0  1  2
@@ -383,7 +385,7 @@
 			var oldw = mySel.w;
 			var oldh = mySel.h;
 			
-			/*Changes made by yelling*/
+			
 			if (mx > WIDTH)
 				mx = WIDTH;
 			if (my > HEIGHT)
@@ -490,9 +492,10 @@
 			  
 				// we don't need to use the ghost context because
 				// selection handles will always be rectangles
-				//changes made by yelling
-				if (mx >= cur.x && mx <= cur.x + mySelBoxSize*3/2 && my >= cur.y && my <= cur.y + mySelBoxSize*3/2) {
+				
+				if (mx >= cur.x && mx <= cur.x + mySelBoxSize*3 && my >= cur.y && my <= cur.y + mySelBoxSize*3) {
 					// we found one!
+					e.preventDefault();
 					expectResize = i;
 					invalidate();
 							
@@ -534,10 +537,10 @@
 
 	// happens when the mouse is clicked in the canvas
 	function myDown(e) {
-		e.preventDefault();
+		
 		getMouse(e);
 		
-		//added by yelling
+		
 		// if there's a selection see if we grabbed one of the selection handles
 		if (mySel !== null && !isResizeDrag) {
 			for (var i = 0; i < 8; i++) {
@@ -549,9 +552,10 @@
 				  
 				// we dont need to use the ghost context because
 				// selection handles will always be rectangles
-				//changes made by yelling
-				if (mx >= cur.x && mx <= cur.x + mySelBoxSize*3/2 && my >= cur.y && my <= cur.y + mySelBoxSize*3/2) {
+				
+				if (mx >= cur.x && mx <= cur.x + mySelBoxSize*3 && my >= cur.y && my <= cur.y + mySelBoxSize*3) {
 					// we found one!
+					e.preventDefault();
 					expectResize = i;
 					isResizeDrag = true;
 					invalidate();
