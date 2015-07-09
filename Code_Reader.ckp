@@ -3,7 +3,7 @@ EYEVISION_VERSION
 FILE_VERSION 
 CREATED 
 CREATED_BY 
-LAST_MODIFIED 03.07.2015 15:26:04
+LAST_MODIFIED 09.07.2015 17:47:27
 LAST_MODIFIED_BY 
 START_PARM_LIST 
   KEY 1
@@ -63,7 +63,7 @@ START_PARM_LIST
     TriggerTimeout 0
     TriggerInputLine 0
     MinimumSignalDuration 0
-    FileName C:/Users/user3/Desktop/training640480.bmp
+    FileName C:/Users/user2/Desktop/3.0_21 Test Demo/BarCode/BC25_0.bmp
     AVIframes 1
     AVImode 0
     HWTriggeredCapture 0
@@ -105,7 +105,7 @@ START_PARM_LIST
       Position 3
       CommandType 10010000
       CommandName EVO BarCode
-      Enabled 0
+      Enabled 1
       Hidden 0
       GraficMode 2
       TextMode 2
@@ -531,7 +531,7 @@ START_PARM_LIST
     CorrectionType 1
     VariableType 2
     ConstantValue 0,0
-    IniFileName C:/temp/wwwroot/cfg.ini
+    IniFileName C:\temp\wwwroot\cfg.ini
     SegmentName camcode1
     EntryName coderesult1
     PointType 3
@@ -853,6 +853,60 @@ START_PARM_LIST
     END_CKPICKUP_TYPE_WRITE 
     TeachInCounter 0
   END_KEY 8
+  KEY 9
+    ClassVersion 1
+    CKGENERAL 
+      ClassVersion 1
+      Position 13
+      CommandType 114
+      CommandName Stop watch
+      Enabled 1
+      Hidden 0
+      GraficMode 2
+      TextMode 2
+      ImageMemory 0
+      InvertResult 0
+      Memo 
+    END_CKGENERAL 
+    CKRESULT 
+      ClassVersion 1
+      Name Stop watch
+      EnterResultToRTDisplay 0
+      RTDisplayIndex 0
+      RTWidthOfToleranceRegion 80
+      CKEVALUATION 
+        ClassVersion 3
+        GlobalToleranceIndex -1
+        UseWarningTolerances 0
+        NominalValue 0,0
+        PlusTolerance 10000,0
+        MinusTolerance 0,0
+        WarnPlusTolerance 0,0
+        WarnMinusTolerance 0,0
+        DynamicEvaluation 0
+        FileName 
+        Section 
+        CorrectionActive 0
+        CorrectionType 0
+        EnableAutoTeachIn 1
+        NumberOfUsedCorrections 0
+      END_CKEVALUATION 
+      CKSTATISTIC 
+        ClassVersion 1
+        EnterToStatistic 0
+        Index -1
+      END_CKSTATISTIC 
+    END_CKRESULT 
+    DeterminationType 1
+    ActTime 100
+    CKPICKUP_TYPE_WRITE 
+      ClassVersion 1
+      Name 
+      PickupObjectType 5
+      PickupListIndex 42011
+    END_CKPICKUP_TYPE_WRITE 
+    TeachInCounter 0
+  END_KEY 9
 END_PARM_LIST 
 CKPARAMETERS 
   ClassVersion 1
