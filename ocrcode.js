@@ -15,7 +15,7 @@
 	var WIDTH;
 	var HEIGHT;
 	var INTERVAL = 20;	// how often, in milliseconds, we check to see if a redraw is needed
-	var EVOINTERVAL = 1000;
+	var EVOINTERVAL = 2000;
 	
 	var isDrag = false;
 	var isResizeDrag = false;
@@ -272,67 +272,67 @@
 		if (document.getElementById("industrial").selected) {
 			ajaxGet('info.htm?cmd=%23021%3BEVO%20OCR%3B2%3BfontNum%3B0%23');
 		}
-		if (document.getElementById("industrial09").selected) {
+		else if (document.getElementById("industrial09").selected) {
 			ajaxGet('info.htm?cmd=%23021%3BEVO%20OCR%3B2%3BfontNum%3B1%23');
 		}
-		if (document.getElementById("industrial09AZ").selected) {
+		else if (document.getElementById("industrial09AZ").selected) {
 			ajaxGet('info.htm?cmd=%23021%3BEVO%20OCR%3B2%3BfontNum%3B3%23');
 		}
-		if (document.getElementById("industrial09P").selected) {
+		else if (document.getElementById("industrial09P").selected) {
 			ajaxGet('info.htm?cmd=%23021%3BEVO%20OCR%3B2%3BfontNum%3B2%23');
 		}
-		if (document.getElementById("industrialAZP").selected) {
+		else if (document.getElementById("industrialAZP").selected) {
 			ajaxGet('info.htm?cmd=%23021%3BEVO%20OCR%3B2%3BfontNum%3B4%23');
 		}
-		if (document.getElementById("dotPrint").selected) {
+		else if (document.getElementById("dotPrint").selected) {
 			ajaxGet('info.htm?cmd=%23021%3BEVO%20OCR%3B2%3BfontNum%3B5%23');
 		}
-		if (document.getElementById("dotPrint09").selected) {
+		else if (document.getElementById("dotPrint09").selected) {
 			ajaxGet('info.htm?cmd=%23021%3BEVO%20OCR%3B2%3BfontNum%3B6%23');
 		}
-		if (document.getElementById("dotPrint09AZ").selected) {
+		else if (document.getElementById("dotPrint09AZ").selected) {
 			ajaxGet('info.htm?cmd=%23021%3BEVO%20OCR%3B2%3BfontNum%3B7%23');
 		}
-		if (document.getElementById("dotPrint09P").selected) {
+		else if (document.getElementById("dotPrint09P").selected) {
 			ajaxGet('info.htm?cmd=%23021%3BEVO%20OCR%3B2%3BfontNum%3B9%23');
 		}
-		if (document.getElementById("dotPrintAZP").selected) {
+		else if (document.getElementById("dotPrintAZP").selected) {
 			ajaxGet('info.htm?cmd=%23021%3BEVO%20OCR%3B2%3BfontNum%3B8%23');
 		}
-		if (document.getElementById("document").selected) {
+		else if (document.getElementById("document").selected) {
 			ajaxGet('info.htm?cmd=%23021%3BEVO%20OCR%3B2%3BfontNum%3B10%23');
 		}
-		if (document.getElementById("document09").selected) {
+		else if (document.getElementById("document09").selected) {
 			ajaxGet('info.htm?cmd=%23021%3BEVO%20OCR%3B2%3BfontNum%3B11%23');
 		}
-		if (document.getElementById("document09AZ").selected) {
+		else if (document.getElementById("document09AZ").selected) {
 			ajaxGet('info.htm?cmd=%23021%3BEVO%20OCR%3B2%3BfontNum%3B12%23');
 		}
-		if (document.getElementById("documentAZP").selected) {
+		else if (document.getElementById("documentAZP").selected) {
 			ajaxGet('info.htm?cmd=%23021%3BEVO%20OCR%3B2%3BfontNum%3B13%23');
 		}
-		if (document.getElementById("enhancedOCRA").selected) {
+		else if (document.getElementById("enhancedOCRA").selected) {
 			ajaxGet('info.htm?cmd=%23021%3BEVO%20OCR%3B2%3BfontNum%3B14%23');
 		}
-		if (document.getElementById("enhancedOCRB").selected) {
+		else if (document.getElementById("enhancedOCRB").selected) {
 			ajaxGet('info.htm?cmd=%23021%3BEVO%20OCR%3B2%3BfontNum%3B15%23');
 		}
-		if (document.getElementById("pharma").selected) {
+		else if (document.getElementById("pharma").selected) {
 			ajaxGet('info.htm?cmd=%23021%3BEVO%20OCR%3B2%3BfontNum%3B16%23');
 		}
-		if (document.getElementById("pharma09").selected) {
+		else if (document.getElementById("pharma09").selected) {
 			ajaxGet('info.htm?cmd=%23021%3BEVO%20OCR%3B2%3BfontNum%3B17%23');
 		}
-		if (document.getElementById("pharma09AZ").selected) {
+		else if (document.getElementById("pharma09AZ").selected) {
 			ajaxGet('info.htm?cmd=%23021%3BEVO%20OCR%3B2%3BfontNum%3B19%23');
 		}
-		if (document.getElementById("pharma09P").selected) {
+		else if (document.getElementById("pharma09P").selected) {
 			ajaxGet('info.htm?cmd=%23021%3BEVO%20OCR%3B2%3BfontNum%3B18%23');
 		}
-		if (document.getElementById("micr").selected) {
+		else if (document.getElementById("micr").selected) {
 			ajaxGet('info.htm?cmd=%23021%3BEVO%20OCR%3B2%3BfontNum%3B20%23');
 		}
-		if (document.getElementById("semi").selected) {
+		else if (document.getElementById("semi").selected) {
 			ajaxGet('info.htm?cmd=%23021%3BEVO%20OCR%3B2%3BfontNum%3B21%23');
 		}
 	}
@@ -402,7 +402,7 @@
 			ajaxGet('info.htm?cmd=%23021%3BEVO%20OCR%3B1%3BposRect.PointEnd.Y%3B'+endY+'%23');
 			ajaxGet('info.htm?cmd=%23021%3BEVO%20OCR%3B1%3BposRect.Width%3B'+width+'%23');
 		}
-		if (document.getElementById("defineWindow").checked) {
+		else if (document.getElementById("defineWindow").checked) {
 			var startX = $("#xValue").val() * GLOBAL_SCALE;
 			var endX = (parseInt($("#xValue").val()) + parseInt($("#wValue").val())) * GLOBAL_SCALE;
 			var startY = (parseInt($("#yValue").val()) + (parseInt($("#hValue").val())/2)) * GLOBAL_SCALE;
