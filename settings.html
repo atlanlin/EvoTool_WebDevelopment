@@ -72,10 +72,12 @@
 				</select>
 				<hr>
 				<label style="margin-left:0px; font-size:20px;"><b>CKP File Name</b></label><br>
-				<label>Code Reader Filename</label>
-				<input type="text" id="tbCodeReader" style="width:70px;"/>
-				<label>Measurement Filename</label>
-				<input type="text" id="tbMeasurement" style="width:70px;"/><br>
+				<label>Code Filename</label><br>
+				<input type="text" id="tbCodeReader" style="margin-left:10px; width:auto;"/><br><br>
+				<label>Measurement Filename</label><br>
+				<input type="text" id="tbMeasurement" style="margin-left:10px; width:auto;"/><br>
+				<hr>
+				
 				<label style="margin-left:0px; font-size:20px;"><b>Calibration</b></label><br>
 				<label>X</label>
 				<input type="text" id="tbCalxVal" style="width:70px;"/>
@@ -114,9 +116,9 @@
 			
 			if(fileMeasure ===null){
 				setCookie("fileMeasure", "Measurement", COOKIE_DURATION);
-				document.getElementById("tbMeasurement").value = fileCR;
+				document.getElementById("tbMeasurement").value = fileMeasure;
 			}else{
-				document.getElementById("tbMeasurement").value = fileCR;
+				document.getElementById("tbMeasurement").value = fileMeasure;
 			}
 			
 			//calibration settings
