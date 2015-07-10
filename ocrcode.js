@@ -367,11 +367,21 @@
 			
 		if (document.getElementById("characterSize").checked) {
 			// auto character size
-			ajaxGet('info.htm?cmd=%23021%3BEVO%20OCR%3B1%3BAutoCharX%3B'+charStartX+'%23');
-			ajaxGet('info.htm?cmd=%23021%3BEVO%20OCR%3B1%3BAutoCharY%3B'+charStartY+'%23');
-			ajaxGet('info.htm?cmd=%23021%3BEVO%20OCR%3B1%3BAutoCharW%3B'+charWidth+'%23');
-			ajaxGet('info.htm?cmd=%23021%3BEVO%20OCR%3B1%3BAutoCharH%3B'+charHeight+'%23');
+			if (document.getElementById("auto").checked) {
+				ajaxGet('info.htm?cmd=%23021%3BEVO%20OCR%3B2%3BsegmentationType%3B0%23');
+				ajaxGet('info.htm?cmd=%23021%3BEVO%20OCR%3B1%3BAutoCharX%3B'+charStartX+'%23');
+				ajaxGet('info.htm?cmd=%23021%3BEVO%20OCR%3B1%3BAutoCharY%3B'+charStartY+'%23');
+				ajaxGet('info.htm?cmd=%23021%3BEVO%20OCR%3B1%3BAutoCharW%3B'+charWidth+'%23');
+				ajaxGet('info.htm?cmd=%23021%3BEVO%20OCR%3B1%3BAutoCharH%3B'+charHeight+'%23');
+			} else {	// manual character size
+				ajaxGet('info.htm?cmd=%23021%3BEVO%20OCR%3B2%3BsegmentationType%3B1%23');
+				ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B1%3BcharX%3B'+charStartX+'%23');
+				ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B1%3BcharY%3B'+charStartY+'%23');
+				ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B1%3BcharW%3B'+charWidth+'%23');
+				ajaxGet('any.htm?cmd=%23021%3BEVO%20OCR%3B1%3BcharH%3B'+charHeight+'%23');
+			}
 		} else {
+			ajaxGet('info.htm?cmd=%23021%3BEVO%20OCR%3B2%3BsegmentationType%3B0%23');
 			ajaxGet('info.htm?cmd=%23021%3BEVO%20OCR%3B1%3BAutoCharX%3B50%23');
 			ajaxGet('info.htm?cmd=%23021%3BEVO%20OCR%3B1%3BAutoCharY%3B50%23');
 			ajaxGet('info.htm?cmd=%23021%3BEVO%20OCR%3B1%3BAutoCharW%3B40%23');

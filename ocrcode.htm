@@ -86,21 +86,23 @@
 				<input type="checkbox" id="characterSize" value="characterSize" name="characterSize" onclick="javascript:showCharWindowConfig()"><label>Character Size</label><br>
 				
 				<div id="characterBoundary" style="display:none">
-				<table border="0">
-					<tr>
-						<td>X:</td>
-						<td><input id="charXValue" class="textBox" type="text"></td>
-						<td>Y:</td>
-						<td><input id="charYValue" class="textBox" type="text"></td>
-					</tr>
-					
-					<tr>
-						<td>W:</td>
-						<td><input id="charWValue" class="textBox" type="text"></td>
-						<td>H:</td>
-						<td><input id="charHValue" class="textBox" type="text"></td>
-					</tr>				
-				</table>
+					<input type="radio" id="auto" value="auto" name="characterMode" checked><label>Auto</label><br>
+					<input type="radio" id="manual" value="manual" name="characterMode"><label>Manual</label><br> 
+					<table border="0">
+						<tr>
+							<td>X:</td>
+							<td><input id="charXValue" class="textBox" type="text"></td>
+							<td>Y:</td>
+							<td><input id="charYValue" class="textBox" type="text"></td>
+						</tr>
+						
+						<tr>
+							<td>W:</td>
+							<td><input id="charWValue" class="textBox" type="text"></td>
+							<td>H:</td>
+							<td><input id="charHValue" class="textBox" type="text"></td>
+						</tr>				
+					</table>
 				</div>
             </div>
 			
