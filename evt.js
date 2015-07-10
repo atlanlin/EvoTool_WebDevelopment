@@ -244,7 +244,7 @@ function canvasUpdate(imgSrc,w,h){
 		timeout = 0;
 	}
 }
-
+var timeoutStart;
 function updateImg(imgId,imgSrc){
 	var undefined;
 
@@ -268,13 +268,21 @@ function updateImg(imgId,imgSrc){
 		count += 1;
 		oImg.src = imgSrc + "?" + count;
 		timeout = 0;
-		document.getElementById("commuStatus").innerHTML = "<label>Connection Status: OK</label>";
+		//document.getElementById("commuStatus").innerHTML = "<label>Connection Status: OK</label>";
+		timeoutStart = undefined;
 	}
 	else if(timeout > 10){//initially 10
 		count += 1;
 		oImg.src = imgSrc + "?" + count;
 		timeout = 0;
-		document.getElementById("commuStatus").innerHTML = "<label>Connection Status: Timeout</label>";
+		if(timeoutStart === undefined)
+			timeoutStart = new Date();
+		var timeoutDuration = new Date() - timeoutStart;
+		//document.getElementById("commuStatus").innerHTML = "<label>Connection Status: Timeout: "+ timeoutDuration +"ms</label>";
+		if(timeoutDuration > 10000)//10s
+			alert("Connection Timeout occurs! Please turn off unnecessary programs and reload the page.");
+		
+		
 	}
 }
 
