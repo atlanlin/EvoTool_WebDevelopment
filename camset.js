@@ -591,3 +591,9 @@ function undisableBtn(btnId) {
 		document.getElementById(btnId).style.color="#00628B";
 	}
 }
+
+function saveProgram(cookieName){
+	var fileName = getCookie(cookieName);
+	ajaxGet('info.htm?cmd=%23024'+ fileName +'.ckp%23');
+	alert(fileName + ' program saved');
+}

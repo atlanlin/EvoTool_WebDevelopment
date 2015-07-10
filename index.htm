@@ -32,23 +32,36 @@
 		</tr>
     </table>
     <script>
+		var COOKIE_DURATION = 365;
 		ajaxGet("info.htm?cmd=%23004%23");
 		disableAllFunctions();
 		
+		var codeFilename = getCookie("fileCR");
+		var measureFilename = getCookie("fileMeasure");
+		
+		if(codeFilename === null){
+			setCookie("fileCR", "Code_Reader", COOKIE_DURATION);
+			codeFilename = "Code_Reader";
+		}
+		if(measureFilename === null){
+			setCookie("fileMeasure", "Measurement", COOKIE_DURATION);
+			measureFilename = "Measurement";
+		}
+		
 		document.getElementById("barcode").addEventListener("click", function(){
-			ajaxGet('info.htm?cmd=%23001Code_Reader.ckp%23');
+			ajaxGet('info.htm?cmd=%23001'+ codeFilename +'.ckp%23');
 		});
 		
 		document.getElementById("_2dbarcode").addEventListener("click", function(){
-			ajaxGet('info.htm?cmd=%23001Code_Reader.ckp%23');
+			ajaxGet('info.htm?cmd=%23001'+ codeFilename +'.ckp%23');
 		});
 		
 		document.getElementById("ocrcode").addEventListener("click", function(){
-			ajaxGet('info.htm?cmd=%23001Code_Reader.ckp%23');
+			ajaxGet('info.htm?cmd=%23001'+ codeFilename +'.ckp%23');
 		});
 		
 		document.getElementById("control").addEventListener("click", function(){
-			ajaxGet('info.htm?cmd=%23001Measurement.ckp%23');
+			ajaxGet('info.htm?cmd=%23001' + measureFilename + '.ckp%23');
 		});
 </script>
 </body>

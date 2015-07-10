@@ -71,6 +71,11 @@
 					<option>2592x1944</option>
 				</select>
 				<hr>
+				<label style="margin-left:0px; font-size:20px;"><b>CKP File Name</b></label><br>
+				<label>Code Reader Filename</label>
+				<input type="text" id="tbCodeReader" style="width:70px;"/>
+				<label>Measurement Filename</label>
+				<input type="text" id="tbMeasurement" style="width:70px;"/><br>
 				<label style="margin-left:0px; font-size:20px;"><b>Calibration</b></label><br>
 				<label>X</label>
 				<input type="text" id="tbCalxVal" style="width:70px;"/>
@@ -87,16 +92,49 @@
 	<script>
 		var resCookieVal;
 		var calX, calY;
+		var fileCR, fileMeasure;
 		var COOKIE_DURATION = 365;
 		restoreValues();
+		
+		
+		
 		function restoreValues(){
 			//resCookieVal = getCookie("resolution");
 			//document.getElementById("resSelectBox").selectedIndex = resCookieVal;
 			
+			//filename settings
+			fileCR = getCookie("fileCR");
+			fileMeasure = getCookie("fileMeasure");
+			if(fileCR ===null){
+				setCookie("fileCR", "Code_Reader", COOKIE_DURATION);
+				document.getElementById("tbCodeReader").value = fileCR;
+			}else{
+				document.getElementById("tbCodeReader").value = fileCR;
+			}
+			
+			if(fileMeasure ===null){
+				setCookie("fileMeasure", "Measurement", COOKIE_DURATION);
+				document.getElementById("tbMeasurement").value = fileCR;
+			}else{
+				document.getElementById("tbMeasurement").value = fileCR;
+			}
+			
+			//calibration settings
 			calX = getCookie("calX");
 			calY = getCookie("calY");
-			document.getElementById("tbCalxVal").value = calX;
-			document.getElementById("tbCalyVal").value = calY;
+			if(calX === null){
+				setCookie("calX", 1, COOKIE_DURATION);
+				document.getElementById("tbCalxVal").value = 1;
+			}else{
+				document.getElementById("tbCalxVal").value = calX;
+			}
+			
+			if(calY === null){
+				setCookie("calY", 1, COOKIE_DURATION);
+				document.getElementById("tbCalyVal").value = 1;
+			}else{
+				document.getElementById("tbCalyVal").value = calY;
+			}
 		}
 		
 		function updateValuesToCookies(){
