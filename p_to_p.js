@@ -59,6 +59,9 @@ var point1Flag = false;
 var point2ArrowDirFlag = "horizontal";
 var point2Flag = false;
 
+var EVOToolName = "EVO Distance";
+var EVOININame = "INI Distance";
+
 // Box object to hold data
 function Box2() {
   this.x = 0;
@@ -196,10 +199,12 @@ function addRect(x, y, w, h, fill) {
 // initialize our canvas, add a ghost canvas, set draw loop
 // then add everything we want to intially exist on the canvas
 function init2() {
+	//EVOToolName += " " +queryString["toolNo"];
+	//EVOININame += " " +queryString["toolNo"];
 
   //enable the command in EVO 3
-  ajaxGet("info.htm?cmd=%23021%3BEVO Distance%3B2%3BGeneral.Enabled%3B1%23");
-  ajaxGet("info.htm?cmd=%23021%3BINI Distance%3B2%3BGeneral.Enabled%3B1%23");
+  ajaxGet("info.htm?cmd=%23021%3B"+ EVOToolName +"%3B2%3BGeneral.Enabled%3B1%23");
+  ajaxGet("info.htm?cmd=%23021%3B" + EVOININame +"%3B2%3BGeneral.Enabled%3B1%23");
   
   canvas = document.getElementById('canvas2');
   HEIGHT = canvas.height;
@@ -286,7 +291,7 @@ function init2() {
 
 // consists of EVO communication commands
 function evoComm() {
-	ajaxGet("info.htm?cmd=%23021%3BEVO Distance%3B2%3BOptionForType%3B0%23");
+	ajaxGet("info.htm?cmd=%23021%3B"+ EVOToolName +"%3B2%3BOptionForType%3B0%23");
 	point1Settings();
 	point2Settings();
 	toleranceSettings();
@@ -295,42 +300,42 @@ function evoComm() {
 //send settings for point1
 function point1Settings() {
 	if (document.getElementById("point1DOL").checked) {
-			ajaxGet('any.htm?cmd=%23021%3BEVO%20Distance%3B2%3BTransition_1%3B1%23');
+			ajaxGet('any.htm?cmd=%23021%3B'+ EVOToolName +'%3B2%3BTransition_1%3B1%23');
 	}	
 	
 	if (document.getElementById("point1LOD").checked) {
-			ajaxGet('any.htm?cmd=%23021%3BEVO%20Distance%3B2%3BTransition_1%3B0%23');
+			ajaxGet('any.htm?cmd=%23021%3B'+ EVOToolName +'%3B2%3BTransition_1%3B0%23');
 	}
 	
-	ajaxGet("info.htm?cmd=%23021%3BEVO%20Distance%3B1%3BRecPos.PointStart.X%3B"+$("#point1StartX").val()+"%23");
-	ajaxGet("info.htm?cmd=%23021%3BEVO%20Distance%3B1%3BRecPos.PointEnd.X%3B"+$("#point1EndX").val()+"%23");
-	ajaxGet("info.htm?cmd=%23021%3BEVO%20Distance%3B1%3BRecPos.PointStart.Y%3B"+$("#point1StartY").val()+"%23");
-	ajaxGet("info.htm?cmd=%23021%3BEVO%20Distance%3B1%3BRecPos.PointEnd.Y%3B"+$("#point1EndY").val()+"%23");
-	ajaxGet("info.htm?cmd=%23021%3BEVO%20Distance%3B1%3BRecPos.Width%3B"+$("#point1Width").val()+"%23");
+	ajaxGet("info.htm?cmd=%23021%3B"+ EVOToolName +"%3B1%3BRecPos.PointStart.X%3B"+$("#point1StartX").val()+"%23");
+	ajaxGet("info.htm?cmd=%23021%3B" + EVOToolName +"%3B1%3BRecPos.PointEnd.X%3B"+$("#point1EndX").val()+"%23");
+	ajaxGet("info.htm?cmd=%23021%3B" + EVOToolName + "%3B1%3BRecPos.PointStart.Y%3B"+$("#point1StartY").val()+"%23");
+	ajaxGet("info.htm?cmd=%23021%3B"+ EVOToolName +"%3B1%3BRecPos.PointEnd.Y%3B"+$("#point1EndY").val()+"%23");
+	ajaxGet("info.htm?cmd=%23021%3B"+ EVOToolName +"%3B1%3BRecPos.Width%3B"+$("#point1Width").val()+"%23");
 }
 
 //send settings for point2
 function point2Settings() {
 	if (document.getElementById("point2DOL").checked) {
-			ajaxGet('any.htm?cmd=%23021%3BEVO%20Distance%3B2%3BTransition_2%3B1%23');
+			ajaxGet('any.htm?cmd=%23021%3B'+ EVOToolName +'%3B2%3BTransition_2%3B1%23');
 	}
 	
 	if (document.getElementById("point2LOD").checked) {
-			ajaxGet('any.htm?cmd=%23021%3BEVO%20Distance%3B2%3BTransition_2%3B0%23');
+			ajaxGet('any.htm?cmd=%23021%3B'+ EVOToolName +'%3B2%3BTransition_2%3B0%23');
 	}
 	
-	ajaxGet("info.htm?cmd=%23021%3BEVO%20Distance%3B1%3BRecPos2.PointStart.X%3B"+$("#point2StartX").val()+"%23");
-	ajaxGet("info.htm?cmd=%23021%3BEVO%20Distance%3B1%3BRecPos2.PointEnd.X%3B"+$("#point2EndX").val()+"%23");
-	ajaxGet("info.htm?cmd=%23021%3BEVO%20Distance%3B1%3BRecPos2.PointStart.Y%3B"+$("#point2StartY").val()+"%23");
-	ajaxGet("info.htm?cmd=%23021%3BEVO%20Distance%3B1%3BRecPos2.PointEnd.Y%3B"+$("#point2EndY").val()+"%23");
-	ajaxGet("info.htm?cmd=%23021%3BEVO%20Distance%3B1%3BRecPos2.Width%3B"+$("#point2Width").val()+"%23");
+	ajaxGet("info.htm?cmd=%23021%3B"+ EVOToolName +"%3B1%3BRecPos2.PointStart.X%3B"+$("#point2StartX").val()+"%23");
+	ajaxGet("info.htm?cmd=%23021%3B"+ EVOToolName +"%3B1%3BRecPos2.PointEnd.X%3B"+$("#point2EndX").val()+"%23");
+	ajaxGet("info.htm?cmd=%23021%3B"+ EVOToolName +"%3B1%3BRecPos2.PointStart.Y%3B"+$("#point2StartY").val()+"%23");
+	ajaxGet("info.htm?cmd=%23021%3B"+ EVOToolName +"%3B1%3BRecPos2.PointEnd.Y%3B"+$("#point2EndY").val()+"%23");
+	ajaxGet("info.htm?cmd=%23021%3B"+ EVOToolName +"%3B1%3BRecPos2.Width%3B"+$("#point2Width").val()+"%23");
 }
 
 //send settings for tolerance
 function toleranceSettings() {
-	ajaxGet("info.htm?cmd=%23021%3BEVO%20Distance%3B1%3BResult[0].Evaluation.NominalValue%3B"+$("#nv").val()+"%23");
-	ajaxGet("info.htm?cmd=%23021%3BEVO%20Distance%3B1%3BResult[0].Evaluation.PlusTolerance%3B"+$("#plus").val()+"%23");
-	ajaxGet("info.htm?cmd=%23021%3BEVO%20Distance%3B1%3BResult[0].Evaluation.MinusTolerance%3B"+$("#minus").val()+"%23");
+	ajaxGet("info.htm?cmd=%23021%3B"+ EVOToolName +"%3B1%3BResult[0].Evaluation.NominalValue%3B"+$("#nv").val()+"%23");
+	ajaxGet("info.htm?cmd=%23021%3B"+ EVOToolName +"%3B1%3BResult[0].Evaluation.PlusTolerance%3B"+$("#plus").val()+"%23");
+	ajaxGet("info.htm?cmd=%23021%3B"+ EVOToolName +"%3B1%3BResult[0].Evaluation.MinusTolerance%3B"+$("#minus").val()+"%23");
 }
 
 //create a line and an arrow head

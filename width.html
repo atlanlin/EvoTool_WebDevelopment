@@ -177,9 +177,14 @@
 		
 	<script>
 		var EVO_UPDATE_INTERVAL = 2000;
+		
+		var EVOToolName = "EVO Width";
+		var EVOININame = "INI Width";
+		
+		
 		//enable width command in evo 3
-		ajaxGet("info.htm?cmd=%23021%3BEVO Width%3B2%3BGeneral.Enabled%3B1%23");
-		ajaxGet("info.htm?cmd=%23021%3BINI Width%3B2%3BGeneral.Enabled%3B1%23");
+		ajaxGet("info.htm?cmd=%23021%3B"+ EVOToolName +"%3B2%3BGeneral.Enabled%3B1%23");
+		ajaxGet("info.htm?cmd=%23021%3B"+ EVOININame +"%3B2%3BGeneral.Enabled%3B1%23");
 		
 		//send parameters to evo 3
 		function updateParameters(){
@@ -210,13 +215,13 @@
 				option = 3;
 			
 			
-			ajaxGet("info.htm?cmd=%23021%3BEVO Width%3B1%3BRecPos.PointStart.X%3B" + sx +"%23");
-			ajaxGet("info.htm?cmd=%23021%3BEVO Width%3B1%3BRecPos.PointStart.Y%3B" + sy +"%23");
-			ajaxGet("info.htm?cmd=%23021%3BEVO Width%3B1%3BRecPos.PointEnd.X%3B" + ex +"%23");
-			ajaxGet("info.htm?cmd=%23021%3BEVO Width%3B1%3BRecPos.PointEnd.Y%3B" + ey +"%23");
-			ajaxGet("info.htm?cmd=%23021%3BEVO Width%3B1%3BRecPos.Width%3B" + width +"%23");
-			ajaxGet("info.htm?cmd=%23021%3BEVO Width%3B2%3BObjColor%3B" + color +"%23");
-			ajaxGet("info.htm?cmd=%23021%3BEVO Width%3B2%3BMeasureOption%3B" + option +"%23");
+			ajaxGet("info.htm?cmd=%23021%3B"+ EVOToolName +"%3B1%3BRecPos.PointStart.X%3B" + sx +"%23");
+			ajaxGet("info.htm?cmd=%23021%3B"+ EVOToolName +"%3B1%3BRecPos.PointStart.Y%3B" + sy +"%23");
+			ajaxGet("info.htm?cmd=%23021%3B"+ EVOToolName +"%3B1%3BRecPos.PointEnd.X%3B" + ex +"%23");
+			ajaxGet("info.htm?cmd=%23021%3B"+ EVOToolName +"%3B1%3BRecPos.PointEnd.Y%3B" + ey +"%23");
+			ajaxGet("info.htm?cmd=%23021%3B"+ EVOToolName +"%3B1%3BRecPos.Width%3B" + width +"%23");
+			ajaxGet("info.htm?cmd=%23021%3B"+ EVOToolName +"%3B2%3BObjColor%3B" + color +"%23");
+			ajaxGet("info.htm?cmd=%23021%3B"+ EVOToolName +"%3B2%3BMeasureOption%3B" + option +"%23");
 			
 		}
 		
