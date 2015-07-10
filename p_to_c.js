@@ -4,17 +4,24 @@ window.onload = function() {
 	initCircle();
 	initSquare();
 	
+	//EVOToolName += " " + queryString["toolNo"];
+	//EVOININame +=  " " + queryString["toolNo"];
+	
 	
 	//enable function in evo 3 ckp file
-	ajaxGet("info.htm?cmd=%23021%3BEVO Distance%3B2%3BGeneral.Enabled%3B1%23");
-	ajaxGet("info.htm?cmd=%23021%3BINI Distance%3B2%3BGeneral.Enabled%3B1%23");
+	ajaxGet("info.htm?cmd=%23021%3B"+ EVOToolName +"%3B2%3BGeneral.Enabled%3B1%23");
+	ajaxGet("info.htm?cmd=%23021%3B"+ EVOININame +"%3B2%3BGeneral.Enabled%3B1%23");
+	
+	
+	//ajaxGet("info.htm?cmd=%23021%3BEVO Distance "+ queryString["toolNo"] +"%3B2%3BGeneral.Enabled%3B1%23");
+	//ajaxGet("info.htm?cmd=%23021%3BINI Distance "+ queryString["toolNo"] +"%3B2%3BGeneral.Enabled%3B1%23");
 	
 }
 
 // circle code
 
 function initCircle() {
-	ajaxGet("info.htm?cmd=%23021%3BEVO Distance%3B2%3BOptionForType%3B2%23");	
+	ajaxGet("info.htm?cmd=%23021%3B"+ EVOToolName +"%3B2%3BOptionForType%3B2%23");	
     drawCircle(circle, innerCircle);
 	
 	// mouse handler
@@ -31,7 +38,7 @@ function initCircle() {
 	// getting of result to display on text area
 	$("#btnMeasure").click(function(){
 			$("#resultDisplay").val("");
-			ajaxGet("info.htm?cmd=%23021%3BEVO Distance%3B2%3BOptionForType%3B2%23");
+			ajaxGet("info.htm?cmd=%23021%3B"+ EVOToolName +"%3B2%3BOptionForType%3B2%23");
 			ajaxGet("cfg.ini", getValueFrominiFile);
 			//save screenshot of the current measurement taken
 			saveScreenshot();
@@ -376,24 +383,24 @@ function updateCircleEvo()
 	}
 		
 	if ($("#clightToDark").is(":checked")) {
-		ajaxGet("info.htm?cmd=%23021%3BEVO Distance%3B2%3BTransition_2%3B0%23");
+		ajaxGet("info.htm?cmd=%23021%3B"+ EVOToolName +"%3B2%3BTransition_2%3B0%23");
     }
 	else if($("#cdarkToLight").is(":checked")) {
-        ajaxGet("info.htm?cmd=%23021%3BEVO Distance%3B2%3BTransition_2%3B1%23");
+        ajaxGet("info.htm?cmd=%23021%3B"+ EVOToolName +"%3B2%3BTransition_2%3B1%23");
     }
 
 	// update circle parameters to evo3	
-	ajaxGet("info.htm?cmd=%23021%3BEVO Distance%3B1%3BCirclePos.Center.X%3B"+ calCenterX +"%23");
-	ajaxGet("info.htm?cmd=%23021%3BEVO Distance%3B1%3BCirclePos.Center.Y%3B"+ calCenterY +"%23");
+	ajaxGet("info.htm?cmd=%23021%3B"+ EVOToolName +"%3B1%3BCirclePos.Center.X%3B"+ calCenterX +"%23");
+	ajaxGet("info.htm?cmd=%23021%3B"+ EVOToolName +"%3B1%3BCirclePos.Center.Y%3B"+ calCenterY +"%23");
 		
-	ajaxGet("info.htm?cmd=%23021%3BEVO Distance%3B1%3BCirclePos.InnerRadius%3B"+ calInnerRadius +"%23");
-	ajaxGet("info.htm?cmd=%23021%3BEVO Distance%3B1%3BCirclePos.OuterRadius%3B"+ calOuterRadius +"%23");
-	ajaxGet("info.htm?cmd=%23021%3BEVO Distance%3B1%3BCirclePos.StartAngle%3B"+ startvalue +"%23");
-	ajaxGet("info.htm?cmd=%23021%3BEVO Distance%3B1%3BCirclePos.LengthAngle%3B"+ calDiffer +"%23");
+	ajaxGet("info.htm?cmd=%23021%3B"+ EVOToolName +"%3B1%3BCirclePos.InnerRadius%3B"+ calInnerRadius +"%23");
+	ajaxGet("info.htm?cmd=%23021%3B"+ EVOToolName +"%3B1%3BCirclePos.OuterRadius%3B"+ calOuterRadius +"%23");
+	ajaxGet("info.htm?cmd=%23021%3B"+ EVOToolName +"%3B1%3BCirclePos.StartAngle%3B"+ startvalue +"%23");
+	ajaxGet("info.htm?cmd=%23021%3B"+ EVOToolName +"%3B1%3BCirclePos.LengthAngle%3B"+ calDiffer +"%23");
 		
-	ajaxGet("info.htm?cmd=%23021%3BEVO Distance%3B1%3BResult[0].Evaluation.NominalValue%3B"+ nominalValue +"%23");
-	ajaxGet("info.htm?cmd=%23021%3BEVO Distance%3B1%3BResult[0].Evaluation.PlusTolerance%3B"+ positive +"%23");
-	ajaxGet("info.htm?cmd=%23021%3BEVO Distance%3B1%3BResult[0].Evaluation.MinusTolerance%3B"+ negative +"%23");
+	ajaxGet("info.htm?cmd=%23021%3B"+ EVOToolName +"%3B1%3BResult[0].Evaluation.NominalValue%3B"+ nominalValue +"%23");
+	ajaxGet("info.htm?cmd=%23021%3B"+ EVOToolName +"%3B1%3BResult[0].Evaluation.PlusTolerance%3B"+ positive +"%23");
+	ajaxGet("info.htm?cmd=%23021%3B"+ EVOToolName +"%3B1%3BResult[0].Evaluation.MinusTolerance%3B"+ negative +"%23");
 		
 }
 
@@ -424,23 +431,23 @@ function updateRectEvo()
 		var negative = $("#minus").val();
 		
 		if ($("#rlightToDark").is(":checked")) {
-			ajaxGet("info.htm?cmd=%23021%3BEVO Distance%3B2%3BTransition_1%3B0%23");
+			ajaxGet("info.htm?cmd=%23021%3B"+ EVOToolName +"%3B2%3BTransition_1%3B0%23");
         }
 		else if($("#rdarkToLight").is(":checked")) {
-            ajaxGet("info.htm?cmd=%23021%3BEVO Distance%3B2%3BTransition_1%3B1%23");
+            ajaxGet("info.htm?cmd=%23021%3B"+ EVOToolName +"%3B2%3BTransition_1%3B1%23");
         }
 		
 		// update square parameters to evo3
-		ajaxGet("info.htm?cmd=%23021%3BEVO Distance%3B1%3BRecPos.PointStart.X%3B"+ calStartX +"%23");
-		ajaxGet("info.htm?cmd=%23021%3BEVO Distance%3B1%3BRecPos.PointEnd.X%3B"+ calEndX +"%23");
+		ajaxGet("info.htm?cmd=%23021%3B"+ EVOToolName +"%3B1%3BRecPos.PointStart.X%3B"+ calStartX +"%23");
+		ajaxGet("info.htm?cmd=%23021%3B"+ EVOToolName +"%3B1%3BRecPos.PointEnd.X%3B"+ calEndX +"%23");
 		
-		ajaxGet("info.htm?cmd=%23021%3BEVO Distance%3B1%3BRecPos.PointStart.Y%3B"+ calStartY +"%23");
-		ajaxGet("info.htm?cmd=%23021%3BEVO Distance%3B1%3BRecPos.PointEnd.Y%3B"+ calEndY +"%23");
-		ajaxGet("info.htm?cmd=%23021%3BEVO Distance%3B1%3BRecPos.Width%3B"+ calWidth +"%23");
+		ajaxGet("info.htm?cmd=%23021%3B"+ EVOToolName +"%3B1%3BRecPos.PointStart.Y%3B"+ calStartY +"%23");
+		ajaxGet("info.htm?cmd=%23021%3B"+ EVOToolName +"%3B1%3BRecPos.PointEnd.Y%3B"+ calEndY +"%23");
+		ajaxGet("info.htm?cmd=%23021%3B"+ EVOToolName +"%3B1%3BRecPos.Width%3B"+ calWidth +"%23");
 		
-		ajaxGet("info.htm?cmd=%23021%3BEVO Distance%3B1%3BResult[0].Evaluation.NominalValue%3B"+ nominalValue +"%23");
-		ajaxGet("info.htm?cmd=%23021%3BEVO Distance%3B1%3BResult[0].Evaluation.PlusTolerance%3B"+ positive +"%23");
-		ajaxGet("info.htm?cmd=%23021%3BEVO Distance%3B1%3BResult[0].Evaluation.MinusTolerance%3B"+ negative +"%23");
+		ajaxGet("info.htm?cmd=%23021%3B"+ EVOToolName +"%3B1%3BResult[0].Evaluation.NominalValue%3B"+ nominalValue +"%23");
+		ajaxGet("info.htm?cmd=%23021%3B"+ EVOToolName +"%3B1%3BResult[0].Evaluation.PlusTolerance%3B"+ positive +"%23");
+		ajaxGet("info.htm?cmd=%23021%3B"+ EVOToolName +"%3B1%3BResult[0].Evaluation.MinusTolerance%3B"+ negative +"%23");
 		
 }
 
@@ -1235,6 +1242,10 @@ var arrowDirFlag = "horizontal";
 //startx, starty, endx, endy, width coordinates or values.
 var stx, sty, edx, edy, wi;
 
+
+var EVOToolName = "EVO Distance";
+
+var EVOININame = "INI Distance";
 
 }
 
