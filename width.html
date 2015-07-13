@@ -177,15 +177,32 @@
 	</div>
 		
 	<script>
+	
+	
 		var EVO_UPDATE_INTERVAL = 2000;
 		
 		var EVOToolName = "EVO Width";
 		var EVOININame = "INI Width";
+		$(document).ready(function(){
+			EVOToolName += " " +queryString["toolNo"];
+			EVOININame += " " +queryString["toolNo"];
+			
+			//enable width command in evo 3
+			ajaxGet("info.htm?cmd=%23021%3B"+ EVOToolName +"%3B2%3BGeneral.Enabled%3B1%23");
+			ajaxGet("info.htm?cmd=%23021%3B"+ EVOININame +"%3B2%3BGeneral.Enabled%3B1%23");
+			
+			
+			$("#btnMeasure").click(function(){
+			//not to confuse with previous result
+			$("#resultDisplay").val("");
+			//updateParameters();
+			ajaxGet("cfg.ini", getValueFrominiFile);
+			saveScreenshot();
+			});
+			
+			setInterval(updateParameters, EVO_UPDATE_INTERVAL);
+		});
 		
-		
-		//enable width command in evo 3
-		ajaxGet("info.htm?cmd=%23021%3B"+ EVOToolName +"%3B2%3BGeneral.Enabled%3B1%23");
-		ajaxGet("info.htm?cmd=%23021%3B"+ EVOININame +"%3B2%3BGeneral.Enabled%3B1%23");
 		
 		//send parameters to evo 3
 		function updateParameters(){
@@ -226,15 +243,7 @@
 			
 		}
 		
-		$("#btnMeasure").click(function(){
-			//not to confuse with previous result
-			$("#resultDisplay").val("");
-			//updateParameters();
-			ajaxGet("cfg.ini", getValueFrominiFile);
-			saveScreenshot();
-		});
 		
-		setInterval(updateParameters, EVO_UPDATE_INTERVAL);
 		
 	</script>
 </body>

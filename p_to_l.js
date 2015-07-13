@@ -199,8 +199,8 @@ function addRect(x, y, w, h, fill) {
 // then add everything we want to intially exist on the canvas
 function init2() {
   
-	//EVOToolName += " " +queryString["toolNo"];
-	//EVOININame += " " +queryString["toolNo"];
+	EVOToolName += " " +queryString["toolNo"];
+	EVOININame += " " +queryString["toolNo"];
 	
   //enable the distance command in EVO3
   ajaxGet("info.htm?cmd=%23021%3B"+ EVOToolName +"%3B2%3BGeneral.Enabled%3B1%23");
