@@ -3,8 +3,8 @@ window.onload = function() {
 //initialize circle on canvas
 	initCircle();
 
-	EVOToolName += " " + queryString["toolNo"];
-	EVOININame +=  " " + queryString["toolNo"];
+	//EVOToolName += " " + queryString["toolNo"];
+	//EVOININame +=  " " + queryString["toolNo"];
 	
 	
 	//enable function in evo 3 ckp file

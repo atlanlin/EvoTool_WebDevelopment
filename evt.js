@@ -389,36 +389,10 @@ function deleteCookie(name) {
 function disableAllFunctions(){
 	//disable all functions - enter function names here to disable
 	var frontFunctionNames = ["EVO ", "INI "];
-	var functionNames = ["BarCode", "DataCode", "OCR"];
-	var cmdIndex = 1;
-	var sendCmd = "info.htm?";
+	var functionNames = ["Circle", "Width", "Distance", "BarCode", "DataCode", "OCR"];
 	for(var i=0; i < frontFunctionNames.length; i++){
 		for(var j=0; j < functionNames.length; j++){
-			sendCmd += "cmd" + cmdIndex + "=%23021%3B" + frontFunctionNames[i] + functionNames[j] + "%3B2%3BGeneral.Enabled%3B0%23&";
-			cmdIndex+=1;
+			ajaxGet("info.htm?cmd=%23021%3B" + frontFunctionNames[i] + functionNames[j] +"%3B2%3BGeneral.Enabled%3B0%23");
 		}
 	}
-	sendCmd = sendCmd.substring(0,sendCmd.length-1);
-	//console.log(sendCmd);
-	ajaxGet(sendCmd);
-	
-	functionNames = ["Circle ", "Width ", "Distance "];
-	for(var i=0; i < frontFunctionNames.length; i++){
-		for(var j=0; j < functionNames.length; j++){
-			cmdIndex = 1;
-			sendCmd = "info.htm?";
-			for(var k=0; k < 9; k++){
-				sendCmd += "cmd" + (cmdIndex).toString() + "=%23021%3B" + frontFunctionNames[i] + 
-					functionNames[j] + (k+1).toString() + "%3B2%3BGeneral.Enabled%3B0%23&";
-				cmdIndex+=1;
-				
-			}
-			sendCmd = sendCmd.substring(0,sendCmd.length-1);
-			//console.log(sendCmd);
-			ajaxGet(sendCmd);
-		}
-	}
-	
-	
-	
 }

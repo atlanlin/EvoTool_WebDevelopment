@@ -4,8 +4,8 @@ window.onload = function() {
 	initCircle();
 	initSquare();
 	
-	EVOToolName += " " + queryString["toolNo"];
-	EVOININame +=  " " + queryString["toolNo"];
+	//EVOToolName += " " + queryString["toolNo"];
+	//EVOININame +=  " " + queryString["toolNo"];
 	
 	
 	//enable function in evo 3 ckp file
