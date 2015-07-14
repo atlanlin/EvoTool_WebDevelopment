@@ -1,12 +1,13 @@
 // screen on load 
 window.onload = function() {
 	//initialize square and circle on canvas
-	initCircle();
-	initSquare();
 	
-
 	EVOToolName += " " + queryString["toolNo"];
 	EVOININame +=  " " + queryString["toolNo"];
+	
+	
+	initCircle();
+	initSquare();
 		
 	//enable function in evo 3 ckp file
 	ajaxGet("info.htm?cmd=%23021%3B"+ EVOToolName +"%3B2%3BGeneral.Enabled%3B1%23");

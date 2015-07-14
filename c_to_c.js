@@ -1,10 +1,12 @@
 // screen on load 
 window.onload = function() {
 //initialize circle on canvas
-	initCircle();
 
 	EVOToolName += " " + queryString["toolNo"];
 	EVOININame +=  " " + queryString["toolNo"];
+	
+	
+	initCircle();
 	
 	
 	//enable function in evo 3 ckp file

@@ -2,10 +2,12 @@
 // 
 window.onload = function() {
 	//initialize circle on canvas
-	initCircle();
 	
 	EVOToolName += " " + queryString["toolNo"];
 	EVOININame +=  " " + queryString["toolNo"];
+	
+	
+	initCircle();
 	
 	//enable function in evo 3 ckp file
 	ajaxGet("info.htm?cmd=%23021%3B"+ EVOToolName +"%3B2%3BGeneral.Enabled%3B1%23");
