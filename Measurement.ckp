@@ -3,7 +3,7 @@ EYEVISION_VERSION
 FILE_VERSION 
 CREATED 
 CREATED_BY 
-LAST_MODIFIED 14.07.2015 15:42:00
+LAST_MODIFIED 14.07.2015 11:40:17
 LAST_MODIFIED_BY 
 START_PARM_LIST 
   KEY 1
@@ -838,7 +838,7 @@ START_PARM_LIST
     ApplyCorrection 0
     CorrectionType 1
     VariableType 0
-    ConstantValue 0,0
+    ConstantValue 77,3528
     IniFileName C:\temp\wwwroot\cfg.ini
     SegmentName cam1
     EntryName result1
@@ -1529,7 +1529,7 @@ START_PARM_LIST
     CorrectionType 1
     VariableType 0
     ConstantValue 0,0
-    IniFileName C:\temp\wwwroot\cfg.ini
+    IniFileName C:/temp/wwwroot/cfg.ini
     SegmentName cam1
     EntryName result1
     PointType 3
@@ -1538,7 +1538,7 @@ START_PARM_LIST
       ClassVersion 1
       Name 
       PickupObjectType 0
-      PickupListIndex 1065805
+      PickupListIndex 303300
     END_CKPICKUP_TYPE_READ 
     CKPICKUP_TYPE_READ 
       ClassVersion 1
@@ -1616,8 +1616,8 @@ START_PARM_LIST
     ApplyCorrection 0
     CorrectionType 1
     VariableType 0
-    ConstantValue 0,0
-    IniFileName C:\temp\wwwroot\cfg.ini
+    ConstantValue 77,3528
+    IniFileName C:/temp/wwwroot/cfg.ini
     SegmentName cam1
     EntryName result1
     PointType 3
@@ -1626,7 +1626,7 @@ START_PARM_LIST
       ClassVersion 1
       Name 
       PickupObjectType 0
-      PickupListIndex 1050642
+      PickupListIndex 2882301
     END_CKPICKUP_TYPE_READ 
     CKPICKUP_TYPE_READ 
       ClassVersion 1
@@ -1705,7 +1705,7 @@ START_PARM_LIST
     CorrectionType 1
     VariableType 0
     ConstantValue 0,0
-    IniFileName C:\temp\wwwroot\cfg.ini
+    IniFileName C:/temp/wwwroot/cfg.ini
     SegmentName cam1
     EntryName result1
     PointType 3
@@ -1714,7 +1714,7 @@ START_PARM_LIST
       ClassVersion 1
       Name 
       PickupObjectType 0
-      PickupListIndex 1035611
+      PickupListIndex 340665
     END_CKPICKUP_TYPE_READ 
     CKPICKUP_TYPE_READ 
       ClassVersion 1
@@ -2307,7 +2307,7 @@ START_PARM_LIST
     CorrectionType 1
     VariableType 0
     ConstantValue 0,0
-    IniFileName C:\temp\wwwroot\cfg.ini
+    IniFileName C:/temp/wwwroot/cfg.ini
     SegmentName cam1
     EntryName result1
     PointType 3
@@ -2316,7 +2316,7 @@ START_PARM_LIST
       ClassVersion 1
       Name 
       PickupObjectType 0
-      PickupListIndex 1051130
+      PickupListIndex 303300
     END_CKPICKUP_TYPE_READ 
     CKPICKUP_TYPE_READ 
       ClassVersion 1
@@ -2394,8 +2394,8 @@ START_PARM_LIST
     ApplyCorrection 0
     CorrectionType 1
     VariableType 0
-    ConstantValue 0,0
-    IniFileName C:\temp\wwwroot\cfg.ini
+    ConstantValue 77,3528
+    IniFileName C:/temp/wwwroot/cfg.ini
     SegmentName cam1
     EntryName result1
     PointType 3
@@ -2404,7 +2404,7 @@ START_PARM_LIST
       ClassVersion 1
       Name 
       PickupObjectType 0
-      PickupListIndex 1073859
+      PickupListIndex 2882301
     END_CKPICKUP_TYPE_READ 
     CKPICKUP_TYPE_READ 
       ClassVersion 1
@@ -2483,7 +2483,7 @@ START_PARM_LIST
     CorrectionType 1
     VariableType 0
     ConstantValue 0,0
-    IniFileName C:\temp\wwwroot\cfg.ini
+    IniFileName C:/temp/wwwroot/cfg.ini
     SegmentName cam1
     EntryName result1
     PointType 3
@@ -2492,7 +2492,7 @@ START_PARM_LIST
       ClassVersion 1
       Name 
       PickupObjectType 0
-      PickupListIndex 1048059
+      PickupListIndex 340665
     END_CKPICKUP_TYPE_READ 
     CKPICKUP_TYPE_READ 
       ClassVersion 1
@@ -3094,7 +3094,7 @@ START_PARM_LIST
       ClassVersion 1
       Name 
       PickupObjectType 0
-      PickupListIndex 1057849
+      PickupListIndex 303300
     END_CKPICKUP_TYPE_READ 
     CKPICKUP_TYPE_READ 
       ClassVersion 1
@@ -3182,7 +3182,7 @@ START_PARM_LIST
       ClassVersion 1
       Name 
       PickupObjectType 0
-      PickupListIndex 1066275
+      PickupListIndex 2882301
     END_CKPICKUP_TYPE_READ 
     CKPICKUP_TYPE_READ 
       ClassVersion 1
@@ -3270,7 +3270,7 @@ START_PARM_LIST
       ClassVersion 1
       Name 
       PickupObjectType 0
-      PickupListIndex 1082558
+      PickupListIndex 340665
     END_CKPICKUP_TYPE_READ 
     CKPICKUP_TYPE_READ 
       ClassVersion 1
@@ -3863,7 +3863,7 @@ START_PARM_LIST
     CorrectionType 1
     VariableType 0
     ConstantValue 0,0
-    IniFileName C:\temp\wwwroot\cfg.ini
+    IniFileName C:/temp/wwwroot/cfg.ini
     SegmentName cam1
     EntryName result1
     PointType 3
@@ -3872,7 +3872,7 @@ START_PARM_LIST
       ClassVersion 1
       Name 
       PickupObjectType 0
-      PickupListIndex 1081706
+      PickupListIndex 303300
     END_CKPICKUP_TYPE_READ 
     CKPICKUP_TYPE_READ 
       ClassVersion 1
@@ -3950,8 +3950,8 @@ START_PARM_LIST
     ApplyCorrection 0
     CorrectionType 1
     VariableType 0
-    ConstantValue 0,0
-    IniFileName C:\temp\wwwroot\cfg.ini
+    ConstantValue 77,3528
+    IniFileName C:/temp/wwwroot/cfg.ini
     SegmentName cam1
     EntryName result1
     PointType 3
@@ -3960,7 +3960,7 @@ START_PARM_LIST
       ClassVersion 1
       Name 
       PickupObjectType 0
-      PickupListIndex 1070931
+      PickupListIndex 2882301
     END_CKPICKUP_TYPE_READ 
     CKPICKUP_TYPE_READ 
       ClassVersion 1
@@ -4039,7 +4039,7 @@ START_PARM_LIST
     CorrectionType 1
     VariableType 0
     ConstantValue 0,0
-    IniFileName C:\temp\wwwroot\cfg.ini
+    IniFileName C:/temp/wwwroot/cfg.ini
     SegmentName cam1
     EntryName result1
     PointType 3
@@ -4048,7 +4048,7 @@ START_PARM_LIST
       ClassVersion 1
       Name 
       PickupObjectType 0
-      PickupListIndex 1075055
+      PickupListIndex 340665
     END_CKPICKUP_TYPE_READ 
     CKPICKUP_TYPE_READ 
       ClassVersion 1
@@ -4641,7 +4641,7 @@ START_PARM_LIST
     CorrectionType 1
     VariableType 0
     ConstantValue 0,0
-    IniFileName C:\temp\wwwroot\cfg.ini
+    IniFileName C:/temp/wwwroot/cfg.ini
     SegmentName cam1
     EntryName result1
     PointType 3
@@ -4650,7 +4650,7 @@ START_PARM_LIST
       ClassVersion 1
       Name 
       PickupObjectType 0
-      PickupListIndex 1088693
+      PickupListIndex 303300
     END_CKPICKUP_TYPE_READ 
     CKPICKUP_TYPE_READ 
       ClassVersion 1
@@ -4728,8 +4728,8 @@ START_PARM_LIST
     ApplyCorrection 0
     CorrectionType 1
     VariableType 0
-    ConstantValue 0,0
-    IniFileName C:\temp\wwwroot\cfg.ini
+    ConstantValue 77,3528
+    IniFileName C:/temp/wwwroot/cfg.ini
     SegmentName cam1
     EntryName result1
     PointType 3
@@ -4738,7 +4738,7 @@ START_PARM_LIST
       ClassVersion 1
       Name 
       PickupObjectType 0
-      PickupListIndex 1080761
+      PickupListIndex 2882301
     END_CKPICKUP_TYPE_READ 
     CKPICKUP_TYPE_READ 
       ClassVersion 1
@@ -4826,7 +4826,7 @@ START_PARM_LIST
       ClassVersion 1
       Name 
       PickupObjectType 0
-      PickupListIndex 1072408
+      PickupListIndex 340665
     END_CKPICKUP_TYPE_READ 
     CKPICKUP_TYPE_READ 
       ClassVersion 1
@@ -4933,16 +4933,16 @@ START_PARM_LIST
       ClassVersion 1
       Name 
       ID 0
-      InnerRadius 13,617
-      OuterRadius 58,5531914894
+      InnerRadius 34,0425531915
+      OuterRadius 68,0851
       StartAngle 0,0
       LengthAngle 360,0
       Direction 1
       CKPOINT 
         ClassVersion 1
         Name 
-        X 497,0212765957
-        Y 281,87234
+        X 68,0851
+        Y 68,0851
       END_CKPOINT 
     END_CKCIRCLE_PROBE_POS 
     DetermineEum 0
@@ -5428,7 +5428,7 @@ START_PARM_LIST
       ClassVersion 1
       Name 
       PickupObjectType 0
-      PickupListIndex 1073225
+      PickupListIndex 303300
     END_CKPICKUP_TYPE_READ 
     CKPICKUP_TYPE_READ 
       ClassVersion 1
@@ -5516,7 +5516,7 @@ START_PARM_LIST
       ClassVersion 1
       Name 
       PickupObjectType 0
-      PickupListIndex 1092826
+      PickupListIndex 2882301
     END_CKPICKUP_TYPE_READ 
     CKPICKUP_TYPE_READ 
       ClassVersion 1
@@ -5604,7 +5604,7 @@ START_PARM_LIST
       ClassVersion 1
       Name 
       PickupObjectType 0
-      PickupListIndex 1073781
+      PickupListIndex 340665
     END_CKPICKUP_TYPE_READ 
     CKPICKUP_TYPE_READ 
       ClassVersion 1
@@ -6206,7 +6206,7 @@ START_PARM_LIST
       ClassVersion 1
       Name 
       PickupObjectType 0
-      PickupListIndex 1073253
+      PickupListIndex 303300
     END_CKPICKUP_TYPE_READ 
     CKPICKUP_TYPE_READ 
       ClassVersion 1
@@ -6294,7 +6294,7 @@ START_PARM_LIST
       ClassVersion 1
       Name 
       PickupObjectType 0
-      PickupListIndex 1073799
+      PickupListIndex 2882301
     END_CKPICKUP_TYPE_READ 
     CKPICKUP_TYPE_READ 
       ClassVersion 1
@@ -6382,7 +6382,7 @@ START_PARM_LIST
       ClassVersion 1
       Name 
       PickupObjectType 0
-      PickupListIndex 1091495
+      PickupListIndex 340665
     END_CKPICKUP_TYPE_READ 
     CKPICKUP_TYPE_READ 
       ClassVersion 1
