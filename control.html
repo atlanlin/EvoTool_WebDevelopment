@@ -118,6 +118,7 @@
 								if(getCookie(cookieNames[i]+String(j)) != null)
 								{
 									deleteCookie(cookieNames[i]+String(j));
+									localStorage.clear();
 								}
 						
 							}
@@ -125,7 +126,6 @@
 					}
 				displayResults();
 				addItemsIntoDb();
-				localStorage.clear();
 				loadScreenshot();
 				$('#imgView').attr('src', '');
 				
