@@ -118,11 +118,11 @@
 								if(getCookie(cookieNames[i]+String(j)) != null)
 								{
 									deleteCookie(cookieNames[i]+String(j));
-									localStorage.clear();
 								}
 						
 							}
 						}
+						localStorage.clear();
 					}
 				displayResults();
 				addItemsIntoDb();
