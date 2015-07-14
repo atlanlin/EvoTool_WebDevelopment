@@ -303,7 +303,7 @@ function ajaxGet(file,callBackFck){
 	xhr = new XMLHttpRequest();
 	xhr.overrideMimeType('text/plain; charset=x-user-defined');
 	xhr.open("GET", file, true);
-	
+	console.log("Sent Msg:" + file);
 	if(callBackFck && callBackFck != undefined) xhr.onreadystatechange = callBackFck;
 	
 	xhr.send(null);
@@ -388,34 +388,35 @@ function deleteCookie(name) {
 
 function disableAllFunctions(){
 	//disable all functions - enter function names here to disable
-	var frontFunctionNames = ["EVO ", "INI "];
-	var functionNames = ["BarCode", "DataCode", "OCR"];
+	var delay_time = 200;
+	var functionNames = ["EVO%20BarCode", "EVO%20DataCode", "EVO%20OCR"];
 	var cmdIndex = 1;
 	var sendCmd = "info.htm?";
-	for(var i=0; i < frontFunctionNames.length; i++){
+	//for(var i=0; i < frontFunctionNames.length; i++){
 		for(var j=0; j < functionNames.length; j++){
-			sendCmd += "cmd" + cmdIndex + "=%23021%3B" + frontFunctionNames[i] + functionNames[j] + "%3B2%3BGeneral.Enabled%3B0%23&";
+			sendCmd += "cmd" + cmdIndex + "=%23021%3B" + functionNames[j] + "%3B2%3BGeneral.Enabled%3B0%23&";
 			cmdIndex+=1;
 		}
-	}
+	//}
 	sendCmd = sendCmd.substring(0,sendCmd.length-1);
 	//console.log(sendCmd);
 	ajaxGet(sendCmd);
 	
-	functionNames = ["Circle ", "Width ", "Distance "];
+	var frontFunctionNames = ["EVO%20", "INI%20"];
+	functionNames = ["Circle%20", "Width%20", "Distance%20"];
 	for(var i=0; i < frontFunctionNames.length; i++){
 		for(var j=0; j < functionNames.length; j++){
 			cmdIndex = 1;
 			sendCmd = "info.htm?";
-			for(var k=0; k < 9; k++){
+			for(var k=0; k < 8; k++){
 				sendCmd += "cmd" + (cmdIndex).toString() + "=%23021%3B" + frontFunctionNames[i] + 
 					functionNames[j] + (k+1).toString() + "%3B2%3BGeneral.Enabled%3B0%23&";
 				cmdIndex+=1;
-				
 			}
 			sendCmd = sendCmd.substring(0,sendCmd.length-1);
 			//console.log(sendCmd);
-			ajaxGet(sendCmd);
+			console.log("Delay time:" + ((i+1)*(j+1)*delay_time).toString());
+			setTimeout(ajaxGet(sendCmd), (i+1)*(j+1)*delay_time);
 		}
 	}
 	
