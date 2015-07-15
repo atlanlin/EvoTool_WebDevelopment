@@ -376,10 +376,10 @@ function updateCircleEvo()
 	}
 		
 	if ($("#clightToDark").is(":checked")) {
-		ajaxGet("info.htm?cmd=%23021%3B"+ EVOToolName +"%3B2%3BTransition_1%3B1%23");
+		ajaxGet("info.htm?cmd=%23021%3B"+ EVOToolName +"%3B2%3BTransition_1%3B0%23");
     }
 	else if($("#cdarkToLight").is(":checked")) {
-        ajaxGet("info.htm?cmd=%23021%3B"+ EVOToolName +"%3B2%3BTransition_1%3B0%23");
+        ajaxGet("info.htm?cmd=%23021%3B"+ EVOToolName +"%3B2%3BTransition_1%3B1%23");
 	}
 		
 	// update circle parameters to evo3		

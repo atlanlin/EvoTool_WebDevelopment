@@ -552,10 +552,10 @@ function updateCircleEvo()
 		
 		
 		if ($("#clightToDark").is(":checked")) {
-			ajaxGet("info.htm?cmd=%23021%3B"+ EVOToolName +"%3B2%3BTransition_1%3B1%23");
+			ajaxGet("info.htm?cmd=%23021%3B"+ EVOToolName +"%3B2%3BTransition_1%3B0%23");
         }
 		else if($("#cdarkToLight").is(":checked")) {
-            ajaxGet("info.htm?cmd=%23021%3B"+ EVOToolName +"%3B2%3BTransition_1%3B0%23");
+            ajaxGet("info.htm?cmd=%23021%3B"+ EVOToolName +"%3B2%3BTransition_1%3B1%23");
         }
 		
 		
@@ -615,10 +615,10 @@ function updateCircle2Evo()
 		
 		
 		if ($("#rlightToDark").is(":checked")) {
-			ajaxGet("info.htm?cmd=%23021%3B"+ EVOToolName +"%3B2%3BTransition_2%3B1%23");
+			ajaxGet("info.htm?cmd=%23021%3B"+ EVOToolName +"%3B2%3BTransition_2%3B0%23");
         }
 		else if($("#rdarkToLight").is(":checked")) {
-            ajaxGet("info.htm?cmd=%23021%3B"+ EVOToolName +"%3B2%3BTransition_2%3B0%23");
+            ajaxGet("info.htm?cmd=%23021%3B"+ EVOToolName +"%3B2%3BTransition_2%3B1%23");
         }
 		
 		ajaxGet("info.htm?cmd=%23021%3B"+ EVOToolName +"%3B1%3BCirclePos2.Center.X%3B"+ calCenterX +"%23");
