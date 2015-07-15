@@ -3,7 +3,7 @@ EYEVISION_VERSION
 FILE_VERSION 
 CREATED 
 CREATED_BY 
-LAST_MODIFIED 14.07.2015 15:42:00
+LAST_MODIFIED 15.07.2015 10:48:45
 LAST_MODIFIED_BY 
 START_PARM_LIST 
   KEY 1
@@ -265,16 +265,16 @@ START_PARM_LIST
       ClassVersion 1
       Name 
       ID 0
-      InnerRadius 34,0425531915
-      OuterRadius 68,0851
+      InnerRadius 13,617
+      OuterRadius 46,29787234
       StartAngle 0,0
       LengthAngle 360,0
       Direction 1
       CKPOINT 
         ClassVersion 1
         Name 
-        X 68,0851
-        Y 68,0851
+        X 622,29787234
+        Y 359,4893617
       END_CKPOINT 
     END_CKCIRCLE_PROBE_POS 
     DetermineEum 0
@@ -387,21 +387,21 @@ START_PARM_LIST
     Val_Y2 100,0
     Val_W2 40,0
     Val_H2 200,0
-    OptionForType 1
+    OptionForType 3
     CKRECT_PROBE_POS 
       ClassVersion 1
-      Width 50,38
+      Width 88,0
       CKPOINT 
         ClassVersion 1
         Name Start point
-        X 526,98
-        Y 389,45
+        X 358,1276595745
+        Y 366,29787234
       END_CKPOINT 
       CKPOINT 
         ClassVersion 1
         Name End point
-        X 456,17
-        Y 389,45
+        X 439,829787234
+        Y 366,29787234
       END_CKPOINT 
     END_CKRECT_PROBE_POS 
     CKRECT_PROBE_POS 
@@ -424,16 +424,16 @@ START_PARM_LIST
       ClassVersion 1
       Name 
       ID 0
-      InnerRadius 25,0
-      OuterRadius 50,0
+      InnerRadius 14,9787234
+      OuterRadius 36,7659574468
       StartAngle 0,0
       LengthAngle 360,0
       Direction 1
       CKPOINT 
         ClassVersion 1
         Name 
-        X 50,0
-        Y 150,0
+        X 623,6595744681
+        Y 364,93617
       END_CKPOINT 
     END_CKCIRCLE_PROBE_POS 
     CKCIRCLE_PROBE_POS 
@@ -452,7 +452,7 @@ START_PARM_LIST
         Y 360,113
       END_CKPOINT 
     END_CKCIRCLE_PROBE_POS 
-    ProbeSelect 0
+    ProbeSelect 1
     IntersectionSelect -656877352
     CKRECT_PROBE_POS 
       ClassVersion 1
@@ -750,7 +750,7 @@ START_PARM_LIST
     ApplyCorrection 0
     CorrectionType 1
     VariableType 0
-    ConstantValue 0,0
+    ConstantValue 46,3244656363
     IniFileName C:\temp\wwwroot\cfg.ini
     SegmentName cam1
     EntryName result1
@@ -838,7 +838,7 @@ START_PARM_LIST
     ApplyCorrection 0
     CorrectionType 1
     VariableType 0
-    ConstantValue 0,0
+    ConstantValue 219,5526578165
     IniFileName C:\temp\wwwroot\cfg.ini
     SegmentName cam1
     EntryName result1
@@ -927,7 +927,7 @@ START_PARM_LIST
     CorrectionType 1
     VariableType 0
     ConstantValue 0,0
-    IniFileName C:\temp\wwwroot\cfg.ini
+    IniFileName C:/temp/wwwroot/cfg.ini
     SegmentName cam1
     EntryName result1
     PointType 3
@@ -1616,7 +1616,7 @@ START_PARM_LIST
     ApplyCorrection 0
     CorrectionType 1
     VariableType 0
-    ConstantValue 0,0
+    ConstantValue 77,3528
     IniFileName C:\temp\wwwroot\cfg.ini
     SegmentName cam1
     EntryName result1
@@ -1705,7 +1705,7 @@ START_PARM_LIST
     CorrectionType 1
     VariableType 0
     ConstantValue 0,0
-    IniFileName C:\temp\wwwroot\cfg.ini
+    IniFileName C:/temp/wwwroot/cfg.ini
     SegmentName cam1
     EntryName result1
     PointType 3
@@ -1821,16 +1821,16 @@ START_PARM_LIST
       ClassVersion 1
       Name 
       ID 0
-      InnerRadius 34,0425531915
-      OuterRadius 68,0851
-      StartAngle 0,0
-      LengthAngle 360,0
+      InnerRadius 16,34
+      OuterRadius 91,234
+      StartAngle 124,0
+      LengthAngle 143,0
       Direction 1
       CKPOINT 
         ClassVersion 1
         Name 
-        X 68,0851
-        Y 68,0851
+        X 507,914893617
+        Y 281,87234
       END_CKPOINT 
     END_CKCIRCLE_PROBE_POS 
     DetermineEum 0
@@ -2306,7 +2306,7 @@ START_PARM_LIST
     ApplyCorrection 0
     CorrectionType 1
     VariableType 0
-    ConstantValue 0,0
+    ConstantValue 64,6277432139
     IniFileName C:\temp\wwwroot\cfg.ini
     SegmentName cam1
     EntryName result1
@@ -2394,7 +2394,7 @@ START_PARM_LIST
     ApplyCorrection 0
     CorrectionType 1
     VariableType 0
-    ConstantValue 0,0
+    ConstantValue 77,3528
     IniFileName C:\temp\wwwroot\cfg.ini
     SegmentName cam1
     EntryName result1
@@ -2483,7 +2483,7 @@ START_PARM_LIST
     CorrectionType 1
     VariableType 0
     ConstantValue 0,0
-    IniFileName C:\temp\wwwroot\cfg.ini
+    IniFileName C:/temp/wwwroot/cfg.ini
     SegmentName cam1
     EntryName result1
     PointType 3
@@ -3085,7 +3085,7 @@ START_PARM_LIST
     CorrectionType 1
     VariableType 0
     ConstantValue 0,0
-    IniFileName C:/temp/wwwroot/cfg.ini
+    IniFileName C:\temp\wwwroot\cfg.ini
     SegmentName cam1
     EntryName result1
     PointType 3
@@ -3173,7 +3173,7 @@ START_PARM_LIST
     CorrectionType 1
     VariableType 0
     ConstantValue 77,3528
-    IniFileName C:/temp/wwwroot/cfg.ini
+    IniFileName C:\temp\wwwroot\cfg.ini
     SegmentName cam1
     EntryName result1
     PointType 3
@@ -3950,7 +3950,7 @@ START_PARM_LIST
     ApplyCorrection 0
     CorrectionType 1
     VariableType 0
-    ConstantValue 0,0
+    ConstantValue 77,3528
     IniFileName C:\temp\wwwroot\cfg.ini
     SegmentName cam1
     EntryName result1
@@ -4039,7 +4039,7 @@ START_PARM_LIST
     CorrectionType 1
     VariableType 0
     ConstantValue 0,0
-    IniFileName C:\temp\wwwroot\cfg.ini
+    IniFileName C:/temp/wwwroot/cfg.ini
     SegmentName cam1
     EntryName result1
     PointType 3
@@ -4728,7 +4728,7 @@ START_PARM_LIST
     ApplyCorrection 0
     CorrectionType 1
     VariableType 0
-    ConstantValue 0,0
+    ConstantValue 77,3528
     IniFileName C:\temp\wwwroot\cfg.ini
     SegmentName cam1
     EntryName result1
@@ -4933,16 +4933,16 @@ START_PARM_LIST
       ClassVersion 1
       Name 
       ID 0
-      InnerRadius 13,617
-      OuterRadius 58,5531914894
+      InnerRadius 34,0425531915
+      OuterRadius 68,0851
       StartAngle 0,0
       LengthAngle 360,0
       Direction 1
       CKPOINT 
         ClassVersion 1
         Name 
-        X 497,0212765957
-        Y 281,87234
+        X 68,0851
+        Y 68,0851
       END_CKPOINT 
     END_CKCIRCLE_PROBE_POS 
     DetermineEum 0
@@ -5419,7 +5419,7 @@ START_PARM_LIST
     CorrectionType 1
     VariableType 0
     ConstantValue 0,0
-    IniFileName C:/temp/wwwroot/cfg.ini
+    IniFileName C:\temp\wwwroot\cfg.ini
     SegmentName cam1
     EntryName result1
     PointType 3
@@ -5507,7 +5507,7 @@ START_PARM_LIST
     CorrectionType 1
     VariableType 0
     ConstantValue 77,3528
-    IniFileName C:/temp/wwwroot/cfg.ini
+    IniFileName C:\temp\wwwroot\cfg.ini
     SegmentName cam1
     EntryName result1
     PointType 3
@@ -6197,7 +6197,7 @@ START_PARM_LIST
     CorrectionType 1
     VariableType 0
     ConstantValue 0,0
-    IniFileName C:/temp/wwwroot/cfg.ini
+    IniFileName C:\temp\wwwroot\cfg.ini
     SegmentName cam1
     EntryName result1
     PointType 3
@@ -6285,7 +6285,7 @@ START_PARM_LIST
     CorrectionType 1
     VariableType 0
     ConstantValue 77,3528
-    IniFileName C:/temp/wwwroot/cfg.ini
+    IniFileName C:\temp\wwwroot\cfg.ini
     SegmentName cam1
     EntryName result1
     PointType 3
