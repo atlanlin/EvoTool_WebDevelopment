@@ -403,7 +403,7 @@ function disableAllFunctions(){
 	ajaxGet(sendCmd);
 	
 	var frontFunctionNames = ["EVO%20", "INI%20"];
-	functionNames = ["Circle%20", "Width%20", "Distance%20"];
+	functionNames = ["Circle%20", "Width%20", "CTC%20", "PTC%20", "CTL%20", "PTP%20", "PTL%20"];
 	for(var i=0; i < frontFunctionNames.length; i++){
 		for(var j=0; j < functionNames.length; j++){
 			cmdIndex = 1;

@@ -1245,9 +1245,9 @@ var arrowDirFlag = "horizontal";
 var stx, sty, edx, edy, wi;
 
 
-var EVOToolName = "EVO Distance";
+var EVOToolName = "EVO PTC";
 
-var EVOININame = "INI Distance";
+var EVOININame = "INI PTC";
 
 }
 

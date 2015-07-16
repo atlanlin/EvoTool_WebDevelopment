@@ -681,6 +681,6 @@ var startAngle2 = 0;
 
 var EndAngle2= 360;
 
-var EVOToolName = "EVO Distance";
+var EVOToolName = "EVO CTC";
 
-var EVOININame = "INI Distance";
+var EVOININame = "INI CTC";
