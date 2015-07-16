@@ -3,7 +3,7 @@ EYEVISION_VERSION
 FILE_VERSION 
 CREATED 
 CREATED_BY 
-LAST_MODIFIED 16.07.2015 14:31:15
+LAST_MODIFIED 16.07.2015 15:31:40
 LAST_MODIFIED_BY 
 START_PARM_LIST 
   KEY 1
@@ -18336,10 +18336,416 @@ START_PARM_LIST
     TeachInCounter 0
   END_KEY 115
   KEY 116
-    ClassVersion 1
+    ClassVersion 4
     CKGENERAL 
       ClassVersion 1
       Position 134
+      CommandType 1040
+      CommandName Script Circle
+      Enabled 1
+      Hidden 0
+      GraficMode 2
+      TextMode 2
+      ImageMemory 0
+      InvertResult 0
+      Memo 
+    END_CKGENERAL 
+    CKRESULT 
+      ClassVersion 1
+      Name Script interpreter (BASIC)
+      EnterResultToRTDisplay 0
+      RTDisplayIndex 0
+      RTWidthOfToleranceRegion 80
+      CKEVALUATION 
+        ClassVersion 3
+        GlobalToleranceIndex -1
+        UseWarningTolerances 0
+        NominalValue 0,0
+        PlusTolerance 10000,0
+        MinusTolerance 0,0
+        WarnPlusTolerance 0,0
+        WarnMinusTolerance 0,0
+        DynamicEvaluation 0
+        FileName 
+        Section 
+        CorrectionActive 0
+        CorrectionType 0
+        EnableAutoTeachIn 1
+        NumberOfUsedCorrections 0
+      END_CKEVALUATION 
+      CKSTATISTIC 
+        ClassVersion 1
+        EnterToStatistic 0
+        Index -1
+      END_CKSTATISTIC 
+    END_CKRESULT 
+    Program Dim sFile As String~Dim lRet As Long~'to run this script on VC camera adjust the cfg.ini path to sFile = "cfg.ini"~sFile = "C:\temp\wwwroot\cfg.ini" 'an vc camera ini file ending is 231~~Dim functionName As String~functionName = "EVO Circle "~~Dim iniName As String~iniName = "circle"~~Dim dValue As Double~Dim lValue As Long~Dim sValue As String~Dim nameValue As String~Dim num As Long~Dim outerRadius As Double~Dim innerRadius As Double~Dim centerX As Double~Dim centerY As Double~Dim startAngle As Double~Dim angleLength As Double~~For num = 1 To 8~	nameValue = Str(num, 0)~	CKI_GetParameterDoubleOfCommand(functionName + nameValue, "CirclePos.InnerRadius", innerRadius)~	CKI_GetParameterDoubleOfCommand(functionName + nameValue, "CirclePos.OuterRadius", outerRadius)~	CKI_GetParameterDoubleOfCommand(functionName + nameValue, "CirclePos.Center.X", centerX)~	CKI_GetParameterDoubleOfCommand(functionName + nameValue, "CirclePos.Center.Y", centerY)~	CKI_GetParameterDoubleOfCommand(functionName + nameValue, "CirclePos.StartAngle", startAngle)~	CKI_GetParameterDoubleOfCommand(functionName + nameValue, "CirclePos.LengthAngle", angleLength)~	~	~		sValue = Str(centerX,0) ~		EVHDINIWriteString(iniName+nameValue, "centerX", sValue,sFile)~		EVHDINIWriteFlush(sFile)~	~~		sValue = Str(centerY,0) ~		EVHDINIWriteString(iniName+nameValue, "centerY", sValue,sFile)~		EVHDINIWriteFlush(sFile)~	~~		sValue = Str(innerRadius,0) ~		EVHDINIWriteString(iniName+nameValue, "innerRadius", sValue,sFile)~		EVHDINIWriteFlush(sFile)~	~~		sValue = Str(outerRadius,0) ~		EVHDINIWriteString(iniName+nameValue, "outerRadius", sValue,sFile)~		EVHDINIWriteFlush(sFile)~	~~	~		sValue = Str(startAngle,0) ~		EVHDINIWriteString(iniName+nameValue, "startAngle", sValue,sFile)~		EVHDINIWriteFlush(sFile)~~	~		sValue = Str(angleLength,0) ~		EVHDINIWriteString(iniName+nameValue, "angleLength", sValue,sFile)~		EVHDINIWriteFlush(sFile)~	~~Next~~~
+    EncodedBinary [C_34_12A_E64B_7C4JX0KE0L_240F40D_B00G00H_301I_7C3M_301_301_301_301_301_301_371_371_371_3D1_3D1_3D1C1C1C1C1C1C1C1C1C1C1C1C1C1C1U1i1_851_A01_BB1_D61_F11_0C2_0C2_0C2_202_3C2G2G2G2_5B2w2_822_822_822_962_B22_BD2_BD2_BD2_D12_ED2_F82_F82_F82_F82_0C3_283_333_333_333G3c3n3n3n3n3n3n3000000_844_884_15013210000000000000000000000_8C4_984_7F011335000000000000000000000_B84_C04X011333300000000000000000000_B84_D44Y01130000000000000000000kp_843r00p_9C3r80p_A83r_0C0ip_803r_240iq_240p_B03_8Ad_7B3koip_7C3q_240mg_B00zizkr_200iojq_300kp_B43q80q_200_83g_D00zzjr_300izojq_280kp_CC3q80q_200_83g_D00zzjr_280izojq_380kp_E43q80q_200_83g_D00zzjr_380izojq_400kp_F83q80q_200_83g_D00zzjr_400izojqH0kp_0C4q80q_200_83g_D00zzjrH0izojqP0kp_244q80q_200_83g_D00zzjrP0izkoip_7C3jq_380g_B00zizkr_1C0iokq00q_1C0p_3C4q_0C0q_200_83g_F00zzzzizokq00g_101zizkoip_7C3jq_400g_B00zizkr_1C0iokq00q_1C0pD4q_0C0q_200_83g_F00zzzzizokq00g_101zizkoip_7C3jq_300g_B00zizkr_1C0iokq00q_1C0pL4q_0C0q_200_83g_F00zzzzizokq00g_101zizkoip_7C3jq_280g_B00zizkr_1C0iokq00q_1C0pX4q_0C0q_200_83g_F00zzzzizokq00g_101zizkoip_7C3jqH0g_B00zizkr_1C0iokq00q_1C0pd4q_0C0q_200_83g_F00zzzzizokq00g_101zizkoip_7C3jqP0g_B00zizkr_1C0iokq00q_1C0pp4q_0C0q_200_83g_F00zzzzizokq00g_101zizq_240p_803_83r_240cJ1f00001000C_3A_5Ctemp_5Cwwwroot_5Ccfg_2Eini0EVO_20Circle_200circle008000CirclePos_2EInnerRadius000CirclePos_2EOuterRadius000CirclePos_2ECenter_2EX00CirclePos_2ECenter_2EY00CirclePos_2EStartAngle0000CirclePos_2ELengthAngle000centerX0centerY0innerRadius0outerRadius0startAngle00angleLength0source00Std0Str0EVTVision000CKI_5FGetParameterDoubleOfCommand0Evhd0000EVHDINIWriteString00EVHDINIWriteFlush0]
+    ExternProgramFileName 
+    UseExternProgram 0
+    NumberOfAdditionalLinesProgram 0
+    NumberOfAdditionalLinesBinary 0
+    CKPICKUP_TYPE_WRITE 
+      ClassVersion 1
+      Name 
+      PickupObjectType 5
+      PickupListIndex 136576
+    END_CKPICKUP_TYPE_WRITE 
+    TeachInCounter 0
+  END_KEY 116
+  KEY 117
+    ClassVersion 4
+    CKGENERAL 
+      ClassVersion 1
+      Position 135
+      CommandType 1040
+      CommandName Script PTC
+      Enabled 1
+      Hidden 0
+      GraficMode 2
+      TextMode 2
+      ImageMemory 0
+      InvertResult 0
+      Memo 
+    END_CKGENERAL 
+    CKRESULT 
+      ClassVersion 1
+      Name Script interpreter (BASIC)
+      EnterResultToRTDisplay 0
+      RTDisplayIndex 0
+      RTWidthOfToleranceRegion 80
+      CKEVALUATION 
+        ClassVersion 3
+        GlobalToleranceIndex -1
+        UseWarningTolerances 0
+        NominalValue 0,0
+        PlusTolerance 10000,0
+        MinusTolerance 0,0
+        WarnPlusTolerance 0,0
+        WarnMinusTolerance 0,0
+        DynamicEvaluation 0
+        FileName 
+        Section 
+        CorrectionActive 0
+        CorrectionType 0
+        EnableAutoTeachIn 1
+        NumberOfUsedCorrections 0
+      END_CKEVALUATION 
+      CKSTATISTIC 
+        ClassVersion 1
+        EnterToStatistic 0
+        Index -1
+      END_CKSTATISTIC 
+    END_CKRESULT 
+    Program Dim sFile As String~Dim lRet As Long~'to run this script on VC camera adjust the cfg.ini path to sFile = "cfg.ini"~sFile = "C:\temp\wwwroot\cfg.ini" 'an vc camera ini file ending is 231~~Dim functionName As String~functionName = "EVO PTC "~~Dim iniName As String~iniName = "ptc"~~Dim dValue As Double~Dim lValue As Long~Dim sValue As String~Dim nameValue As String~Dim num As Long~~Dim outerRadius As Double~Dim innerRadius As Double~~Dim rectStartX As Double~Dim rectStartY As Double~Dim rectEndX As Double~Dim rectEndY As Double~Dim rectWidth As Double~~Dim centerX As Double~Dim centerY As Double~Dim startAngle As Double~Dim angleLength As Double~~For num = 1 To 8~	nameValue = Str(num, 0)~~	CKI_GetParameterDoubleOfCommand(functionName + nameValue, "RecPos.PointStart.X", rectStartX)~	CKI_GetParameterDoubleOfCommand(functionName + nameValue, "RecPos.PointStart.Y", rectStartY)~	CKI_GetParameterDoubleOfCommand(functionName + nameValue, "RecPos.PointEnd.X", rectEndX)~	CKI_GetParameterDoubleOfCommand(functionName + nameValue, "RecPos.PointEnd.Y", rectEndY)~	CKI_GetParameterDoubleOfCommand(functionName + nameValue, "RecPos.Width", rectWidth)~~~~	CKI_GetParameterDoubleOfCommand(functionName + nameValue, "CirclePos.InnerRadius", innerRadius)~	CKI_GetParameterDoubleOfCommand(functionName + nameValue, "CirclePos.OuterRadius", outerRadius)~	CKI_GetParameterDoubleOfCommand(functionName + nameValue, "CirclePos.Center.X", centerX)~	CKI_GetParameterDoubleOfCommand(functionName + nameValue, "CirclePos.Center.Y", centerY)~	CKI_GetParameterDoubleOfCommand(functionName + nameValue, "CirclePos.StartAngle", startAngle)~	CKI_GetParameterDoubleOfCommand(functionName + nameValue, "CirclePos.LengthAngle", angleLength)~	~~	~		sValue = Str(centerX,0) ~		EVHDINIWriteString(iniName+nameValue, "centerX", sValue,sFile)~		EVHDINIWriteFlush(sFile)~	~		sValue = Str(centerY,0) ~		EVHDINIWriteString(iniName+nameValue, "centerY", sValue,sFile)~		EVHDINIWriteFlush(sFile)~	~		sValue = Str(innerRadius,0) ~		EVHDINIWriteString(iniName+nameValue, "innerRadius", sValue,sFile)~		EVHDINIWriteFlush(sFile)~	~		sValue = Str(outerRadius,0) ~		EVHDINIWriteString(iniName+nameValue, "outerRadius", sValue,sFile)~		EVHDINIWriteFlush(sFile)~~		sValue = Str(startAngle,0) ~		EVHDINIWriteString(iniName+nameValue, "startAngle", sValue,sFile)~		EVHDINIWriteFlush(sFile)~	~		sValue = Str(angleLength,0) ~		EVHDINIWriteString(iniName+nameValue, "angleLength", sValue,sFile)~		EVHDINIWriteFlush(sFile)~	~~~~		sValue = Str(rectStartX,0) ~		EVHDINIWriteString(iniName+nameValue, "rectStartX", sValue,sFile)~		EVHDINIWriteFlush(sFile)~~		sValue = Str(rectStartY,0) ~		EVHDINIWriteString(iniName+nameValue, "rectStartY", sValue,sFile)~		EVHDINIWriteFlush(sFile)~~		sValue = Str(rectEndX,0) ~		EVHDINIWriteString(iniName+nameValue, "rectEndX", sValue,sFile)~		EVHDINIWriteFlush(sFile)~~		sValue = Str(rectEndY,0) ~		EVHDINIWriteString(iniName+nameValue, "rectEndY", sValue,sFile)~		EVHDINIWriteFlush(sFile)~~		sValue = Str(rectWidth,0) ~		EVHDINIWriteString(iniName+nameValue, "rectWidth", sValue,sFile)~		EVHDINIWriteFlush(sFile)~~Next~~~
+    EncodedBinary [C_34_12Ar7B87J_800Kg0L_240F40D_F40G00Ht1Ip5Mt1t1t1t1t1t1_7B1_7B1_7B1_811_811_811_871_871_871_871_871_871_871_871_871_871_871_871_871_871_871_871_871_871_871_871_871_871_991_AD1_AD1_C91_E41_FF1_1A2_352_352_352_352P2k2_862_A12_BC2_D72_D72_D72_D72_EB273_123_123_263B3M3M3a3_7D3_883_883_9C3_B83_C33_C33_D73_F33_FE3_FE3_124_2E4_394_394_394_394_394M4i4t4t4_884_A44_AF4_AF4_C34_DF4_EA4_EA4_FE4_1A5_255_255_395U5_605_605_605_605_605000000_107_147_15013210000000000000000000000_187_247_7F011335000000000000000000000D7L7X011333300000000000000000000D7_607Y01130000000000000000000kpx5r00p_905r80p_9C5r_0C0ipt5r_240iq_240p_A05_8Adm5koipp5q_240mg_F40zizkr_200iojq_380kp_A45q80q_200_83g_141zzjr_380izojq_400kp_B85q80q_200_83g_141zzjr_400izojqH0kp_CC5q80q_200_83g_141zzjrH0izojqP0kp_E05q80q_200_83g_141zzjrP0izojqX0kp_F45q80q_200_83g_141zzjrX0izojq_300kp46q80q_200_83g_141zzjr_300izojq_280kp_1C6q80q_200_83g_141zzjr_280izojq_600kp_346q80q_200_83g_141zzjr_600izojqh0kpH6q80q_200_83g_141zzjrh0izojqp0kp_5C6q80q_200_83g_141zzjrp0izojqx0kpt6q80q_200_83g_141zzjrx0izkoipp5jq_600g_F40zizkr_1C0iokq00q_1C0p_8C6q_0C0q_200_83g_341zzzzizokq00gT1zizkoipp5jqh0g_F40zizkr_1C0iokq00q_1C0p_946q_0C0q_200_83g_341zzzzizokq00gT1zizkoipp5jq_300g_F40zizkr_1C0iokq00q_1C0p_9C6q_0C0q_200_83g_341zzzzizokq00gT1zizkoipp5jq_280g_F40zizkr_1C0iokq00q_1C0p_A86q_0C0q_200_83g_341zzzzizokq00gT1zizkoipp5jqp0g_F40zizkr_1C0iokq00q_1C0p_B46q_0C0q_200_83g_341zzzzizokq00gT1zizkoipp5jqx0g_F40zizkr_1C0iokq00q_1C0p_C06q_0C0q_200_83g_341zzzzizokq00gT1zizkoipp5jq_380g_F40zizkr_1C0iokq00q_1C0p_CC6q_0C0q_200_83g_341zzzzizokq00gT1zizkoipp5jq_400g_F40zizkr_1C0iokq00q_1C0p_D86q_0C0q_200_83g_341zzzzizokq00gT1zizkoipp5jqH0g_F40zizkr_1C0iokq00q_1C0p_E46q_0C0q_200_83g_341zzzzizokq00gT1zizkoipp5jqP0g_F40zizkr_1C0iokq00q_1C0p_F06q_0C0q_200_83g_341zzzzizokq00gT1zizkoipp5jqX0g_F40zizkr_1C0iokq00q_1C0p_FC6q_0C0q_200_83g_341zzzzizokq00gT1zizq_240pt5_83r_240c_8E1f0000001000C_3A_5Ctemp_5Cwwwroot_5Ccfg_2Eini0EVO_20PTC_200000ptc08000RecPos_2EPointStart_2EX0RecPos_2EPointStart_2EY0RecPos_2EPointEnd_2EX000RecPos_2EPointEnd_2EY000RecPos_2EWidth0000CirclePos_2EInnerRadius000CirclePos_2EOuterRadius000CirclePos_2ECenter_2EX00CirclePos_2ECenter_2EY00CirclePos_2EStartAngle0000CirclePos_2ELengthAngle000centerX0centerY0innerRadius0outerRadius0startAngle00angleLength0rectStartX00rectStartY00rectEndX0000rectEndY0000rectWidth000source00Std0Str0EVTVision000CKI_5FGetParameterDoubleOfCommand0Evhd0000EVHDINIWriteString00EVHDINIWriteFlush0]
+    ExternProgramFileName 
+    UseExternProgram 0
+    NumberOfAdditionalLinesProgram 0
+    NumberOfAdditionalLinesBinary 0
+    CKPICKUP_TYPE_WRITE 
+      ClassVersion 1
+      Name 
+      PickupObjectType 0
+      PickupListIndex 149033
+    END_CKPICKUP_TYPE_WRITE 
+    TeachInCounter 0
+  END_KEY 117
+  KEY 118
+    ClassVersion 4
+    CKGENERAL 
+      ClassVersion 1
+      Position 136
+      CommandType 1040
+      CommandName Script CTL
+      Enabled 1
+      Hidden 0
+      GraficMode 2
+      TextMode 2
+      ImageMemory 0
+      InvertResult 0
+      Memo 
+    END_CKGENERAL 
+    CKRESULT 
+      ClassVersion 1
+      Name Script interpreter (BASIC)
+      EnterResultToRTDisplay 0
+      RTDisplayIndex 0
+      RTWidthOfToleranceRegion 80
+      CKEVALUATION 
+        ClassVersion 3
+        GlobalToleranceIndex -1
+        UseWarningTolerances 0
+        NominalValue 0,0
+        PlusTolerance 10000,0
+        MinusTolerance 0,0
+        WarnPlusTolerance 0,0
+        WarnMinusTolerance 0,0
+        DynamicEvaluation 0
+        FileName 
+        Section 
+        CorrectionActive 0
+        CorrectionType 0
+        EnableAutoTeachIn 1
+        NumberOfUsedCorrections 0
+      END_CKEVALUATION 
+      CKSTATISTIC 
+        ClassVersion 1
+        EnterToStatistic 0
+        Index -1
+      END_CKSTATISTIC 
+    END_CKRESULT 
+    Program Dim sFile As String~Dim lRet As Long~'to run this script on VC camera adjust the cfg.ini path to sFile = "cfg.ini"~sFile = "C:\temp\wwwroot\cfg.ini" 'an vc camera ini file ending is 231~~Dim functionName As String~functionName = "EVO CTL "~~Dim iniName As String~iniName = "ctl"~~Dim dValue As Double~Dim lValue As Long~Dim sValue As String~Dim nameValue As String~Dim num As Long~~Dim outerRadius As Double~Dim innerRadius As Double~~Dim rectStartX As Double~Dim rectStartY As Double~Dim rectEndX As Double~Dim rectEndY As Double~Dim rectWidth As Double~~Dim centerX As Double~Dim centerY As Double~Dim startAngle As Double~Dim angleLength As Double~~For num = 1 To 8~	nameValue = Str(num, 0)~~	CKI_GetParameterDoubleOfCommand(functionName + nameValue, "RecPos.PointStart.X", rectStartX)~	CKI_GetParameterDoubleOfCommand(functionName + nameValue, "RecPos.PointStart.Y", rectStartY)~	CKI_GetParameterDoubleOfCommand(functionName + nameValue, "RecPos.PointEnd.X", rectEndX)~	CKI_GetParameterDoubleOfCommand(functionName + nameValue, "RecPos.PointEnd.Y", rectEndY)~	CKI_GetParameterDoubleOfCommand(functionName + nameValue, "RecPos.Width", rectWidth)~~~~	CKI_GetParameterDoubleOfCommand(functionName + nameValue, "CirclePos.InnerRadius", innerRadius)~	CKI_GetParameterDoubleOfCommand(functionName + nameValue, "CirclePos.OuterRadius", outerRadius)~	CKI_GetParameterDoubleOfCommand(functionName + nameValue, "CirclePos.Center.X", centerX)~	CKI_GetParameterDoubleOfCommand(functionName + nameValue, "CirclePos.Center.Y", centerY)~	CKI_GetParameterDoubleOfCommand(functionName + nameValue, "CirclePos.StartAngle", startAngle)~	CKI_GetParameterDoubleOfCommand(functionName + nameValue, "CirclePos.LengthAngle", angleLength)~	~~	~		sValue = Str(centerX,0) ~		EVHDINIWriteString(iniName+nameValue, "centerX", sValue,sFile)~		EVHDINIWriteFlush(sFile)~	~		sValue = Str(centerY,0) ~		EVHDINIWriteString(iniName+nameValue, "centerY", sValue,sFile)~		EVHDINIWriteFlush(sFile)~	~		sValue = Str(innerRadius,0) ~		EVHDINIWriteString(iniName+nameValue, "innerRadius", sValue,sFile)~		EVHDINIWriteFlush(sFile)~	~		sValue = Str(outerRadius,0) ~		EVHDINIWriteString(iniName+nameValue, "outerRadius", sValue,sFile)~		EVHDINIWriteFlush(sFile)~~		sValue = Str(startAngle,0) ~		EVHDINIWriteString(iniName+nameValue, "startAngle", sValue,sFile)~		EVHDINIWriteFlush(sFile)~	~		sValue = Str(angleLength,0) ~		EVHDINIWriteString(iniName+nameValue, "angleLength", sValue,sFile)~		EVHDINIWriteFlush(sFile)~	~~~~		sValue = Str(rectStartX,0) ~		EVHDINIWriteString(iniName+nameValue, "rectStartX", sValue,sFile)~		EVHDINIWriteFlush(sFile)~~		sValue = Str(rectStartY,0) ~		EVHDINIWriteString(iniName+nameValue, "rectStartY", sValue,sFile)~		EVHDINIWriteFlush(sFile)~~		sValue = Str(rectEndX,0) ~		EVHDINIWriteString(iniName+nameValue, "rectEndX", sValue,sFile)~		EVHDINIWriteFlush(sFile)~~		sValue = Str(rectEndY,0) ~		EVHDINIWriteString(iniName+nameValue, "rectEndY", sValue,sFile)~		EVHDINIWriteFlush(sFile)~~		sValue = Str(rectWidth,0) ~		EVHDINIWriteString(iniName+nameValue, "rectWidth", sValue,sFile)~		EVHDINIWriteFlush(sFile)~~Next~~~
+    EncodedBinary [C_34_12Ar7B87J_800Kg0L_240F40D_F40G00Ht1Ip5Mt1t1t1t1t1t1_7B1_7B1_7B1_811_811_811_871_871_871_871_871_871_871_871_871_871_871_871_871_871_871_871_871_871_871_871_871_871_991_AD1_AD1_C91_E41_FF1_1A2_352_352_352_352P2k2_862_A12_BC2_D72_D72_D72_D72_EB273_123_123_263B3M3M3a3_7D3_883_883_9C3_B83_C33_C33_D73_F33_FE3_FE3_124_2E4_394_394_394_394_394M4i4t4t4_884_A44_AF4_AF4_C34_DF4_EA4_EA4_FE4_1A5_255_255_395U5_605_605_605_605_605000000_107_147_15013210000000000000000000000_187_247_7F011335000000000000000000000D7L7X011333300000000000000000000D7_607Y01130000000000000000000kpx5r00p_905r80p_9C5r_0C0ipt5r_240iq_240p_A05_8Adm5koipp5q_240mg_F40zizkr_200iojq_380kp_A45q80q_200_83g_141zzjr_380izojq_400kp_B85q80q_200_83g_141zzjr_400izojqH0kp_CC5q80q_200_83g_141zzjrH0izojqP0kp_E05q80q_200_83g_141zzjrP0izojqX0kp_F45q80q_200_83g_141zzjrX0izojq_300kp46q80q_200_83g_141zzjr_300izojq_280kp_1C6q80q_200_83g_141zzjr_280izojq_600kp_346q80q_200_83g_141zzjr_600izojqh0kpH6q80q_200_83g_141zzjrh0izojqp0kp_5C6q80q_200_83g_141zzjrp0izojqx0kpt6q80q_200_83g_141zzjrx0izkoipp5jq_600g_F40zizkr_1C0iokq00q_1C0p_8C6q_0C0q_200_83g_341zzzzizokq00gT1zizkoipp5jqh0g_F40zizkr_1C0iokq00q_1C0p_946q_0C0q_200_83g_341zzzzizokq00gT1zizkoipp5jq_300g_F40zizkr_1C0iokq00q_1C0p_9C6q_0C0q_200_83g_341zzzzizokq00gT1zizkoipp5jq_280g_F40zizkr_1C0iokq00q_1C0p_A86q_0C0q_200_83g_341zzzzizokq00gT1zizkoipp5jqp0g_F40zizkr_1C0iokq00q_1C0p_B46q_0C0q_200_83g_341zzzzizokq00gT1zizkoipp5jqx0g_F40zizkr_1C0iokq00q_1C0p_C06q_0C0q_200_83g_341zzzzizokq00gT1zizkoipp5jq_380g_F40zizkr_1C0iokq00q_1C0p_CC6q_0C0q_200_83g_341zzzzizokq00gT1zizkoipp5jq_400g_F40zizkr_1C0iokq00q_1C0p_D86q_0C0q_200_83g_341zzzzizokq00gT1zizkoipp5jqH0g_F40zizkr_1C0iokq00q_1C0p_E46q_0C0q_200_83g_341zzzzizokq00gT1zizkoipp5jqP0g_F40zizkr_1C0iokq00q_1C0p_F06q_0C0q_200_83g_341zzzzizokq00gT1zizkoipp5jqX0g_F40zizkr_1C0iokq00q_1C0p_FC6q_0C0q_200_83g_341zzzzizokq00gT1zizq_240pt5_83r_240c_8E1f0000001000C_3A_5Ctemp_5Cwwwroot_5Ccfg_2Eini0EVO_20CTL_200000ctl08000RecPos_2EPointStart_2EX0RecPos_2EPointStart_2EY0RecPos_2EPointEnd_2EX000RecPos_2EPointEnd_2EY000RecPos_2EWidth0000CirclePos_2EInnerRadius000CirclePos_2EOuterRadius000CirclePos_2ECenter_2EX00CirclePos_2ECenter_2EY00CirclePos_2EStartAngle0000CirclePos_2ELengthAngle000centerX0centerY0innerRadius0outerRadius0startAngle00angleLength0rectStartX00rectStartY00rectEndX0000rectEndY0000rectWidth000source00Std0Str0EVTVision000CKI_5FGetParameterDoubleOfCommand0Evhd0000EVHDINIWriteString00EVHDINIWriteFlush0]
+    ExternProgramFileName 
+    UseExternProgram 0
+    NumberOfAdditionalLinesProgram 0
+    NumberOfAdditionalLinesBinary 0
+    CKPICKUP_TYPE_WRITE 
+      ClassVersion 1
+      Name 
+      PickupObjectType 0
+      PickupListIndex 156597
+    END_CKPICKUP_TYPE_WRITE 
+    TeachInCounter 0
+  END_KEY 118
+  KEY 119
+    ClassVersion 4
+    CKGENERAL 
+      ClassVersion 1
+      Position 137
+      CommandType 1040
+      CommandName Script CTC
+      Enabled 1
+      Hidden 0
+      GraficMode 2
+      TextMode 2
+      ImageMemory 0
+      InvertResult 0
+      Memo 
+    END_CKGENERAL 
+    CKRESULT 
+      ClassVersion 1
+      Name Script interpreter (BASIC)
+      EnterResultToRTDisplay 0
+      RTDisplayIndex 0
+      RTWidthOfToleranceRegion 80
+      CKEVALUATION 
+        ClassVersion 3
+        GlobalToleranceIndex -1
+        UseWarningTolerances 0
+        NominalValue 0,0
+        PlusTolerance 10000,0
+        MinusTolerance 0,0
+        WarnPlusTolerance 0,0
+        WarnMinusTolerance 0,0
+        DynamicEvaluation 0
+        FileName 
+        Section 
+        CorrectionActive 0
+        CorrectionType 0
+        EnableAutoTeachIn 1
+        NumberOfUsedCorrections 0
+      END_CKEVALUATION 
+      CKSTATISTIC 
+        ClassVersion 1
+        EnterToStatistic 0
+        Index -1
+      END_CKSTATISTIC 
+    END_CKRESULT 
+    Program Dim sFile As String~Dim lRet As Long~'to run this script on VC camera adjust the cfg.ini path to sFile = "cfg.ini"~sFile = "C:\temp\wwwroot\cfg.ini" 'an vc camera ini file ending is 231~~Dim functionName As String~functionName = "EVO CTC "~~Dim iniName As String~iniName = "ctc"~~Dim dValue As Double~Dim lValue As Long~Dim sValue As String~Dim nameValue As String~Dim num As Long~~Dim c1outerRadius As Double~Dim c1innerRadius As Double~~Dim c1centerX As Double~Dim c1centerY As Double~Dim c1startAngle As Double~Dim c1angleLength As Double~~Dim c2centerX As Double~Dim c2centerY As Double~Dim c2startAngle As Double~Dim c2angleLength As Double~~Dim c2outerRadius As Double~Dim c2innerRadius As Double~~For num = 1 To 8~	nameValue = Str(num, 0)~~	~	CKI_GetParameterDoubleOfCommand(functionName + nameValue, "CirclePos.InnerRadius", c1innerRadius)~	CKI_GetParameterDoubleOfCommand(functionName + nameValue, "CirclePos.OuterRadius", c1outerRadius)~	CKI_GetParameterDoubleOfCommand(functionName + nameValue, "CirclePos.Center.X", c1centerX)~	CKI_GetParameterDoubleOfCommand(functionName + nameValue, "CirclePos.Center.Y", c1centerY)~	CKI_GetParameterDoubleOfCommand(functionName + nameValue, "CirclePos.StartAngle", c1startAngle)~	CKI_GetParameterDoubleOfCommand(functionName + nameValue, "CirclePos.LengthAngle", c1angleLength)~~~	CKI_GetParameterDoubleOfCommand(functionName + nameValue, "CirclePos2.InnerRadius", c2innerRadius)~	CKI_GetParameterDoubleOfCommand(functionName + nameValue, "CirclePos2.OuterRadius", c2outerRadius)~	CKI_GetParameterDoubleOfCommand(functionName + nameValue, "CirclePos2.Center.X", c2centerX)~	CKI_GetParameterDoubleOfCommand(functionName + nameValue, "CirclePos2.Center.Y", c2centerY)~	CKI_GetParameterDoubleOfCommand(functionName + nameValue, "CirclePos2.StartAngle", c2startAngle)~	CKI_GetParameterDoubleOfCommand(functionName + nameValue, "CirclePos2.LengthAngle", c2angleLength)~	~~	~		sValue = Str(c1centerX,0) ~		EVHDINIWriteString(iniName+nameValue, "c1centerX", sValue,sFile)~		EVHDINIWriteFlush(sFile)~	~		sValue = Str(c1centerY,0) ~		EVHDINIWriteString(iniName+nameValue, "c1centerY", sValue,sFile)~		EVHDINIWriteFlush(sFile)~	~		sValue = Str(c1innerRadius,0) ~		EVHDINIWriteString(iniName+nameValue, "c1innerRadius", sValue,sFile)~		EVHDINIWriteFlush(sFile)~	~		sValue = Str(c1outerRadius,0) ~		EVHDINIWriteString(iniName+nameValue, "c1outerRadius", sValue,sFile)~		EVHDINIWriteFlush(sFile)~~		sValue = Str(c1startAngle,0) ~		EVHDINIWriteString(iniName+nameValue, "c1startAngle", sValue,sFile)~		EVHDINIWriteFlush(sFile)~	~		sValue = Str(c1angleLength,0) ~		EVHDINIWriteString(iniName+nameValue, "c1angleLength", sValue,sFile)~		EVHDINIWriteFlush(sFile)~	~~~~		sValue = Str(c2centerX,0) ~		EVHDINIWriteString(iniName+nameValue, "c2centerX", sValue,sFile)~		EVHDINIWriteFlush(sFile)~	~		sValue = Str(c2centerY,0) ~		EVHDINIWriteString(iniName+nameValue, "c2centerY", sValue,sFile)~		EVHDINIWriteFlush(sFile)~	~		sValue = Str(c2innerRadius,0) ~		EVHDINIWriteString(iniName+nameValue, "c2innerRadius", sValue,sFile)~		EVHDINIWriteFlush(sFile)~	~		sValue = Str(c2outerRadius,0) ~		EVHDINIWriteString(iniName+nameValue, "c2outerRadius", sValue,sFile)~		EVHDINIWriteFlush(sFile)~~		sValue = Str(c2startAngle,0) ~		EVHDINIWriteString(iniName+nameValue, "c2startAngle", sValue,sFile)~		EVHDINIWriteFlush(sFile)~	~		sValue = Str(c2angleLength,0) ~		EVHDINIWriteString(iniName+nameValue, "c2angleLength", sValue,sFile)~		EVHDINIWriteFlush(sFile)~~Next~~~
+    EncodedBinary [C_34_12A_2E8B_C47J_880Kn0L_240F40D01G00H_801I_D05M_801_801_801_801_801_801_871_871_871_8D1_8D1_8D1_931_931_931_931_931_931_931_931_931_931_931_931_931_931_931_931_931_931_931_931_931_931_931_931_A51_B91_B91_B91_D51_F01_0B2_262A2_5C2_5C2_5C2w2_922_AD2_C82_E32_FE2_FE2_FE2_FE2_123_2E3_393_393M3i3t3t3_883_A43_AF3_AF3_C33_DF3_EA3_EA3_FE3_1A4_254_254_394U4_604_604_604_604_604t4_904_9B4_9B4_AF4_CB4_D64_D64_EA465_115_115_255A5L5L5_605_7C5_875_875_9B5_B75_C25_C25_C25_C25_C250000_CC7_D07_15013210000000000000000000000_D47_E07_7F0113350000000000000000000000888X01133330000000000000000000008_1C8Y01130000000000000000000kp_D85r00p_F05r80p_FC5r_0C0ip_D45r_240iq_240p06_8Ad_CF5koip_D05q_240mg01zizkr_200iojq_300kp46q80q_200_83g_201zzjr_300izojq_280kp_1C6q80q_200_83g_201zzjr_280izojq_380kp_346q80q_200_83g_201zzjr_380izojq_400kpH6q80q_200_83g_201zzjr_400izojqH0kp_5C6q80q_200_83g_201zzjrH0izojqP0kpt6q80q_200_83g_201zzjrP0izojq_800kp_8C6q80q_200_83g_201zzjr_800izojqx0kp_A46q80q_200_83g_201zzjrx0izojqX0kp_BC6q80q_200_83g_201zzjrX0izojq_600kp_D06q80q_200_83g_201zzjr_600izojqh0kp_E46q80q_200_83g_201zzjrh0izojqp0kp_FC6q80q_200_83g_201zzjrp0izkoip_D05jq_380g01zizkr_1C0iokq00q_1C0p_147q_0C0q_200_83g_401zzzzizokq00g_601zizkoip_D05jq_400g01zizkr_1C0iokq00q_1C0p_207q_0C0q_200_83g_401zzzzizokq00g_601zizkoip_D05jq_300g01zizkr_1C0iokq00q_1C0p_2C7q_0C0q_200_83g_401zzzzizokq00g_601zizkoip_D05jq_280g01zizkr_1C0iokq00q_1C0p_3C7q_0C0q_200_83g_401zzzzizokq00g_601zizkoip_D05jqH0g01zizkr_1C0iokq00q_1C0pL7q_0C0q_200_83g_401zzzzizokq00g_601zizkoip_D05jqP0g01zizkr_1C0iokq00q_1C0p_5C7q_0C0q_200_83g_401zzzzizokq00g_601zizkoip_D05jqX0g01zizkr_1C0iokq00q_1C0pl7q_0C0q_200_83g_401zzzzizokq00g_601zizkoip_D05jq_600g01zizkr_1C0iokq00q_1C0px7q_0C0q_200_83g_401zzzzizokq00g_601zizkoip_D05jq_800g01zizkr_1C0iokq00q_1C0p_847q_0C0q_200_83g_401zzzzizokq00g_601zizkoip_D05jqx0g01zizkr_1C0iokq00q_1C0p_947q_0C0q_200_83g_401zzzzizokq00g_601zizkoip_D05jqh0g01zizkr_1C0iokq00q_1C0p_A47q_0C0q_200_83g_401zzzzizokq00g_601zizkoip_D05jqp0g01zizkr_1C0iokq00q_1C0p_B47q_0C0q_200_83g_401zzzzizokq00g_601zizq_240p_D45_83r_240c_9A1f00001000C_3A_5Ctemp_5Cwwwroot_5Ccfg_2Eini0EVO_20CTC_200000ctc08000CirclePos_2EInnerRadius000CirclePos_2EOuterRadius000CirclePos_2ECenter_2EX00CirclePos_2ECenter_2EY00CirclePos_2EStartAngle0000CirclePos_2ELengthAngle000CirclePos_32_2EInnerRadius00CirclePos_32_2EOuterRadius00CirclePos_32_2ECenter_2EX0CirclePos_32_2ECenter_2EY0CirclePos_32_2EStartAngle000CirclePos_32_2ELengthAngle00c_31centerX000c_31centerY000c_31innerRadius000c_31outerRadius000c_31startAngle0000c_31angleLength000c_32centerX000c_32centerY000c_32innerRadius000c_32outerRadius000c_32startAngle0000c_32angleLength000source00Std0Str0EVTVision000CKI_5FGetParameterDoubleOfCommand0Evhd0000EVHDINIWriteString00EVHDINIWriteFlush0]
+    ExternProgramFileName 
+    UseExternProgram 0
+    NumberOfAdditionalLinesProgram 0
+    NumberOfAdditionalLinesBinary 0
+    CKPICKUP_TYPE_WRITE 
+      ClassVersion 1
+      Name 
+      PickupObjectType 0
+      PickupListIndex 150691
+    END_CKPICKUP_TYPE_WRITE 
+    TeachInCounter 0
+  END_KEY 119
+  KEY 120
+    ClassVersion 4
+    CKGENERAL 
+      ClassVersion 1
+      Position 138
+      CommandType 1040
+      CommandName Script PTP
+      Enabled 1
+      Hidden 0
+      GraficMode 2
+      TextMode 2
+      ImageMemory 0
+      InvertResult 0
+      Memo 
+    END_CKGENERAL 
+    CKRESULT 
+      ClassVersion 1
+      Name Script interpreter (BASIC)
+      EnterResultToRTDisplay 0
+      RTDisplayIndex 0
+      RTWidthOfToleranceRegion 80
+      CKEVALUATION 
+        ClassVersion 3
+        GlobalToleranceIndex -1
+        UseWarningTolerances 0
+        NominalValue 0,0
+        PlusTolerance 10000,0
+        MinusTolerance 0,0
+        WarnPlusTolerance 0,0
+        WarnMinusTolerance 0,0
+        DynamicEvaluation 0
+        FileName 
+        Section 
+        CorrectionActive 0
+        CorrectionType 0
+        EnableAutoTeachIn 1
+        NumberOfUsedCorrections 0
+      END_CKEVALUATION 
+      CKSTATISTIC 
+        ClassVersion 1
+        EnterToStatistic 0
+        Index -1
+      END_CKSTATISTIC 
+    END_CKRESULT 
+    Program Dim sFile As String~Dim lRet As Long~'to run this script on VC camera adjust the cfg.ini path to sFile = "cfg.ini"~sFile = "C:\temp\wwwroot\cfg.ini" 'an vc camera ini file ending is 231~~Dim functionName As String~functionName = "EVO PTP "~~Dim iniName As String~iniName = "ptp"~~Dim dValue As Double~Dim lValue As Long~Dim sValue As String~Dim nameValue As String~Dim num As Long~~~Dim p1rectStartX As Double~Dim p1rectStartY As Double~Dim p1rectEndX As Double~Dim p1rectEndY As Double~Dim p1rectWidth As Double~~Dim p2rectStartX As Double~Dim p2rectStartY As Double~Dim p2rectEndX As Double~Dim p2rectEndY As Double~Dim p2rectWidth As Double~~~~For num = 1 To 8~	nameValue = Str(num, 0)~~	CKI_GetParameterDoubleOfCommand(functionName + nameValue, "RecPos.PointStart.X", p1rectStartX)~	CKI_GetParameterDoubleOfCommand(functionName + nameValue, "RecPos.PointStart.Y", p1rectStartY)~	CKI_GetParameterDoubleOfCommand(functionName + nameValue, "RecPos.PointEnd.X", p1rectEndX)~	CKI_GetParameterDoubleOfCommand(functionName + nameValue, "RecPos.PointEnd.Y", p1rectEndY)~	CKI_GetParameterDoubleOfCommand(functionName + nameValue, "RecPos.Width", p1rectWidth)~~~~	CKI_GetParameterDoubleOfCommand(functionName + nameValue, "RecPos2.PointStart.X", p2rectStartX)~	CKI_GetParameterDoubleOfCommand(functionName + nameValue, "RecPos2.PointStart.Y", p2rectStartY)~	CKI_GetParameterDoubleOfCommand(functionName + nameValue, "RecPos2.PointEnd.X", p2rectEndX)~	CKI_GetParameterDoubleOfCommand(functionName + nameValue, "RecPos2.PointEnd.Y", p2rectEndY)~	CKI_GetParameterDoubleOfCommand(functionName + nameValue, "RecPos2.Width", p2rectWidth)~	~~	~		sValue = Str(p1rectStartX,0) ~		EVHDINIWriteString(iniName+nameValue, "p1rectStartX", sValue,sFile)~		EVHDINIWriteFlush(sFile)~~		sValue = Str(p1rectStartY,0) ~		EVHDINIWriteString(iniName+nameValue, "p1rectStartY", sValue,sFile)~		EVHDINIWriteFlush(sFile)~~		sValue = Str(p1rectEndX,0) ~		EVHDINIWriteString(iniName+nameValue, "p1rectEndX", sValue,sFile)~		EVHDINIWriteFlush(sFile)~~		sValue = Str(p1rectEndY,0) ~		EVHDINIWriteString(iniName+nameValue, "p1rectEndY", sValue,sFile)~		EVHDINIWriteFlush(sFile)~~		sValue = Str(p1rectWidth,0) ~		EVHDINIWriteString(iniName+nameValue, "p1rectWidth", sValue,sFile)~		EVHDINIWriteFlush(sFile)~	~~~~		sValue = Str(p2rectStartX,0) ~		EVHDINIWriteString(iniName+nameValue, "p2rectStartX", sValue,sFile)~		EVHDINIWriteFlush(sFile)~~		sValue = Str(p2rectStartY,0) ~		EVHDINIWriteString(iniName+nameValue, "p2rectStartY", sValue,sFile)~		EVHDINIWriteFlush(sFile)~~		sValue = Str(p2rectEndX,0) ~		EVHDINIWriteString(iniName+nameValue, "p2rectEndX", sValue,sFile)~		EVHDINIWriteFlush(sFile)~~		sValue = Str(p2rectEndY,0) ~		EVHDINIWriteString(iniName+nameValue, "p2rectEndY", sValue,sFile)~		EVHDINIWriteFlush(sFile)~~		sValue = Str(p2rectWidth,0) ~		EVHDINIWriteString(iniName+nameValue, "p2rectWidth", sValue,sFile)~		EVHDINIWriteFlush(sFile)~~Next~~~
+    EncodedBinary [C_34_12A_FE6B_946Jx0Kc0L_240F40D_EC0G00Hl1I_105Ml1l1l1l1l1l1s1s1s1y1y1y1_7F1_7F1_7F1_7F1_7F1_7F1_7F1_7F1_7F1_7F1_7F1_7F1_7F1_7F1_7F1_7F1_7F1_7F1_7F1_7F1_7F1_7F1_7F1_911_A51_A51_C11_DC1_F71_122_2D2_2D2_2D2_2D2H2c2_7E2_992_B42_B42_B42_B42_C82_E42_EF2_EF233_1F3_2A3_2A3_3E3Z3e3e3y3_953_A03_A03_B43_D03_DB3_DB3_DB3_DB3_DB3_EF3_0B4_164_164_2A4F4Q4Q4e4_814_8C4_8C4_A04_BC4_C74_C74_DB4_F742525252525000000_9C6_A06_15013210000000000000000000000_A46_B06_7F011335000000000000000000000_D06_D86X011333300000000000000000000_D06_EC6Y01130000000000000000000kp_185r00p_305r80p_3C5r_0C0ip_145r_240iq_240p_405_8Ad_0F5koip_105q_240mg_EC0zizkr_200iojq_280kpD5q80q_200_83g_0C1zzjr_280izojq_300kpX5q80q_200_83g_0C1zzjr_300izojq_380kpl5q80q_200_83g_0C1zzjr_380izojq_400kp_805q80q_200_83g_0C1zzjr_400izojqH0kp_945q80q_200_83g_0C1zzjrH0izojqP0kp_A45q80q_200_83g_0C1zzjrP0izojqX0kp_BC5q80q_200_83g_0C1zzjrX0izojq_600kp_D45q80q_200_83g_0C1zzjr_600izojqh0kp_E85q80q_200_83g_0C1zzjrh0izojqp0kp_FC5q80q_200_83g_0C1zzjrp0izkoip_105jq_280g_EC0zizkr_1C0iokq00q_1C0p_0C6q_0C0q_200_83g_2C1zzzzizokq00gL1zizkoip_105jq_300g_EC0zizkr_1C0iokq00q_1C0p_1C6q_0C0q_200_83g_2C1zzzzizokq00gL1zizkoip_105jq_380g_EC0zizkr_1C0iokq00q_1C0p_2C6q_0C0q_200_83g_2C1zzzzizokq00gL1zizkoip_105jq_400g_EC0zizkr_1C0iokq00q_1C0p_386q_0C0q_200_83g_2C1zzzzizokq00gL1zizkoip_105jqH0g_EC0zizkr_1C0iokq00q_1C0pD6q_0C0q_200_83g_2C1zzzzizokq00gL1zizkoip_105jqP0g_EC0zizkr_1C0iokq00q_1C0pP6q_0C0q_200_83g_2C1zzzzizokq00gL1zizkoip_105jqX0g_EC0zizkr_1C0iokq00q_1C0p_606q_0C0q_200_83g_2C1zzzzizokq00gL1zizkoip_105jq_600g_EC0zizkr_1C0iokq00q_1C0pp6q_0C0q_200_83g_2C1zzzzizokq00gL1zizkoip_105jqh0g_EC0zizkr_1C0iokq00q_1C0p_7C6q_0C0q_200_83g_2C1zzzzizokq00gL1zizkoip_105jqp0g_EC0zizkr_1C0iokq00q_1C0p_886q_0C0q_200_83g_2C1zzzzizokq00gL1zizq_240p_145_83r_240c_861f00001000C_3A_5Ctemp_5Cwwwroot_5Ccfg_2Eini0EVO_20PTP_200000ptp08000RecPos_2EPointStart_2EX0RecPos_2EPointStart_2EY0RecPos_2EPointEnd_2EX000RecPos_2EPointEnd_2EY000RecPos_2EWidth0000RecPos_32_2EPointStart_2EX0000RecPos_32_2EPointStart_2EY0000RecPos_32_2EPointEnd_2EX00RecPos_32_2EPointEnd_2EY00RecPos_32_2EWidth000p_31rectStartX0000p_31rectStartY0000p_31rectEndX00p_31rectEndY00p_31rectWidth0p_32rectStartX0000p_32rectStartY0000p_32rectEndX00p_32rectEndY00p_32rectWidth0source00Std0Str0EVTVision000CKI_5FGetParameterDoubleOfCommand0Evhd0000EVHDINIWriteString00EVHDINIWriteFlush0]
+    ExternProgramFileName 
+    UseExternProgram 0
+    NumberOfAdditionalLinesProgram 0
+    NumberOfAdditionalLinesBinary 0
+    CKPICKUP_TYPE_WRITE 
+      ClassVersion 1
+      Name 
+      PickupObjectType 0
+      PickupListIndex 162655
+    END_CKPICKUP_TYPE_WRITE 
+    TeachInCounter 0
+  END_KEY 120
+  KEY 121
+    ClassVersion 4
+    CKGENERAL 
+      ClassVersion 1
+      Position 139
+      CommandType 1040
+      CommandName Script PTL
+      Enabled 1
+      Hidden 0
+      GraficMode 2
+      TextMode 2
+      ImageMemory 0
+      InvertResult 0
+      Memo 
+    END_CKGENERAL 
+    CKRESULT 
+      ClassVersion 1
+      Name Script interpreter (BASIC)
+      EnterResultToRTDisplay 0
+      RTDisplayIndex 0
+      RTWidthOfToleranceRegion 80
+      CKEVALUATION 
+        ClassVersion 3
+        GlobalToleranceIndex -1
+        UseWarningTolerances 0
+        NominalValue 0,0
+        PlusTolerance 10000,0
+        MinusTolerance 0,0
+        WarnPlusTolerance 0,0
+        WarnMinusTolerance 0,0
+        DynamicEvaluation 0
+        FileName 
+        Section 
+        CorrectionActive 0
+        CorrectionType 0
+        EnableAutoTeachIn 1
+        NumberOfUsedCorrections 0
+      END_CKEVALUATION 
+      CKSTATISTIC 
+        ClassVersion 1
+        EnterToStatistic 0
+        Index -1
+      END_CKSTATISTIC 
+    END_CKRESULT 
+    Program Dim sFile As String~Dim lRet As Long~'to run this script on VC camera adjust the cfg.ini path to sFile = "cfg.ini"~sFile = "C:\temp\wwwroot\cfg.ini" 'an vc camera ini file ending is 231~~Dim functionName As String~functionName = "EVO PTL "~~Dim iniName As String~iniName = "ptl"~~Dim dValue As Double~Dim lValue As Long~Dim sValue As String~Dim nameValue As String~Dim num As Long~~~Dim p1rectStartX As Double~Dim p1rectStartY As Double~Dim p1rectEndX As Double~Dim p1rectEndY As Double~Dim p1rectWidth As Double~~Dim l1rectStartX As Double~Dim l1rectStartY As Double~Dim l1rectEndX As Double~Dim l1rectEndY As Double~Dim l1rectWidth As Double~~~~For num = 1 To 8~	nameValue = Str(num, 0)~~	CKI_GetParameterDoubleOfCommand(functionName + nameValue, "RecPos.PointStart.X", p1rectStartX)~	CKI_GetParameterDoubleOfCommand(functionName + nameValue, "RecPos.PointStart.Y", p1rectStartY)~	CKI_GetParameterDoubleOfCommand(functionName + nameValue, "RecPos.PointEnd.X", p1rectEndX)~	CKI_GetParameterDoubleOfCommand(functionName + nameValue, "RecPos.PointEnd.Y", p1rectEndY)~	CKI_GetParameterDoubleOfCommand(functionName + nameValue, "RecPos.Width", p1rectWidth)~~~~	CKI_GetParameterDoubleOfCommand(functionName + nameValue, "RecPos2.PointStart.X", l1rectStartX)~	CKI_GetParameterDoubleOfCommand(functionName + nameValue, "RecPos2.PointStart.Y", l1rectStartY)~	CKI_GetParameterDoubleOfCommand(functionName + nameValue, "RecPos2.PointEnd.X", l1rectEndX)~	CKI_GetParameterDoubleOfCommand(functionName + nameValue, "RecPos2.PointEnd.Y", l1rectEndY)~	CKI_GetParameterDoubleOfCommand(functionName + nameValue, "RecPos2.Width", l1rectWidth)~	~~	~		sValue = Str(p1rectStartX,0) ~		EVHDINIWriteString(iniName+nameValue, "p1rectStartX", sValue,sFile)~		EVHDINIWriteFlush(sFile)~~		sValue = Str(p1rectStartY,0) ~		EVHDINIWriteString(iniName+nameValue, "p1rectStartY", sValue,sFile)~		EVHDINIWriteFlush(sFile)~~		sValue = Str(p1rectEndX,0) ~		EVHDINIWriteString(iniName+nameValue, "p1rectEndX", sValue,sFile)~		EVHDINIWriteFlush(sFile)~~		sValue = Str(p1rectEndY,0) ~		EVHDINIWriteString(iniName+nameValue, "p1rectEndY", sValue,sFile)~		EVHDINIWriteFlush(sFile)~~		sValue = Str(p1rectWidth,0) ~		EVHDINIWriteString(iniName+nameValue, "p1rectWidth", sValue,sFile)~		EVHDINIWriteFlush(sFile)~	~~~~		sValue = Str(l1rectStartX,0) ~		EVHDINIWriteString(iniName+nameValue, "l1rectStartX", sValue,sFile)~		EVHDINIWriteFlush(sFile)~~		sValue = Str(l1rectStartY,0) ~		EVHDINIWriteString(iniName+nameValue, "l1rectStartY", sValue,sFile)~		EVHDINIWriteFlush(sFile)~~		sValue = Str(l1rectEndX,0) ~		EVHDINIWriteString(iniName+nameValue, "l1rectEndX", sValue,sFile)~		EVHDINIWriteFlush(sFile)~~		sValue = Str(l1rectEndY,0) ~		EVHDINIWriteString(iniName+nameValue, "l1rectEndY", sValue,sFile)~		EVHDINIWriteFlush(sFile)~~		sValue = Str(l1rectWidth,0) ~		EVHDINIWriteString(iniName+nameValue, "l1rectWidth", sValue,sFile)~		EVHDINIWriteFlush(sFile)~~Next~~~
+    EncodedBinary [C_34_12A_FE6B_946Jx0Kc0L_240F40D_EC0G00Hl1I_105Ml1l1l1l1l1l1s1s1s1y1y1y1_7F1_7F1_7F1_7F1_7F1_7F1_7F1_7F1_7F1_7F1_7F1_7F1_7F1_7F1_7F1_7F1_7F1_7F1_7F1_7F1_7F1_7F1_7F1_911_A51_A51_C11_DC1_F71_122_2D2_2D2_2D2_2D2H2c2_7E2_992_B42_B42_B42_B42_C82_E42_EF2_EF233_1F3_2A3_2A3_3E3Z3e3e3y3_953_A03_A03_B43_D03_DB3_DB3_DB3_DB3_DB3_EF3_0B4_164_164_2A4F4Q4Q4e4_814_8C4_8C4_A04_BC4_C74_C74_DB4_F742525252525000000_9C6_A06_15013210000000000000000000000_A46_B06_7F011335000000000000000000000_D06_D86X011333300000000000000000000_D06_EC6Y01130000000000000000000kp_185r00p_305r80p_3C5r_0C0ip_145r_240iq_240p_405_8Ad_0F5koip_105q_240mg_EC0zizkr_200iojq_280kpD5q80q_200_83g_0C1zzjr_280izojq_300kpX5q80q_200_83g_0C1zzjr_300izojq_380kpl5q80q_200_83g_0C1zzjr_380izojq_400kp_805q80q_200_83g_0C1zzjr_400izojqH0kp_945q80q_200_83g_0C1zzjrH0izojqP0kp_A45q80q_200_83g_0C1zzjrP0izojqX0kp_BC5q80q_200_83g_0C1zzjrX0izojq_600kp_D45q80q_200_83g_0C1zzjr_600izojqh0kp_E85q80q_200_83g_0C1zzjrh0izojqp0kp_FC5q80q_200_83g_0C1zzjrp0izkoip_105jq_280g_EC0zizkr_1C0iokq00q_1C0p_0C6q_0C0q_200_83g_2C1zzzzizokq00gL1zizkoip_105jq_300g_EC0zizkr_1C0iokq00q_1C0p_1C6q_0C0q_200_83g_2C1zzzzizokq00gL1zizkoip_105jq_380g_EC0zizkr_1C0iokq00q_1C0p_2C6q_0C0q_200_83g_2C1zzzzizokq00gL1zizkoip_105jq_400g_EC0zizkr_1C0iokq00q_1C0p_386q_0C0q_200_83g_2C1zzzzizokq00gL1zizkoip_105jqH0g_EC0zizkr_1C0iokq00q_1C0pD6q_0C0q_200_83g_2C1zzzzizokq00gL1zizkoip_105jqP0g_EC0zizkr_1C0iokq00q_1C0pP6q_0C0q_200_83g_2C1zzzzizokq00gL1zizkoip_105jqX0g_EC0zizkr_1C0iokq00q_1C0p_606q_0C0q_200_83g_2C1zzzzizokq00gL1zizkoip_105jq_600g_EC0zizkr_1C0iokq00q_1C0pp6q_0C0q_200_83g_2C1zzzzizokq00gL1zizkoip_105jqh0g_EC0zizkr_1C0iokq00q_1C0p_7C6q_0C0q_200_83g_2C1zzzzizokq00gL1zizkoip_105jqp0g_EC0zizkr_1C0iokq00q_1C0p_886q_0C0q_200_83g_2C1zzzzizokq00gL1zizq_240p_145_83r_240c_861f00001000C_3A_5Ctemp_5Cwwwroot_5Ccfg_2Eini0EVO_20PTL_200000ptl08000RecPos_2EPointStart_2EX0RecPos_2EPointStart_2EY0RecPos_2EPointEnd_2EX000RecPos_2EPointEnd_2EY000RecPos_2EWidth0000RecPos_32_2EPointStart_2EX0000RecPos_32_2EPointStart_2EY0000RecPos_32_2EPointEnd_2EX00RecPos_32_2EPointEnd_2EY00RecPos_32_2EWidth000p_31rectStartX0000p_31rectStartY0000p_31rectEndX00p_31rectEndY00p_31rectWidth0l_31rectStartX0000l_31rectStartY0000l_31rectEndX00l_31rectEndY00l_31rectWidth0source00Std0Str0EVTVision000CKI_5FGetParameterDoubleOfCommand0Evhd0000EVHDINIWriteString00EVHDINIWriteFlush0]
+    ExternProgramFileName 
+    UseExternProgram 0
+    NumberOfAdditionalLinesProgram 0
+    NumberOfAdditionalLinesBinary 0
+    CKPICKUP_TYPE_WRITE 
+      ClassVersion 1
+      Name 
+      PickupObjectType 0
+      PickupListIndex 157293
+    END_CKPICKUP_TYPE_WRITE 
+    TeachInCounter 0
+  END_KEY 121
+  KEY 122
+    ClassVersion 4
+    CKGENERAL 
+      ClassVersion 1
+      Position 140
+      CommandType 1040
+      CommandName Script Width
+      Enabled 1
+      Hidden 0
+      GraficMode 2
+      TextMode 2
+      ImageMemory 0
+      InvertResult 0
+      Memo 
+    END_CKGENERAL 
+    CKRESULT 
+      ClassVersion 1
+      Name Script interpreter (BASIC)
+      EnterResultToRTDisplay 0
+      RTDisplayIndex 0
+      RTWidthOfToleranceRegion 80
+      CKEVALUATION 
+        ClassVersion 3
+        GlobalToleranceIndex -1
+        UseWarningTolerances 0
+        NominalValue 0,0
+        PlusTolerance 10000,0
+        MinusTolerance 0,0
+        WarnPlusTolerance 0,0
+        WarnMinusTolerance 0,0
+        DynamicEvaluation 0
+        FileName 
+        Section 
+        CorrectionActive 0
+        CorrectionType 0
+        EnableAutoTeachIn 1
+        NumberOfUsedCorrections 0
+      END_CKEVALUATION 
+      CKSTATISTIC 
+        ClassVersion 1
+        EnterToStatistic 0
+        Index -1
+      END_CKSTATISTIC 
+    END_CKRESULT 
+    Program Dim sFile As String~Dim lRet As Long~'to run this script on VC camera adjust the cfg.ini path to sFile = "cfg.ini"~sFile = "C:\temp\wwwroot\cfg.ini" 'an vc camera ini file ending is 231~~Dim functionName As String~functionName = "EVO Width "~~Dim iniName As String~iniName = "width"~~Dim dValue As Double~Dim lValue As Long~Dim sValue As String~Dim nameValue As String~Dim num As Long~~~Dim rectStartX As Double~Dim rectStartY As Double~Dim rectEndX As Double~Dim rectEndY As Double~Dim rectWidth As Double~~~~~~For num = 1 To 8~	nameValue = Str(num, 0)~~	CKI_GetParameterDoubleOfCommand(functionName + nameValue, "RecPos.PointStart.X", rectStartX)~	CKI_GetParameterDoubleOfCommand(functionName + nameValue, "RecPos.PointStart.Y", rectStartY)~	CKI_GetParameterDoubleOfCommand(functionName + nameValue, "RecPos.PointEnd.X", rectEndX)~	CKI_GetParameterDoubleOfCommand(functionName + nameValue, "RecPos.PointEnd.Y", rectEndY)~	CKI_GetParameterDoubleOfCommand(functionName + nameValue, "RecPos.Width", rectWidth)~~	~~	~		sValue = Str(rectStartX,0) ~		EVHDINIWriteString(iniName+nameValue, "rectStartX", sValue,sFile)~		EVHDINIWriteFlush(sFile)~~		sValue = Str(rectStartY,0) ~		EVHDINIWriteString(iniName+nameValue, "rectStartY", sValue,sFile)~		EVHDINIWriteFlush(sFile)~~		sValue = Str(rectEndX,0) ~		EVHDINIWriteString(iniName+nameValue, "rectEndX", sValue,sFile)~		EVHDINIWriteFlush(sFile)~~		sValue = Str(rectEndY,0) ~		EVHDINIWriteString(iniName+nameValue, "rectEndY", sValue,sFile)~		EVHDINIWriteFlush(sFile)~~		sValue = Str(rectWidth,0) ~		EVHDINIWriteString(iniName+nameValue, "rectWidth", sValue,sFile)~		EVHDINIWriteFlush(sFile)~	~~~~Next~~~
+    EncodedBinary [C_34_12Ab4B_F83JP0KD0L_240F40D_AC0G00H_2C1I_243M_2C1_2C1_2C1_2C1_2C1_2C1_331_331_331_391_391_391_3F1_3F1_3F1_3F1_3F1_3F1_3F1_3F1_3F1_3F1_3F1_3F1_3F1_3F1_3F1_3F1_3F1_3F1_3F1Q1e1e1_811_9C1_B71_D21_ED1_ED1_ED1_ED1_ED112_1D2_282_282_3C2X2c2c2w2_932_9E2_9E2_B22_CE2_D92_D92_ED293_143_143_143_143_143_143_143_14300000444_1501321000000000000000000000084_144_7F011335000000000000000000000_344_3C4X011333300000000000000000000_344P4Y01130000000000000000000kp_2C3r00pD3r80pP3r_0C0ip_283r_240iq_240pX3_8Ad_213koip_243q_240mg_AC0zizkr_200iojq_280kp_5C3q80q_200_83g_CC0zzjr_280izojq_300kpp3q80q_200_83g_CC0zzjr_300izojq_380kp_843q80q_200_83g_CC0zzjr_380izojq_400kp_983q80q_200_83g_CC0zzjr_400izojqH0kp_AC3q80q_200_83g_CC0zzjrH0izkoip_243jq_280g_AC0zizkr_1C0iokq00q_1C0p_BC3q_0C0q_200_83g_EC0zzzzizokq00g_0C1zizkoip_243jq_300g_AC0zizkr_1C0iokq00q_1C0p_C83q_0C0q_200_83g_EC0zzzzizokq00g_0C1zizkoip_243jq_380g_AC0zizkr_1C0iokq00q_1C0p_D43q_0C0q_200_83g_EC0zzzzizokq00g_0C1zizkoip_243jq_400g_AC0zizkr_1C0iokq00q_1C0p_E03q_0C0q_200_83g_EC0zzzzizokq00g_0C1zizkoip_243jqH0g_AC0zizkr_1C0iokq00q_1C0p_EC3q_0C0q_200_83g_EC0zzzzizokq00g_0C1zizq_240p_283_83r_240cF1f0000001000C_3A_5Ctemp_5Cwwwroot_5Ccfg_2Eini0EVO_20Width_2000width0008000RecPos_2EPointStart_2EX0RecPos_2EPointStart_2EY0RecPos_2EPointEnd_2EX000RecPos_2EPointEnd_2EY000RecPos_2EWidth0000rectStartX00rectStartY00rectEndX0000rectEndY0000rectWidth000source00Std0Str0EVTVision000CKI_5FGetParameterDoubleOfCommand0Evhd0000EVHDINIWriteString00EVHDINIWriteFlush0]
+    ExternProgramFileName 
+    UseExternProgram 0
+    NumberOfAdditionalLinesProgram 0
+    NumberOfAdditionalLinesBinary 0
+    CKPICKUP_TYPE_WRITE 
+      ClassVersion 1
+      Name 
+      PickupObjectType 0
+      PickupListIndex 155789
+    END_CKPICKUP_TYPE_WRITE 
+    TeachInCounter 0
+  END_KEY 122
+  KEY 123
+    ClassVersion 1
+    CKGENERAL 
+      ClassVersion 1
+      Position 143
       CommandType 114
       CommandName Stop watch
       Enabled 1
@@ -18388,7 +18794,7 @@ START_PARM_LIST
       PickupListIndex 77111
     END_CKPICKUP_TYPE_WRITE 
     TeachInCounter 0
-  END_KEY 116
+  END_KEY 123
 END_PARM_LIST 
 CKPARAMETERS 
   ClassVersion 1
