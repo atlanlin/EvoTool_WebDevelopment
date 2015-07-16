@@ -661,9 +661,9 @@ var endFrameY = 560;
 
 // settings
 // min and max radius for each circle able to increase or decrease
-var maxRadius = 200;
+var maxRadius = 300;
 
-var minRadius = 20;
+var minRadius = 0;
 
 // update interval to evo3 e.g. 1sec == 1000
 var UPDATECIRCLEINTERVAL = 2000;

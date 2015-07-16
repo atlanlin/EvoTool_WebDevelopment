@@ -476,9 +476,9 @@ var endFrameY = 570;
 
 // settings
 // min and max radius for each circle able to increase or decrease
-var maxRadius = 200;
+var maxRadius = 300;
 
-var minRadius = 20;
+var minRadius = 0;
 
 //angle settings for drawing arcs
 var startAngle = 0;
