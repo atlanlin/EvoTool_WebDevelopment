@@ -7,7 +7,17 @@ window.onload = function() {
 	
 	
 	initCircle();
+	
+	//start the program to retrieve image
+	ajaxGet("info.htm?cmd=%23002%23");	
+	//ajaxGet("cfg.ini", getValueFrominiFile);
+	intervalUpdateStart();
+	disableBtn("btnStart");
+	undisableBtn("btnMeasure");
+	setImgFlag(false);
+	
 	initSquare();
+	
 	
 	
 	//enable function in evo 3 ckp file
@@ -44,6 +54,17 @@ function initCircle() {
 			ajaxGet("cfg.ini", getValueFrominiFile);
 			//save screenshot of the current measurement taken
 			saveScreenshot();
+		}
+	);
+	
+	$("#loadValues").click(function(){
+			//get settings
+			ajaxGet("ptc.ini", getSettingFrominiFile);
+			//ajaxGet("ptc.ini", getCircleDetailsFrominiFile);
+			//updateObjectsFunction();
+			isValuesRetrieved = true;
+			this.disabled = true;
+			this.style.color="gray";
 		}
 	);
 	
@@ -342,80 +363,81 @@ function outputEndAngle(size){
 //update circle values to evo3
 function updateCircleEvo()
 {
+	if(isValuesRetrieved)
+	{	
+		var centerX = $("#xvalue").val();
+		var centerY = $("#yvalue").val();
 
-	var centerX = $("#xvalue").val();
-	var centerY = $("#yvalue").val();
-
-	//var innerRadius = $("#innervalue").val();
-	//var outerRadius = $("#outervalue").val();
-	//var startvalue = $("#startvalue").val();
-	//var anglevalue = $("#anglevalue").val();
+		//var innerRadius = $("#innervalue").val();
+		//var outerRadius = $("#outervalue").val();
+		//var startvalue = $("#startvalue").val();
+		//var anglevalue = $("#anglevalue").val();
 		
-	var innerRadius = $("#innerRadiusValue").val();
-	var outerRadius = $("#outerRadiusValue").val();
+		var innerRadius = $("#innerRadiusValue").val();
+		var outerRadius = $("#outerRadiusValue").val();
 		
-	var startvalue = $("#startAngleValue").val();
-	var anglevalue = $("#endAngleValue").val();
+		var startvalue = $("#startAngleValue").val();
+		var anglevalue = $("#endAngleValue").val();
 		
 		
-	var nominalValue = $("#nv").val();
-	var positive = $("#plus").val();
-	var negative = $("#minus").val();
+		var nominalValue = $("#nv").val();
+		var positive = $("#plus").val();
+		var negative = $("#minus").val();
 		
-	// multiple by scaling offset to match coordinates at different image resolution
-	var calCenterX = centerX * GLOBAL_SCALE * GLOBAL_SCALE_X;
-	var calCenterY = centerY * GLOBAL_SCALE * GLOBAL_SCALE_Y;
+		// multiple by scaling offset to match coordinates at different image resolution
+		var calCenterX = centerX * GLOBAL_SCALE * GLOBAL_SCALE_X;
+		var calCenterY = centerY * GLOBAL_SCALE * GLOBAL_SCALE_Y;
 	
-	var maxGLOBAL_SCALE = findMax(GLOBAL_SCALE_X, GLOBAL_SCALE_Y);
+		var maxGLOBAL_SCALE = findMax(GLOBAL_SCALE_X, GLOBAL_SCALE_Y);
 	
-	var calInnerRadius = innerRadius * GLOBAL_SCALE * maxGLOBAL_SCALE;
-	var calOuterRadius = outerRadius * GLOBAL_SCALE * maxGLOBAL_SCALE;
+		var calInnerRadius = innerRadius * GLOBAL_SCALE * maxGLOBAL_SCALE;
+		var calOuterRadius = outerRadius * GLOBAL_SCALE * maxGLOBAL_SCALE;
 		
-	var calDiffer = 0;
+		var calDiffer = 0;
 		
-	// calculation for getting the angle length which is required by the evo3 tools
-	if(startAngle < EndAngle)
-	{
-		calDiffer = EndAngle - startAngle;
-	}
-	else
-	{
-		var tempDiffer = startAngle - EndAngle;
-		calDiffer = 360 - tempDiffer;
-	}
+		// calculation for getting the angle length which is required by the evo3 tools
+		if(startAngle < EndAngle)
+		{
+			calDiffer = EndAngle - startAngle;
+		}
+		else
+		{
+			var tempDiffer = startAngle - EndAngle;
+			calDiffer = 360 - tempDiffer;
+		}
 		
-	if ($("#clightToDark").is(":checked")) {
-		ajaxGet("info.htm?cmd=%23021%3B"+ EVOToolName +"%3B2%3BTransition_2%3B0%23");
-    }
-	else if($("#cdarkToLight").is(":checked")) {
-        ajaxGet("info.htm?cmd=%23021%3B"+ EVOToolName +"%3B2%3BTransition_2%3B1%23");
-    }
+		if ($("#clightToDark").is(":checked")) {
+			ajaxGet("info.htm?cmd=%23021%3B"+ EVOToolName +"%3B2%3BTransition_2%3B0%23");
+		}
+		else if($("#cdarkToLight").is(":checked")) {
+			ajaxGet("info.htm?cmd=%23021%3B"+ EVOToolName +"%3B2%3BTransition_2%3B1%23");
+		}
 
-	// update circle parameters to evo3	
-	ajaxGet("info.htm?cmd=%23021%3B"+ EVOToolName +"%3B1%3BCirclePos.Center.X%3B"+ calCenterX +"%23");
-	ajaxGet("info.htm?cmd=%23021%3B"+ EVOToolName +"%3B1%3BCirclePos.Center.Y%3B"+ calCenterY +"%23");
+		// update circle parameters to evo3	
+		ajaxGet("info.htm?cmd=%23021%3B"+ EVOToolName +"%3B1%3BCirclePos.Center.X%3B"+ calCenterX +"%23");
+		ajaxGet("info.htm?cmd=%23021%3B"+ EVOToolName +"%3B1%3BCirclePos.Center.Y%3B"+ calCenterY +"%23");
 		
-	ajaxGet("info.htm?cmd=%23021%3B"+ EVOToolName +"%3B1%3BCirclePos.InnerRadius%3B"+ calInnerRadius +"%23");
-	ajaxGet("info.htm?cmd=%23021%3B"+ EVOToolName +"%3B1%3BCirclePos.OuterRadius%3B"+ calOuterRadius +"%23");
-	ajaxGet("info.htm?cmd=%23021%3B"+ EVOToolName +"%3B1%3BCirclePos.StartAngle%3B"+ startvalue +"%23");
-	ajaxGet("info.htm?cmd=%23021%3B"+ EVOToolName +"%3B1%3BCirclePos.LengthAngle%3B"+ calDiffer +"%23");
+		ajaxGet("info.htm?cmd=%23021%3B"+ EVOToolName +"%3B1%3BCirclePos.InnerRadius%3B"+ calInnerRadius +"%23");
+		ajaxGet("info.htm?cmd=%23021%3B"+ EVOToolName +"%3B1%3BCirclePos.OuterRadius%3B"+ calOuterRadius +"%23");
+		ajaxGet("info.htm?cmd=%23021%3B"+ EVOToolName +"%3B1%3BCirclePos.StartAngle%3B"+ startvalue +"%23");
+		ajaxGet("info.htm?cmd=%23021%3B"+ EVOToolName +"%3B1%3BCirclePos.LengthAngle%3B"+ calDiffer +"%23");
 		
-	ajaxGet("info.htm?cmd=%23021%3B"+ EVOToolName +"%3B1%3BResult[0].Evaluation.NominalValue%3B"+ nominalValue +"%23");
-	ajaxGet("info.htm?cmd=%23021%3B"+ EVOToolName +"%3B1%3BResult[0].Evaluation.PlusTolerance%3B"+ positive +"%23");
-	ajaxGet("info.htm?cmd=%23021%3B"+ EVOToolName +"%3B1%3BResult[0].Evaluation.MinusTolerance%3B"+ negative +"%23");
-		
+		ajaxGet("info.htm?cmd=%23021%3B"+ EVOToolName +"%3B1%3BResult[0].Evaluation.NominalValue%3B"+ nominalValue +"%23");
+		ajaxGet("info.htm?cmd=%23021%3B"+ EVOToolName +"%3B1%3BResult[0].Evaluation.PlusTolerance%3B"+ positive +"%23");
+		ajaxGet("info.htm?cmd=%23021%3B"+ EVOToolName +"%3B1%3BResult[0].Evaluation.MinusTolerance%3B"+ negative +"%23");
+	}	
 }
 
 //update rect values to evo3
 function updateRectEvo()
 {
-
+	if(isValuesRetrieved)
+	{
 		var startX = $("#tbStartX").val();
 		var endX = $("#tbEndX").val();
 		var startY = $("#tbStartY").val();
 		var endY = $("#tbEndY").val();
 		var width = $("#tbWidth").val();
-		
 		/*var calStartX = startX * GLOBAL_SCALE;
 		var calStartY = startY * GLOBAL_SCALE;
 		var calEndX = endX * GLOBAL_SCALE;
@@ -450,7 +472,7 @@ function updateRectEvo()
 		ajaxGet("info.htm?cmd=%23021%3B"+ EVOToolName +"%3B1%3BResult[0].Evaluation.NominalValue%3B"+ nominalValue +"%23");
 		ajaxGet("info.htm?cmd=%23021%3B"+ EVOToolName +"%3B1%3BResult[0].Evaluation.PlusTolerance%3B"+ positive +"%23");
 		ajaxGet("info.htm?cmd=%23021%3B"+ EVOToolName +"%3B1%3BResult[0].Evaluation.MinusTolerance%3B"+ negative +"%23");
-		
+	}	
 }
 
 
@@ -750,6 +772,139 @@ function initSquare() {
   //addRect(45, 60, 25, 25, 'rgba(150,150,250,0.7)');
 }
 
+function updateObjectsFunction(){
+	var in1sx = parseFloat($("#tbStartX").val());
+	var in1sy = parseFloat($("#tbStartY").val());
+	var in1ex = parseFloat($("#tbEndX").val());
+	var in1ey = parseFloat($("#tbEndY").val());
+	var in1w = parseFloat($("#tbWidth").val());
+	
+	var p1sx, p1sy, p1w, p1h;
+	if(Math.abs(in1ey - in1sy) < 0.01){
+		//ysame
+		$('#cbPoint1Hor').prop('checked', true);
+		if(in1ex-in1sx > 0){
+			//x+y+ arrow dir ->
+			p1sx = in1sx;
+			p1sy = in1sy - in1w/2;
+			p1w = in1ex - in1sx;
+			p1h = in1w;
+		}else{
+			//x-y+ arrow dir <-
+			p1sx = in1sx;
+			p1sy = in1sy - in1w/2;
+			p1w = in1ex - in1sx;
+			p1h = in1w;
+		}
+	}else if(Math.abs(in1ex - in1sx) < 0.01){
+		$('#cbPoint1Hor').prop('checked', false);
+		if(in1ey-in1sy > 0){
+			//x+y+ arrow dir /^
+			p1sx = in1sx - in1w/2;
+			p1sy = in1sy;
+			p1w = in1w;
+			p1h = (in1ey - in1sy)*-1;
+		}else{
+			//x-y+ arrow dir /v
+			p1sx = in1sx + in1w/2;
+			p1sy = in1sy;
+			p1w = in1w*-1;
+			p1h = in1ey - in1sy;
+		}
+	}else{
+		var yLen = Math.abs(in1ey - in1sy);
+		var xLen = Math.abs(in1ex - in1sx);
+		if(yLen > xLen){
+			in1ex = in1sx;
+		}else{
+			in1ey = in1sy;
+		}
+	}
+	
+	p1sx = p1sx/(GLOBAL_SCALE*GLOBAL_SCALE_X);
+	p1sy = p1sy/(GLOBAL_SCALE*GLOBAL_SCALE_Y);
+	p1w = p1w/(GLOBAL_SCALE*GLOBAL_SCALE_X);
+	p1h = p1h/(GLOBAL_SCALE*GLOBAL_SCALE_Y);
+	
+	boxes2[0].x = p1sx;
+	boxes2[0].y = p1sy;
+	boxes2[0].w = p1w;
+	boxes2[0].h = p1h;
+	
+	
+}
+
+function getSettingFrominiFile()
+{
+	var respValue;
+	if (xhr.readyState != 4)  {
+		/*
+		responseCnt++;
+		if(responseCnt > 2){
+			ajaxGet("cfg.ini", getValueFrominiFile);
+			responseCnt = 0;
+			console.log("not ready state");
+		}
+		*/
+		return; 
+	}
+
+		var resp = xhr.responseText;
+		
+		respValue = getIniStr("ptc"+ queryString["toolNo"], "centerX", resp);
+		circle.point.x = Math.round(parseInt(respValue) / GLOBAL_SCALE_X / GLOBAL_SCALE);
+
+		respValue = getIniStr("ptc"+ queryString["toolNo"], "centerY", resp);
+		circle.point.y = Math.round(parseInt(respValue) / GLOBAL_SCALE_Y / GLOBAL_SCALE);
+		
+		var maxGLOBAL_SCALE = findMax(GLOBAL_SCALE_X, GLOBAL_SCALE_Y);
+		
+		respValue = getIniStr("ptc"+ queryString["toolNo"], "innerRadius", resp);
+		innerCircle.radius = parseInt(respValue) / GLOBAL_SCALE / maxGLOBAL_SCALE;
+		
+		respValue = getIniStr("ptc"+ queryString["toolNo"], "outerRadius", resp);
+		circle.radius = parseInt(respValue) / GLOBAL_SCALE / maxGLOBAL_SCALE;
+		
+		respValue = getIniStr("ptc"+ queryString["toolNo"], "startAngle", resp);
+		startAngle = parseInt(respValue);
+		
+		respValue = getIniStr("ptc"+ queryString["toolNo"], "angleLength", resp);
+		EndAngle = parseInt(respValue) + startAngle;
+		
+		
+		var settingVal;
+		settingVal = getIniStr("ptc" + queryString["toolNo"], "rectStartX", resp);
+		
+		$("#tbStartX").val(settingVal);
+		settingVal = getIniStr("ptc" + queryString["toolNo"], "rectStartY", resp);
+		$("#tbStartY").val(settingVal);
+		settingVal = getIniStr("ptc" + queryString["toolNo"], "rectEndX", resp);
+		$("#tbEndX").val(settingVal);
+		settingVal = getIniStr("ptc" + queryString["toolNo"], "rectEndY", resp);
+		$("#tbEndY").val(settingVal);
+		settingVal = getIniStr("ptc" + queryString["toolNo"], "rectWidth", resp);
+		$("#tbWidth").val(settingVal);
+		
+		
+		//alert(circle.radius);
+		drawCircle(circle, innerCircle);
+		$("#xvalue").val(circle.point.x);
+		
+		$("#yvalue").val(circle.point.y);
+		
+		document.querySelector('#outerRadiusValue').value = Math.round(circle.radius);
+		
+		document.querySelector('#innerRadiusValue').value = Math.round(innerCircle.radius);
+		
+		document.querySelector('#startAngleValue').value = Math.round(startAngle);
+		document.querySelector('#endAngleValue').value = Math.round(EndAngle);
+		
+		//update to rectangle values
+		updateObjectsFunction();
+		isValuesRetrieved = true;
+		canvasValid = false;
+}
+
 function Line(x1,y1,x2,y2){
         this.x1=x1;
         this.y1=y1;
@@ -892,8 +1047,9 @@ function mainDraw() {
 		line.drawWithArrowheads(ctx);
 	
 		//displayTexts();
-	
-		displayTexts("tbStartX", "tbStartY", "tbEndX", "tbEndY", "tbWidth", boxes2[0]);
+		
+			displayTexts("tbStartX", "tbStartY", "tbEndX", "tbEndY", "tbWidth", boxes2[0]);
+		
 		//updateCircleEvo();
 		//updateRectEvo();
 	
@@ -1248,6 +1404,8 @@ var stx, sty, edx, edy, wi;
 var EVOToolName = "EVO PTC";
 
 var EVOININame = "INI PTC";
+
+var isValuesRetrieved = false;
 
 }
 
