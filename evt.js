@@ -384,14 +384,28 @@ function getCookie(name) {
 function deleteCookie(name) {
     setCookie(name,"",-1);
 }
-
-
-function disableAllFunctions(){
+function disableCodeFunctions(){
 	//disable all functions - enter function names here to disable
-	var delay_time = 200;
 	var functionNames = ["EVO%20BarCode", "EVO%20DataCode", "EVO%20OCR"];
 	var cmdIndex = 1;
 	var sendCmd = "info.htm?";
+	//for(var i=0; i < frontFunctionNames.length; i++){
+		for(var j=0; j < functionNames.length; j++){
+			sendCmd += "cmd" + cmdIndex + "=%23021%3B" + functionNames[j] + "%3B2%3BGeneral.Enabled%3B0%23&";
+			cmdIndex+=1;
+		}
+		
+	sendCmd = sendCmd.substring(0,sendCmd.length-1);
+	//console.log(sendCmd);
+	ajaxGet(sendCmd);
+}
+
+function disableMeasureFunctions(){
+	//disable all functions - enter function names here to disable
+	var delay_time = 200;
+	var cmdIndex = 1;
+	var sendCmd = "info.htm?";
+	/*
 	//for(var i=0; i < frontFunctionNames.length; i++){
 		for(var j=0; j < functionNames.length; j++){
 			sendCmd += "cmd" + cmdIndex + "=%23021%3B" + functionNames[j] + "%3B2%3BGeneral.Enabled%3B0%23&";
@@ -401,9 +415,9 @@ function disableAllFunctions(){
 	sendCmd = sendCmd.substring(0,sendCmd.length-1);
 	//console.log(sendCmd);
 	ajaxGet(sendCmd);
-	
+	*/
 	var frontFunctionNames = ["EVO%20", "INI%20"];
-	functionNames = ["Circle%20", "Width%20", "CTC%20", "PTC%20", "CTL%20", "PTP%20", "PTL%20"];
+	var functionNames = ["Circle%20", "Width%20", "CTC%20", "PTC%20", "CTL%20", "PTP%20", "PTL%20"];
 	for(var i=0; i < frontFunctionNames.length; i++){
 		for(var j=0; j < functionNames.length; j++){
 			cmdIndex = 1;
