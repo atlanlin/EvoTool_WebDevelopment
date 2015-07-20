@@ -18,7 +18,6 @@ var HEIGHT;
 var INTERVAL = 20;  // how often, in milliseconds, we check to see if a redraw is needed
 var EVO_UPDATE_INTERVAL = 2000;
 
-var isValuesRetrieved = false;
 var isDrag = false;
 var isResizeDrag = false;
 var expectResize = -1; // New, will save the # of the selection handle if the mouse is over one.
@@ -60,8 +59,8 @@ var point1Flag = false;
 var point2ArrowDirFlag = "horizontal";
 var point2Flag = false;
 
-var EVOToolName = "EVO PTP";
-var EVOININame = "INI PTP";
+var EVOToolName = "EVO Distance";
+var EVOININame = "INI Distance";
 
 // Box object to hold data
 function Box2() {
@@ -207,17 +206,6 @@ function init2() {
   ajaxGet("info.htm?cmd=%23021%3B"+ EVOToolName +"%3B2%3BGeneral.Enabled%3B1%23");
   ajaxGet("info.htm?cmd=%23021%3B" + EVOININame +"%3B2%3BGeneral.Enabled%3B1%23");
   
-  
-	//start the program to retrieve image
-	ajaxGet("info.htm?cmd=%23002%23");	
-	//ajaxGet("cfg.ini", getValueFrominiFile);
-	intervalUpdateStart();
-	disableBtn("btnStart");
-	undisableBtn("btnMeasure");
-	setImgFlag(false);
-  
-	
-  
   canvas = document.getElementById('canvas2');
   HEIGHT = canvas.height;
   WIDTH = canvas.width;
@@ -288,16 +276,8 @@ function init2() {
 			
 		}
 	);
-	$("#loadValues").click(function(){
-			//get settings
-			ajaxGet("cfg.ini", getSettingFrominiFile);
-			this.disabled = true;
-			this.style.color="gray";
-		}
-	);
-	
   
-	
+
   
   // add a large green rectangle
   addRect(0, 0, 60, 65, 'rgba(0,205,0,0.7)');
@@ -306,140 +286,15 @@ function init2() {
   addRect(240, 120, 60, 65, 'rgba(2,165,165,0.7)');  
   
   // add a smaller purple rectangle
-  //addRect(45, 60, 25, 25, 'rgba(150,150,250,0.7)');
-
-	
-	
-	
-}
-
-function updateObjectsFunction(){
-	console.log($("#point1StartX").val());
-	var in1sx = parseFloat($("#point1StartX").val());
-	var in1sy = parseFloat($("#point1StartY").val());
-	var in1ex = parseFloat($("#point1EndX").val());
-	var in1ey = parseFloat($("#point1EndY").val());
-	var in1w = parseFloat($("#point1Width").val());
-	
-	var p1sx, p1sy, p1w, p1h;
-	if(Math.abs(in1ey - in1sy) < 0.01){
-		//ysame
-		$('#cbPoint1Hor').prop('checked', true);
-		if(in1ex-in1sx > 0){
-			//x+y+ arrow dir ->
-			p1sx = in1sx;
-			p1sy = in1sy - in1w/2;
-			p1w = in1ex - in1sx;
-			p1h = in1w;
-		}else{
-			//x-y+ arrow dir <-
-			p1sx = in1sx;
-			p1sy = in1sy - in1w/2;
-			p1w = in1ex - in1sx;
-			p1h = in1w;
-		}
-	}else if(Math.abs(in1ex - in1sx) < 0.01){
-		$('#cbPoint1Hor').prop('checked', false);
-		if(in1ey-in1sy > 0){
-			//x+y+ arrow dir /^
-			p1sx = in1sx - in1w/2;
-			p1sy = in1sy;
-			p1w = in1w;
-			p1h = (in1ey - in1sy)*-1;
-		}else{
-			//x-y+ arrow dir /v
-			p1sx = in1sx + in1w/2;
-			p1sy = in1sy;
-			p1w = in1w*-1;
-			p1h = in1ey - in1sy;
-		}
-	}else{
-		var yLen = Math.abs(in1ey - in1sy);
-		var xLen = Math.abs(in1ex - in1sx);
-		if(yLen > xLen){
-			in1ex = in1sx;
-		}else{
-			in1ey = in1sy;
-		}
-	}
-	
-	p1sx = p1sx/(GLOBAL_SCALE*GLOBAL_SCALE_X);
-	p1sy = p1sy/(GLOBAL_SCALE*GLOBAL_SCALE_Y);
-	p1w = p1w/(GLOBAL_SCALE*GLOBAL_SCALE_X);
-	p1h = p1h/(GLOBAL_SCALE*GLOBAL_SCALE_Y);
-	
-	boxes2[0].x = p1sx;
-	boxes2[0].y = p1sy;
-	boxes2[0].w = p1w;
-	boxes2[0].h = p1h;
-	
-	var in2sx = $("#point2StartX").val();
-	var in2sy = $("#point2StartY").val();
-	var in2ex = $("#point2EndX").val();
-	var in2ey = $("#point2EndY").val();
-	var in2w = $("#point2Width").val();
-	
-	var p2sx, p2sy, p2w, p2h;
-	if(Math.abs(in2ey - in2sy) < 0.01){
-		//ysame
-		$('#cbPoint2Hor').prop('checked', true);
-		if(in2ex-in2sx > 0){
-			//x+y+ arrow dir ->
-			p2sx = in2sx;
-			p2sy = in2sy - in2w/2;
-			p2w = in2ex - in2sx;
-			p2h = in2w;
-		}else{
-			//x-y+ arrow dir <-
-			p2sx = in2sx;
-			p2sy = in2sy - in2w/2;
-			p2w = in2ex - in2sx;
-			p2h = in2w;
-		}
-	}else if(Math.abs(in2ex - in2sx) < 0.01){
-		$('#cbPoint2Hor').prop('checked', false);
-		if(in2ey-in2sy > 0){
-			//x+y+ arrow dir /^
-			p2sx = in2sx - in2w/2;
-			p2sy = in2sy;
-			p2w = in2w;
-			p2h = (in2ey - in2sy)*-1;
-		}else{
-			//x-y+ arrow dir /v
-			p2sx = in2sx + in2w/2;
-			p2sy = in2sy;
-			p2w = in2w*-1;
-			p2h = in2ey - in2sy;
-		}
-	}else{
-		var yLen = Math.abs(in2ey - in2sy);
-		var xLen = Math.abs(in2ex - in2sx);
-		if(yLen > xLen){
-			in2ex = in2sx;
-		}else{
-			in2ey = in2sy;
-		}
-	}
-	
-	p2sx = p2sx/(GLOBAL_SCALE*GLOBAL_SCALE_X);
-	p2sy = p2sy/(GLOBAL_SCALE*GLOBAL_SCALE_Y);
-	p2w = p2w/(GLOBAL_SCALE*GLOBAL_SCALE_X);
-	p2h = p2h/(GLOBAL_SCALE*GLOBAL_SCALE_Y);
-	
-	boxes2[1].x = p2sx;
-	boxes2[1].y = p2sy;
-	boxes2[1].w = p2w;
-	boxes2[1].h = p2h;
+  //addRect(45, 60, 25, 25, 'rgba(150,150,250,0.7)');	
 }
 
 // consists of EVO communication commands
 function evoComm() {
-	if(isValuesRetrieved){
-		ajaxGet("info.htm?cmd=%23021%3B"+ EVOToolName +"%3B2%3BOptionForType%3B0%23");
-		point1Settings();
-		point2Settings();
-		toleranceSettings();
-	}
+	ajaxGet("info.htm?cmd=%23021%3B"+ EVOToolName +"%3B2%3BOptionForType%3B0%23");
+	point1Settings();
+	point2Settings();
+	toleranceSettings();
 }	// end evoComm
 
 //send settings for point1
@@ -570,7 +425,6 @@ function clear(c) {
 // It only ever does something if the canvas gets invalidated by our code
 function mainDraw() {
   if (canvasValid == false) {
-	  
     clear(ctx);
 	var undefined;
 	if(IMG_WIDTH !== undefined && IMG_HEIGHT !== undefined && IMG_WIDTH > 0 && IMG_HEIGHT > 0){
@@ -581,7 +435,6 @@ function mainDraw() {
 		ghostcanvas.height = HEIGHT;
 		ghostcanvas.width = WIDTH;
 	}
-	
     // Add stuff you want drawn in the background all the time here
 	
     // draw all boxes
@@ -623,9 +476,9 @@ function mainDraw() {
     var line=new Line(lx1,ly1,lx2,ly2);
     // draw the line
     line.drawWithArrowheads(ctx);
-	if(isValuesRetrieved){
-		displayTexts('point2StartX', 'point2StartY', 'point2EndX', 'point2EndY', 'point2Width', point2ArrowDirFlag, boxes2[1]);
-	}
+	
+	displayTexts('point2StartX', 'point2StartY', 'point2EndX', 'point2EndY', 'point2Width', point2ArrowDirFlag, boxes2[1]);
+	
 	//calculation for EVO 3 parameters
 	var plx1, ply1, plx2, ply2;
 	if(point1ArrowDirFlag == "horizontal"){
@@ -645,8 +498,8 @@ function mainDraw() {
     // draw the line
     pointLine.drawWithArrowheads(ctx);
 	
-	if(isValuesRetrieved)
-		displayTexts('point1StartX', 'point1StartY', 'point1EndX', 'point1EndY', 'point1Width', point1ArrowDirFlag, boxes2[0]);
+	
+	displayTexts('point1StartX', 'point1StartY', 'point1EndX', 'point1EndY', 'point1Width', point1ArrowDirFlag, boxes2[0]);
 	//showProbeSettings();
 	
 	
@@ -945,57 +798,6 @@ function getMouse(e) {
 			mx = e.targetTouches[0].clientX - rect.left;
 			my = e.targetTouches[0].clientY - rect.top;
 	}
-}
-var tryInt;
-function getSettingFrominiFile()
-{
-	
-	if (xhr.readyState != 4)  {
-		/*
-		responseCnt++;
-		if(responseCnt > 2){
-			ajaxGet("cfg.ini", getValueFrominiFile);
-			responseCnt = 0;
-			console.log("not ready state");
-		}
-		*/
-		return; 
-	}
-		
-		console.log("ready state");
-		
-		var resp = xhr.responseText;
-		var settingVal;
-		settingVal = getIniStr("ptp" + queryString["toolNo"], "p1rectStartX", resp);
-		$("#point1StartX").val(settingVal);
-		console.log("tb: " + settingVal);
-		tryInt = settingVal;
-		settingVal = getIniStr("ptp" + queryString["toolNo"], "p1rectStartY", resp);
-		$("#point1StartY").val(settingVal);
-		settingVal = getIniStr("ptp" + queryString["toolNo"], "p1rectEndX", resp);
-		$("#point1EndX").val(settingVal);
-		settingVal = getIniStr("ptp" + queryString["toolNo"], "p1rectEndY", resp);
-		$("#point1EndY").val(settingVal);
-		settingVal = getIniStr("ptp" + queryString["toolNo"], "p1rectWidth", resp);
-		$("#point1Width").val(settingVal);
-		
-		
-		
-		settingVal = getIniStr("ptp" + queryString["toolNo"], "p2rectStartX", resp);
-		$("#point2StartX").val(settingVal);
-		settingVal = getIniStr("ptp" + queryString["toolNo"], "p2rectStartY", resp);
-		$("#point2StartY").val(settingVal);
-		settingVal = getIniStr("ptp" + queryString["toolNo"], "p2rectEndX", resp);
-		$("#point2EndX").val(settingVal);
-		settingVal = getIniStr("ptp" + queryString["toolNo"], "p2rectEndY", resp);
-		$("#point2EndY").val(settingVal);
-		settingVal = getIniStr("ptp" + queryString["toolNo"], "p2rectWidth", resp);
-		$("#point2Width").val(settingVal);
-		
-		//update to rectangle values
-		updateObjectsFunction();
-		isValuesRetrieved = true;
-		canvasValid = false;
 }
 
 // If you dont want to use <body onLoad='init()'>
