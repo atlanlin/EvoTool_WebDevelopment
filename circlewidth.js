@@ -6,8 +6,17 @@ window.onload = function() {
 	EVOToolName += " " + queryString["toolNo"];
 	EVOININame +=  " " + queryString["toolNo"];
 	
-	
 	initCircle();
+	
+	//start the program to retrieve image
+	ajaxGet("info.htm?cmd=%23002%23");	
+	//ajaxGet("cfg.ini", getValueFrominiFile);
+	intervalUpdateStart();
+	disableBtn("btnStart");
+	undisableBtn("btnMeasure");
+	setImgFlag(false);
+	
+	
 	
 	//enable function in evo 3 ckp file
 	ajaxGet("info.htm?cmd=%23021%3B"+ EVOToolName +"%3B2%3BGeneral.Enabled%3B1%23");
@@ -45,6 +54,15 @@ function initCircle() {
 	}
 	);
 	
+	$("#loadValues").click(function(){
+			//get settings
+			ajaxGet("circle.ini", getCircleDetailsFrominiFile);
+			//updateObjectsFunction();
+			isValuesRetrieved = true;
+			//canvasValid = true;
+		}
+	);
+	
 }
 
 // circle point of x and y coordinates
@@ -62,6 +80,66 @@ var Circle = function (point, radius) {
         return Math.pow(pt.x - point.x, 2) + Math.pow(pt.y - point.y, 2) < Math.pow(radius, 2); 
     };
     return this;
+}
+
+var responseCount = 0;
+function getCircleDetailsFrominiFile()
+{
+	var respValue;
+	if (xhr.readyState != 4)  {
+		responseCount++;
+		if(responseCount > 2){
+			ajaxGet("circle.ini", getCircleDetailsFrominiFile);
+			responseCount = 0;
+		}
+		return; 
+	}
+		//console.log("ready state");
+		var resp = xhr.responseText;
+		//alert("here");
+		respValue = getIniStr("circle"+ queryString["toolNo"], "centerX", resp);
+		circle.point.x = Math.round(parseInt(respValue) / GLOBAL_SCALE_X / GLOBAL_SCALE);
+		
+		respValue = getIniStr("circle"+ queryString["toolNo"], "centerY", resp);
+		circle.point.y = Math.round(parseInt(respValue) / GLOBAL_SCALE_Y / GLOBAL_SCALE);
+		
+		var maxGLOBAL_SCALE = findMax(GLOBAL_SCALE_X, GLOBAL_SCALE_Y);
+		
+		respValue = getIniStr("circle"+ queryString["toolNo"], "innerRadius", resp);
+		innerCircle.radius = parseInt(respValue) / GLOBAL_SCALE / maxGLOBAL_SCALE;
+		
+		respValue = getIniStr("circle"+ queryString["toolNo"], "outerRadius", resp);
+		circle.radius = parseInt(respValue) / GLOBAL_SCALE / maxGLOBAL_SCALE;
+		
+		respValue = getIniStr("circle"+ queryString["toolNo"], "startAngle", resp);
+		startAngle = parseInt(respValue);
+		
+		respValue = getIniStr("circle"+ queryString["toolNo"], "angleLength", resp);
+		EndAngle = parseInt(respValue) + startAngle;
+		
+		//alert(circle.radius);
+		drawCircle(circle, innerCircle);
+		$("#xvalue").val(circle.point.x);
+		
+		$("#yvalue").val(circle.point.y);
+		
+		document.querySelector('#outerRadiusValue').value = Math.round(circle.radius);
+		
+		document.querySelector('#innerRadiusValue').value = Math.round(innerCircle.radius);
+		
+		document.querySelector('#startAngleValue').value = Math.round(startAngle);
+		document.querySelector('#endAngleValue').value = Math.round(EndAngle);
+		
+		
+		
+		
+		
+				
+		//var cookieName = queryString["tool"] + queryString["toolNo"];
+				
+		//setCookie(cookieName,globalResult,1);
+		
+		responseCount = 0;
 }
 
 
@@ -324,6 +402,9 @@ function outputEndAngle(size){
 //update circle values to evo3
 function updateCircleEvo()
 {
+	if(isValuesRetrieved === true)
+	{
+		console.log("updating");
 		var centerX = $("#xvalue").val();
 		var centerY = $("#yvalue").val();
 		
@@ -336,7 +417,9 @@ function updateCircleEvo()
 		var outerRadius = $("#outerRadiusValue").val();
 		
 		var startvalue = $("#startAngleValue").val();
-		var anglevalue = $("#endAngleValue").val();
+		var anglevalue = $("#endAngleValue").val(); 
+		
+
 		
 		
 		var nominalValue = $("#nv").val();
@@ -387,6 +470,7 @@ function updateCircleEvo()
 		ajaxGet("info.htm?cmd=%23021%3B"+ EVOToolName +"%3B1%3BResult[0].Evaluation.PlusTolerance%3B"+ positive +"%23");
 		ajaxGet("info.htm?cmd=%23021%3B"+ EVOToolName +"%3B1%3BResult[0].Evaluation.MinusTolerance%3B"+ negative +"%23");
 
+	}
 }
 
 
@@ -423,3 +507,5 @@ var UPDATECIRCLEINTERVAL = 2000;
 var EVOToolName = "EVO Circle";
 
 var EVOININame = "INI Circle";
+
+var isValuesRetrieved = false;
