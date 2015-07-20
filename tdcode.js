@@ -52,6 +52,8 @@
 
 	// flag for rectangle opacity (roi window)
 	var rectRoiFlag = false;
+	
+	var parametersLoaded = false;
 
 	// box object to hold data
 	// default width and height
@@ -167,12 +169,23 @@
 	function init2() {
 		// enable 2d code
 		ajaxGet('info.htm?cmd=%23021%3BEVO%20DataCode%3B2%3BGeneral.Enabled%3B1%23');
+		ajaxGet('info.htm?cmd=%23021%3BScript%20DataCode%3B2%3BGeneral.Enabled%3B1%23');
 		
 		// disable barcode and ocr in case they are still enabled
 		ajaxGet('info.htm?cmd=%23021%3BEVO%20BarCode%3B2%3BGeneral.Enabled%3B0%23');
+		ajaxGet('info.htm?cmd=%23021%3BScript%20BarCode%3B2%3BGeneral.Enabled%3B0%23');
 		ajaxGet('info.htm?cmd=%23021%3BEVO%20OCR%3B2%3BGeneral.Enabled%3B0%23');
+		ajaxGet('info.htm?cmd=%23021%3BScript%20OCR%3B2%3BGeneral.Enabled%3B0%23');
 		
 		//evoComm();
+		
+		//start the program to retrieve image
+		ajaxGet("info.htm?cmd=%23002%23");
+		intervalUpdateStart();
+		disableBtn("btnCodeStart");
+		disableBtn("btnMeasure");
+		disableBtn("fileCR");
+		setImgFlag(false);
 		
 		canvas = document.getElementById('canvas2');
 		HEIGHT = canvas.height;
@@ -239,14 +252,26 @@
 			ajaxGet("cfg.ini", getCodeValueFrominiFile);
 		});
 		
+		$("#loadValues").click(function(){
+			//get settings
+			ajaxGet("cfg.ini", getParameterFrominiFile);
+			this.disabled = true;
+			this.style.color="gray";
+			undisableBtn("fileCR");
+			undisableBtn("btnMeasure");
+			parametersLoaded = true;
+		});
+		
 		// add a large green rectangle (roi window)
 		addRect(0, 0, 100, 100, 'rgba(0,205,0,0)', 'rgba(0,205,0,1)');
 	}	// end init2
 	
 	// consists of EVO communication commands
 	function evoComm() {
-		codeType();
-		roiSet();
+		if (parametersLoaded == true) {
+			codeType();
+			roiSet();
+		}
 	}	// end evoComm
 	
 	// consists of code type
@@ -280,6 +305,64 @@
 			ajaxGet('info.htm?cmd=%23021%3BEVO%20DataCode%3B1%3BSourceWindow.SourceWindow.Height%3B'+height+'%23');
 		}
 	}
+	
+	function getParameterFrominiFile() {
+		if (xhr.readyState != 4)  { 
+			responseCount++;
+			if(responseCount > 2){
+				ajaxGet("cfg.ini", getParameterFrominiFile);
+				responseCount = 0;
+			}
+			return; 
+		}
+
+		var resp = xhr.responseText;
+		var command = "datacode";
+		var dcCodeType = getIniStr(command, "codetype", resp);
+		var dcSourceMode = getIniStr(command, "sourcemode", resp);
+		var dcSourceWindowLeft = getIniStr(command, "sourcewindowleft", resp);
+		var dcSourceWindowTop = getIniStr(command, "sourcewindowtop", resp);
+		var dcSourceWindowWidth = getIniStr(command, "sourcewindowwidth", resp);
+		var dcSourceWindowHeight = getIniStr(command, "sourcewindowheight", resp);
+				
+		getCodeType(dcCodeType);
+		getSourceMode(dcSourceMode, dcSourceWindowLeft, dcSourceWindowTop, dcSourceWindowWidth, dcSourceWindowHeight);
+	}
+	
+	function getCodeType(dcCodeType) {
+		if (dcCodeType == 0) {
+			$("#dmc").prop("checked", true);
+		}
+		else if (dcCodeType == 1) {
+			$("#qr").prop("checked", true);
+		}
+		else if (dcCodeType == 2) {
+			$("#microqr").prop("checked", true);
+		}
+	}
+	
+	function getSourceMode(dcSourceMode, dcSourceWindowLeft, dcSourceWindowTop, dcSourceWindowWidth, dcSourceWindowHeight) {
+		if (dcSourceMode == 4) {
+			$("#wholeWindow").prop("checked", true);
+		}
+		else if (dcSourceMode == 3) {
+
+			$("#defineWindow").prop("checked", true);
+			document.getElementById("windowBoundary").style.display="block";
+			
+			var roiX = dcSourceWindowLeft / GLOBAL_SCALE;
+			var roiY = dcSourceWindowTop / GLOBAL_SCALE;
+			var roiW = dcSourceWindowWidth / GLOBAL_SCALE;
+			var roiH = dcSourceWindowHeight / GLOBAL_SCALE;
+					
+			boxes2[0].x = roiX;
+			boxes2[0].y = roiY;
+			boxes2[0].w = roiW;
+			boxes2[0].h = roiH;
+			
+			rectRoiFlag=true;
+		}
+	}	
 
 	// wipes the canvas context
 	function clear(c) {
@@ -312,10 +395,10 @@
 			var yPos = boxes2[0].y;
 			var w = boxes2[0].w;
 			var h = boxes2[0].h;
-			$("#xValue").val(xPos);
-			$("#yValue").val(yPos);
-			$("#wValue").val(w);
-			$("#hValue").val(h);
+			$("#xValue").val(xPos.toFixed(0));
+			$("#yValue").val(yPos.toFixed(0));
+			$("#wValue").val(w.toFixed(0));
+			$("#hValue").val(h.toFixed(0));
 	  }
 	}
 

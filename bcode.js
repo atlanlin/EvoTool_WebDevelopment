@@ -53,6 +53,10 @@
 	// flag for rectangle opacity (roi window)
 	var rectRoiFlag = false;
 
+	//var bcGlobalScale = getCookie("bcGlobalScaleCookie");
+	
+	var parametersLoaded = false;
+	
 	// box object to hold data
 	// default width and height
 	function Box2() {
@@ -165,15 +169,27 @@
 	// initialize our canvas, add a ghost canvas, set draw loop
 	// then add everything we want to initially exist on the canvas
 	function init2() {
+	
 		// enable barcode
 		ajaxGet('info.htm?cmd=%23021%3BEVO%20BarCode%3B2%3BGeneral.Enabled%3B1%23');
+		ajaxGet('info.htm?cmd=%23021%3BScript%20BarCode%3B2%3BGeneral.Enabled%3B1%23');
 		
 		// disable 2d code and ocr in case they are still enabled
 		ajaxGet('info.htm?cmd=%23021%3BEVO%20DataCode%3B2%3BGeneral.Enabled%3B0%23');
+		ajaxGet('info.htm?cmd=%23021%3BScript%20DataCode%3B2%3BGeneral.Enabled%3B0%23');
 		ajaxGet('info.htm?cmd=%23021%3BEVO%20OCR%3B2%3BGeneral.Enabled%3B0%23');
+		ajaxGet('info.htm?cmd=%23021%3BScript%20OCR%3B2%3BGeneral.Enabled%3B0%23');
 		
 		//evoComm();
 		
+		//start the program to retrieve image
+		ajaxGet("info.htm?cmd=%23002%23");
+		intervalUpdateStart();
+		disableBtn("btnCodeStart");
+		disableBtn("btnMeasure");
+		disableBtn("fileCR");
+		setImgFlag(false);
+	
 		canvas = document.getElementById('canvas2');
 		HEIGHT = canvas.height;
 		WIDTH = canvas.width;
@@ -246,16 +262,31 @@
 		$("#btnMeasure").click(function(){
 			//evoComm();
 			ajaxGet("cfg.ini", getCodeValueFrominiFile);
+			setCookie("bcGlobalScaleCookie",GLOBAL_SCALE,1);
+		});
+		
+		$("#loadValues").click(function(){
+			//get settings
+			ajaxGet("cfg.ini", getParameterFrominiFile);
+			this.disabled = true;
+			this.style.color="gray";
+			undisableBtn("fileCR");
+			undisableBtn("btnMeasure");
+			parametersLoaded = true;
 		});
 		
 		// add a large green rectangle (roi window)
 		addRect(0, 0, 100, 100, 'rgba(0,205,0,0)', 'rgba(0,205,0,1)');
+		
+		//ajaxGet("cfg.ini", getParameterFrominiFile);
 	}	// end init2
 	
-	// consists of EVO communication commands
+	// consists of EVO communication alert
 	function evoComm() {
-		codeType();
-		roiSet();
+		if (parametersLoaded == true) {
+			codeType();
+			roiSet();
+		}
 	}	// end evoComm
 	
 	// consists of code type
@@ -270,7 +301,6 @@
 			if(document.getElementById("interleaved").selected){
 				ajaxGet('info.htm?cmd=%23021%3BEVO%20BarCode%3B2%3BBarCodetype%3B2%23');
 			}
-			
 			if(document.getElementById("code39").selected){
 				ajaxGet('info.htm?cmd=%23021%3BEVO%20BarCode%3B2%3BBarCodetype%3B3%23');
 			}
@@ -312,6 +342,98 @@
 		}
 	}
 
+	function getParameterFrominiFile() {
+		if (xhr.readyState != 4)  { 
+			responseCount++;
+			if(responseCount > 2){
+				ajaxGet("cfg.ini", getParameterFrominiFile);
+				responseCount = 0;
+			}
+			return; 
+		}
+
+		var resp = xhr.responseText;
+		var command = "barcode";
+		var bcCodeType = getIniStr(command, "codetype", resp);
+		var bcSourceMode = getIniStr(command, "sourcemode", resp);
+		var bcSourceWindowLeft = getIniStr(command, "sourcewindowleft", resp);
+		var bcSourceWindowTop = getIniStr(command, "sourcewindowtop", resp);
+		var bcSourceWindowWidth = getIniStr(command, "sourcewindowwidth", resp);
+		var bcSourceWindowHeight = getIniStr(command, "sourcewindowheight", resp);
+				
+		getCodeType(bcCodeType);
+		getSourceMode(bcSourceMode, bcSourceWindowLeft, bcSourceWindowTop, bcSourceWindowWidth, bcSourceWindowHeight);
+	}
+	
+				
+	function getCodeType(bcCodeType) {
+		if (bcCodeType == 0) {
+			$("#abarcode").prop("checked", true);
+			document.getElementById("anybarcode").style.display="none";
+		}
+		else {
+			$("#mbarcode").prop("checked", true);
+			document.getElementById("anybarcode").style.display="block";
+			
+			if (bcCodeType == 1) {
+				$("#industrial").prop("selected", true);
+			}
+			else if (bcCodeType == 2) {
+				$("#interleaved").prop("selected", true);
+			}
+			else if (bcCodeType == 3) {
+				$("#code39").prop("selected", true);
+			}
+			else if (bcCodeType == 4) {
+				$("#code93").prop("selected", true);
+			}
+			else if (bcCodeType == 5) {
+				$("#code128").prop("selected", true);
+			}
+			else if (bcCodeType == 6) {
+				$("#ean8").prop("selected", true);
+			}
+			else if (bcCodeType == 7) {
+				$("#ean13").prop("selected", true);
+			}
+			else if (bcCodeType == 8) {
+				$("#pharmaCode").prop("selected", true);
+			}
+		}
+	}
+	
+	function getSourceMode(bcSourceMode, bcSourceWindowLeft, bcSourceWindowTop, bcSourceWindowWidth, bcSourceWindowHeight) {
+		if (bcSourceMode == 4) {
+			$("#wholeWindow").prop("checked", true);
+		}
+		else if (bcSourceMode == 3) {
+
+			$("#defineWindow").prop("checked", true);
+			document.getElementById("windowBoundary").style.display="block";
+
+			//if (bcGlobalScale != null) {
+
+			/* var roiX = bcSourceWindowLeft / bcGlobalScale;
+			var roiY = bcSourceWindowTop / bcGlobalScale;
+			var roiW = bcSourceWindowWidth / bcGlobalScale;
+			var roiH = bcSourceWindowHeight / bcGlobalScale; */
+			
+			var roiX = bcSourceWindowLeft / GLOBAL_SCALE;
+			var roiY = bcSourceWindowTop / GLOBAL_SCALE;
+			var roiW = bcSourceWindowWidth / GLOBAL_SCALE;
+			var roiH = bcSourceWindowHeight / GLOBAL_SCALE;
+					
+			boxes2[0].x = roiX;
+			boxes2[0].y = roiY;
+			boxes2[0].w = roiW;
+			boxes2[0].h = roiH;
+			
+			rectRoiFlag=true;
+
+			//}
+		}
+	}	
+	
 	// wipes the canvas context
 	function clear(c) {
 	  c.clearRect(0, 0, WIDTH, HEIGHT);
@@ -343,10 +465,12 @@
 			var yPos = boxes2[0].y;
 			var w = boxes2[0].w;
 			var h = boxes2[0].h;
-			$("#xValue").val(xPos);
-			$("#yValue").val(yPos);
-			$("#wValue").val(w);
-			$("#hValue").val(h);
+			$("#xValue").val(xPos.toFixed(0));
+			$("#yValue").val(yPos.toFixed(0));
+			$("#wValue").val(w.toFixed(0));
+			$("#hValue").val(h.toFixed(0));
+			
+			//setInterval(evoComm, EVOINTERVAL);
 	  }
 	}
 
