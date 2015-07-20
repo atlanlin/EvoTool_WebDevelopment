@@ -167,6 +167,8 @@
 				{
 					var userResponse = confirm("The "+tool+ " "+toolNo + " measurement have been used.\nDo you wish to overwrite the existing result?");
 					if (userResponse == true) {
+						deleteCookie(tool + toolNo);
+						localStorage.removeItem("shot" + tool + toolNo);
 						var queryString = requestedPage + "tool=" + tool + "&toolNo=" + toolNo;
 						window.location.href = queryString;
 					}

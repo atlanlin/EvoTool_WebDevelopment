@@ -202,7 +202,8 @@ function addRect(x, y, w, h, fill) {
 function init2() {
 	EVOToolName += " " +queryString["toolNo"];
 	EVOININame += " " +queryString["toolNo"];
-
+	addMemoryPointsIntoDb("dbMemory1");
+	addMemoryPointsIntoDb("dbMemory2");
   //enable the command in EVO 3
   ajaxGet("info.htm?cmd=%23021%3B"+ EVOToolName +"%3B2%3BGeneral.Enabled%3B1%23");
   ajaxGet("info.htm?cmd=%23021%3B" + EVOININame +"%3B2%3BGeneral.Enabled%3B1%23");
@@ -282,6 +283,24 @@ function init2() {
 		canvasValid = false;
 	});
 	
+	$("#cbMemory1").change(function() {
+		if(this.checked) {
+			document.getElementById("dbMemory1").style.display="block";
+		}else{
+			document.getElementById("dbMemory1").style.display="none";
+		}
+		canvasValid = false;
+	});
+	
+	$("#cbMemory2").change(function() {
+		if(this.checked) {
+			document.getElementById("dbMemory2").style.display="block";
+		}else{
+			document.getElementById("dbMemory2").style.display="none";
+		}
+		canvasValid = false;
+	});
+	
 	$("#btnMeasure").click(function(){
 			//not to confuse with previous result
 			$("#resultDisplay").val("");
@@ -317,6 +336,8 @@ function init2() {
 	
 	
 }
+
+
 
 function updateObjectsFunction(){
 	//setting for point 1

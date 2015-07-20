@@ -303,7 +303,7 @@ function ajaxGet(file,callBackFck){
 	xhr = new XMLHttpRequest();
 	xhr.overrideMimeType('text/plain; charset=x-user-defined');
 	xhr.open("GET", file, true);
-	console.log("Sent Msg:" + file);
+	//console.log("Sent Msg:" + file);
 	if(callBackFck && callBackFck != undefined) xhr.onreadystatechange = callBackFck;
 	
 	xhr.send(null);
@@ -429,11 +429,105 @@ function disableMeasureFunctions(){
 			}
 			sendCmd = sendCmd.substring(0,sendCmd.length-1);
 			//console.log(sendCmd);
-			console.log("Delay time:" + ((i+1)*(j+1)*delay_time).toString());
+			//console.log("Delay time:" + ((i+1)*(j+1)*delay_time).toString());
 			setTimeout(ajaxGet(sendCmd), (i+1)*(j+1)*delay_time);
 		}
 	}
 	
 	
 	
+}
+
+function removeOptions(selectbox)
+{
+	var i;
+	for(i=selectbox.options.length-1;i>=0;i--)
+	{
+		selectbox.remove(i);
+	}
+}
+
+function addMemoryPointsIntoDb(dbName){
+			
+	removeOptions(document.getElementById(dbName));
+			
+			
+	var ca = document.cookie.split("; ");
+	var ta = [];
+	var taValue = [];
+	var n = 0;
+			
+	ca = ca.sort();
+	for (var i=0;i<ca.length;i++) {
+		if (ca[i].substring(0,3) == "ptp") {
+			ta[n] = "Point to Point Dist " + ca[i].substring(3,4) + " Point 1";
+			taValue[n] = ca[i].substring(0,4) + "rec1";
+			n++;
+			ta[n] = "Point to Point Dist " + ca[i].substring(3,4) + " Point 2";
+			taValue[n] = ca[i].substring(0,4) + "rec2";	
+		}
+		else if (ca[i].substring(0,3) == "ptl") {
+			ta[n] = "Point to Line Dist " + ca[i].substring(3,4) + " Point";
+			taValue[n] = ca[i].substring(0,4) + "rec1";
+		}
+		else if (ca[i].substring(0,3) == "ptc") {
+			ta[n] = "Point to Circle Dist " + ca[i].substring(3,4) + " Point"; 
+			taValue[n] = ca[i].substring(0,4) + "rec1";
+		}
+		else {
+			n--;
+		}
+		n++;
+	}
+			
+	var viewTool = document.getElementById(dbName);
+			
+			
+	for(var j=0; j < ta.length; j++){
+		viewTool.options[viewTool.options.length] = new Option(ta[j], taValue[j]);
+	}
+			
+	var length = viewTool.length;
+	if(length ==0)
+		viewTool.options[viewTool.options.length] = new Option("No records", "none");
+			
+}
+
+function addMemoryLinesIntoDb(dbName){
+			
+	removeOptions(document.getElementById(dbName));
+			
+			
+	var ca = document.cookie.split("; ");
+	var ta = [];
+	var taValue = [];
+	var n = 0;
+			
+	ca = ca.sort();
+	for (var i=0;i<ca.length;i++) {
+		if (ca[i].substring(0,3) == "ptl") {
+			ta[n] = "Point to Line Dist " + ca[i].substring(3,4) + " Line";
+			taValue[n] = ca[i].substring(0,4) + "rec2";	
+		}
+		else if (ca[i].substring(0,3) == "ctl") {
+			ta[n] = "Circle to Line Dist " + ca[i].substring(3,4) + " Line";
+			taValue[n] = ca[i].substring(0,4) + "rec1";
+		}
+		else {
+			n--;
+		}
+		n++;
+	}
+			
+	var viewTool = document.getElementById(dbName);
+			
+			
+	for(var j=0; j < ta.length; j++){
+		viewTool.options[viewTool.options.length] = new Option(ta[j], taValue[j]);
+	}
+			
+	var length = viewTool.length;
+	if(length ==0)
+		viewTool.options[viewTool.options.length] = new Option("No records", "none");
+			
 }
