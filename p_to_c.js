@@ -13,7 +13,8 @@ window.onload = function() {
 	//ajaxGet("cfg.ini", getValueFrominiFile);
 	intervalUpdateStart();
 	disableBtn("btnStart");
-	undisableBtn("btnMeasure");
+	disableBtn("btnMeasure");
+	disableBtn("fileMeasure");
 	setImgFlag(false);
 	
 	initSquare();
@@ -65,6 +66,8 @@ function initCircle() {
 			isValuesRetrieved = true;
 			this.disabled = true;
 			this.style.color="gray";
+			undisableBtn("fileMeasure");
+			undisableBtn("btnMeasure");
 		}
 	);
 	
@@ -782,42 +785,44 @@ function updateObjectsFunction(){
 	var p1sx, p1sy, p1w, p1h;
 	if(Math.abs(in1ey - in1sy) < 0.01){
 		//ysame
-		$('#cbPoint1Hor').prop('checked', true);
-		if(in1ex-in1sx > 0){
-			//x+y+ arrow dir ->
-			p1sx = in1sx;
-			p1sy = in1sy - in1w/2;
-			p1w = in1ex - in1sx;
-			p1h = in1w;
-		}else{
-			//x-y+ arrow dir <-
-			p1sx = in1sx;
-			p1sy = in1sy - in1w/2;
-			p1w = in1ex - in1sx;
-			p1h = in1w;
-		}
+		$('#cbArrowHor').prop('checked', true);
+		arrowDirFlag = "horizontal";
+		p1sx = in1sx;
+		p1sy = in1sy - in1w/2;
+		p1w = in1ex - in1sx;
+		p1h = in1w;
+		
 	}else if(Math.abs(in1ex - in1sx) < 0.01){
-		$('#cbPoint1Hor').prop('checked', false);
-		if(in1ey-in1sy > 0){
-			//x+y+ arrow dir /^
-			p1sx = in1sx - in1w/2;
-			p1sy = in1sy;
-			p1w = in1w;
-			p1h = (in1ey - in1sy)*-1;
-		}else{
-			//x-y+ arrow dir /v
-			p1sx = in1sx + in1w/2;
-			p1sy = in1sy;
-			p1w = in1w*-1;
-			p1h = in1ey - in1sy;
-		}
+		//xsame
+		$('#cbArrowHor').prop('checked', false);
+		arrowDirFlag = "vertical";
+		p1sx = in1sx - in1w/2;
+		p1sy = in1sy;
+		p1w = in1w;
+		p1h = in1ey - in1sy;
+		
 	}else{
 		var yLen = Math.abs(in1ey - in1sy);
 		var xLen = Math.abs(in1ex - in1sx);
-		if(yLen > xLen){
-			in1ex = in1sx;
+		var degreeTheta = Math.atan(yLen/xLen)*180/Math.PI;
+		if(degreeTheta < 45){
+			//ysame
+			$('#cbArrowHor').prop('checked', true);
+			arrowDirFlag = "horizontal";
+			p1sx = in1sx;
+			p1sy = in1sy - in1w/2;
+			p1w = in1ex - in1sx;
+			p1h = in1w;
+			
 		}else{
-			in1ey = in1sy;
+			//xsame
+			$('#cbArrowHor').prop('checked', false);
+			arrowDirFlag = "vertical";
+			p1sx = in1sx - in1w/2;
+			p1sy = in1sy;
+			p1w = in1w;
+			p1h = in1ey - in1sy;
+			
 		}
 	}
 	
@@ -851,40 +856,67 @@ function getSettingFrominiFile()
 
 		var resp = xhr.responseText;
 		
-		respValue = getIniStr("ptc"+ queryString["toolNo"], "centerX", resp);
+		respValue = getIniStr(INICat + queryString["toolNo"], "centerX", resp);
 		circle.point.x = Math.round(parseInt(respValue) / GLOBAL_SCALE_X / GLOBAL_SCALE);
 
-		respValue = getIniStr("ptc"+ queryString["toolNo"], "centerY", resp);
+		respValue = getIniStr(INICat + queryString["toolNo"], "centerY", resp);
 		circle.point.y = Math.round(parseInt(respValue) / GLOBAL_SCALE_Y / GLOBAL_SCALE);
 		
 		var maxGLOBAL_SCALE = findMax(GLOBAL_SCALE_X, GLOBAL_SCALE_Y);
 		
-		respValue = getIniStr("ptc"+ queryString["toolNo"], "innerRadius", resp);
+		respValue = getIniStr(INICat + queryString["toolNo"], "innerRadius", resp);
 		innerCircle.radius = parseInt(respValue) / GLOBAL_SCALE / maxGLOBAL_SCALE;
 		
-		respValue = getIniStr("ptc"+ queryString["toolNo"], "outerRadius", resp);
+		respValue = getIniStr(INICat + queryString["toolNo"], "outerRadius", resp);
 		circle.radius = parseInt(respValue) / GLOBAL_SCALE / maxGLOBAL_SCALE;
 		
-		respValue = getIniStr("ptc"+ queryString["toolNo"], "startAngle", resp);
+		respValue = getIniStr(INICat + queryString["toolNo"], "startAngle", resp);
 		startAngle = parseInt(respValue);
 		
-		respValue = getIniStr("ptc"+ queryString["toolNo"], "angleLength", resp);
+		respValue = getIniStr(INICat + queryString["toolNo"], "angleLength", resp);
 		EndAngle = parseInt(respValue) + startAngle;
 		
+		respValue = getIniStr(INICat + queryString["toolNo"], "transition", resp);
+		
+		if(respValue == 0){
+			document.getElementById("clightToDark").checked = true;
+			document.getElementById("cdarkToLight").checked = false;
+		}else{
+			document.getElementById("clightToDark").checked = false;
+			document.getElementById("cdarkToLight").checked = true;
+		}
+		
+		//////////////////////////////////////////////////////////////////////////////////////////////////
 		
 		var settingVal;
-		settingVal = getIniStr("ptc" + queryString["toolNo"], "rectStartX", resp);
+		settingVal = getIniStr(INICat + queryString["toolNo"], "rectStartX", resp);
 		
 		$("#tbStartX").val(settingVal);
-		settingVal = getIniStr("ptc" + queryString["toolNo"], "rectStartY", resp);
+		settingVal = getIniStr(INICat + queryString["toolNo"], "rectStartY", resp);
 		$("#tbStartY").val(settingVal);
-		settingVal = getIniStr("ptc" + queryString["toolNo"], "rectEndX", resp);
+		settingVal = getIniStr(INICat + queryString["toolNo"], "rectEndX", resp);
 		$("#tbEndX").val(settingVal);
-		settingVal = getIniStr("ptc" + queryString["toolNo"], "rectEndY", resp);
+		settingVal = getIniStr(INICat + queryString["toolNo"], "rectEndY", resp);
 		$("#tbEndY").val(settingVal);
-		settingVal = getIniStr("ptc" + queryString["toolNo"], "rectWidth", resp);
+		settingVal = getIniStr(INICat + queryString["toolNo"], "rectWidth", resp);
 		$("#tbWidth").val(settingVal);
 		
+		settingVal = getIniStr(INICat + queryString["toolNo"], "recttransition", resp);
+		
+		if(settingVal == 0){
+			document.getElementById("rlightToDark").checked = true;
+			document.getElementById("rdarkToLight").checked = false;
+		}else{
+			document.getElementById("rlightToDark").checked = false;
+			document.getElementById("rdarkToLight").checked = true;
+		}
+		
+		settingVal = getIniStr(INICat + queryString["toolNo"], "nominalValue", resp);
+		$("#nv").val(settingVal);
+		settingVal = getIniStr(INICat + queryString["toolNo"], "positive", resp);
+		$("#plus").val(settingVal);
+		settingVal = getIniStr(INICat + queryString["toolNo"], "negative", resp);
+		$("#minus").val(settingVal);
 		
 		//alert(circle.radius);
 		drawCircle(circle, innerCircle);
@@ -1404,6 +1436,8 @@ var stx, sty, edx, edy, wi;
 var EVOToolName = "EVO PTC";
 
 var EVOININame = "INI PTC";
+
+var INICat = "ptc";
 
 var isValuesRetrieved = false;
 

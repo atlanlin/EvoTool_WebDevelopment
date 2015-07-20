@@ -13,7 +13,8 @@ window.onload = function() {
 	//ajaxGet("cfg.ini", getValueFrominiFile);
 	intervalUpdateStart();
 	disableBtn("btnStart");
-	undisableBtn("btnMeasure");
+	disableBtn("btnMeasure");
+	disableBtn("fileMeasure");
 	setImgFlag(false);
 	
 	
@@ -63,6 +64,8 @@ function initCircle() {
 			//canvasValid = true;
 			this.disabled = true;
 			this.style.color="gray";
+			undisableBtn("fileMeasure");
+			undisableBtn("btnMeasure");
 		}
 	);
 	
@@ -100,25 +103,35 @@ function getCircleDetailsFrominiFile()
 		//console.log("ready state");
 		var resp = xhr.responseText;
 		//circle 1
-		respValue = getIniStr("ctc"+ queryString["toolNo"], "c1centerX", resp);
+		respValue = getIniStr(INICat + queryString["toolNo"], "c1centerX", resp);
 		circle.point.x = Math.round(parseInt(respValue) / GLOBAL_SCALE_X / GLOBAL_SCALE);
 		
-		respValue = getIniStr("ctc"+ queryString["toolNo"], "c1centerY", resp);
+		respValue = getIniStr(INICat + queryString["toolNo"], "c1centerY", resp);
 		circle.point.y = Math.round(parseInt(respValue) / GLOBAL_SCALE_Y / GLOBAL_SCALE);
 		
 		var maxGLOBAL_SCALE = findMax(GLOBAL_SCALE_X, GLOBAL_SCALE_Y);
 		
-		respValue = getIniStr("ctc"+ queryString["toolNo"], "c1innerRadius", resp);
+		respValue = getIniStr(INICat + queryString["toolNo"], "c1innerRadius", resp);
 		innerCircle.radius = parseInt(respValue) / GLOBAL_SCALE / maxGLOBAL_SCALE;
 		
-		respValue = getIniStr("ctc"+ queryString["toolNo"], "c1outerRadius", resp);
+		respValue = getIniStr(INICat + queryString["toolNo"], "c1outerRadius", resp);
 		circle.radius = parseInt(respValue) / GLOBAL_SCALE / maxGLOBAL_SCALE;
 		
-		respValue = getIniStr("ctc"+ queryString["toolNo"], "c1startAngle", resp);
+		respValue = getIniStr(INICat + queryString["toolNo"], "c1startAngle", resp);
 		startAngle1 = parseInt(respValue);
 		
-		respValue = getIniStr("ctc"+ queryString["toolNo"], "c1angleLength", resp);
+		respValue = getIniStr(INICat + queryString["toolNo"], "c1angleLength", resp);
 		EndAngle1 = parseInt(respValue) + startAngle1;
+		
+		respValue = getIniStr(INICat+ queryString["toolNo"], "c1transition", resp);
+		
+		if(respValue == 0){
+			document.getElementById("clightToDark").checked = true;
+			document.getElementById("cdarkToLight").checked = false;
+		}else{
+			document.getElementById("clightToDark").checked = false;
+			document.getElementById("cdarkToLight").checked = true;
+		}
 		
 		//alert(circle.radius);
 		drawCircle(circle, innerCircle);
@@ -133,30 +146,46 @@ function getCircleDetailsFrominiFile()
 		document.querySelector('#startAngleValue1').value = Math.round(startAngle1);
 		document.querySelector('#endAngleValue1').value = Math.round(EndAngle1);
 		
+		/////////////////////////////////////////////////////////////////////////////////////////////////////
 		
 		
 		//circle 2
-		respValue = getIniStr("ctc"+ queryString["toolNo"], "c2centerX", resp);
+		respValue = getIniStr(INICat + queryString["toolNo"], "c2centerX", resp);
 		circle2.point.x = Math.round(parseInt(respValue) / GLOBAL_SCALE_X / GLOBAL_SCALE);
 
-		respValue = getIniStr("ctc"+ queryString["toolNo"], "c2centerY", resp);
+		respValue = getIniStr(INICat + queryString["toolNo"], "c2centerY", resp);
 		circle2.point.y = Math.round(parseInt(respValue) / GLOBAL_SCALE_Y / GLOBAL_SCALE);
 		
 		var maxGLOBAL_SCALE = findMax(GLOBAL_SCALE_X, GLOBAL_SCALE_Y);
 		
-		respValue = getIniStr("ctc"+ queryString["toolNo"], "c2innerRadius", resp);
+		respValue = getIniStr(INICat + queryString["toolNo"], "c2innerRadius", resp);
 		innerCircle2.radius = parseInt(respValue) / GLOBAL_SCALE / maxGLOBAL_SCALE;
 		
-		respValue = getIniStr("ctc"+ queryString["toolNo"], "c2outerRadius", resp);
+		respValue = getIniStr(INICat + queryString["toolNo"], "c2outerRadius", resp);
 		circle2.radius = parseInt(respValue) / GLOBAL_SCALE / maxGLOBAL_SCALE;
 		
-		respValue = getIniStr("ctc"+ queryString["toolNo"], "c2startAngle", resp);
+		respValue = getIniStr(INICat + queryString["toolNo"], "c2startAngle", resp);
 		startAngle2 = parseInt(respValue);
 		
-		respValue = getIniStr("ctc"+ queryString["toolNo"], "c2angleLength", resp);
+		respValue = getIniStr(INICat + queryString["toolNo"], "c2angleLength", resp);
 		EndAngle2 = parseInt(respValue) + startAngle2;
 		
+		respValue = getIniStr(INICat+ queryString["toolNo"], "c2transition", resp);
 		
+		if(respValue == 0){
+			document.getElementById("rlightToDark").checked = true;
+			document.getElementById("rdarkToLight").checked = false;
+		}else{
+			document.getElementById("rlightToDark").checked = false;
+			document.getElementById("rdarkToLight").checked = true;
+		}
+		
+		respValue = getIniStr(INICat + queryString["toolNo"], "nominalValue", resp);
+		$("#nv").val(respValue);
+		respValue = getIniStr(INICat + queryString["toolNo"], "positive", resp);
+		$("#plus").val(respValue);
+		respValue = getIniStr(INICat + queryString["toolNo"], "negative", resp);
+		$("#minus").val(respValue);
 		
 		
 		//alert(circle.radius);
@@ -802,5 +831,7 @@ var EndAngle2= 360;
 var EVOToolName = "EVO CTC";
 
 var EVOININame = "INI CTC";
+
+var INICat = "ctc";
 
 var isValuesRetrieved = false;
