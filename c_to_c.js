@@ -8,6 +8,14 @@ window.onload = function() {
 	
 	initCircle();
 	
+	//start the program to retrieve image
+	ajaxGet("info.htm?cmd=%23002%23");	
+	//ajaxGet("cfg.ini", getValueFrominiFile);
+	intervalUpdateStart();
+	disableBtn("btnStart");
+	undisableBtn("btnMeasure");
+	setImgFlag(false);
+	
 	
 	//enable function in evo 3 ckp file
 	ajaxGet("info.htm?cmd=%23021%3B"+ EVOToolName +"%3B2%3BGeneral.Enabled%3B1%23");
@@ -46,6 +54,16 @@ function initCircle() {
 			saveScreenshot();
 		}
 	);
+	
+	$("#loadValues").click(function(){
+			//get settings
+			ajaxGet("ctc.ini", getCircleDetailsFrominiFile);
+			//updateObjectsFunction();
+			isValuesRetrieved = true;
+			//canvasValid = true;
+		}
+	);
+	
 }
 
 // circle point of x and y coordinates
@@ -65,6 +83,100 @@ var Circle = function (point, radius) {
     return this;
 }
 
+var responseCount = 0;
+function getCircleDetailsFrominiFile()
+{
+	var respValue;
+	if (xhr.readyState != 4)  {
+		responseCount++;
+		if(responseCount > 2){
+			ajaxGet("ctc.ini", getCircleDetailsFrominiFile);
+			responseCount = 0;
+		}
+		return; 
+	}
+		//console.log("ready state");
+		var resp = xhr.responseText;
+		//circle 1
+		respValue = getIniStr("ctc"+ queryString["toolNo"], "c1centerX", resp);
+		circle.point.x = Math.round(parseInt(respValue) / GLOBAL_SCALE_X / GLOBAL_SCALE);
+		
+		respValue = getIniStr("ctc"+ queryString["toolNo"], "c1centerY", resp);
+		circle.point.y = Math.round(parseInt(respValue) / GLOBAL_SCALE_Y / GLOBAL_SCALE);
+		
+		var maxGLOBAL_SCALE = findMax(GLOBAL_SCALE_X, GLOBAL_SCALE_Y);
+		
+		respValue = getIniStr("ctc"+ queryString["toolNo"], "c1innerRadius", resp);
+		innerCircle.radius = parseInt(respValue) / GLOBAL_SCALE / maxGLOBAL_SCALE;
+		
+		respValue = getIniStr("ctc"+ queryString["toolNo"], "c1outerRadius", resp);
+		circle.radius = parseInt(respValue) / GLOBAL_SCALE / maxGLOBAL_SCALE;
+		
+		respValue = getIniStr("ctc"+ queryString["toolNo"], "c1startAngle", resp);
+		startAngle1 = parseInt(respValue);
+		
+		respValue = getIniStr("ctc"+ queryString["toolNo"], "c1angleLength", resp);
+		EndAngle1 = parseInt(respValue) + startAngle1;
+		
+		//alert(circle.radius);
+		drawCircle(circle, innerCircle);
+		$("#xvalue").val(circle.point.x);
+		
+		$("#yvalue").val(circle.point.y);
+		
+		document.querySelector('#outerRadiusValue1').value = Math.round(circle.radius);
+		
+		document.querySelector('#innerRadiusValue1').value = Math.round(innerCircle.radius);
+		
+		document.querySelector('#startAngleValue1').value = Math.round(startAngle1);
+		document.querySelector('#endAngleValue1').value = Math.round(EndAngle1);
+		
+		
+		
+		//circle 2
+		respValue = getIniStr("ctc"+ queryString["toolNo"], "c2centerX", resp);
+		circle2.point.x = Math.round(parseInt(respValue) / GLOBAL_SCALE_X / GLOBAL_SCALE);
+
+		respValue = getIniStr("ctc"+ queryString["toolNo"], "c2centerY", resp);
+		circle2.point.y = Math.round(parseInt(respValue) / GLOBAL_SCALE_Y / GLOBAL_SCALE);
+		
+		var maxGLOBAL_SCALE = findMax(GLOBAL_SCALE_X, GLOBAL_SCALE_Y);
+		
+		respValue = getIniStr("ctc"+ queryString["toolNo"], "c2innerRadius", resp);
+		innerCircle2.radius = parseInt(respValue) / GLOBAL_SCALE / maxGLOBAL_SCALE;
+		
+		respValue = getIniStr("ctc"+ queryString["toolNo"], "c2outerRadius", resp);
+		circle2.radius = parseInt(respValue) / GLOBAL_SCALE / maxGLOBAL_SCALE;
+		
+		respValue = getIniStr("ctc"+ queryString["toolNo"], "c2startAngle", resp);
+		startAngle2 = parseInt(respValue);
+		
+		respValue = getIniStr("ctc"+ queryString["toolNo"], "c2angleLength", resp);
+		EndAngle2 = parseInt(respValue) + startAngle2;
+		
+		
+		
+		
+		//alert(circle.radius);
+		drawCircle(circle, innerCircle);
+		$("#xvalue2").val(circle2.point.x);
+		
+		$("#yvalue2").val(circle2.point.y);
+		
+		document.querySelector('#outerRadiusValue2').value = Math.round(circle2.radius);
+		
+		document.querySelector('#innerRadiusValue2').value = Math.round(innerCircle2.radius);
+		
+		document.querySelector('#startAngleValue2').value = Math.round(startAngle2);
+		document.querySelector('#endAngleValue2').value = Math.round(EndAngle2);
+	
+				
+		//var cookieName = queryString["tool"] + queryString["toolNo"];
+				
+		//setCookie(cookieName,globalResult,1);
+		
+		responseCount = 0;
+}
 
 //mouse down
 function startDragging(e) {
@@ -509,6 +621,8 @@ function outputEndAngle2(size){
 //update circle values to evo3
 function updateCircleEvo()
 {
+	if(isValuesRetrieved === true)
+	{
 		var centerX = $("#xvalue").val();
 		var centerY = $("#yvalue").val();
 		
@@ -569,12 +683,14 @@ function updateCircleEvo()
 		ajaxGet("info.htm?cmd=%23021%3B"+ EVOToolName +"%3B1%3BResult[0].Evaluation.NominalValue%3B"+ nominalValue +"%23");
 		ajaxGet("info.htm?cmd=%23021%3B"+ EVOToolName +"%3B1%3BResult[0].Evaluation.PlusTolerance%3B"+ positive +"%23");
 		ajaxGet("info.htm?cmd=%23021%3B"+ EVOToolName +"%3B1%3BResult[0].Evaluation.MinusTolerance%3B"+ negative +"%23");
-
+	}
 }
 
 //update circle values to evo3
 function updateCircle2Evo()
 {
+	if(isValuesRetrieved === true)
+	{
 		var centerX = $("#xvalue2").val();
 		var centerY = $("#yvalue2").val();
 		
@@ -633,7 +749,7 @@ function updateCircle2Evo()
 		ajaxGet("info.htm?cmd=%23021%3B"+ EVOToolName +"%3B1%3BResult[0].Evaluation.NominalValue%3B"+ nominalValue +"%23");
 		ajaxGet("info.htm?cmd=%23021%3B"+ EVOToolName +"%3B1%3BResult[0].Evaluation.PlusTolerance%3B"+ positive +"%23");
 		ajaxGet("info.htm?cmd=%23021%3B"+ EVOToolName +"%3B1%3BResult[0].Evaluation.MinusTolerance%3B"+ negative +"%23");
-
+	}
 }
 
 var element;
@@ -684,3 +800,5 @@ var EndAngle2= 360;
 var EVOToolName = "EVO CTC";
 
 var EVOININame = "INI CTC";
+
+var isValuesRetrieved = false;
