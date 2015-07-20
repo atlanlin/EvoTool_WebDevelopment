@@ -61,6 +61,8 @@ function initCircle() {
 			//updateObjectsFunction();
 			isValuesRetrieved = true;
 			//canvasValid = true;
+			this.disabled = true;
+			this.style.color="gray";
 		}
 	);
 	
