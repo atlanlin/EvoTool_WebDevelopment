@@ -314,7 +314,6 @@ function init2() {
 }
 
 function updateObjectsFunction(){
-	console.log($("#point1StartX").val());
 	var in1sx = parseFloat($("#point1StartX").val());
 	var in1sy = parseFloat($("#point1StartY").val());
 	var in1ex = parseFloat($("#point1EndX").val());
@@ -946,7 +945,7 @@ function getMouse(e) {
 			my = e.targetTouches[0].clientY - rect.top;
 	}
 }
-var tryInt;
+
 function getSettingFrominiFile()
 {
 	
@@ -962,14 +961,10 @@ function getSettingFrominiFile()
 		return; 
 	}
 		
-		console.log("ready state");
-		
 		var resp = xhr.responseText;
 		var settingVal;
 		settingVal = getIniStr("ptp" + queryString["toolNo"], "p1rectStartX", resp);
 		$("#point1StartX").val(settingVal);
-		console.log("tb: " + settingVal);
-		tryInt = settingVal;
 		settingVal = getIniStr("ptp" + queryString["toolNo"], "p1rectStartY", resp);
 		$("#point1StartY").val(settingVal);
 		settingVal = getIniStr("ptp" + queryString["toolNo"], "p1rectEndX", resp);
