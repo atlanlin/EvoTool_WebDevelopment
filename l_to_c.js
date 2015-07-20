@@ -863,6 +863,15 @@ function getSettingFrominiFile()
 		respValue = getIniStr(INICat+ queryString["toolNo"], "angleLength", resp);
 		EndAngle = parseInt(respValue) + startAngle;
 		
+		// in case everything is 0
+		if(circle.point.x == 0 && circle.point.y == 0 && circle.radius == 0 && EndAngle == 0)
+		{
+			circle.point.x = 50;
+			circle.point.y = 50;
+			circle.radius = 50;
+			EndAngle = 360;
+		}
+		
 		respValue = getIniStr(INICat+ queryString["toolNo"], "transition", resp);
 		
 		if(respValue == 0){
@@ -875,17 +884,33 @@ function getSettingFrominiFile()
 		
 		/////////////////////////////////////////////////////////////////////////////////////////////////
 		var settingVal;
-		settingVal = getIniStr(INICat + queryString["toolNo"], "rectStartX", resp);
 		
+		settingVal = getIniStr(INICat + queryString["toolNo"], "rectStartX", resp);
+		if(settingVal == 0)
+			settingVal = 0;
 		$("#tbStartX").val(settingVal);
+		
 		settingVal = getIniStr(INICat + queryString["toolNo"], "rectStartY", resp);
+		if(settingVal == 0)
+			settingVal = 43;
 		$("#tbStartY").val(settingVal);
+		
 		settingVal = getIniStr(INICat + queryString["toolNo"], "rectEndX", resp);
+		if(settingVal == 0)
+			settingVal = 82;
 		$("#tbEndX").val(settingVal);
+		
 		settingVal = getIniStr(INICat + queryString["toolNo"], "rectEndY", resp);
+		if(settingVal == 0)
+			settingVal = 43;
 		$("#tbEndY").val(settingVal);
+		
 		settingVal = getIniStr(INICat + queryString["toolNo"], "rectWidth", resp);
+		if(settingVal == 0)
+			settingVal = 88;
 		$("#tbWidth").val(settingVal);
+		
+		
 		
 		settingVal = getIniStr(INICat+ queryString["toolNo"], "recttransition", resp);
 		

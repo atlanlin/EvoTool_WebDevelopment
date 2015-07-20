@@ -122,6 +122,15 @@ function getCircleDetailsFrominiFile()
 		respValue = getIniStr(INICat + queryString["toolNo"], "angleLength", resp);
 		EndAngle = parseInt(respValue) + startAngle;
 		
+		// in case everything is 0
+		if(circle.point.x == 0 && circle.point.y == 0 && circle.radius == 0 && EndAngle == 0)
+		{
+			circle.point.x = 50;
+			circle.point.y = 50;
+			circle.radius = 50;
+			EndAngle = 360;
+		}
+		
 		respValue = getIniStr(INICat + queryString["toolNo"], "transition", resp);
 		
 		if(respValue == 0){

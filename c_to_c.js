@@ -123,6 +123,15 @@ function getCircleDetailsFrominiFile()
 		respValue = getIniStr(INICat + queryString["toolNo"], "c1angleLength", resp);
 		EndAngle1 = parseInt(respValue) + startAngle1;
 		
+		// in case everything is 0
+		if(circle.point.x == 0 && circle.point.y == 0 && circle.radius == 0 && EndAngle1 == 0)
+		{
+			circle.point.x = 50;
+			circle.point.y = 50;
+			circle.radius = 50;
+			EndAngle1 = 360;
+		}
+		
 		respValue = getIniStr(INICat+ queryString["toolNo"], "c1transition", resp);
 		
 		if(respValue == 0){
@@ -169,6 +178,15 @@ function getCircleDetailsFrominiFile()
 		
 		respValue = getIniStr(INICat + queryString["toolNo"], "c2angleLength", resp);
 		EndAngle2 = parseInt(respValue) + startAngle2;
+		
+		// in case everything is 0
+		if(circle2.point.x == 0 && circle2.point.y == 0 && circle2.radius == 0 && EndAngle2 == 0)
+		{
+			circle2.point.x = 50;
+			circle2.point.y = 50;
+			circle2.radius = 50;
+			EndAngle2 = 360;
+		}
 		
 		respValue = getIniStr(INICat+ queryString["toolNo"], "c2transition", resp);
 		
