@@ -63,6 +63,10 @@ var point2Flag = false;
 var EVOToolName = "EVO PTP";
 var EVOININame = "INI PTP";
 
+var memoryTool = null;
+var memoryToolNo = null;
+var memoryVarName = null;
+
 // Box object to hold data
 function Box2() {
   this.x = 0;
@@ -202,8 +206,8 @@ function addRect(x, y, w, h, fill) {
 function init2() {
 	EVOToolName += " " +queryString["toolNo"];
 	EVOININame += " " +queryString["toolNo"];
-	addMemoryPointsIntoDb("dbMemory1");
-	addMemoryPointsIntoDb("dbMemory2");
+	//addMemoryPointsIntoDb("dbMemory1");
+	//addMemoryPointsIntoDb("dbMemory2");
   //enable the command in EVO 3
   ajaxGet("info.htm?cmd=%23021%3B"+ EVOToolName +"%3B2%3BGeneral.Enabled%3B1%23");
   ajaxGet("info.htm?cmd=%23021%3B" + EVOININame +"%3B2%3BGeneral.Enabled%3B1%23");
@@ -319,8 +323,26 @@ function init2() {
 			undisableBtn("btnMeasure");
 		}
 	);
-	
-  
+	/*
+	$("#dbMemory1").on("change", function(){
+			//get settings
+			var tempVal = this.value;
+			memoryTool = tempVal.substring(0,4);
+			memoryToolNo = tempVal.substring(4,8);
+			if(memoryTool.substring(0,3) === "ptp"){
+				if(memoryToolNo === "rec1")
+					memoryVarName = "p1";
+				else
+					memoryVarName = "p2";
+			}else if(memoryTool.substring(0,3) === "ptl"){
+			}else{
+				memoryVarName = "rect";
+			}
+			
+			
+		}
+	);
+	*/
 	
   
   // add a large green rectangle
