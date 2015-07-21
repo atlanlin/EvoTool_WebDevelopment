@@ -58,6 +58,8 @@
 	
 	var iniWidth = 752;
 	var iniHeight = 752;
+	
+	var parametersLoaded = false;
 
 	// box object to hold data
 	// default width and height
@@ -171,14 +173,27 @@
 	// initialize our canvas, add a ghost canvas, set draw loop
 	// then add everything we want to initially exist on the canvas
 	function init2() {
+	
 		// enable ocr
 		ajaxGet('info.htm?cmd=%23021%3BEVO%20OCR%3B2%3BGeneral.Enabled%3B1%23');
+		ajaxGet('info.htm?cmd=%23021%3BScript%20OCR%3B2%3BGeneral.Enabled%3B1%23');
+
 		
 		// disable barcode and 2d code in case they are still enabled
 		ajaxGet('info.htm?cmd=%23021%3BEVO%20BarCode%3B2%3BGeneral.Enabled%3B0%23');
+		ajaxGet('info.htm?cmd=%23021%3BScript%20BarCode%3B2%3BGeneral.Enabled%3B0%23');
 		ajaxGet('info.htm?cmd=%23021%3BEVO%20DataCode%3B2%3BGeneral.Enabled%3B0%23');
+		ajaxGet('info.htm?cmd=%23021%3BScript%20DataCode%3B2%3BGeneral.Enabled%3B0%23');
 		
 		//evoComm();
+		
+		//start the program to retrieve image
+		ajaxGet("info.htm?cmd=%23002%23");
+		intervalUpdateStart();
+		disableBtn("btnCodeStart");
+		disableBtn("btnMeasure");
+		disableBtn("fileCR");
+		setImgFlag(false);
 		
 		canvas = document.getElementById('canvas2');
 		HEIGHT = canvas.height;
@@ -252,6 +267,16 @@
 			ajaxGet("cfg.ini", getCodeValueFrominiFile);	
 		});
 		
+		$("#loadValues").click(function(){
+			//get settings
+			ajaxGet("cfg.ini", getParameterFrominiFile);
+			this.disabled = true;
+			this.style.color="gray";
+			undisableBtn("fileCR");
+			undisableBtn("btnMeasure");
+			parametersLoaded = true;
+		});
+		
 		// add a large green rectangle (roi window)
 		addRect(0, 0, 100, 100, 'rgba(0,205,0,0)', 'rgba(0,205,0,1)');
 	  
@@ -261,10 +286,12 @@
 	
 	// consists of EVO communication commands
 	function evoComm() {
-		fontType();
-		polarityType();
-		charOptions();
-		roiSet();
+		if (parametersLoaded == true) {
+			fontType();
+			polarityType();
+			charOptions();
+			roiSet();
+		}
 	}	// end evoComm
 	
 	// consists of font type
@@ -426,6 +453,203 @@
 			ajaxGet('info.htm?cmd=%23021%3BEVO%20OCR%3B1%3BposRect.Width%3B'+width+'%23');
 		}
 	}
+	
+	function getParameterFrominiFile() {
+		if (xhr.readyState != 4)  { 
+			responseCount++;
+			if(responseCount > 2){
+				ajaxGet("cfg.ini", getParameterFrominiFile);
+				responseCount = 0;
+			}
+			return; 
+		}
+
+		var resp = xhr.responseText;
+		var command = "ocr";
+		var ocrFontType = getIniStr(command, "fontnum", resp);
+		var ocrPolarityType = getIniStr(command, "polaritytype", resp);
+		var ocrDotted = getIniStr(command, "dottype", resp);
+		var ocrRotationCorrection = getIniStr(command, "rotatetype", resp);
+		var ocrCharSizeType = getIniStr(command, "segmentationtype", resp);
+		var ocrAutoCharX = getIniStr(command, "autocharx", resp);
+		var ocrAutoCharY = getIniStr(command, "autochary", resp);
+		var ocrAutoCharW = getIniStr(command, "autocharw", resp);
+		var ocrAutoCharH = getIniStr(command, "autocharh", resp);
+		var ocrCharX = getIniStr(command, "charx", resp);
+		var ocrCharY = getIniStr(command, "chary", resp);
+		var ocrCharW = getIniStr(command, "charw", resp);
+		var ocrCharH = getIniStr(command, "charh", resp);
+		var ocrStartX = getIniStr(command, "pointstartx", resp);
+		var ocrEndX = getIniStr(command, "pointendx", resp);
+		var ocrStartY = getIniStr(command, "pointstarty", resp);
+		var ocrEndY = getIniStr(command, "pointendy", resp);
+		var ocrWidth = getIniStr(command, "width", resp);
+				
+		getFontType(ocrFontType);
+		getPolarityType(ocrPolarityType);
+		getDotted(ocrDotted);
+		getRotationCorrection(ocrRotationCorrection);
+		getCharType(ocrCharSizeType, ocrAutoCharX, ocrAutoCharY, ocrAutoCharW, ocrAutoCharH, ocrCharX, ocrCharY, ocrCharW, ocrCharH);
+		getSourceMode(ocrStartX, ocrEndX, ocrStartY, ocrEndY, ocrWidth);
+	}
+	
+	function getFontType(ocrFontType) {
+		if (ocrFontType == 0) {
+			$("#industrial").prop("selected", true);
+		}
+		else if (ocrFontType == 1) {
+			$("#industrial09").prop("selected", true);
+		}
+		else if (ocrFontType == 2) {
+			$("#industrial09P").prop("selected", true);
+		}
+		else if (ocrFontType == 3) {
+			$("#industrial09AZ").prop("selected", true);
+		}
+		else if (ocrFontType == 4) {
+			$("#industrialAZP").prop("selected", true);
+		}
+		else if (ocrFontType == 5) {
+			$("#dotPrint").prop("selected", true);
+		}
+		else if (ocrFontType == 6) {
+			$("#dotPrint09").prop("selected", true);
+		}
+		else if (ocrFontType == 7) {
+			$("#dotPrint09AZ").prop("selected", true);
+		}
+		else if (ocrFontType == 8) {
+			$("#dotPrintAZP").prop("selected", true);
+		}
+		else if (ocrFontType == 9) {
+			$("#dotPrint09P").prop("selected", true);
+		}
+		else if (ocrFontType == 10) {
+			$("#document").prop("selected", true);
+		}
+		else if (ocrFontType == 11) {
+			$("#document09").prop("selected", true);
+		}
+		else if (ocrFontType == 12) {
+			$("#document09AZ").prop("selected", true);
+		}
+		else if (ocrFontType == 13) {
+			$("#documentAZP").prop("selected", true);
+		}
+		else if (ocrFontType == 14) {
+			$("#enhancedOCRA").prop("selected", true);
+		}
+		else if (ocrFontType == 15) {
+			$("#enhancedOCRB").prop("selected", true);
+		}
+		else if (ocrFontType == 16) {
+			$("#pharma").prop("selected", true);
+		}
+		else if (ocrFontType == 17) {
+			$("#pharma09").prop("selected", true);
+		}
+		else if (ocrFontType == 18) {
+			$("#pharma09P").prop("selected", true);
+		}
+		else if (ocrFontType == 19) {
+			$("#pharma09AZ").prop("selected", true);
+		}
+		else if (ocrFontType == 20) {
+			$("#micr").prop("selected", true);
+		}
+		else if (ocrFontType == 21) {
+			$("#semi").prop("selected", true);
+		}
+	}
+	
+	function getPolarityType(ocrPolarityType) {
+		if (ocrPolarityType == 0) {
+			$("#darkOnLight").prop("checked", true);
+		}
+		else if (ocrPolarityType == 1) {
+				$("#lightOnDark").prop("checked", true);
+		}
+	}
+	
+	function getDotted(ocrDotted) {
+		if (ocrDotted == 0) {
+			$("#dotted").prop("checked", false);
+		}
+		else if (ocrDotted == 1) {
+				$("#dotted").prop("checked", true);
+		}
+	}
+	
+	function getRotationCorrection(ocrRotationCorrection) {
+		if (ocrRotationCorrection == 0) {
+			$("#rotationCorrection").prop("checked", false);
+		}
+		else if (ocrRotationCorrection == 1) {
+				$("#rotationCorrection").prop("checked", true);
+		}
+	}
+	
+	function getCharType(ocrCharSizeType, ocrAutoCharX, ocrAutoCharY, ocrAutoCharW, ocrAutoCharH, ocrCharX, ocrCharY, ocrCharW, ocrCharH) {
+		// auto
+		if (ocrCharSizeType == 0) {
+			$("#characterSize").prop("checked", true);
+			$("#auto").prop("checked", true);
+			document.getElementById("characterBoundary").style.display="block";
+			
+			var autoCharX = ocrAutoCharX / GLOBAL_SCALE;
+			var autoCharY = ocrAutoCharY / GLOBAL_SCALE;
+			var autoCharW = ocrAutoCharW / GLOBAL_SCALE;
+			var autoCharH = ocrAutoCharH / GLOBAL_SCALE;
+					
+			boxes2[1].x = autoCharX;
+			boxes2[1].y = autoCharY;
+			boxes2[1].w = autoCharW;
+			boxes2[1].h = autoCharH;
+			
+			rectFlag=true;
+		}
+		else if (ocrCharSizeType == 1) {	// manual
+			$("#characterSize").prop("checked", true);
+			$("#manual").prop("checked", true);
+			document.getElementById("characterBoundary").style.display="block";
+			
+			var charX = ocrCharX / GLOBAL_SCALE;
+			var charY = ocrCharY / GLOBAL_SCALE;
+			var charW = ocrCharW / GLOBAL_SCALE;
+			var charH = ocrCharH / GLOBAL_SCALE;
+					
+			boxes2[1].x = charX;
+			boxes2[1].y = charY;
+			boxes2[1].w = charW;
+			boxes2[1].h = charH;
+			
+			rectFlag=true;
+		}
+	}
+	
+	function getSourceMode(ocrStartX, ocrEndX, ocrStartY, ocrEndY, ocrWidth) {
+		/* if ((ocrStartX == 0) && (ocrStartY == (IMG_HEIGHT/GLOBAL_SCALE)) && (ocrEndX > (IMG_WIDTH/GLOBAL_SCALE)) && (ocrWidth > (IMG_HEIGHT/GLOBAL_SCALE))) {
+			alert("before")
+			$("#wholeWindow").prop("checked", true);
+			alert("after")
+		}
+		else { */
+			$("#defineWindow").prop("checked", true);
+			document.getElementById("windowBoundary").style.display="block";
+			
+			var roiX = ocrStartX / GLOBAL_SCALE;
+			var roiY = (ocrStartY - (ocrWidth/2)) / GLOBAL_SCALE;
+			var roiW = (ocrEndX - ocrStartX) / GLOBAL_SCALE;
+			var roiH = ocrWidth / GLOBAL_SCALE;
+					
+			boxes2[0].x = roiX;
+			boxes2[0].y = roiY;
+			boxes2[0].w = roiW;
+			boxes2[0].h = roiH;
+			
+			rectRoiFlag=true;
+		//}
+	}	
 
 	// wipes the canvas context
 	function clear(c) {
@@ -472,19 +696,19 @@
 			var charYPos = boxes2[1].y;
 			var charW = boxes2[1].w;
 			var charH = boxes2[1].h;
-			$("#charXValue").val(charXPos);
-			$("#charYValue").val(charYPos);
-			$("#charWValue").val(charW);
-			$("#charHValue").val(charH);
+			$("#charXValue").val(charXPos.toFixed(0));
+			$("#charYValue").val(charYPos.toFixed(0));
+			$("#charWValue").val(charW.toFixed(0));
+			$("#charHValue").val(charH.toFixed(0));
 			
 			var xPos = boxes2[0].x;
 			var yPos = boxes2[0].y;
 			var w = boxes2[0].w;
 			var h = boxes2[0].h;
-			$("#xValue").val(xPos);
-			$("#yValue").val(yPos);
-			$("#wValue").val(w);
-			$("#hValue").val(h);
+			$("#xValue").val(xPos.toFixed(0));
+			$("#yValue").val(yPos.toFixed(0));
+			$("#wValue").val(w.toFixed(0));
+			$("#hValue").val(h.toFixed(0));
 	  }
 	}
 
