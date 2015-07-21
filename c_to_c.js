@@ -5,6 +5,8 @@ window.onload = function() {
 	EVOToolName += " " + queryString["toolNo"];
 	EVOININame +=  " " + queryString["toolNo"];
 	
+	//addMemoryCirclesIntoDb("dbMemory1");
+	//addMemoryPointsIntoDb("dbMemory2");
 	
 	initCircle();
 	
@@ -68,6 +70,24 @@ function initCircle() {
 			undisableBtn("btnMeasure");
 		}
 	);
+	
+	/*$("#cbMemory1").change(function() {
+		if(this.checked) {
+			document.getElementById("dbMemory1").style.display="block";
+		}else{
+			document.getElementById("dbMemory1").style.display="none";
+		}
+		canvasValid = false;
+	});
+	
+	$("#cbMemory2").change(function() {
+		if(this.checked) {
+			document.getElementById("dbMemory2").style.display="block";
+		}else{
+			document.getElementById("dbMemory2").style.display="none";
+		}
+		canvasValid = false;
+	});*/
 	
 }
 

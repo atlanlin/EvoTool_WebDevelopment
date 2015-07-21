@@ -531,3 +531,55 @@ function addMemoryLinesIntoDb(dbName){
 		viewTool.options[viewTool.options.length] = new Option("No records", "none");
 			
 }
+
+function addMemoryCirclesIntoDb(dbName){
+			
+	removeOptions(document.getElementById(dbName));
+			
+			
+	var ca = document.cookie.split("; ");
+	var ta = [];
+	var taValue = [];
+	var n = 0;
+			
+	ca = ca.sort();
+	for (var i=0;i<ca.length;i++) {
+	
+		if (ca[i].substring(0,6) == "circle"){
+			ta[n] = "Circle " + ca[i].substring(6,7) + " Point";
+			taValue[n] = ca[i].substring(0,7) + "circle1";
+		}
+		else if (ca[i].substring(0,3) == "ptc") {
+			ta[n] = "Point to Circle Dist " + ca[i].substring(3,4) + " Point";
+			taValue[n] = ca[i].substring(0,4) + "circle1";
+		}
+		else if (ca[i].substring(0,3) == "ctl") {
+			ta[n] = "Circle to Line Dist " + ca[i].substring(3,4) + " Point";
+			taValue[n] = ca[i].substring(0,4) + "circle1";
+			
+		}
+		else if (ca[i].substring(0,3) == "ctc") {
+			ta[n] = "Circle to Circle Dist " + ca[i].substring(3,4) + " Point 1"; 
+			taValue[n] = ca[i].substring(0,4) + "circle1";
+			n++;
+			ta[n] = "Circle to Circle Dist " + ca[i].substring(3,4) + " Point 2";
+			taValue[n] = ca[i].substring(0,4) + "circle2";	
+		}
+		else {
+			n--;
+		}
+		n++;
+	}
+			
+	var viewTool = document.getElementById(dbName);
+			
+			
+	for(var j=0; j < ta.length; j++){
+		viewTool.options[viewTool.options.length] = new Option(ta[j], taValue[j]);
+	}
+			
+	var length = viewTool.length;
+	if(length ==0)
+		viewTool.options[viewTool.options.length] = new Option("No records", "none");
+			
+}
