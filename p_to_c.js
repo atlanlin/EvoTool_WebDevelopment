@@ -5,8 +5,8 @@ window.onload = function() {
 	EVOToolName += " " + queryString["toolNo"];
 	EVOININame +=  " " + queryString["toolNo"];
 	
-	addMemoryCirclesIntoDb("dbMemory1");
-	addMemoryPointsIntoDb("dbMemory2");
+	//addMemoryCirclesIntoDb("dbMemory1");
+	//addMemoryPointsIntoDb("dbMemory2");
 	
 	initCircle();
 	
@@ -73,7 +73,7 @@ function initCircle() {
 		}
 	);
 	
-	$("#cbMemory1").change(function() {
+	/*$("#cbMemory1").change(function() {
 		if(this.checked) {
 			document.getElementById("dbMemory1").style.display="block";
 		}else{
@@ -89,7 +89,7 @@ function initCircle() {
 			document.getElementById("dbMemory2").style.display="none";
 		}
 		canvasValid = false;
-	});
+	});*/
 	
 }
 
