@@ -1031,7 +1031,7 @@ function getSettingFrominiFile()
 		settingVal = getIniStr("ptp" + queryString["toolNo"], "p1rectWidth", resp);
 		$("#point1Width").val(settingVal);
 		settingVal = getIniStr("ptp" + queryString["toolNo"], "p1recttransition", resp);
-		if(settingVal === 0){
+		if(settingVal == 0){
 			document.getElementById("point1LOD").checked = true;
 			document.getElementById("point1DOL").checked = false;
 		}else{
@@ -1051,7 +1051,7 @@ function getSettingFrominiFile()
 		settingVal = getIniStr("ptp" + queryString["toolNo"], "p2rectWidth", resp);
 		$("#point2Width").val(settingVal);
 		settingVal = getIniStr("ptp" + queryString["toolNo"], "p2recttransition", resp);
-		if(settingVal === 0){
+		if(settingVal == 0){
 			document.getElementById("point2LOD").checked = true;
 			document.getElementById("point2DOL").checked = false;
 		}else{

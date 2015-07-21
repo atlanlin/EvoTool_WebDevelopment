@@ -18,6 +18,7 @@ var HEIGHT;
 var INTERVAL = 20;  // how often, in milliseconds, we check to see if a redraw is needed
 var EVO_UPDATE_INTERVAL = 2000;
 
+var isValuesRetrieved = false;
 var isDrag = false;
 var isResizeDrag = false;
 var expectResize = -1; // New, will save the # of the selection handle if the mouse is over one.
@@ -59,8 +60,8 @@ var pointFlag = false;
 var lineArrowDirFlag = "horizontal";
 var lineFlag = false;
 
-var EVOToolName = "EVO Distance";
-var EVOININame = "INI Distance";
+var EVOToolName = "EVO PTL";
+var EVOININame = "INI PTL";
 
 // Box object to hold data
 function Box2() {
@@ -206,7 +207,16 @@ function init2() {
   ajaxGet("info.htm?cmd=%23021%3B"+ EVOToolName +"%3B2%3BGeneral.Enabled%3B1%23");
   ajaxGet("info.htm?cmd=%23021%3B"+ EVOININame +"%3B2%3BGeneral.Enabled%3B1%23");
 			
-			
+
+	//start the program to retrieve image
+	ajaxGet("info.htm?cmd=%23002%23");	
+	intervalUpdateStart();
+	disableBtn("btnStart");
+	disableBtn("btnMeasure");
+	disableBtn("fileMeasure");
+	setImgFlag(false);
+	
+	
   canvas = document.getElementById('canvas2');
   HEIGHT = canvas.height;
   WIDTH = canvas.width;
@@ -257,6 +267,7 @@ function init2() {
 		}else{
 			pointArrowDirFlag = "vertical";
 		}
+		canvasValid = false;
 	});
 	
 	$("#cbLineHor").change(function() {
@@ -265,6 +276,7 @@ function init2() {
 		}else{
 			lineArrowDirFlag = "vertical";
 		}
+		canvasValid = false;
 	});
 	
 	$("#btnMeasure").click(function(){
@@ -273,6 +285,16 @@ function init2() {
 			//evoComm();
 			ajaxGet("cfg.ini", getValueFrominiFile);
 			saveScreenshot();
+		}
+	);
+	
+	$("#loadValues").click(function(){
+			//get settings
+			ajaxGet("ptl.ini", getSettingFrominiFile);
+			this.disabled = true;
+			this.style.color="gray";
+			undisableBtn("fileMeasure");
+			undisableBtn("btnMeasure");
 		}
 	);
 
@@ -287,13 +309,140 @@ function init2() {
   //addRect(45, 60, 25, 25, 'rgba(150,150,250,0.7)');	
 }
 
+function updateObjectsFunction(){
+	//setting for point 1
+	var in1sx = parseFloat($("#pointStartX").val());
+	var in1sy = parseFloat($("#pointStartY").val());
+	var in1ex = parseFloat($("#pointEndX").val());
+	var in1ey = parseFloat($("#pointEndY").val());
+	var in1w = parseFloat($("#pointWidth").val());
+	
+	var p1sx, p1sy, p1w, p1h;
+	if(Math.abs(in1ey - in1sy) < 0.01){
+		//ysame
+		$('#cbPointHor').prop('checked', true);
+		pointArrowDirFlag = "horizontal";
+		p1sx = in1sx;
+		p1sy = in1sy - in1w/2;
+		p1w = in1ex - in1sx;
+		p1h = in1w;
+		
+	}else if(Math.abs(in1ex - in1sx) < 0.01){
+		//xsame
+		$('#cbPointHor').prop('checked', false);
+		pointArrowDirFlag = "vertical";
+		p1sx = in1sx - in1w/2;
+		p1sy = in1sy;
+		p1w = in1w;
+		p1h = in1ey - in1sy;
+		
+	}else{
+		var yLen = Math.abs(in1ey - in1sy);
+		var xLen = Math.abs(in1ex - in1sx);
+		var degreeTheta = Math.atan(yLen/xLen)*180/Math.PI;
+		if(degreeTheta < 45){
+			//ysame
+			$('#cbPointHor').prop('checked', true);
+			pointArrowDirFlag = "horizontal";
+			p1sx = in1sx;
+			p1sy = in1sy - in1w/2;
+			p1w = in1ex - in1sx;
+			p1h = in1w;
+			
+		}else{
+			//xsame
+			$('#cbPointHor').prop('checked', false);
+			pointArrowDirFlag = "vertical";
+			p1sx = in1sx - in1w/2;
+			p1sy = in1sy;
+			p1w = in1w;
+			p1h = in1ey - in1sy;
+			
+		}
+	}
+	
+	p1sx = p1sx/(GLOBAL_SCALE*GLOBAL_SCALE_X);
+	p1sy = p1sy/(GLOBAL_SCALE*GLOBAL_SCALE_Y);
+	p1w = p1w/(GLOBAL_SCALE*GLOBAL_SCALE_X);
+	p1h = p1h/(GLOBAL_SCALE*GLOBAL_SCALE_Y);
+	
+	boxes2[0].x = p1sx;
+	boxes2[0].y = p1sy;
+	boxes2[0].w = p1w;
+	boxes2[0].h = p1h;
+	
+	
+	//setting for point 2
+	var in2sx = parseFloat($("#lineStartX").val());
+	var in2sy = parseFloat($("#lineStartY").val());
+	var in2ex = parseFloat($("#lineEndX").val());
+	var in2ey = parseFloat($("#lineEndY").val());
+	var in2w = parseFloat($("#lineWidth").val());
+	
+	var lsx, lsy, lw, lh;
+	if(Math.abs(in2ey - in2sy) < 0.01){
+		//ysame
+		$('#cbLineHor').prop('checked', true);
+		lineArrowDirFlag = "horizontal";
+		lsx = in2sx;
+		lsy = in2sy - in2w/2;
+		lw = in2ex - in2sx;
+		lh = in2w;
+		
+	}else if(Math.abs(in2ex - in2sx) < 0.01){
+		//xsame
+		$('#cbLineHor').prop('checked', false);
+		lineArrowDirFlag = "vertical";
+		lsx = in2sx - in2w/2;
+		lsy = in2sy;
+		lw = in2w;
+		lh = in2ey - in2sy;
+		
+	}else{
+		var yLen = Math.abs(in2ey - in2sy);
+		var xLen = Math.abs(in2ex - in2sx);
+		var degreeTheta = Math.atan(yLen/xLen)*180/Math.PI;
+		if(degreeTheta < 45){
+			//ysame
+			$('#cbLineHor').prop('checked', true);
+			lineArrowDirFlag = "horizontal";
+			lsx = in2sx;
+			lsy = in2sy - in2w/2;
+			lw = in2ex - in2sx;
+			lh = in2w;
+			
+		}else{
+			//xsame
+			$('#cbLineHor').prop('checked', false);
+			lineArrowDirFlag = "vertical";
+			lsx = in2sx - in2w/2;
+			lsy = in2sy;
+			lw = in2w;
+			lh = in2ey - in2sy;
+			
+		}
+	}
+	
+	lsx = lsx/(GLOBAL_SCALE*GLOBAL_SCALE_X);
+	lsy = lsy/(GLOBAL_SCALE*GLOBAL_SCALE_Y);
+	lw = lw/(GLOBAL_SCALE*GLOBAL_SCALE_X);
+	lh = lh/(GLOBAL_SCALE*GLOBAL_SCALE_Y);
+	
+	boxes2[1].x = lsx;
+	boxes2[1].y = lsy;
+	boxes2[1].w = lw;
+	boxes2[1].h = lh;
+}
+
 // consists of EVO communication commands
 function evoComm() {
-	ajaxGet("info.htm?cmd=%23021%3B"+ EVOToolName +"%3B2%3BOptionForType%3B1%23");
-	pointSettings();
-	lineSettings();
-	toleranceSettings();
-}	// end evoComm
+	if(isValuesRetrieved){
+		ajaxGet("info.htm?cmd=%23021%3B"+ EVOToolName +"%3B2%3BOptionForType%3B1%23");
+		pointSettings();
+		lineSettings();
+		toleranceSettings();
+	}
+}		// end evoComm
 
 //send settings for point
 function pointSettings() {
@@ -496,10 +645,10 @@ function mainDraw() {
     var pointLine=new Line(plx1,ply1,plx2,ply2);
     // draw the line
     pointLine.drawWithArrowheads(ctx);
-	
-	displayTexts('pointStartX', 'pointStartY', 'pointEndX', 'pointEndY', 'pointWidth', pointArrowDirFlag, boxes2[0]);
-	displayTexts('lineStartX', 'lineStartY', 'lineEndX', 'lineEndY', 'lineWidth', lineArrowDirFlag, boxes2[1]);
-	
+	if(isValuesRetrieved){
+		displayTexts('pointStartX', 'pointStartY', 'pointEndX', 'pointEndY', 'pointWidth', pointArrowDirFlag, boxes2[0]);
+		displayTexts('lineStartX', 'lineStartY', 'lineEndX', 'lineEndY', 'lineWidth', lineArrowDirFlag, boxes2[1]);
+	}
 	//showProbeSettings();
 	
 	
@@ -798,6 +947,67 @@ function getMouse(e) {
 			mx = e.targetTouches[0].clientX - rect.left;
 			my = e.targetTouches[0].clientY - rect.top;
 	}
+}
+
+function getSettingFrominiFile()
+{
+	
+	if (xhr.readyState != 4)  {
+		return; 
+	}
+		
+		var resp = xhr.responseText;
+		var settingVal;
+		settingVal = getIniStr("ptl" + queryString["toolNo"], "p1rectStartX", resp);
+		$("#pointStartX").val(settingVal);
+		settingVal = getIniStr("ptl" + queryString["toolNo"], "p1rectStartY", resp);
+		$("#pointStartY").val(settingVal);
+		settingVal = getIniStr("ptl" + queryString["toolNo"], "p1rectEndX", resp);
+		$("#pointEndX").val(settingVal);
+		settingVal = getIniStr("ptl" + queryString["toolNo"], "p1rectEndY", resp);
+		$("#pointEndY").val(settingVal);
+		settingVal = getIniStr("ptl" + queryString["toolNo"], "p1rectWidth", resp);
+		$("#pointWidth").val(settingVal);
+		settingVal = getIniStr("ptl" + queryString["toolNo"], "p1recttransition", resp);
+		if(settingVal == 0){
+			document.getElementById("pointLOD").checked = true;
+			document.getElementById("pointDOL").checked = false;
+		}else{
+			document.getElementById("pointLOD").checked = false;
+			document.getElementById("pointDOL").checked = true;
+		}
+		
+		
+		settingVal = getIniStr("ptl" + queryString["toolNo"], "l1rectStartX", resp);
+		$("#lineStartX").val(settingVal);
+		settingVal = getIniStr("ptl" + queryString["toolNo"], "l1rectStartY", resp);
+		$("#lineStartY").val(settingVal);
+		settingVal = getIniStr("ptl" + queryString["toolNo"], "l1rectEndX", resp);
+		$("#lineEndX").val(settingVal);
+		settingVal = getIniStr("ptl" + queryString["toolNo"], "l1rectEndY", resp);
+		$("#lineEndY").val(settingVal);
+		settingVal = getIniStr("ptl" + queryString["toolNo"], "l1rectWidth", resp);
+		$("#lineWidth").val(settingVal);
+		settingVal = getIniStr("ptl" + queryString["toolNo"], "l1recttransition", resp);
+		if(settingVal == 0){
+			document.getElementById("lineLOD").checked = true;
+			document.getElementById("lineDOL").checked = false;
+		}else{
+			document.getElementById("lineLOD").checked = false;
+			document.getElementById("lineDOL").checked = true;
+		}
+		
+		
+		settingVal = getIniStr("ptl" + queryString["toolNo"], "nominalValue", resp);
+		$("#nv").val(settingVal);
+		settingVal = getIniStr("ptl" + queryString["toolNo"], "positive", resp);
+		$("#plus").val(settingVal);
+		settingVal = getIniStr("ptl" + queryString["toolNo"], "negative", resp);
+		$("#minus").val(settingVal);
+		//update to rectangle values
+		updateObjectsFunction();
+		isValuesRetrieved = true;
+		canvasValid = false;
 }
 
 // If you dont want to use <body onLoad='init()'>

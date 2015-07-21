@@ -3,7 +3,7 @@ EYEVISION_VERSION
 FILE_VERSION 
 CREATED 
 CREATED_BY 
-LAST_MODIFIED 21.07.2015 11:16:30
+LAST_MODIFIED 21.07.2015 13:19:06
 LAST_MODIFIED_BY 
 START_PARM_LIST 
   KEY 1
@@ -63,7 +63,7 @@ START_PARM_LIST
     TriggerTimeout 0
     TriggerInputLine 0
     MinimumSignalDuration 0
-    FileName C:/Users/user2/Desktop/3.0_21 Test Demo/Door Knob -Align-Measure/Images/Training_1_00000.jpg
+    FileName C:/Users/user/Pictures/3.0_21 Test Demo/Door Knob -Align-Measure/Images/Training_1_00012.jpg
     AVIframes 1
     AVImode 0
     HWTriggeredCapture 0
@@ -380,18 +380,18 @@ START_PARM_LIST
     ProbeSelect 0
     CKRECT_PROBE_POS 
       ClassVersion 1
-      Width 50,0
+      Width 55,0
       CKPOINT 
         ClassVersion 1
         Name Start point
-        X 100,0
-        Y 100,0
+        X 256,0
+        Y 517,73
       END_CKPOINT 
       CKPOINT 
         ClassVersion 1
         Name End point
-        X 100,0
-        Y 200,0
+        X 449,0
+        Y 517,73
       END_CKPOINT 
     END_CKRECT_PROBE_POS 
     CKCIRCLE_PROBE_POS 
@@ -410,7 +410,7 @@ START_PARM_LIST
         Y 100,0
       END_CKPOINT 
     END_CKCIRCLE_PROBE_POS 
-    ObjColor 0
+    ObjColor 1
     EdgePairsSelect 0
     MDOptimizBool 0
     MeasureOption 0
@@ -506,34 +506,34 @@ START_PARM_LIST
     OptionForType 0
     CKRECT_PROBE_POS 
       ClassVersion 1
-      Width 88,0
+      Width 74,26
       CKPOINT 
         ClassVersion 1
         Name Start point
-        X 358,12799
-        Y 366,298
+        X 687,66
+        Y 343,79
       END_CKPOINT 
       CKPOINT 
         ClassVersion 1
         Name End point
-        X 439,8299865723
-        Y 366,298
+        X 597,96
+        Y 343,79
       END_CKPOINT 
     END_CKRECT_PROBE_POS 
     CKRECT_PROBE_POS 
       ClassVersion 1
-      Width 88,51
+      Width 52,76
       CKPOINT 
         ClassVersion 1
         Name Start point
-        X 354,04
-        Y 388,0899963379
+        X 319,96
+        Y 250,9
       END_CKPOINT 
       CKPOINT 
         ClassVersion 1
         Name End point
-        X 435,73999
-        Y 388,0899963379
+        X 401,96
+        Y 250,9
       END_CKPOINT 
     END_CKRECT_PROBE_POS 
     CKCIRCLE_PROBE_POS 
@@ -788,34 +788,34 @@ START_PARM_LIST
     OptionForType 1
     CKRECT_PROBE_POS 
       ClassVersion 1
-      Width 88,0
+      Width 40,0
       CKPOINT 
         ClassVersion 1
         Name Start point
-        X 358,12799
-        Y 366,298
+        X 722,0
+        Y 349,0599975586
       END_CKPOINT 
       CKPOINT 
         ClassVersion 1
         Name End point
-        X 439,8299865723
-        Y 366,298
+        X 576,0
+        Y 349,0599975586
       END_CKPOINT 
     END_CKRECT_PROBE_POS 
     CKRECT_PROBE_POS 
       ClassVersion 1
-      Width 88,51
+      Width 37,0
       CKPOINT 
         ClassVersion 1
         Name Start point
-        X 354,04
-        Y 388,0899963379
+        X 315,0
+        Y 231,1999969482
       END_CKPOINT 
       CKPOINT 
         ClassVersion 1
         Name End point
-        X 435,73999
-        Y 388,0899963379
+        X 396,0
+        Y 231,1999969482
       END_CKPOINT 
     END_CKRECT_PROBE_POS 
     CKCIRCLE_PROBE_POS 
@@ -850,7 +850,7 @@ START_PARM_LIST
         Y 360,113
       END_CKPOINT 
     END_CKCIRCLE_PROBE_POS 
-    ProbeSelect 1
+    ProbeSelect 0
     IntersectionSelect -656877352
     CKRECT_PROBE_POS 
       ClassVersion 1
@@ -946,7 +946,7 @@ START_PARM_LIST
     Threshold_2 20
     NumofPoint_2 10
     Select_2 0
-    Transition_2 0
+    Transition_2 1
     Expert_1 0
     Expert_2 0
     CKPICKUP_TYPE_READ 
@@ -1966,7 +1966,7 @@ START_PARM_LIST
     ApplyCorrection 0
     CorrectionType 1
     VariableType 0
-    ConstantValue 0,0
+    ConstantValue 89,0
     IniFileName C:\temp\wwwroot\cfg.ini
     SegmentName cam1
     EntryName result1
@@ -2054,7 +2054,7 @@ START_PARM_LIST
     ApplyCorrection 0
     CorrectionType 1
     VariableType 0
-    ConstantValue 0,0
+    ConstantValue 287,8458426481
     IniFileName C:\temp\wwwroot\cfg.ini
     SegmentName cam1
     EntryName result1
@@ -2768,30 +2768,30 @@ START_PARM_LIST
       CKPOINT 
         ClassVersion 1
         Name Start point
-        X 358,12799
-        Y 366,298
+        X 358,0
+        Y 365,57
       END_CKPOINT 
       CKPOINT 
         ClassVersion 1
         Name End point
-        X 439,8299865723
-        Y 366,298
+        X 440,0
+        Y 365,57
       END_CKPOINT 
     END_CKRECT_PROBE_POS 
     CKRECT_PROBE_POS 
       ClassVersion 1
-      Width 88,51
+      Width 89,0
       CKPOINT 
         ClassVersion 1
         Name Start point
-        X 354,04
-        Y 388,0899963379
+        X 354,0
+        Y 387,07
       END_CKPOINT 
       CKPOINT 
         ClassVersion 1
         Name End point
-        X 435,73999
-        Y 388,0899963379
+        X 436,0
+        Y 387,07
       END_CKPOINT 
     END_CKRECT_PROBE_POS 
     CKCIRCLE_PROBE_POS 
@@ -2826,7 +2826,7 @@ START_PARM_LIST
         Y 360,113
       END_CKPOINT 
     END_CKCIRCLE_PROBE_POS 
-    ProbeSelect 1
+    ProbeSelect 0
     IntersectionSelect -656877352
     CKRECT_PROBE_POS 
       ClassVersion 1
@@ -2917,12 +2917,12 @@ START_PARM_LIST
     Threshold_1 20
     NumofPoint_1 10
     Select_1 0
-    Transition_1 0
+    Transition_1 1
     Sigma_2 3,0
     Threshold_2 20
     NumofPoint_2 10
     Select_2 0
-    Transition_2 0
+    Transition_2 1
     Expert_1 0
     Expert_2 0
     CKPICKUP_TYPE_READ 
@@ -4312,7 +4312,7 @@ START_PARM_LIST
     ApplyCorrection 0
     CorrectionType 1
     VariableType 0
-    ConstantValue 0,0
+    ConstantValue 288,0914614
     IniFileName C:\temp\wwwroot\cfg.ini
     SegmentName cam1
     EntryName result1
@@ -4823,7 +4823,7 @@ START_PARM_LIST
       Position 37
       CommandType 10010021
       CommandName EVO Width 3
-      Enabled 0
+      Enabled 1
       Hidden 0
       GraficMode 2
       TextMode 2
@@ -4900,14 +4900,14 @@ START_PARM_LIST
       CKPOINT 
         ClassVersion 1
         Name Start point
-        X 100,0
-        Y 100,0
+        X 310,57
+        Y 370,98
       END_CKPOINT 
       CKPOINT 
         ClassVersion 1
         Name End point
-        X 100,0
-        Y 200,0
+        X 310,57
+        Y 470,98
       END_CKPOINT 
     END_CKRECT_PROBE_POS 
     CKCIRCLE_PROBE_POS 
@@ -4929,7 +4929,7 @@ START_PARM_LIST
     ObjColor 0
     EdgePairsSelect 0
     MDOptimizBool 0
-    MeasureOption 0
+    MeasureOption 3
     TeachInCounter 0
   END_KEY 32
   KEY 33
@@ -6437,7 +6437,7 @@ START_PARM_LIST
       Position 45
       CommandType 137
       CommandName INI Width 3
-      Enabled 0
+      Enabled 1
       Hidden 0
       GraficMode 2
       TextMode 2
@@ -18727,8 +18727,8 @@ START_PARM_LIST
         Index -1
       END_CKSTATISTIC 
     END_CKRESULT 
-    Program Dim sFile As String~Dim lRet As Long~'to run this script on VC camera adjust the cfg.ini path to sFile = "cfg.ini"~sFile = "C:\temp\wwwroot\width.ini" 'an vc camera ini file ending is 231~~Dim functionName As String~functionName = "EVO Width "~~Dim iniName As String~iniName = "width"~~Dim dValue As Double~Dim lValue As Long~Dim sValue As String~Dim nameValue As String~Dim num As Long~~~Dim rectStartX As Double~Dim rectStartY As Double~Dim rectEndX As Double~Dim rectEndY As Double~Dim rectWidth As Double~~Dim recttransition As Long~~Dim nominalValue As Double~Dim positive As Double~Dim negative As Double~~~~For num = 1 To 8~	nameValue = Str(num, 0)~~	CKI_GetParameterDoubleOfCommand(functionName + nameValue, "RecPos.PointStart.X", rectStartX)~	CKI_GetParameterDoubleOfCommand(functionName + nameValue, "RecPos.PointStart.Y", rectStartY)~	CKI_GetParameterDoubleOfCommand(functionName + nameValue, "RecPos.PointEnd.X", rectEndX)~	CKI_GetParameterDoubleOfCommand(functionName + nameValue, "RecPos.PointEnd.Y", rectEndY)~	CKI_GetParameterDoubleOfCommand(functionName + nameValue, "RecPos.Width", rectWidth)~~	CKI_GetParameterLongOfCommand(functionName + nameValue, "Transition", recttransition)~~	CKI_GetParameterDoubleOfCommand(functionName + nameValue, "Result[0].Evaluation.NominalValue", nominalValue)~	CKI_GetParameterDoubleOfCommand(functionName + nameValue, "Result[0].Evaluation.PlusTolerance", positive)~	CKI_GetParameterDoubleOfCommand(functionName + nameValue, "Result[0].Evaluation.MinusTolerance", negative)~~	~		sValue = Str(rectStartX,0) ~		EVHDINIWriteString(iniName+nameValue, "rectStartX", sValue,sFile)~		~~		sValue = Str(rectStartY,0) ~		EVHDINIWriteString(iniName+nameValue, "rectStartY", sValue,sFile)~		~~		sValue = Str(rectEndX,0) ~		EVHDINIWriteString(iniName+nameValue, "rectEndX", sValue,sFile)~		~~		sValue = Str(rectEndY,0) ~		EVHDINIWriteString(iniName+nameValue, "rectEndY", sValue,sFile)~		~~		sValue = Str(rectWidth,0) ~		EVHDINIWriteString(iniName+nameValue, "rectWidth", sValue,sFile)~		~	~		sValue = Str(recttransition,0) ~		EVHDINIWriteString(iniName+nameValue, "recttransition", sValue,sFile)~~~		sValue = Str(nominalValue,0) ~		EVHDINIWriteString(iniName+nameValue, "nominalValue", sValue,sFile)~~		sValue = Str(positive,0) ~		EVHDINIWriteString(iniName+nameValue, "positive", sValue,sFile)~~		sValue = Str(negative,0) ~		EVHDINIWriteString(iniName+nameValue, "negative", sValue,sFile)~~~Next~EVHDINIWriteFlush(sFile)~~
-    EncodedBinary [C_34_12Az6B_F05Jl0KV0L_240F50D_D00G00Hp1Ih4Mp1p1p1p1p1p1w1w1w1_7D1_7D1_7D1_831_831_831_831_831_831_831_831_831_831_831_831_831_831_831_831_831_831_831_831_831_831_831_951_A91_A91_C51_E01_FB1_162_312_312J2J2e2_802_9B2_9B2_9B2_AF2_CB2_CB2_CB2_DF2_FB2_FB2_FB2_0F3_2B3_2B3_2B3_3F3_5B3_5B3_5B3o3_8B3_8B3_8B3_9F3_BB3_BB3_BB3_CF3_EB3_EB3_FF3_1B4_1B4_2F4K4K4K4X4X40000_F85_FC5_1501321000000000000000000000006_0C6_7F01133500000000000000000000006_2C6_80011334000000000000000000000L6T6X011333300000000000000000000L6h6Y01130000000000000000000kpp4r00p_8C4r80p_984r_0C0ipl4r_240iq_240p_A04_8AdX4koiph4q_240mg_D00zizkr_200iojq_280kp_A44q80q_200_83g_F00zzjr_280izojq_300kp_B84q80q_200_83g_F00zzjr_300izojq_380kp_CC4q80q_200_83g_F00zzjr_380izojq_400kp_E04q80q_200_83g_F00zzjr_400izojqH0kp_F44q80q_200_83g_F00zzjrH0izoqP0kp45q80q_200_83g_101zzirP0zojqT0kp_105q80q_200_83g_F00zzjrT0izojq_5C0kp_345q80q_200_83g_F00zzjr_5C0izojqd0kpX5q80q_200_83g_F00zzjrd0izkoiph4jq_280g_D00zizkr_1C0iokq00q_1C0p_7C5q_0C0q_200_83g_301zzzzizkoiph4jq_300g_D00zizkr_1C0iokq00q_1C0p_885q_0C0q_200_83g_301zzzzizkoiph4jq_380g_D00zizkr_1C0iokq00q_1C0p_945q_0C0q_200_83g_301zzzzizkoiph4jq_400g_D00zizkr_1C0iokq00q_1C0p_A05q_0C0q_200_83g_301zzzzizkoiph4jqH0g_D00zizkr_1C0iokq00q_1C0p_AC5q_0C0q_200_83g_301zzzzizkoiph4qP0mg_D00zizkr_1C0iokq00q_1C0p_B85q_0C0q_200_83g_301zzzzizkoiph4jqT0g_D00zizkr_1C0iokq00q_1C0p_C85q_0C0q_200_83g_301zzzzizkoiph4jq_5C0g_D00zizkr_1C0iokq00q_1C0p_D85q_0C0q_200_83g_301zzzzizkoiph4jqd0g_D00zizkr_1C0iokq00q_1C0p_E45q_0C0q_200_83g_301zzzzizq_240pl4_83r_240c_8A1iokq00gP1zizf00000001000C_3A_5Ctemp_5Cwwwroot_5Cwidth_2Eini000EVO_20Width_2000width0008000RecPos_2EPointStart_2EX0RecPos_2EPointStart_2EY0RecPos_2EPointEnd_2EX000RecPos_2EPointEnd_2EY000RecPos_2EWidth0000Transition00Result_5B_30_5D_2EEvaluation_2ENominalValue000Result_5B_30_5D_2EEvaluation_2EPlusTolerance00Result_5B_30_5D_2EEvaluation_2EMinusTolerance0rectStartX00rectStartY00rectEndX0000rectEndY0000rectWidth000recttransition00nominalValue0000positive0000negative0000source00Std0Str0EVTVision000CKI_5FGetParameterDoubleOfCommand0CKI_5FGetParameterLongOfCommand000Evhd0000EVHDINIWriteString00EVHDINIWriteFlush0]
+    Program Dim sFile As String~Dim lRet As Long~'to run this script on VC camera adjust the cfg.ini path to sFile = "cfg.ini"~sFile = "C:\temp\wwwroot\width.ini" 'an vc camera ini file ending is 231~~Dim functionName As String~functionName = "EVO Width "~~Dim iniName As String~iniName = "width"~~Dim dValue As Double~Dim lValue As Long~Dim sValue As String~Dim nameValue As String~Dim num As Long~~~Dim rectStartX As Double~Dim rectStartY As Double~Dim rectEndX As Double~Dim rectEndY As Double~Dim rectWidth As Double~~Dim rectColor As Long~Dim rectMeaOption As Long~~Dim nominalValue As Double~Dim positive As Double~Dim negative As Double~~~~For num = 1 To 8~	nameValue = Str(num, 0)~~	CKI_GetParameterDoubleOfCommand(functionName + nameValue, "RecPos.PointStart.X", rectStartX)~	CKI_GetParameterDoubleOfCommand(functionName + nameValue, "RecPos.PointStart.Y", rectStartY)~	CKI_GetParameterDoubleOfCommand(functionName + nameValue, "RecPos.PointEnd.X", rectEndX)~	CKI_GetParameterDoubleOfCommand(functionName + nameValue, "RecPos.PointEnd.Y", rectEndY)~	CKI_GetParameterDoubleOfCommand(functionName + nameValue, "RecPos.Width", rectWidth)~~	CKI_GetParameterLongOfCommand(functionName + nameValue, "ObjColor", rectColor)~	CKI_GetParameterLongOfCommand(functionName + nameValue, "MeasureOption", rectMeaOption)~~	CKI_GetParameterDoubleOfCommand(functionName + nameValue, "Result[0].Evaluation.NominalValue", nominalValue)~	CKI_GetParameterDoubleOfCommand(functionName + nameValue, "Result[0].Evaluation.PlusTolerance", positive)~	CKI_GetParameterDoubleOfCommand(functionName + nameValue, "Result[0].Evaluation.MinusTolerance", negative)~~	~		sValue = Str(rectStartX,0) ~		EVHDINIWriteString(iniName+nameValue, "rectStartX", sValue,sFile)~		~~		sValue = Str(rectStartY,0) ~		EVHDINIWriteString(iniName+nameValue, "rectStartY", sValue,sFile)~		~~		sValue = Str(rectEndX,0) ~		EVHDINIWriteString(iniName+nameValue, "rectEndX", sValue,sFile)~		~~		sValue = Str(rectEndY,0) ~		EVHDINIWriteString(iniName+nameValue, "rectEndY", sValue,sFile)~		~~		sValue = Str(rectWidth,0) ~		EVHDINIWriteString(iniName+nameValue, "rectWidth", sValue,sFile)~		~	~		sValue = Str(rectMeaOption,0) ~		EVHDINIWriteString(iniName+nameValue, "rectOption", sValue,sFile)~~		sValue = Str(rectColor,0) ~		EVHDINIWriteString(iniName+nameValue, "rectColor", sValue,sFile)~~		sValue = Str(nominalValue,0) ~		EVHDINIWriteString(iniName+nameValue, "nominalValue", sValue,sFile)~~		sValue = Str(positive,0) ~		EVHDINIWriteString(iniName+nameValue, "positive", sValue,sFile)~~		sValue = Str(negative,0) ~		EVHDINIWriteString(iniName+nameValue, "negative", sValue,sFile)~~~Next~EVHDINIWriteFlush(sFile)~~
+    EncodedBinary [C_34_12A_E26BX6Jp0KZ0L_240F50D_D80G00Hx1I_B84Mx1x1x1x1x1x1_7F1_7F1_7F1_851_851_851_8B1_8B1_8B1_8B1_8B1_8B1_8B1_8B1_8B1_8B1_8B1_8B1_8B1_8B1_8B1_8B1_8B1_8B1_8B1_8B1_8B1_8B1_8B1_8B1_9D1_B11_B11_CD1_E8132_1E2_392_392R2k2k2_862_A12_BC2_BC2_BC2_D02_EC2_EC2_EC203_1C3_1C3_1C3_303L3L3L3_603_7C3_7C3_7C3_903_AC3_AC3_AC3_C03_DC3_DC3_F03_0C4_0C4_204_3C4_3C4P4l4l4_804_9C4_9C4_9C4_A94_A940000_606d6_15013210000000000000000000000h6t6_7F011335000000000000000000000h6_946_80011334000000000000000000000_B46_BC6X011333300000000000000000000_B46_D06Y01130000000000000000000kp_C04r00p_DC4r80p_E84r_0C0ip_BC4r_240iq_240p_F04_8Ad_A94koip_B84q_240mg_D80zizkr_200iojq_280kp_F44q80q_200_83g_F80zzjr_280izojq_300kp85q80q_200_83g_F80zzjr_300izojq_380kp_1C5q80q_200_83g_F80zzjr_380izojq_400kp_305q80q_200_83g_F80zzjr_400izojqH0kpD5q80q_200_83g_F80zzjrH0izoqP0kpT5q80q_200_83g_181zzirP0zoqT0kp_605q80q_200_83g_181zzirT0zojqX0kpp5q80q_200_83g_F80zzjrX0izojq_600kp_945q80q_200_83g_F80zzjr_600izojqh0kp_B85q80q_200_83g_F80zzjrh0izkoip_B84jq_280g_D80zizkr_1C0iokq00q_1C0p_DC5q_0C0q_200_83g_381zzzzizkoip_B84jq_300g_D80zizkr_1C0iokq00q_1C0p_E85q_0C0q_200_83g_381zzzzizkoip_B84jq_380g_D80zizkr_1C0iokq00q_1C0p_F45q_0C0q_200_83g_381zzzzizkoip_B84jq_400g_D80zizkr_1C0iokq00q_1C0p06q_0C0q_200_83g_381zzzzizkoip_B84jqH0g_D80zizkr_1C0iokq00q_1C0p_0C6q_0C0q_200_83g_381zzzzizkoip_B84qT0mg_D80zizkr_1C0iokq00q_1C0p_186q_0C0q_200_83g_381zzzzizkoip_B84qP0mg_D80zizkr_1C0iokq00q_1C0p_246q_0C0q_200_83g_381zzzzizkoip_B84jqX0g_D80zizkr_1C0iokq00q_1C0p_306q_0C0q_200_83g_381zzzzizkoip_B84jq_600g_D80zizkr_1C0iokq00q_1C0p_406q_0C0q_200_83g_381zzzzizkoip_B84jqh0g_D80zizkr_1C0iokq00q_1C0pL6q_0C0q_200_83g_381zzzzizq_240p_BC4_83r_240c_921iokq00gX1zizf0000001000C_3A_5Ctemp_5Cwwwroot_5Cwidth_2Eini000EVO_20Width_2000width0008000RecPos_2EPointStart_2EX0RecPos_2EPointStart_2EY0RecPos_2EPointEnd_2EX000RecPos_2EPointEnd_2EY000RecPos_2EWidth0000ObjColor0000MeasureOption000Result_5B_30_5D_2EEvaluation_2ENominalValue000Result_5B_30_5D_2EEvaluation_2EPlusTolerance00Result_5B_30_5D_2EEvaluation_2EMinusTolerance0rectStartX00rectStartY00rectEndX0000rectEndY0000rectWidth000rectOption00rectColor000nominalValue0000positive0000negative0000source00Std0Str0EVTVision000CKI_5FGetParameterDoubleOfCommand0CKI_5FGetParameterLongOfCommand000Evhd0000EVHDINIWriteString00EVHDINIWriteFlush0]
     ExternProgramFileName 
     UseExternProgram 0
     NumberOfAdditionalLinesProgram 0

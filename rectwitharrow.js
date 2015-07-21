@@ -17,6 +17,7 @@ var WIDTH;
 var HEIGHT;
 var INTERVAL = 20;  // how often, in milliseconds, we check to see if a redraw is needed
 
+var isValuesRetrieved = false;
 var isDrag = false;
 var isResizeDrag = false;
 var expectResize = -1; // New, will save the # of the selection handle if the mouse is over one.
@@ -61,6 +62,38 @@ function Box2() {
   this.h = 1;
   this.fill = '#444444';
 }
+
+var EVO_UPDATE_INTERVAL = 2000;
+		
+		var EVOToolName = "EVO Width";
+		var EVOININame = "INI Width";
+		$(document).ready(function(){
+			EVOToolName += " " +queryString["toolNo"];
+			EVOININame += " " +queryString["toolNo"];
+			
+			//enable width command in evo 3
+			ajaxGet("info.htm?cmd=%23021%3B"+ EVOToolName +"%3B2%3BGeneral.Enabled%3B1%23");
+			ajaxGet("info.htm?cmd=%23021%3B"+ EVOININame +"%3B2%3BGeneral.Enabled%3B1%23");
+			
+			//start the program to retrieve image
+			ajaxGet("info.htm?cmd=%23002%23");	
+			//ajaxGet("cfg.ini", getValueFrominiFile);
+			intervalUpdateStart();
+			disableBtn("btnStart");
+			disableBtn("btnMeasure");
+			disableBtn("fileMeasure");
+			setImgFlag(false);
+			
+			$("#btnMeasure").click(function(){
+			//not to confuse with previous result
+			$("#resultDisplay").val("");
+			//updateParameters();
+			ajaxGet("cfg.ini", getValueFrominiFile);
+			saveScreenshot();
+			});
+			
+			setInterval(updateParameters, EVO_UPDATE_INTERVAL);
+		});
 
 
 
@@ -241,6 +274,7 @@ function init2() {
 		}else{
 			arrowDirFlag = "horizontal";
 		}
+		canvasValid = false;
 	});
 	
 	$("#cbArrowHor").change(function() {
@@ -249,7 +283,18 @@ function init2() {
 		}else{
 			arrowDirFlag = "vertical";
 		}
+		canvasValid = false;
 	});
+	
+	$("#loadValues").click(function(){
+			//get settings
+			ajaxGet("width.ini", getSettingFrominiFile);
+			this.disabled = true;
+			this.style.color="gray";
+			undisableBtn("fileMeasure");
+			undisableBtn("btnMeasure");
+		}
+	);
 	
   
   
@@ -402,10 +447,116 @@ function mainDraw() {
     // draw the line
     line.drawWithArrowheads(ctx);
 	
-	
-	displayTexts("tbStartX", "tbStartY", "tbEndX", "tbEndY", "tbWidth", boxes2[0]);
+	if(isValuesRetrieved)
+		displayTexts("tbStartX", "tbStartY", "tbEndX", "tbEndY", "tbWidth", boxes2[0]);
 	
   }
+}
+
+//send parameters to evo 3
+		function updateParameters(){
+			if(isValuesRetrieved){
+				
+				var sx = document.getElementById("tbStartX").value;
+				var sy = document.getElementById("tbStartY").value;
+				var ex = document.getElementById("tbEndX").value;
+				var ey = document.getElementById("tbEndY").value;
+				var width = document.getElementById("tbWidth").value;
+				
+				var color, option;
+				if(document.getElementById("cbObjectColor").checked){
+					color = 1;
+				}else{
+					color = 0;
+				}
+				
+				
+				var optVal = document.getElementById("dbOption").value;
+				if(optVal == "width")
+					option = 0;
+				else if(optVal == "gap")
+					option = 1;
+				else if(optVal == "pitch")
+					option = 2;
+				else
+					option = 3;
+				
+				
+				ajaxGet("info.htm?cmd=%23021%3B"+ EVOToolName +"%3B1%3BRecPos.PointStart.X%3B" + sx +"%23");
+				ajaxGet("info.htm?cmd=%23021%3B"+ EVOToolName +"%3B1%3BRecPos.PointStart.Y%3B" + sy +"%23");
+				ajaxGet("info.htm?cmd=%23021%3B"+ EVOToolName +"%3B1%3BRecPos.PointEnd.X%3B" + ex +"%23");
+				ajaxGet("info.htm?cmd=%23021%3B"+ EVOToolName +"%3B1%3BRecPos.PointEnd.Y%3B" + ey +"%23");
+				ajaxGet("info.htm?cmd=%23021%3B"+ EVOToolName +"%3B1%3BRecPos.Width%3B" + width +"%23");
+				ajaxGet("info.htm?cmd=%23021%3B"+ EVOToolName +"%3B2%3BObjColor%3B" + color +"%23");
+				ajaxGet("info.htm?cmd=%23021%3B"+ EVOToolName +"%3B2%3BMeasureOption%3B" + option +"%23");
+				
+				ajaxGet("info.htm?cmd=%23021%3B"+ EVOToolName +"%3B1%3BResult[0].Evaluation.NominalValue%3B"+$("#nv").val()+"%23");
+				ajaxGet("info.htm?cmd=%23021%3B"+ EVOToolName +"%3B1%3BResult[0].Evaluation.PlusTolerance%3B"+$("#plus").val()+"%23");
+				ajaxGet("info.htm?cmd=%23021%3B"+ EVOToolName +"%3B1%3BResult[0].Evaluation.MinusTolerance%3B"+$("#minus").val()+"%23");
+			}
+		}
+
+function updateObjectsFunction(){
+	//setting for point 1
+	var in1sx = parseFloat($("#tbStartX").val());
+	var in1sy = parseFloat($("#tbStartY").val());
+	var in1ex = parseFloat($("#tbEndX").val());
+	var in1ey = parseFloat($("#tbEndY").val());
+	var in1w = parseFloat($("#tbWidth").val());
+	
+	var p1sx, p1sy, p1w, p1h;
+	if(Math.abs(in1ey - in1sy) < 0.01){
+		//ysame
+		$('#cbArrowHor').prop('checked', true);
+		arrowDirFlag = "horizontal";
+		p1sx = in1sx;
+		p1sy = in1sy - in1w/2;
+		p1w = in1ex - in1sx;
+		p1h = in1w;
+		
+	}else if(Math.abs(in1ex - in1sx) < 0.01){
+		//xsame
+		$('#cbArrowHor').prop('checked', false);
+		arrowDirFlag = "vertical";
+		p1sx = in1sx - in1w/2;
+		p1sy = in1sy;
+		p1w = in1w;
+		p1h = in1ey - in1sy;
+		
+	}else{
+		var yLen = Math.abs(in1ey - in1sy);
+		var xLen = Math.abs(in1ex - in1sx);
+		var degreeTheta = Math.atan(yLen/xLen)*180/Math.PI;
+		if(degreeTheta < 45){
+			//ysame
+			$('#cbArrowHor').prop('checked', true);
+			arrowDirFlag = "horizontal";
+			p1sx = in1sx;
+			p1sy = in1sy - in1w/2;
+			p1w = in1ex - in1sx;
+			p1h = in1w;
+			
+		}else{
+			//xsame
+			$('#cbArrowHor').prop('checked', false);
+			arrowDirFlag = "vertical";
+			p1sx = in1sx - in1w/2;
+			p1sy = in1sy;
+			p1w = in1w;
+			p1h = in1ey - in1sy;
+			
+		}
+	}
+	
+	p1sx = p1sx/(GLOBAL_SCALE*GLOBAL_SCALE_X);
+	p1sy = p1sy/(GLOBAL_SCALE*GLOBAL_SCALE_Y);
+	p1w = p1w/(GLOBAL_SCALE*GLOBAL_SCALE_X);
+	p1h = p1h/(GLOBAL_SCALE*GLOBAL_SCALE_Y);
+	
+	boxes2[0].x = p1sx;
+	boxes2[0].y = p1sy;
+	boxes2[0].w = p1w;
+	boxes2[0].h = p1h;
 }
 
 
@@ -690,6 +841,63 @@ function getMouse(e) {
 			mx = e.targetTouches[0].clientX - rect.left;
 			my = e.targetTouches[0].clientY - rect.top;
 	}
+}
+
+function getSettingFrominiFile()
+{
+	
+	if (xhr.readyState != 4)  {
+		/*
+		responseCnt++;
+		if(responseCnt > 2){
+			ajaxGet("cfg.ini", getValueFrominiFile);
+			responseCnt = 0;
+			console.log("not ready state");
+		}
+		*/
+		return; 
+	}
+		
+		var resp = xhr.responseText;
+		var settingVal;
+		settingVal = getIniStr("width" + queryString["toolNo"], "rectOption", resp);
+		if(settingVal == 0){
+			document.getElementById("dbOption").value = "width";
+		}else if(settingVal == 1){
+			document.getElementById("dbOption").value = "gap";
+		}else if(settingVal == 2){
+			document.getElementById("dbOption").value = "pitch";
+		}else{
+			document.getElementById("dbOption").value = "count";
+		}
+		settingVal = getIniStr("width" + queryString["toolNo"], "rectStartX", resp);
+		$("#tbStartX").val(settingVal);
+		settingVal = getIniStr("width" + queryString["toolNo"], "rectStartY", resp);
+		$("#tbStartY").val(settingVal);
+		settingVal = getIniStr("width" + queryString["toolNo"], "rectEndX", resp);
+		$("#tbEndX").val(settingVal);
+		settingVal = getIniStr("width" + queryString["toolNo"], "rectEndY", resp);
+		$("#tbEndY").val(settingVal);
+		settingVal = getIniStr("width" + queryString["toolNo"], "rectWidth", resp);
+		$("#tbWidth").val(settingVal);
+		settingVal = getIniStr("width" + queryString["toolNo"], "rectColor", resp);
+		if(settingVal == 1){
+			document.getElementById("cbObjectColor").checked = true;
+		}else{
+			document.getElementById("cbObjectColor").checked = false;
+		}
+		
+		
+		settingVal = getIniStr("width" + queryString["toolNo"], "nominalValue", resp);
+		$("#nv").val(settingVal);
+		settingVal = getIniStr("width" + queryString["toolNo"], "positive", resp);
+		$("#plus").val(settingVal);
+		settingVal = getIniStr("width" + queryString["toolNo"], "negative", resp);
+		$("#minus").val(settingVal);
+		//update to rectangle values
+		updateObjectsFunction();
+		isValuesRetrieved = true;
+		canvasValid = false;
 }
 
 // If you dont want to use <body onLoad='init()'>
