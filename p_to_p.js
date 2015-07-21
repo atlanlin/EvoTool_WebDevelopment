@@ -1008,7 +1008,7 @@ function getSettingFrominiFile()
 		$("#point1EndY").val(settingVal);
 		settingVal = getIniStr("ptp" + queryString["toolNo"], "p1rectWidth", resp);
 		$("#point1Width").val(settingVal);
-		settingVal = getIniStr("ptp" + queryString["toolNo"], "p1rectColor", resp);
+		settingVal = getIniStr("ptp" + queryString["toolNo"], "p1recttransition", resp);
 		if(settingVal === 0){
 			document.getElementById("point1LOD").checked = true;
 			document.getElementById("point1DOL").checked = false;
@@ -1028,7 +1028,7 @@ function getSettingFrominiFile()
 		$("#point2EndY").val(settingVal);
 		settingVal = getIniStr("ptp" + queryString["toolNo"], "p2rectWidth", resp);
 		$("#point2Width").val(settingVal);
-		settingVal = getIniStr("ptp" + queryString["toolNo"], "p2rectColor", resp);
+		settingVal = getIniStr("ptp" + queryString["toolNo"], "p2recttransition", resp);
 		if(settingVal === 0){
 			document.getElementById("point2LOD").checked = true;
 			document.getElementById("point2DOL").checked = false;
@@ -1038,11 +1038,11 @@ function getSettingFrominiFile()
 		}
 		
 		
-		settingVal = getIniStr("ptp" + queryString["toolNo"], "norminal", resp);
+		settingVal = getIniStr("ptp" + queryString["toolNo"], "nominalValue", resp);
 		$("#nv").val(settingVal);
-		settingVal = getIniStr("ptp" + queryString["toolNo"], "plusTolerance", resp);
+		settingVal = getIniStr("ptp" + queryString["toolNo"], "positive", resp);
 		$("#plus").val(settingVal);
-		settingVal = getIniStr("ptp" + queryString["toolNo"], "minusTolerance", resp);
+		settingVal = getIniStr("ptp" + queryString["toolNo"], "negative", resp);
 		$("#minus").val(settingVal);
 		//update to rectangle values
 		updateObjectsFunction();
