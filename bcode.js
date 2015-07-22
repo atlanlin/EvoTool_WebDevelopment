@@ -267,7 +267,7 @@
 		
 		$("#loadValues").click(function(){
 			//get settings
-			ajaxGet("barcode.ini", getParameterFrominiFile);
+			ajaxGet("cfg.ini", getParameterFrominiFile);
 			this.disabled = true;
 			this.style.color="gray";
 			undisableBtn("fileCR");
@@ -346,7 +346,7 @@
 		if (xhr.readyState != 4)  { 
 			responseCount++;
 			if(responseCount > 2){
-				ajaxGet("barcode.ini", getParameterFrominiFile);
+				ajaxGet("cfg.ini", getParameterFrominiFile);
 				responseCount = 0;
 			}
 			return; 
@@ -405,8 +405,6 @@
 	function getSourceMode(bcSourceMode, bcSourceWindowLeft, bcSourceWindowTop, bcSourceWindowWidth, bcSourceWindowHeight) {
 		if (bcSourceMode == 4) {
 			$("#wholeWindow").prop("checked", true);
-			document.getElementById("windowBoundary").style.display="none";
-			rectRoiFlag=false;
 		}
 		else if (bcSourceMode == 3) {
 
