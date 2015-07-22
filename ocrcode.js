@@ -15,7 +15,7 @@
 	var WIDTH;
 	var HEIGHT;
 	var INTERVAL = 20;	// how often, in milliseconds, we check to see if a redraw is needed
-	var EVOINTERVAL = 2000;
+	var EVOINTERVAL = 1000;
 	
 	var isDrag = false;
 	var isResizeDrag = false;
@@ -269,7 +269,7 @@
 		
 		$("#loadValues").click(function(){
 			//get settings
-			ajaxGet("cfg.ini", getParameterFrominiFile);
+			ajaxGet("ocr.ini", getParameterFrominiFile);
 			this.disabled = true;
 			this.style.color="gray";
 			undisableBtn("fileCR");
@@ -458,7 +458,7 @@
 		if (xhr.readyState != 4)  { 
 			responseCount++;
 			if(responseCount > 2){
-				ajaxGet("cfg.ini", getParameterFrominiFile);
+				ajaxGet("ocr.ini", getParameterFrominiFile);
 				responseCount = 0;
 			}
 			return; 
@@ -628,10 +628,8 @@
 	}
 	
 	function getSourceMode(ocrStartX, ocrEndX, ocrStartY, ocrEndY, ocrWidth) {
-		/* if ((ocrStartX == 0) && (ocrStartY == (IMG_HEIGHT/GLOBAL_SCALE)) && (ocrEndX > (IMG_WIDTH/GLOBAL_SCALE)) && (ocrWidth > (IMG_HEIGHT/GLOBAL_SCALE))) {
-			alert("before")
+		/* if ((ocrStartX == 0) && (ocrStartY >= ((IMG_HEIGHT/2)/GLOBAL_SCALE)) && (ocrEndX >= (IMG_WIDTH/GLOBAL_SCALE)) && (ocrWidth > (IMG_HEIGHT/GLOBAL_SCALE))) {
 			$("#wholeWindow").prop("checked", true);
-			alert("after")
 		}
 		else { */
 			$("#defineWindow").prop("checked", true);

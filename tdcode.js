@@ -15,7 +15,7 @@
 	var WIDTH;
 	var HEIGHT;
 	var INTERVAL = 20;	// how often, in milliseconds, we check to see if a redraw is needed
-	var EVOINTERVAL = 2000;
+	var EVOINTERVAL = 1000;
 	
 	var isDrag = false;
 	var isResizeDrag = false;
@@ -167,6 +167,7 @@
 	// initialize our canvas, add a ghost canvas, set draw loop
 	// then add everything we want to initially exist on the canvas
 	function init2() {
+	
 		// enable 2d code
 		ajaxGet('info.htm?cmd=%23021%3BEVO%20DataCode%3B2%3BGeneral.Enabled%3B1%23');
 		ajaxGet('info.htm?cmd=%23021%3BScript%20DataCode%3B2%3BGeneral.Enabled%3B1%23');
@@ -254,7 +255,7 @@
 		
 		$("#loadValues").click(function(){
 			//get settings
-			ajaxGet("cfg.ini", getParameterFrominiFile);
+			ajaxGet("datacode.ini", getParameterFrominiFile);
 			this.disabled = true;
 			this.style.color="gray";
 			undisableBtn("fileCR");
@@ -310,7 +311,7 @@
 		if (xhr.readyState != 4)  { 
 			responseCount++;
 			if(responseCount > 2){
-				ajaxGet("cfg.ini", getParameterFrominiFile);
+				ajaxGet("datacode.ini", getParameterFrominiFile);
 				responseCount = 0;
 			}
 			return; 
