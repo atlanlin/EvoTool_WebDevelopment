@@ -349,6 +349,8 @@
 	function getSourceMode(dcSourceMode, dcSourceWindowLeft, dcSourceWindowTop, dcSourceWindowWidth, dcSourceWindowHeight) {
 		if (dcSourceMode == 4) {
 			$("#wholeWindow").prop("checked", true);
+			document.getElementById("windowBoundary").style.display="none";
+			rectRoiFlag = false;
 		}
 		else if (dcSourceMode == 3) {
 
@@ -365,7 +367,7 @@
 			boxes2[0].w = roiW;
 			boxes2[0].h = roiH;
 			
-			rectRoiFlag=true;
+			rectRoiFlag = true;
 		}
 	}	
 

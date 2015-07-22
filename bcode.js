@@ -267,7 +267,7 @@
 			$("#resultDisplay").val("");
 			//evoComm();
 			ajaxGet("cfg.ini", getCodeValueFrominiFile);
-			setCookie("bcGlobalScaleCookie",GLOBAL_SCALE,1);
+			//setCookie("bcGlobalScaleCookie",GLOBAL_SCALE,1);
 		});
 		
 		$("#loadValues").click(function(){
@@ -410,6 +410,8 @@
 	function getSourceMode(bcSourceMode, bcSourceWindowLeft, bcSourceWindowTop, bcSourceWindowWidth, bcSourceWindowHeight) {
 		if (bcSourceMode == 4) {
 			$("#wholeWindow").prop("checked", true);
+			document.getElementById("windowBoundary").style.display="none";
+			rectRoiFlag = false;
 		}
 		else if (bcSourceMode == 3) {
 
@@ -433,7 +435,7 @@
 			boxes2[0].w = roiW;
 			boxes2[0].h = roiH;
 			
-			rectRoiFlag=true;
+			rectRoiFlag = true;
 
 			//}
 		}
