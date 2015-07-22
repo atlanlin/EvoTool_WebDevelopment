@@ -262,7 +262,6 @@ function getCodeValueFrominiFile()
 		return; 
 	}
 		var resp = xhr.responseText;
-		alert(xhr.status);
 		globalResult = getIniCodeStr("coderesult1=", resp);
 		
 		$("#resultDisplay").val(globalResult);
