@@ -287,6 +287,8 @@ function init2() {
 	});
 	
 	$("#loadValues").click(function(){
+			// add a large green rectangle
+			addRect(0, 0, 60, 65, 'rgba(0,205,0,0.7)');
 			//get settings
 			ajaxGet("width.ini", getSettingFrominiFile);
 			this.disabled = true;

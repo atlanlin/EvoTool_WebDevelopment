@@ -315,6 +315,11 @@ function init2() {
 		}
 	);
 	$("#loadValues").click(function(){
+			// add a large green rectangle
+			addRect(0, 0, 60, 65, 'rgba(0,205,0,0.7)');
+  
+			// add a green-blue rectangle
+			addRect(240, 120, 60, 65, 'rgba(2,165,165,0.7)');  
 			//get settings
 			ajaxGet("ptp.ini", getSettingFrominiFile);
 			this.disabled = true;
@@ -346,10 +351,10 @@ function init2() {
 	
   
   // add a large green rectangle
-  addRect(0, 0, 60, 65, 'rgba(0,205,0,0.7)');
+  //addRect(0, 0, 60, 65, 'rgba(0,205,0,0.7)');
   
   // add a green-blue rectangle
-  addRect(240, 120, 60, 65, 'rgba(2,165,165,0.7)');  
+  //addRect(240, 120, 60, 65, 'rgba(2,165,165,0.7)');  
   
   // add a smaller purple rectangle
   //addRect(45, 60, 25, 25, 'rgba(150,150,250,0.7)');
