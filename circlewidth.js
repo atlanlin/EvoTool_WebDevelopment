@@ -30,21 +30,22 @@ window.onload = function() {
 
 function initCircle() {
 	
-    drawCircle(circle, innerCircle);
 	
-	// mouse handler
-    element = document.getElementById('canvas');
-	element.style.height = IMG_HEIGHT;
-    element.addEventListener('mousedown', startDragging, false);
-    element.addEventListener('mousemove', drag, false);
-    element.addEventListener('mouseup', stopDragging, false);
-    element.addEventListener('mouseout', stopDragging, false);
+		drawCircle(circle, innerCircle);
+	
+		// mouse handler
+		element = document.getElementById('canvas');
+		element.style.height = IMG_HEIGHT;
+		element.addEventListener('mousedown', startDragging, false);
+		element.addEventListener('mousemove', drag, false);
+		element.addEventListener('mouseup', stopDragging, false);
+		element.addEventListener('mouseout', stopDragging, false);
 		
-	// touch screen handler
-	element.addEventListener('touchmove', t_Move);
+		// touch screen handler
+		element.addEventListener('touchmove', t_Move);
 
-	// update circle parameter at every certain interval
-	setInterval(updateCircleEvo, UPDATECIRCLEINTERVAL);
+		// update circle parameter at every certain interval
+		setInterval(updateCircleEvo, UPDATECIRCLEINTERVAL);
 	
 	// getting of result to display on text area
 	$("#btnMeasure").click(function(){
@@ -65,6 +66,8 @@ function initCircle() {
 			this.style.color="gray";
 			undisableBtn("fileMeasure");
 			undisableBtn("btnMeasure");
+			loadCoordinates = true;
+			
 		}
 	);
 	
@@ -323,47 +326,49 @@ function drawCircle(circle, innerCircle) {
 		endFrameX = IMG_WIDTH - 2;
 	}
 	
-	//drawing of arc
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    ctx.beginPath();
-    ctx.arc(circle.point.x, circle.point.y, circle.radius, calStartAngle, calEndAngle, false);
+	if(loadCoordinates == true)
+	{
+		//drawing of arc
+		ctx.clearRect(0, 0, canvas.width, canvas.height);
+		ctx.beginPath();
+		ctx.arc(circle.point.x, circle.point.y, circle.radius, calStartAngle, calEndAngle, false);
 	
-	ctx.globalAlpha=1;
+		ctx.globalAlpha=1;
 	
-	ctx.lineWidth = 3;
-    ctx.strokeStyle = "red";
-	ctx.stroke();
-	ctx.closePath();
-	//ctx.globalAlpha=0.4;
-	//ctx.fill();
+		ctx.lineWidth = 3;
+		ctx.strokeStyle = "red";
+		ctx.stroke();
+		ctx.closePath();
+		//ctx.globalAlpha=0.4;
+		//ctx.fill();
 
-	ctx.beginPath();
-    ctx.arc(circle.point.x, circle.point.y, innerCircle.radius, calStartAngle,calEndAngle,false);
+		ctx.beginPath();
+		ctx.arc(circle.point.x, circle.point.y, innerCircle.radius, calStartAngle,calEndAngle,false);
 	
-	ctx.globalAlpha=1;
+		ctx.globalAlpha=1;
 	
-	ctx.lineWidth = 3;
-    ctx.strokeStyle = "blue";
-	ctx.stroke();
-	ctx.closePath();
+		ctx.lineWidth = 3;
+		ctx.strokeStyle = "blue";
+		ctx.stroke();
+		ctx.closePath();
 	
-	//update values to the page
-	$("#xvalue").val(Math.round(circle.point.x));
-	$("#yvalue").val(Math.round(circle.point.y));
-	//$("#startvalue").val(startAngle);
-	//$("#anglevalue").val(EndAngle);
-	//$("#outervalue").val(Math.round(circle.radius));
-	//$("#innervalue").val(Math.round(innerCircle.radius));
+		//update values to the page
+		$("#xvalue").val(Math.round(circle.point.x));
+		$("#yvalue").val(Math.round(circle.point.y));
+		//$("#startvalue").val(startAngle);
+		//$("#anglevalue").val(EndAngle);
+		//$("#outervalue").val(Math.round(circle.radius));
+		//$("#innervalue").val(Math.round(innerCircle.radius));
 	
-	// update value of the label beside the slider
-	document.querySelector('#circlevolume').value = Math.round(circle.radius);
-	document.querySelector('#innercirclevolume').value = Math.round(innerCircle.radius);
+		// update value of the label beside the slider
+		document.querySelector('#circlevolume').value = Math.round(circle.radius);
+		document.querySelector('#innercirclevolume').value = Math.round(innerCircle.radius);
 	
-	document.querySelector('#startangle').value = Math.round(startAngle);
-	document.querySelector('#endangle').value = Math.round(EndAngle);
+		document.querySelector('#startangle').value = Math.round(startAngle);
+		document.querySelector('#endangle').value = Math.round(EndAngle);
 	
-	//updateCircleEvo();
-
+		//updateCircleEvo();
+	}
 }
 
 // increase or decrease the outer circle radius size
@@ -542,3 +547,5 @@ var EVOININame = "INI Circle";
 var INICat = "circle";
 
 var isValuesRetrieved = false;
+
+var loadCoordinates = false;

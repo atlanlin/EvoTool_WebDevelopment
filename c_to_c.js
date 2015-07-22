@@ -68,6 +68,7 @@ function initCircle() {
 			this.style.color="gray";
 			undisableBtn("fileMeasure");
 			undisableBtn("btnMeasure");
+			loadCoordinates = true;
 		}
 	);
 	
@@ -467,87 +468,89 @@ function drawCircle(circle, innerCircle) {
 		endFrameX = IMG_WIDTH - 2;
 	}
 	
-	//drawing of arc
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
+	if(loadCoordinates == true)
+	{
+		//drawing of arc
+		ctx.clearRect(0, 0, canvas.width, canvas.height);
 	
-	//circle 1
-    ctx.beginPath();
-    ctx.arc(circle.point.x, circle.point.y, circle.radius, calStartAngle1, calEndAngle1, false);
+		//circle 1
+		ctx.beginPath();
+		ctx.arc(circle.point.x, circle.point.y, circle.radius, calStartAngle1, calEndAngle1, false);
 	
-	ctx.globalAlpha=1;
+		ctx.globalAlpha=1;
 	
-	ctx.lineWidth = 3;
-    ctx.strokeStyle = "red";
-	ctx.stroke();
-	ctx.closePath();
-	//ctx.globalAlpha=0.4;
-	//ctx.fill();
+		ctx.lineWidth = 3;
+		ctx.strokeStyle = "red";
+		ctx.stroke();
+		ctx.closePath();
+		//ctx.globalAlpha=0.4;
+		//ctx.fill();
 
-	ctx.beginPath();
-    ctx.arc(circle.point.x, circle.point.y, innerCircle.radius, calStartAngle1, calEndAngle1,false);
+		ctx.beginPath();
+		ctx.arc(circle.point.x, circle.point.y, innerCircle.radius, calStartAngle1, calEndAngle1,false);
 	
-	ctx.globalAlpha=1;
+		ctx.globalAlpha=1;
 	
-	ctx.lineWidth = 3;
-    ctx.strokeStyle = "red";
-	ctx.stroke();
-	ctx.closePath();
+		ctx.lineWidth = 3;
+		ctx.strokeStyle = "red";
+		ctx.stroke();
+		ctx.closePath();
 	
-	//circle 2
-	//ctx.clearRect(0, 0, canvas.width, canvas.height);
-	ctx.beginPath();
-    ctx.arc(circle2.point.x, circle2.point.y, circle2.radius, calStartAngle2, calEndAngle2, false);
+		//circle 2
+		//ctx.clearRect(0, 0, canvas.width, canvas.height);
+		ctx.beginPath();
+		ctx.arc(circle2.point.x, circle2.point.y, circle2.radius, calStartAngle2, calEndAngle2, false);
 	
-	ctx.globalAlpha=1;
+		ctx.globalAlpha=1;
 	
-	ctx.lineWidth = 3;
-    ctx.strokeStyle = "blue";
-	ctx.stroke();
-	ctx.closePath();
-	//ctx.globalAlpha=0.4;
-	//ctx.fill();
+		ctx.lineWidth = 3;
+		ctx.strokeStyle = "blue";
+		ctx.stroke();
+		ctx.closePath();
+		//ctx.globalAlpha=0.4;
+		//ctx.fill();
 
-	ctx.beginPath();
-    ctx.arc(circle2.point.x, circle2.point.y, innerCircle2.radius, calStartAngle2, calEndAngle2,false);
+		ctx.beginPath();
+		ctx.arc(circle2.point.x, circle2.point.y, innerCircle2.radius, calStartAngle2, calEndAngle2,false);
 	
-	ctx.globalAlpha=1;
+		ctx.globalAlpha=1;
 	
-	ctx.lineWidth = 3;
-    ctx.strokeStyle = "blue";
-	ctx.stroke();
-	ctx.closePath();
+		ctx.lineWidth = 3;
+		ctx.strokeStyle = "blue";
+		ctx.stroke();
+		ctx.closePath();
 	
-	//update values to the page
-	$("#xvalue").val(Math.round(circle.point.x));
-	$("#yvalue").val(Math.round(circle.point.y));
-	//$("#startvalue").val(startAngle1);
-	//$("#anglevalue").val(EndAngle1);
-	//$("#outervalue").val(Math.round(circle.radius));
-	//$("#innervalue").val(Math.round(innerCircle.radius));
+		//update values to the page
+		$("#xvalue").val(Math.round(circle.point.x));
+		$("#yvalue").val(Math.round(circle.point.y));
+		//$("#startvalue").val(startAngle1);
+		//$("#anglevalue").val(EndAngle1);
+		//$("#outervalue").val(Math.round(circle.radius));
+		//$("#innervalue").val(Math.round(innerCircle.radius));
 	
-	$("#xvalue2").val(Math.round(circle2.point.x));
-	$("#yvalue2").val(Math.round(circle2.point.y));
-	//$("#startvalue2").val(startAngle2);
-	//$("#anglevalue2").val(EndAngle2);
-	//$("#outervalue2").val(Math.round(circle2.radius));
-	//$("#innervalue2").val(Math.round(innerCircle2.radius));
+		$("#xvalue2").val(Math.round(circle2.point.x));
+		$("#yvalue2").val(Math.round(circle2.point.y));
+		//$("#startvalue2").val(startAngle2);
+		//$("#anglevalue2").val(EndAngle2);
+		//$("#outervalue2").val(Math.round(circle2.radius));
+		//$("#innervalue2").val(Math.round(innerCircle2.radius));
 	
-	// update value of the label beside the slider
-	document.querySelector('#circlevolume').value = Math.round(circle.radius);
-	document.querySelector('#innercirclevolume').value = Math.round(innerCircle.radius);
+		// update value of the label beside the slider
+		document.querySelector('#circlevolume').value = Math.round(circle.radius);
+		document.querySelector('#innercirclevolume').value = Math.round(innerCircle.radius);
 	
-	document.querySelector('#startangle1').value = Math.round(startAngle1);
-	document.querySelector('#endangle1').value = Math.round(EndAngle1);
+		document.querySelector('#startangle1').value = Math.round(startAngle1);
+		document.querySelector('#endangle1').value = Math.round(EndAngle1);
 	
-	document.querySelector('#circlevolume2').value = Math.round(circle2.radius);
-	document.querySelector('#innercirclevolume2').value = Math.round(innerCircle2.radius);
+		document.querySelector('#circlevolume2').value = Math.round(circle2.radius);
+		document.querySelector('#innercirclevolume2').value = Math.round(innerCircle2.radius);
 	
-	document.querySelector('#startangle2').value = Math.round(startAngle2);
-	document.querySelector('#endangle2').value = Math.round(EndAngle2);
+		document.querySelector('#startangle2').value = Math.round(startAngle2);
+		document.querySelector('#endangle2').value = Math.round(EndAngle2);
 	
-	//updateCircleEvo();
-	//updateCircle2Evo();
-
+		//updateCircleEvo();
+		//updateCircle2Evo();
+	}
 }
 
 // increase or decrease the outer circle radius size
@@ -873,3 +876,5 @@ var EVOININame = "INI CTC";
 var INICat = "ctc";
 
 var isValuesRetrieved = false;
+
+var loadCoordinates = false;
