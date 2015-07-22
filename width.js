@@ -301,7 +301,7 @@ function init2() {
   
   
   // add a large green rectangle
-  addRect(0, 0, 60, 65, 'rgba(0,205,0,0.7)');
+  //addRect(0, 0, 60, 65, 'rgba(0,205,0,0.7)');
   
   // add a green-blue rectangle
   //addRect(240, 120, 40, 40, 'rgba(2,165,165,0.7)');  
