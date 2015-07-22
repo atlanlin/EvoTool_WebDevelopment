@@ -140,6 +140,8 @@
 				var tool = getValueByName("selectedTool");
 				var toolNo = document.getElementById("selectedNumber").value;
 				var requestedPage;
+				disableMeasureFunctions();
+				delay(1500);
 				switch(tool){
 					case "circle":
 						requestedPage="circlewidth.htm?";
@@ -218,6 +220,10 @@
 			
 		}
 		
+		function delay(ms) {
+			ms += new Date().getTime();
+			while (new Date() < ms){}
+		}
 		
 		function getValueByName(elementName){
 			var radioGroup = document.getElementsByName(elementName);
