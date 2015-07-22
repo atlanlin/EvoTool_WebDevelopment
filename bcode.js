@@ -57,6 +57,8 @@
 	
 	var parametersLoaded = false;
 	
+	var commandName = "EVO%20BarCode";
+	
 	// box object to hold data
 	// default width and height
 	function Box2() {
@@ -169,12 +171,9 @@
 	// initialize our canvas, add a ghost canvas, set draw loop
 	// then add everything we want to initially exist on the canvas
 	function init2() {
-		//for camera trigger
-		//ajaxGet("info.htm?cmd=%23021%3BCapture image%3B2%3BCaptureType%3B0%23");
-		ajaxGet("info.htm?cmd=%23021%3BCapture image%3B2%3BTriggeredCapture%3B0%23");
-			
+	
 		// enable barcode
-		ajaxGet('info.htm?cmd=%23021%3BEVO%20BarCode%3B2%3BGeneral.Enabled%3B1%23');
+		ajaxGet('info.htm?cmd=%23021%3B'+commandName+'%3B2%3BGeneral.Enabled%3B1%23');
 		ajaxGet('info.htm?cmd=%23021%3BScript%20BarCode%3B2%3BGeneral.Enabled%3B1%23');
 		
 		// disable 2d code and ocr in case they are still enabled
@@ -297,32 +296,32 @@
 	// consists of code type
 	function codeType() {
 		if(document.getElementById("abarcode").checked){
-			ajaxGet('info.htm?cmd=%23021%3BEVO%20BarCode%3B2%3BBarCodetype%3B0%23');
+			ajaxGet('info.htm?cmd=%23021%3B'+commandName+'%3B2%3BBarCodetype%3B0%23');
 		}
 		if(document.getElementById("mbarcode").checked){
 			if(document.getElementById("industrial").selected){
-				ajaxGet('info.htm?cmd=%23021%3BEVO%20BarCode%3B2%3BBarCodetype%3B1%23');
+				ajaxGet('info.htm?cmd=%23021%3B'+commandName+'%3B2%3BBarCodetype%3B1%23');
 			}
 			if(document.getElementById("interleaved").selected){
-				ajaxGet('info.htm?cmd=%23021%3BEVO%20BarCode%3B2%3BBarCodetype%3B2%23');
+				ajaxGet('info.htm?cmd=%23021%3B'+commandName+'%3B2%3BBarCodetype%3B2%23');
 			}
 			if(document.getElementById("code39").selected){
-				ajaxGet('info.htm?cmd=%23021%3BEVO%20BarCode%3B2%3BBarCodetype%3B3%23');
+				ajaxGet('info.htm?cmd=%23021%3B'+commandName+'%3B2%3BBarCodetype%3B3%23');
 			}
 			if(document.getElementById("code93").selected){
-				ajaxGet('info.htm?cmd=%23021%3BEVO%20BarCode%3B2%3BBarCodetype%3B4%23');
+				ajaxGet('info.htm?cmd=%23021%3B'+commandName+'%3B2%3BBarCodetype%3B4%23');
 			}
 			if(document.getElementById("code128").selected){
-				ajaxGet('info.htm?cmd=%23021%3BEVO%20BarCode%3B2%3BBarCodetype%3B5%23');
+				ajaxGet('info.htm?cmd=%23021%3B'+commandName+'%3B2%3BBarCodetype%3B5%23');
 			}
 			if(document.getElementById("ean8").selected){
-				ajaxGet('info.htm?cmd=%23021%3BEVO%20BarCode%3B2%3BBarCodetype%3B6%23');
+				ajaxGet('info.htm?cmd=%23021%3B'+commandName+'%3B2%3BBarCodetype%3B6%23');
 			}
 			if(document.getElementById("ean13").selected){
-				ajaxGet('info.htm?cmd=%23021%3BEVO%20BarCode%3B2%3BBarCodetype%3B7%23');
+				ajaxGet('info.htm?cmd=%23021%3B'+commandName+'%3B2%3BBarCodetype%3B7%23');
 			}
 			if(document.getElementById("pharmaCode").selected){
-				ajaxGet('info.htm?cmd=%23021%3BEVO%20BarCode%3B2%3BBarCodetype%3B8%23');
+				ajaxGet('info.htm?cmd=%23021%3B'+commandName+'%3B2%3BBarCodetype%3B8%23');
 			}
 		}
 	}
@@ -336,14 +335,14 @@
 		var height = boxes2[0].h * GLOBAL_SCALE;
 		
 		if (document.getElementById("wholeWindow").checked) {
-			ajaxGet('info.htm?cmd=%23021%3BEVO%20BarCode%3B2%3BSourceWindow.SourceMode%3B4%23');
+			ajaxGet('info.htm?cmd=%23021%3B'+commandName+'%3B2%3BSourceWindow.SourceMode%3B4%23');
 		}
 		if (document.getElementById("defineWindow").checked) {
-			ajaxGet('info.htm?cmd=%23021%3BEVO%20BarCode%3B2%3BSourceWindow.SourceMode%3B3%23');
-			ajaxGet('info.htm?cmd=%23021%3BEVO%20BarCode%3B1%3BSourceWindow.SourceWindow.Left%3B'+startX+'%23');
-			ajaxGet('info.htm?cmd=%23021%3BEVO%20BarCode%3B1%3BSourceWindow.SourceWindow.Top%3B'+startY+'%23');
-			ajaxGet('info.htm?cmd=%23021%3BEVO%20BarCode%3B1%3BSourceWindow.SourceWindow.Width%3B'+width+'%23');
-			ajaxGet('info.htm?cmd=%23021%3BEVO%20BarCode%3B1%3BSourceWindow.SourceWindow.Height%3B'+height+'%23');
+			ajaxGet('info.htm?cmd=%23021%3B'+commandName+'%3B2%3BSourceWindow.SourceMode%3B3%23');
+			ajaxGet('info.htm?cmd=%23021%3B'+commandName+'%3B1%3BSourceWindow.SourceWindow.Left%3B'+startX+'%23');
+			ajaxGet('info.htm?cmd=%23021%3B'+commandName+'%3B1%3BSourceWindow.SourceWindow.Top%3B'+startY+'%23');
+			ajaxGet('info.htm?cmd=%23021%3B'+commandName+'%3B1%3BSourceWindow.SourceWindow.Width%3B'+width+'%23');
+			ajaxGet('info.htm?cmd=%23021%3B'+commandName+'%3B1%3BSourceWindow.SourceWindow.Height%3B'+height+'%23');
 		}
 	}
 

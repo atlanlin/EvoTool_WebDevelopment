@@ -1,0 +1,3057 @@
+EVT 
+EYEVISION_VERSION 
+FILE_VERSION 
+CREATED 
+CREATED_BY 
+LAST_MODIFIED 22.07.2015 16:28:37
+LAST_MODIFIED_BY 
+START_PARM_LIST 
+  KEY 1
+    ClassVersion 9
+    CKGENERAL 
+      ClassVersion 1
+      Position 1
+      CommandType 1
+      CommandName Capture image
+      Enabled 1
+      Hidden 0
+      GraficMode 2
+      TextMode 2
+      ImageMemory 0
+      InvertResult 0
+      Memo 
+    END_CKGENERAL 
+    CKRESULT 
+      ClassVersion 1
+      Name Capture image
+      EnterResultToRTDisplay 0
+      RTDisplayIndex 0
+      RTWidthOfToleranceRegion 80
+      CKEVALUATION 
+        ClassVersion 3
+        GlobalToleranceIndex -1
+        UseWarningTolerances 0
+        NominalValue 0,0
+        PlusTolerance 10000,0
+        MinusTolerance 0,0
+        WarnPlusTolerance 0,0
+        WarnMinusTolerance 0,0
+        DynamicEvaluation 0
+        FileName 
+        Section 
+        CorrectionActive 0
+        CorrectionType 0
+        EnableAutoTeachIn 1
+        NumberOfUsedCorrections 0
+      END_CKEVALUATION 
+      CKSTATISTIC 
+        ClassVersion 1
+        EnterToStatistic 0
+        Index -1
+      END_CKSTATISTIC 
+    END_CKRESULT 
+    CaptureWithVIC 0
+    CaptureType 2
+    SaveType 0
+    OnlyOnActivate 0
+    SaveWithGrafic 0
+    TriggeredCapture 0
+    ApplyTimeout 0
+    CaptureWithFlash 0
+    NumberOfCyclicFiles 10
+    CurrentCycleNumber 2
+    TriggerTimeout 0
+    TriggerInputLine 0
+    MinimumSignalDuration 0
+    FileName C:/Users/user3/Desktop/ocr640480.bmp
+    AVIframes 1
+    AVImode 0
+    HWTriggeredCapture 0
+    CaptureWithVIC2 1
+    DualSnap 0
+    ImageMem2 1
+    ImageAdjust 0
+    ImageRefresh 0
+    SourceImageMode 0
+    SourceVIC 0
+    LoadOption 1
+    LoadImageIndex 0
+    LoadDirectory C:/Program Files (x86)/VizCam/SmartBuilder2.6.056/Devices/PC_Local/Images/DMC
+    RawDataConversionActive 0
+    RawDataType 1
+    PixelDataSize 2
+    ByteOrder 0
+    NumberOfChannels 1
+    ChannelOrder 0
+    DataRangeLow 0,0
+    DataRangeHigh 65535,0
+    UseDisplayValues 1
+    DisplayRangeLow 0,0
+    DisplayRangeHigh 65535,0
+    DeleteFile 0
+    FileNameToGlobalString 0
+    CKPICKUP_TYPE_WRITE 
+      ClassVersion 1
+      Name 
+      PickupObjectType 5
+      PickupListIndex 34652
+    END_CKPICKUP_TYPE_WRITE 
+    TeachInCounter 0
+  END_KEY 1
+  KEY 2
+    ClassVersion 1
+    CKGENERAL 
+      ClassVersion 1
+      Position 3
+      CommandType 10010000
+      CommandName EVO BarCode
+      Enabled 0
+      Hidden 0
+      GraficMode 2
+      TextMode 2
+      ImageMemory 0
+      InvertResult 0
+      Memo 
+    END_CKGENERAL 
+    CKRESULT 
+      ClassVersion 1
+      Name 
+      EnterResultToRTDisplay 0
+      RTDisplayIndex 0
+      RTWidthOfToleranceRegion 80
+      CKEVALUATION 
+        ClassVersion 3
+        GlobalToleranceIndex -1
+        UseWarningTolerances 0
+        NominalValue 0,0
+        PlusTolerance 10000,0
+        MinusTolerance 0,0
+        WarnPlusTolerance 0,0
+        WarnMinusTolerance 0,0
+        DynamicEvaluation 0
+        FileName 
+        Section 
+        CorrectionActive 0
+        CorrectionType 0
+        EnableAutoTeachIn 1
+        NumberOfUsedCorrections 0
+      END_CKEVALUATION 
+      CKSTATISTIC 
+        ClassVersion 1
+        EnterToStatistic 0
+        Index -1
+      END_CKSTATISTIC 
+    END_CKRESULT 
+    CKPICKUP_TYPE_WRITE 
+      ClassVersion 1
+      Name 
+      PickupObjectType 5
+      PickupListIndex 1632584
+    END_CKPICKUP_TYPE_WRITE 
+    LongParam1 0
+      CKSOURCEWINDOW 
+      ClassVersion 1
+      Name 
+      SourceMode 4
+      UseWorldCoordinates 0
+      CKWINDOW 
+        ClassVersion 1
+        Name 
+        Left 10,0
+        Top 10,0
+        Width 50,0
+        Height 50,0
+      END_CKWINDOW 
+      CKPOINT 
+        ClassVersion 1
+        Name 
+        X 0,0
+        Y 0,0
+      END_CKPOINT 
+      CKPICKUP_TYPE_READ 
+        ClassVersion 1
+        Name 
+        PickupObjectType 4
+        PickupListIndex -1
+      END_CKPICKUP_TYPE_READ 
+      END_CKSOURCEWINDOW 
+    BarCodetype 0
+    MinEle 2,0
+    MaxEle 18,0
+    OriEle 0,0
+    OriTol 90,0
+    EleDefault 0
+    ParameterType 0
+    ContentBool 0
+    CodeLengthBool 0
+    NumOfLenght 0
+    ContentString ***
+    SendStringBool 1
+    DisplayBool 1
+    SendStringISOIEC15415 0
+    ISOIEC15415DisplayBool 0
+    TeachInCounter 0
+  END_KEY 2
+  KEY 3
+    ClassVersion 7
+    CKGENERAL 
+      ClassVersion 1
+      Position 4
+      CommandType 137
+      CommandName INI BC FlushData
+      Enabled 0
+      Hidden 0
+      GraficMode 2
+      TextMode 2
+      ImageMemory 0
+      InvertResult 0
+      Memo 
+    END_CKGENERAL 
+    CKRESULT 
+      ClassVersion 1
+      Name INI - File access
+      EnterResultToRTDisplay 0
+      RTDisplayIndex 0
+      RTWidthOfToleranceRegion 80
+      CKEVALUATION 
+        ClassVersion 3
+        GlobalToleranceIndex -1
+        UseWarningTolerances 0
+        NominalValue 0,0
+        PlusTolerance 10000,0
+        MinusTolerance 0,0
+        WarnPlusTolerance 0,0
+        WarnMinusTolerance 0,0
+        DynamicEvaluation 0
+        FileName 
+        Section 
+        CorrectionActive 0
+        CorrectionType 0
+        EnableAutoTeachIn 1
+        NumberOfUsedCorrections 0
+      END_CKEVALUATION 
+      CKSTATISTIC 
+        ClassVersion 1
+        EnterToStatistic 0
+        Index -1
+      END_CKSTATISTIC 
+    END_CKRESULT 
+    Entry 0,0
+    AccessType 6
+    ObjectType 1
+    RegisterIndex 0
+    UpdateFile 0
+    ApplyCorrection 0
+    CorrectionType 1
+    VariableType 2
+    ConstantValue 0,0
+    IniFileName C:/temp/wwwroot/cfg.ini
+    SegmentName barcode
+    EntryName coderesult1
+    PointType 3
+    PointRegisterIndex 0
+    CKPICKUP_TYPE_READ 
+      ClassVersion 1
+      Name 
+      PickupObjectType 0
+      PickupListIndex 363572
+    END_CKPICKUP_TYPE_READ 
+    CKPICKUP_TYPE_READ 
+      ClassVersion 1
+      Name 
+      PickupObjectType 0
+      PickupListIndex -1
+    END_CKPICKUP_TYPE_READ 
+    TextStringType 0
+    TextString 
+    WriteSendString 1
+    SendStringWriteType 0
+    SeparationIndex 0
+    SegmentType 0
+    EntryType 0
+    FloatingPointPrecision 4
+    FloatingPointMode 1
+    IniFileSource 0
+    CKPICKUP_TYPE_WRITE 
+      ClassVersion 1
+      Name 
+      PickupObjectType 0
+      PickupListIndex 4720360
+    END_CKPICKUP_TYPE_WRITE 
+    TeachInCounter 0
+  END_KEY 3
+  KEY 4
+    ClassVersion 7
+    CKGENERAL 
+      ClassVersion 1
+      Position 5
+      CommandType 137
+      CommandName INI BC CodeData
+      Enabled 0
+      Hidden 0
+      GraficMode 2
+      TextMode 2
+      ImageMemory 0
+      InvertResult 0
+      Memo 
+    END_CKGENERAL 
+    CKRESULT 
+      ClassVersion 1
+      Name INI - File access
+      EnterResultToRTDisplay 0
+      RTDisplayIndex 0
+      RTWidthOfToleranceRegion 80
+      CKEVALUATION 
+        ClassVersion 3
+        GlobalToleranceIndex -1
+        UseWarningTolerances 0
+        NominalValue 0,0
+        PlusTolerance 10000,0
+        MinusTolerance 0,0
+        WarnPlusTolerance 0,0
+        WarnMinusTolerance 0,0
+        DynamicEvaluation 0
+        FileName 
+        Section 
+        CorrectionActive 0
+        CorrectionType 0
+        EnableAutoTeachIn 1
+        NumberOfUsedCorrections 0
+      END_CKEVALUATION 
+      CKSTATISTIC 
+        ClassVersion 1
+        EnterToStatistic 0
+        Index -1
+      END_CKSTATISTIC 
+    END_CKRESULT 
+    Entry 0,0
+    AccessType 1
+    ObjectType 1
+    RegisterIndex 0
+    UpdateFile 0
+    ApplyCorrection 0
+    CorrectionType 1
+    VariableType 2
+    ConstantValue 0,0
+    IniFileName C:/temp/wwwroot/cfg.ini
+    SegmentName barcode
+    EntryName barcoderesult
+    PointType 3
+    PointRegisterIndex 0
+    CKPICKUP_TYPE_READ 
+      ClassVersion 1
+      Name 
+      PickupObjectType 0
+      PickupListIndex 363572
+    END_CKPICKUP_TYPE_READ 
+    CKPICKUP_TYPE_READ 
+      ClassVersion 1
+      Name 
+      PickupObjectType 0
+      PickupListIndex -1
+    END_CKPICKUP_TYPE_READ 
+    TextStringType 0
+    TextString 
+    WriteSendString 1
+    SendStringWriteType 0
+    SeparationIndex 0
+    SegmentType 0
+    EntryType 0
+    FloatingPointPrecision 4
+    FloatingPointMode 1
+    IniFileSource 0
+    CKPICKUP_TYPE_WRITE 
+      ClassVersion 1
+      Name 
+      PickupObjectType 0
+      PickupListIndex 4712145
+    END_CKPICKUP_TYPE_WRITE 
+    TeachInCounter 0
+  END_KEY 4
+  KEY 5
+    ClassVersion 14
+    CKGENERAL 
+      ClassVersion 1
+      Position 6
+      CommandType 246
+      CommandName Send BC CodeData
+      Enabled 0
+      Hidden 0
+      GraficMode 2
+      TextMode 2
+      ImageMemory 0
+      InvertResult 0
+      Memo 
+    END_CKGENERAL 
+    CKRESULT 
+      ClassVersion 1
+      Name Text string
+      EnterResultToRTDisplay 0
+      RTDisplayIndex 0
+      RTWidthOfToleranceRegion 80
+      CKEVALUATION 
+        ClassVersion 3
+        GlobalToleranceIndex -1
+        UseWarningTolerances 0
+        NominalValue 0,0
+        PlusTolerance 10000,0
+        MinusTolerance 0,0
+        WarnPlusTolerance 0,0
+        WarnMinusTolerance 0,0
+        DynamicEvaluation 0
+        FileName 
+        Section 
+        CorrectionActive 0
+        CorrectionType 0
+        EnableAutoTeachIn 1
+        NumberOfUsedCorrections 0
+      END_CKEVALUATION 
+      CKSTATISTIC 
+        ClassVersion 1
+        EnterToStatistic 0
+        Index -1
+      END_CKSTATISTIC 
+    END_CKRESULT 
+    DetType 3
+    UseText 0
+    UseDate 0
+    UseWert 0
+    UsePoint 0
+    VariablesIndex 0
+    PointIndex 0
+    SeparationIndex 0
+    SendType 1
+    TextToDisplay 
+    Filename C:/Temp/wwwroot/cfg.ini
+    AddIntegerOnly 0
+    SeperatorAtStartOfString 1
+    PortNumber 0
+    WithQuotes 0
+    IPAddress 192.168.0.1
+    NetPort 4556
+    FloatingPointPrecision 2
+    FloatingPointMode 0
+    CKPICKUP_TYPE_READ 
+      ClassVersion 1
+      Name 
+      PickupObjectType 0
+      PickupListIndex -1
+    END_CKPICKUP_TYPE_READ 
+    CKPICKUP_TYPE_READ 
+      ClassVersion 1
+      Name 
+      PickupObjectType 0
+      PickupListIndex -1
+    END_CKPICKUP_TYPE_READ 
+    SourceModeVal 0
+    SourceModePoint 0
+    ReceiveType 0
+    SocketType 1
+    EndChar <NONE>
+    Timeout 5000
+    TextVarDir 0
+    TextVarEnterMode 2
+    CKPICKUP_TYPE_READ 
+      ClassVersion 1
+      Name 
+      PickupObjectType 0
+      PickupListIndex -1
+    END_CKPICKUP_TYPE_READ 
+    FilenameSource 0
+    CKPICKUP_TYPE_READ 
+      ClassVersion 1
+      Name 
+      PickupObjectType 0
+      PickupListIndex -1
+    END_CKPICKUP_TYPE_READ 
+    StringFormat String
+    Separator ;
+    TrimSeparator 1
+    ParserOutput 3
+    NoPickupEntriesString 0
+    NoPickupEntriesValue 0
+    CloseAfterCommunication 1
+    DataFormat 0
+    CKPICKUP_TYPE_WRITE 
+      ClassVersion 1
+      Name 
+      PickupObjectType 0
+      PickupListIndex 4695802
+    END_CKPICKUP_TYPE_WRITE 
+    TeachInCounter 0
+  END_KEY 5
+  KEY 6
+    ClassVersion 1
+    CKGENERAL 
+      ClassVersion 1
+      Position 8
+      CommandType 10010001
+      CommandName EVO DataCode
+      Enabled 0
+      Hidden 0
+      GraficMode 2
+      TextMode 2
+      ImageMemory 0
+      InvertResult 0
+      Memo 
+    END_CKGENERAL 
+    CKRESULT 
+      ClassVersion 1
+      Name 
+      EnterResultToRTDisplay 0
+      RTDisplayIndex 0
+      RTWidthOfToleranceRegion 80
+      CKEVALUATION 
+        ClassVersion 3
+        GlobalToleranceIndex -1
+        UseWarningTolerances 0
+        NominalValue 0,0
+        PlusTolerance 10000,0
+        MinusTolerance 0,0
+        WarnPlusTolerance 0,0
+        WarnMinusTolerance 0,0
+        DynamicEvaluation 0
+        FileName 
+        Section 
+        CorrectionActive 0
+        CorrectionType 0
+        EnableAutoTeachIn 1
+        NumberOfUsedCorrections 0
+      END_CKEVALUATION 
+      CKSTATISTIC 
+        ClassVersion 1
+        EnterToStatistic 0
+        Index -1
+      END_CKSTATISTIC 
+    END_CKRESULT 
+    LongParam1 0
+      CKSOURCEWINDOW 
+      ClassVersion 1
+      Name 
+      SourceMode 3
+      UseWorldCoordinates 0
+      CKWINDOW 
+        ClassVersion 1
+        Name 
+        Left 10,0
+        Top 10,0
+        Width 50,0
+        Height 50,0
+      END_CKWINDOW 
+      CKPOINT 
+        ClassVersion 1
+        Name 
+        X 0,0
+        Y 0,0
+      END_CKPOINT 
+      CKPICKUP_TYPE_READ 
+        ClassVersion 1
+        Name 
+        PickupObjectType 4
+        PickupListIndex -1
+      END_CKPICKUP_TYPE_READ 
+      END_CKSOURCEWINDOW 
+    DataCodeType 1
+    RecType 0
+    ShapeType 0
+    PolarityType 0
+    MirrordType 0
+    Default 0
+    ModMinVal 1
+    ModMaxVal 100
+    SRowMinVal 8
+    SRowMaxVal 144
+    SColMinVal 10
+    SColMaxVal 144
+    QRSMinVal 21
+    QRSMaxVal 177
+    MQRSMinVal 11
+    MQRSMaxVal 17
+    ParameterType 0
+    SendStringBool 1
+    DisplayBool 1
+    SendStringISOIEC15415 0
+    ISOIEC15415DisplayBool 0
+    SendStringAIMDPM12006 0
+    AIMDPM12006DisplayBool 0
+    CKPICKUP_TYPE_WRITE 
+      ClassVersion 1
+      Name 
+      PickupObjectType 5
+      PickupListIndex 2311929
+    END_CKPICKUP_TYPE_WRITE 
+    TeachInCounter 0
+  END_KEY 6
+  KEY 7
+    ClassVersion 7
+    CKGENERAL 
+      ClassVersion 1
+      Position 9
+      CommandType 137
+      CommandName INI DC FlushData
+      Enabled 0
+      Hidden 0
+      GraficMode 2
+      TextMode 2
+      ImageMemory 0
+      InvertResult 0
+      Memo 
+    END_CKGENERAL 
+    CKRESULT 
+      ClassVersion 1
+      Name INI - File access
+      EnterResultToRTDisplay 0
+      RTDisplayIndex 0
+      RTWidthOfToleranceRegion 80
+      CKEVALUATION 
+        ClassVersion 3
+        GlobalToleranceIndex -1
+        UseWarningTolerances 0
+        NominalValue 0,0
+        PlusTolerance 10000,0
+        MinusTolerance 0,0
+        WarnPlusTolerance 0,0
+        WarnMinusTolerance 0,0
+        DynamicEvaluation 0
+        FileName 
+        Section 
+        CorrectionActive 0
+        CorrectionType 0
+        EnableAutoTeachIn 1
+        NumberOfUsedCorrections 0
+      END_CKEVALUATION 
+      CKSTATISTIC 
+        ClassVersion 1
+        EnterToStatistic 0
+        Index -1
+      END_CKSTATISTIC 
+    END_CKRESULT 
+    Entry 0,0
+    AccessType 6
+    ObjectType 1
+    RegisterIndex 0
+    UpdateFile 0
+    ApplyCorrection 0
+    CorrectionType 1
+    VariableType 2
+    ConstantValue 0,0
+    IniFileName C:/temp/wwwroot/cfg.ini
+    SegmentName datacode
+    EntryName coderesult1
+    PointType 3
+    PointRegisterIndex 0
+    CKPICKUP_TYPE_READ 
+      ClassVersion 1
+      Name 
+      PickupObjectType 0
+      PickupListIndex 363572
+    END_CKPICKUP_TYPE_READ 
+    CKPICKUP_TYPE_READ 
+      ClassVersion 1
+      Name 
+      PickupObjectType 0
+      PickupListIndex -1
+    END_CKPICKUP_TYPE_READ 
+    TextStringType 0
+    TextString 
+    WriteSendString 1
+    SendStringWriteType 0
+    SeparationIndex 0
+    SegmentType 0
+    EntryType 0
+    FloatingPointPrecision 4
+    FloatingPointMode 1
+    IniFileSource 0
+    CKPICKUP_TYPE_WRITE 
+      ClassVersion 1
+      Name 
+      PickupObjectType 0
+      PickupListIndex 4694282
+    END_CKPICKUP_TYPE_WRITE 
+    TeachInCounter 0
+  END_KEY 7
+  KEY 8
+    ClassVersion 7
+    CKGENERAL 
+      ClassVersion 1
+      Position 10
+      CommandType 137
+      CommandName INI DC CodeData
+      Enabled 0
+      Hidden 0
+      GraficMode 2
+      TextMode 2
+      ImageMemory 0
+      InvertResult 0
+      Memo 
+    END_CKGENERAL 
+    CKRESULT 
+      ClassVersion 1
+      Name INI - File access
+      EnterResultToRTDisplay 0
+      RTDisplayIndex 0
+      RTWidthOfToleranceRegion 80
+      CKEVALUATION 
+        ClassVersion 3
+        GlobalToleranceIndex -1
+        UseWarningTolerances 0
+        NominalValue 0,0
+        PlusTolerance 10000,0
+        MinusTolerance 0,0
+        WarnPlusTolerance 0,0
+        WarnMinusTolerance 0,0
+        DynamicEvaluation 0
+        FileName 
+        Section 
+        CorrectionActive 0
+        CorrectionType 0
+        EnableAutoTeachIn 1
+        NumberOfUsedCorrections 0
+      END_CKEVALUATION 
+      CKSTATISTIC 
+        ClassVersion 1
+        EnterToStatistic 0
+        Index -1
+      END_CKSTATISTIC 
+    END_CKRESULT 
+    Entry 0,0
+    AccessType 1
+    ObjectType 1
+    RegisterIndex 0
+    UpdateFile 0
+    ApplyCorrection 0
+    CorrectionType 1
+    VariableType 2
+    ConstantValue 0,0
+    IniFileName C:/temp/wwwroot/cfg.ini
+    SegmentName datacode
+    EntryName datacoderesult
+    PointType 3
+    PointRegisterIndex 0
+    CKPICKUP_TYPE_READ 
+      ClassVersion 1
+      Name 
+      PickupObjectType 0
+      PickupListIndex 363572
+    END_CKPICKUP_TYPE_READ 
+    CKPICKUP_TYPE_READ 
+      ClassVersion 1
+      Name 
+      PickupObjectType 0
+      PickupListIndex -1
+    END_CKPICKUP_TYPE_READ 
+    TextStringType 0
+    TextString 
+    WriteSendString 1
+    SendStringWriteType 0
+    SeparationIndex 0
+    SegmentType 0
+    EntryType 0
+    FloatingPointPrecision 4
+    FloatingPointMode 1
+    IniFileSource 0
+    CKPICKUP_TYPE_WRITE 
+      ClassVersion 1
+      Name 
+      PickupObjectType 0
+      PickupListIndex 4683067
+    END_CKPICKUP_TYPE_WRITE 
+    TeachInCounter 0
+  END_KEY 8
+  KEY 9
+    ClassVersion 14
+    CKGENERAL 
+      ClassVersion 1
+      Position 11
+      CommandType 246
+      CommandName Send DC CodeData
+      Enabled 0
+      Hidden 0
+      GraficMode 2
+      TextMode 2
+      ImageMemory 0
+      InvertResult 0
+      Memo 
+    END_CKGENERAL 
+    CKRESULT 
+      ClassVersion 1
+      Name Text string
+      EnterResultToRTDisplay 0
+      RTDisplayIndex 0
+      RTWidthOfToleranceRegion 80
+      CKEVALUATION 
+        ClassVersion 3
+        GlobalToleranceIndex -1
+        UseWarningTolerances 0
+        NominalValue 0,0
+        PlusTolerance 10000,0
+        MinusTolerance 0,0
+        WarnPlusTolerance 0,0
+        WarnMinusTolerance 0,0
+        DynamicEvaluation 0
+        FileName 
+        Section 
+        CorrectionActive 0
+        CorrectionType 0
+        EnableAutoTeachIn 1
+        NumberOfUsedCorrections 0
+      END_CKEVALUATION 
+      CKSTATISTIC 
+        ClassVersion 1
+        EnterToStatistic 0
+        Index -1
+      END_CKSTATISTIC 
+    END_CKRESULT 
+    DetType 3
+    UseText 0
+    UseDate 0
+    UseWert 0
+    UsePoint 0
+    VariablesIndex 0
+    PointIndex 0
+    SeparationIndex 0
+    SendType 1
+    TextToDisplay 
+    Filename C:/Temp/wwwroot/cfg.ini
+    AddIntegerOnly 0
+    SeperatorAtStartOfString 1
+    PortNumber 0
+    WithQuotes 0
+    IPAddress 192.168.0.1
+    NetPort 4556
+    FloatingPointPrecision 2
+    FloatingPointMode 0
+    CKPICKUP_TYPE_READ 
+      ClassVersion 1
+      Name 
+      PickupObjectType 0
+      PickupListIndex -1
+    END_CKPICKUP_TYPE_READ 
+    CKPICKUP_TYPE_READ 
+      ClassVersion 1
+      Name 
+      PickupObjectType 0
+      PickupListIndex -1
+    END_CKPICKUP_TYPE_READ 
+    SourceModeVal 0
+    SourceModePoint 0
+    ReceiveType 0
+    SocketType 1
+    EndChar <NONE>
+    Timeout 5000
+    TextVarDir 0
+    TextVarEnterMode 2
+    CKPICKUP_TYPE_READ 
+      ClassVersion 1
+      Name 
+      PickupObjectType 0
+      PickupListIndex -1
+    END_CKPICKUP_TYPE_READ 
+    FilenameSource 0
+    CKPICKUP_TYPE_READ 
+      ClassVersion 1
+      Name 
+      PickupObjectType 0
+      PickupListIndex -1
+    END_CKPICKUP_TYPE_READ 
+    StringFormat String
+    Separator ;
+    TrimSeparator 1
+    ParserOutput 3
+    NoPickupEntriesString 0
+    NoPickupEntriesValue 0
+    CloseAfterCommunication 1
+    DataFormat 0
+    CKPICKUP_TYPE_WRITE 
+      ClassVersion 1
+      Name 
+      PickupObjectType 0
+      PickupListIndex 4673913
+    END_CKPICKUP_TYPE_WRITE 
+    TeachInCounter 0
+  END_KEY 9
+  KEY 10
+    ClassVersion 1
+    CKGENERAL 
+      ClassVersion 1
+      Position 13
+      CommandType 10019111
+      CommandName EVO OCR
+      Enabled 0
+      Hidden 0
+      GraficMode 2
+      TextMode 2
+      ImageMemory 0
+      InvertResult 0
+      Memo 
+    END_CKGENERAL 
+    CKRESULT 
+      ClassVersion 1
+      Name 
+      EnterResultToRTDisplay 0
+      RTDisplayIndex 0
+      RTWidthOfToleranceRegion 80
+      CKEVALUATION 
+        ClassVersion 3
+        GlobalToleranceIndex -1
+        UseWarningTolerances 0
+        NominalValue 0,0
+        PlusTolerance 10000,0
+        MinusTolerance 0,0
+        WarnPlusTolerance 0,0
+        WarnMinusTolerance 0,0
+        DynamicEvaluation 0
+        FileName 
+        Section 
+        CorrectionActive 0
+        CorrectionType 0
+        EnableAutoTeachIn 1
+        NumberOfUsedCorrections 0
+      END_CKEVALUATION 
+      CKSTATISTIC 
+        ClassVersion 1
+        EnterToStatistic 0
+        Index -1
+      END_CKSTATISTIC 
+    END_CKRESULT 
+    LongParam1 0
+      CKSOURCEWINDOW 
+      ClassVersion 1
+      Name 
+      SourceMode 4
+      UseWorldCoordinates 0
+      CKWINDOW 
+        ClassVersion 1
+        Name 
+        Left 10,0
+        Top 10,0
+        Width 50,0
+        Height 50,0
+      END_CKWINDOW 
+      CKPOINT 
+        ClassVersion 1
+        Name 
+        X 0,0
+        Y 0,0
+      END_CKPOINT 
+      CKPICKUP_TYPE_READ 
+        ClassVersion 1
+        Name 
+        PickupObjectType 0
+        PickupListIndex -1
+      END_CKPICKUP_TYPE_READ 
+      END_CKSOURCEWINDOW 
+    stepType 0
+    ROIType 4
+    ROIX 100,0
+    ROIY 100,0
+    ROIW 100,0
+    ROIH 100,0
+    polarityType 0
+    bEliminateBorders 1
+    segmentationType 0
+    charROIType 0
+    charX 359,14893617
+    charY 128,51
+    charW 165,1
+    charH 239,14893617
+    dotType 0
+    slantType 0
+    jointType 0
+    charWidth 0
+    charHeight 0
+    strokeWidth 0
+    interpunctationType 0
+    fontNum 0
+    createNewFonts 0
+    newFontNum 0
+    corresChars 
+    rotateType 0
+    numLines 0
+    numChars 0
+    minConfidence 60
+    openDir C:/ProgramData/EVT/EyeVision/Devices/PC_Local/ocr/
+    saveDir C:/ProgramData/EVT/EyeVision/Devices/PC_Local/ocr/default
+    addtoTrainFile 0
+    remove 0
+    teach 0
+    samplePath 
+    bStroke 0
+    strokeROIType 0
+    strokeX 80,0
+    strokeY 80,0
+    strokeW 20,0
+    strokeH 50,0
+    referenceString 
+    teachReference 0
+    bnewFonts 0
+    bparameters 0
+    breference 0
+    teachRef 0
+    bResults 1
+    showOnIM0 1
+    showOnIM1 0
+    showPosition 0
+    PosX 100,0
+    PosY 100,0
+    FontSize 40
+    Worldbool 0
+    AutoCharW 95,3191489362
+    AutoCharH 50,2127659574
+    CKRECT_PROBE_POS 
+      ClassVersion 1
+      Width 69,4118
+      CKPOINT 
+        ClassVersion 1
+        Name Start point
+        X 48,7
+        Y 45,8824
+      END_CKPOINT 
+      CKPOINT 
+        ClassVersion 1
+        Name End point
+        X 531,5289916992
+        Y 45,8824
+      END_CKPOINT 
+    END_CKRECT_PROBE_POS 
+    dynamicPos 0
+    bMaxLines 0
+    MaxLines 1
+    bMaxChars 0
+    MaxChars 1
+    bReturnSeparators 0
+    ReturnInterpunc 0
+    highThresh 255
+    lowThresh 0
+    bThreshold 0
+    bAutoOptional 0
+    LoadOrCreate 0
+    minPixelArea 10
+    maxPixelArea 1000000000
+    bSourceVale 1
+    sourceIndex 0
+    useSourceVal 0
+    CKPICKUP_TYPE_READ 
+      ClassVersion 1
+      Name 
+      PickupObjectType 0
+      PickupListIndex -1
+    END_CKPICKUP_TYPE_READ 
+    bDelete 0
+    DeleteRow 0
+    DeleteColumn 0
+    ReTraining 0
+    bAutoCharSize 0
+    AutoCharX 94,468
+    AutoCharY 205,1
+    Display_Index 0
+    Result_Index 1
+    CKPICKUP_TYPE_WRITE 
+      ClassVersion 1
+      Name 
+      PickupObjectType 0
+      PickupListIndex 3409713
+    END_CKPICKUP_TYPE_WRITE 
+    TeachInCounter 0
+  END_KEY 10
+  KEY 11
+    ClassVersion 7
+    CKGENERAL 
+      ClassVersion 1
+      Position 14
+      CommandType 137
+      CommandName INI OCR FlushData 1
+      Enabled 0
+      Hidden 0
+      GraficMode 2
+      TextMode 2
+      ImageMemory 0
+      InvertResult 0
+      Memo 
+    END_CKGENERAL 
+    CKRESULT 
+      ClassVersion 1
+      Name INI - File access
+      EnterResultToRTDisplay 0
+      RTDisplayIndex 0
+      RTWidthOfToleranceRegion 80
+      CKEVALUATION 
+        ClassVersion 3
+        GlobalToleranceIndex -1
+        UseWarningTolerances 0
+        NominalValue 0,0
+        PlusTolerance 10000,0
+        MinusTolerance 0,0
+        WarnPlusTolerance 0,0
+        WarnMinusTolerance 0,0
+        DynamicEvaluation 0
+        FileName 
+        Section 
+        CorrectionActive 0
+        CorrectionType 0
+        EnableAutoTeachIn 1
+        NumberOfUsedCorrections 0
+      END_CKEVALUATION 
+      CKSTATISTIC 
+        ClassVersion 1
+        EnterToStatistic 0
+        Index -1
+      END_CKSTATISTIC 
+    END_CKRESULT 
+    Entry 0,0
+    AccessType 6
+    ObjectType 1
+    RegisterIndex 0
+    UpdateFile 0
+    ApplyCorrection 0
+    CorrectionType 1
+    VariableType 2
+    ConstantValue 0,0
+    IniFileName C:\temp\wwwroot\cfg.ini
+    SegmentName ocr1
+    EntryName coderesult1
+    PointType 3
+    PointRegisterIndex 0
+    CKPICKUP_TYPE_READ 
+      ClassVersion 1
+      Name 
+      PickupObjectType 0
+      PickupListIndex 363572
+    END_CKPICKUP_TYPE_READ 
+    CKPICKUP_TYPE_READ 
+      ClassVersion 1
+      Name 
+      PickupObjectType 0
+      PickupListIndex -1
+    END_CKPICKUP_TYPE_READ 
+    TextStringType 0
+    TextString 
+    WriteSendString 1
+    SendStringWriteType 0
+    SeparationIndex 0
+    SegmentType 0
+    EntryType 0
+    FloatingPointPrecision 4
+    FloatingPointMode 1
+    IniFileSource 0
+    CKPICKUP_TYPE_WRITE 
+      ClassVersion 1
+      Name 
+      PickupObjectType 0
+      PickupListIndex 4318718
+    END_CKPICKUP_TYPE_WRITE 
+    TeachInCounter 0
+  END_KEY 11
+  KEY 12
+    ClassVersion 7
+    CKGENERAL 
+      ClassVersion 1
+      Position 15
+      CommandType 137
+      CommandName INI OCR CodeData 1
+      Enabled 0
+      Hidden 0
+      GraficMode 2
+      TextMode 2
+      ImageMemory 0
+      InvertResult 0
+      Memo 
+    END_CKGENERAL 
+    CKRESULT 
+      ClassVersion 1
+      Name INI - File access
+      EnterResultToRTDisplay 0
+      RTDisplayIndex 0
+      RTWidthOfToleranceRegion 80
+      CKEVALUATION 
+        ClassVersion 3
+        GlobalToleranceIndex -1
+        UseWarningTolerances 0
+        NominalValue 0,0
+        PlusTolerance 10000,0
+        MinusTolerance 0,0
+        WarnPlusTolerance 0,0
+        WarnMinusTolerance 0,0
+        DynamicEvaluation 0
+        FileName 
+        Section 
+        CorrectionActive 0
+        CorrectionType 0
+        EnableAutoTeachIn 1
+        NumberOfUsedCorrections 0
+      END_CKEVALUATION 
+      CKSTATISTIC 
+        ClassVersion 1
+        EnterToStatistic 0
+        Index -1
+      END_CKSTATISTIC 
+    END_CKRESULT 
+    Entry 0,0
+    AccessType 1
+    ObjectType 1
+    RegisterIndex 0
+    UpdateFile 0
+    ApplyCorrection 0
+    CorrectionType 1
+    VariableType 2
+    ConstantValue 0,0
+    IniFileName C:\temp\wwwroot\cfg.ini
+    SegmentName ocr1
+    EntryName ocrresult1
+    PointType 3
+    PointRegisterIndex 0
+    CKPICKUP_TYPE_READ 
+      ClassVersion 1
+      Name 
+      PickupObjectType 0
+      PickupListIndex 363572
+    END_CKPICKUP_TYPE_READ 
+    CKPICKUP_TYPE_READ 
+      ClassVersion 1
+      Name 
+      PickupObjectType 0
+      PickupListIndex -1
+    END_CKPICKUP_TYPE_READ 
+    TextStringType 0
+    TextString 
+    WriteSendString 1
+    SendStringWriteType 0
+    SeparationIndex 0
+    SegmentType 0
+    EntryType 0
+    FloatingPointPrecision 4
+    FloatingPointMode 1
+    IniFileSource 0
+    CKPICKUP_TYPE_WRITE 
+      ClassVersion 1
+      Name 
+      PickupObjectType 0
+      PickupListIndex 4296552
+    END_CKPICKUP_TYPE_WRITE 
+    TeachInCounter 0
+  END_KEY 12
+  KEY 13
+    ClassVersion 14
+    CKGENERAL 
+      ClassVersion 1
+      Position 16
+      CommandType 246
+      CommandName Send OCR CodeData 1
+      Enabled 0
+      Hidden 0
+      GraficMode 2
+      TextMode 2
+      ImageMemory 0
+      InvertResult 0
+      Memo 
+    END_CKGENERAL 
+    CKRESULT 
+      ClassVersion 1
+      Name Text string
+      EnterResultToRTDisplay 0
+      RTDisplayIndex 0
+      RTWidthOfToleranceRegion 80
+      CKEVALUATION 
+        ClassVersion 3
+        GlobalToleranceIndex -1
+        UseWarningTolerances 0
+        NominalValue 0,0
+        PlusTolerance 10000,0
+        MinusTolerance 0,0
+        WarnPlusTolerance 0,0
+        WarnMinusTolerance 0,0
+        DynamicEvaluation 0
+        FileName 
+        Section 
+        CorrectionActive 0
+        CorrectionType 0
+        EnableAutoTeachIn 1
+        NumberOfUsedCorrections 0
+      END_CKEVALUATION 
+      CKSTATISTIC 
+        ClassVersion 1
+        EnterToStatistic 0
+        Index -1
+      END_CKSTATISTIC 
+    END_CKRESULT 
+    DetType 3
+    UseText 0
+    UseDate 0
+    UseWert 0
+    UsePoint 0
+    VariablesIndex 0
+    PointIndex 0
+    SeparationIndex 0
+    SendType 1
+    TextToDisplay 
+    Filename C:/Temp/wwwroot/cfg.ini
+    AddIntegerOnly 0
+    SeperatorAtStartOfString 1
+    PortNumber 0
+    WithQuotes 0
+    IPAddress 192.168.0.1
+    NetPort 4556
+    FloatingPointPrecision 2
+    FloatingPointMode 0
+    CKPICKUP_TYPE_READ 
+      ClassVersion 1
+      Name 
+      PickupObjectType 0
+      PickupListIndex -1
+    END_CKPICKUP_TYPE_READ 
+    CKPICKUP_TYPE_READ 
+      ClassVersion 1
+      Name 
+      PickupObjectType 0
+      PickupListIndex -1
+    END_CKPICKUP_TYPE_READ 
+    SourceModeVal 0
+    SourceModePoint 0
+    ReceiveType 0
+    SocketType 1
+    EndChar <NONE>
+    Timeout 5000
+    TextVarDir 0
+    TextVarEnterMode 2
+    CKPICKUP_TYPE_READ 
+      ClassVersion 1
+      Name 
+      PickupObjectType 0
+      PickupListIndex -1
+    END_CKPICKUP_TYPE_READ 
+    FilenameSource 0
+    CKPICKUP_TYPE_READ 
+      ClassVersion 1
+      Name 
+      PickupObjectType 0
+      PickupListIndex -1
+    END_CKPICKUP_TYPE_READ 
+    StringFormat String
+    Separator ;
+    TrimSeparator 1
+    ParserOutput 3
+    NoPickupEntriesString 0
+    NoPickupEntriesValue 0
+    CloseAfterCommunication 1
+    DataFormat 0
+    CKPICKUP_TYPE_WRITE 
+      ClassVersion 1
+      Name 
+      PickupObjectType 0
+      PickupListIndex 4317394
+    END_CKPICKUP_TYPE_WRITE 
+    TeachInCounter 0
+  END_KEY 13
+  KEY 14
+    ClassVersion 1
+    CKGENERAL 
+      ClassVersion 1
+      Position 18
+      CommandType 10019111
+      CommandName EVO OCR 2
+      Enabled 0
+      Hidden 0
+      GraficMode 2
+      TextMode 2
+      ImageMemory 0
+      InvertResult 0
+      Memo 
+    END_CKGENERAL 
+    CKRESULT 
+      ClassVersion 1
+      Name 
+      EnterResultToRTDisplay 0
+      RTDisplayIndex 0
+      RTWidthOfToleranceRegion 80
+      CKEVALUATION 
+        ClassVersion 3
+        GlobalToleranceIndex -1
+        UseWarningTolerances 0
+        NominalValue 0,0
+        PlusTolerance 10000,0
+        MinusTolerance 0,0
+        WarnPlusTolerance 0,0
+        WarnMinusTolerance 0,0
+        DynamicEvaluation 0
+        FileName 
+        Section 
+        CorrectionActive 0
+        CorrectionType 0
+        EnableAutoTeachIn 1
+        NumberOfUsedCorrections 0
+      END_CKEVALUATION 
+      CKSTATISTIC 
+        ClassVersion 1
+        EnterToStatistic 0
+        Index -1
+      END_CKSTATISTIC 
+    END_CKRESULT 
+    LongParam1 0
+      CKSOURCEWINDOW 
+      ClassVersion 1
+      Name 
+      SourceMode 4
+      UseWorldCoordinates 0
+      CKWINDOW 
+        ClassVersion 1
+        Name 
+        Left 10,0
+        Top 10,0
+        Width 50,0
+        Height 50,0
+      END_CKWINDOW 
+      CKPOINT 
+        ClassVersion 1
+        Name 
+        X 0,0
+        Y 0,0
+      END_CKPOINT 
+      CKPICKUP_TYPE_READ 
+        ClassVersion 1
+        Name 
+        PickupObjectType 0
+        PickupListIndex -1
+      END_CKPICKUP_TYPE_READ 
+      END_CKSOURCEWINDOW 
+    stepType 0
+    ROIType 4
+    ROIX 100,0
+    ROIY 100,0
+    ROIW 100,0
+    ROIH 100,0
+    polarityType 0
+    bEliminateBorders 1
+    segmentationType 0
+    charROIType 0
+    charX 359,14893617
+    charY 128,51
+    charW 165,1
+    charH 239,14893617
+    dotType 0
+    slantType 0
+    jointType 0
+    charWidth 0
+    charHeight 0
+    strokeWidth 0
+    interpunctationType 0
+    fontNum 0
+    createNewFonts 0
+    newFontNum 0
+    corresChars 
+    rotateType 0
+    numLines 0
+    numChars 0
+    minConfidence 60
+    openDir C:/ProgramData/EVT/EyeVision/Devices/PC_Local/ocr/
+    saveDir C:/ProgramData/EVT/EyeVision/Devices/PC_Local/ocr/default
+    addtoTrainFile 0
+    remove 0
+    teach 0
+    samplePath 
+    bStroke 0
+    strokeROIType 0
+    strokeX 80,0
+    strokeY 80,0
+    strokeW 20,0
+    strokeH 50,0
+    referenceString 
+    teachReference 0
+    bnewFonts 0
+    bparameters 0
+    breference 0
+    teachRef 0
+    bResults 1
+    showOnIM0 1
+    showOnIM1 0
+    showPosition 0
+    PosX 100,0
+    PosY 100,0
+    FontSize 40
+    Worldbool 0
+    AutoCharW 95,3191489362
+    AutoCharH 50,2127659574
+    CKRECT_PROBE_POS 
+      ClassVersion 1
+      Width 76,47
+      CKPOINT 
+        ClassVersion 1
+        Name Start point
+        X 65,1765181598
+        Y 297,647
+      END_CKPOINT 
+      CKPOINT 
+        ClassVersion 1
+        Name End point
+        X 551,5291
+        Y 297,647
+      END_CKPOINT 
+    END_CKRECT_PROBE_POS 
+    dynamicPos 0
+    bMaxLines 0
+    MaxLines 1
+    bMaxChars 0
+    MaxChars 1
+    bReturnSeparators 0
+    ReturnInterpunc 0
+    highThresh 255
+    lowThresh 0
+    bThreshold 0
+    bAutoOptional 0
+    LoadOrCreate 0
+    minPixelArea 10
+    maxPixelArea 1000000000
+    bSourceVale 1
+    sourceIndex 0
+    useSourceVal 0
+    CKPICKUP_TYPE_READ 
+      ClassVersion 1
+      Name 
+      PickupObjectType 0
+      PickupListIndex -1
+    END_CKPICKUP_TYPE_READ 
+    bDelete 0
+    DeleteRow 0
+    DeleteColumn 0
+    ReTraining 0
+    bAutoCharSize 0
+    AutoCharX 94,468
+    AutoCharY 205,1
+    Display_Index 0
+    Result_Index 1
+    CKPICKUP_TYPE_WRITE 
+      ClassVersion 1
+      Name 
+      PickupObjectType 0
+      PickupListIndex 3432714
+    END_CKPICKUP_TYPE_WRITE 
+    TeachInCounter 0
+  END_KEY 14
+  KEY 15
+    ClassVersion 7
+    CKGENERAL 
+      ClassVersion 1
+      Position 19
+      CommandType 137
+      CommandName INI OCR FlushData 2
+      Enabled 0
+      Hidden 0
+      GraficMode 2
+      TextMode 2
+      ImageMemory 0
+      InvertResult 0
+      Memo 
+    END_CKGENERAL 
+    CKRESULT 
+      ClassVersion 1
+      Name INI - File access
+      EnterResultToRTDisplay 0
+      RTDisplayIndex 0
+      RTWidthOfToleranceRegion 80
+      CKEVALUATION 
+        ClassVersion 3
+        GlobalToleranceIndex -1
+        UseWarningTolerances 0
+        NominalValue 0,0
+        PlusTolerance 10000,0
+        MinusTolerance 0,0
+        WarnPlusTolerance 0,0
+        WarnMinusTolerance 0,0
+        DynamicEvaluation 0
+        FileName 
+        Section 
+        CorrectionActive 0
+        CorrectionType 0
+        EnableAutoTeachIn 1
+        NumberOfUsedCorrections 0
+      END_CKEVALUATION 
+      CKSTATISTIC 
+        ClassVersion 1
+        EnterToStatistic 0
+        Index -1
+      END_CKSTATISTIC 
+    END_CKRESULT 
+    Entry 0,0
+    AccessType 6
+    ObjectType 1
+    RegisterIndex 0
+    UpdateFile 0
+    ApplyCorrection 0
+    CorrectionType 1
+    VariableType 2
+    ConstantValue 0,0
+    IniFileName C:\temp\wwwroot\cfg.ini
+    SegmentName ocr2
+    EntryName coderesult1
+    PointType 3
+    PointRegisterIndex 0
+    CKPICKUP_TYPE_READ 
+      ClassVersion 1
+      Name 
+      PickupObjectType 0
+      PickupListIndex 363572
+    END_CKPICKUP_TYPE_READ 
+    CKPICKUP_TYPE_READ 
+      ClassVersion 1
+      Name 
+      PickupObjectType 0
+      PickupListIndex -1
+    END_CKPICKUP_TYPE_READ 
+    TextStringType 0
+    TextString 
+    WriteSendString 1
+    SendStringWriteType 0
+    SeparationIndex 0
+    SegmentType 0
+    EntryType 0
+    FloatingPointPrecision 4
+    FloatingPointMode 1
+    IniFileSource 0
+    CKPICKUP_TYPE_WRITE 
+      ClassVersion 1
+      Name 
+      PickupObjectType 0
+      PickupListIndex 4340151
+    END_CKPICKUP_TYPE_WRITE 
+    TeachInCounter 0
+  END_KEY 15
+  KEY 16
+    ClassVersion 7
+    CKGENERAL 
+      ClassVersion 1
+      Position 20
+      CommandType 137
+      CommandName INI OCR CodeData 2
+      Enabled 0
+      Hidden 0
+      GraficMode 2
+      TextMode 2
+      ImageMemory 0
+      InvertResult 0
+      Memo 
+    END_CKGENERAL 
+    CKRESULT 
+      ClassVersion 1
+      Name INI - File access
+      EnterResultToRTDisplay 0
+      RTDisplayIndex 0
+      RTWidthOfToleranceRegion 80
+      CKEVALUATION 
+        ClassVersion 3
+        GlobalToleranceIndex -1
+        UseWarningTolerances 0
+        NominalValue 0,0
+        PlusTolerance 10000,0
+        MinusTolerance 0,0
+        WarnPlusTolerance 0,0
+        WarnMinusTolerance 0,0
+        DynamicEvaluation 0
+        FileName 
+        Section 
+        CorrectionActive 0
+        CorrectionType 0
+        EnableAutoTeachIn 1
+        NumberOfUsedCorrections 0
+      END_CKEVALUATION 
+      CKSTATISTIC 
+        ClassVersion 1
+        EnterToStatistic 0
+        Index -1
+      END_CKSTATISTIC 
+    END_CKRESULT 
+    Entry 0,0
+    AccessType 1
+    ObjectType 1
+    RegisterIndex 0
+    UpdateFile 0
+    ApplyCorrection 0
+    CorrectionType 1
+    VariableType 2
+    ConstantValue 0,0
+    IniFileName C:\temp\wwwroot\cfg.ini
+    SegmentName ocr2
+    EntryName ocrresult2
+    PointType 3
+    PointRegisterIndex 0
+    CKPICKUP_TYPE_READ 
+      ClassVersion 1
+      Name 
+      PickupObjectType 0
+      PickupListIndex 363572
+    END_CKPICKUP_TYPE_READ 
+    CKPICKUP_TYPE_READ 
+      ClassVersion 1
+      Name 
+      PickupObjectType 0
+      PickupListIndex -1
+    END_CKPICKUP_TYPE_READ 
+    TextStringType 0
+    TextString 
+    WriteSendString 1
+    SendStringWriteType 0
+    SeparationIndex 0
+    SegmentType 0
+    EntryType 0
+    FloatingPointPrecision 4
+    FloatingPointMode 1
+    IniFileSource 0
+    CKPICKUP_TYPE_WRITE 
+      ClassVersion 1
+      Name 
+      PickupObjectType 0
+      PickupListIndex 4334804
+    END_CKPICKUP_TYPE_WRITE 
+    TeachInCounter 0
+  END_KEY 16
+  KEY 17
+    ClassVersion 14
+    CKGENERAL 
+      ClassVersion 1
+      Position 21
+      CommandType 246
+      CommandName Send OCR CodeData 2
+      Enabled 0
+      Hidden 0
+      GraficMode 2
+      TextMode 2
+      ImageMemory 0
+      InvertResult 0
+      Memo 
+    END_CKGENERAL 
+    CKRESULT 
+      ClassVersion 1
+      Name Text string
+      EnterResultToRTDisplay 0
+      RTDisplayIndex 0
+      RTWidthOfToleranceRegion 80
+      CKEVALUATION 
+        ClassVersion 3
+        GlobalToleranceIndex -1
+        UseWarningTolerances 0
+        NominalValue 0,0
+        PlusTolerance 10000,0
+        MinusTolerance 0,0
+        WarnPlusTolerance 0,0
+        WarnMinusTolerance 0,0
+        DynamicEvaluation 0
+        FileName 
+        Section 
+        CorrectionActive 0
+        CorrectionType 0
+        EnableAutoTeachIn 1
+        NumberOfUsedCorrections 0
+      END_CKEVALUATION 
+      CKSTATISTIC 
+        ClassVersion 1
+        EnterToStatistic 0
+        Index -1
+      END_CKSTATISTIC 
+    END_CKRESULT 
+    DetType 3
+    UseText 0
+    UseDate 0
+    UseWert 0
+    UsePoint 0
+    VariablesIndex 0
+    PointIndex 0
+    SeparationIndex 0
+    SendType 1
+    TextToDisplay 
+    Filename C:/Temp/wwwroot/cfg.ini
+    AddIntegerOnly 0
+    SeperatorAtStartOfString 1
+    PortNumber 0
+    WithQuotes 0
+    IPAddress 192.168.0.1
+    NetPort 4556
+    FloatingPointPrecision 2
+    FloatingPointMode 0
+    CKPICKUP_TYPE_READ 
+      ClassVersion 1
+      Name 
+      PickupObjectType 0
+      PickupListIndex -1
+    END_CKPICKUP_TYPE_READ 
+    CKPICKUP_TYPE_READ 
+      ClassVersion 1
+      Name 
+      PickupObjectType 0
+      PickupListIndex -1
+    END_CKPICKUP_TYPE_READ 
+    SourceModeVal 0
+    SourceModePoint 0
+    ReceiveType 0
+    SocketType 1
+    EndChar <NONE>
+    Timeout 5000
+    TextVarDir 0
+    TextVarEnterMode 2
+    CKPICKUP_TYPE_READ 
+      ClassVersion 1
+      Name 
+      PickupObjectType 0
+      PickupListIndex -1
+    END_CKPICKUP_TYPE_READ 
+    FilenameSource 0
+    CKPICKUP_TYPE_READ 
+      ClassVersion 1
+      Name 
+      PickupObjectType 0
+      PickupListIndex -1
+    END_CKPICKUP_TYPE_READ 
+    StringFormat String
+    Separator ;
+    TrimSeparator 1
+    ParserOutput 3
+    NoPickupEntriesString 0
+    NoPickupEntriesValue 0
+    CloseAfterCommunication 1
+    DataFormat 0
+    CKPICKUP_TYPE_WRITE 
+      ClassVersion 1
+      Name 
+      PickupObjectType 0
+      PickupListIndex 4326218
+    END_CKPICKUP_TYPE_WRITE 
+    TeachInCounter 0
+  END_KEY 17
+  KEY 18
+    ClassVersion 1
+    CKGENERAL 
+      ClassVersion 1
+      Position 23
+      CommandType 10019111
+      CommandName EVO OCR 3
+      Enabled 0
+      Hidden 0
+      GraficMode 2
+      TextMode 2
+      ImageMemory 0
+      InvertResult 0
+      Memo 
+    END_CKGENERAL 
+    CKRESULT 
+      ClassVersion 1
+      Name 
+      EnterResultToRTDisplay 0
+      RTDisplayIndex 0
+      RTWidthOfToleranceRegion 80
+      CKEVALUATION 
+        ClassVersion 3
+        GlobalToleranceIndex -1
+        UseWarningTolerances 0
+        NominalValue 0,0
+        PlusTolerance 10000,0
+        MinusTolerance 0,0
+        WarnPlusTolerance 0,0
+        WarnMinusTolerance 0,0
+        DynamicEvaluation 0
+        FileName 
+        Section 
+        CorrectionActive 0
+        CorrectionType 0
+        EnableAutoTeachIn 1
+        NumberOfUsedCorrections 0
+      END_CKEVALUATION 
+      CKSTATISTIC 
+        ClassVersion 1
+        EnterToStatistic 0
+        Index -1
+      END_CKSTATISTIC 
+    END_CKRESULT 
+    LongParam1 0
+      CKSOURCEWINDOW 
+      ClassVersion 1
+      Name 
+      SourceMode 4
+      UseWorldCoordinates 0
+      CKWINDOW 
+        ClassVersion 1
+        Name 
+        Left 10,0
+        Top 10,0
+        Width 50,0
+        Height 50,0
+      END_CKWINDOW 
+      CKPOINT 
+        ClassVersion 1
+        Name 
+        X 0,0
+        Y 0,0
+      END_CKPOINT 
+      CKPICKUP_TYPE_READ 
+        ClassVersion 1
+        Name 
+        PickupObjectType 4
+        PickupListIndex -1
+      END_CKPICKUP_TYPE_READ 
+      END_CKSOURCEWINDOW 
+    stepType 2
+    ROIType 4
+    ROIX 100,0
+    ROIY 100,0
+    ROIW 100,0
+    ROIH 100,0
+    polarityType 1
+    bEliminateBorders 1
+    segmentationType 0
+    charROIType 0
+    charX 359,14893617
+    charY 128,51
+    charW 165,1
+    charH 239,14893617
+    dotType 1
+    slantType 0
+    jointType 0
+    charWidth 0
+    charHeight 0
+    strokeWidth 0
+    interpunctationType 0
+    fontNum 6
+    createNewFonts 0
+    newFontNum 0
+    corresChars 
+    rotateType 1
+    numLines 0
+    numChars 0
+    minConfidence 60
+    openDir C:/ProgramData/EVT/EyeVision/Devices/PC_Local/ocr/
+    saveDir C:/ProgramData/EVT/EyeVision/Devices/PC_Local/ocr/default
+    addtoTrainFile 0
+    remove 0
+    teach 0
+    samplePath 
+    bStroke 0
+    strokeROIType 0
+    strokeX 80,0
+    strokeY 80,0
+    strokeW 20,0
+    strokeH 50,0
+    referenceString 
+    teachReference 0
+    bnewFonts 0
+    bparameters 0
+    breference 0
+    teachRef 0
+    bResults 1
+    showOnIM0 1
+    showOnIM1 0
+    showPosition 0
+    PosX 100,0
+    PosY 100,0
+    FontSize 40
+    Worldbool 0
+    AutoCharW 95,3191489362
+    AutoCharH 50,2127659574
+    CKRECT_PROBE_POS 
+      ClassVersion 1
+      Width 121,17647
+      CKPOINT 
+        ClassVersion 1
+        Name Start point
+        X 69,8823529412
+        Y 222,3529411765
+      END_CKPOINT 
+      CKPOINT 
+        ClassVersion 1
+        Name End point
+        X 524,47
+        Y 222,3529411765
+      END_CKPOINT 
+    END_CKRECT_PROBE_POS 
+    dynamicPos 0
+    bMaxLines 0
+    MaxLines 1
+    bMaxChars 0
+    MaxChars 1
+    bReturnSeparators 0
+    ReturnInterpunc 0
+    highThresh 255
+    lowThresh 0
+    bThreshold 0
+    bAutoOptional 0
+    LoadOrCreate 0
+    minPixelArea 10
+    maxPixelArea 1000000000
+    bSourceVale 1
+    sourceIndex 0
+    useSourceVal 0
+    CKPICKUP_TYPE_READ 
+      ClassVersion 1
+      Name 
+      PickupObjectType 5
+      PickupListIndex -1
+    END_CKPICKUP_TYPE_READ 
+    bDelete 0
+    DeleteRow 0
+    DeleteColumn 0
+    ReTraining 0
+    bAutoCharSize 0
+    AutoCharX 94,468
+    AutoCharY 205,1
+    Display_Index 0
+    Result_Index 1
+    CKPICKUP_TYPE_WRITE 
+      ClassVersion 1
+      Name 
+      PickupObjectType 5
+      PickupListIndex 371092
+    END_CKPICKUP_TYPE_WRITE 
+    TeachInCounter 0
+  END_KEY 18
+  KEY 19
+    ClassVersion 7
+    CKGENERAL 
+      ClassVersion 1
+      Position 24
+      CommandType 137
+      CommandName INI OCR FlushData 3
+      Enabled 0
+      Hidden 0
+      GraficMode 2
+      TextMode 2
+      ImageMemory 0
+      InvertResult 0
+      Memo 
+    END_CKGENERAL 
+    CKRESULT 
+      ClassVersion 1
+      Name INI - File access
+      EnterResultToRTDisplay 0
+      RTDisplayIndex 0
+      RTWidthOfToleranceRegion 80
+      CKEVALUATION 
+        ClassVersion 3
+        GlobalToleranceIndex -1
+        UseWarningTolerances 0
+        NominalValue 0,0
+        PlusTolerance 10000,0
+        MinusTolerance 0,0
+        WarnPlusTolerance 0,0
+        WarnMinusTolerance 0,0
+        DynamicEvaluation 0
+        FileName 
+        Section 
+        CorrectionActive 0
+        CorrectionType 0
+        EnableAutoTeachIn 1
+        NumberOfUsedCorrections 0
+      END_CKEVALUATION 
+      CKSTATISTIC 
+        ClassVersion 1
+        EnterToStatistic 0
+        Index -1
+      END_CKSTATISTIC 
+    END_CKRESULT 
+    Entry 0,0
+    AccessType 6
+    ObjectType 1
+    RegisterIndex 0
+    UpdateFile 0
+    ApplyCorrection 0
+    CorrectionType 1
+    VariableType 2
+    ConstantValue 0,0
+    IniFileName C:\temp\wwwroot\cfg.ini
+    SegmentName ocr3
+    EntryName coderesult1
+    PointType 3
+    PointRegisterIndex 0
+    CKPICKUP_TYPE_READ 
+      ClassVersion 1
+      Name 
+      PickupObjectType 0
+      PickupListIndex 363572
+    END_CKPICKUP_TYPE_READ 
+    CKPICKUP_TYPE_READ 
+      ClassVersion 1
+      Name 
+      PickupObjectType 0
+      PickupListIndex -1
+    END_CKPICKUP_TYPE_READ 
+    TextStringType 0
+    TextString 
+    WriteSendString 1
+    SendStringWriteType 0
+    SeparationIndex 0
+    SegmentType 0
+    EntryType 0
+    FloatingPointPrecision 4
+    FloatingPointMode 1
+    IniFileSource 0
+    CKPICKUP_TYPE_WRITE 
+      ClassVersion 1
+      Name 
+      PickupObjectType 0
+      PickupListIndex 4667811
+    END_CKPICKUP_TYPE_WRITE 
+    TeachInCounter 0
+  END_KEY 19
+  KEY 20
+    ClassVersion 7
+    CKGENERAL 
+      ClassVersion 1
+      Position 25
+      CommandType 137
+      CommandName INI OCR CodeData 3
+      Enabled 0
+      Hidden 0
+      GraficMode 2
+      TextMode 2
+      ImageMemory 0
+      InvertResult 0
+      Memo 
+    END_CKGENERAL 
+    CKRESULT 
+      ClassVersion 1
+      Name INI - File access
+      EnterResultToRTDisplay 0
+      RTDisplayIndex 0
+      RTWidthOfToleranceRegion 80
+      CKEVALUATION 
+        ClassVersion 3
+        GlobalToleranceIndex -1
+        UseWarningTolerances 0
+        NominalValue 0,0
+        PlusTolerance 10000,0
+        MinusTolerance 0,0
+        WarnPlusTolerance 0,0
+        WarnMinusTolerance 0,0
+        DynamicEvaluation 0
+        FileName 
+        Section 
+        CorrectionActive 0
+        CorrectionType 0
+        EnableAutoTeachIn 1
+        NumberOfUsedCorrections 0
+      END_CKEVALUATION 
+      CKSTATISTIC 
+        ClassVersion 1
+        EnterToStatistic 0
+        Index -1
+      END_CKSTATISTIC 
+    END_CKRESULT 
+    Entry 0,0
+    AccessType 1
+    ObjectType 1
+    RegisterIndex 0
+    UpdateFile 0
+    ApplyCorrection 0
+    CorrectionType 1
+    VariableType 2
+    ConstantValue 0,0
+    IniFileName C:\temp\wwwroot\cfg.ini
+    SegmentName ocr3
+    EntryName ocrresult3
+    PointType 3
+    PointRegisterIndex 0
+    CKPICKUP_TYPE_READ 
+      ClassVersion 1
+      Name 
+      PickupObjectType 0
+      PickupListIndex 363572
+    END_CKPICKUP_TYPE_READ 
+    CKPICKUP_TYPE_READ 
+      ClassVersion 1
+      Name 
+      PickupObjectType 0
+      PickupListIndex -1
+    END_CKPICKUP_TYPE_READ 
+    TextStringType 0
+    TextString 
+    WriteSendString 1
+    SendStringWriteType 0
+    SeparationIndex 0
+    SegmentType 0
+    EntryType 0
+    FloatingPointPrecision 4
+    FloatingPointMode 1
+    IniFileSource 0
+    CKPICKUP_TYPE_WRITE 
+      ClassVersion 1
+      Name 
+      PickupObjectType 0
+      PickupListIndex 4679216
+    END_CKPICKUP_TYPE_WRITE 
+    TeachInCounter 0
+  END_KEY 20
+  KEY 21
+    ClassVersion 14
+    CKGENERAL 
+      ClassVersion 1
+      Position 26
+      CommandType 246
+      CommandName Send OCR CodeData 3
+      Enabled 0
+      Hidden 0
+      GraficMode 2
+      TextMode 2
+      ImageMemory 0
+      InvertResult 0
+      Memo 
+    END_CKGENERAL 
+    CKRESULT 
+      ClassVersion 1
+      Name Text string
+      EnterResultToRTDisplay 0
+      RTDisplayIndex 0
+      RTWidthOfToleranceRegion 80
+      CKEVALUATION 
+        ClassVersion 3
+        GlobalToleranceIndex -1
+        UseWarningTolerances 0
+        NominalValue 0,0
+        PlusTolerance 10000,0
+        MinusTolerance 0,0
+        WarnPlusTolerance 0,0
+        WarnMinusTolerance 0,0
+        DynamicEvaluation 0
+        FileName 
+        Section 
+        CorrectionActive 0
+        CorrectionType 0
+        EnableAutoTeachIn 1
+        NumberOfUsedCorrections 0
+      END_CKEVALUATION 
+      CKSTATISTIC 
+        ClassVersion 1
+        EnterToStatistic 0
+        Index -1
+      END_CKSTATISTIC 
+    END_CKRESULT 
+    DetType 3
+    UseText 0
+    UseDate 0
+    UseWert 0
+    UsePoint 0
+    VariablesIndex 0
+    PointIndex 0
+    SeparationIndex 0
+    SendType 1
+    TextToDisplay 
+    Filename C:/Temp/wwwroot/cfg.ini
+    AddIntegerOnly 0
+    SeperatorAtStartOfString 1
+    PortNumber 0
+    WithQuotes 0
+    IPAddress 192.168.0.1
+    NetPort 4556
+    FloatingPointPrecision 2
+    FloatingPointMode 0
+    CKPICKUP_TYPE_READ 
+      ClassVersion 1
+      Name 
+      PickupObjectType 0
+      PickupListIndex -1
+    END_CKPICKUP_TYPE_READ 
+    CKPICKUP_TYPE_READ 
+      ClassVersion 1
+      Name 
+      PickupObjectType 0
+      PickupListIndex -1
+    END_CKPICKUP_TYPE_READ 
+    SourceModeVal 0
+    SourceModePoint 0
+    ReceiveType 0
+    SocketType 1
+    EndChar <NONE>
+    Timeout 5000
+    TextVarDir 0
+    TextVarEnterMode 2
+    CKPICKUP_TYPE_READ 
+      ClassVersion 1
+      Name 
+      PickupObjectType 0
+      PickupListIndex -1
+    END_CKPICKUP_TYPE_READ 
+    FilenameSource 0
+    CKPICKUP_TYPE_READ 
+      ClassVersion 1
+      Name 
+      PickupObjectType 0
+      PickupListIndex -1
+    END_CKPICKUP_TYPE_READ 
+    StringFormat String
+    Separator ;
+    TrimSeparator 1
+    ParserOutput 3
+    NoPickupEntriesString 0
+    NoPickupEntriesValue 0
+    CloseAfterCommunication 1
+    DataFormat 0
+    CKPICKUP_TYPE_WRITE 
+      ClassVersion 1
+      Name 
+      PickupObjectType 0
+      PickupListIndex 4681817
+    END_CKPICKUP_TYPE_WRITE 
+    TeachInCounter 0
+  END_KEY 21
+  KEY 22
+    ClassVersion 4
+    CKGENERAL 
+      ClassVersion 1
+      Position 28
+      CommandType 1040
+      CommandName Script BarCode
+      Enabled 0
+      Hidden 0
+      GraficMode 2
+      TextMode 2
+      ImageMemory 0
+      InvertResult 0
+      Memo 
+    END_CKGENERAL 
+    CKRESULT 
+      ClassVersion 1
+      Name Script interpreter (BASIC)
+      EnterResultToRTDisplay 0
+      RTDisplayIndex 0
+      RTWidthOfToleranceRegion 80
+      CKEVALUATION 
+        ClassVersion 3
+        GlobalToleranceIndex -1
+        UseWarningTolerances 0
+        NominalValue 0,0
+        PlusTolerance 10000,0
+        MinusTolerance 0,0
+        WarnPlusTolerance 0,0
+        WarnMinusTolerance 0,0
+        DynamicEvaluation 0
+        FileName 
+        Section 
+        CorrectionActive 0
+        CorrectionType 0
+        EnableAutoTeachIn 1
+        NumberOfUsedCorrections 0
+      END_CKEVALUATION 
+      CKSTATISTIC 
+        ClassVersion 1
+        EnterToStatistic 0
+        Index -1
+      END_CKSTATISTIC 
+    END_CKRESULT 
+    Program Dim sFile As String~Dim lRet As Long~sFile = "C:\Temp\wwwroot\barcode.ini"~Dim dValue As Double~Dim lValue As Long~Dim sValue As String~~Dim sFunctionName As String~sFunctionName = "EVO BarCode "~~Dim sIniSection As String~sIniSection = "barcode"~~Dim lNum As Long~Dim sNumvalue As String~~For lNum = 1 To 3~	sNumvalue = Str(lNum, 0)~	CKI_GetParameterLongOfCommand(sFunctionName + sNumvalue, "BarCodetype", lValue)~	EVHDINIReadLong(sIniSection + sNumvalue,"codetype", -111, lRet, sFile)~	If lValue <> lRet Then~		sValue = Str(lValue,0) ~		EVHDINIWriteString(sIniSection + sNumvalue,"codetype",sValue,sFile)~		EVHDINIWriteFlush(sFile)~	End If~~	CKI_GetParameterLongOfCommand(sFunctionName + sNumvalue, "SourceWindow.SourceMode", lValue)~	EVHDINIReadLong(sIniSection + sNumvalue,"sourcemode", -111, lRet, sFile)~	If lValue <> lRet Then~		sValue = Str(lValue,0) ~		EVHDINIWriteString(sIniSection + sNumvalue,"sourcemode",sValue,sFile)~		EVHDINIWriteFlush(sFile)~	End If~~	CKI_GetParameterDoubleOfCommand(sFunctionName + sNumvalue, "SourceWindow.SourceWindow.Left", dValue)~	lValue = dValue~	EVHDINIReadLong(sIniSection + sNumvalue,"sourcewindowleft", -111, lRet, sFile)~	If lValue <> lRet Then~		sValue = Str(dValue,4) ~		EVHDINIWriteString(sIniSection + sNumvalue,"sourcewindowleft",sValue,sFile)~		EVHDINIWriteFlush(sFile)~	End If~~	CKI_GetParameterDoubleOfCommand(sFunctionName + sNumvalue, "SourceWindow.SourceWindow.Top", dValue)~	EVHDINIReadLong(sIniSection + sNumvalue,"sourcewindowtop", -111, lRet, sFile)~	If lValue <> lRet Then~		sValue = Str(dValue,4) ~		EVHDINIWriteString(sIniSection + sNumvalue,"sourcewindowtop",sValue,sFile)~		EVHDINIWriteFlush(sFile)~	End If~~	CKI_GetParameterDoubleOfCommand(sFunctionName + sNumvalue, "SourceWindow.SourceWindow.Width", dValue)~	EVHDINIReadLong(sIniSection + sNumvalue,"sourcewindowwidth", -111, lRet, sFile)~	If lValue <> lRet Then~		sValue = Str(dValue,4) ~		EVHDINIWriteString(sIniSection + sNumvalue,"sourcewindowwidth",sValue,sFile)~		EVHDINIWriteFlush(sFile)~	End If~~	CKI_GetParameterDoubleOfCommand(sFunctionName + sNumvalue, "SourceWindow.SourceWindow.Height", dValue)~	EVHDINIReadLong(sIniSection + sNumvalue,"sourcewindowheight", -111, lRet, sFile)~	If lValue <> lRet Then~		sValue = Str(dValue,4) ~		EVHDINIWriteString(sIniSection + sNumvalue,"sourcewindowheight",sValue,sFile)~		EVHDINIWriteFlush(sFile)~	End If~Next
+    EncodedBinary [C_34_12A_EC6BP6J_280KD0L_240F60D_AC0G00Hl1I_FC4Ml1l1l1l1l1s1s1s1s1s1s1y1y1y1_7F1_7F1_7F1_7F1_7F1_911_A51_BF1_E51_F0142_202_2E2_2E2_2E2H2n2y2_8D2_A92_B72_B72_B72_D32_DB213_0C3_203_3C3J3J3J3f3_8C3_973_AB3_C73_D53_D53_D53_F13_174_224_364R4_604_604_604_7C4_A24_AD4_C14_DD4_EB4_EB40000X6_5C6_15013210000000000000000000000_606l6_80011334000000000000000000000_8C6_946V011331430000000000000000000_8C6_A46X011333300000000000000000000_8C6_B86Y011300000000000000000000000_606_CC6_7F01133500000000000000000kp45r00p_205r_180p_305r_1C0ip05r_200iq_200p_385_8Ad_F94koip_FC4q_200mg_AC0zizkr_240ioq_100kp_3C5q_180q_240_83g_CC0zzir_100zokq00iq40pT5_88kpH5q_1C0q_240_83g_EC0zzizr40kzizq_100q40_8C_82d_2E2koip_FC4q_100mg_AC0zizkr_140iokq00q_140pH5q_1C0q_240_83g_0C1zzzzizokq00g_2C1zizc_2E2ioq_100kpX5q_180q_240_83g_CC0zzir_100zokq00iq40pT5_88kpp5q_1C0q_240_83g_EC0zzizr40kzizq_100q40_8C_82d_B72koip_FC4q_100mg_AC0zizkr_140iokq00q_140pp5q_1C0q_240_83g_0C1zzzzizokq00g_2C1zizc_B72iojq80kp_7C5q_180q_240_83gL1zzjr80izjq80lr_100okq00iq40pT5_88kp_9C5q_1C0q_240_83g_EC0zzizr40kzizq_100q40_8C_82dJ3koip_B05jq80g_AC0zizkr_140iokq00q_140p_9C5q_1C0q_240_83g_0C1zzzzizokq00g_2C1zizcJ3iojq80kp_B45q_180q_240_83gL1zzjr80izokq00iq40pT5_88kp_D45q_1C0q_240_83g_EC0zzizr40kzizq_100q40_8C_82d_D53koip_B05jq80g_AC0zizkr_140iokq00q_140p_D45q_1C0q_240_83g_0C1zzzzizokq00g_2C1zizc_D53iojq80kp_E45q_180q_240_83gL1zzjr80izokq00iq40pT5_88kp46q_1C0q_240_83g_EC0zzizr40kzizq_100q40_8C_82d_604koip_B05jq80g_AC0zizkr_140iokq00q_140p46q_1C0q_240_83g_0C1zzzzizokq00g_2C1zizc_604iojq80kp_186q_180q_240_83gL1zzjr80izokq00iq40pT5_88kp_3C6q_1C0q_240_83g_EC0zzizr40kzizq_100q40_8C_82d_EB4koip_B05jq80g_AC0zizkr_140iokq00q_140p_3C6q_1C0q_240_83g_0C1zzzzizokq00g_2C1zizc_EB4iq_200p05_83r_200c_861f0000001000C_3A_5CTemp_5Cwwwroot_5Cbarcode_2Eini0EVO_20BarCode_200000barcode03000BarCodetype0codetype0000o000SourceWindow_2ESourceMode0sourcemode00SourceWindow_2ESourceWindow_2ELeft00sourcewindowleft00004000SourceWindow_2ESourceWindow_2ETop000sourcewindowtop0SourceWindow_2ESourceWindow_2EWidth0sourcewindowwidth000SourceWindow_2ESourceWindow_2EHeight0000sourcewindowheight00source00Std0Str0EVTVision000CKI_5FGetParameterLongOfCommand000Evhd0000EVHDINIReadLong0EVHDINIWriteString00EVHDINIWriteFlush000CKI_5FGetParameterDoubleOfCommand0]
+    ExternProgramFileName 
+    UseExternProgram 0
+    NumberOfAdditionalLinesProgram 0
+    NumberOfAdditionalLinesBinary 0
+    CKPICKUP_TYPE_WRITE 
+      ClassVersion 1
+      Name 
+      PickupObjectType 5
+      PickupListIndex 506277
+    END_CKPICKUP_TYPE_WRITE 
+    TeachInCounter 0
+  END_KEY 22
+  KEY 23
+    ClassVersion 4
+    CKGENERAL 
+      ClassVersion 1
+      Position 29
+      CommandType 1040
+      CommandName Script DataCode
+      Enabled 0
+      Hidden 0
+      GraficMode 2
+      TextMode 2
+      ImageMemory 0
+      InvertResult 0
+      Memo 
+    END_CKGENERAL 
+    CKRESULT 
+      ClassVersion 1
+      Name Script interpreter (BASIC)
+      EnterResultToRTDisplay 0
+      RTDisplayIndex 0
+      RTWidthOfToleranceRegion 80
+      CKEVALUATION 
+        ClassVersion 3
+        GlobalToleranceIndex -1
+        UseWarningTolerances 0
+        NominalValue 0,0
+        PlusTolerance 10000,0
+        MinusTolerance 0,0
+        WarnPlusTolerance 0,0
+        WarnMinusTolerance 0,0
+        DynamicEvaluation 0
+        FileName 
+        Section 
+        CorrectionActive 0
+        CorrectionType 0
+        EnableAutoTeachIn 1
+        NumberOfUsedCorrections 0
+      END_CKEVALUATION 
+      CKSTATISTIC 
+        ClassVersion 1
+        EnterToStatistic 0
+        Index -1
+      END_CKSTATISTIC 
+    END_CKRESULT 
+    Program Dim sFile As String~Dim lRet As Long~sFile = "C:\Temp\wwwroot\datacode.ini"~Dim dValue As Double~Dim lValue As Long~Dim sValue As String~~Dim sFunctionName As String~sFunctionName = "EVO DataCode "~~Dim sIniSection As String~sIniSection = "datacode"~~Dim lNum As Long~Dim sNumvalue As String~~For lNum = 1 To 3~	sNumvalue = Str(lNum, 0)~	CKI_GetParameterLongOfCommand(sFunctionName + sNumvalue, "DataCodeType", lValue)~	EVHDINIReadLong(sIniSection + sNumvalue,"codetype", -111, lRet, sFile)~	If lValue <> lRet Then~		sValue = Str(lValue,0) ~		EVHDINIWriteString(sIniSection + sNumvalue,"codetype",sValue,sFile)~		EVHDINIWriteFlush(sFile)~	End If~~	CKI_GetParameterLongOfCommand(sFunctionName + sNumvalue, "SourceWindow.SourceMode", lValue)~	EVHDINIReadLong(sIniSection + sNumvalue,"sourcemode", -111, lRet, sFile)~	If lValue <> lRet Then~		sValue = Str(lValue,0) ~		EVHDINIWriteString(sIniSection + sNumvalue,"sourcemode",sValue,sFile)~		EVHDINIWriteFlush(sFile)~	End If~~	CKI_GetParameterDoubleOfCommand(sFunctionName + sNumvalue, "SourceWindow.SourceWindow.Left", dValue)~	lValue = dValue~	EVHDINIReadLong(sIniSection + sNumvalue,"sourcewindowleft", -111, lRet, sFile)~	If lValue <> lRet Then~		sValue = Str(dValue,4) ~		EVHDINIWriteString(sIniSection + sNumvalue,"sourcewindowleft",sValue,sFile)~		EVHDINIWriteFlush(sFile)~	End If~~	CKI_GetParameterDoubleOfCommand(sFunctionName + sNumvalue, "SourceWindow.SourceWindow.Top", dValue)~	EVHDINIReadLong(sIniSection + sNumvalue,"sourcewindowtop", -111, lRet, sFile)~	If lValue <> lRet Then~		sValue = Str(dValue,4) ~		EVHDINIWriteString(sIniSection + sNumvalue,"sourcewindowtop",sValue,sFile)~		EVHDINIWriteFlush(sFile)~	End If~~	CKI_GetParameterDoubleOfCommand(sFunctionName + sNumvalue, "SourceWindow.SourceWindow.Width", dValue)~	EVHDINIReadLong(sIniSection + sNumvalue,"sourcewindowwidth", -111, lRet, sFile)~	If lValue <> lRet Then~		sValue = Str(dValue,4) ~		EVHDINIWriteString(sIniSection + sNumvalue,"sourcewindowwidth",sValue,sFile)~		EVHDINIWriteFlush(sFile)~	End If~~	CKI_GetParameterDoubleOfCommand(sFunctionName + sNumvalue, "SourceWindow.SourceWindow.Height", dValue)~	EVHDINIReadLong(sIniSection + sNumvalue,"sourcewindowheight", -111, lRet, sFile)~	If lValue <> lRet Then~		sValue = Str(dValue,4) ~		EVHDINIWriteString(sIniSection + sNumvalue,"sourcewindowheight",sValue,sFile)~		EVHDINIWriteFlush(sFile)~	End If~Next
+    EncodedBinary [C_34_12A_F86B_5C6J_280KD0L_240F60D_AC0G00Hl1I_FC4Ml1l1l1l1l1s1s1s1s1s1s1y1y1y1_7F1_7F1_7F1_7F1_7F1_911_A51_BF1_E51_F0142_202_2E2_2E2_2E2H2n2y2_8D2_A92_B72_B72_B72_D32_DB213_0C3_203_3C3J3J3J3f3_8C3_973_AB3_C73_D53_D53_D53_F13_174_224_364R4_604_604_604_7C4_A24_AD4_C14_DD4_EB4_EB40000d6h6_15013210000000000000000000000l6x6_80011334000000000000000000000_986_A06V011331430000000000000000000_986_B06X011333300000000000000000000_986_C46Y011300000000000000000000000l6_D86_7F01133500000000000000000kp45r00p_245r_180p_345r_1C0ip05r_200iq_200p_405_8Ad_F94koip_FC4q_200mg_AC0zizkr_240ioq_100kpD5q_180q_240_83g_CC0zzir_100zokq00iq40p_605_88kpT5q_1C0q_240_83g_EC0zzizr40kzizq_100q40_8C_82d_2E2koip_FC4q_100mg_AC0zizkr_140iokq00q_140pT5q_1C0q_240_83g_0C1zzzzizokq00g_2C1zizc_2E2ioq_100kpd5q_180q_240_83g_CC0zzir_100zokq00iq40p_605_88kp_7C5q_1C0q_240_83g_EC0zzizr40kzizq_100q40_8C_82d_B72koip_FC4q_100mg_AC0zizkr_140iokq00q_140p_7C5q_1C0q_240_83g_0C1zzzzizokq00g_2C1zizc_B72iojq80kp_885q_180q_240_83gL1zzjr80izjq80lr_100okq00iq40p_605_88kp_A85q_1C0q_240_83g_EC0zzizr40kzizq_100q40_8C_82dJ3koip_BC5jq80g_AC0zizkr_140iokq00q_140p_A85q_1C0q_240_83g_0C1zzzzizokq00g_2C1zizcJ3iojq80kp_C05q_180q_240_83gL1zzjr80izokq00iq40p_605_88kp_E05q_1C0q_240_83g_EC0zzizr40kzizq_100q40_8C_82d_D53koip_BC5jq80g_AC0zizkr_140iokq00q_140p_E05q_1C0q_240_83g_0C1zzzzizokq00g_2C1zizc_D53iojq80kp_F05q_180q_240_83gL1zzjr80izokq00iq40p_605_88kp_106q_1C0q_240_83g_EC0zzizr40kzizq_100q40_8C_82d_604koip_BC5jq80g_AC0zizkr_140iokq00q_140p_106q_1C0q_240_83g_0C1zzzzizokq00g_2C1zizc_604iojq80kp_246q_180q_240_83gL1zzjr80izokq00iq40p_605_88kpH6q_1C0q_240_83g_EC0zzizr40kzizq_100q40_8C_82d_EB4koip_BC5jq80g_AC0zizkr_140iokq00q_140pH6q_1C0q_240_83g_0C1zzzzizokq00g_2C1zizc_EB4iq_200p05_83r_200c_861f0000001000C_3A_5CTemp_5Cwwwroot_5Cdatacode_2Eini0000EVO_20DataCode_20000datacode00003000DataCodeType0000codetype0000o000SourceWindow_2ESourceMode0sourcemode00SourceWindow_2ESourceWindow_2ELeft00sourcewindowleft00004000SourceWindow_2ESourceWindow_2ETop000sourcewindowtop0SourceWindow_2ESourceWindow_2EWidth0sourcewindowwidth000SourceWindow_2ESourceWindow_2EHeight0000sourcewindowheight00source00Std0Str0EVTVision000CKI_5FGetParameterLongOfCommand000Evhd0000EVHDINIReadLong0EVHDINIWriteString00EVHDINIWriteFlush000CKI_5FGetParameterDoubleOfCommand0]
+    ExternProgramFileName 
+    UseExternProgram 0
+    NumberOfAdditionalLinesProgram 0
+    NumberOfAdditionalLinesBinary 0
+    CKPICKUP_TYPE_WRITE 
+      ClassVersion 1
+      Name 
+      PickupObjectType 0
+      PickupListIndex 1084351
+    END_CKPICKUP_TYPE_WRITE 
+    TeachInCounter 0
+  END_KEY 23
+  KEY 24
+    ClassVersion 4
+    CKGENERAL 
+      ClassVersion 1
+      Position 30
+      CommandType 1040
+      CommandName Script OCR
+      Enabled 0
+      Hidden 0
+      GraficMode 2
+      TextMode 2
+      ImageMemory 0
+      InvertResult 0
+      Memo 
+    END_CKGENERAL 
+    CKRESULT 
+      ClassVersion 1
+      Name Script interpreter (BASIC)
+      EnterResultToRTDisplay 0
+      RTDisplayIndex 0
+      RTWidthOfToleranceRegion 80
+      CKEVALUATION 
+        ClassVersion 3
+        GlobalToleranceIndex -1
+        UseWarningTolerances 0
+        NominalValue 0,0
+        PlusTolerance 10000,0
+        MinusTolerance 0,0
+        WarnPlusTolerance 0,0
+        WarnMinusTolerance 0,0
+        DynamicEvaluation 0
+        FileName 
+        Section 
+        CorrectionActive 0
+        CorrectionType 0
+        EnableAutoTeachIn 1
+        NumberOfUsedCorrections 0
+      END_CKEVALUATION 
+      CKSTATISTIC 
+        ClassVersion 1
+        EnterToStatistic 0
+        Index -1
+      END_CKSTATISTIC 
+    END_CKRESULT 
+    Program Dim sFile As String~Dim lRet As Long~sFile = "C:\Temp\wwwroot\ocr.ini"~Dim dValue As Double~Dim lValue As Long~Dim sValue As String~~Dim sFunctionName As String~sFunctionName = "EVO OCR "~~Dim sIniSection As String~sIniSection = "ocr"~~Dim lNum As Long~Dim sNumvalue As String~~For lNum = 1 To 3~	sNumvalue = Str(lNum, 0)~	CKI_GetParameterLongOfCommand(sFunctionName + sNumvalue, "fontNum", lValue)~	EVHDINIReadLong(sIniSection + sNumvalue,"fontnum", -111, lRet, sFile)~	If lValue <> lRet Then~		sValue = Str(lValue,0) ~		EVHDINIWriteString(sIniSection + sNumvalue,"fontnum",sValue,sFile)~		EVHDINIWriteFlush(sFile)~	End If~~	CKI_GetParameterLongOfCommand(sFunctionName + sNumvalue, "polarityType", lValue)~	EVHDINIReadLong(sIniSection + sNumvalue,"polaritytype", -111, lRet, sFile)~	If lValue <> lRet Then~		sValue = Str(lValue,0) ~		EVHDINIWriteString(sIniSection + sNumvalue,"polaritytype",sValue,sFile)~		EVHDINIWriteFlush(sFile)~	End If~~	CKI_GetParameterLongOfCommand(sFunctionName + sNumvalue, "dotType", lValue)~	EVHDINIReadLong(sIniSection + sNumvalue,"dottype", -111, lRet, sFile)~	If lValue <> lRet Then~		sValue = Str(lValue,0) ~		EVHDINIWriteString(sIniSection + sNumvalue,"dottype",sValue,sFile)~		EVHDINIWriteFlush(sFile)~	End If~~	CKI_GetParameterLongOfCommand(sFunctionName + sNumvalue, "rotateType", lValue)~	EVHDINIReadLong(sIniSection + sNumvalue,"rotatetype", -111, lRet, sFile)~	If lValue <> lRet Then~		sValue = Str(lValue,0) ~		EVHDINIWriteString(sIniSection + sNumvalue,"rotatetype",sValue,sFile)~		EVHDINIWriteFlush(sFile)~	End If~~	CKI_GetParameterLongOfCommand(sFunctionName + sNumvalue, "segmentationType", lValue)~	EVHDINIReadLong(sIniSection + sNumvalue,"segmentationtype", -111, lRet, sFile)~	If lValue <> lRet Then~		sValue = Str(lValue,0) ~		EVHDINIWriteString(sIniSection + sNumvalue,"segmentationtype",sValue,sFile)~		EVHDINIWriteFlush(sFile)~	End If~~	CKI_GetParameterDoubleOfCommand(sFunctionName + sNumvalue, "AutoCharX", dValue)~	lValue = dValue~	EVHDINIReadLong(sIniSection + sNumvalue,"autocharx", -111, lRet, sFile)~	If lValue <> lRet Then~		sValue = Str(dValue,4) ~		EVHDINIWriteString(sIniSection + sNumvalue,"autocharx",sValue,sFile)~		EVHDINIWriteFlush(sFile)~	End If~~	CKI_GetParameterDoubleOfCommand(sFunctionName + sNumvalue, "AutoCharY", dValue)~	EVHDINIReadLong(sIniSection + sNumvalue,"autochary", -111, lRet, sFile)~	If lValue <> lRet Then~		sValue = Str(dValue,4) ~		EVHDINIWriteString(sIniSection + sNumvalue,"autochary",sValue,sFile)~		EVHDINIWriteFlush(sFile)~	End If~~	CKI_GetParameterDoubleOfCommand(sFunctionName + sNumvalue, "AutoCharW", dValue)~	EVHDINIReadLong(sIniSection + sNumvalue,"autocharw", -111, lRet, sFile)~	If lValue <> lRet Then~		sValue = Str(dValue,4) ~		EVHDINIWriteString(sIniSection + sNumvalue,"autocharw",sValue,sFile)~		EVHDINIWriteFlush(sFile)~	End If~~	CKI_GetParameterDoubleOfCommand(sFunctionName + sNumvalue, "AutoCharH", dValue)~	EVHDINIReadLong(sIniSection + sNumvalue,"autocharh", -111, lRet, sFile)~	If lValue <> lRet Then~		sValue = Str(dValue,4) ~		EVHDINIWriteString(sIniSection + sNumvalue,"autocharh",sValue,sFile)~		EVHDINIWriteFlush(sFile)~	End If~~	CKI_GetParameterDoubleOfCommand(sFunctionName + sNumvalue, "charX", dValue)~	lValue = dValue~	EVHDINIReadLong(sIniSection + sNumvalue,"charx", -111, lRet, sFile)~	If lValue <> lRet Then~		sValue = Str(dValue,4) ~		EVHDINIWriteString(sIniSection + sNumvalue,"charx",sValue,sFile)~		EVHDINIWriteFlush(sFile)~	End If~~	CKI_GetParameterDoubleOfCommand(sFunctionName + sNumvalue, "charY", dValue)~	EVHDINIReadLong(sIniSection + sNumvalue,"chary", -111, lRet, sFile)~	If lValue <> lRet Then~		sValue = Str(dValue,4) ~		EVHDINIWriteString(sIniSection + sNumvalue,"chary",sValue,sFile)~		EVHDINIWriteFlush(sFile)~	End If~~	CKI_GetParameterDoubleOfCommand(sFunctionName + sNumvalue, "charW", dValue)~	EVHDINIReadLong(sIniSection + sNumvalue,"charw", -111, lRet, sFile)~	If lValue <> lRet Then~		sValue = Str(dValue,4) ~		EVHDINIWriteString(sIniSection + sNumvalue,"charw",sValue,sFile)~		EVHDINIWriteFlush(sFile)~	End If~~	CKI_GetParameterDoubleOfCommand(sFunctionName + sNumvalue, "charH", dValue)~	EVHDINIReadLong(sIniSection + sNumvalue,"charh", -111, lRet, sFile)~	If lValue <> lRet Then~		sValue = Str(dValue,4) ~		EVHDINIWriteString(sIniSection + sNumvalue,"charh",sValue,sFile)~		EVHDINIWriteFlush(sFile)~	End If~~	CKI_GetParameterDoubleOfCommand(sFunctionName + sNumvalue, "posRect.PointStart.X", dValue)~	lValue = dValue~	EVHDINIReadLong(sIniSection + sNumvalue,"pointstartx", -111, lRet, sFile)~	If lValue <> lRet Then~		sValue = Str(dValue,4) ~		EVHDINIWriteString(sIniSection + sNumvalue,"pointstartx",sValue,sFile)~		EVHDINIWriteFlush(sFile)~	End If~~	CKI_GetParameterDoubleOfCommand(sFunctionName + sNumvalue, "posRect.PointEnd.X", dValue)~	EVHDINIReadLong(sIniSection + sNumvalue,"pointendx", -111, lRet, sFile)~	If lValue <> lRet Then~		sValue = Str(dValue,4) ~		EVHDINIWriteString(sIniSection + sNumvalue,"pointendx",sValue,sFile)~		EVHDINIWriteFlush(sFile)~	End If~~	CKI_GetParameterDoubleOfCommand(sFunctionName + sNumvalue, "posRect.PointStart.Y", dValue)~	EVHDINIReadLong(sIniSection + sNumvalue,"pointstarty", -111, lRet, sFile)~	If lValue <> lRet Then~		sValue = Str(dValue,4) ~		EVHDINIWriteString(sIniSection + sNumvalue,"pointstarty",sValue,sFile)~		EVHDINIWriteFlush(sFile)~	End If~~	CKI_GetParameterDoubleOfCommand(sFunctionName + sNumvalue, "posRect.PointEnd.Y", dValue)~	EVHDINIReadLong(sIniSection + sNumvalue,"pointendy", -111, lRet, sFile)~	If lValue <> lRet Then~		sValue = Str(dValue,4) ~		EVHDINIWriteString(sIniSection + sNumvalue,"pointendy",sValue,sFile)~		EVHDINIWriteFlush(sFile)~	End If~~	CKI_GetParameterDoubleOfCommand(sFunctionName + sNumvalue, "posRect.Width", dValue)~	EVHDINIReadLong(sIniSection + sNumvalue,"width", -111, lRet, sFile)~	If lValue <> lRet Then~		sValue = Str(dValue,4) ~		EVHDINIWriteString(sIniSection + sNumvalue,"width",sValue,sFile)~		EVHDINIWriteFlush(sFile)~	End If~Next
+    EncodedBinary [C_34_12A_E4_0EBH_0EJ_280K_A60L_240F60Dp1G00H_302IL_0CM_302_302_302_302_302_372_372_372_372_372_372_3D2_3D2_3D2C2C2C2C2C2U2i2_832_A92_B42_C82_E42_F22_F22_F22_0C3_323_3D3Q3m3_7B3_7B3_7B3_953_BB3_C63_DA3_F63444444_1E4D4O4c4_7F4_8D4_8D4_8D4_A74_CD4_D84_EC485_165_165_165_325_3A5_605k5_7F5_9B5_A95_A95_A95_C55_EB5_F65_0A6_266_346_346_346P6v6_816_956_B16_BF6_BF6_BF6_DB617_0C7_207_3C7J7J7J7f7n7_947_9F7_B37_CF7_DD7_DD7_DD7_F97_1F8_2A8_3E8Z8h8h8h8_848_AA8_B58_C98_E58_F38_F38_F38_0F9_359_409T9p9_7E9_7E9_7E9_9A9_A29_C89_D39_E793_0A_11_0A_11_0A_11_0A_2D_0AS_0A_5E_0Ar_0A_8E_0A_9C_0A_9C_0A_9C_0A_B8_0A_DE_0A_E9_0A_FD_0A_19_0B_27_0B_27_0B_27_0BC_0Bi_0Bt_0B_88_0B_A4_0B_B2_0B_B2_0B_B2_0B_CE_0B_F4_0B_FF_0B_13_0C_2F_0C_3D_0C_3D_0C0000P_0ET_0E_15013210000000000000000000000X_0Ed_0E_80011334000000000000000000000_84_0E_8C_0EV011331430000000000000000000_84_0E_9C_0EX011333300000000000000000000_84_0E_B0_0EY011300000000000000000000000X_0E_C4_0E_7F01133500000000000000000kpT_0Cr00pl_0Cr_180px_0Cr_1C0ipP_0Cr_200iq_200p_7C_0C_8AdK_0CkoipL_0Cq_200mgp1zizkr_240ioq_100kp_80_0Cq_180q_240_83g_901zzir_100zokq00iq40p_90_0C_88kp_88_0Cq_1C0q_240_83g_B01zzizr40kzizq_100q40_8C_82d_F22koipL_0Cq_100mgp1zizkr_140iokq00q_140p_88_0Cq_1C0q_240_83g_D01zzzzizokq00g_F01zizc_F22ioq_100kp_94_0Cq_180q_240_83g_901zzir_100zokq00iq40p_90_0C_88kp_A4_0Cq_1C0q_240_83g_B01zzizr40kzizq_100q40_8C_82d_7B3koipL_0Cq_100mgp1zizkr_140iokq00q_140p_A4_0Cq_1C0q_240_83g_D01zzzzizokq00g_F01zizc_7B3ioq_100kp_B4_0Cq_180q_240_83g_901zzir_100zokq00iq40p_90_0C_88kp_BC_0Cq_1C0q_240_83g_B01zzizr40kzizq_100q40_8C_82d44koipL_0Cq_100mgp1zizkr_140iokq00q_140p_BC_0Cq_1C0q_240_83g_D01zzzzizokq00g_F01zizc44ioq_100kp_C4_0Cq_180q_240_83g_901zzir_100zokq00iq40p_90_0C_88kp_D0_0Cq_1C0q_240_83g_B01zzizr40kzizq_100q40_8C_82d_8D4koipL_0Cq_100mgp1zizkr_140iokq00q_140p_D0_0Cq_1C0q_240_83g_D01zzzzizokq00g_F01zizc_8D4ioq_100kp_DC_0Cq_180q_240_83g_901zzir_100zokq00iq40p_90_0C_88kp_F0_0Cq_1C0q_240_83g_B01zzizr40kzizq_100q40_8C_82d_165koipL_0Cq_100mgp1zizkr_140iokq00q_140p_F0_0Cq_1C0q_240_83g_D01zzzzizokq00g_F01zizc_165iojq80kp4_0Dq_180q_240_83g_102zzjr80izjq80lr_100okq00iq40p_90_0C_88kp_10_0Dq_1C0q_240_83g_B01zzizr40kzizq_100q40_8C_82d_A95koip_1C_0Djq80gp1zizkr_140iokq00q_140p_10_0Dq_1C0q_240_83g_D01zzzzizokq00g_F01zizc_A95iojq80kp_20_0Dq_180q_240_83g_102zzjr80izokq00iq40p_90_0C_88kp_2C_0Dq_1C0q_240_83g_B01zzizr40kzizq_100q40_8C_82d_346koip_1C_0Djq80gp1zizkr_140iokq00q_140p_2C_0Dq_1C0q_240_83g_D01zzzzizokq00g_F01zizc_346iojq80kp_38_0Dq_180q_240_83g_102zzjr80izokq00iq40p_90_0C_88kpD_0Dq_1C0q_240_83g_B01zzizr40kzizq_100q40_8C_82d_BF6koip_1C_0Djq80gp1zizkr_140iokq00q_140pD_0Dq_1C0q_240_83g_D01zzzzizokq00g_F01zizc_BF6iojq80kpP_0Dq_180q_240_83g_102zzjr80izokq00iq40p_90_0C_88kp_5C_0Dq_1C0q_240_83g_B01zzizr40kzizq_100q40_8C_82dJ7koip_1C_0Djq80gp1zizkr_140iokq00q_140p_5C_0Dq_1C0q_240_83g_D01zzzzizokq00g_F01zizcJ7iojq80kph_0Dq_180q_240_83g_102zzjr80izjq80lr_100okq00iq40p_90_0C_88kpp_0Dq_1C0q_240_83g_B01zzizr40kzizq_100q40_8C_82d_DD7koip_1C_0Djq80gp1zizkr_140iokq00q_140pp_0Dq_1C0q_240_83g_D01zzzzizokq00g_F01zizc_DD7iojq80kpx_0Dq_180q_240_83g_102zzjr80izokq00iq40p_90_0C_88kp_80_0Dq_1C0q_240_83g_B01zzizr40kzizq_100q40_8C_82dh8koip_1C_0Djq80gp1zizkr_140iokq00q_140p_80_0Dq_1C0q_240_83g_D01zzzzizokq00g_F01zizch8iojq80kp_88_0Dq_180q_240_83g_102zzjr80izokq00iq40p_90_0C_88kp_90_0Dq_1C0q_240_83g_B01zzizr40kzizq_100q40_8C_82d_F38koip_1C_0Djq80gp1zizkr_140iokq00q_140p_90_0Dq_1C0q_240_83g_D01zzzzizokq00g_F01zizc_F38iojq80kp_98_0Dq_180q_240_83g_102zzjr80izokq00iq40p_90_0C_88kp_A0_0Dq_1C0q_240_83g_B01zzizr40kzizq_100q40_8C_82d_7E9koip_1C_0Djq80gp1zizkr_140iokq00q_140p_A0_0Dq_1C0q_240_83g_D01zzzzizokq00g_F01zizc_7E9iojq80kp_A8_0Dq_180q_240_83g_102zzjr80izjq80lr_100okq00iq40p_90_0C_88kp_C0_0Dq_1C0q_240_83g_B01zzizr40kzizq_100q40_8C_82d_11_0Akoip_1C_0Djq80gp1zizkr_140iokq00q_140p_C0_0Dq_1C0q_240_83g_D01zzzzizokq00g_F01zizc_11_0Aiojq80kp_CC_0Dq_180q_240_83g_102zzjr80izokq00iq40p_90_0C_88kp_E0_0Dq_1C0q_240_83g_B01zzizr40kzizq_100q40_8C_82d_9C_0Akoip_1C_0Djq80gp1zizkr_140iokq00q_140p_E0_0Dq_1C0q_240_83g_D01zzzzizokq00g_F01zizc_9C_0Aiojq80kp_EC_0Dq_180q_240_83g_102zzjr80izokq00iq40p_90_0C_88kp4_0Eq_1C0q_240_83g_B01zzizr40kzizq_100q40_8C_82d_27_0Bkoip_1C_0Djq80gp1zizkr_140iokq00q_140p4_0Eq_1C0q_240_83g_D01zzzzizokq00g_F01zizc_27_0Biojq80kp_10_0Eq_180q_240_83g_102zzjr80izokq00iq40p_90_0C_88kp_24_0Eq_1C0q_240_83g_B01zzizr40kzizq_100q40_8C_82d_B2_0Bkoip_1C_0Djq80gp1zizkr_140iokq00q_140p_24_0Eq_1C0q_240_83g_D01zzzzizokq00g_F01zizc_B2_0Biojq80kp_30_0Eq_180q_240_83g_102zzjr80izokq00iq40p_90_0C_88kp_40_0Eq_1C0q_240_83g_B01zzizr40kzizq_100q40_8C_82d_3D_0Ckoip_1C_0Djq80gp1zizkr_140iokq00q_140p_40_0Eq_1C0q_240_83g_D01zzzzizokq00g_F01zizc_3D_0Ciq_200pP_0C_83r_200cJ2f00001000C_3A_5CTemp_5Cwwwroot_5Cocr_2Eini0EVO_20OCR_200000ocr03000fontNum0fontnum0o000polarityType0000polaritytype0000dotType0dottype0rotateType00rotatetype00segmentationType0000segmentationtype0000AutoCharX000autocharx0004000AutoCharY000autochary000AutoCharW000autocharw000AutoCharH000autocharh000charX000charx000charY000chary000charW000charw000charH000charh000posRect_2EPointStart_2EX0000pointstartx0posRect_2EPointEnd_2EX00pointendx000posRect_2EPointStart_2EY0000pointstarty0posRect_2EPointEnd_2EY00pointendy000posRect_2EWidth000width000source00Std0Str0EVTVision000CKI_5FGetParameterLongOfCommand000Evhd0000EVHDINIReadLong0EVHDINIWriteString00EVHDINIWriteFlush000CKI_5FGetParameterDoubleOfCommand0]
+    ExternProgramFileName 
+    UseExternProgram 0
+    NumberOfAdditionalLinesProgram 0
+    NumberOfAdditionalLinesBinary 0
+    CKPICKUP_TYPE_WRITE 
+      ClassVersion 1
+      Name 
+      PickupObjectType 0
+      PickupListIndex 1281242
+    END_CKPICKUP_TYPE_WRITE 
+    TeachInCounter 0
+  END_KEY 24
+  KEY 25
+    ClassVersion 4
+    CKGENERAL 
+      ClassVersion 1
+      Position 32
+      CommandType 1042
+      CommandName Image transfer
+      Enabled 1
+      Hidden 0
+      GraficMode 2
+      TextMode 2
+      ImageMemory 0
+      InvertResult 0
+      Memo 
+    END_CKGENERAL 
+    CKRESULT 
+      ClassVersion 1
+      Name Image transfer
+      EnterResultToRTDisplay 0
+      RTDisplayIndex 0
+      RTWidthOfToleranceRegion 80
+      CKEVALUATION 
+        ClassVersion 3
+        GlobalToleranceIndex -1
+        UseWarningTolerances 0
+        NominalValue 0,0
+        PlusTolerance 10000,0
+        MinusTolerance 0,0
+        WarnPlusTolerance 0,0
+        WarnMinusTolerance 0,0
+        DynamicEvaluation 0
+        FileName 
+        Section 
+        CorrectionActive 0
+        CorrectionType 0
+        EnableAutoTeachIn 1
+        NumberOfUsedCorrections 0
+      END_CKEVALUATION 
+      CKSTATISTIC 
+        ClassVersion 1
+        EnterToStatistic 0
+        Index -1
+      END_CKSTATISTIC 
+    END_CKRESULT 
+    IPAddress 192.168.0.1
+    NetPort 4557
+    RemoteRequestCanReplaceAddress 1
+    SendTiming 3
+    ExternalCondition 1
+    InternalCondition 3
+    TransferBufferType 1
+    TransferErrorBufferNum 0
+    ImageAreaType 1
+    ImageAreaXPos 0,0
+    ImageAreaYPos 0,0
+    ImageAreaWidth 0,0
+    ImageAreaHeight 0,0
+    DynamicRoiSource 1
+    ImageResolutionType 1
+    OverlayType 2
+    TransmissionImageFormat 2
+    TransmissionImageCompression 2
+    UDPRetryNOfRetries 0
+    UDPRetryTimeout 20
+    UseWorldCoord 0
+    CKPOINT 
+      ClassVersion 1
+      Name 
+      X 100,0
+      Y 100,0
+    END_CKPOINT 
+    CKPICKUP_TYPE_READ 
+      ClassVersion 1
+      Name 
+      PickupObjectType 4
+      PickupListIndex -1
+    END_CKPICKUP_TYPE_READ 
+    UseManualLocalPort 0
+    ManualLocalPort 7778
+    CKPICKUP_TYPE_WRITE 
+      ClassVersion 1
+      Name 
+      PickupObjectType 5
+      PickupListIndex 136655
+    END_CKPICKUP_TYPE_WRITE 
+    TeachInCounter 0
+  END_KEY 25
+  KEY 26
+    ClassVersion 1
+    CKGENERAL 
+      ClassVersion 1
+      Position 34
+      CommandType 114
+      CommandName Stop watch
+      Enabled 1
+      Hidden 0
+      GraficMode 2
+      TextMode 2
+      ImageMemory 0
+      InvertResult 0
+      Memo 
+    END_CKGENERAL 
+    CKRESULT 
+      ClassVersion 1
+      Name Stop watch
+      EnterResultToRTDisplay 0
+      RTDisplayIndex 0
+      RTWidthOfToleranceRegion 80
+      CKEVALUATION 
+        ClassVersion 3
+        GlobalToleranceIndex -1
+        UseWarningTolerances 0
+        NominalValue 0,0
+        PlusTolerance 10000,0
+        MinusTolerance 0,0
+        WarnPlusTolerance 0,0
+        WarnMinusTolerance 0,0
+        DynamicEvaluation 0
+        FileName 
+        Section 
+        CorrectionActive 0
+        CorrectionType 0
+        EnableAutoTeachIn 1
+        NumberOfUsedCorrections 0
+      END_CKEVALUATION 
+      CKSTATISTIC 
+        ClassVersion 1
+        EnterToStatistic 0
+        Index -1
+      END_CKSTATISTIC 
+    END_CKRESULT 
+    DeterminationType 1
+    ActTime 100
+    CKPICKUP_TYPE_WRITE 
+      ClassVersion 1
+      Name 
+      PickupObjectType 5
+      PickupListIndex 42011
+    END_CKPICKUP_TYPE_WRITE 
+    TeachInCounter 0
+  END_KEY 26
+END_PARM_LIST 
+CKPARAMETERS 
+  ClassVersion 1
+  Name 
+  Mode 0
+  CKPARM_PROCESS 
+    ClassVersion 2
+    Name 
+    Mode 0
+    SignalInverse 0
+    SignalHold 0
+    SwitchOffAuto 0
+    SwitchOffTimeHour 0
+    SwitchOffTimeMinute 0
+    ResultTriggerLength 5
+    TriggerImpulseLength 0
+    TriggersPerImage 1
+    TriggerDelay 1
+    TriggerRiseFall 0
+    AutoincrementCharge 0
+    TimePartsPerUnit 0
+    TimePerUnit 0
+    BlowEvery_n_Part 0
+    BlowMilliseconds 0
+    MachineStopTimeOut 100000
+    PartsPerStandBy 0
+    LineIndexOfSecondCamera 1000
+    LineIndexOfThirdCamera 1000
+    LineIndexOfFourthCamera 1000
+    StopAtError 0
+    StopAtPartOverrun 0
+    SuppressionOfCheckActive 0
+    StopMachineAtError 0
+    NIOAtPartOverrun 0
+    CheckOperationEnabledLine 0
+    AutoCatchMode 0
+    PartsPerUnit 0
+    EnableCyclicAction 0
+    DriveCharger 0
+    DriveToEnd 0
+    BoxCount 0
+    CutOff 0
+    CutOffPieces 0
+    ProcessDisplayMode 1
+    SendSMS 0
+    SMSPhoneNumber 
+    CorrectionMode 0
+    NumberOfCorrections 1
+  END_CKPARM_PROCESS 
+  CKPARM_OPERATION 
+    ClassVersion 1
+    Name 
+    Mode 0
+    CalibrationFile 
+    CameraType 0
+    FlashMode 0
+    NonInterlacedMode 0
+    DefaultObjectColour 0
+    DefaultThreshold 170
+    DefaultThresholdPercentage 67
+    DefaultEdgeSelection 0
+    DefaultEdgeDetectionMethod 0
+    DefaultMinimumContrast 40
+    DefaultContrastWidth 3
+    VideoFormatFirstPixelInLine 120
+    VideoFormatFirstLineInFrame 54
+    VideoFormatPixelsPerLine 740
+    VideoFormatLinesPerFrame 480
+  END_CKPARM_OPERATION 
+  CKPARM_JOB 
+    ClassVersion 1
+    Name 
+    Mode 0
+    JobName 
+    Charge 0
+  END_CKPARM_JOB 
+  CKPARM_STATISTIC 
+    ClassVersion 1
+    Name 
+    Mode 0
+    StatisticFilename 
+    SaveCopy 0
+    StatisticFilenameOfCopy 
+    UseAutoStatisticIndex 0
+    AutoEnterIfSuccess 1
+    AutoEnterIfWarning 1
+    AutoEnterIfError 1
+    NOfStatisticEntries 100
+    StatisticPartSet 10
+    StatisticPartSetOffset 1000
+    ValuesPerStatisticEntry 2
+    AutosaveMode 0
+    AutosaveParts 1000
+    SaveMeanValuesOnly 0
+    ToleranceFactor 3,0
+    ToleranceOffset 1,5
+  END_CKPARM_STATISTIC 
+  CKPARM_APPLICATION 
+    ClassVersion 4
+    Name 
+    Mode 0
+    GraficMode 2
+    TextMode 2
+    StartMode 1
+    EndMode 0
+    PrinterMode 0
+    SessionProtocolMode 0
+    AutoSwitchMode 0
+    Code0 0
+    Code1 1
+    Code2 2
+    Code3 3
+    Code4 4
+    Code5 5
+    Code6 6
+    Code7 7
+    ExternalKeyboard 0
+    DisplayPrecision 3
+    StartUpProgramMode 1
+    StartUpProgram 
+    ShowRuntimeStatistic 0
+    ShowProcessToolbar 1
+    ProcessMode 2
+    ActiveCameras 1
+    SendStringFileName 
+    CKPARM_COMPORT 
+      ClassVersion 2
+      Name 
+      Mode 0
+      Port 0
+      Speed 0
+      DataBits 0
+      Parity 0
+      StopBits 0
+      Protocol 0
+      PortAct 0
+    END_CKPARM_COMPORT 
+    CKPARM_S3964 
+      ClassVersion 1
+      Name 
+      Mode 0
+      Port 0
+      Speed 0
+      DataBits 0
+      Parity 0
+      StopBits 0
+      FlowControl 0
+      Priority 0
+      RTS 0
+      DTR 0
+    END_CKPARM_S3964 
+    AutoSaveMode 0
+    AutoSaveInterval 15
+    RuntimeStatisticActive 0
+    CKPARM_COMPORT 
+      ClassVersion 2
+      Name 
+      Mode 0
+      Port 0
+      Speed 0
+      DataBits 0
+      Parity 0
+      StopBits 0
+      Protocol 0
+      PortAct 0
+    END_CKPARM_COMPORT 
+    CKPARM_COMPORT 
+      ClassVersion 2
+      Name 
+      Mode 0
+      Port 0
+      Speed 0
+      DataBits 0
+      Parity 0
+      StopBits 0
+      Protocol 0
+      PortAct 0
+    END_CKPARM_COMPORT 
+    CKPARM_COMPORT 
+      ClassVersion 2
+      Name 
+      Mode 0
+      Port 0
+      Speed 0
+      DataBits 0
+      Parity 0
+      StopBits 0
+      Protocol 0
+      PortAct 0
+    END_CKPARM_COMPORT 
+    CKPARM_COMPORT 
+      ClassVersion 2
+      Name 
+      Mode 0
+      Port 0
+      Speed 0
+      DataBits 0
+      Parity 0
+      StopBits 0
+      Protocol 0
+      PortAct 0
+    END_CKPARM_COMPORT 
+    CKPARM_COMPORT 
+      ClassVersion 2
+      Name 
+      Mode 0
+      Port 0
+      Speed 0
+      DataBits 0
+      Parity 0
+      StopBits 0
+      Protocol 0
+      PortAct 0
+    END_CKPARM_COMPORT 
+    BCDCode 0
+    PB_AutoProgSwitch_Offset 0
+  END_CKPARM_APPLICATION 
+  CKPARM_CALIBRATION 
+    ClassVersion 1
+    Mode 0
+    CKCALIBRATION 
+      ClassVersion 1
+      VIC 0
+      Name Pixel
+      OriginX 0,0
+      OriginY 0,0
+      XAxeX 1,0
+      XAxeY 0,0
+      YAxeX 0,0
+      YAxeY 1,0
+    END_CKCALIBRATION 
+    CKCALIBRATION 
+      ClassVersion 1
+      VIC 0
+      Name Pixel
+      OriginX 0,0
+      OriginY 0,0
+      XAxeX 1,0
+      XAxeY 0,0
+      YAxeX 0,0
+      YAxeY 1,0
+    END_CKCALIBRATION 
+    CKCALIBRATION 
+      ClassVersion 1
+      VIC 0
+      Name Pixel
+      OriginX 0,0
+      OriginY 0,0
+      XAxeX 1,0
+      XAxeY 0,0
+      YAxeX 0,0
+      YAxeY 1,0
+    END_CKCALIBRATION 
+    CKCALIBRATION 
+      ClassVersion 1
+      VIC 0
+      Name Pixel
+      OriginX 0,0
+      OriginY 0,0
+      XAxeX 1,0
+      XAxeY 0,0
+      YAxeX 0,0
+      YAxeY 1,0
+    END_CKCALIBRATION 
+    CKCALIBRATION 
+      ClassVersion 1
+      VIC 0
+      Name Pixel
+      OriginX 0,0
+      OriginY 0,0
+      XAxeX 1,0
+      XAxeY 0,0
+      YAxeX 0,0
+      YAxeY 1,0
+    END_CKCALIBRATION 
+    CKCALIBRATION 
+      ClassVersion 1
+      VIC 0
+      Name Pixel
+      OriginX 0,0
+      OriginY 0,0
+      XAxeX 1,0
+      XAxeY 0,0
+      YAxeX 0,0
+      YAxeY 1,0
+    END_CKCALIBRATION 
+    CKCALIBRATION 
+      ClassVersion 1
+      VIC 0
+      Name Pixel
+      OriginX 0,0
+      OriginY 0,0
+      XAxeX 1,0
+      XAxeY 0,0
+      YAxeX 0,0
+      YAxeY 1,0
+    END_CKCALIBRATION 
+    CKCALIBRATION 
+      ClassVersion 1
+      VIC 0
+      Name Pixel
+      OriginX 0,0
+      OriginY 0,0
+      XAxeX 1,0
+      XAxeY 0,0
+      YAxeX 0,0
+      YAxeY 1,0
+    END_CKCALIBRATION 
+    CKCALIBRATION 
+      ClassVersion 1
+      VIC 0
+      Name Pixel
+      OriginX 0,0
+      OriginY 0,0
+      XAxeX 1,0
+      XAxeY 0,0
+      YAxeX 0,0
+      YAxeY 1,0
+    END_CKCALIBRATION 
+    CKCALIBRATION 
+      ClassVersion 1
+      VIC 0
+      Name Pixel
+      OriginX 0,0
+      OriginY 0,0
+      XAxeX 1,0
+      XAxeY 0,0
+      YAxeX 0,0
+      YAxeY 1,0
+    END_CKCALIBRATION 
+    CKCALIBRATION 
+      ClassVersion 1
+      VIC 0
+      Name Pixel
+      OriginX 0,0
+      OriginY 0,0
+      XAxeX 1,0
+      XAxeY 0,0
+      YAxeX 0,0
+      YAxeY 1,0
+    END_CKCALIBRATION 
+    CKCALIBRATION 
+      ClassVersion 1
+      VIC 0
+      Name Pixel
+      OriginX 0,0
+      OriginY 0,0
+      XAxeX 1,0
+      XAxeY 0,0
+      YAxeX 0,0
+      YAxeY 1,0
+    END_CKCALIBRATION 
+    CKCALIBRATION 
+      ClassVersion 1
+      VIC 0
+      Name Pixel
+      OriginX 0,0
+      OriginY 0,0
+      XAxeX 1,0
+      XAxeY 0,0
+      YAxeX 0,0
+      YAxeY 1,0
+    END_CKCALIBRATION 
+    CKCALIBRATION 
+      ClassVersion 1
+      VIC 0
+      Name Pixel
+      OriginX 0,0
+      OriginY 0,0
+      XAxeX 1,0
+      XAxeY 0,0
+      YAxeX 0,0
+      YAxeY 1,0
+    END_CKCALIBRATION 
+    CKCALIBRATION 
+      ClassVersion 1
+      VIC 0
+      Name Pixel
+      OriginX 0,0
+      OriginY 0,0
+      XAxeX 1,0
+      XAxeY 0,0
+      YAxeX 0,0
+      YAxeY 1,0
+    END_CKCALIBRATION 
+    CKCALIBRATION 
+      ClassVersion 1
+      VIC 0
+      Name Pixel
+      OriginX 0,0
+      OriginY 0,0
+      XAxeX 1,0
+      XAxeY 0,0
+      YAxeX 0,0
+      YAxeY 1,0
+    END_CKCALIBRATION 
+    CKCALIBRATION 
+      ClassVersion 1
+      VIC 0
+      Name Pixel
+      OriginX 0,0
+      OriginY 0,0
+      XAxeX 1,0
+      XAxeY 0,0
+      YAxeX 0,0
+      YAxeY 1,0
+    END_CKCALIBRATION 
+    CKCALIBRATION 
+      ClassVersion 1
+      VIC 0
+      Name Pixel
+      OriginX 0,0
+      OriginY 0,0
+      XAxeX 1,0
+      XAxeY 0,0
+      YAxeX 0,0
+      YAxeY 1,0
+    END_CKCALIBRATION 
+    CKCALIBRATION 
+      ClassVersion 1
+      VIC 0
+      Name Pixel
+      OriginX 0,0
+      OriginY 0,0
+      XAxeX 1,0
+      XAxeY 0,0
+      YAxeX 0,0
+      YAxeY 1,0
+    END_CKCALIBRATION 
+    CKCALIBRATION 
+      ClassVersion 1
+      VIC 0
+      Name Pixel
+      OriginX 0,0
+      OriginY 0,0
+      XAxeX 1,0
+      XAxeY 0,0
+      YAxeX 0,0
+      YAxeY 1,0
+    END_CKCALIBRATION 
+  END_CKPARM_CALIBRATION 
+  CKPARM_RT_DISPLAY 
+    ClassVersion 1
+    Name 
+    Mode 0
+    NOfGraphicalFields 5
+    NOfTextFields 5
+    TimeOut 60
+    CycleTime 10
+    SpotCheck 5
+  END_CKPARM_RT_DISPLAY 
+END_CKPARAMETERS 
+START_GLOBAL_TOLERANCE_LIST 
+END_GLOBAL_TOLERANCE_LIST 

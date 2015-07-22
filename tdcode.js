@@ -54,6 +54,8 @@
 	var rectRoiFlag = false;
 	
 	var parametersLoaded = false;
+	
+	var commandName = "EVO%20DataCode";
 
 	// box object to hold data
 	// default width and height
@@ -167,12 +169,8 @@
 	// initialize our canvas, add a ghost canvas, set draw loop
 	// then add everything we want to initially exist on the canvas
 	function init2() {
-		//for camera trigger
-		//ajaxGet("info.htm?cmd=%23021%3BCapture image%3B2%3BCaptureType%3B0%23");
-		ajaxGet("info.htm?cmd=%23021%3BCapture image%3B2%3BTriggeredCapture%3B0%23");
-		
 		// enable 2d code
-		ajaxGet('info.htm?cmd=%23021%3BEVO%20DataCode%3B2%3BGeneral.Enabled%3B1%23');
+		ajaxGet('info.htm?cmd=%23021%3B'+commandName+'%3B2%3BGeneral.Enabled%3B1%23');
 		ajaxGet('info.htm?cmd=%23021%3BScript%20DataCode%3B2%3BGeneral.Enabled%3B1%23');
 		
 		// disable barcode and ocr in case they are still enabled
@@ -283,13 +281,13 @@
 	// consists of code type
 	function codeType() {
 		if (document.getElementById("dmc").checked) {
-			ajaxGet('info.htm?cmd=%23021%3BEVO%20DataCode%3B2%3BDataCodeType%3B0%23');
+			ajaxGet('info.htm?cmd=%23021%3B'+commandName+'%3B2%3BDataCodeType%3B0%23');
 		}	
 		if (document.getElementById("qr").checked) {
-			ajaxGet('info.htm?cmd=%23021%3BEVO%20DataCode%3B2%3BDataCodeType%3B1%23');
+			ajaxGet('info.htm?cmd=%23021%3B'+commandName+'%3B2%3BDataCodeType%3B1%23');
 		}
 		if (document.getElementById("microqr").checked) {
-			ajaxGet('info.htm?cmd=%23021%3BEVO%20DataCode%3B2%3BDataCodeType%3B2%23');
+			ajaxGet('info.htm?cmd=%23021%3B'+commandName+'%3B2%3BDataCodeType%3B2%23');
 		}
 	}
 	
@@ -301,14 +299,14 @@
 		var height = $("#hValue").val() * GLOBAL_SCALE;
 		
 		if (document.getElementById("wholeWindow").checked) {
-			ajaxGet('info.htm?cmd=%23021%3BEVO%20DataCode%3B2%3BSourceWindow.SourceMode%3B4%23');
+			ajaxGet('info.htm?cmd=%23021%3B'+commandName+'%3B2%3BSourceWindow.SourceMode%3B4%23');
 		}	
 		if (document.getElementById("defineWindow").checked) {
-			ajaxGet('info.htm?cmd=%23021%3BEVO%20DataCode%3B2%3BSourceWindow.SourceMode%3B3%23');
-			ajaxGet('info.htm?cmd=%23021%3BEVO%20DataCode%3B1%3BSourceWindow.SourceWindow.Left%3B'+startX+'%23');
-			ajaxGet('info.htm?cmd=%23021%3BEVO%20DataCode%3B1%3BSourceWindow.SourceWindow.Top%3B'+startY+'%23');
-			ajaxGet('info.htm?cmd=%23021%3BEVO%20DataCode%3B1%3BSourceWindow.SourceWindow.Width%3B'+width+'%23');
-			ajaxGet('info.htm?cmd=%23021%3BEVO%20DataCode%3B1%3BSourceWindow.SourceWindow.Height%3B'+height+'%23');
+			ajaxGet('info.htm?cmd=%23021%3B'+commandName+'%3B2%3BSourceWindow.SourceMode%3B3%23');
+			ajaxGet('info.htm?cmd=%23021%3B'+commandName+'%3B1%3BSourceWindow.SourceWindow.Left%3B'+startX+'%23');
+			ajaxGet('info.htm?cmd=%23021%3B'+commandName+'%3B1%3BSourceWindow.SourceWindow.Top%3B'+startY+'%23');
+			ajaxGet('info.htm?cmd=%23021%3B'+commandName+'%3B1%3BSourceWindow.SourceWindow.Width%3B'+width+'%23');
+			ajaxGet('info.htm?cmd=%23021%3B'+commandName+'%3B1%3BSourceWindow.SourceWindow.Height%3B'+height+'%23');
 		}
 	}
 	
