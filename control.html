@@ -13,6 +13,8 @@
     <img id="logo" src="vclogo.png" alt="vclogo"> 
     <div class="functionPanel"> 
         <div id="rightRegion" style="width:300px;">
+			<input id="btnMonitor" type="button" value="Monitor" class="button"><br>
+            <input id="btnStopMonitor" type="button" value="Stop" class="button"><br>
             <input class="button" type="button" onClick="location.href='index.htm'" value="Main Menu"/><br>
 		
 			
@@ -28,7 +30,7 @@
 		<!-- can be remove -->
 			
 			
-			<img id="imgView" style="width:602px;"></img>
+			<img id="imgSnapshot" style="width:602px;"></img>
 			
 		</div>
         <div id="leftmenu"> 
@@ -94,6 +96,7 @@
 		
 		<script>
 		var cookieNames = ["circle", "width", "ptp", "ptl", "ptc", "ltc", "ctc", "ctl"];
+		var EvoNames = ["Circle", "Width", "PTP", "PTL", "PTC", "CTL", "CTC", "CTL"];
 		var displayNames = ["EVO Circle Tool", "EVO Width Tool", "EVO Distance (Point to Point) Tool", "EVO Distance(Point to Line) Tool", 
 			"EVO Distance (Point to Circle) Tool", "EVO Distance (Line to Circle) Tool", "EVO Distance (Circle to Circle) Tool", "EVO Distance (Circle to Line) Tool"];
 	
@@ -127,7 +130,7 @@
 				displayResults();
 				addItemsIntoDb();
 				loadScreenshot();
-				$('#imgView').attr('src', '');
+				$('#imgSnapshot').attr('src', '');
 				
 			});
 			
@@ -181,6 +184,35 @@
 				
 			});
 			
+			document.getElementById("btnMonitor").addEventListener("click", function(){
+				
+				enableToolByCookie();
+				
+				ajaxGet("info.htm?cmd=%23002%23");
+		
+				//ajaxGet("cfg.ini", getValueFrominiFile);
+		
+				intervalUpdateStart();
+				//disableBtn($(this).attr('id'));
+				//undisableBtn("btnMeasure");
+				//setImgFlag(false);
+			});
+			
+			document.getElementById("btnStopMonitor").addEventListener("click", function(){
+				
+				displayResults();
+				addItemsIntoDb();
+				loadScreenshot();
+				disableMeasureFunctions();
+				ajaxGet("info.htm?cmd=%23004%23");
+				intervalUpdateStop();
+				
+				
+				//disableBtn($(this).attr('id'));
+				//undisableBtn("btnMeasure");
+				//setImgFlag(false);
+			});
+			
 			
 		}
 		
@@ -203,7 +235,7 @@
 				if(tool == "none")
 					return;
 				var dataURL = localStorage.getItem("shot" + tool);
-				document.getElementById("imgView").src=dataURL;
+				document.getElementById("imgSnapshot").src=dataURL;
 			} else {
 				alert("Sorry! No Web Storage support..");
 			}
@@ -384,6 +416,22 @@
 		
 		}
 		
+		function enableToolByCookie()
+		{
+			for(var i = 0; i < cookieNames.length; i++)
+			{
+				for(var j = 0; j < 8; j++)
+				{
+					if(findCookie(cookieNames[i], (j+1)) == true)
+					{
+						ajaxGet("info.htm?cmd=%23021%3BEVO "+ EvoNames[i] + " "+ (j+1) +"%3B2%3BGeneral.Enabled%3B1%23");
+						ajaxGet("info.htm?cmd=%23021%3BINI "+ EvoNames[i] + " "+ (j+1) +"%3B2%3BGeneral.Enabled%3B1%23");
+					}
+				}
+			}
+		
+		
+		}
 			
 		/*
 		function displayResultsFromCookies(){
