@@ -3,7 +3,7 @@ EYEVISION_VERSION
 FILE_VERSION 
 CREATED 
 CREATED_BY 
-LAST_MODIFIED 22.07.2015 11:26:43
+LAST_MODIFIED 13.07.2015 15:08:11
 LAST_MODIFIED_BY 
 START_PARM_LIST 
   KEY 1
@@ -63,7 +63,7 @@ START_PARM_LIST
     TriggerTimeout 0
     TriggerInputLine 0
     MinimumSignalDuration 0
-    FileName C:/Users/user/AppData/Roaming/EVT/EyeVision/Devices/PC_Local/Images/image1.jpg
+    FileName C:/Users/user2/Desktop/3.0_21 Test Demo/BarCode/BC25_0.bmp
     AVIframes 1
     AVImode 0
     HWTriggeredCapture 0
@@ -105,7 +105,7 @@ START_PARM_LIST
       Position 3
       CommandType 10010000
       CommandName EVO BarCode
-      Enabled 0
+      Enabled 1
       Hidden 0
       GraficMode 2
       TextMode 2
@@ -152,15 +152,15 @@ START_PARM_LIST
       CKSOURCEWINDOW 
       ClassVersion 1
       Name 
-      SourceMode 3
+      SourceMode 4
       UseWorldCoordinates 0
       CKWINDOW 
         ClassVersion 1
         Name 
-        Left 132,7659574468
-        Top 471,4893617
-        Width 740,4255319149
-        Height 71,4893617
+        Left 0,0
+        Top 10,0
+        Width 50,0
+        Height 50,0
       END_CKWINDOW 
       CKPOINT 
         ClassVersion 1
@@ -187,7 +187,7 @@ START_PARM_LIST
     NumOfLenght 0
     ContentString ***
     SendStringBool 1
-    DisplayBool 0
+    DisplayBool 1
     SendStringISOIEC15415 0
     ISOIEC15415DisplayBool 0
     TeachInCounter 0
@@ -200,108 +200,6 @@ START_PARM_LIST
       CommandType 10010001
       CommandName EVO DataCode
       Enabled 0
-      Hidden 0
-      GraficMode 2
-      TextMode 2
-      ImageMemory 0
-      InvertResult 0
-      Memo 
-    END_CKGENERAL 
-    CKRESULT 
-      ClassVersion 1
-      Name 
-      EnterResultToRTDisplay 0
-      RTDisplayIndex 0
-      RTWidthOfToleranceRegion 80
-      CKEVALUATION 
-        ClassVersion 3
-        GlobalToleranceIndex -1
-        UseWarningTolerances 0
-        NominalValue 0,0
-        PlusTolerance 10000,0
-        MinusTolerance 0,0
-        WarnPlusTolerance 0,0
-        WarnMinusTolerance 0,0
-        DynamicEvaluation 0
-        FileName 
-        Section 
-        CorrectionActive 0
-        CorrectionType 0
-        EnableAutoTeachIn 1
-        NumberOfUsedCorrections 0
-      END_CKEVALUATION 
-      CKSTATISTIC 
-        ClassVersion 1
-        EnterToStatistic 0
-        Index -1
-      END_CKSTATISTIC 
-    END_CKRESULT 
-    LongParam1 0
-      CKSOURCEWINDOW 
-      ClassVersion 1
-      Name 
-      SourceMode 3
-      UseWorldCoordinates 0
-      CKWINDOW 
-        ClassVersion 1
-        Name 
-        Left 124,2553191489
-        Top 466,3829787234
-        Width 743,829787234
-        Height 71,4893617
-      END_CKWINDOW 
-      CKPOINT 
-        ClassVersion 1
-        Name 
-        X 0,0
-        Y 0,0
-      END_CKPOINT 
-      CKPICKUP_TYPE_READ 
-        ClassVersion 1
-        Name 
-        PickupObjectType 4
-        PickupListIndex -1
-      END_CKPICKUP_TYPE_READ 
-      END_CKSOURCEWINDOW 
-    DataCodeType 0
-    RecType 0
-    ShapeType 0
-    PolarityType 0
-    MirrordType 0
-    Default 0
-    ModMinVal 1
-    ModMaxVal 100
-    SRowMinVal 8
-    SRowMaxVal 144
-    SColMinVal 10
-    SColMaxVal 144
-    QRSMinVal 21
-    QRSMaxVal 177
-    MQRSMinVal 11
-    MQRSMaxVal 17
-    ParameterType 0
-    SendStringBool 1
-    DisplayBool 0
-    SendStringISOIEC15415 0
-    ISOIEC15415DisplayBool 0
-    SendStringAIMDPM12006 0
-    AIMDPM12006DisplayBool 0
-    CKPICKUP_TYPE_WRITE 
-      ClassVersion 1
-      Name 
-      PickupObjectType 5
-      PickupListIndex 383896
-    END_CKPICKUP_TYPE_WRITE 
-    TeachInCounter 0
-  END_KEY 3
-  KEY 4
-    ClassVersion 1
-    CKGENERAL 
-      ClassVersion 1
-      Position 5
-      CommandType 10019111
-      CommandName EVO OCR
-      Enabled 1
       Hidden 0
       GraficMode 2
       TextMode 2
@@ -365,7 +263,109 @@ START_PARM_LIST
         PickupListIndex -1
       END_CKPICKUP_TYPE_READ 
       END_CKSOURCEWINDOW 
-    stepType 2
+    DataCodeType 0
+    RecType 0
+    ShapeType 0
+    PolarityType 0
+    MirrordType 0
+    Default 0
+    ModMinVal 1
+    ModMaxVal 100
+    SRowMinVal 8
+    SRowMaxVal 144
+    SColMinVal 10
+    SColMaxVal 144
+    QRSMinVal 21
+    QRSMaxVal 177
+    MQRSMinVal 11
+    MQRSMaxVal 17
+    ParameterType 0
+    SendStringBool 1
+    DisplayBool 1
+    SendStringISOIEC15415 0
+    ISOIEC15415DisplayBool 0
+    SendStringAIMDPM12006 0
+    AIMDPM12006DisplayBool 0
+    CKPICKUP_TYPE_WRITE 
+      ClassVersion 1
+      Name 
+      PickupObjectType 5
+      PickupListIndex 383896
+    END_CKPICKUP_TYPE_WRITE 
+    TeachInCounter 0
+  END_KEY 3
+  KEY 4
+    ClassVersion 1
+    CKGENERAL 
+      ClassVersion 1
+      Position 5
+      CommandType 10019111
+      CommandName EVO OCR
+      Enabled 0
+      Hidden 0
+      GraficMode 2
+      TextMode 2
+      ImageMemory 0
+      InvertResult 0
+      Memo 
+    END_CKGENERAL 
+    CKRESULT 
+      ClassVersion 1
+      Name 
+      EnterResultToRTDisplay 0
+      RTDisplayIndex 0
+      RTWidthOfToleranceRegion 80
+      CKEVALUATION 
+        ClassVersion 3
+        GlobalToleranceIndex -1
+        UseWarningTolerances 0
+        NominalValue 0,0
+        PlusTolerance 10000,0
+        MinusTolerance 0,0
+        WarnPlusTolerance 0,0
+        WarnMinusTolerance 0,0
+        DynamicEvaluation 0
+        FileName 
+        Section 
+        CorrectionActive 0
+        CorrectionType 0
+        EnableAutoTeachIn 1
+        NumberOfUsedCorrections 0
+      END_CKEVALUATION 
+      CKSTATISTIC 
+        ClassVersion 1
+        EnterToStatistic 0
+        Index -1
+      END_CKSTATISTIC 
+    END_CKRESULT 
+    LongParam1 0
+      CKSOURCEWINDOW 
+      ClassVersion 1
+      Name 
+      SourceMode 4
+      UseWorldCoordinates 0
+      CKWINDOW 
+        ClassVersion 1
+        Name 
+        Left 10,0
+        Top 10,0
+        Width 50,0
+        Height 50,0
+      END_CKWINDOW 
+      CKPOINT 
+        ClassVersion 1
+        Name 
+        X 0,0
+        Y 0,0
+      END_CKPOINT 
+      CKPICKUP_TYPE_READ 
+        ClassVersion 1
+        Name 
+        PickupObjectType 4
+        PickupListIndex -1
+      END_CKPICKUP_TYPE_READ 
+      END_CKSOURCEWINDOW 
+    stepType 0
     ROIType 4
     ROIX 100,0
     ROIY 100,0
@@ -413,29 +413,29 @@ START_PARM_LIST
     breference 0
     teachRef 0
     bResults 1
-    showOnIM0 0
+    showOnIM0 1
     showOnIM1 0
     showPosition 0
     PosX 100,0
     PosY 100,0
     FontSize 40
     Worldbool 0
-    AutoCharW 40,851
-    AutoCharH 49,3617
+    AutoCharW 40,0
+    AutoCharH 50,0
     CKRECT_PROBE_POS 
       ClassVersion 1
-      Width 78,29787234
+      Width 0,0
       CKPOINT 
         ClassVersion 1
         Name Start point
-        X 154,893617
-        Y 413,617
+        X 0,0
+        Y 0,0
       END_CKPOINT 
       CKPOINT 
         ClassVersion 1
         Name End point
-        X 604,2553191489
-        Y 413,617
+        X 0,0
+        Y 0,0
       END_CKPOINT 
     END_CKRECT_PROBE_POS 
     dynamicPos 0
@@ -466,8 +466,8 @@ START_PARM_LIST
     DeleteColumn 0
     ReTraining 0
     bAutoCharSize 0
-    AutoCharX 49,3617
-    AutoCharY 49,3617
+    AutoCharX 50,0
+    AutoCharY 50,0
     Display_Index 0
     Result_Index 1
     CKPICKUP_TYPE_WRITE 
@@ -771,180 +771,6 @@ START_PARM_LIST
     CKGENERAL 
       ClassVersion 1
       Position 11
-      CommandType 1040
-      CommandName Script BarCode
-      Enabled 0
-      Hidden 0
-      GraficMode 2
-      TextMode 2
-      ImageMemory 0
-      InvertResult 0
-      Memo 
-    END_CKGENERAL 
-    CKRESULT 
-      ClassVersion 1
-      Name Script interpreter (BASIC)
-      EnterResultToRTDisplay 0
-      RTDisplayIndex 0
-      RTWidthOfToleranceRegion 80
-      CKEVALUATION 
-        ClassVersion 3
-        GlobalToleranceIndex -1
-        UseWarningTolerances 0
-        NominalValue 0,0
-        PlusTolerance 10000,0
-        MinusTolerance 0,0
-        WarnPlusTolerance 0,0
-        WarnMinusTolerance 0,0
-        DynamicEvaluation 0
-        FileName 
-        Section 
-        CorrectionActive 0
-        CorrectionType 0
-        EnableAutoTeachIn 1
-        NumberOfUsedCorrections 0
-      END_CKEVALUATION 
-      CKSTATISTIC 
-        ClassVersion 1
-        EnterToStatistic 0
-        Index -1
-      END_CKSTATISTIC 
-    END_CKRESULT 
-    Program Dim sFile As String~Dim lRet As Long~sFile = "C:\Temp\wwwroot\barcode.ini"~Dim dValue As Double~Dim lValue As Long~Dim sValue As String~~CKI_GetParameterLongOfCommand("EVO BarCode", "BarCodetype", lValue)~EVHDINIReadLong("barcode","codetype", -111, lRet, sFile)~If lValue <> lRet Then~	sValue = Str(lValue,0) ~	EVHDINIWriteString("barcode","codetype",sValue,sFile)~	EVHDINIWriteFlush(sFile)~End If~~CKI_GetParameterLongOfCommand("EVO BarCode", "SourceWindow.SourceMode", lValue)~EVHDINIReadLong("barcode","sourcemode", -111, lRet, sFile)~If lValue <> lRet Then~	sValue = Str(lValue,0) ~	EVHDINIWriteString("barcode","sourcemode",sValue,sFile)~	EVHDINIWriteFlush(sFile)~End If~~CKI_GetParameterDoubleOfCommand("EVO BarCode", "SourceWindow.SourceWindow.Left", dValue)~lValue = dValue~EVHDINIReadLong("barcode","sourcewindowleft", -111, lRet, sFile)~If lValue <> lRet Then~	sValue = Str(dValue,4) ~	EVHDINIWriteString("barcode","sourcewindowleft",sValue,sFile)~	EVHDINIWriteFlush(sFile)~End If~~CKI_GetParameterDoubleOfCommand("EVO BarCode", "SourceWindow.SourceWindow.Top", dValue)~EVHDINIReadLong("barcode","sourcewindowtop", -111, lRet, sFile)~If lValue <> lRet Then~	sValue = Str(dValue,4) ~	EVHDINIWriteString("barcode","sourcewindowtop",sValue,sFile)~	EVHDINIWriteFlush(sFile)~End If~~CKI_GetParameterDoubleOfCommand("EVO BarCode", "SourceWindow.SourceWindow.Width", dValue)~EVHDINIReadLong("barcode","sourcewindowwidth", -111, lRet, sFile)~If lValue <> lRet Then~	sValue = Str(dValue,4) ~	EVHDINIWriteString("barcode","sourcewindowwidth",sValue,sFile)~	EVHDINIWriteFlush(sFile)~End If~~CKI_GetParameterDoubleOfCommand("EVO BarCode", "SourceWindow.SourceWindow.Height", dValue)~EVHDINIReadLong("barcode","sourcewindowheight", -111, lRet, sFile)~If lValue <> lRet Then~	sValue = Str(dValue,4) ~	EVHDINIWriteString("barcode","sourcewindowheight",sValue,sFile)~	EVHDINIWriteFlush(sFile)~End If
-    EncodedBinary [C_34_12AD6B_A85J_180K_380L_240F60D_940G00HT1I_5C4MT1T1T1T1T1_5B1_5B1_5B1_5B1_5B1q1_931_9E1_B21_CA1_D81_D81_D81_EE1_102_1B2_2F2G2U2U2U2m2u2_972_A22_B62_CE2_DC2_DC2_DC2_F42_163_213_353M3_5B3_5B3_5B3s3_953_A03_B43_CC3_DA3_DA3_DA3_F23_144_1F4_334K4Y40000_B05_BC5_80011334000000000000000000000_DC5_E45V011331430000000000000000000_F45_F85_15013210000000000000000000000_DC5_FC5X011333300000000000000000000_DC5_106Y011300000000000000000000000_B05_246_7F01133500000000000000000kpd4r00ioq_100kp_8C4p_804g_940zzir_100zokq00iq40p_AC4_88kp_A04p_984g_B40zzizr40kzizq_100q40_8C_82d_D81koip_5C4q_100mg_D40zizkr_140iokq00q_140p_A04p_984g_F40zzzzizokq00g_141zizc_D81ioq_100kp_B04p_804g_940zzir_100zokq00iq40p_AC4_88kp_C84p_984g_B40zzizr40kzizq_100q40_8C_82dU2koip_5C4q_100mg_D40zizkr_140iokq00q_140p_C84p_984g_F40zzzzizokq00g_141zizcU2iojq80kp_D44p_804g_341zzjr80izjq80lr_100okq00iq40p_AC4_88kp_F44p_984g_B40zzizr40kzizq_100q40_8C_82d_DC2koip85jq80g_D40zizkr_140iokq00q_140p_F44p_984g_F40zzzzizokq00g_141zizc_DC2iojq80kp_0C5p_804g_341zzjr80izokq00iq40p_AC4_88kp_2C5p_984g_B40zzizr40kzizq_100q40_8C_82d_5B3koip85jq80g_D40zizkr_140iokq00q_140p_2C5p_984g_F40zzzzizokq00g_141zizc_5B3iojq80kp_3C5p_804g_341zzjr80izokq00iq40p_AC4_88kp_5C5p_984g_B40zzizr40kzizq_100q40_8C_82d_DA3koip85jq80g_D40zizkr_140iokq00q_140p_5C5p_984g_F40zzzzizokq00g_141zizc_DA3iojq80kpp5p_804g_341zzjr80izokq00iq40p_AC4_88kp_945p_984g_B40zzizr40kzizq_100q40_8C_82dY4koip85jq80g_D40zizkr_140iokq00q_140p_945p_984g_F40zzzzizokq00g_141zizcY4f0000001000C_3A_5CTemp_5Cwwwroot_5Cbarcode_2Eini0EVO_20BarCode0BarCodetype0barcode0codetype0000o000SourceWindow_2ESourceMode0sourcemode00SourceWindow_2ESourceWindow_2ELeft00sourcewindowleft00004000SourceWindow_2ESourceWindow_2ETop000sourcewindowtop0SourceWindow_2ESourceWindow_2EWidth0sourcewindowwidth000SourceWindow_2ESourceWindow_2EHeight0000sourcewindowheight00source00EVTVision000CKI_5FGetParameterLongOfCommand000Evhd0000EVHDINIReadLong0Std0Str0EVHDINIWriteString00EVHDINIWriteFlush000CKI_5FGetParameterDoubleOfCommand0]
-    ExternProgramFileName 
-    UseExternProgram 0
-    NumberOfAdditionalLinesProgram 0
-    NumberOfAdditionalLinesBinary 0
-    CKPICKUP_TYPE_WRITE 
-      ClassVersion 1
-      Name 
-      PickupObjectType 5
-      PickupListIndex 1793187
-    END_CKPICKUP_TYPE_WRITE 
-    TeachInCounter 0
-  END_KEY 8
-  KEY 9
-    ClassVersion 4
-    CKGENERAL 
-      ClassVersion 1
-      Position 12
-      CommandType 1040
-      CommandName Script DataCode
-      Enabled 0
-      Hidden 0
-      GraficMode 2
-      TextMode 2
-      ImageMemory 0
-      InvertResult 0
-      Memo 
-    END_CKGENERAL 
-    CKRESULT 
-      ClassVersion 1
-      Name Script interpreter (BASIC)
-      EnterResultToRTDisplay 0
-      RTDisplayIndex 0
-      RTWidthOfToleranceRegion 80
-      CKEVALUATION 
-        ClassVersion 3
-        GlobalToleranceIndex -1
-        UseWarningTolerances 0
-        NominalValue 0,0
-        PlusTolerance 10000,0
-        MinusTolerance 0,0
-        WarnPlusTolerance 0,0
-        WarnMinusTolerance 0,0
-        DynamicEvaluation 0
-        FileName 
-        Section 
-        CorrectionActive 0
-        CorrectionType 0
-        EnableAutoTeachIn 1
-        NumberOfUsedCorrections 0
-      END_CKEVALUATION 
-      CKSTATISTIC 
-        ClassVersion 1
-        EnterToStatistic 0
-        Index -1
-      END_CKSTATISTIC 
-    END_CKRESULT 
-    Program Dim sFile As String~Dim lRet As Long~sFile = "C:\Temp\wwwroot\datacode.ini"~Dim dValue As Double~Dim lValue As Long~Dim sValue As String~~CKI_GetParameterLongOfCommand("EVO DataCode", "DataCodeType", lValue)~EVHDINIReadLong("datacode","codetype", -111, lRet, sFile)~If lValue <> lRet Then~	sValue = Str(lValue,0) ~	EVHDINIWriteString("datacode","codetype",sValue,sFile)~	EVHDINIWriteFlush(sFile)~End If~~CKI_GetParameterLongOfCommand("EVO DataCode", "SourceWindow.SourceMode", lValue)~EVHDINIReadLong("datacode","sourcemode", -111, lRet, sFile)~If lValue <> lRet Then~	sValue = Str(lValue,0) ~	EVHDINIWriteString("datacode","sourcemode",sValue,sFile)~	EVHDINIWriteFlush(sFile)~End If~~CKI_GetParameterDoubleOfCommand("EVO DataCode", "SourceWindow.SourceWindow.Left", dValue)~lValue = dValue~EVHDINIReadLong("datacode","sourcewindowleft", -111, lRet, sFile)~If lValue <> lRet Then~	sValue = Str(dValue,4) ~	EVHDINIWriteString("datacode","sourcewindowleft",sValue,sFile)~	EVHDINIWriteFlush(sFile)~End If~~CKI_GetParameterDoubleOfCommand("EVO DataCode", "SourceWindow.SourceWindow.Top", dValue)~EVHDINIReadLong("datacode","sourcewindowtop", -111, lRet, sFile)~If lValue <> lRet Then~	sValue = Str(dValue,4) ~	EVHDINIWriteString("datacode","sourcewindowtop",sValue,sFile)~	EVHDINIWriteFlush(sFile)~End If~~CKI_GetParameterDoubleOfCommand("EVO DataCode", "SourceWindow.SourceWindow.Width", dValue)~EVHDINIReadLong("datacode","sourcewindowwidth", -111, lRet, sFile)~If lValue <> lRet Then~	sValue = Str(dValue,4) ~	EVHDINIWriteString("datacode","sourcewindowwidth",sValue,sFile)~	EVHDINIWriteFlush(sFile)~End If~~CKI_GetParameterDoubleOfCommand("EVO DataCode", "SourceWindow.SourceWindow.Height", dValue)~EVHDINIReadLong("datacode","sourcewindowheight", -111, lRet, sFile)~If lValue <> lRet Then~	sValue = Str(dValue,4) ~	EVHDINIWriteString("datacode","sourcewindowheight",sValue,sFile)~	EVHDINIWriteFlush(sFile)~End If
-    EncodedBinary [C_34_12AT6B_B85J_180K_380L_240F60D_940G00HT1I_5C4MT1T1T1T1T1_5B1_5B1_5B1_5B1_5B1q1_931_9E1_B21_CA1_D81_D81_D81_EE1_102_1B2_2F2G2U2U2U2m2u2_972_A22_B62_CE2_DC2_DC2_DC2_F42_163_213_353M3_5B3_5B3_5B3s3_953_A03_B43_CC3_DA3_DA3_DA3_F23_144_1F4_334K4Y40000_C05_CC5_80011334000000000000000000000_EC5_F45V0113314300000000000000000004686_15013210000000000000000000000_EC5_0C6X011333300000000000000000000_EC5_206Y011300000000000000000000000_C05_346_7F01133500000000000000000kpd4r00ioq_100kp_944p_844g_940zzir_100zokq00iq40p_BC4_88kp_B04p_A44g_B40zzizr40kzizq_100q40_8C_82d_D81koip_5C4q_100mg_D40zizkr_140iokq00q_140p_B04p_A44g_F40zzzzizokq00g_141zizc_D81ioq_100kp_C04p_844g_940zzir_100zokq00iq40p_BC4_88kp_D84p_A44g_B40zzizr40kzizq_100q40_8C_82dU2koip_5C4q_100mg_D40zizkr_140iokq00q_140p_D84p_A44g_F40zzzzizokq00g_141zizcU2iojq80kp_E44p_844g_341zzjr80izjq80lr_100okq00iq40p_BC4_88kp45p_A44g_B40zzizr40kzizq_100q40_8C_82d_DC2koip_185jq80g_D40zizkr_140iokq00q_140p45p_A44g_F40zzzzizokq00g_141zizc_DC2iojq80kp_1C5p_844g_341zzjr80izokq00iq40p_BC4_88kp_3C5p_A44g_B40zzizr40kzizq_100q40_8C_82d_5B3koip_185jq80g_D40zizkr_140iokq00q_140p_3C5p_A44g_F40zzzzizokq00g_141zizc_5B3iojq80kpL5p_844g_341zzjr80izokq00iq40p_BC4_88kpl5p_A44g_B40zzizr40kzizq_100q40_8C_82d_DA3koip_185jq80g_D40zizkr_140iokq00q_140pl5p_A44g_F40zzzzizokq00g_141zizc_DA3iojq80kp_805p_844g_341zzjr80izokq00iq40p_BC4_88kp_A45p_A44g_B40zzizr40kzizq_100q40_8C_82dY4koip_185jq80g_D40zizkr_140iokq00q_140p_A45p_A44g_F40zzzzizokq00g_141zizcY4f0000001000C_3A_5CTemp_5Cwwwroot_5Cdatacode_2Eini0000EVO_20DataCode0000DataCodeType0000datacode0000codetype0000o000SourceWindow_2ESourceMode0sourcemode00SourceWindow_2ESourceWindow_2ELeft00sourcewindowleft00004000SourceWindow_2ESourceWindow_2ETop000sourcewindowtop0SourceWindow_2ESourceWindow_2EWidth0sourcewindowwidth000SourceWindow_2ESourceWindow_2EHeight0000sourcewindowheight00source00EVTVision000CKI_5FGetParameterLongOfCommand000Evhd0000EVHDINIReadLong0Std0Str0EVHDINIWriteString00EVHDINIWriteFlush000CKI_5FGetParameterDoubleOfCommand0]
-    ExternProgramFileName 
-    UseExternProgram 0
-    NumberOfAdditionalLinesProgram 0
-    NumberOfAdditionalLinesBinary 0
-    CKPICKUP_TYPE_WRITE 
-      ClassVersion 1
-      Name 
-      PickupObjectType 0
-      PickupListIndex 1833332
-    END_CKPICKUP_TYPE_WRITE 
-    TeachInCounter 0
-  END_KEY 9
-  KEY 10
-    ClassVersion 4
-    CKGENERAL 
-      ClassVersion 1
-      Position 13
-      CommandType 1040
-      CommandName Script OCR
-      Enabled 1
-      Hidden 0
-      GraficMode 2
-      TextMode 2
-      ImageMemory 0
-      InvertResult 0
-      Memo 
-    END_CKGENERAL 
-    CKRESULT 
-      ClassVersion 1
-      Name Script interpreter (BASIC)
-      EnterResultToRTDisplay 0
-      RTDisplayIndex 0
-      RTWidthOfToleranceRegion 80
-      CKEVALUATION 
-        ClassVersion 3
-        GlobalToleranceIndex -1
-        UseWarningTolerances 0
-        NominalValue 0,0
-        PlusTolerance 10000,0
-        MinusTolerance 0,0
-        WarnPlusTolerance 0,0
-        WarnMinusTolerance 0,0
-        DynamicEvaluation 0
-        FileName 
-        Section 
-        CorrectionActive 0
-        CorrectionType 0
-        EnableAutoTeachIn 1
-        NumberOfUsedCorrections 0
-      END_CKEVALUATION 
-      CKSTATISTIC 
-        ClassVersion 1
-        EnterToStatistic 0
-        Index -1
-      END_CKSTATISTIC 
-    END_CKRESULT 
-    Program Dim sFile As String~Dim lRet As Long~sFile = "C:\Temp\wwwroot\ocr.ini"~Dim dValue As Double~Dim lValue As Long~Dim sValue As String~~CKI_GetParameterLongOfCommand("EVO OCR", "fontNum", lValue)~EVHDINIReadLong("ocr","fontnum", -111, lRet, sFile)~If lValue <> lRet Then~	sValue = Str(lValue,0) ~	EVHDINIWriteString("ocr","fontnum",sValue,sFile)~	EVHDINIWriteFlush(sFile)~End If~~CKI_GetParameterLongOfCommand("EVO OCR", "polarityType", lValue)~EVHDINIReadLong("ocr","polaritytype", -111, lRet, sFile)~If lValue <> lRet Then~	sValue = Str(lValue,0) ~	EVHDINIWriteString("ocr","polaritytype",sValue,sFile)~	EVHDINIWriteFlush(sFile)~End If~~CKI_GetParameterLongOfCommand("EVO OCR", "dotType", lValue)~EVHDINIReadLong("ocr","dottype", -111, lRet, sFile)~If lValue <> lRet Then~	sValue = Str(lValue,0) ~	EVHDINIWriteString("ocr","dottype",sValue,sFile)~	EVHDINIWriteFlush(sFile)~End If~~CKI_GetParameterLongOfCommand("EVO OCR", "rotateType", lValue)~EVHDINIReadLong("ocr","rotatetype", -111, lRet, sFile)~If lValue <> lRet Then~	sValue = Str(lValue,0) ~	EVHDINIWriteString("ocr","rotatetype",sValue,sFile)~	EVHDINIWriteFlush(sFile)~End If~~CKI_GetParameterLongOfCommand("EVO OCR", "segmentationType", lValue)~EVHDINIReadLong("ocr","segmentationtype", -111, lRet, sFile)~If lValue <> lRet Then~	sValue = Str(lValue,0) ~	EVHDINIWriteString("ocr","segmentationtype",sValue,sFile)~	EVHDINIWriteFlush(sFile)~End If~~CKI_GetParameterDoubleOfCommand("EVO OCR", "AutoCharX", dValue)~lValue = dValue~EVHDINIReadLong("ocr","autocharx", -111, lRet, sFile)~If lValue <> lRet Then~	sValue = Str(dValue,4) ~	EVHDINIWriteString("ocr","autocharx",sValue,sFile)~	EVHDINIWriteFlush(sFile)~End If~~CKI_GetParameterDoubleOfCommand("EVO OCR", "AutoCharY", dValue)~EVHDINIReadLong("ocr","autochary", -111, lRet, sFile)~If lValue <> lRet Then~	sValue = Str(dValue,4) ~	EVHDINIWriteString("ocr","autochary",sValue,sFile)~	EVHDINIWriteFlush(sFile)~End If~~CKI_GetParameterDoubleOfCommand("EVO OCR", "AutoCharW", dValue)~EVHDINIReadLong("ocr","autocharw", -111, lRet, sFile)~If lValue <> lRet Then~	sValue = Str(dValue,4) ~	EVHDINIWriteString("ocr","autocharw",sValue,sFile)~	EVHDINIWriteFlush(sFile)~End If~~CKI_GetParameterDoubleOfCommand("EVO OCR", "AutoCharH", dValue)~EVHDINIReadLong("ocr","autocharh", -111, lRet, sFile)~If lValue <> lRet Then~	sValue = Str(dValue,4) ~	EVHDINIWriteString("ocr","autocharh",sValue,sFile)~	EVHDINIWriteFlush(sFile)~End If~~CKI_GetParameterDoubleOfCommand("EVO OCR", "charX", dValue)~lValue = dValue~EVHDINIReadLong("ocr","charx", -111, lRet, sFile)~If lValue <> lRet Then~	sValue = Str(dValue,4) ~	EVHDINIWriteString("ocr","charx",sValue,sFile)~	EVHDINIWriteFlush(sFile)~End If~~CKI_GetParameterDoubleOfCommand("EVO OCR", "charY", dValue)~EVHDINIReadLong("ocr","chary", -111, lRet, sFile)~If lValue <> lRet Then~	sValue = Str(dValue,4) ~	EVHDINIWriteString("ocr","chary",sValue,sFile)~	EVHDINIWriteFlush(sFile)~End If~~CKI_GetParameterDoubleOfCommand("EVO OCR", "charW", dValue)~EVHDINIReadLong("ocr","charw", -111, lRet, sFile)~If lValue <> lRet Then~	sValue = Str(dValue,4) ~	EVHDINIWriteString("ocr","charw",sValue,sFile)~	EVHDINIWriteFlush(sFile)~End If~~CKI_GetParameterDoubleOfCommand("EVO OCR", "charH", dValue)~EVHDINIReadLong("ocr","charh", -111, lRet, sFile)~If lValue <> lRet Then~	sValue = Str(dValue,4) ~	EVHDINIWriteString("ocr","charh",sValue,sFile)~	EVHDINIWriteFlush(sFile)~End If~~CKI_GetParameterDoubleOfCommand("EVO OCR", "posRect.PointStart.X", dValue)~lValue = dValue~EVHDINIReadLong("ocr","pointstartx", -111, lRet, sFile)~If lValue <> lRet Then~	sValue = Str(dValue,4) ~	EVHDINIWriteString("ocr","pointstartx",sValue,sFile)~	EVHDINIWriteFlush(sFile)~End If~~CKI_GetParameterDoubleOfCommand("EVO OCR", "posRect.PointEnd.X", dValue)~EVHDINIReadLong("ocr","pointendx", -111, lRet, sFile)~If lValue <> lRet Then~	sValue = Str(dValue,4) ~	EVHDINIWriteString("ocr","pointendx",sValue,sFile)~	EVHDINIWriteFlush(sFile)~End If~~CKI_GetParameterDoubleOfCommand("EVO OCR", "posRect.PointStart.Y", dValue)~EVHDINIReadLong("ocr","pointstarty", -111, lRet, sFile)~If lValue <> lRet Then~	sValue = Str(dValue,4) ~	EVHDINIWriteString("ocr","pointstarty",sValue,sFile)~	EVHDINIWriteFlush(sFile)~End If~~CKI_GetParameterDoubleOfCommand("EVO OCR", "posRect.PointEnd.Y", dValue)~EVHDINIReadLong("ocr","pointendy", -111, lRet, sFile)~If lValue <> lRet Then~	sValue = Str(dValue,4) ~	EVHDINIWriteString("ocr","pointendy",sValue,sFile)~	EVHDINIWriteFlush(sFile)~End If~~CKI_GetParameterDoubleOfCommand("EVO OCR", "posRect.Width", dValue)~EVHDINIReadLong("ocr","width", -111, lRet, sFile)~If lValue <> lRet Then~	sValue = Str(dValue,4) ~	EVHDINIWriteString("ocr","width",sValue,sFile)~	EVHDINIWriteFlush(sFile)~End If
-    EncodedBinary [C_34_12A_AC_0DB_10_0DJ_180K_9A0L_240F60DX1G00H_182I_1C_0BM_182_182_182_182_182_1F2_1F2_1F2_1F2_1F2_352W2b2v2_8E2_9C2_9C2_9C2_B22_D42_DF2_F32_0B3_193_193_193_2F3Q3_5C3p3_883_963_963_963_AC3_CE3_D93_ED354_134_134_134_294K4V4j4_824_904_904_904_A84_B04_D24_DD4_F1495_175_175_175_2F5Q5_5C5p5_885_965_965_965_AE5_D05_DB5_EF576_156_156_156_2D6O6Z6n6_866_946_946_946_AC6_B46_D66_E16_F56_0D7_1B7_1B7_1B7_337U7_607t7_8C7_9A7_9A7_9A7_B27_D47_DF7_F37_0B8_198_198_198_318S8_5E8r8_8A8_988_988_988_B08_B88_DA8_E58_F98_119_1F9_1F9_1F9_379Y9d9x9_909_9E9_9E9_9E9_B69_D89_E39_F79_0F_0A_1D_0A_1D_0A_1D_0A_35_0AW_0Ab_0Av_0A_8E_0A_9C_0A_9C_0A_9C_0A_B4_0A_D6_0A_E1_0A_F5_0A_0D_0B_1B_0B0000_18_0D_24_0D_80011334000000000000000000000D_0DL_0DV011331430000000000000000000_5C_0D_60_0D_15013210000000000000000000000D_0Dd_0DX011333300000000000000000000D_0Dx_0DY011300000000000000000000000_18_0D_8C_0D_7F01133500000000000000000kp_24_0Br00ioq_100kpD_0Bp_3C_0BgX1zzir_100zokq00iq40pX_0B_88kpP_0BpL_0Bgx1zzizr40kzizq_100q40_8C_82d_9C2koip_1C_0Bq_100mg_981zizkr_140iokq00q_140pP_0BpL_0Bg_B81zzzzizokq00g_D81zizc_9C2ioq_100kp_5C_0Bp_3C_0BgX1zzir_100zokq00iq40pX_0B_88kpl_0BpL_0Bgx1zzizr40kzizq_100q40_8C_82d_193koip_1C_0Bq_100mg_981zizkr_140iokq00q_140pl_0BpL_0Bg_B81zzzzizokq00g_D81zizc_193ioq_100kp_7C_0Bp_3C_0BgX1zzir_100zokq00iq40pX_0B_88kp_84_0BpL_0Bgx1zzizr40kzizq_100q40_8C_82d_963koip_1C_0Bq_100mg_981zizkr_140iokq00q_140p_84_0BpL_0Bg_B81zzzzizokq00g_D81zizc_963ioq_100kp_8C_0Bp_3C_0BgX1zzir_100zokq00iq40pX_0B_88kp_98_0BpL_0Bgx1zzizr40kzizq_100q40_8C_82d_134koip_1C_0Bq_100mg_981zizkr_140iokq00q_140p_98_0BpL_0Bg_B81zzzzizokq00g_D81zizc_134ioq_100kp_A4_0Bp_3C_0BgX1zzir_100zokq00iq40pX_0B_88kp_B8_0BpL_0Bgx1zzizr40kzizq_100q40_8C_82d_904koip_1C_0Bq_100mg_981zizkr_140iokq00q_140p_B8_0BpL_0Bg_B81zzzzizokq00g_D81zizc_904iojq80kp_CC_0Bp_3C_0Bg_F81zzjr80izjq80lr_100okq00iq40pX_0B_88kp_D8_0BpL_0Bgx1zzizr40kzizq_100q40_8C_82d_175koip_E4_0Bjq80g_981zizkr_140iokq00q_140p_D8_0BpL_0Bg_B81zzzzizokq00g_D81zizc_175iojq80kp_E8_0Bp_3C_0Bg_F81zzjr80izokq00iq40pX_0B_88kp_F4_0BpL_0Bgx1zzizr40kzizq_100q40_8C_82d_965koip_E4_0Bjq80g_981zizkr_140iokq00q_140p_F4_0BpL_0Bg_B81zzzzizokq00g_D81zizc_965iojq80kp0_0Cp_3C_0Bg_F81zzjr80izokq00iq40pX_0B_88kp_0C_0CpL_0Bgx1zzizr40kzizq_100q40_8C_82d_156koip_E4_0Bjq80g_981zizkr_140iokq00q_140p_0C_0CpL_0Bg_B81zzzzizokq00g_D81zizc_156iojq80kp_18_0Cp_3C_0Bg_F81zzjr80izokq00iq40pX_0B_88kp_24_0CpL_0Bgx1zzizr40kzizq_100q40_8C_82d_946koip_E4_0Bjq80g_981zizkr_140iokq00q_140p_24_0CpL_0Bg_B81zzzzizokq00g_D81zizc_946iojq80kp_30_0Cp_3C_0Bg_F81zzjr80izjq80lr_100okq00iq40pX_0B_88kp_38_0CpL_0Bgx1zzizr40kzizq_100q40_8C_82d_1B7koip_E4_0Bjq80g_981zizkr_140iokq00q_140p_38_0CpL_0Bg_B81zzzzizokq00g_D81zizc_1B7iojq80kp_40_0Cp_3C_0Bg_F81zzjr80izokq00iq40pX_0B_88kpH_0CpL_0Bgx1zzizr40kzizq_100q40_8C_82d_9A7koip_E4_0Bjq80g_981zizkr_140iokq00q_140pH_0CpL_0Bg_B81zzzzizokq00g_D81zizc_9A7iojq80kpP_0Cp_3C_0Bg_F81zzjr80izokq00iq40pX_0B_88kpX_0CpL_0Bgx1zzizr40kzizq_100q40_8C_82d_198koip_E4_0Bjq80g_981zizkr_140iokq00q_140pX_0CpL_0Bg_B81zzzzizokq00g_D81zizc_198iojq80kp_60_0Cp_3C_0Bg_F81zzjr80izokq00iq40pX_0B_88kph_0CpL_0Bgx1zzizr40kzizq_100q40_8C_82d_988koip_E4_0Bjq80g_981zizkr_140iokq00q_140ph_0CpL_0Bg_B81zzzzizokq00g_D81zizc_988iojq80kpp_0Cp_3C_0Bg_F81zzjr80izjq80lr_100okq00iq40pX_0B_88kp_88_0CpL_0Bgx1zzizr40kzizq_100q40_8C_82d_1F9koip_E4_0Bjq80g_981zizkr_140iokq00q_140p_88_0CpL_0Bg_B81zzzzizokq00g_D81zizc_1F9iojq80kp_94_0Cp_3C_0Bg_F81zzjr80izokq00iq40pX_0B_88kp_A8_0CpL_0Bgx1zzizr40kzizq_100q40_8C_82d_9E9koip_E4_0Bjq80g_981zizkr_140iokq00q_140p_A8_0CpL_0Bg_B81zzzzizokq00g_D81zizc_9E9iojq80kp_B4_0Cp_3C_0Bg_F81zzjr80izokq00iq40pX_0B_88kp_CC_0CpL_0Bgx1zzizr40kzizq_100q40_8C_82d_1D_0Akoip_E4_0Bjq80g_981zizkr_140iokq00q_140p_CC_0CpL_0Bg_B81zzzzizokq00g_D81zizc_1D_0Aiojq80kp_D8_0Cp_3C_0Bg_F81zzjr80izokq00iq40pX_0B_88kp_EC_0CpL_0Bgx1zzizr40kzizq_100q40_8C_82d_9C_0Akoip_E4_0Bjq80g_981zizkr_140iokq00q_140p_EC_0CpL_0Bg_B81zzzzizokq00g_D81zizc_9C_0Aiojq80kp_F8_0Cp_3C_0Bg_F81zzjr80izokq00iq40pX_0B_88kp8_0DpL_0Bgx1zzizr40kzizq_100q40_8C_82d_1B_0Bkoip_E4_0Bjq80g_981zizkr_140iokq00q_140p8_0DpL_0Bg_B81zzzzizokq00g_D81zizc_1B_0Bf00001000C_3A_5CTemp_5Cwwwroot_5Cocr_2Eini0EVO_20OCR0fontNum0ocr0fontnum0o000polarityType0000polaritytype0000dotType0dottype0rotateType00rotatetype00segmentationType0000segmentationtype0000AutoCharX000autocharx0004000AutoCharY000autochary000AutoCharW000autocharw000AutoCharH000autocharh000charX000charx000charY000chary000charW000charw000charH000charh000posRect_2EPointStart_2EX0000pointstartx0posRect_2EPointEnd_2EX00pointendx000posRect_2EPointStart_2EY0000pointstarty0posRect_2EPointEnd_2EY00pointendy000posRect_2EWidth000width000source00EVTVision000CKI_5FGetParameterLongOfCommand000Evhd0000EVHDINIReadLong0Std0Str0EVHDINIWriteString00EVHDINIWriteFlush000CKI_5FGetParameterDoubleOfCommand0]
-    ExternProgramFileName 
-    UseExternProgram 0
-    NumberOfAdditionalLinesProgram 0
-    NumberOfAdditionalLinesBinary 0
-    CKPICKUP_TYPE_WRITE 
-      ClassVersion 1
-      Name 
-      PickupObjectType 0
-      PickupListIndex 1829999
-    END_CKPICKUP_TYPE_WRITE 
-    TeachInCounter 0
-  END_KEY 10
-  KEY 11
-    ClassVersion 4
-    CKGENERAL 
-      ClassVersion 1
-      Position 15
       CommandType 1042
       CommandName Image transfer
       Enabled 1
@@ -999,8 +825,8 @@ START_PARM_LIST
     ImageAreaHeight 0,0
     DynamicRoiSource 1
     ImageResolutionType 1
-    OverlayType 2
-    TransmissionImageFormat 2
+    OverlayType 3
+    TransmissionImageFormat 1
     TransmissionImageCompression 2
     UDPRetryNOfRetries 0
     UDPRetryTimeout 20
@@ -1026,12 +852,12 @@ START_PARM_LIST
       PickupListIndex 136655
     END_CKPICKUP_TYPE_WRITE 
     TeachInCounter 0
-  END_KEY 11
-  KEY 12
+  END_KEY 8
+  KEY 9
     ClassVersion 1
     CKGENERAL 
       ClassVersion 1
-      Position 17
+      Position 13
       CommandType 114
       CommandName Stop watch
       Enabled 1
@@ -1080,7 +906,7 @@ START_PARM_LIST
       PickupListIndex 42011
     END_CKPICKUP_TYPE_WRITE 
     TeachInCounter 0
-  END_KEY 12
+  END_KEY 9
 END_PARM_LIST 
 CKPARAMETERS 
   ClassVersion 1

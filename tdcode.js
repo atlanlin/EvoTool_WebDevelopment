@@ -248,15 +248,13 @@
 		});
 		
 		$("#btnMeasure").click(function(){
-			//not to confuse with previous result
-			$("#resultDisplay").val("");
 			//evoComm();
 			ajaxGet("cfg.ini", getCodeValueFrominiFile);
 		});
 		
 		$("#loadValues").click(function(){
 			//get settings
-			ajaxGet("datacode.ini", getParameterFrominiFile);
+			ajaxGet("cfg.ini", getParameterFrominiFile);
 			this.disabled = true;
 			this.style.color="gray";
 			undisableBtn("fileCR");
@@ -309,10 +307,10 @@
 	}
 	
 	function getParameterFrominiFile() {
-		if (xhr.readyState != 4)  {
+		if (xhr.readyState != 4)  { 
 			responseCount++;
 			if(responseCount > 2){
-				ajaxGet("datacode.ini", getParameterFrominiFile);
+				ajaxGet("cfg.ini", getParameterFrominiFile);
 				responseCount = 0;
 			}
 			return; 
@@ -326,6 +324,7 @@
 		var dcSourceWindowTop = getIniStr(command, "sourcewindowtop", resp);
 		var dcSourceWindowWidth = getIniStr(command, "sourcewindowwidth", resp);
 		var dcSourceWindowHeight = getIniStr(command, "sourcewindowheight", resp);
+				
 		getCodeType(dcCodeType);
 		getSourceMode(dcSourceMode, dcSourceWindowLeft, dcSourceWindowTop, dcSourceWindowWidth, dcSourceWindowHeight);
 	}
