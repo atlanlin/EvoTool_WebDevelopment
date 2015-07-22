@@ -260,6 +260,8 @@
 		});
 		
 		$("#btnMeasure").click(function(){
+			//not to confuse with previous result
+			$("#resultDisplay").val("");
 			//evoComm();
 			ajaxGet("cfg.ini", getCodeValueFrominiFile);
 			setCookie("bcGlobalScaleCookie",GLOBAL_SCALE,1);
@@ -267,7 +269,7 @@
 		
 		$("#loadValues").click(function(){
 			//get settings
-			ajaxGet("cfg.ini", getParameterFrominiFile);
+			ajaxGet("barcode.ini", getParameterFrominiFile);
 			this.disabled = true;
 			this.style.color="gray";
 			undisableBtn("fileCR");
@@ -343,10 +345,10 @@
 	}
 
 	function getParameterFrominiFile() {
-		if (xhr.readyState != 4)  { 
+		if (xhr.readyState != 4)  {
 			responseCount++;
 			if(responseCount > 2){
-				ajaxGet("cfg.ini", getParameterFrominiFile);
+				ajaxGet("barcode.ini", getParameterFrominiFile);
 				responseCount = 0;
 			}
 			return; 

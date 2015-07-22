@@ -252,15 +252,15 @@ function getValueFrominiFile()
 
 function getCodeValueFrominiFile()
 {
-	if (xhr.readyState != 4)  { 
-		responseCount++;
+	if (xhr.readyState != 4)  {
+		if(xhr.readyState == 1)
+			responseCount++;
 		if(responseCount > 2){
-			ajaxGet("cfg.ini", getCodeValueFrominiFile);
-			responseCount = 0;
+				ajaxGet("cfg.ini", getCodeValueFrominiFile);
+				responseCount = 0;
 		}
 		return; 
 	}
-
 		var resp = xhr.responseText;
 	
 		globalResult = getIniCodeStr("coderesult1=", resp);
