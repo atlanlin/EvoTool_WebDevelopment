@@ -101,6 +101,8 @@
 			"EVO Distance (Point to Circle) Tool", "EVO Distance (Line to Circle) Tool", "EVO Distance (Circle to Circle) Tool", "EVO Distance (Circle to Line) Tool"];
 	
 		window.onload = function() {
+			//ajaxGet("info.htm?cmd=%23021%3BCapture image%3B2%3BCaptureType%3B0%23");
+			ajaxGet("info.htm?cmd=%23021%3BCapture image%3B2%3BTriggeredCapture%3B0%23");
 			ajaxGet("info.htm?cmd=%23004%23");
 			displayResults();
 			addItemsIntoDb();
