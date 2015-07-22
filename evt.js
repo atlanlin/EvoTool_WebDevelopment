@@ -422,7 +422,7 @@ function disableMeasureFunctions(){
 		for(var j=0; j < functionNames.length; j++){
 			cmdIndex = 1;
 			sendCmd = "info.htm?";
-			for(var k=0; k < 8; k++){
+			for(var k=0; k < 5; k++){
 				sendCmd += "cmd" + (cmdIndex).toString() + "=%23021%3B" + frontFunctionNames[i] + 
 					functionNames[j] + (k+1).toString() + "%3B2%3BGeneral.Enabled%3B0%23&";
 				cmdIndex+=1;
