@@ -555,6 +555,14 @@ function updateObjectsFunction(){
 	p1w = p1w/(GLOBAL_SCALE*GLOBAL_SCALE_X);
 	p1h = p1h/(GLOBAL_SCALE*GLOBAL_SCALE_Y);
 	
+	if(p1sx <= 0 || p1sy <= 0 || (p1sx+p1w) > WIDTH || (p1sy+p1h) > HEIGHT || Math.abs(p1w) <= 10 || Math.abs(p1h) <= 10 || Math.abs(p1w*p1h) < 360){
+		alert("Rectangle set back to original position. ROI is very small or out boundary.");
+		p1sx = boxes2[0].x;
+		p1sy = boxes2[0].y;
+		p1w = boxes2[0].w;
+		p1h = boxes2[0].h;
+	}
+	
 	boxes2[0].x = p1sx;
 	boxes2[0].y = p1sy;
 	boxes2[0].w = p1w;

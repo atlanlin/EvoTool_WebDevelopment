@@ -422,12 +422,17 @@ function updateObjectsFunction(){
 	p1sy = p1sy/(GLOBAL_SCALE*GLOBAL_SCALE_Y);
 	p1w = p1w/(GLOBAL_SCALE*GLOBAL_SCALE_X);
 	p1h = p1h/(GLOBAL_SCALE*GLOBAL_SCALE_Y);
-	
+	if(p1sx <= 0 || p1sy <= 0 || (p1sx+p1w) > WIDTH || (p1sy+p1h) > HEIGHT || Math.abs(p1w) <= 10 || Math.abs(p1h) <= 10 || Math.abs(p1w*p1h) < 360){
+		alert("Point 1 set back to original position. ROI is very small or out boundary.");
+		p1sx = boxes2[0].x;
+		p1sy = boxes2[0].y;
+		p1w = boxes2[0].w;
+		p1h = boxes2[0].h;
+	}
 	boxes2[0].x = p1sx;
 	boxes2[0].y = p1sy;
 	boxes2[0].w = p1w;
 	boxes2[0].h = p1h;
-	
 	
 	//setting for point 2
 	var in2sx = parseFloat($("#point2StartX").val());
@@ -484,6 +489,13 @@ function updateObjectsFunction(){
 	p2sy = p2sy/(GLOBAL_SCALE*GLOBAL_SCALE_Y);
 	p2w = p2w/(GLOBAL_SCALE*GLOBAL_SCALE_X);
 	p2h = p2h/(GLOBAL_SCALE*GLOBAL_SCALE_Y);
+	if(p2sx <= 0 || p2sy <= 0 || (p2sx+p2w) > WIDTH || (p2sy+p2h) > HEIGHT || Math.abs(p2w) <= 10 || Math.abs(p2h) <= 10 || Math.abs(p2w*p2h) < 360){
+		alert("Point 2 set back to original position. ROI is very small or out boundary.");
+		p2sx = boxes2[1].x;
+		p2sy = boxes2[1].y;
+		p2w = boxes2[1].w;
+		p2h = boxes2[1].h;
+	}
 	
 	boxes2[1].x = p2sx;
 	boxes2[1].y = p2sy;

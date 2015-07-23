@@ -371,6 +371,14 @@ function updateObjectsFunction(){
 	p1w = p1w/(GLOBAL_SCALE*GLOBAL_SCALE_X);
 	p1h = p1h/(GLOBAL_SCALE*GLOBAL_SCALE_Y);
 	
+	if(p1sx <= 0 || p1sy <= 0 || (p1sx+p1w) > WIDTH || (p1sy+p1h) > HEIGHT || Math.abs(p1w) <= 10 || Math.abs(p1h) <= 10 || Math.abs(p1w*p1h) < 360){
+		alert("Point set back to original position. ROI is very small or out boundary.");
+		p1sx = boxes2[0].x;
+		p1sy = boxes2[0].y;
+		p1w = boxes2[0].w;
+		p1h = boxes2[0].h;
+	}
+	
 	boxes2[0].x = p1sx;
 	boxes2[0].y = p1sy;
 	boxes2[0].w = p1w;
@@ -432,6 +440,14 @@ function updateObjectsFunction(){
 	lsy = lsy/(GLOBAL_SCALE*GLOBAL_SCALE_Y);
 	lw = lw/(GLOBAL_SCALE*GLOBAL_SCALE_X);
 	lh = lh/(GLOBAL_SCALE*GLOBAL_SCALE_Y);
+	
+	if(lsx <= 0 || lsy <= 0 || (lsx+lw) > WIDTH || (lsy+lh) > HEIGHT || Math.abs(lw) <= 10 || Math.abs(lh) <= 10 || Math.abs(lw*lh) < 360){
+		alert("Line set back to original position. ROI is very small or out boundary.");
+		lsx = boxes2[1].x;
+		lsy = boxes2[1].y;
+		lw = boxes2[1].w;
+		lh = boxes2[1].h;
+	}
 	
 	boxes2[1].x = lsx;
 	boxes2[1].y = lsy;
