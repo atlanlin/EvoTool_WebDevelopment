@@ -51,6 +51,20 @@
 			measureFilename = "Measurement";
 		}
 		
+		//get cookies for cmd name
+		var tempBarcode = getCookie("cmdBarcode");
+		var tempDatacode = getCookie("cmdDatacode");
+		var tempOcr = getCookie("cmdOcr");
+		if(tempBarcode != null && tempBarcode != ""){
+			document.getElementById("barcode").value = tempBarcode;
+		}
+		if(tempDatacode != null && tempDatacode != ""){
+			document.getElementById("_2dbarcode").value = tempDatacode;
+		}
+		if(tempOcr != null && tempOcr != ""){
+			document.getElementById("ocrcode").value = tempOcr;
+		}
+		
 		document.getElementById("barcode").addEventListener("click", function(){
 			ajaxGet('info.htm?cmd=%23001'+ codeFilename +'.ckp%23');
 		});

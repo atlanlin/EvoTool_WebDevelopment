@@ -17,9 +17,10 @@
 			margin-left: 15px;
 		}
 		.subHeading{
-			font-size: 24px;
+			font-size: 20px;
 			font-weight:bold;
 			color:#003399;
+			margin-left:0px;
 		}
 		input[type="button"]{
 			margin-left:auto;
@@ -28,6 +29,10 @@
 		.disableElement{
 			color:#C0C0C0;
 		}
+		label{
+			color:#505050;
+		}
+		
 	</style>
     
 </head>
@@ -71,19 +76,26 @@
 					<option>2592x1944</option>
 				</select>
 				<hr>
-				<label style="margin-left:0px; font-size:20px;"><b>CKP File Name</b></label><br>
+				<label class="subHeading"><b>CKP Filenames</b></label><br><br>
 				<label>Code Filename</label><br>
 				<input type="text" id="tbCodeReader" style="margin-left:10px; width:auto;"/><br><br>
 				<label>Measurement Filename</label><br>
 				<input type="text" id="tbMeasurement" style="margin-left:10px; width:auto;"/><br>
-				<hr>
+				<br>
+				<label class="subHeading"><b>Command Name</b></label><br><br>
+				<label>Barcode Command Name</label><br>
+				<input type="text" id="tbBarcode" style="margin-left:10px; width:auto;"/><br><br>
+				<label>Datacode Command Name</label><br>
+				<input type="text" id="tbDatacode" style="margin-left:10px; width:auto;"/><br><br>
+				<label>OCR Command Name</label><br>
+				<input type="text" id="tbOcr" style="margin-left:10px; width:auto;"/><br><br>
 				
-				<label style="margin-left:0px; font-size:20px;"><b>Calibration</b></label><br>
+				<label class="subHeading"><b>Calibration</b></label><br>
 				<label>X</label>
 				<input type="text" id="tbCalxVal" style="width:70px;"/>
 				<label>Y</label>
-				<input type="text" id="tbCalyVal" style="width:70px;"/>
-				<input id="btnSet" class="button" type="button" value="Set" onclick="setBtnClick()"/>
+				<input type="text" id="tbCalyVal" style="width:70px;"/><br><br>
+				<input id="btnSet" class="button" type="button" value="Save all settings" onclick="setBtnClick()"/>
 				<input id="btnCancel" class="button" type="button" value="Cancel" onclick="cancelBtnClick()" style="width:100px;"/>
 			
 			</div>
@@ -95,6 +107,7 @@
 		var resCookieVal;
 		var calX, calY;
 		var fileCR, fileMeasure;
+		var cmdBarcode, cmdDatacode, cmdOcr;
 		var COOKIE_DURATION = 365;
 		restoreValues();
 		
@@ -104,79 +117,63 @@
 			//resCookieVal = getCookie("resolution");
 			//document.getElementById("resSelectBox").selectedIndex = resCookieVal;
 			
+			//calibration settings
+			calX = getCookie("calX");
+			calY = getCookie("calY");
+			if(calX === null){
+				calX = 1;
+				setCookie("calX", calX, COOKIE_DURATION);
+				document.getElementById("tbCalxVal").value = calX;
+			}else{
+				document.getElementById("tbCalxVal").value = calX;
+			}
+			
+			if(calY === null){
+				calY = 1;
+				setCookie("calY", calY, COOKIE_DURATION);
+				document.getElementById("tbCalyVal").value = calY;
+			}else{
+				document.getElementById("tbCalyVal").value = calY;
+			}
+			
 			//filename settings
 			fileCR = getCookie("fileCR");
 			fileMeasure = getCookie("fileMeasure");
 			if(fileCR ===null){
-				setCookie("fileCR", "Code_Reader", COOKIE_DURATION);
+				fileCR = "Code_Reader";
+				setCookie("fileCR", fileCR, COOKIE_DURATION);
 				document.getElementById("tbCodeReader").value = fileCR;
 			}else{
 				document.getElementById("tbCodeReader").value = fileCR;
 			}
 			
 			if(fileMeasure ===null){
-				setCookie("fileMeasure", "Measurement", COOKIE_DURATION);
+				fileMeasure = "Measurement";
+				setCookie("fileMeasure", fileMeasure, COOKIE_DURATION);
 				document.getElementById("tbMeasurement").value = fileMeasure;
 			}else{
 				document.getElementById("tbMeasurement").value = fileMeasure;
 			}
 			
-			//calibration settings
-			calX = getCookie("calX");
-			calY = getCookie("calY");
-			if(calX === null){
-				setCookie("calX", 1, COOKIE_DURATION);
-				document.getElementById("tbCalxVal").value = 1;
-			}else{
-				document.getElementById("tbCalxVal").value = calX;
+			//command name settings
+			cmdBarcode = getCookie("cmdBarcode");
+			cmdDatacode = getCookie("cmdDatacode");
+			cmdOcr = getCookie("cmdOcr");
+			if(cmdBarcode ==null){
+				cmdBarcode = "EVO BarCode";
+				setCookie("cmdBarcode", cmdBarcode, COOKIE_DURATION);
 			}
-			
-			if(calY === null){
-				setCookie("calY", 1, COOKIE_DURATION);
-				document.getElementById("tbCalyVal").value = 1;
-			}else{
-				document.getElementById("tbCalyVal").value = calY;
+			if(cmdDatacode ==null){
+				cmdDatacode = "EVO DataCode";
+				setCookie("cmdDatacode", cmdDatacode, COOKIE_DURATION);
 			}
-		}
-		
-		function updateValuesToCookies(){
-			//resCookieVal = document.getElementById("resSelectBox").selectedIndex;
-			//setCookie("resolution",resCookieVal,COOKIE_DURATION);
-		
-			if(!updateCalValues())
-				return false;
-			return true;
-		}
-		
-		function cancelValues(){
-			//document.getElementById("resSelectBox").selectedIndex = resCookieVal;
-			
-			document.getElementById("tbCalxVal").value = calX;
-			document.getElementById("tbCalyVal").value = calY;
-		}
-		
-		function updateCalValues(){
-			calX = document.getElementById("tbCalxVal").value;
-			calY = document.getElementById("tbCalyVal").value;
-			
-			if(isNaN(calX))
-				return false;
-			if(isNaN(calY))
-				return false;
-			
-			setCookie("calX", calX, COOKIE_DURATION);
-			setCookie("calY", calY, COOKIE_DURATION);
-			return true;
-		}
-		
-		
-		
-		function changeRangeValue(rangeId){
-			if(rangeId.id === "rGain"){
-				document.getElementById("txtGain").value = rangeId.value;
-			}else if(rangeId.id === "rShutter"){
-				document.getElementById("txtShutter").value = rangeId.value;
+			if(cmdOcr == null){
+				cmdOcr = "EVO OCR";
+				setCookie("cmdOcr", cmdOcr, COOKIE_DURATION);
 			}
+			document.getElementById("tbBarcode").value = cmdBarcode;
+			document.getElementById("tbDatacode").value = cmdDatacode;
+			document.getElementById("tbOcr").value = cmdOcr;
 		}
 		
 		function setBtnClick(){
@@ -186,13 +183,105 @@
 				alert("wrong input values");
 		}
 		
+		function updateValuesToCookies(){
+			//resCookieVal = document.getElementById("resSelectBox").selectedIndex;
+			//setCookie("resolution",resCookieVal,COOKIE_DURATION);
+		
+			if(!updateCalValues())
+				return false;
+			if(!updateCmdNames())
+				return false;
+			if(!updateFilenames())
+				return false;
+			return true;
+		}
+		
+		function updateCalValues(){
+			var tempcalX = document.getElementById("tbCalxVal").value;
+			var tempcalY = document.getElementById("tbCalyVal").value;
+			
+			if(isNaN(calX))
+				return false;
+			if(isNaN(calY))
+				return false;
+			calX = tempcalX;
+			calY = tempcalY;
+			setCookie("calX", calX, COOKIE_DURATION);
+			setCookie("calY", calY, COOKIE_DURATION);
+			return true;
+		}
+		
+		function updateFilenames(){
+			var tempCRFile = document.getElementById("tbCodeReader").value;
+			var tempMeasureFile = document.getElementById("tbMeasurement").value;
+			
+			if(tempCRFile == "")
+				return false;
+			if(tempMeasureFile == "")
+				return false;
+				
+			fileCR = tempCRFile;
+			fileMeasure = tempMeasureFile;
+			setCookie("fileCR", fileCR, COOKIE_DURATION);
+			setCookie("fileMeasure", fileMeasure, COOKIE_DURATION);
+			return true;
+		}
+		
+		function updateCmdNames(){
+			ajaxGet('info.htm?cmd=%23001'+ fileCR +'.ckp%23');
+			var tempBarcode = document.getElementById("tbBarcode").value;
+			var tempDatacode = document.getElementById("tbDatacode").value;
+			var tempOcr = document.getElementById("tbOcr").value;
+			
+			if(tempBarcode == "")
+				return false;
+			if(tempDatacode == "")
+				return false;
+			if(tempOcr == "")
+				return false;
+			cmdBarcode = tempBarcode;
+			cmdDatacode = tempDatacode;
+			cmdOcr = tempOcr;
+			
+			setCookie("cmdBarcode", cmdBarcode, COOKIE_DURATION);
+			setCookie("cmdDatacode", cmdDatacode, COOKIE_DURATION);
+			setCookie("cmdOcr", cmdOcr, COOKIE_DURATION);
+			
+			ajaxGet('info.htm?cmd=%23021%3BBarcode%20Filename%3B0%3BObjectName%3B'+cmdBarcode+'%23');
+			ajaxGet('info.htm?cmd=%23021%3BDatacode%20Filename%3B0%3BObjectName%3B'+cmdDatacode+'%23');
+			ajaxGet('info.htm?cmd=%23021%3BOCR%20Filename%3B0%3BObjectName%3B'+cmdOcr+'%23');
+			ajaxGet('info.htm?cmd=%23024'+ fileCR +'.ckp%23');
+			
+			
+			return true;
+		}
+		
 		function cancelBtnClick(){
 			cancelValues();
 		}
 		
+		function cancelValues(){
+			//document.getElementById("resSelectBox").selectedIndex = resCookieVal;
+			
+			document.getElementById("tbCalxVal").value = calX;
+			document.getElementById("tbCalyVal").value = calY;
+			
+			document.getElementById("tbCodeReader").value = fileCR;
+			document.getElementById("tbMeasurement").value = fileMeasure;
+			
+			document.getElementById("tbBarcode").value = cmdBarcode;
+			document.getElementById("tbDatacode").value = cmdDatacode;
+			document.getElementById("tbOcr").value = cmdOcr;
+		}
 		
 		
-		
+		function changeRangeValue(rangeId){
+			if(rangeId.id === "rGain"){
+				document.getElementById("txtGain").value = rangeId.value;
+			}else if(rangeId.id === "rShutter"){
+				document.getElementById("txtShutter").value = rangeId.value;
+			}
+		}
 		
 		
 		
