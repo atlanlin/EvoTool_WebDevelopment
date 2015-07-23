@@ -400,27 +400,27 @@ function disableCodeFunctions(){
 	ajaxGet(sendCmd);
 }
 
-function disableBarCode() {
+function enableBarCode(value) {
 	var frontFunctionNames = ["EVO%20", "Flush%20", "Create%20", "Send%20", "Script%20"];
 	var functionNames = ["BarCode"];
 	for(var i=0; i < frontFunctionNames.length; i++){
 		for(var j=0; j < functionNames.length; j++){
-			ajaxGet('info.htm?cmd=%23021%3B'+frontFunctionNames[i]+functionNames[j]+'%3B2%3BGeneral.Enabled%3B0%23');
+			ajaxGet('info.htm?cmd=%23021%3B'+frontFunctionNames[i]+functionNames[j]+'%3B2%3BGeneral.Enabled%3B'+value.toString()+'%23');
 		}
 	}
 }
 
-function disableDataCode() {
+function enableDataCode(value) {
 	var frontFunctionNames = ["EVO%20", "Flush%20", "Create%20", "Send%20", "Script%20"];
 	var functionNames = ["DataCode"];
 	for(var i=0; i < frontFunctionNames.length; i++){
 		for(var j=0; j < functionNames.length; j++){
-			ajaxGet('info.htm?cmd=%23021%3B'+frontFunctionNames[i]+functionNames[j]+'%3B2%3BGeneral.Enabled%3B0%23');
+			ajaxGet('info.htm?cmd=%23021%3B'+frontFunctionNames[i]+functionNames[j]+'%3B2%3BGeneral.Enabled%3B'+value.toString()+'%23');
 		}
 	}
 }
 
-function disableOCR() {
+function enableOCR(value) {
 	var frontFunctionNames = ["EVO%20", "Flush%20", "Create%20", "Send%20"];
 	var functionNames = ["OCR%20"];
 	for(var i=0; i < frontFunctionNames.length; i++){
@@ -430,7 +430,17 @@ function disableOCR() {
 			}
 		}
 	}
-	ajaxGet('info.htm?cmd=%23021%3BScript%20OCR%3B2%3BGeneral.Enabled%3B0%23');
+	
+	if (value < 0) {
+		ajaxGet('info.htm?cmd=%23021%3BScript%20OCR%3B2%3BGeneral.Enabled%3B0%23');
+	} else {
+		for(var i=0; i < frontFunctionNames.length; i++){
+			for(var j=0; j < functionNames.length; j++){
+				ajaxGet('info.htm?cmd=%23021%3B'+frontFunctionNames[i]+functionNames[j]+value.toString()+'%3B2%3BGeneral.Enabled%3B1%23');
+			}
+		}
+		ajaxGet('info.htm?cmd=%23021%3BScript%20OCR%3B2%3BGeneral.Enabled%3B1%23');
+	}
 }
 
 function disableMeasureFunctions(){
