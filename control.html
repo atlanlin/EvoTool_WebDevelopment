@@ -93,8 +93,9 @@
 		
 
         </div>
-		
+		<div id="commuStatus" style="display:none;"/>
 		<script>
+		var stopStatus = true;
 		var cookieNames = ["circle", "width", "ptp", "ptl", "ptc", "ltc", "ctc", "ctl"];
 		var EvoNames = ["Circle", "Width", "PTP", "PTL", "PTC", "CTL", "CTC", "CTL"];
 		var displayNames = ["EVO Circle Tool", "EVO Width Tool", "EVO Distance (Point to Point) Tool", "EVO Distance(Point to Line) Tool", 
@@ -140,56 +141,63 @@
 				var tool = getValueByName("selectedTool");
 				var toolNo = document.getElementById("selectedNumber").value;
 				var requestedPage;
-				disableMeasureFunctions();
-				delay(1500);
-				switch(tool){
-					case "circle":
-						requestedPage="circlewidth.htm?";
-						break;
-					case "width":
-						requestedPage="width.html?";
-						break;
-					case "ptp":
-						requestedPage="p_to_p.html?";
-						break;
-					case "ptl":
-						requestedPage="p_to_l.html?";
-						break;
-					case "ptc":
-						requestedPage="p_to_c.htm?";
-						break;
-					case "ctl":
-						requestedPage="l_to_c.htm?";
-						break;
-					case "ctc":
-						requestedPage="c_to_c.htm?";
-						break;
-					default:
-						requestedPage="";
-				}
 				
-				var foundStatus = findCookie(tool, toolNo);
-				
-				if(foundStatus == true)
+				if(stopStatus == false)
 				{
-					var userResponse = confirm("The "+tool+ " "+toolNo + " measurement have been used.\nDo you wish to overwrite the existing result?");
-					if (userResponse == true) {
-						deleteCookie(tool + toolNo);
-						localStorage.removeItem("shot" + tool + toolNo);
-						var queryString = requestedPage + "tool=" + tool + "&toolNo=" + toolNo;
-						window.location.href = queryString;
-					}
+					alert("Please stop monitoring")
 				}
 				else
 				{
-					var queryString = requestedPage + "tool=" + tool + "&toolNo=" + toolNo;
-					window.location.href = queryString;
-				}
+					switch(tool){
+						case "circle":
+							requestedPage="circlewidth.htm?";
+							break;
+						case "width":
+							requestedPage="width.html?";
+							break;
+						case "ptp":
+							requestedPage="p_to_p.html?";
+							break;
+						case "ptl":
+							requestedPage="p_to_l.html?";
+							break;
+						case "ptc":
+							requestedPage="p_to_c.htm?";
+							break;
+						case "ctl":
+							requestedPage="l_to_c.htm?";
+							break;
+						case "ctc":
+							requestedPage="c_to_c.htm?";
+							break;
+						default:
+							requestedPage="";
+					}
 				
+					var foundStatus = findCookie(tool, toolNo);
+				
+					if(foundStatus == true)
+					{
+						var userResponse = confirm("The "+tool+ " "+toolNo + " measurement have been used.\nDo you wish to overwrite the existing result?");
+						if (userResponse == true) {
+							deleteCookie(tool + toolNo);
+							localStorage.removeItem("shot" + tool + toolNo);
+							var queryString = requestedPage + "tool=" + tool + "&toolNo=" + toolNo;
+							stopStatus = true;
+							window.location.href = queryString;
+						}
+					}
+					else
+					{
+						var queryString = requestedPage + "tool=" + tool + "&toolNo=" + toolNo;
+						stopStatus = true;
+						window.location.href = queryString;
+					}
+				}
 			});
 			
 			document.getElementById("btnMonitor").addEventListener("click", function(){
-				
+				stopStatus = false;
 				enableToolByCookie();
 				
 				ajaxGet("info.htm?cmd=%23002%23");
@@ -210,7 +218,7 @@
 				disableMeasureFunctions();
 				ajaxGet("info.htm?cmd=%23004%23");
 				intervalUpdateStop();
-				
+				stopStatus = true;
 				
 				//disableBtn($(this).attr('id'));
 				//undisableBtn("btnMeasure");
