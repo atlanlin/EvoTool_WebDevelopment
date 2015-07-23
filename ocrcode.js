@@ -62,6 +62,8 @@
 	var parametersLoaded = false;
 	
 	var commandName = "EVO%20OCR";
+	
+	var toolNo;
 
 	// box object to hold data
 	// default width and height
@@ -312,7 +314,7 @@
 		$("#btnGo").click(function(){
 			undisableBtn("loadValues");
 			
-			var toolNo = document.getElementById("selectedNumber").value;
+			toolNo = document.getElementById("selectedNumber").value;
 			enableOCR(toolNo);
 			
 			ajaxGet("info.htm?cmd=%23002%23");
@@ -514,24 +516,24 @@
 
 		var resp = xhr.responseText;
 		var command = "ocr";
-		var ocrFontType = getIniStr(command, "fontnum", resp);
-		var ocrPolarityType = getIniStr(command, "polaritytype", resp);
-		var ocrDotted = getIniStr(command, "dottype", resp);
-		var ocrRotationCorrection = getIniStr(command, "rotatetype", resp);
-		var ocrCharSizeType = getIniStr(command, "segmentationtype", resp);
-		var ocrAutoCharX = getIniStr(command, "autocharx", resp);
-		var ocrAutoCharY = getIniStr(command, "autochary", resp);
-		var ocrAutoCharW = getIniStr(command, "autocharw", resp);
-		var ocrAutoCharH = getIniStr(command, "autocharh", resp);
-		var ocrCharX = getIniStr(command, "charx", resp);
-		var ocrCharY = getIniStr(command, "chary", resp);
-		var ocrCharW = getIniStr(command, "charw", resp);
-		var ocrCharH = getIniStr(command, "charh", resp);
-		var ocrStartX = getIniStr(command, "pointstartx", resp);
-		var ocrEndX = getIniStr(command, "pointendx", resp);
-		var ocrStartY = getIniStr(command, "pointstarty", resp);
-		var ocrEndY = getIniStr(command, "pointendy", resp);
-		var ocrWidth = getIniStr(command, "width", resp);
+		var ocrFontType = getIniStr(command+toolNo, "fontnum", resp);
+		var ocrPolarityType = getIniStr(command+toolNo, "polaritytype", resp);
+		var ocrDotted = getIniStr(command+toolNo, "dottype", resp);
+		var ocrRotationCorrection = getIniStr(command+toolNo, "rotatetype", resp);
+		var ocrCharSizeType = getIniStr(command+toolNo, "segmentationtype", resp);
+		var ocrAutoCharX = getIniStr(command+toolNo, "autocharx", resp);
+		var ocrAutoCharY = getIniStr(command+toolNo, "autochary", resp);
+		var ocrAutoCharW = getIniStr(command+toolNo, "autocharw", resp);
+		var ocrAutoCharH = getIniStr(command+toolNo, "autocharh", resp);
+		var ocrCharX = getIniStr(command+toolNo, "charx", resp);
+		var ocrCharY = getIniStr(command+toolNo, "chary", resp);
+		var ocrCharW = getIniStr(command+toolNo, "charw", resp);
+		var ocrCharH = getIniStr(command+toolNo, "charh", resp);
+		var ocrStartX = getIniStr(command+toolNo, "pointstartx", resp);
+		var ocrEndX = getIniStr(command+toolNo, "pointendx", resp);
+		var ocrStartY = getIniStr(command+toolNo, "pointstarty", resp);
+		var ocrEndY = getIniStr(command+toolNo, "pointendy", resp);
+		var ocrWidth = getIniStr(command+toolNo, "width", resp);
 				
 		getFontType(ocrFontType);
 		getPolarityType(ocrPolarityType);
