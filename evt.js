@@ -400,6 +400,39 @@ function disableCodeFunctions(){
 	ajaxGet(sendCmd);
 }
 
+function disableBarCode() {
+	var frontFunctionNames = ["EVO%20", "Flush%20", "Create%20", "Send%20", "Script%20"];
+	var functionNames = ["BarCode"];
+	for(var i=0; i < frontFunctionNames.length; i++){
+		for(var j=0; j < functionNames.length; j++){
+			ajaxGet('info.htm?cmd=%23021%3B'+frontFunctionNames[i]+functionNames[j]+'%3B2%3BGeneral.Enabled%3B0%23');
+		}
+	}
+}
+
+function disableDataCode() {
+	var frontFunctionNames = ["EVO%20", "Flush%20", "Create%20", "Send%20", "Script%20"];
+	var functionNames = ["DataCode"];
+	for(var i=0; i < frontFunctionNames.length; i++){
+		for(var j=0; j < functionNames.length; j++){
+			ajaxGet('info.htm?cmd=%23021%3B'+frontFunctionNames[i]+functionNames[j]+'%3B2%3BGeneral.Enabled%3B0%23');
+		}
+	}
+}
+
+function disableOCR() {
+	var frontFunctionNames = ["EVO%20", "Flush%20", "Create%20", "Send%20"];
+	var functionNames = ["OCR%20"];
+	for(var i=0; i < frontFunctionNames.length; i++){
+		for(var j=0; j < functionNames.length; j++){
+			for(var k=0; k < 3; k++){
+				ajaxGet('info.htm?cmd=%23021%3B'+frontFunctionNames[i]+functionNames[j]+(k+1).toString()+'%3B2%3BGeneral.Enabled%3B0%23');
+			}
+		}
+	}
+	ajaxGet('info.htm?cmd=%23021%3BScript%20OCR%3B2%3BGeneral.Enabled%3B0%23');
+}
+
 function disableMeasureFunctions(){
 	//disable all functions - enter function names here to disable
 	var delay_time = 200;
