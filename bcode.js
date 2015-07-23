@@ -173,7 +173,6 @@
 	// then add everything we want to initially exist on the canvas
 	function init2() {
 		
-<<<<<<< HEAD
 		var tempCmd, tempDatacode, tempOcr;
 		tempCmd = getCookie("cmdBarcode");
 		tempDatacode = getCookie("cmdDatacode");
@@ -186,15 +185,13 @@
 			tempOcr = "EVO%20OCR";
 		
 		
-=======
 		// enable barcode
-		enableBarCode(1);
+		enableBarCode(commandName, 1);
 		
 		// disable 2d code and ocr
-		enableDataCode(0);
-		enableOCR(-1);
+		enableDataCode(tempDatacode, 0);
+		enableOCR(tempOcr, -1);
 
->>>>>>> origin/master
 		//for camera trigger
 		//ajaxGet("info.htm?cmd=%23021%3BCapture image%3B2%3BCaptureType%3B0%23");
 		ajaxGet("info.htm?cmd=%23021%3BCapture image%3B2%3BTriggeredCapture%3B0%23");
@@ -206,13 +203,13 @@
 		// disable 2d code and ocr in case they are still enabled
 		ajaxGet('info.htm?cmd=%23021%3B'+tempDatacode+'%3B2%3BGeneral.Enabled%3B0%23');
 		ajaxGet('info.htm?cmd=%23021%3BScript%20DataCode%3B2%3BGeneral.Enabled%3B0%23');
-<<<<<<< HEAD
+
 		ajaxGet('info.htm?cmd=%23021%3B'+tempOcr+'%3B2%3BGeneral.Enabled%3B0%23');
 		ajaxGet('info.htm?cmd=%23021%3BScript%20OCR%3B2%3BGeneral.Enabled%3B0%23');
-=======
+
 		ajaxGet('info.htm?cmd=%23021%3BEVO%20OCR%3B2%3BGeneral.Enabled%3B0%23');
 		ajaxGet('info.htm?cmd=%23021%3BScript%20OCR%3B2%3BGeneral.Enabled%3B0%23'); */
->>>>>>> origin/master
+
 		
 		//evoComm();
 		

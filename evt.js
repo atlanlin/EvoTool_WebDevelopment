@@ -400,7 +400,7 @@ function disableCodeFunctions(){
 	ajaxGet(sendCmd);
 }
 
-function enableBarCode(value) {
+function enableBarCode(cmdName, value) {
 	var frontFunctionNames = ["EVO%20", "Flush%20", "Create%20", "Send%20", "Script%20"];
 	var functionNames = ["BarCode"];
 	for(var i=0; i < frontFunctionNames.length; i++){
@@ -410,7 +410,7 @@ function enableBarCode(value) {
 	}
 }
 
-function enableDataCode(value) {
+function enableDataCode(cmdName, value) {
 	var frontFunctionNames = ["EVO%20", "Flush%20", "Create%20", "Send%20", "Script%20"];
 	var functionNames = ["DataCode"];
 	for(var i=0; i < frontFunctionNames.length; i++){
@@ -420,7 +420,7 @@ function enableDataCode(value) {
 	}
 }
 
-function enableOCR(value) {
+function enableOCR(cmdName, value) {
 	var frontFunctionNames = ["EVO%20", "Flush%20", "Create%20", "Send%20"];
 	var functionNames = ["OCR%20"];
 	for(var i=0; i < frontFunctionNames.length; i++){
