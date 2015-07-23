@@ -131,6 +131,18 @@ function getCircleDetailsFrominiFile()
 			circle.point.x = 50;
 			circle.point.y = 50;
 			circle.radius = 50;
+			innerCircle.radius = 25;
+			startAngle = 0;
+			EndAngle = 360;
+		}
+		
+		if(circle.point.x + circle.radius > endFrameX || circle.point.y + circle.radius > endFrameY || circle.radius < 25)
+		{
+			circle.point.x = 50;
+			circle.point.y = 50;
+			circle.radius = 50;
+			innerCircle.radius = 25;
+			startAngle = 0;
 			EndAngle = 360;
 		}
 		

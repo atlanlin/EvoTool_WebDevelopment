@@ -856,6 +856,14 @@ function updateObjectsFunction(){
 	p1w = p1w/(GLOBAL_SCALE*GLOBAL_SCALE_X);
 	p1h = p1h/(GLOBAL_SCALE*GLOBAL_SCALE_Y);
 	
+	if(p1sx <= 0 || p1sy <= 0 || (p1sx+p1w) > WIDTH || (p1sy+p1h) > HEIGHT || Math.abs(p1w) <= 10 || Math.abs(p1h) <= 10 || Math.abs(p1w*p1h) < 360){
+		//alert("Point set back to original position. ROI is very small or out boundary.");
+		p1sx = boxes2[0].x;
+		p1sy = boxes2[0].y;
+		p1w = boxes2[0].w;
+		p1h = boxes2[0].h;
+	}
+	
 	boxes2[0].x = p1sx;
 	boxes2[0].y = p1sy;
 	boxes2[0].w = p1w;
@@ -907,6 +915,18 @@ function getSettingFrominiFile()
 			circle.point.x = 50;
 			circle.point.y = 50;
 			circle.radius = 50;
+			innerCircle.radius = 25;
+			startAngle = 0;
+			EndAngle = 360;
+		}
+		
+		if(circle.point.x + circle.radius > endFrameX || circle.point.y + circle.radius > endFrameY || circle.radius < 25)
+		{
+			circle.point.x = 50;
+			circle.point.y = 50;
+			circle.radius = 50;
+			innerCircle.radius = 25;
+			startAngle = 0;
 			EndAngle = 360;
 		}
 		

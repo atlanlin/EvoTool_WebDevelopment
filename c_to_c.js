@@ -150,6 +150,18 @@ function getCircleDetailsFrominiFile()
 			circle.point.x = 50;
 			circle.point.y = 50;
 			circle.radius = 50;
+			innerCircle.radius = 25;
+			startAngle1 = 0;
+			EndAngle1 = 360;
+		}
+		
+		if(circle.point.x + circle.radius > endFrameX || circle.point.y + circle.radius > endFrameY || circle.radius < 25)
+		{
+			circle.point.x = 50;
+			circle.point.y = 50;
+			circle.radius = 50;
+			innerCircle.radius = 25;
+			startAngle1 = 0;
 			EndAngle1 = 360;
 		}
 		
@@ -204,8 +216,20 @@ function getCircleDetailsFrominiFile()
 		if(circle2.point.x == 0 && circle2.point.y == 0 && circle2.radius == 0 && EndAngle2 == 0)
 		{
 			circle2.point.x = 50;
-			circle2.point.y = 50;
+			circle2.point.y = 150;
 			circle2.radius = 50;
+			innerCircle2.radius = 25;
+			startAngle2 = 0;
+			EndAngle2 = 360;
+		}
+		
+		if(circle2.point.x + circle2.radius > endFrameX || circle2.point.y + circle2.radius > endFrameY || circle2.radius < 25)
+		{
+			circle2.point.x = 50;
+			circle2.point.y = 150;
+			circle2.radius = 50;
+			innerCircle2.radius = 25;
+			startAngle2 = 0;
 			EndAngle2 = 360;
 		}
 		
