@@ -176,11 +176,15 @@
 	// then add everything we want to initially exist on the canvas
 	function init2() {
 		
+		// disable barcode and 2d code
+		enableBarCode(0);
+		enableDataCode(0);
+			
 		//for camera trigger
 		//ajaxGet("info.htm?cmd=%23021%3BCapture image%3B2%3BCaptureType%3B0%23");
 		ajaxGet("info.htm?cmd=%23021%3BCapture image%3B2%3BTriggeredCapture%3B0%23");
 		
-		// enable ocr
+		/* // enable ocr
 		ajaxGet('info.htm?cmd=%23021%3B'+commandName+'%3B2%3BGeneral.Enabled%3B1%23');
 		ajaxGet('info.htm?cmd=%23021%3BScript%20OCR%3B2%3BGeneral.Enabled%3B1%23');
 
@@ -189,17 +193,24 @@
 		ajaxGet('info.htm?cmd=%23021%3BEVO%20BarCode%3B2%3BGeneral.Enabled%3B0%23');
 		ajaxGet('info.htm?cmd=%23021%3BScript%20BarCode%3B2%3BGeneral.Enabled%3B0%23');
 		ajaxGet('info.htm?cmd=%23021%3BEVO%20DataCode%3B2%3BGeneral.Enabled%3B0%23');
-		ajaxGet('info.htm?cmd=%23021%3BScript%20DataCode%3B2%3BGeneral.Enabled%3B0%23');
+		ajaxGet('info.htm?cmd=%23021%3BScript%20DataCode%3B2%3BGeneral.Enabled%3B0%23'); */
 		
 		//evoComm();
 		
-		//start the program to retrieve image
+/* 		//start the program to retrieve image
 		ajaxGet("info.htm?cmd=%23002%23");
 		intervalUpdateStart();
 		disableBtn("btnCodeStart");
 		disableBtn("btnMeasure");
 		disableBtn("fileCR");
-		setImgFlag(false);
+		setImgFlag(false); */
+		
+		disableBtn("btnCodeStart");
+		disableBtn("btnStop");
+		disableBtn("btnMeasure");
+		disableBtn("fileCR");
+		disableBtn("loadValues");
+		
 		
 		canvas = document.getElementById('canvas2');
 		HEIGHT = canvas.height;
@@ -292,6 +303,21 @@
 			undisableBtn("fileCR");
 			undisableBtn("btnMeasure");
 			parametersLoaded = true;
+			
+			//ajaxGet("info.htm?cmd=%23002%23");
+			//intervalUpdateStart();
+			//undisableBtn("btnStop");
+		});
+		
+		$("#btnGo").click(function(){
+			undisableBtn("loadValues");
+			
+			var toolNo = document.getElementById("selectedNumber").value;
+			enableOCR(toolNo);
+			
+			ajaxGet("info.htm?cmd=%23002%23");
+			intervalUpdateStart();
+			undisableBtn("btnStop");
 		});
 		
 		// add a large green rectangle (roi window)
@@ -650,10 +676,8 @@
 	}
 	
 	function getSourceMode(ocrStartX, ocrEndX, ocrStartY, ocrEndY, ocrWidth) {
-		/* if ((ocrStartX == 0) && (ocrStartY == (IMG_HEIGHT/GLOBAL_SCALE)) && (ocrEndX > (IMG_WIDTH/GLOBAL_SCALE)) && (ocrWidth > (IMG_HEIGHT/GLOBAL_SCALE))) {
-			alert("before")
+		/* if ((ocrStartX <= 0) && (ocrStartY == (IMG_HEIGHT/GLOBAL_SCALE)) && (ocrEndX > (IMG_WIDTH/GLOBAL_SCALE)) && (ocrWidth > (IMG_HEIGHT/GLOBAL_SCALE))) {
 			$("#wholeWindow").prop("checked", true);
-			alert("after")
 		}
 		else { */
 			$("#defineWindow").prop("checked", true);

@@ -14,6 +14,7 @@
 	var ctx;
 	var WIDTH;
 	var HEIGHT;
+	
 	var INTERVAL = 20;	// how often, in milliseconds, we check to see if a redraw is needed
 	var EVOINTERVAL = 1000;
 	
@@ -172,11 +173,18 @@
 	// then add everything we want to initially exist on the canvas
 	function init2() {
 		
+		// enable barcode
+		enableBarCode(1);
+		
+		// disable 2d code and ocr
+		enableDataCode(0);
+		enableOCR(-1);
+
 		//for camera trigger
 		//ajaxGet("info.htm?cmd=%23021%3BCapture image%3B2%3BCaptureType%3B0%23");
 		ajaxGet("info.htm?cmd=%23021%3BCapture image%3B2%3BTriggeredCapture%3B0%23");
 		
-		// enable barcode
+		/* // enable barcode
 		ajaxGet('info.htm?cmd=%23021%3B'+commandName+'%3B2%3BGeneral.Enabled%3B1%23');
 		ajaxGet('info.htm?cmd=%23021%3BScript%20BarCode%3B2%3BGeneral.Enabled%3B1%23');
 		
@@ -184,7 +192,7 @@
 		ajaxGet('info.htm?cmd=%23021%3BEVO%20DataCode%3B2%3BGeneral.Enabled%3B0%23');
 		ajaxGet('info.htm?cmd=%23021%3BScript%20DataCode%3B2%3BGeneral.Enabled%3B0%23');
 		ajaxGet('info.htm?cmd=%23021%3BEVO%20OCR%3B2%3BGeneral.Enabled%3B0%23');
-		ajaxGet('info.htm?cmd=%23021%3BScript%20OCR%3B2%3BGeneral.Enabled%3B0%23');
+		ajaxGet('info.htm?cmd=%23021%3BScript%20OCR%3B2%3BGeneral.Enabled%3B0%23'); */
 		
 		//evoComm();
 		
