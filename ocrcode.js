@@ -275,6 +275,15 @@
 			ajaxGet("cfg.ini", getCodeValueFrominiFile);	
 		});
 		
+		// Unload ckp file and go back to main menu
+		document.getElementById("home").addEventListener("click", function(){
+				
+				var codeFilename = getCookie("fileCR");
+				ajaxGet('info.htm?cmd=%23018' + codeFilename + '.ckp%23');
+				delay(1000);
+				window.location.href='index.htm';
+		});
+		
 		$("#loadValues").click(function(){
 			//get settings
 			ajaxGet("ocr.ini", getParameterFrominiFile);
@@ -301,6 +310,11 @@
 			roiSet();
 		}
 	}	// end evoComm
+	
+	function delay(ms) {
+		ms += new Date().getTime();
+		while (new Date() < ms){}
+	}
 	
 	// consists of font type
 	function fontType() {

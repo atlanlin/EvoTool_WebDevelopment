@@ -15,7 +15,7 @@
         <div id="rightRegion" style="width:300px;">
 			<input id="btnMonitor" type="button" value="Monitor" class="button"><br>
             <input id="btnStopMonitor" type="button" value="Stop" class="button"><br>
-            <input class="button" type="button" onClick="location.href='index.htm'" value="Main Menu"/><br>
+            <input id="btnMainMenu" class="button" type="button" value="Main Menu"/><br>
 		
 			
 
@@ -217,7 +217,14 @@
 				//setImgFlag(false);
 			});
 			
-			
+			// Unload ckp file and go back to main menu
+			document.getElementById("btnMainMenu").addEventListener("click", function(){
+				
+				var measureFilename = getCookie("fileMeasure");
+				ajaxGet('info.htm?cmd=%23018' + measureFilename + '.ckp%23');
+				delay(1000);
+				window.location.href='index.htm';
+			});
 		}
 		
 		function delay(ms) {

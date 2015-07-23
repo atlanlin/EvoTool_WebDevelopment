@@ -273,6 +273,16 @@
 			//setCookie("bcGlobalScaleCookie",GLOBAL_SCALE,1);
 		});
 		
+		// Unload ckp file and go back to main menu
+		document.getElementById("home").addEventListener("click", function(){
+				
+				var codeFilename = getCookie("fileCR");
+				ajaxGet('info.htm?cmd=%23018' + codeFilename + '.ckp%23');
+				delay(1000);
+				window.location.href='index.htm';
+		});
+	
+		
 		$("#loadValues").click(function(){
 			//get settings
 			ajaxGet("barcode.ini", getParameterFrominiFile);
@@ -297,6 +307,11 @@
 		}
 	}	// end evoComm
 	
+	function delay(ms) {
+		ms += new Date().getTime();
+		while (new Date() < ms){}
+	}
+		
 	// consists of code type
 	function codeType() {
 		if(document.getElementById("abarcode").checked){
