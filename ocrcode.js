@@ -290,7 +290,7 @@
 			//not to confuse with previous result
 			$("#resultDisplay").val("");
 			//evoComm();
-			ajaxGet("cfg.ini", getCodeValueFrominiFile);	
+			ajaxGet("cfg.ini", getOCRValueFrominiFile);	
 		});
 		
 		// Unload ckp file and go back to main menu
@@ -515,6 +515,58 @@
 		}
 	}
 	var responseCount = 0;
+	
+	function getOCRValueFrominiFile()
+	{
+		if (xhr.readyState != 4)  {
+			if(xhr.readyState == 1)
+				responseCount++;
+			if(responseCount > 2){
+					ajaxGet("cfg.ini", getOCRValueFrominiFile);
+					responseCount = 0;
+			}
+			return; 
+		}
+			var resp = xhr.responseText;
+			var sectionName = "ocr" + document.getElementById("selectedNumber").value;
+			globalResult = getIniOCRStr(sectionName, "coderesult1=", resp);
+			
+			$("#resultDisplay").val(globalResult);
+			
+			var cookieName = queryString["tool"] + queryString["toolNo"];
+					
+			setCookie(cookieName,globalResult,1);
+	}
+
+	function getIniOCRStr(section,key,fileStr)
+	{
+		var substr = fileStr.split("\r\n");
+		var flag = 0;
+		for (i in substr) {
+			//if( substr[i] == '['+section+']') {
+			if(substr[i].indexOf('['+section+']') > -1){
+				flag = 1;
+				console.log(substr[i]);
+			}
+			else if (substr[i] == "[") {
+				flag = 0;
+			}
+			
+			if (flag == 0) {
+				continue;
+			}
+			flag++;
+			if(flag > 3)
+				return substr[i];
+			
+			/*
+			if (substr[i] == key) {
+				
+				return substr[parseInt(i)+1];
+			}*/
+		}
+	}
+	
 	function getParameterFrominiFile() {
 		if (xhr.readyState != 4)  {
 			responseCount++;
