@@ -405,7 +405,7 @@ function enableBarCode(cmdName, value) {
 	var functionNames = ["BarCode"];
 	for(var i=0; i < frontFunctionNames.length; i++){
 		for(var j=0; j < functionNames.length; j++){
-			ajaxGet('info.htm?cmd=%23021%3B'+frontFunctionNames[i]+functionNames[j]+'%3B2%3BGeneral.Enabled%3B'+value.toString()+'%23');
+			ajaxGet('info.htm?cmd=%23021%3B'+frontFunctionNames[i]+functionNames[j]+'%3B2%3BGeneral.Enabled%3B'+value+'%23');
 		}
 	}
 }
@@ -415,7 +415,7 @@ function enableDataCode(cmdName, value) {
 	var functionNames = ["DataCode"];
 	for(var i=0; i < frontFunctionNames.length; i++){
 		for(var j=0; j < functionNames.length; j++){
-			ajaxGet('info.htm?cmd=%23021%3B'+frontFunctionNames[i]+functionNames[j]+'%3B2%3BGeneral.Enabled%3B'+value.toString()+'%23');
+			ajaxGet('info.htm?cmd=%23021%3B'+frontFunctionNames[i]+functionNames[j]+'%3B2%3BGeneral.Enabled%3B'+value+'%23');
 		}
 	}
 }
@@ -426,7 +426,7 @@ function enableOCR(cmdName, value) {
 	for(var i=0; i < frontFunctionNames.length; i++){
 		for(var j=0; j < functionNames.length; j++){
 			for(var k=0; k < 3; k++){
-				ajaxGet('info.htm?cmd=%23021%3B'+frontFunctionNames[i]+functionNames[j]+(k+1).toString()+'%3B2%3BGeneral.Enabled%3B0%23');
+				ajaxGet('info.htm?cmd=%23021%3B'+frontFunctionNames[i]+functionNames[j]+(k+1)+'%3B2%3BGeneral.Enabled%3B0%23');
 			}
 		}
 	}
@@ -436,7 +436,7 @@ function enableOCR(cmdName, value) {
 	} else {
 		for(var i=0; i < frontFunctionNames.length; i++){
 			for(var j=0; j < functionNames.length; j++){
-				ajaxGet('info.htm?cmd=%23021%3B'+frontFunctionNames[i]+functionNames[j]+value.toString()+'%3B2%3BGeneral.Enabled%3B1%23');
+				ajaxGet('info.htm?cmd=%23021%3B'+frontFunctionNames[i]+functionNames[j]+value+'%3B2%3BGeneral.Enabled%3B1%23');
 			}
 		}
 		ajaxGet('info.htm?cmd=%23021%3BScript%20OCR%3B2%3BGeneral.Enabled%3B1%23');

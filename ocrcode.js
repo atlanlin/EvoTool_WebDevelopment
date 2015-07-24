@@ -289,12 +289,12 @@
 		});
 		
 		// Unload ckp file and go back to main menu
-		document.getElementById("home").addEventListener("click", function(){
+		document.getElementById("btnhome").addEventListener("click", function(){
 				
-				var codeFilename = getCookie("fileCR");
-				ajaxGet('info.htm?cmd=%23018' + codeFilename + '.ckp%23');
-				delay(1000);
-				window.location.href='index.htm';
+			var codeFilename = getCookie("fileCR");
+			ajaxGet('info.htm?cmd=%23018' + codeFilename + '.ckp%23');
+			delay(1000);
+			window.location.href='index.htm';
 		});
 		
 		$("#loadValues").click(function(){
