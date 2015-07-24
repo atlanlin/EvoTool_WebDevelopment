@@ -3,7 +3,7 @@ EYEVISION_VERSION
 FILE_VERSION 
 CREATED 
 CREATED_BY 
-LAST_MODIFIED 24.07.2015 15:22:05
+LAST_MODIFIED 24.07.2015 16:06:40
 LAST_MODIFIED_BY 
 START_PARM_LIST 
   KEY 1
@@ -334,8 +334,8 @@ START_PARM_LIST
     VariableType 2
     ConstantValue 0,0
     IniFileName C:\temp\wwwroot\cfg.ini
-    SegmentName barcode
-    EntryName barcoderesult
+    SegmentName camcode1
+    EntryName coderesult1
     PointType 3
     PointRegisterIndex 0
     CKPICKUP_TYPE_READ 
@@ -726,9 +726,9 @@ START_PARM_LIST
     CorrectionType 1
     VariableType 2
     ConstantValue 0,0
-    IniFileName C:\temp\wwwroot\cfg.ini
-    SegmentName datacode
-    EntryName datacoderesult
+    IniFileName C:/temp/wwwroot/cfg.ini
+    SegmentName camcode1
+    EntryName coderesult1
     PointType 3
     PointRegisterIndex 0
     CKPICKUP_TYPE_READ 
