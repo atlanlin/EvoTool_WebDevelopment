@@ -319,7 +319,7 @@
 		});
 		
 		// add a large green rectangle (roi window)
-		addRect(0, 0, 100, 100, 'rgba(0,205,0,0)', 'rgba(0,205,0,1)');
+		addRect(0, 0, 100, 100, 'rgba(238,0,238,0)', 'rgba(75,0,130,1)');
 		
 		//ajaxGet("cfg.ini", getParameterFrominiFile);
 	}	// end init2
@@ -472,7 +472,15 @@
 			var roiY = bcSourceWindowTop / GLOBAL_SCALE;
 			var roiW = bcSourceWindowWidth / GLOBAL_SCALE;
 			var roiH = bcSourceWindowHeight / GLOBAL_SCALE;
-					
+			
+			if(roiX <= 0 || roiY <= 0 || (roiX+roiW) > WIDTH || (roiY+roiH) > HEIGHT){
+				alert("ROI set back to original position. ROI is out boundary.");
+				roiX = boxes2[0].x;
+				roiY = boxes2[0].y;
+				roiW = boxes2[0].w;
+				roiH = boxes2[0].h;
+			}
+			
 			boxes2[0].x = roiX;
 			boxes2[0].y = roiY;
 			boxes2[0].w = roiW;

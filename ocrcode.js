@@ -337,7 +337,7 @@
 		}); */
 		
 		// add a large green rectangle (roi window)
-		addRect(0, 0, 100, 100, 'rgba(0,205,0,0)', 'rgba(0,205,0,1)');
+		addRect(0, 0, 100, 100, 'rgba(238,0,238,0)', 'rgba(75,0,130,1)');
 	  
 		// add a green-blue rectangle (character size)
 		addRect(0, 0, 100, 100, 'rgba(2,165,165,0)', 'rgba(2,165,165,1)');
@@ -714,7 +714,15 @@
 			var autoCharY = ocrAutoCharY / GLOBAL_SCALE;
 			var autoCharW = ocrAutoCharW / GLOBAL_SCALE;
 			var autoCharH = ocrAutoCharH / GLOBAL_SCALE;
-					
+			
+			if(autoCharX <= 0 || autoCharY <= 0 || (autoCharX+autoCharW) > WIDTH || (autoCharY+autoCharH) > HEIGHT){
+				alert("ROI set back to original position. ROI is out boundary.");
+				autoCharX = boxes2[1].x;
+				autoCharY = boxes2[1].y;
+				autoCharW = boxes2[1].w;
+				autoCharH = boxes2[1].h;
+			}
+			
 			boxes2[1].x = autoCharX;
 			boxes2[1].y = autoCharY;
 			boxes2[1].w = autoCharW;
@@ -753,7 +761,15 @@
 			var roiY = (ocrStartY - (ocrWidth/2)) / GLOBAL_SCALE;
 			var roiW = (ocrEndX - ocrStartX) / GLOBAL_SCALE;
 			var roiH = ocrWidth / GLOBAL_SCALE;
-					
+			
+			if(roiX <= 0 || roiY <= 0 || (roiX+roiW) > WIDTH || (roiY+roiH) > HEIGHT){
+				alert("ROI set back to original position. ROI is out boundary.");
+				roiX = boxes2[0].x;
+				roiY = boxes2[0].y;
+				roiW = boxes2[0].w;
+				roiH = boxes2[0].h;
+			}
+			
 			boxes2[0].x = roiX;
 			boxes2[0].y = roiY;
 			boxes2[0].w = roiW;
