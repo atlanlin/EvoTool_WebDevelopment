@@ -210,19 +210,13 @@
 		
 		//evoComm();
 		
-/* 		//start the program to retrieve image
+ 		//start the program to retrieve image
 		ajaxGet("info.htm?cmd=%23002%23");
 		intervalUpdateStart();
 		disableBtn("btnCodeStart");
 		disableBtn("btnMeasure");
 		disableBtn("fileCR");
-		setImgFlag(false); */
-		
-		disableBtn("btnCodeStart");
-		disableBtn("btnStop");
-		disableBtn("btnMeasure");
-		disableBtn("fileCR");
-		//disableBtn("loadValues");
+		setImgFlag(false); 
 		
 		
 		canvas = document.getElementById('canvas2');
@@ -313,6 +307,7 @@
 			toolNo = document.getElementById("selectedNumber").value;
 			enableOCR(commandName, toolNo);
 			
+			commandName = commandName + " " + toolNo;
 			//get settings
 			ajaxGet("ocr.ini", getParameterFrominiFile);
 			this.disabled = true;
@@ -321,11 +316,7 @@
 			undisableBtn("fileCR");
 			undisableBtn("btnMeasure");
 			parametersLoaded = true;
-			
-			ajaxGet("info.htm?cmd=%23002%23");
-			intervalUpdateStart();
-			undisableBtn("btnStop");
-			
+						
 			//ajaxGet("info.htm?cmd=%23002%23");
 			//intervalUpdateStart();
 			//undisableBtn("btnStop");
@@ -523,9 +514,9 @@
 			ajaxGet('info.htm?cmd=%23021%3B'+commandName+'%3B1%3BposRect.Width%3B'+width+'%23');
 		}
 	}
-	
+	var responseCount = 0;
 	function getParameterFrominiFile() {
-		if (xhr.readyState != 4)  { 
+		if (xhr.readyState != 4)  {
 			responseCount++;
 			if(responseCount > 2){
 				ajaxGet("ocr.ini", getParameterFrominiFile);
@@ -533,7 +524,6 @@
 			}
 			return; 
 		}
-		
 		var resp = xhr.responseText;
 		var command = "ocr";
 		var ocrFontType = getIniStr(command+toolNo, "fontnum", resp);
@@ -554,7 +544,6 @@
 		var ocrStartY = getIniStr(command+toolNo, "pointstarty", resp);
 		var ocrEndY = getIniStr(command+toolNo, "pointendy", resp);
 		var ocrWidth = getIniStr(command+toolNo, "width", resp);
-				
 		getFontType(ocrFontType);
 		getPolarityType(ocrPolarityType);
 		getDotted(ocrDotted);
