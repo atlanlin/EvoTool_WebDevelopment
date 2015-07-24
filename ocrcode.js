@@ -190,6 +190,9 @@
 			tempDatacode = "EVO%20DataCode";
 		
 		// disable barcode and 2d code
+		enableOCR(commandName + " 1", 0);
+		enableOCR(commandName + " 2", 0);
+		enableOCR(commandName + " 3", 0);
 		enableBarCode(tempBarcode, 0);
 		enableDataCode(tempDatacode, 0);
 			
