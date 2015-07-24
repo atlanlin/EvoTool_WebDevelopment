@@ -177,10 +177,21 @@
 	// initialize our canvas, add a ghost canvas, set draw loop
 	// then add everything we want to initially exist on the canvas
 	function init2() {
+	
+		var tempCmd, tempBarcode, tempDatacode;
+		tempCmd = getCookie("cmdOcr");
+		tempBarcode = getCookie("cmdBarcode");
+		tempDatacode = getCookie("cmdDatacode");
+		if(tempCmd != null && tempCmd != "")
+			commandName = tempCmd;
+		if(tempBarcode == null || tempBarcode == "")
+			tempBarcode = "EVO%20BarCode";
+		if(tempDatacode == null || tempDatacode == "")
+			tempDatacode = "EVO%20DataCode";
 		
 		// disable barcode and 2d code
-		enableBarCode(0);
-		enableDataCode(0);
+		enableBarCode(tempBarcode, 0);
+		enableDataCode(tempDatacode, 0);
 			
 		//for camera trigger
 		//ajaxGet("info.htm?cmd=%23021%3BCapture image%3B2%3BCaptureType%3B0%23");
@@ -211,7 +222,7 @@
 		disableBtn("btnStop");
 		disableBtn("btnMeasure");
 		disableBtn("fileCR");
-		disableBtn("loadValues");
+		//disableBtn("loadValues");
 		
 		
 		canvas = document.getElementById('canvas2');
@@ -298,20 +309,29 @@
 		});
 		
 		$("#loadValues").click(function(){
+		
+			toolNo = document.getElementById("selectedNumber").value;
+			enableOCR(commandName, toolNo);
+			
 			//get settings
 			ajaxGet("ocr.ini", getParameterFrominiFile);
 			this.disabled = true;
 			this.style.color="gray";
+			document.getElementById("selectedNumber").disabled = true;
 			undisableBtn("fileCR");
 			undisableBtn("btnMeasure");
 			parametersLoaded = true;
+			
+			ajaxGet("info.htm?cmd=%23002%23");
+			intervalUpdateStart();
+			undisableBtn("btnStop");
 			
 			//ajaxGet("info.htm?cmd=%23002%23");
 			//intervalUpdateStart();
 			//undisableBtn("btnStop");
 		});
 		
-		$("#btnGo").click(function(){
+		/* $("#btnGo").click(function(){
 			undisableBtn("loadValues");
 			
 			toolNo = document.getElementById("selectedNumber").value;
@@ -320,7 +340,7 @@
 			ajaxGet("info.htm?cmd=%23002%23");
 			intervalUpdateStart();
 			undisableBtn("btnStop");
-		});
+		}); */
 		
 		// add a large green rectangle (roi window)
 		addRect(0, 0, 100, 100, 'rgba(0,205,0,0)', 'rgba(0,205,0,1)');
@@ -513,7 +533,7 @@
 			}
 			return; 
 		}
-
+		
 		var resp = xhr.responseText;
 		var command = "ocr";
 		var ocrFontType = getIniStr(command+toolNo, "fontnum", resp);
