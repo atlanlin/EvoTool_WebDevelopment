@@ -3,7 +3,7 @@ EYEVISION_VERSION
 FILE_VERSION 
 CREATED 
 CREATED_BY 
-LAST_MODIFIED 24.07.2015 11:15:25
+LAST_MODIFIED 24.07.2015 15:07:54
 LAST_MODIFIED_BY 
 START_PARM_LIST 
   KEY 1
@@ -55,7 +55,7 @@ START_PARM_LIST
     SaveType 0
     OnlyOnActivate 0
     SaveWithGrafic 0
-    TriggeredCapture 0
+    TriggeredCapture 1
     ApplyTimeout 0
     CaptureWithFlash 0
     NumberOfCyclicFiles 10
@@ -63,7 +63,7 @@ START_PARM_LIST
     TriggerTimeout 0
     TriggerInputLine 0
     MinimumSignalDuration 0
-    FileName C:/Users/user3/Desktop/ocr640480.bmp
+    FileName C:/Users/user3/Desktop/barcode640480.bmp
     AVIframes 1
     AVImode 0
     HWTriggeredCapture 0
@@ -157,8 +157,8 @@ START_PARM_LIST
       CKWINDOW 
         ClassVersion 1
         Name 
-        Left 10,0
-        Top 10,0
+        Left 133,0
+        Top 123,0
         Width 50,0
         Height 50,0
       END_CKWINDOW 
@@ -245,8 +245,8 @@ START_PARM_LIST
     CorrectionType 1
     VariableType 2
     ConstantValue 0,0
-    IniFileName C:\temp\wwwroot\cfg.ini
-    SegmentName barcode
+    IniFileName C:\Temp\wwwroot\cfg.ini
+    SegmentName camcode1
     EntryName coderesult1
     PointType 3
     PointRegisterIndex 0
@@ -333,9 +333,9 @@ START_PARM_LIST
     CorrectionType 1
     VariableType 2
     ConstantValue 0,0
-    IniFileName C:\temp\wwwroot\cfg.ini
-    SegmentName barcode
-    EntryName barcoderesult
+    IniFileName C:\Temp\wwwroot\cfg.ini
+    SegmentName camcode1
+    EntryName coderesult1
     PointType 3
     PointRegisterIndex 0
     CKPICKUP_TYPE_READ 
@@ -635,8 +635,8 @@ START_PARM_LIST
     CorrectionType 1
     VariableType 2
     ConstantValue 0,0
-    IniFileName C:/temp/wwwroot/cfg.ini
-    SegmentName datacode
+    IniFileName C:\temp\wwwroot\cfg.ini
+    SegmentName camcode1
     EntryName coderesult1
     PointType 3
     PointRegisterIndex 0
@@ -723,9 +723,9 @@ START_PARM_LIST
     CorrectionType 1
     VariableType 2
     ConstantValue 0,0
-    IniFileName C:/temp/wwwroot/cfg.ini
-    SegmentName datacode
-    EntryName datacoderesult
+    IniFileName C:\temp\wwwroot\cfg.ini
+    SegmentName camcode1
+    EntryName coderesult1
     PointType 3
     PointRegisterIndex 0
     CKPICKUP_TYPE_READ 
@@ -996,22 +996,22 @@ START_PARM_LIST
     PosY 100,0
     FontSize 40
     Worldbool 0
-    AutoCharW 95,3191489362
-    AutoCharH 50,2127659574
+    AutoCharW 95,32
+    AutoCharH 50,21
     CKRECT_PROBE_POS 
       ClassVersion 1
-      Width 121,17647
+      Width 121,176
       CKPOINT 
         ClassVersion 1
         Name Start point
-        X 19,2941176471
-        Y 242,3529411765
+        X 15,0
+        Y 73,9879518
       END_CKPOINT 
       CKPOINT 
         ClassVersion 1
         Name End point
-        X 473,8823529412
-        Y 242,3529411765
+        X 459,0
+        Y 73,9879518
       END_CKPOINT 
     END_CKRECT_PROBE_POS 
     dynamicPos 0
@@ -1042,8 +1042,8 @@ START_PARM_LIST
     DeleteColumn 0
     ReTraining 0
     bAutoCharSize 0
-    AutoCharX 94,468
-    AutoCharY 205,1
+    AutoCharX 27,38
+    AutoCharY 23,51
     Display_Index 0
     Result_Index 1
     CKPICKUP_TYPE_WRITE 
@@ -1434,7 +1434,7 @@ START_PARM_LIST
     charHeight 0
     strokeWidth 0
     interpunctationType 0
-    fontNum 0
+    fontNum 1
     createNewFonts 0
     newFontNum 0
     corresChars 
@@ -1468,22 +1468,22 @@ START_PARM_LIST
     PosY 100,0
     FontSize 40
     Worldbool 0
-    AutoCharW 95,3191489362
-    AutoCharH 50,2127659574
+    AutoCharW 95,32
+    AutoCharH 50,21
     CKRECT_PROBE_POS 
       ClassVersion 1
-      Width 121,17647
+      Width 121,176
       CKPOINT 
         ClassVersion 1
         Name Start point
-        X 19,2941176471
-        Y 242,3529411765
+        X 160,4
+        Y 79,2686594768
       END_CKPOINT 
       CKPOINT 
         ClassVersion 1
         Name End point
-        X 473,8823529412
-        Y 242,3529411765
+        X 614,99
+        Y 79,2686594768
       END_CKPOINT 
     END_CKRECT_PROBE_POS 
     dynamicPos 0
@@ -1514,8 +1514,8 @@ START_PARM_LIST
     DeleteColumn 0
     ReTraining 0
     bAutoCharSize 0
-    AutoCharX 94,468
-    AutoCharY 205,1
+    AutoCharX 529,36
+    AutoCharY 17,73
     Display_Index 0
     Result_Index 1
     CKPICKUP_TYPE_WRITE 
@@ -1821,7 +1821,7 @@ START_PARM_LIST
       Position 23
       CommandType 10019111
       CommandName EVO OCR 3
-      Enabled 1
+      Enabled 0
       Hidden 0
       GraficMode 2
       TextMode 2
@@ -1885,7 +1885,7 @@ START_PARM_LIST
         PickupListIndex -1
       END_CKPICKUP_TYPE_READ 
       END_CKSOURCEWINDOW 
-    stepType 2
+    stepType 0
     ROIType 4
     ROIX 100,0
     ROIY 100,0
@@ -1940,22 +1940,22 @@ START_PARM_LIST
     PosY 100,0
     FontSize 40
     Worldbool 0
-    AutoCharW 95,3191489362
-    AutoCharH 50,2127659574
+    AutoCharW 95,32
+    AutoCharH 50,21
     CKRECT_PROBE_POS 
       ClassVersion 1
-      Width 121,17647
+      Width 121,176
       CKPOINT 
         ClassVersion 1
         Name Start point
-        X 19,2941176471
-        Y 242,3529411765
+        X 104,8844612535
+        Y 396,1843221274
       END_CKPOINT 
       CKPOINT 
         ClassVersion 1
         Name End point
-        X 473,8823529412
-        Y 242,3529411765
+        X 559,4723499712
+        Y 396,1843221274
       END_CKPOINT 
     END_CKRECT_PROBE_POS 
     dynamicPos 0
@@ -1986,8 +1986,8 @@ START_PARM_LIST
     DeleteColumn 0
     ReTraining 0
     bAutoCharSize 0
-    AutoCharX 94,468
-    AutoCharY 205,1
+    AutoCharX 269,12
+    AutoCharY 386,69
     Display_Index 0
     Result_Index 1
     CKPICKUP_TYPE_WRITE 
@@ -2005,7 +2005,7 @@ START_PARM_LIST
       Position 24
       CommandType 137
       CommandName Flush OCR 3
-      Enabled 1
+      Enabled 0
       Hidden 0
       GraficMode 2
       TextMode 2
@@ -2093,7 +2093,7 @@ START_PARM_LIST
       Position 25
       CommandType 137
       CommandName Create OCR 3
-      Enabled 1
+      Enabled 0
       Hidden 0
       GraficMode 2
       TextMode 2
@@ -2181,7 +2181,7 @@ START_PARM_LIST
       Position 26
       CommandType 246
       CommandName Send OCR 3
-      Enabled 1
+      Enabled 0
       Hidden 0
       GraficMode 2
       TextMode 2
@@ -2293,7 +2293,7 @@ START_PARM_LIST
       Position 28
       CommandType 122
       CommandName BarCode FsName
-      Enabled 1
+      Enabled 0
       Hidden 0
       GraficMode 2
       TextMode 2
@@ -2385,7 +2385,7 @@ START_PARM_LIST
       Position 29
       CommandType 122
       CommandName DataCode FsName
-      Enabled 1
+      Enabled 0
       Hidden 0
       GraficMode 2
       TextMode 2
@@ -2477,7 +2477,7 @@ START_PARM_LIST
       Position 30
       CommandType 122
       CommandName OCR FsName
-      Enabled 1
+      Enabled 0
       Hidden 0
       GraficMode 2
       TextMode 2
@@ -2606,8 +2606,8 @@ START_PARM_LIST
         Index -1
       END_CKSTATISTIC 
     END_CKRESULT 
-    Program Dim sFile As String~Dim lRet As Long~sFile = "C:\Temp\wwwroot\barcode.ini"~Dim dValue As Double~Dim lValue As Long~Dim sValue As String~~Dim sFunctionName As String~CKI_GetParameterStringOfCommand("BarCode FsName", "ObjectName", sFunctionName, 99)~~Dim sIniSection As String~sIniSection = "barcode"~~CKI_GetParameterLongOfCommand(sFunctionName, "BarCodetype", lValue)~EVHDINIReadLong(sIniSection,"codetype", -111, lRet, sFile)~If lValue <> lRet Then~	sValue = Str(lValue,0)~	EVHDINIWriteString(sIniSection,"codetype",sValue,sFile)~	EVHDINIWriteFlush(sFile)~End If~~CKI_GetParameterLongOfCommand(sFunctionName, "SourceWindow.SourceMode", lValue)~EVHDINIReadLong(sIniSection,"sourcemode", -111, lRet, sFile)~If lValue <> lRet Then~	sValue = Str(lValue,0)~	EVHDINIWriteString(sIniSection,"sourcemode",sValue,sFile)~	EVHDINIWriteFlush(sFile)~End If~~CKI_GetParameterDoubleOfCommand(sFunctionName, "SourceWindow.SourceWindow.Left", dValue)~lValue = dValue~EVHDINIReadLong(sIniSection,"sourcewindowleft", -111, lRet, sFile)~If lValue <> lRet Then~	sValue = Str(dValue,4)~	EVHDINIWriteString(sIniSection,"sourcewindowleft",sValue,sFile)~	EVHDINIWriteFlush(sFile)~End If~~CKI_GetParameterDoubleOfCommand(sFunctionName, "SourceWindow.SourceWindow.Top", dValue)~EVHDINIReadLong(sIniSection,"sourcewindowtop", -111, lRet, sFile)~If lValue <> lRet Then~	sValue = Str(dValue,4)~	EVHDINIWriteString(sIniSection,"sourcewindowtop",sValue,sFile)~	EVHDINIWriteFlush(sFile)~End If~~CKI_GetParameterDoubleOfCommand(sFunctionName, "SourceWindow.SourceWindow.Width", dValue)~EVHDINIReadLong(sIniSection,"sourcewindowwidth", -111, lRet, sFile)~If lValue <> lRet Then~	sValue = Str(dValue,4)~	EVHDINIWriteString(sIniSection,"sourcewindowwidth",sValue,sFile)~	EVHDINIWriteFlush(sFile)~End If~~CKI_GetParameterDoubleOfCommand(sFunctionName, "SourceWindow.SourceWindow.Height", dValue)~EVHDINIReadLong(sIniSection,"sourcewindowheight", -111, lRet, sFile)~If lValue <> lRet Then~	sValue = Str(dValue,4)~	EVHDINIWriteString(sIniSection,"sourcewindowheight",sValue,sFile)~	EVHDINIWriteFlush(sFile)~End If
-    EncodedBinary [C_34_12A_C46B86J_200K_3E0L_240F70D_A00G00H_801I_A84M_801_801_801_801_801_871_871_871_871_871_871_A11_A11_A11_A81_A81_BE1_E01_EB1_FF1_172_252_252_252_3B2_5D2h2_7C2_942_A22_A22_A22_BA2_C22_E42_EF233_1B3_293_293_293A3c3n3_823_9A3_A83_A83_A83_C03_E23_ED314_194_274_274_274_3F4a4l4_804_984_A640000_106_1C6_81011336400000000000000000000_106_3C6_80011334000000000000000000000_5C6d6V011331430000000000000000000t6x6_15013210000000000000000000000_5C6_7C6X011333300000000000000000000_5C6_906Y011300000000000000000000000_106_A46_7F01133500000000000000000kp_B04r00iop_E84kq_180p_DC4p_CC4g_A00zzr_180izzkp_EC4r_1C0ioq_100kp_F44q_180g_C00zzir_100zokq00iq40p_0C5_88kp05q_1C0g_E00zzizr40kzizq_100q40_8C_82d_252koip_A84q_100mg01zizkr_140iokq00q_140p05q_1C0g_201zzzzizokq00g_401zizc_252ioq_100kp_105q_180g_C00zzir_100zokq00iq40p_0C5_88kp_285q_1C0g_E00zzizr40kzizq_100q40_8C_82d_A22koip_A84q_100mg01zizkr_140iokq00q_140p_285q_1C0g_201zzzzizokq00g_401zizc_A22iojq80kp_345q_180g_601zzjr80izjq80lr_100okq00iq40p_0C5_88kpT5q_1C0g_E00zzizr40kzizq_100q40_8C_82d_293koiph5jq80g01zizkr_140iokq00q_140pT5q_1C0g_201zzzzizokq00g_401zizc_293iojq80kpl5q_180g_601zzjr80izokq00iq40p_0C5_88kp_8C5q_1C0g_E00zzizr40kzizq_100q40_8C_82d_A83koiph5jq80g01zizkr_140iokq00q_140p_8C5q_1C0g_201zzzzizokq00g_401zizc_A83iojq80kp_9C5q_180g_601zzjr80izokq00iq40p_0C5_88kp_BC5q_1C0g_E00zzizr40kzizq_100q40_8C_82d_274koiph5jq80g01zizkr_140iokq00q_140p_BC5q_1C0g_201zzzzizokq00g_401zizc_274iojq80kp_D05q_180g_601zzjr80izokq00iq40p_0C5_88kp_F45q_1C0g_E00zzizr40kzizq_100q40_8C_82d_A64koiph5jq80g01zizkr_140iokq00q_140p_F45q_1C0g_201zzzzizokq00g_401zizc_A64f000001000C_3A_5CTemp_5Cwwwroot_5Cbarcode_2Eini0BarCode_20FsName00ObjectName00c000barcode0BarCodetype0codetype0000o000SourceWindow_2ESourceMode0sourcemode00SourceWindow_2ESourceWindow_2ELeft00sourcewindowleft00004000SourceWindow_2ESourceWindow_2ETop000sourcewindowtop0SourceWindow_2ESourceWindow_2EWidth0sourcewindowwidth000SourceWindow_2ESourceWindow_2EHeight0000sourcewindowheight00source00EVTVision000CKI_5FGetParameterStringOfCommand0CKI_5FGetParameterLongOfCommand000Evhd0000EVHDINIReadLong0Std0Str0EVHDINIWriteString00EVHDINIWriteFlush000CKI_5FGetParameterDoubleOfCommand0]
+    Program Dim sFile As String~Dim lRet As Long~sFile = "C:\Temp\wwwroot\barcode.ini"~Dim dValue As Double~Dim lValue As Long~Dim sValue As String~~Dim sFunctionName As String~CKI_GetParameterStringOfCommand("BarCode FsName", "ObjectName", sFunctionName, 99)~~Dim sIniSection As String~sIniSection = "barcode"~~CKI_GetParameterLongOfCommand(sFunctionName, "BarCodetype", lValue)~EVHDINIReadLong(sIniSection,"codetype", -111, lRet, sFile)~If lValue <> lRet Then~	sValue = Str(lValue,0)~	EVHDINIWriteString(sIniSection,"codetype",sValue,sFile)~	EVHDINIWriteFlush(sFile)~End If~~CKI_GetParameterLongOfCommand(sFunctionName, "SourceWindow.SourceMode", lValue)~EVHDINIReadLong(sIniSection,"sourcemode", -111, lRet, sFile)~If lValue <> lRet Then~	sValue = Str(lValue,0)~	EVHDINIWriteString(sIniSection,"sourcemode",sValue,sFile)~	EVHDINIWriteFlush(sFile)~End If~~CKI_GetParameterDoubleOfCommand(sFunctionName, "SourceWindow.SourceWindow.Left", dValue)~lValue = dValue~EVHDINIReadLong(sIniSection,"sourcewindowleft", -111, lRet, sFile)~If lValue <> lRet Then~	sValue = Str(dValue,4)~	EVHDINIWriteString(sIniSection,"sourcewindowleft",sValue,sFile)~	EVHDINIWriteFlush(sFile)~End If~~CKI_GetParameterDoubleOfCommand(sFunctionName, "SourceWindow.SourceWindow.Top", dValue)~lValue = dValue~EVHDINIReadLong(sIniSection,"sourcewindowtop", -111, lRet, sFile)~If lValue <> lRet Then~	sValue = Str(dValue,4)~	EVHDINIWriteString(sIniSection,"sourcewindowtop",sValue,sFile)~	EVHDINIWriteFlush(sFile)~End If~~CKI_GetParameterDoubleOfCommand(sFunctionName, "SourceWindow.SourceWindow.Width", dValue)~lValue = dValue~EVHDINIReadLong(sIniSection,"sourcewindowwidth", -111, lRet, sFile)~If lValue <> lRet Then~	sValue = Str(dValue,4)~	EVHDINIWriteString(sIniSection,"sourcewindowwidth",sValue,sFile)~	EVHDINIWriteFlush(sFile)~End If~~CKI_GetParameterDoubleOfCommand(sFunctionName, "SourceWindow.SourceWindow.Height", dValue)~lValue = dValue~EVHDINIReadLong(sIniSection,"sourcewindowheight", -111, lRet, sFile)~If lValue <> lRet Then~	sValue = Str(dValue,4)~	EVHDINIWriteString(sIniSection,"sourcewindowheight",sValue,sFile)~	EVHDINIWriteFlush(sFile)~End If
+    EncodedBinary [C_34_12A_E46B_286J_200KA0L_240F70D_A80G00H_881I_C84M_881_881_881_881_881_8F1_8F1_8F1_8F1_8F1_8F1_A91_A91_A91_B01_B01_C61_E81_F3172_1F2_2D2_2D2_2D2C2e2p2_842_9C2_AA2_AA2_AA2_C22_CA2_EC2_F72_0B3_233_313_313_313I3Q3s3_7E3_923_AA3_B83_B83_B83_D03_D83_FA354_194_314_3F4_3F4_3F4W4_5F4_814_8C4_A04_B84_C64000000_306_3C6_81011336400000000000000000000_306_5C6_80011334000000000000000000000_7C6_846V011331430000000000000000000_946_986_15013210000000000000000000000_7C6_9C6X011333300000000000000000000_7C6_B06Y011300000000000000000000000_306_C46_7F01133500000000000000000kp_D04r00iop85kq_180p_FC4p_EC4g_A80zzr_180izzkp_0C5r_1C0ioq_100kp_145q_180g_C80zzir_100zokq00iq40p_2C5_88kp_205q_1C0g_E80zzizr40kzizq_100q40_8C_82d_2D2koip_C84q_100mg81zizkr_140iokq00q_140p_205q_1C0g_281zzzzizokq00gH1zizc_2D2ioq_100kp_305q_180g_C80zzir_100zokq00iq40p_2C5_88kpH5q_1C0g_E80zzizr40kzizq_100q40_8C_82d_AA2koip_C84q_100mg81zizkr_140iokq00q_140pH5q_1C0g_281zzzzizokq00gH1zizc_AA2iojq80kpT5q_180gh1zzjr80izjq80lr_100okq00iq40p_2C5_88kpt5q_1C0g_E80zzizr40kzizq_100q40_8C_82d_313koip_885jq80g81zizkr_140iokq00q_140pt5q_1C0g_281zzzzizokq00gH1zizc_313iojq80kp_8C5q_180gh1zzjr80izjq80lr_100okq00iq40p_2C5_88kp_AC5q_1C0g_E80zzizr40kzizq_100q40_8C_82d_B83koip_885jq80g81zizkr_140iokq00q_140p_AC5q_1C0g_281zzzzizokq00gH1zizc_B83iojq80kp_BC5q_180gh1zzjr80izjq80lr_100okq00iq40p_2C5_88kp_DC5q_1C0g_E80zzizr40kzizq_100q40_8C_82d_3F4koip_885jq80g81zizkr_140iokq00q_140p_DC5q_1C0g_281zzzzizokq00gH1zizc_3F4iojq80kp_F05q_180gh1zzjr80izjq80lr_100okq00iq40p_2C5_88kp_146q_1C0g_E80zzizr40kzizq_100q40_8C_82d_C64koip_885jq80g81zizkr_140iokq00q_140p_146q_1C0g_281zzzzizokq00gH1zizc_C64f000001000C_3A_5CTemp_5Cwwwroot_5Cbarcode_2Eini0BarCode_20FsName00ObjectName00c000barcode0BarCodetype0codetype0000o000SourceWindow_2ESourceMode0sourcemode00SourceWindow_2ESourceWindow_2ELeft00sourcewindowleft00004000SourceWindow_2ESourceWindow_2ETop000sourcewindowtop0SourceWindow_2ESourceWindow_2EWidth0sourcewindowwidth000SourceWindow_2ESourceWindow_2EHeight0000sourcewindowheight00source00EVTVision000CKI_5FGetParameterStringOfCommand0CKI_5FGetParameterLongOfCommand000Evhd0000EVHDINIReadLong0Std0Str0EVHDINIWriteString00EVHDINIWriteFlush000CKI_5FGetParameterDoubleOfCommand0]
     ExternProgramFileName 
     UseExternProgram 0
     NumberOfAdditionalLinesProgram 0
@@ -2664,8 +2664,8 @@ START_PARM_LIST
         Index -1
       END_CKSTATISTIC 
     END_CKRESULT 
-    Program Dim sFile As String~Dim lRet As Long~sFile = "C:\Temp\wwwroot\datacode.ini"~Dim dValue As Double~Dim lValue As Long~Dim sValue As String~~Dim sFunctionName As String~CKI_GetParameterStringOfCommand("DataCode FsName", "ObjectName", sFunctionName, 99)~~Dim sIniSection As String~sIniSection = "datacode"~~CKI_GetParameterLongOfCommand(sFunctionName, "DataCodeType", lValue)~EVHDINIReadLong(sIniSection,"codetype", -111, lRet, sFile)~If lValue <> lRet Then~	sValue = Str(lValue,0)~	EVHDINIWriteString(sIniSection,"codetype",sValue,sFile)~	EVHDINIWriteFlush(sFile)~End If~~CKI_GetParameterLongOfCommand(sFunctionName, "SourceWindow.SourceMode", lValue)~EVHDINIReadLong(sIniSection,"sourcemode", -111, lRet, sFile)~If lValue <> lRet Then~	sValue = Str(lValue,0)~	EVHDINIWriteString(sIniSection,"sourcemode",sValue,sFile)~	EVHDINIWriteFlush(sFile)~End If~~CKI_GetParameterDoubleOfCommand(sFunctionName, "SourceWindow.SourceWindow.Left", dValue)~lValue = dValue~EVHDINIReadLong(sIniSection,"sourcewindowleft", -111, lRet, sFile)~If lValue <> lRet Then~	sValue = Str(dValue,4)~	EVHDINIWriteString(sIniSection,"sourcewindowleft",sValue,sFile)~	EVHDINIWriteFlush(sFile)~End If~~CKI_GetParameterDoubleOfCommand(sFunctionName, "SourceWindow.SourceWindow.Top", dValue)~EVHDINIReadLong(sIniSection,"sourcewindowtop", -111, lRet, sFile)~If lValue <> lRet Then~	sValue = Str(dValue,4)~	EVHDINIWriteString(sIniSection,"sourcewindowtop",sValue,sFile)~	EVHDINIWriteFlush(sFile)~End If~~CKI_GetParameterDoubleOfCommand(sFunctionName, "SourceWindow.SourceWindow.Width", dValue)~EVHDINIReadLong(sIniSection,"sourcewindowwidth", -111, lRet, sFile)~If lValue <> lRet Then~	sValue = Str(dValue,4)~	EVHDINIWriteString(sIniSection,"sourcewindowwidth",sValue,sFile)~	EVHDINIWriteFlush(sFile)~End If~~CKI_GetParameterDoubleOfCommand(sFunctionName, "SourceWindow.SourceWindow.Height", dValue)~EVHDINIReadLong(sIniSection,"sourcewindowheight", -111, lRet, sFile)~If lValue <> lRet Then~	sValue = Str(dValue,4)~	EVHDINIWriteString(sIniSection,"sourcewindowheight",sValue,sFile)~	EVHDINIWriteFlush(sFile)~End If
-    EncodedBinary [C_34_12A_D06B_146J_200K_3E0L_240F70D_A00G00H_801I_A84M_801_801_801_801_801_871_871_871_871_871_871_A11_A11_A11_A81_A81_BE1_E01_EB1_FF1_172_252_252_252_3B2_5D2h2_7C2_942_A22_A22_A22_BA2_C22_E42_EF233_1B3_293_293_293A3c3n3_823_9A3_A83_A83_A83_C03_E23_ED314_194_274_274_274_3F4a4l4_804_984_A640000_1C6_286_81011336400000000000000000000_1C6H6_80011334000000000000000000000h6p6V011331430000000000000000000_806_846_15013210000000000000000000000h6_886X011333300000000000000000000h6_9C6Y011300000000000000000000000_1C6_B06_7F01133500000000000000000kp_B04r00iop_EC4kq_180p_E04p_D04g_A00zzr_180izzkp_F04r_1C0ioq_100kp_FC4q_180g_C00zzir_100zokq00iq40p_185_88kp_0C5q_1C0g_E00zzizr40kzizq_100q40_8C_82d_252koip_A84q_100mg01zizkr_140iokq00q_140p_0C5q_1C0g_201zzzzizokq00g_401zizc_252ioq_100kp_1C5q_180g_C00zzir_100zokq00iq40p_185_88kp_345q_1C0g_E00zzizr40kzizq_100q40_8C_82d_A22koip_A84q_100mg01zizkr_140iokq00q_140p_345q_1C0g_201zzzzizokq00g_401zizc_A22iojq80kp_405q_180g_601zzjr80izjq80lr_100okq00iq40p_185_88kp_605q_1C0g_E00zzizr40kzizq_100q40_8C_82d_293koipt5jq80g01zizkr_140iokq00q_140p_605q_1C0g_201zzzzizokq00g_401zizc_293iojq80kpx5q_180g_601zzjr80izokq00iq40p_185_88kp_985q_1C0g_E00zzizr40kzizq_100q40_8C_82d_A83koipt5jq80g01zizkr_140iokq00q_140p_985q_1C0g_201zzzzizokq00g_401zizc_A83iojq80kp_A85q_180g_601zzjr80izokq00iq40p_185_88kp_C85q_1C0g_E00zzizr40kzizq_100q40_8C_82d_274koipt5jq80g01zizkr_140iokq00q_140p_C85q_1C0g_201zzzzizokq00g_401zizc_274iojq80kp_DC5q_180g_601zzjr80izokq00iq40p_185_88kp06q_1C0g_E00zzizr40kzizq_100q40_8C_82d_A64koipt5jq80g01zizkr_140iokq00q_140p06q_1C0g_201zzzzizokq00g_401zizc_A64f000001000C_3A_5CTemp_5Cwwwroot_5Cdatacode_2Eini0000DataCode_20FsName0ObjectName00c000datacode0000DataCodeType0000codetype0000o000SourceWindow_2ESourceMode0sourcemode00SourceWindow_2ESourceWindow_2ELeft00sourcewindowleft00004000SourceWindow_2ESourceWindow_2ETop000sourcewindowtop0SourceWindow_2ESourceWindow_2EWidth0sourcewindowwidth000SourceWindow_2ESourceWindow_2EHeight0000sourcewindowheight00source00EVTVision000CKI_5FGetParameterStringOfCommand0CKI_5FGetParameterLongOfCommand000Evhd0000EVHDINIReadLong0Std0Str0EVHDINIWriteString00EVHDINIWriteFlush000CKI_5FGetParameterDoubleOfCommand0]
+    Program Dim sFile As String~Dim lRet As Long~sFile = "C:\Temp\wwwroot\datacode.ini"~Dim dValue As Double~Dim lValue As Long~Dim sValue As String~~Dim sFunctionName As String~CKI_GetParameterStringOfCommand("DataCode FsName", "ObjectName", sFunctionName, 99)~~Dim sIniSection As String~sIniSection = "datacode"~~CKI_GetParameterLongOfCommand(sFunctionName, "DataCodeType", lValue)~EVHDINIReadLong(sIniSection,"codetype", -111, lRet, sFile)~If lValue <> lRet Then~	sValue = Str(lValue,0)~	EVHDINIWriteString(sIniSection,"codetype",sValue,sFile)~	EVHDINIWriteFlush(sFile)~End If~~CKI_GetParameterLongOfCommand(sFunctionName, "SourceWindow.SourceMode", lValue)~EVHDINIReadLong(sIniSection,"sourcemode", -111, lRet, sFile)~If lValue <> lRet Then~	sValue = Str(lValue,0)~	EVHDINIWriteString(sIniSection,"sourcemode",sValue,sFile)~	EVHDINIWriteFlush(sFile)~End If~~CKI_GetParameterDoubleOfCommand(sFunctionName, "SourceWindow.SourceWindow.Left", dValue)~lValue = dValue~EVHDINIReadLong(sIniSection,"sourcewindowleft", -111, lRet, sFile)~If lValue <> lRet Then~	sValue = Str(dValue,4)~	EVHDINIWriteString(sIniSection,"sourcewindowleft",sValue,sFile)~	EVHDINIWriteFlush(sFile)~End If~~CKI_GetParameterDoubleOfCommand(sFunctionName, "SourceWindow.SourceWindow.Top", dValue)~lValue = dValue~EVHDINIReadLong(sIniSection,"sourcewindowtop", -111, lRet, sFile)~If lValue <> lRet Then~	sValue = Str(dValue,4)~	EVHDINIWriteString(sIniSection,"sourcewindowtop",sValue,sFile)~	EVHDINIWriteFlush(sFile)~End If~~CKI_GetParameterDoubleOfCommand(sFunctionName, "SourceWindow.SourceWindow.Width", dValue)~lValue = dValue~EVHDINIReadLong(sIniSection,"sourcewindowwidth", -111, lRet, sFile)~If lValue <> lRet Then~	sValue = Str(dValue,4)~	EVHDINIWriteString(sIniSection,"sourcewindowwidth",sValue,sFile)~	EVHDINIWriteFlush(sFile)~End If~~CKI_GetParameterDoubleOfCommand(sFunctionName, "SourceWindow.SourceWindow.Height", dValue)~lValue = dValue~EVHDINIReadLong(sIniSection,"sourcewindowheight", -111, lRet, sFile)~If lValue <> lRet Then~	sValue = Str(dValue,4)~	EVHDINIWriteString(sIniSection,"sourcewindowheight",sValue,sFile)~	EVHDINIWriteFlush(sFile)~End If
+    EncodedBinary [C_34_12A_F06B_346J_200KA0L_240F70D_A80G00H_881I_C84M_881_881_881_881_881_8F1_8F1_8F1_8F1_8F1_8F1_A91_A91_A91_B01_B01_C61_E81_F3172_1F2_2D2_2D2_2D2C2e2p2_842_9C2_AA2_AA2_AA2_C22_CA2_EC2_F72_0B3_233_313_313_313I3Q3s3_7E3_923_AA3_B83_B83_B83_D03_D83_FA354_194_314_3F4_3F4_3F4W4_5F4_814_8C4_A04_B84_C64000000_3C6H6_81011336400000000000000000000_3C6h6_80011334000000000000000000000_886_906V011331430000000000000000000_A06_A46_15013210000000000000000000000_886_A86X011333300000000000000000000_886_BC6Y011300000000000000000000000_3C6_D06_7F01133500000000000000000kp_D04r00iop_0C5kq_180p05p_F04g_A80zzr_180izzkp_105r_1C0ioq_100kp_1C5q_180g_C80zzir_100zokq00iq40p_385_88kp_2C5q_1C0g_E80zzizr40kzizq_100q40_8C_82d_2D2koip_C84q_100mg81zizkr_140iokq00q_140p_2C5q_1C0g_281zzzzizokq00gH1zizc_2D2ioq_100kp_3C5q_180g_C80zzir_100zokq00iq40p_385_88kpT5q_1C0g_E80zzizr40kzizq_100q40_8C_82d_AA2koip_C84q_100mg81zizkr_140iokq00q_140pT5q_1C0g_281zzzzizokq00gH1zizc_AA2iojq80kp_605q_180gh1zzjr80izjq80lr_100okq00iq40p_385_88kp_805q_1C0g_E80zzizr40kzizq_100q40_8C_82d_313koip_945jq80g81zizkr_140iokq00q_140p_805q_1C0g_281zzzzizokq00gH1zizc_313iojq80kp_985q_180gh1zzjr80izjq80lr_100okq00iq40p_385_88kp_B85q_1C0g_E80zzizr40kzizq_100q40_8C_82d_B83koip_945jq80g81zizkr_140iokq00q_140p_B85q_1C0g_281zzzzizokq00gH1zizc_B83iojq80kp_C85q_180gh1zzjr80izjq80lr_100okq00iq40p_385_88kp_E85q_1C0g_E80zzizr40kzizq_100q40_8C_82d_3F4koip_945jq80g81zizkr_140iokq00q_140p_E85q_1C0g_281zzzzizokq00gH1zizc_3F4iojq80kp_FC5q_180gh1zzjr80izjq80lr_100okq00iq40p_385_88kp_206q_1C0g_E80zzizr40kzizq_100q40_8C_82d_C64koip_945jq80g81zizkr_140iokq00q_140p_206q_1C0g_281zzzzizokq00gH1zizc_C64f000001000C_3A_5CTemp_5Cwwwroot_5Cdatacode_2Eini0000DataCode_20FsName0ObjectName00c000datacode0000DataCodeType0000codetype0000o000SourceWindow_2ESourceMode0sourcemode00SourceWindow_2ESourceWindow_2ELeft00sourcewindowleft00004000SourceWindow_2ESourceWindow_2ETop000sourcewindowtop0SourceWindow_2ESourceWindow_2EWidth0sourcewindowwidth000SourceWindow_2ESourceWindow_2EHeight0000sourcewindowheight00source00EVTVision000CKI_5FGetParameterStringOfCommand0CKI_5FGetParameterLongOfCommand000Evhd0000EVHDINIReadLong0Std0Str0EVHDINIWriteString00EVHDINIWriteFlush000CKI_5FGetParameterDoubleOfCommand0]
     ExternProgramFileName 
     UseExternProgram 0
     NumberOfAdditionalLinesProgram 0
@@ -2685,7 +2685,7 @@ START_PARM_LIST
       Position 34
       CommandType 1040
       CommandName Script OCR
-      Enabled 1
+      Enabled 0
       Hidden 0
       GraficMode 2
       TextMode 2
@@ -2722,8 +2722,8 @@ START_PARM_LIST
         Index -1
       END_CKSTATISTIC 
     END_CKRESULT 
-    Program Dim sFile As String~Dim lRet As Long~sFile = "C:\Temp\wwwroot\ocr.ini"~Dim dValue As Double~Dim lValue As Long~Dim sValue As String~~Dim sFunctionName As String~CKI_GetParameterStringOfCommand("OCR FsName", "ObjectName", sFunctionName, 99)~~Dim sIniSection As String~sIniSection = "ocr"~~Dim lNum As Long~Dim sNumvalue As String~~For lNum = 1 To 3~	sNumvalue = Str(lNum, 0)~	CKI_GetParameterLongOfCommand(sFunctionName + sNumvalue, "fontNum", lValue)~	EVHDINIReadLong(sIniSection + sNumvalue,"fontnum", -111, lRet, sFile)~	If lValue <> lRet Then~		sValue = Str(lValue,0) ~		EVHDINIWriteString(sIniSection + sNumvalue,"fontnum",sValue,sFile)~		EVHDINIWriteFlush(sFile)~	End If~~	CKI_GetParameterLongOfCommand(sFunctionName + sNumvalue, "polarityType", lValue)~	EVHDINIReadLong(sIniSection + sNumvalue,"polaritytype", -111, lRet, sFile)~	If lValue <> lRet Then~		sValue = Str(lValue,0) ~		EVHDINIWriteString(sIniSection + sNumvalue,"polaritytype",sValue,sFile)~		EVHDINIWriteFlush(sFile)~	End If~~	CKI_GetParameterLongOfCommand(sFunctionName + sNumvalue, "dotType", lValue)~	EVHDINIReadLong(sIniSection + sNumvalue,"dottype", -111, lRet, sFile)~	If lValue <> lRet Then~		sValue = Str(lValue,0) ~		EVHDINIWriteString(sIniSection + sNumvalue,"dottype",sValue,sFile)~		EVHDINIWriteFlush(sFile)~	End If~~	CKI_GetParameterLongOfCommand(sFunctionName + sNumvalue, "rotateType", lValue)~	EVHDINIReadLong(sIniSection + sNumvalue,"rotatetype", -111, lRet, sFile)~	If lValue <> lRet Then~		sValue = Str(lValue,0) ~		EVHDINIWriteString(sIniSection + sNumvalue,"rotatetype",sValue,sFile)~		EVHDINIWriteFlush(sFile)~	End If~~	CKI_GetParameterLongOfCommand(sFunctionName + sNumvalue, "segmentationType", lValue)~	EVHDINIReadLong(sIniSection + sNumvalue,"segmentationtype", -111, lRet, sFile)~	If lValue <> lRet Then~		sValue = Str(lValue,0) ~		EVHDINIWriteString(sIniSection + sNumvalue,"segmentationtype",sValue,sFile)~		EVHDINIWriteFlush(sFile)~	End If~~	CKI_GetParameterDoubleOfCommand(sFunctionName + sNumvalue, "AutoCharX", dValue)~	lValue = dValue~	EVHDINIReadLong(sIniSection + sNumvalue,"autocharx", -111, lRet, sFile)~	If lValue <> lRet Then~		sValue = Str(dValue,4) ~		EVHDINIWriteString(sIniSection + sNumvalue,"autocharx",sValue,sFile)~		EVHDINIWriteFlush(sFile)~	End If~~	CKI_GetParameterDoubleOfCommand(sFunctionName + sNumvalue, "AutoCharY", dValue)~	EVHDINIReadLong(sIniSection + sNumvalue,"autochary", -111, lRet, sFile)~	If lValue <> lRet Then~		sValue = Str(dValue,4) ~		EVHDINIWriteString(sIniSection + sNumvalue,"autochary",sValue,sFile)~		EVHDINIWriteFlush(sFile)~	End If~~	CKI_GetParameterDoubleOfCommand(sFunctionName + sNumvalue, "AutoCharW", dValue)~	EVHDINIReadLong(sIniSection + sNumvalue,"autocharw", -111, lRet, sFile)~	If lValue <> lRet Then~		sValue = Str(dValue,4) ~		EVHDINIWriteString(sIniSection + sNumvalue,"autocharw",sValue,sFile)~		EVHDINIWriteFlush(sFile)~	End If~~	CKI_GetParameterDoubleOfCommand(sFunctionName + sNumvalue, "AutoCharH", dValue)~	EVHDINIReadLong(sIniSection + sNumvalue,"autocharh", -111, lRet, sFile)~	If lValue <> lRet Then~		sValue = Str(dValue,4) ~		EVHDINIWriteString(sIniSection + sNumvalue,"autocharh",sValue,sFile)~		EVHDINIWriteFlush(sFile)~	End If~~	CKI_GetParameterDoubleOfCommand(sFunctionName + sNumvalue, "charX", dValue)~	lValue = dValue~	EVHDINIReadLong(sIniSection + sNumvalue,"charx", -111, lRet, sFile)~	If lValue <> lRet Then~		sValue = Str(dValue,4) ~		EVHDINIWriteString(sIniSection + sNumvalue,"charx",sValue,sFile)~		EVHDINIWriteFlush(sFile)~	End If~~	CKI_GetParameterDoubleOfCommand(sFunctionName + sNumvalue, "charY", dValue)~	EVHDINIReadLong(sIniSection + sNumvalue,"chary", -111, lRet, sFile)~	If lValue <> lRet Then~		sValue = Str(dValue,4) ~		EVHDINIWriteString(sIniSection + sNumvalue,"chary",sValue,sFile)~		EVHDINIWriteFlush(sFile)~	End If~~	CKI_GetParameterDoubleOfCommand(sFunctionName + sNumvalue, "charW", dValue)~	EVHDINIReadLong(sIniSection + sNumvalue,"charw", -111, lRet, sFile)~	If lValue <> lRet Then~		sValue = Str(dValue,4) ~		EVHDINIWriteString(sIniSection + sNumvalue,"charw",sValue,sFile)~		EVHDINIWriteFlush(sFile)~	End If~~	CKI_GetParameterDoubleOfCommand(sFunctionName + sNumvalue, "charH", dValue)~	EVHDINIReadLong(sIniSection + sNumvalue,"charh", -111, lRet, sFile)~	If lValue <> lRet Then~		sValue = Str(dValue,4) ~		EVHDINIWriteString(sIniSection + sNumvalue,"charh",sValue,sFile)~		EVHDINIWriteFlush(sFile)~	End If~~	CKI_GetParameterDoubleOfCommand(sFunctionName + sNumvalue, "posRect.PointStart.X", dValue)~	lValue = dValue~	EVHDINIReadLong(sIniSection + sNumvalue,"pointstartx", -111, lRet, sFile)~	If lValue <> lRet Then~		sValue = Str(dValue,4) ~		EVHDINIWriteString(sIniSection + sNumvalue,"pointstartx",sValue,sFile)~		EVHDINIWriteFlush(sFile)~	End If~~	CKI_GetParameterDoubleOfCommand(sFunctionName + sNumvalue, "posRect.PointEnd.X", dValue)~	EVHDINIReadLong(sIniSection + sNumvalue,"pointendx", -111, lRet, sFile)~	If lValue <> lRet Then~		sValue = Str(dValue,4) ~		EVHDINIWriteString(sIniSection + sNumvalue,"pointendx",sValue,sFile)~		EVHDINIWriteFlush(sFile)~	End If~~	CKI_GetParameterDoubleOfCommand(sFunctionName + sNumvalue, "posRect.PointStart.Y", dValue)~	EVHDINIReadLong(sIniSection + sNumvalue,"pointstarty", -111, lRet, sFile)~	If lValue <> lRet Then~		sValue = Str(dValue,4) ~		EVHDINIWriteString(sIniSection + sNumvalue,"pointstarty",sValue,sFile)~		EVHDINIWriteFlush(sFile)~	End If~~	CKI_GetParameterDoubleOfCommand(sFunctionName + sNumvalue, "posRect.PointEnd.Y", dValue)~	EVHDINIReadLong(sIniSection + sNumvalue,"pointendy", -111, lRet, sFile)~	If lValue <> lRet Then~		sValue = Str(dValue,4) ~		EVHDINIWriteString(sIniSection + sNumvalue,"pointendy",sValue,sFile)~		EVHDINIWriteFlush(sFile)~	End If~~	CKI_GetParameterDoubleOfCommand(sFunctionName + sNumvalue, "posRect.Width", dValue)~	EVHDINIReadLong(sIniSection + sNumvalue,"width", -111, lRet, sFile)~	If lValue <> lRet Then~		sValue = Str(dValue,4) ~		EVHDINIWriteString(sIniSection + sNumvalue,"width",sValue,sFile)~		EVHDINIWriteFlush(sFile)~	End If~Next
-    EncodedBinary [C_34_12AL_0FB_90_0EJ_280K_A60L_240F70Dp1G00HP2I_84_0CMP2P2P2P2P2W2W2W2W2W2W2q2q2q2x2x2x2x2x2_8A2_9E2_B82_DE2_E92_FD2_193_273_273_273A3g3r3_863_A23_B03_B03_B03_CA3_F03_FB3_0F4_2B4_394_394_394S4y4_844_984_B44_C24_C24_C24_DC425_0D5_215_3D5K5K5K5g5o5_955_A05_B45_D05_DE5_DE5_DE5_FA5_206_2B6_3F6_5B6i6i6i6_856_AB6_B66_CA6_E66_F46_F46_F46_107_367A7U7q7_7F7_7F7_7F7_9B7_A37_C97_D47_E8748_128_128_128_2E8T8_5F8s8_8F8_9D8_9D8_9D8_B98_DF8_EA8_FE8_1A9_289_289_289D9j9u9_899_A59_B39_B39_B39_CF9_D79_FD98_0A_1C_0A_38_0AF_0AF_0AF_0Ab_0A_88_0A_93_0A_A7_0A_C3_0A_D1_0A_D1_0A_D1_0A_ED_0A_13_0B_1E_0B_32_0BN_0B_5C_0B_5C_0B_5C_0Bx_0B_9E_0B_A9_0B_BD_0B_D9_0B_E7_0B_E7_0B_E7_0B3_0C_29_0C_34_0CH_0Cd_0Cr_0Cr_0C0000_98_0E_A4_0E_81011336400000000000000000000_C4_0E_C8_0E_15013210000000000000000000000_98_0E_CC_0E_80011334000000000000000000000_EC_0E_F4_0EV011331430000000000000000000_EC_0E4_0FX011333300000000000000000000_EC_0E_18_0FY011300000000000000000000000_98_0E_2C_0F_7F01133500000000000000000kp_8C_0Cr00iop_BC_0Ckq_180p_B0_0Cp_A4_0Cgp1zzr_180izzkp_C0_0Cr_1C0ip_88_0Cr_200iq_200p_C4_0C_8Ad_80_0Ckoip_84_0Cq_200mg_901zizkr_240ioq_100kp_C8_0Cq_180q_240_83g_B01zzir_100zokq00iq40p_D8_0C_88kp_D0_0Cq_1C0q_240_83g_D01zzizr40kzizq_100q40_8C_82d_273koip_84_0Cq_100mg_901zizkr_140iokq00q_140p_D0_0Cq_1C0q_240_83g_F01zzzzizokq00g_102zizc_273ioq_100kp_DC_0Cq_180q_240_83g_B01zzir_100zokq00iq40p_D8_0C_88kp_EC_0Cq_1C0q_240_83g_D01zzizr40kzizq_100q40_8C_82d_B03koip_84_0Cq_100mg_901zizkr_140iokq00q_140p_EC_0Cq_1C0q_240_83g_F01zzzzizokq00g_102zizc_B03ioq_100kp_FC_0Cq_180q_240_83g_B01zzir_100zokq00iq40p_D8_0C_88kp4_0Dq_1C0q_240_83g_D01zzizr40kzizq_100q40_8C_82d_394koip_84_0Cq_100mg_901zizkr_140iokq00q_140p4_0Dq_1C0q_240_83g_F01zzzzizokq00g_102zizc_394ioq_100kp_0C_0Dq_180q_240_83g_B01zzir_100zokq00iq40p_D8_0C_88kp_18_0Dq_1C0q_240_83g_D01zzizr40kzizq_100q40_8C_82d_C24koip_84_0Cq_100mg_901zizkr_140iokq00q_140p_18_0Dq_1C0q_240_83g_F01zzzzizokq00g_102zizc_C24ioq_100kp_24_0Dq_180q_240_83g_B01zzir_100zokq00iq40p_D8_0C_88kp_38_0Dq_1C0q_240_83g_D01zzizr40kzizq_100q40_8C_82dK5koip_84_0Cq_100mg_901zizkr_140iokq00q_140p_38_0Dq_1C0q_240_83g_F01zzzzizokq00g_102zizcK5iojq80kpL_0Dq_180q_240_83g_302zzjr80izjq80lr_100okq00iq40p_D8_0C_88kpX_0Dq_1C0q_240_83g_D01zzizr40kzizq_100q40_8C_82d_DE5koipd_0Djq80g_901zizkr_140iokq00q_140pX_0Dq_1C0q_240_83g_F01zzzzizokq00g_102zizc_DE5iojq80kph_0Dq_180q_240_83g_302zzjr80izokq00iq40p_D8_0C_88kpt_0Dq_1C0q_240_83g_D01zzizr40kzizq_100q40_8C_82di6koipd_0Djq80g_901zizkr_140iokq00q_140pt_0Dq_1C0q_240_83g_F01zzzzizokq00g_102zizci6iojq80kp_80_0Dq_180q_240_83g_302zzjr80izokq00iq40p_D8_0C_88kp_8C_0Dq_1C0q_240_83g_D01zzizr40kzizq_100q40_8C_82d_F46koipd_0Djq80g_901zizkr_140iokq00q_140p_8C_0Dq_1C0q_240_83g_F01zzzzizokq00g_102zizc_F46iojq80kp_98_0Dq_180q_240_83g_302zzjr80izokq00iq40p_D8_0C_88kp_A4_0Dq_1C0q_240_83g_D01zzizr40kzizq_100q40_8C_82d_7F7koipd_0Djq80g_901zizkr_140iokq00q_140p_A4_0Dq_1C0q_240_83g_F01zzzzizokq00g_102zizc_7F7iojq80kp_B0_0Dq_180q_240_83g_302zzjr80izjq80lr_100okq00iq40p_D8_0C_88kp_B8_0Dq_1C0q_240_83g_D01zzizr40kzizq_100q40_8C_82d_128koipd_0Djq80g_901zizkr_140iokq00q_140p_B8_0Dq_1C0q_240_83g_F01zzzzizokq00g_102zizc_128iojq80kp_C0_0Dq_180q_240_83g_302zzjr80izokq00iq40p_D8_0C_88kp_C8_0Dq_1C0q_240_83g_D01zzizr40kzizq_100q40_8C_82d_9D8koipd_0Djq80g_901zizkr_140iokq00q_140p_C8_0Dq_1C0q_240_83g_F01zzzzizokq00g_102zizc_9D8iojq80kp_D0_0Dq_180q_240_83g_302zzjr80izokq00iq40p_D8_0C_88kp_D8_0Dq_1C0q_240_83g_D01zzizr40kzizq_100q40_8C_82d_289koipd_0Djq80g_901zizkr_140iokq00q_140p_D8_0Dq_1C0q_240_83g_F01zzzzizokq00g_102zizc_289iojq80kp_E0_0Dq_180q_240_83g_302zzjr80izokq00iq40p_D8_0C_88kp_E8_0Dq_1C0q_240_83g_D01zzizr40kzizq_100q40_8C_82d_B39koipd_0Djq80g_901zizkr_140iokq00q_140p_E8_0Dq_1C0q_240_83g_F01zzzzizokq00g_102zizc_B39iojq80kp_F0_0Dq_180q_240_83g_302zzjr80izjq80lr_100okq00iq40p_D8_0C_88kp8_0Eq_1C0q_240_83g_D01zzizr40kzizq_100q40_8C_82dF_0Akoipd_0Djq80g_901zizkr_140iokq00q_140p8_0Eq_1C0q_240_83g_F01zzzzizokq00g_102zizcF_0Aiojq80kp_14_0Eq_180q_240_83g_302zzjr80izokq00iq40p_D8_0C_88kp_28_0Eq_1C0q_240_83g_D01zzizr40kzizq_100q40_8C_82d_D1_0Akoipd_0Djq80g_901zizkr_140iokq00q_140p_28_0Eq_1C0q_240_83g_F01zzzzizokq00g_102zizc_D1_0Aiojq80kp_34_0Eq_180q_240_83g_302zzjr80izokq00iq40p_D8_0C_88kpL_0Eq_1C0q_240_83g_D01zzizr40kzizq_100q40_8C_82d_5C_0Bkoipd_0Djq80g_901zizkr_140iokq00q_140pL_0Eq_1C0q_240_83g_F01zzzzizokq00g_102zizc_5C_0Biojq80kpX_0Eq_180q_240_83g_302zzjr80izokq00iq40p_D8_0C_88kpl_0Eq_1C0q_240_83g_D01zzizr40kzizq_100q40_8C_82d_E7_0Bkoipd_0Djq80g_901zizkr_140iokq00q_140pl_0Eq_1C0q_240_83g_F01zzzzizokq00g_102zizc_E7_0Biojq80kpx_0Eq_180q_240_83g_302zzjr80izokq00iq40p_D8_0C_88kp_88_0Eq_1C0q_240_83g_D01zzizr40kzizq_100q40_8C_82dr_0Ckoipd_0Djq80g_901zizkr_140iokq00q_140p_88_0Eq_1C0q_240_83g_F01zzzzizokq00g_102zizcr_0Ciq_200p_88_0C_83r_200c_7F2f00000001000C_3A_5CTemp_5Cwwwroot_5Cocr_2Eini0OCR_20FsName00ObjectName00c000ocr03000fontNum0fontnum0o000polarityType0000polaritytype0000dotType0dottype0rotateType00rotatetype00segmentationType0000segmentationtype0000AutoCharX000autocharx0004000AutoCharY000autochary000AutoCharW000autocharw000AutoCharH000autocharh000charX000charx000charY000chary000charW000charw000charH000charh000posRect_2EPointStart_2EX0000pointstartx0posRect_2EPointEnd_2EX00pointendx000posRect_2EPointStart_2EY0000pointstarty0posRect_2EPointEnd_2EY00pointendy000posRect_2EWidth000width000source00EVTVision000CKI_5FGetParameterStringOfCommand0Std0Str0CKI_5FGetParameterLongOfCommand000Evhd0000EVHDINIReadLong0EVHDINIWriteString00EVHDINIWriteFlush000CKI_5FGetParameterDoubleOfCommand0]
+    Program Dim sFile As String~Dim lRet As Long~sFile = "C:\Temp\wwwroot\ocr.ini"~Dim dValue As Double~Dim lValue As Long~Dim sValue As String~~Dim sFunctionName As String~CKI_GetParameterStringOfCommand("OCR FsName", "ObjectName", sFunctionName, 99)~sFunctionName = sFunctionName + " "~Dim sIniSection As String~sIniSection = "ocr"~~Dim lNum As Long~Dim sNumvalue As String~~For lNum = 1 To 3~	sNumvalue = Str(lNum, 0)~	CKI_GetParameterLongOfCommand(sFunctionName + sNumvalue, "fontNum", lValue)~	EVHDINIReadLong(sIniSection + sNumvalue,"fontnum", -111, lRet, sFile)~	If lValue <> lRet Then~		sValue = Str(lValue,0) ~		EVHDINIWriteString(sIniSection + sNumvalue,"fontnum",sValue,sFile)~		EVHDINIWriteFlush(sFile)~	End If~~	CKI_GetParameterLongOfCommand(sFunctionName + sNumvalue, "polarityType", lValue)~	EVHDINIReadLong(sIniSection + sNumvalue,"polaritytype", -111, lRet, sFile)~	If lValue <> lRet Then~		sValue = Str(lValue,0) ~		EVHDINIWriteString(sIniSection + sNumvalue,"polaritytype",sValue,sFile)~		EVHDINIWriteFlush(sFile)~	End If~~	CKI_GetParameterLongOfCommand(sFunctionName + sNumvalue, "dotType", lValue)~	EVHDINIReadLong(sIniSection + sNumvalue,"dottype", -111, lRet, sFile)~	If lValue <> lRet Then~		sValue = Str(lValue,0) ~		EVHDINIWriteString(sIniSection + sNumvalue,"dottype",sValue,sFile)~		EVHDINIWriteFlush(sFile)~	End If~~	CKI_GetParameterLongOfCommand(sFunctionName + sNumvalue, "rotateType", lValue)~	EVHDINIReadLong(sIniSection + sNumvalue,"rotatetype", -111, lRet, sFile)~	If lValue <> lRet Then~		sValue = Str(lValue,0) ~		EVHDINIWriteString(sIniSection + sNumvalue,"rotatetype",sValue,sFile)~		EVHDINIWriteFlush(sFile)~	End If~~	CKI_GetParameterLongOfCommand(sFunctionName + sNumvalue, "segmentationType", lValue)~	EVHDINIReadLong(sIniSection + sNumvalue,"segmentationtype", -111, lRet, sFile)~	If lValue <> lRet Then~		sValue = Str(lValue,0) ~		EVHDINIWriteString(sIniSection + sNumvalue,"segmentationtype",sValue,sFile)~		EVHDINIWriteFlush(sFile)~	End If~~	CKI_GetParameterDoubleOfCommand(sFunctionName + sNumvalue, "AutoCharX", dValue)~	lValue = dValue~	EVHDINIReadLong(sIniSection + sNumvalue,"autocharx", -111, lRet, sFile)~	If lValue <> lRet Then~		sValue = Str(dValue,4) ~		EVHDINIWriteString(sIniSection + sNumvalue,"autocharx",sValue,sFile)~		EVHDINIWriteFlush(sFile)~	End If~~	CKI_GetParameterDoubleOfCommand(sFunctionName + sNumvalue, "AutoCharY", dValue)~	lValue = dValue~	EVHDINIReadLong(sIniSection + sNumvalue,"autochary", -111, lRet, sFile)~	If lValue <> lRet Then~		sValue = Str(dValue,4) ~		EVHDINIWriteString(sIniSection + sNumvalue,"autochary",sValue,sFile)~		EVHDINIWriteFlush(sFile)~	End If~~	CKI_GetParameterDoubleOfCommand(sFunctionName + sNumvalue, "AutoCharW", dValue)~	lValue = dValue~	EVHDINIReadLong(sIniSection + sNumvalue,"autocharw", -111, lRet, sFile)~	If lValue <> lRet Then~		sValue = Str(dValue,4) ~		EVHDINIWriteString(sIniSection + sNumvalue,"autocharw",sValue,sFile)~		EVHDINIWriteFlush(sFile)~	End If~~	CKI_GetParameterDoubleOfCommand(sFunctionName + sNumvalue, "AutoCharH", dValue)~	lValue = dValue~	EVHDINIReadLong(sIniSection + sNumvalue,"autocharh", -111, lRet, sFile)~	If lValue <> lRet Then~		sValue = Str(dValue,4) ~		EVHDINIWriteString(sIniSection + sNumvalue,"autocharh",sValue,sFile)~		EVHDINIWriteFlush(sFile)~	End If~~	CKI_GetParameterDoubleOfCommand(sFunctionName + sNumvalue, "charX", dValue)~	lValue = dValue~	EVHDINIReadLong(sIniSection + sNumvalue,"charx", -111, lRet, sFile)~	If lValue <> lRet Then~		sValue = Str(dValue,4) ~		EVHDINIWriteString(sIniSection + sNumvalue,"charx",sValue,sFile)~		EVHDINIWriteFlush(sFile)~	End If~~	CKI_GetParameterDoubleOfCommand(sFunctionName + sNumvalue, "charY", dValue)~	lValue = dValue~	EVHDINIReadLong(sIniSection + sNumvalue,"chary", -111, lRet, sFile)~	If lValue <> lRet Then~		sValue = Str(dValue,4) ~		EVHDINIWriteString(sIniSection + sNumvalue,"chary",sValue,sFile)~		EVHDINIWriteFlush(sFile)~	End If~~	CKI_GetParameterDoubleOfCommand(sFunctionName + sNumvalue, "charW", dValue)~	lValue = dValue~	EVHDINIReadLong(sIniSection + sNumvalue,"charw", -111, lRet, sFile)~	If lValue <> lRet Then~		sValue = Str(dValue,4) ~		EVHDINIWriteString(sIniSection + sNumvalue,"charw",sValue,sFile)~		EVHDINIWriteFlush(sFile)~	End If~~	CKI_GetParameterDoubleOfCommand(sFunctionName + sNumvalue, "charH", dValue)~	lValue = dValue~	EVHDINIReadLong(sIniSection + sNumvalue,"charh", -111, lRet, sFile)~	If lValue <> lRet Then~		sValue = Str(dValue,4) ~		EVHDINIWriteString(sIniSection + sNumvalue,"charh",sValue,sFile)~		EVHDINIWriteFlush(sFile)~	End If~~	CKI_GetParameterDoubleOfCommand(sFunctionName + sNumvalue, "posRect.PointStart.X", dValue)~	lValue = dValue~	EVHDINIReadLong(sIniSection + sNumvalue,"pointstartx", -111, lRet, sFile)~	If lValue <> lRet Then~		sValue = Str(dValue,4) ~		EVHDINIWriteString(sIniSection + sNumvalue,"pointstartx",sValue,sFile)~		EVHDINIWriteFlush(sFile)~	End If~~	CKI_GetParameterDoubleOfCommand(sFunctionName + sNumvalue, "posRect.PointEnd.X", dValue)~	lValue = dValue~	EVHDINIReadLong(sIniSection + sNumvalue,"pointendx", -111, lRet, sFile)~	If lValue <> lRet Then~		sValue = Str(dValue,4) ~		EVHDINIWriteString(sIniSection + sNumvalue,"pointendx",sValue,sFile)~		EVHDINIWriteFlush(sFile)~	End If~~	CKI_GetParameterDoubleOfCommand(sFunctionName + sNumvalue, "posRect.PointStart.Y", dValue)~	lValue = dValue~	EVHDINIReadLong(sIniSection + sNumvalue,"pointstarty", -111, lRet, sFile)~	If lValue <> lRet Then~		sValue = Str(dValue,4) ~		EVHDINIWriteString(sIniSection + sNumvalue,"pointstarty",sValue,sFile)~		EVHDINIWriteFlush(sFile)~	End If~~	CKI_GetParameterDoubleOfCommand(sFunctionName + sNumvalue, "posRect.PointEnd.Y", dValue)~	lValue = dValue~	EVHDINIReadLong(sIniSection + sNumvalue,"pointendy", -111, lRet, sFile)~	If lValue <> lRet Then~		sValue = Str(dValue,4) ~		EVHDINIWriteString(sIniSection + sNumvalue,"pointendy",sValue,sFile)~		EVHDINIWriteFlush(sFile)~	End If~~	CKI_GetParameterDoubleOfCommand(sFunctionName + sNumvalue, "posRect.Width", dValue)~	lValue = dValue~	EVHDINIReadLong(sIniSection + sNumvalue,"width", -111, lRet, sFile)~	If lValue <> lRet Then~		sValue = Str(dValue,4) ~		EVHDINIWriteString(sIniSection + sNumvalue,"width",sValue,sFile)~		EVHDINIWriteFlush(sFile)~	End If~Next
+    EncodedBinary [C_34_12A_BC_0FB0_0FJ_280K_B00L_240F70D_841G00Hd2I_F0_0CMd2d2d2d2d2k2k2k2k2k2k2_852_902_902_962_962_962_962_962_A82_BC2_D62_FC273_1B3_373E3E3E3_5F3_853_903_A43_C03_CE3_CE3_CE3_E83_0E4_194_2D4I4W4W4W4q4_974_A24_B64_D24_E04_E04_E04_FA4_205_2B5_3F5_5B5i5i5i5_855_8D5_B35_BE5_D25_EE5_FC5_FC5_FC5_186_206F6Q6e6_816_8F6_8F6_8F6_AB6_B36_D96_E46_F86_147_227_227_227_3E7F7l7w7_8B7_A77_B57_B57_B57_D17_D97_FF7_0A8_1E8_3A8H8H8H8d8l8_928_9D8_B18_CD8_DB8_DB8_DB8_F78_FF8_259_309D9_609n9n9n9_8A9_929_B89_C39_D79_F391_0A1_0A1_0A_1D_0A_25_0AK_0AV_0Aj_0A_86_0A_94_0A_94_0A_94_0A_B0_0A_B8_0A_DE_0A_E9_0A_FD_0A_19_0B_27_0B_27_0B_27_0BC_0BK_0Bq_0B_7C_0B_90_0B_AC_0B_BA_0B_BA_0B_BA_0B_D6_0B_DE_0B4_0C_0F_0C_23_0C_3F_0CM_0CM_0CM_0Ci_0Cq_0C_97_0C_A2_0C_B6_0C_D2_0C_E0_0C_E0_0C00008_0F_14_0F_81011336400000000000000000000_34_0F_38_0F_150132100000000000000000000008_0F_3C_0F_80011334000000000000000000000_5C_0Fd_0FV011331430000000000000000000_5C_0Ft_0FX011333300000000000000000000_5C_0F_88_0FY0113000000000000000000000008_0F_9C_0F_7F01133500000000000000000kp_F8_0Cr00iop_28_0Dkq_180p_1C_0Dp_10_0Dg_841zzr_180izzkq_180p_2C_0D_83r_180p_30_0Dr_1C0ip_F4_0Cr_200iq_200p_34_0D_8Ad_EE_0Ckoip_F0_0Cq_200mg_A41zizkr_240ioq_100kp_38_0Dq_180q_240_83g_C41zzir_100zokq00iq40pH_0D_88kp_40_0Dq_1C0q_240_83g_E41zzizr40kzizq_100q40_8C_82dE3koip_F0_0Cq_100mg_A41zizkr_140iokq00q_140p_40_0Dq_1C0q_240_83g42zzzzizokq00g_242zizcE3ioq_100kpL_0Dq_180q_240_83g_C41zzir_100zokq00iq40pH_0D_88kp_5C_0Dq_1C0q_240_83g_E41zzizr40kzizq_100q40_8C_82d_CE3koip_F0_0Cq_100mg_A41zizkr_140iokq00q_140p_5C_0Dq_1C0q_240_83g42zzzzizokq00g_242zizc_CE3ioq_100kpl_0Dq_180q_240_83g_C41zzir_100zokq00iq40pH_0D_88kpt_0Dq_1C0q_240_83g_E41zzizr40kzizq_100q40_8C_82dW4koip_F0_0Cq_100mg_A41zizkr_140iokq00q_140pt_0Dq_1C0q_240_83g42zzzzizokq00g_242zizcW4ioq_100kp_7C_0Dq_180q_240_83g_C41zzir_100zokq00iq40pH_0D_88kp_88_0Dq_1C0q_240_83g_E41zzizr40kzizq_100q40_8C_82d_E04koip_F0_0Cq_100mg_A41zizkr_140iokq00q_140p_88_0Dq_1C0q_240_83g42zzzzizokq00g_242zizc_E04ioq_100kp_94_0Dq_180q_240_83g_C41zzir_100zokq00iq40pH_0D_88kp_A8_0Dq_1C0q_240_83g_E41zzizr40kzizq_100q40_8C_82di5koip_F0_0Cq_100mg_A41zizkr_140iokq00q_140p_A8_0Dq_1C0q_240_83g42zzzzizokq00g_242zizci5iojq80kp_BC_0Dq_180q_240_83gD2zzjr80izjq80lr_100okq00iq40pH_0D_88kp_C8_0Dq_1C0q_240_83g_E41zzizr40kzizq_100q40_8C_82d_FC5koip_D4_0Djq80g_A41zizkr_140iokq00q_140p_C8_0Dq_1C0q_240_83g42zzzzizokq00g_242zizc_FC5iojq80kp_D8_0Dq_180q_240_83gD2zzjr80izjq80lr_100okq00iq40pH_0D_88kp_E4_0Dq_1C0q_240_83g_E41zzizr40kzizq_100q40_8C_82d_8F6koip_D4_0Djq80g_A41zizkr_140iokq00q_140p_E4_0Dq_1C0q_240_83g42zzzzizokq00g_242zizc_8F6iojq80kp_F0_0Dq_180q_240_83gD2zzjr80izjq80lr_100okq00iq40pH_0D_88kp_FC_0Dq_1C0q_240_83g_E41zzizr40kzizq_100q40_8C_82d_227koip_D4_0Djq80g_A41zizkr_140iokq00q_140p_FC_0Dq_1C0q_240_83g42zzzzizokq00g_242zizc_227iojq80kp8_0Eq_180q_240_83gD2zzjr80izjq80lr_100okq00iq40pH_0D_88kp_14_0Eq_1C0q_240_83g_E41zzizr40kzizq_100q40_8C_82d_B57koip_D4_0Djq80g_A41zizkr_140iokq00q_140p_14_0Eq_1C0q_240_83g42zzzzizokq00g_242zizc_B57iojq80kp_20_0Eq_180q_240_83gD2zzjr80izjq80lr_100okq00iq40pH_0D_88kp_28_0Eq_1C0q_240_83g_E41zzizr40kzizq_100q40_8C_82dH8koip_D4_0Djq80g_A41zizkr_140iokq00q_140p_28_0Eq_1C0q_240_83g42zzzzizokq00g_242zizcH8iojq80kp_30_0Eq_180q_240_83gD2zzjr80izjq80lr_100okq00iq40pH_0D_88kp_38_0Eq_1C0q_240_83g_E41zzizr40kzizq_100q40_8C_82d_DB8koip_D4_0Djq80g_A41zizkr_140iokq00q_140p_38_0Eq_1C0q_240_83g42zzzzizokq00g_242zizc_DB8iojq80kp_40_0Eq_180q_240_83gD2zzjr80izjq80lr_100okq00iq40pH_0D_88kpH_0Eq_1C0q_240_83g_E41zzizr40kzizq_100q40_8C_82dn9koip_D4_0Djq80g_A41zizkr_140iokq00q_140pH_0Eq_1C0q_240_83g42zzzzizokq00g_242zizcn9iojq80kpP_0Eq_180q_240_83gD2zzjr80izjq80lr_100okq00iq40pH_0D_88kpX_0Eq_1C0q_240_83g_E41zzizr40kzizq_100q40_8C_82d1_0Akoip_D4_0Djq80g_A41zizkr_140iokq00q_140pX_0Eq_1C0q_240_83g42zzzzizokq00g_242zizc1_0Aiojq80kp_60_0Eq_180q_240_83gD2zzjr80izjq80lr_100okq00iq40pH_0D_88kpx_0Eq_1C0q_240_83g_E41zzizr40kzizq_100q40_8C_82d_94_0Akoip_D4_0Djq80g_A41zizkr_140iokq00q_140px_0Eq_1C0q_240_83g42zzzzizokq00g_242zizc_94_0Aiojq80kp_84_0Eq_180q_240_83gD2zzjr80izjq80lr_100okq00iq40pH_0D_88kp_98_0Eq_1C0q_240_83g_E41zzizr40kzizq_100q40_8C_82d_27_0Bkoip_D4_0Djq80g_A41zizkr_140iokq00q_140p_98_0Eq_1C0q_240_83g42zzzzizokq00g_242zizc_27_0Biojq80kp_A4_0Eq_180q_240_83gD2zzjr80izjq80lr_100okq00iq40pH_0D_88kp_BC_0Eq_1C0q_240_83g_E41zzizr40kzizq_100q40_8C_82d_BA_0Bkoip_D4_0Djq80g_A41zizkr_140iokq00q_140p_BC_0Eq_1C0q_240_83g42zzzzizokq00g_242zizc_BA_0Biojq80kp_C8_0Eq_180q_240_83gD2zzjr80izjq80lr_100okq00iq40pH_0D_88kp_DC_0Eq_1C0q_240_83g_E41zzizr40kzizq_100q40_8C_82dM_0Ckoip_D4_0Djq80g_A41zizkr_140iokq00q_140p_DC_0Eq_1C0q_240_83g42zzzzizokq00g_242zizcM_0Ciojq80kp_E8_0Eq_180q_240_83gD2zzjr80izjq80lr_100okq00iq40pH_0D_88kp_F8_0Eq_1C0q_240_83g_E41zzizr40kzizq_100q40_8C_82d_E0_0Ckoip_D4_0Djq80g_A41zizkr_140iokq00q_140p_F8_0Eq_1C0q_240_83g42zzzzizokq00g_242zizc_E0_0Ciq_200p_F4_0C_83r_200c_9D2f000001000C_3A_5CTemp_5Cwwwroot_5Cocr_2Eini0OCR_20FsName00ObjectName00c000_20000ocr03000fontNum0fontnum0o000polarityType0000polaritytype0000dotType0dottype0rotateType00rotatetype00segmentationType0000segmentationtype0000AutoCharX000autocharx0004000AutoCharY000autochary000AutoCharW000autocharw000AutoCharH000autocharh000charX000charx000charY000chary000charW000charw000charH000charh000posRect_2EPointStart_2EX0000pointstartx0posRect_2EPointEnd_2EX00pointendx000posRect_2EPointStart_2EY0000pointstarty0posRect_2EPointEnd_2EY00pointendy000posRect_2EWidth000width000source00EVTVision000CKI_5FGetParameterStringOfCommand0Std0Str0CKI_5FGetParameterLongOfCommand000Evhd0000EVHDINIReadLong0EVHDINIWriteString00EVHDINIWriteFlush000CKI_5FGetParameterDoubleOfCommand0]
     ExternProgramFileName 
     UseExternProgram 0
     NumberOfAdditionalLinesProgram 0
