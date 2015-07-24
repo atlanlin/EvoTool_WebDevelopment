@@ -308,7 +308,7 @@
 		$("#loadValues").click(function(){
 		
 			toolNo = document.getElementById("selectedNumber").value;
-			enableOCR(commandName, toolNo);
+			enableOCR(commandName, toolNo, 1);
 			
 			commandName = commandName + " " + toolNo;
 			//get settings
