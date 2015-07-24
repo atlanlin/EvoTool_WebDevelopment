@@ -401,7 +401,7 @@ function disableCodeFunctions(){
 }
 
 function enableBarCode(cmdName, value) {
-	ajaxGet('info.htm?cmd=%23021%3B'+cmdName+'%3B2%3BGeneral.Enabled%3B'+value.toString()+'%23');
+	ajaxGet('info.htm?cmd=%23021%3B'+cmdName+'%3B2%3BGeneral.Enabled%3B'+value+'%23');
 	var frontFunctionNames = ["Flush%20", "Create%20", "Send%20", "Script%20"];
 	var functionNames = ["BarCode"];
 	for(var i=0; i < frontFunctionNames.length; i++){
@@ -412,7 +412,7 @@ function enableBarCode(cmdName, value) {
 }
 
 function enableDataCode(cmdName, value) {
-	ajaxGet('info.htm?cmd=%23021%3B'+cmdName+'%3B2%3BGeneral.Enabled%3B'+value.toString()+'%23');
+	ajaxGet('info.htm?cmd=%23021%3B'+cmdName+'%3B2%3BGeneral.Enabled%3B'+value+'%23');
 	var frontFunctionNames = ["Flush%20", "Create%20", "Send%20", "Script%20"];
 	var functionNames = ["DataCode"];
 	for(var i=0; i < frontFunctionNames.length; i++){
